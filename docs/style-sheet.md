@@ -15,8 +15,10 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `armbands.jpg` | Alla sex armband, platta och på arm |
 | `emblems.jpg` + `emblems/*.png` | Divisionsemblem, helt ark och utklippta ikoner (256 px, transparent) |
 | `flag-cca.jpg`, `flag-city09.jpg` | Flaggorna |
+| `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
+| `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
-Avvikelser från prompterna som nu är kanon: HELIX-emblemets båge är **turkos** (inte vit). JURY:s ärmmärke på uniformsarket är sköldformat; själva emblemet är runt.
+Avvikelser från prompterna som nu är kanon: HELIX-emblemets båge är **turkos** (inte vit). JURY:s ärmmärke på uniformsarket är sköldformat; själva emblemet är runt. Ilses ögonbrynsärr sitter på hennes högra ögonbryn (porträttet är kanon). Miras ransonsomslag föreställer en kyrka, inte ett tak.
 
 ---
 

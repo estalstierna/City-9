@@ -63,12 +63,12 @@
   };
 
   G.PEOPLE = {
-    mira: { name: 'Mira', role: 'Your sister · D5, Stack 14' },
-    tomas: { name: 'Tomas Vey', role: 'Fellow recruit' },
-    ilse: { name: 'Ilse Marek', role: 'Fellow recruit' },
+    mira: { name: 'Mira', role: 'Your sister · D5, Stack 14', img: 'mira' },
+    tomas: { name: 'Tomas Vey', role: 'Fellow recruit', img: 'tomas' },
+    ilse: { name: 'Ilse Marek', role: 'Fellow recruit', img: 'ilse' },
     rook: { name: '"Rook"', role: 'UNION 02 · your field trainer' },
     granite: { name: '"Granite"', role: 'UNION SqL · D5 squadron' },
-    halloran: { name: 'Old Halloran', role: 'Neighbour · Stack 14' },
+    halloran: { name: 'Old Halloran', role: 'Neighbour · Stack 14', img: 'halloran' },
     tinker: { name: 'The Tinker', role: 'Repairman · Bazaar Row' },
   };
 
@@ -267,11 +267,12 @@
       return el('div', 'say', `<span class="speaker">${who}</span><span class="line">${inline(line)}</span>`);
     }
     if (p.startsWith('@doc ')) return el('div', 'doc', inline(p.slice(5)));
-    if (p.startsWith('@img ')) {
-      const parts = p.slice(5).split('|');
+    if (p.startsWith('@img ') || p.startsWith('@portrait ')) {
+      const isP = p.startsWith('@portrait ');
+      const parts = p.slice(isP ? 10 : 5).split('|');
       const src = parts[0].trim();
       const cap = parts[1] ? parts[1].trim() : '';
-      const f = el('figure', 'pic', `<img src="${src}" alt="${cap.replace(/"/g, '')}" loading="lazy">${cap ? `<figcaption>${inline(cap)}</figcaption>` : ''}`);
+      const f = el('figure', isP ? 'pic portrait' : 'pic', `<img src="${src}" alt="${cap.replace(/"/g, '')}" loading="lazy">${cap ? `<figcaption>${inline(cap)}</figcaption>` : ''}`);
       f.onclick = () => openModal(cap || 'Reference', `<img class="full" src="${src}" alt="">`);
       return f;
     }
@@ -571,7 +572,11 @@
       <section>
         <h3>Contacts</h3>
         ${Object.keys(S.rel)
-          .map((k) => `<div class="kv contact"><span>${G.PEOPLE[k].name}<small>${G.PEOPLE[k].role}</small></span><b>${relWord(S.rel[k])}</b></div>`)
+          .map((k) => {
+            const pp = G.PEOPLE[k];
+            const face = pp.img ? `<img class="face" src="assets/img/portraits/${pp.img}-thumb.jpg" alt="">` : '<i class="face none"></i>';
+            return `<div class="kv contact">${face}<span>${pp.name}<small>${pp.role}</small></span><b>${relWord(S.rel[k])}</b></div>`;
+          })
           .join('')}
       </section>
       <section>

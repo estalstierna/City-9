@@ -148,6 +148,11 @@ hr.sep { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
 .pic figcaption { font-family: var(--mono); font-size: 12px; color: var(--dim); margin-top: 6px; letter-spacing: .04em; }
 .codex-body img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; margin: 6px 0 12px; cursor: zoom-in; }
 img.full { display: block; width: 100%; height: auto; }
+.pic.portrait { max-width: 300px; }
+.kv.contact { align-items: center; }
+.kv.contact span { flex: 1; }
+.face { width: 40px; height: 40px; border-radius: 3px; border: 1px solid var(--line); object-fit: cover; flex: 0 0 40px; }
+.face.none { display: block; background: repeating-linear-gradient(135deg, #131c22 0 4px, #182229 4px 8px); }
 #sidebar .emblem { display: block; width: 84px; height: 84px; margin: 2px auto 12px; filter: drop-shadow(0 4px 10px rgba(0,0,0,.5)); }
 
 /* ---------- choices ---------- */

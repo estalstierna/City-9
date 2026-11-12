@@ -159,12 +159,14 @@
         s.phase = 'prologue';
         s.time = 'Morning';
         G.unlock(s, 'city9');
+        G.unlock(s, 'citizens');
       },
       title: 'Stack 14, Unit 14-C — 06:10',
       text: (s) => [
         'The broadcast screen in the stairwell wakes the block before the light does.',
         '@dispatch Attention, residents of District 5. Your Administrator reminds you: compliance is a gift you give your neighbours. Report irregular behaviour. Today\'s ration window opens at nine.',
         'Unit 14-C is two rooms and a window taped over with plastic. The radiator knocks like someone trying to get in. Mira is already up, sitting on the sill in her mill overalls, knees to her chest, drawing on the back of a ration wrapper with a pencil stub worn down to the width of a fingernail.',
+        '@portrait assets/img/portraits/mira.jpg|Mira — CID 51420',
         '@say Mira|You\'re really going.',
         'It isn\'t a question. She saw the slip in your pocket last night. She doesn\'t look up from the drawing.',
         '@say Mira|They take the face off you, you know. Old Halloran says they put something in your head and after a while you stop being sad about anything.',
@@ -211,6 +213,7 @@
     p_morning_2: {
       text: (s) => [
         'There is a knock on the door — three soft taps, the neighbourly kind. Old Halloran from 14-F stands in the hall in a coat older than the Union, holding half a loaf of real bread wrapped in newspaper.',
+        '@portrait assets/img/portraits/halloran.jpg|Edvard Halloran — CID 10388',
         '@say Halloran|For the road. Don\'t ask where I got it, and I won\'t ask where you\'re going.',
         `He looks at you a moment too long. He was the one who carried you and Mira out of the old apartment the night the sky opened, during the war. He used to call you *${N(s)} the stubborn*.`,
         '@say Halloran|Your father would have had opinions. But your father isn\'t here, and the girl needs feeding. Go on.',
@@ -464,7 +467,9 @@
       text: [
         'Barracks 3 is a long concrete room with forty bunks and one window too high to see out of. The heating works. There is a toilet that flushes. Half the intake simply sits on their bunks and stares at the radiator as if it might be a trick.',
         'The bunk above yours belongs to a broad young man with a mill-worker\'s shoulders and a crooked nose. He is already unwrapping the bar from his welcome ration, and he grins at you with a mouth full of nutrient paste.',
+        '@portrait assets/img/portraits/tomas.jpg|Tomas Vey — CID 27716, D2 dye floor',
         '@say Tomas|Tomas. Tomas Vey. D2, the Works — dye floor. You?',
+        '@portrait assets/img/portraits/ilse.jpg|Ilse Marek — CID 83305, D3 pump works',
         'Across the aisle, a narrow-faced woman sits cross-legged on her bunk, lacing her boots with careful, practised loops. She hasn\'t touched her ration. Her eyes move over every new arrival, counting.',
         '@say Tomas|That\'s Ilse. Don\'t bother. I tried. She looked at me like I was a census form.',
       ],

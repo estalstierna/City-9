@@ -12,6 +12,15 @@ G.addCodex({
       <tr><td>404</td><td>Old Town beyond the eastern canal. Officially quarantined. Unofficially, no one comes back to argue.</td></tr>
     </table>`,
   },
+  citizens: {
+    title: 'Citizen dress & identification',
+    body: `<p>Every citizen is issued the same clothes: a faded blue work jacket with a stand collar, an undershirt, work trousers and shoes. A white cloth label on the right chest carries the <b>Citizen ID</b> — <b>CID</b> and five digits — above a barcode. The district is stencilled on the back.</p>
+    <img src="assets/img/citizen-base.jpg" alt="Base citizen uniform" loading="lazy">
+    <p><b>Commended citizens</b> receive a gold-rimmed pin above the label, a gold line beneath the barcode, a new-issue jacket and a priority ration card. Their neighbours notice.</p>
+    <img src="assets/img/citizen-commended.jpg" alt="Commended citizen" loading="lazy">
+    <p><b>Citizens under observation</b> have a red diagonal stripe and the mark <b>OBS</b> printed across their label, a red barred circle on the back and a monitoring band locked to the wrist. Report irregularities.</p>
+    <img src="assets/img/citizen-watch.jpg" alt="Citizen under watch" loading="lazy">`,
+  },
   union: {
     title: 'The Universal Union',
     body: `<p>The authority that rules Earth since the Seven Hour War. The Union speaks to its cities through Administrators and broadcast screens, and acts through two branches: the <b>Combine Civil Authority</b> (local policing) and <b>Overwatch</b> (the military and intelligence apparatus).</p>
