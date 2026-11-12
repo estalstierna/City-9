@@ -861,32 +861,32 @@ LIGHTING: cold blue-grey night light from above, a small warm orange glow from t
 STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette with one warm accent, subtle film grain, believable skin texture.
 ```
 
-#### Granite (UNION SqL)
+#### Granite (UNION SqL), Rev 4
 
-**Bifoga:** Mira-porträttet, `ranks-command.jpg`, `armbands.jpg`.
+**Bifoga i denna ordning:** `ref/sql-armband.jpg`, `ref/sql-helmet.jpg`, Mira-porträttet.
 
 ```
-Head-and-shoulders personnel file portrait of a masked civil police squadron leader known as "Granite", UNION division, District 5, in the exact framing, lighting and background of the attached portrait of the young woman: plain near-black background, flat cold registration-booth light, faint cyan rim light.
+Head-and-shoulders personnel file portrait of a masked civil police squadron leader known as "Granite", UNION division, District 5, in the framing, lighting and background of the THIRD attached image (the portrait of the young woman): plain near-black background, flat cold registration-booth light, faint cyan rim light.
 
-POSE: facing the camera almost dead straight, body turned only about 15 degrees so his LEFT upper arm is just visible. Completely still, like a wall. An enormous, heavy man whose thick neck and shoulders fill the frame edge to edge.
+POSE: facing the camera almost dead straight, body turned only about 15 degrees so his LEFT upper arm is clearly visible. Completely still, like a wall. An enormous, heavy man whose thick neck and shoulders fill the frame edge to edge. Both gloved hands rest together on a grey data slate held flat against his chest, its screen glowing faintly cyan with a duty roster.
 
-HELMET — copy exactly the helmet shown in the "SqL" column of the attached rank sheet:
-- off-white bone-grey ceramic shell with a BROAD civil protection blue (#2F6FB5) crest stripe running from brow to crown, edged by two fine silver pinstripes;
-- two large round eye openings in thick black rubber rims, dark smoked lenses with a faint cyan sheen;
+HELMET — copy exactly the helmet in the SECOND attached image:
+- off-white bone-grey ceramic shell with ONE broad civil protection blue (#2F6FB5) crest stripe from brow to crown;
+- two large round eye openings in thick black rubber rims, dark smoked lenses with a faint cyan sheen, BOTH lenses intact and uncracked;
 - angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter directly beneath it;
 - the ONLY electronics: one compact rounded black earmuff-style headset cup over the LEFT ear with one short stub antenna.
 PERSONAL WEAR: the blue stripe is scratched and worn almost to grey along the crown; the ceramic is old but carefully maintained.
 
-ARMBAND — copy the blue UNION armband from the attached armband sheet, with officer insignia: a cloth band wrapped around the left upper arm (NOT a square patch), civil protection blue, a small circular stun-baton glyph on the left, "C9:D5" in bold off-white stencil in the centre, then ONE wide VERTICAL silver bar followed by EXACTLY TWO small silver five-point stars.
+ARMBAND — copy exactly the armband in the FIRST attached image, now wrapped around his left upper arm as a cloth band (NOT a square patch): civil protection blue, "C9:D5" in bold off-white stencil, then ONE single WIDE vertical silver bar — as tall as the armband and about three times the width of a normal thin bar — followed by EXACTLY TWO large five-point silver stars, each star as tall as the letters of "C9:D5", side by side with a small gap between them. Bar and stars are embroidered in raised silver thread.
 
 UNIFORM: dark charcoal-navy padded jacket with a tall stand-up collar, quilted ballistic vest with thick horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white vertical double-bar patch on the left chest.
 
-DETAILS: one huge gloved hand holds a grey data slate flat against his chest, its screen glowing faintly cyan with a duty roster. A steaming dented metal mug at the bottom edge of the frame, steam curling up past the respirator.
-
-DO NOT include: a walkie-talkie or box radio on the helmet, a tall antenna, a square shoulder patch, horizontal rank bars, more or fewer than two stars, a single cylindrical respirator.
+DO NOT include: any cup, mug, drink or steam; a cracked lens; a walkie-talkie or box radio; a tall antenna; a square shoulder patch; thin or multiple rank bars; small, tiny or clustered stars; more or fewer than two stars.
 
 STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated steel-grey and slate-blue palette with civil protection blue, silver and cyan accents, subtle film grain, all text sharp and correctly spelled.
 ```
+
+**Om du hellre rättar den befintliga bilden:** bifoga den + `ref/sql-armband.jpg` och skriv: *"Edit the first image. Remove the metal cup and all steam completely and extend his gloved hand over the slate. Remove the crack from the right lens. Replace the insignia on the armband with an exact copy of the second image: one wide vertical silver bar followed by exactly two large silver stars as tall as the C9:D5 letters. Keep everything else identical."*
 
 #### The Tinker
 
