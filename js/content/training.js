@@ -30,6 +30,7 @@
       text: [
         'They wake you with a siren at 04:45 and a bucket of cold water for whoever is slowest. By 05:00 the forty recruits of Intake 9-114 stand on a painted grid in the parade hall, breath steaming, implant sites throbbing.',
         'The drill instructor walks the lines with his hands behind his back. His mask is scarred along the left lens, his UNION-blue armband crossed with an officer\'s thick silver bar. His designation is stencilled on his shoulder plate: **CCA.C9.D1-UNION-OfC-30117**. Before the week is out every recruit will call him *Thirty*, and never to his face.',
+        '@portrait assets/img/portraits/thirty.jpg|CCA.C9.D1-UNION-OfC-30117 — "Thirty"',
         '@say Thirty|You are not citizens any more. You are not yet Protection Units. You are *recruits*, which is the lowest form of life inside these walls. A citizen at least knows what he is.',
         '@say Thirty|Four weeks. Each week you are assigned to one block of instruction. The blocks you choose will decide what kind of unit you become, and what kind of unit you become decides whether you come home at night. At the end there is an evaluation. It will be live. It will be in your own district. Some of you will fail it.',
         '@say Thirty|Above you is the ladder.',
