@@ -522,6 +522,7 @@
       text: [
         'Level 4 is below the river line. The walls sweat. The corridors are lit by single caged bulbs, and somewhere a ventilation fan ticks like a clock.',
         'The JURY instructor waits in an observation room with a one-way window. His armband is crimson. His designation reads **CCA.C9.D5-JURY-DvL-02842**. A Division Leader — four rungs above anyone who has ever spoken to you. The recruits call him *the Magistrate*.',
+        '@portrait assets/img/portraits/magistrate.jpg|CCA.C9.D5-JURY-DvL-02842 — "the Magistrate"',
         '@say Magistrate|Everyone talks. Everyone. The only questions are how long, and whether what they say is true. JURY exists to shorten the first and guarantee the second.',
         'On the other side of the glass, a boy of perhaps sixteen sits chained to a steel table. His fingers are stained with blue paint. On the table in front of him is a photograph of a wall in D5 with a lambda painted across it two metres high.',
         '@say Magistrate|He painted it. He did not choose the place. Someone told him where, and gave him the paint. I want a name. You will go in and ask him for it.',

@@ -579,6 +579,7 @@
       },
       text: (s) => [
         'They come for you at 03:15. Not UNION. JURY, four of them, with the Magistrate at the back in his crimson armband, hands folded behind him.',
+        '@portrait assets/img/portraits/magistrate.jpg|JURY-DvL-02842',
         '@say Magistrate|Your file, Protection Unit. It has been turning a colour for some time. Tonight it became the colour.',
         'You do not reach for your sidearm. You were trained well enough to know it would not matter.',
         'They take you down to level 4. Below the river line. The walls sweat. A ventilation fan ticks like a clock.',

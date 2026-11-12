@@ -60,6 +60,7 @@
       title: 'Locker room — 05:50',
       text: (s) => [
         'You open your locker and the Magistrate is standing behind you. You didn\'t hear him come in. Two JURY units block the door.',
+        '@portrait assets/img/portraits/magistrate.jpg|JURY-DvL-02842',
         '@say Magistrate|Protection Unit. Random audit. Stand by your locker. Hands where I can see them.',
         'One of the JURY units begins to search your locker. The other holds a scanner to the base of your skull — reading your biosignal as you breathe.',
         contraband(s).length ? `You are carrying contraband: **${contraband(s).map((i) => G.ITEMS[i].name).join(', ')}**. It is in your coat. Your coat is on the hook, eighty centimetres from the JURY unit\'s hand.` : 'There is nothing in your locker. You are almost sure there is nothing in your locker.',
