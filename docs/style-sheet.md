@@ -210,13 +210,167 @@ Callouts in stencil type: "BALLISTIC VEST", "DIVISION ARMBAND", "DUTY BELT x2",
 [GLOBAL STYLE BLOCK HERE]
 ```
 
-**Variant per division** (lägg till i slutet):
+**Snabbvariant per division** (lägg till i slutet). Fullständiga prompter per division finns i 5b nedan:
 - UNION: `armband and shoulder stripe civil protection blue #2F6FB5`
 - HELIX: `white armband with teal trim, white medical satchel with biogel canisters on the hip, teal shoulder stripe`
 - JURY: `crimson armband, crimson shoulder stripe, black leather gloves to the elbow, a slate tablet on the belt`
 - RAZOR: `gold armband, gold shoulder stripe, heavier ballistic plates on chest and thighs, compact SMG on a sling`
 - SPEAR: `orange armband, orange shoulder stripe, grime and ash, extra ammo pouches, sealed respirator with twin filters`
 - OA: `violet armband, violet shoulder stripe, long dark greatcoat over the vest, peaked officer collar insignia`
+
+---
+
+## 5b. FULLSTÄNDIGA DIVISIONSUNIFORMER (en prompt per division)
+
+Fristående prompter. Alla delar samma grund (hjälm, jacka, väst, bälten, byxor, stövlar). Skillnaden ligger i färg, utrustning, slitage och hållning. Armbandens rangstreck följer armbandsarket: UNION 1, HELIX 2, JURY 3, RAZOR 4, SPEAR 5, OA ett tjockt streck med stjärna.
+
+**Format:** 16:9 liggande. Bifoga uniforms- och hjälmreferenserna.
+
+**Tips för en enhetlig serie:** kör UNION först. Bifoga sedan den bästa UNION-bilden som referens till de andra fem. I Midjourney: samma `--seed` och `--cref <UNION-bild>`.
+
+### UNION, patrull
+
+```
+Costume design turnaround sheet of a dystopian civil police patrol officer of the "UNION" division, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CIVIL PROTECTION — UNION DIVISION — PATROL UNIFORM".
+
+HEAD: an off-white to pale bone-grey ceramic full-head gas-mask helmet, smooth rounded skull dome with a subtle raised seam from brow to crown, two large round eye openings rimmed in thick black rubber with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with concentric ridged rings at the mouth, a compact black radio headset with a stub antenna over the left ear, dark grey knit balaclava at the neck seal. No stripe on the helmet.
+
+UPPER BODY: a dark charcoal-navy padded tactical jacket with a tall stand-up collar zipped to the chin and lightly quilted sleeves. Over it a fitted quilted ballistic vest in the same charcoal with three thick horizontal padded ribs across the stomach and a vertical centre zip. A white vertical rectangular double-bar patch on the left chest. Light grey reinforced shoulder panels, each with a thin civil protection blue (#2F6FB5) edge stripe. Right sleeve: a long vertical zippered pocket and a small round embroidered patch of the UNION emblem (a steel ring with a blue upper arc, a downward steel V-chevron, and a bone-white stun baton icon in the centre). Left upper arm: a wide civil protection blue (#2F6FB5) cloth armband with "C9:D5" in bold off-white stencil letters, a small stun baton glyph on the left and one thin silver rank bar on the right.
+
+WAIST: two stacked black nylon duty belts with flat rectangular brushed-silver buckles; a slim radio unit on the left hip and a utility pouch on the right, both with a tiny glowing cyan status light; a baton loop on the right side. The jacket skirt falls to mid-thigh with two flap pockets.
+
+HANDS AND LEGS: black tactical gloves with pale grey wrist straps; dark grey-green work trousers with a thin light grey side stripe, bloused into tall black leather boots with side zips and thick treaded soles.
+
+EQUIPMENT ROW: a black stun baton with a ribbed grip and a copper-coil tip glowing faint orange with small blue electric arcs; a compact 9mm pistol in a black hip holster; steel handcuffs; a handheld biosignal scanner with a small cyan screen; a folded ration-line checklist on a clipboard.
+
+DETAIL INSETS: the blue armband close-up, the UNION sleeve patch, the chest double-bar patch, belt buckle, boot sole tread.
+
+CALLOUTS in small stencil type: "STANDARD BALLISTIC VEST", "UNION ARMBAND — 05 GRADE", "DUTY BELT x2", "STUN BATON", "SIDEARM 9MM", "BIOSIGNAL SCANNER".
+
+CHARACTER AND WEAR: the uniform of someone who walks the streets twelve hours a day — scuffed boot toes, rain-darkened shoulders, a little mud on the trouser hems, worn edges on the vest ribs. Posture upright and watchful, weight balanced, baton hand relaxed.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with sharp cyan and blue accents, worn materials (padded ballistic nylon, oiled leather, scuffed ceramic), crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### HELIX, sjukvård
+
+```
+Costume design turnaround sheet of a dystopian civil police field medic of the "HELIX" division, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CIVIL PROTECTION — HELIX DIVISION — FIELD MEDIC UNIFORM".
+
+HEAD: an off-white to pale bone-grey ceramic full-head gas-mask helmet, smooth rounded skull dome with a subtle raised seam from brow to crown, two large round eye openings rimmed in thick black rubber fitted with pale green-tinted lenses, a short cylindrical gunmetal respirator canister with concentric ridged rings at the mouth, a compact black radio headset over the left ear, dark grey balaclava at the neck seal. A thin teal (#3FB8A8) stripe painted from brow to crown.
+
+UPPER BODY: a dark charcoal-navy padded tactical jacket with a tall stand-up collar zipped to the chin and lightly quilted sleeves. Over it a fitted quilted ballistic vest in the same charcoal with three thick horizontal padded ribs and a vertical centre zip. A white vertical rectangular double-bar patch on the left chest. Light grey reinforced shoulder panels, each with a thin teal (#3FB8A8) edge stripe. A clean white band wrapped around the left forearm. Right sleeve: a long vertical zippered pocket and a small round embroidered patch of the HELIX emblem (a steel ring with a white-and-teal upper arc, a downward steel V-chevron, and a bone-white double helix icon in the centre). Left upper arm: a wide clinical white (#E9EEF0) cloth armband with teal piping, "C9:D5" in bold charcoal stencil letters, a small double helix glyph on the left and two thin silver rank bars on the right.
+
+WAIST: two stacked black nylon duty belts with flat rectangular brushed-silver buckles; a white hard-shell medical satchel on the right hip with a teal stripe; a row of small glass canisters of glowing pale-blue biogel in elastic loops across the front belt; a slim radio unit on the left hip with a cyan status light; a compact holster with a 9mm pistol at the left thigh.
+
+HANDS AND LEGS: thin pale grey nitrile-style gloves worn over black tactical gloves, pale grey wrist straps; dark grey-green work trousers with a thin light grey side stripe, bloused into tall black leather boots with side zips.
+
+EQUIPMENT ROW: the white medical satchel opened to show sutures, bandage rolls and a coagulant auto-injector; a tube of blue biogel; a handheld biosignal scanner with a cyan heartbeat line on its screen; a folded stretcher strap; the 9mm pistol.
+
+DETAIL INSETS: the white-and-teal armband, the HELIX sleeve patch, the biogel canister belt, the coagulant injector, the green-tinted lens.
+
+CALLOUTS in small stencil type: "HELIX ARMBAND — 04 GRADE", "TEAL CREST STRIPE", "MEDICAL SATCHEL", "BIOGEL x6", "COAGULANT INJECTOR", "SIDEARM 9MM".
+
+CHARACTER AND WEAR: clinically clean compared to street units, but with faint old bloodstains scrubbed pale on the cuffs and vest, and a few fresh drops on the gloves. Posture composed and tired, hands held slightly forward as if ready to work.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey palette with clinical white and teal accents, worn materials, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### JURY, militärpolis och förhör
+
+```
+Costume design turnaround sheet of a dystopian civil police interrogator of the "JURY" military police division, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CIVIL PROTECTION — JURY DIVISION — DETENTION & INTERROGATION UNIFORM".
+
+HEAD: an off-white to pale bone-grey ceramic full-head gas-mask helmet, smooth rounded skull dome with a subtle raised seam from brow to crown, two large round eye openings rimmed in thick black rubber with very dark, almost black, lenses that show only a faint red glint, a short cylindrical gunmetal respirator canister with concentric ridged rings at the mouth, a compact black radio headset over the left ear, black balaclava at the neck seal. A thin deep crimson (#A3262A) stripe painted from brow to crown.
+
+UPPER BODY: a near-black charcoal padded tactical jacket with a tall stand-up collar zipped to the chin. Over it a fitted quilted ballistic vest in the same near-black with three thick horizontal padded ribs and a vertical centre zip. A white vertical rectangular double-bar patch on the left chest. Dark grey reinforced shoulder panels, each with a thin deep crimson (#A3262A) edge stripe. Right sleeve: a long vertical zippered pocket and a small round embroidered patch of the JURY emblem (a steel ring with a crimson upper arc, a downward steel V-chevron, and a bone-white cracked skull icon in the centre). Left upper arm: a wide deep crimson (#A3262A) cloth armband with "C9:D5" in bold off-white stencil letters, a small cracked skull glyph on the left and three thin silver rank bars on the right.
+
+WAIST: two stacked black leather duty belts with flat rectangular dark gunmetal buckles; a slate-grey data tablet clipped to the left hip with a red status light; a set of heavy restraint cuffs and a ring of keys on the right; a short stun baton with a crimson grip band.
+
+HANDS AND LEGS: black polished leather gauntlets reaching almost to the elbow; dark charcoal trousers with a thin crimson side stripe, bloused into tall polished black leather boots with side zips.
+
+EQUIPMENT ROW: the slate data tablet showing a citizen file with an amber flag; heavy steel restraint cuffs with a chain; a short crimson-gripped stun baton; a biosignal stress monitor — a small device with a probe that attaches to the base of the skull; a 9mm pistol in a black holster; a rubber-stamped detention form.
+
+DETAIL INSETS: the crimson armband, the JURY sleeve patch, the leather gauntlet cuff, the biosignal stress probe, the dark lens with its red glint.
+
+CALLOUTS in small stencil type: "JURY ARMBAND — 03 GRADE", "CRIMSON CREST STRIPE", "LEATHER GAUNTLETS", "DATA SLATE", "RESTRAINTS", "STRESS MONITOR".
+
+CHARACTER AND WEAR: immaculate and severe, almost ceremonial — polished leather, crisp folds, no mud. Posture very still, hands folded behind the back, head slightly tilted as if listening. The overall impression is cold authority rather than street toughness.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold low-key lighting from upper left, desaturated near-black and steel-grey palette with deep crimson accents, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### RAZOR, VIP- och hardpointskydd
+
+```
+Costume design turnaround sheet of a dystopian civil police protection officer of the "RAZOR" division, guarding VIPs and hardpoints, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CIVIL PROTECTION — RAZOR DIVISION — HARDPOINT & VIP PROTECTION UNIFORM".
+
+HEAD: an off-white to pale bone-grey ceramic full-head gas-mask helmet, smooth rounded skull dome with a subtle raised seam from brow to crown, two large round eye openings rimmed in thick black rubber with each lens ringed by a thin muted gold (#C9A13B) bezel, dark smoked lenses with a faint cyan sheen, a short cylindrical gunmetal respirator canister with concentric ridged rings at the mouth, a black radio headset with a longer antenna over the left ear, dark grey balaclava at the neck seal. A thin muted gold stripe painted from brow to crown.
+
+UPPER BODY: a dark charcoal-navy padded tactical jacket with a tall stand-up collar zipped to the chin. Over it a heavier ballistic vest: the standard quilted ribs plus a rigid dark steel-grey chest plate and side plates strapped over it. A white vertical rectangular double-bar patch on the left chest plate. Thick light grey reinforced shoulder pauldrons, each with a muted gold (#C9A13B) edge stripe. Right sleeve: a long vertical zippered pocket and a small round embroidered patch of the RAZOR emblem (a steel ring with a gold upper arc, a downward steel V-chevron, and a bone-white icon of a kite shield split by a vertical blade). Left upper arm: a wide muted gold (#C9A13B) cloth armband with "C9:D5" in bold charcoal stencil letters, a small shield-and-blade glyph on the left and four thin silver rank bars on the right.
+
+WAIST: two stacked black nylon duty belts with flat rectangular brushed-silver buckles; magazine pouches across the front; a radio unit on the left hip with a cyan status light; a holstered 9mm pistol on the right thigh.
+
+HANDS AND LEGS: black tactical gloves with pale grey wrist straps and hard knuckle guards; dark grey-green trousers with a thin gold side stripe and rigid dark steel-grey thigh plates; tall black leather boots with side zips and armoured shin guards.
+
+EQUIPMENT ROW: a compact submachine gun on a single-point sling; spare magazines; the 9mm pistol; a portable riot shield with a narrow viewing slot and the RAZOR emblem stencilled in gold; a small earpiece with a coiled wire; a laminated hardpoint access card.
+
+DETAIL INSETS: the gold armband, the RAZOR sleeve patch, the gold lens bezel, the strapped chest plate, the riot shield emblem.
+
+CALLOUTS in small stencil type: "RAZOR ARMBAND — 02 GRADE", "GOLD LENS BEZEL", "HEAVY BALLISTIC PLATES", "SUBMACHINE GUN", "RIOT SHIELD", "HARDPOINT ACCESS".
+
+CHARACTER AND WEAR: heavier and more formal than patrol units — well maintained, polished plates, gold details kept bright for appearances beside dignitaries. Posture wide-stanced and immovable, hands resting on the slung weapon, like a statue at a doorway.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey palette with muted gold accents, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### SPEAR, offensiv och 404-zoner
+
+```
+Costume design turnaround sheet of a dystopian civil police assault officer of the "SPEAR" offensive division, cleared to enter quarantined "404" zones, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CIVIL PROTECTION — SPEAR DIVISION — 404 ZONE ASSAULT UNIFORM".
+
+HEAD: an off-white to pale bone-grey ceramic full-head gas-mask helmet, smooth rounded skull dome with a subtle raised seam from brow to crown, heavily scratched and stained with soot. Two large round eye openings rimmed in thick black rubber with dark smoked lenses that have a faint cyan sheen, plus a hinged flip-down protective visor bar above them. Instead of one respirator canister, two larger cylindrical gunmetal filter canisters, one on each side of the jaw, with concentric ridged rings. A black radio headset over the left ear. Black sealed hood and rubber neck seal. A thin hazard orange (#D9641E) stripe painted from brow to crown, partly worn away.
+
+UPPER BODY: a dark charcoal-navy padded tactical jacket with a tall stand-up collar sealed with a rubber gasket. Over it a quilted ballistic vest with three thick horizontal ribs, covered in additional chest rig webbing with ammunition pouches and a grenade pouch. A white vertical rectangular double-bar patch on the left chest, smudged with ash. Light grey reinforced shoulder panels, each with a hazard orange (#D9641E) edge stripe and a small black-and-orange hazard triangle stencil. Right sleeve: a long vertical zippered pocket and a small round embroidered patch of the SPEAR emblem (a steel ring with an orange upper arc, a downward steel V-chevron, and a bone-white icon of a spearhead piercing a broken triangle). Left upper arm: a wide hazard orange (#D9641E) cloth armband with "C9:D5" in bold charcoal stencil letters, a small spearhead glyph on the left and five thin silver rank bars on the right.
+
+WAIST: two stacked black nylon duty belts with flat rectangular buckles; a dosimeter-style hazard meter clipped to the front with a small orange display; a radio unit on the left hip with a cyan status light; a holstered 9mm pistol on the right thigh; a heavy flashlight.
+
+HANDS AND LEGS: thick black reinforced gloves with rubber-sealed cuffs; dark grey-green trousers with a thin orange side stripe and padded knee guards; tall black boots taped at the top to the trousers with grey hazard tape.
+
+EQUIPMENT ROW: a pump-action shotgun with a worn sling; shotgun shells in a bandolier; the 9mm pistol; a portable hazard meter; spare twin filter canisters; a breaching tool (crowbar-like pry bar); a flare.
+
+DETAIL INSETS: the orange armband, the SPEAR sleeve patch, the twin filter canisters, the hazard meter, the taped boot seal.
+
+CALLOUTS in small stencil type: "SPEAR ARMBAND — 01 GRADE", "TWIN FILTER RESPIRATOR", "CHEST RIG", "HAZARD METER", "SHOTGUN", "SEALED CUFFS".
+
+CHARACTER AND WEAR: battle-worn and dirty — ash and soot streaks, scorch marks, chipped ceramic, torn and patched fabric, dried grey mud to the knees. Posture low and forward-leaning, ready to move, weapon held across the body.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, harsh overcast lighting from upper left, desaturated ash-grey palette with hazard orange accents, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### OA, Officer Academy
+
+```
+Costume design turnaround sheet of a dystopian civil police officer cadet of the "OA" Officer Academy, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CIVIL PROTECTION — OFFICER ACADEMY — COMMAND UNIFORM".
+
+HEAD: an off-white to pale bone-grey ceramic full-head gas-mask helmet, smooth rounded skull dome with a subtle raised seam from brow to crown, polished to a soft sheen. Two large round eye openings rimmed in thick black rubber with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with concentric ridged rings at the mouth, a black radio headset with a slim boom microphone over the left ear, dark grey balaclava at the neck seal. A thin command violet (#6B4FA0) stripe painted from brow to crown, flanked by two finer silver pinstripes.
+
+UPPER BODY: a dark charcoal-navy padded tactical jacket with a tall stiff peaked collar bearing small silver officer pins. Over it the fitted quilted ballistic vest with three horizontal ribs. Over everything, a long dark charcoal military greatcoat reaching below the knee, double-breasted with dark metal buttons, worn open to show the vest. A white vertical rectangular double-bar patch on the left chest of the vest. Light grey shoulder panels on the greatcoat, each with a command violet (#6B4FA0) edge stripe and a small silver star. Right sleeve: a small round embroidered patch of the OA emblem (a steel ring with a violet upper arc, a downward steel V-chevron, and a bone-white icon of three ascending chevrons beneath a five-point star). Left upper arm: a wide command violet (#6B4FA0) cloth armband with "C9:D5" in bold off-white stencil letters, a small chevrons-and-star glyph on the left and one thick silver bar with a small silver star on the right.
+
+WAIST: a single wide black leather officer's belt with a polished silver rectangular buckle and a diagonal cross strap over the chest; a holstered 9mm pistol on the right hip; a slim radio on the left with a cyan status light; a leather map case.
+
+HANDS AND LEGS: black leather dress gloves; dark grey-green trousers with a violet side stripe, sharply pressed, bloused into tall polished black leather riding boots.
+
+EQUIPMENT ROW: a slim black officer's baton with silver end caps; the 9mm pistol; a leather-bound field command slate; a district map of City 09 in a leather case; a whistle on a chain; a pair of compact binoculars.
+
+DETAIL INSETS: the violet armband, the OA sleeve patch, the collar officer pins, the greatcoat button, the belt buckle and cross strap.
+
+CALLOUTS in small stencil type: "OA ARMBAND — OFFICER CADET", "VIOLET CREST STRIPE", "GREATCOAT", "OFFICER BELT", "COMMAND SLATE", "OFFICER BATON".
+
+CHARACTER AND WEAR: crisp, tailored, deliberately impressive — pressed fabric, polished leather, silver details bright. Posture upright and composed, one gloved hand resting on the belt, chin slightly raised, the look of someone being trained to give orders.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and charcoal palette with command violet and silver accents, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
 
 ---
 
