@@ -18,7 +18,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
-| `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate (800 px, plus 128 px miniatyrer till kontaktlistan) |
+| `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
 Avvikelser från prompterna som nu är kanon: HELIX-emblemets båge är **turkos** (inte vit). JURY:s ärmmärke på uniformsarket är sköldformat; själva emblemet är runt. Ilses ögonbrynsärr sitter på hennes högra ögonbryn (porträttet är kanon). Miras ransonsomslag föreställer en kyrka, inte ett tak.
 
@@ -809,6 +809,12 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 
 **Tips:** kör Mira först. Bifoga sedan hennes porträtt som stilreferens (inte karaktärsreferens) till de andra tre, så får de samma ljus och bakgrund. Tomas är den enda som ler. Det är medvetet, så be modellen hålla fast vid det om den gör honom allvarlig.
 
+**Allmän regel för enhetsporträtt:**
+- Skriv "copy exactly the helmet/armband in the attached image" och bifoga en utklippt referens per detalj (`assets/img/ref/`).
+- Beskriv headsetet som en *rundad hörlurskåpa med kort stubbantenn*, strecken som *VERTICAL* och armbandet som ett *wraparound band, not a patch*.
+- Avsluta med en DO NOT-rad.
+- **Designation på axeln (kanon):** enhetens fullständiga designation stencilerad med små benvita bokstäver på **vänster axelpanel, direkt ovanför armbandet**. Distriktet på armbandet ska matcha designationen, så en D1-enhet bär `C9:D1`. Promptrad: `The stencilled designation "CCA.C9.D5-UNION-02-48151" in small off-white letters on the left shoulder panel, directly above the armband. Everything pressed, tight, regulation-perfect.`
+
 ### Rook, Granite & the Tinker (Rev 3)
 
 Gemensamt för alla: 1:1 eller 4:5, samma ID-fotouppställning som Mira, Halloran, Tomas och Ilse. **Bifoga alltid Mira-porträttet som stilreferens.** Enheter bifogar dessutom `ranks-enlisted.jpg` (manskap) eller `ranks-command.jpg` (officerare) och `armbands.jpg`.
@@ -835,6 +841,8 @@ ARMBAND — copy exactly the blue UNION armband from the attached armband sheet:
 UNIFORM: dark charcoal-navy padded jacket with a tall stand-up collar zipped high, quilted ballistic vest with thick horizontal padded ribs, light grey shoulder panels with a thin blue edge stripe.
 
 DETAILS: one gloved hand holds a black stun baton loosely across his chest, thumb on the switch, as if he is about to tap it against his thigh. A few flecks of cigarette ash on the collar.
+
+The stencilled designation "CCA.C9.D5-UNION-02-48151" in small off-white letters on the left shoulder panel, directly above the armband.
 
 DO NOT include: a walkie-talkie or box radio on the helmet, a tall antenna, a square shoulder patch, horizontal rank bars, a single cylindrical respirator, a smooth featureless faceplate, a coloured stripe on the helmet.
 
@@ -880,6 +888,8 @@ PERSONAL WEAR: the blue stripe is scratched and worn almost to grey along the cr
 ARMBAND — copy exactly the armband in the FIRST attached image, now wrapped around his left upper arm as a cloth band (NOT a square patch): civil protection blue, "C9:D5" in bold off-white stencil, then ONE single WIDE vertical silver bar — as tall as the armband and about three times the width of a normal thin bar — followed by EXACTLY TWO large five-point silver stars, each star as tall as the letters of "C9:D5", side by side with a small gap between them. Bar and stars are embroidered in raised silver thread.
 
 UNIFORM: dark charcoal-navy padded jacket with a tall stand-up collar, quilted ballistic vest with thick horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white vertical double-bar patch on the left chest.
+
+The stencilled designation "CCA.C9.D5-UNION-SqL-11902" in small off-white letters on the left shoulder panel, directly above the armband. Everything pressed, tight, regulation-perfect.
 
 DO NOT include: any cup, mug, drink or steam; a cracked lens; a walkie-talkie or box radio; a tall antenna; a square shoulder patch; thin or multiple rank bars; small, tiny or clustered stars; more or fewer than two stars.
 
@@ -935,9 +945,9 @@ POSE: standing rigidly at attention, chest out, hands clasped behind his back (n
 HELMET — copy exactly the helmet in the FIRST attached image: off-white bone-grey ceramic shell with one broad civil protection blue crest stripe from brow to crown; two large round eye openings in thick black rubber rims; angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter directly beneath it; ONE compact rounded black earmuff-style headset over the left ear with one short stub antenna.
 PERSONAL WEAR: a deep old gouge scar running diagonally across the ceramic over the LEFT eye socket (right side of the image) and scoring the rim of the left lens — the lens itself is intact, not cracked. The shell is otherwise immaculate and polished.
 
-ARMBAND — copy exactly the SECOND attached image, as a cloth band wrapped around his left upper arm (NOT a square patch): civil protection blue, "C9:D5" in off-white stencil, ONE wide VERTICAL silver bar followed by EXACTLY ONE large silver five-point star as tall as the letters.
+ARMBAND — copy exactly the SECOND attached image, as a cloth band wrapped around his left upper arm (NOT a square patch): civil protection blue, "C9:D1" in off-white stencil, ONE wide VERTICAL silver bar followed by EXACTLY ONE large silver five-point star as tall as the letters.
 
-UNIFORM: dark charcoal-navy padded jacket with a tall stand-up collar zipped to the chin, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white vertical double-bar patch on the left chest. The stencilled designation "CCA.C9.D1-UNION-OfC-30117" in small off-white letters on the right shoulder plate. Everything pressed, tight, regulation-perfect.
+UNIFORM: dark charcoal-navy padded jacket with a tall stand-up collar zipped to the chin, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white vertical double-bar patch on the left chest. The stencilled designation "CCA.C9.D1-UNION-OfC-30117" in small off-white letters on the left shoulder panel, directly above the armband. Everything pressed, tight, regulation-perfect.
 
 DO NOT include: a cracked lens, a walkie-talkie or box radio, a tall antenna, a square shoulder patch, thin or multiple bars, more than one star, any weapon in hand, a relaxed posture.
 
@@ -959,6 +969,8 @@ ARMBAND — a cloth band wrapped around his left upper arm (NOT a square patch) 
 
 UNIFORM — as in the FOURTH attached image: near-black charcoal padded jacket with a tall stand-up collar, near-black quilted ballistic vest, dark grey shoulder panels with crimson edge stripes, a white vertical double-bar patch on the left chest. Black polished leather gauntlets reaching toward the elbow. Everything immaculate and severe, almost ceremonial.
 
+The stencilled designation "CCA.C9.D5-JURY-DvL-02842" in small off-white letters on the left shoulder panel, directly above the armband.
+
 DO NOT include: a blue stripe, cyan lens glow, a cracked lens, a walkie-talkie or tall antenna, a square shoulder patch, horizontal bars, fewer or more than three stars, any visible weapon, any dirt or wear.
 
 STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated near-black and steel-grey palette with deep crimson and silver accents, subtle film grain, all text sharp and correctly spelled.
@@ -975,9 +987,11 @@ POSE: slight 20-degree turn so her LEFT upper arm faces the camera, head straigh
 
 HELMET — copy the shape of the helmet in the FIRST attached image exactly: off-white bone-grey ceramic shell, only a thin raised centre seam, NO coloured stripe; two large round eye openings in thick black rubber rims fitted with PALE GREEN-TINTED lenses; angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter beneath it; ONE compact rounded black earmuff-style headset over the left ear with a short stub antenna. The ceramic is clean, clinical, with faint scrubbed-out stains.
 
-ARMBAND — a cloth band wrapped around her left upper arm (NOT a square patch) in the colours, fabric and glyph of the THIRD attached image (clinical white with teal piping, double-helix glyph on the left), with "C9:D5" in bold charcoal stencil and the insignia of the SECOND attached image: EXACTLY FOUR thin VERTICAL silver bars side by side.
+ARMBAND — a cloth band wrapped around her left upper arm (NOT a square patch) in the colours, fabric and glyph of the THIRD attached image (clinical white with teal piping, double-helix glyph on the left), with "C9:D1" in bold charcoal stencil and the insignia of the SECOND attached image: EXACTLY FOUR thin VERTICAL silver bars side by side.
 
 UNIFORM — as in the FOURTH attached image: dark charcoal-navy padded jacket with a tall stand-up collar, quilted ballistic vest, light grey shoulder panels with teal edge stripes, a clean white band around the left forearm, a white vertical double-bar patch on the left chest. A small round HELIX emblem patch on the right shoulder.
+
+The stencilled designation "CCA.C9.D1-HELIX-02-77301" in small off-white letters on the left shoulder panel, directly above the armband.
 
 DO NOT include: a coloured stripe on the helmet, dark or cyan lenses, a cracked lens, a walkie-talkie or tall antenna, a square shoulder patch, horizontal bars, more or fewer than four bars.
 
