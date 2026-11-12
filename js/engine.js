@@ -267,6 +267,14 @@
       return el('div', 'say', `<span class="speaker">${who}</span><span class="line">${inline(line)}</span>`);
     }
     if (p.startsWith('@doc ')) return el('div', 'doc', inline(p.slice(5)));
+    if (p.startsWith('@img ')) {
+      const parts = p.slice(5).split('|');
+      const src = parts[0].trim();
+      const cap = parts[1] ? parts[1].trim() : '';
+      const f = el('figure', 'pic', `<img src="${src}" alt="${cap.replace(/"/g, '')}" loading="lazy">${cap ? `<figcaption>${inline(cap)}</figcaption>` : ''}`);
+      f.onclick = () => openModal(cap || 'Reference', `<img class="full" src="${src}" alt="">`);
+      return f;
+    }
     if (p === '@hr') return el('hr', 'sep');
     if (p.startsWith('@big ')) return el('div', 'big', inline(p.slice(5)));
     return el('p', null, inline(p));
@@ -524,7 +532,7 @@
     if (!S) return;
     const inGame = S.scene !== 'title';
     $('#app').classList.toggle('pregame', !inGame || S.phase === 'creation');
-    $('#tb-desig').textContent = inGame && S.phase !== 'creation' && S.phase !== 'prologue' ? G.desig(S) : `CITIZEN ${S.name.toUpperCase()} // D5`;
+    $('#tb-desig').textContent = inGame && S.phase !== 'creation' && S.phase !== 'prologue' ? G.desig(S) : !inGame || S.phase === 'creation' ? 'CITIZEN TERMINAL' : `CITIZEN ${S.name.toUpperCase()} // D5`;
     $('#tb-time').textContent = S.phase === 'union' ? `DAY ${S.day} · ${S.time.toUpperCase()}` : S.phase === 'training' ? `TRAINING · WEEK ${Math.min(4, S.bt.count + 1)}` : S.time.toUpperCase();
 
     const promo = G.PROMO[S.rank];
@@ -536,6 +544,7 @@
     let html = `
       <section>
         <h3>Dossier</h3>
+        ${S.div ? `<img class="emblem" src="assets/img/emblems/${S.div.toLowerCase()}.png" alt="${S.div} emblem">` : ''}
         <div class="kv"><span>Name</span><b>${S.name}</b></div>
         <div class="kv"><span>Designation</span><b class="mono">${S.phase === 'prologue' || S.phase === 'creation' ? '— unassigned —' : G.desig(S)}</b></div>
         <div class="kv"><span>Rank</span><b>${S.phase === 'prologue' || S.phase === 'creation' ? 'Citizen' : G.RANK_NAMES[S.rank]}</b></div>
@@ -605,6 +614,9 @@
       .map((e, i) => `<details ${i === S.codex.length - 1 ? 'open' : ''}><summary>${e.title}</summary><div class="codex-body">${e.body}</div></details>`)
       .join('');
     openModal('Codex // Union Records', items);
+    $('#modal-body').onclick = (e) => {
+      if (e.target.tagName === 'IMG' && !e.target.classList.contains('full')) window.open(e.target.src, '_blank');
+    };
   }
 
   function showMenu() {

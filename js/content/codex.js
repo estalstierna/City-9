@@ -2,7 +2,7 @@
 G.addCodex({
   city9: {
     title: 'City 09',
-    body: `<p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
+    body: `<img src="assets/img/flag-city09.jpg" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
     <table>
       <tr><td>D1</td><td>The Nexus — administration, Civil Protection headquarters, training wing, detention levels.</td></tr>
       <tr><td>D2</td><td>The Works — textile mills and the ration-packing plant. Shift sirens at 05:40 and 17:40.</td></tr>
@@ -19,7 +19,8 @@ G.addCodex({
   },
   cca: {
     title: 'Combine Civil Authority',
-    body: `<p>The primary branch of the Universal Union alongside the Overwatch Executive Branch. The CCA acts as the local authority of each city, keeping the peace and standing on the front line against rebellion. Its units patrol the streets, staff checkpoints, distribute rations and punish rule-breaking citizens.</p>
+    body: `<img src="assets/img/flag-cca.jpg" alt="CCA flag" loading="lazy"><p>The primary branch of the Universal Union alongside the Overwatch Executive Branch. The CCA acts as the local authority of each city, keeping the peace and standing on the front line against rebellion. Its units patrol the streets, staff checkpoints, distribute rations and punish rule-breaking citizens.</p>
+    <img src="assets/img/helmet.jpg" alt="Protection Unit helmet" loading="lazy">
     <p>Units are masked in public and addressed by designation, never by name. Service grants better rations, private quarters and the privilege of being feared.</p>`,
   },
   designation: {
@@ -57,7 +58,7 @@ G.addCodex({
   },
   divisions: {
     title: 'Field Divisions',
-    body: `<table>
+    body: `<img src="assets/img/emblems.jpg" alt="Division emblems" loading="lazy"><table>
       <tr><td>UNION</td><td>The basic policing division, performing general patrol duties. Every graduate begins here.</td></tr>
       <tr><td>HELIX</td><td>Medical division. Treats injuries sustained by protection forces and VIPs. Requires field medicine aptitude.</td></tr>
       <tr><td>JURY</td><td>Military police. Detention of citizens, interrogation, forced confessions, internal discipline.</td></tr>
@@ -77,7 +78,18 @@ G.addCodex({
       <tr><td>RAZOR</td><td>Gold · shield and blade emblem</td></tr>
       <tr><td>SPEAR</td><td>Hazard orange · spearhead emblem</td></tr>
       <tr><td>OA</td><td>Violet · chevrons under a star</td></tr>
-    </table>`,
+    </table>
+    <img src="assets/img/armbands.jpg" alt="Division armbands" loading="lazy">`,
+  },
+  uniforms: {
+    title: 'Uniform reference — all divisions',
+    body: `<p>Standard issue for every division shares the same helmet, jacket, vest and duty belts. The division shows in the armband, the crest stripe and the kit.</p>
+    <p><b>UNION</b> — patrol.</p><img src="assets/img/uniform-union.jpg" alt="UNION uniform" loading="lazy">
+    <p><b>HELIX</b> — field medic.</p><img src="assets/img/uniform-helix.jpg" alt="HELIX uniform" loading="lazy">
+    <p><b>JURY</b> — detention & interrogation.</p><img src="assets/img/uniform-jury.jpg" alt="JURY uniform" loading="lazy">
+    <p><b>RAZOR</b> — hardpoint & VIP protection.</p><img src="assets/img/uniform-razor.jpg" alt="RAZOR uniform" loading="lazy">
+    <p><b>SPEAR</b> — 404 zone assault.</p><img src="assets/img/uniform-spear.jpg" alt="SPEAR uniform" loading="lazy">
+    <p><b>OA</b> — Officer Academy command uniform.</p><img src="assets/img/uniform-oa.jpg" alt="OA uniform" loading="lazy">`,
   },
   overwatch: {
     title: 'Overwatch',
@@ -125,10 +137,10 @@ G.addCodex({
   },
   helix: {
     title: 'HELIX Division',
-    body: `<p>HELIX medics wear a white-banded armband and carry biogel, coagulant and a sidearm they are trained to use without hesitation. They treat Protection Units first, VIPs second, citizens when ordered. Their infirmary sits beneath the Nexus.</p>`,
+    body: `<img src="assets/img/uniform-helix.jpg" alt="HELIX uniform" loading="lazy"><p>HELIX medics wear a white armband trimmed in teal and carry biogel, coagulant and a sidearm they are trained to use without hesitation. They treat Protection Units first, VIPs second, citizens when ordered. Their infirmary sits beneath the Nexus.</p>`,
   },
   jury: {
     title: 'JURY Division',
-    body: `<p>Military police of the CCA. JURY handles detention, interrogation and forced confession, and polices other units for malcompliance. A JURY unit at your door is never good news, whatever uniform you wear.</p>`,
+    body: `<img src="assets/img/uniform-jury.jpg" alt="JURY uniform" loading="lazy"><p>Military police of the CCA. JURY handles detention, interrogation and forced confession, and polices other units for malcompliance. A JURY unit at your door is never good news, whatever uniform you wear.</p>`,
   },
 });

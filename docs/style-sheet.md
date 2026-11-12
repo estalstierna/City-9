@@ -4,6 +4,22 @@ Promptbibliotek för att generera ett enhetligt referensark (och senare karaktä
 
 ---
 
+## Godkända referenser (Rev 1)
+
+De genererade och godkända referensbilderna ligger i `assets/img/` och används i spelet. Bifoga dem som referens när du genererar nya bilder, så håller sig stilen.
+
+| Fil | Innehåll |
+|---|---|
+| `helmet.jpg` | Hjälmen: vyer, aktiva linser, sprängskiss av filtret, standard och officer |
+| `uniform-union.jpg` … `uniform-oa.jpg` | Uniformsark per division |
+| `armbands.jpg` | Alla sex armband, platta och på arm |
+| `emblems.jpg` + `emblems/*.png` | Divisionsemblem, helt ark och utklippta ikoner (256 px, transparent) |
+| `flag-cca.jpg`, `flag-city09.jpg` | Flaggorna |
+
+Avvikelser från prompterna som nu är kanon: HELIX-emblemets båge är **turkos** (inte vit). JURY:s ärmmärke på uniformsarket är sköldformat; själva emblemet är runt.
+
+---
+
 ## 0. Så använder du detta
 
 1. **Bifoga referensbilderna** (hjälm, uniform, emblemet med dödskallen, propagandaaffischen) tillsammans med prompten om verktyget tillåter det:

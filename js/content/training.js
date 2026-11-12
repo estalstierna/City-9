@@ -934,6 +934,7 @@
         if (sc < 4) s.susp = Math.min(100, s.susp + 5);
         G.unlock(s, 'divisions');
         G.unlock(s, 'colours');
+        G.unlock(s, 'uniforms');
         G.unlock(s, 'overwatch');
         G.unlock(s, 'verdicts');
         G.note('PROMOTED → 05 PROTECTION UNIT', 'promo');
@@ -941,6 +942,7 @@
       text: (s) => [
         'Three days later, Intake 9-114 stands on the painted grid one last time. Thirty-one of the forty who started. Nobody mentions the other nine.',
         'They call you forward one at a time. A HELIX medic fits the mask over your face and seals it at the back of your skull. For a moment you cannot breathe — then the filter clicks, and the air comes in cold and tasting faintly of metal, and the world goes slightly blue through the lenses.',
+        '@img assets/img/helmet.jpg|Standard-issue Protection Unit helmet',
         'You hear your own breath, amplified. It doesn\'t sound like you.',
         `@doc FINAL EVALUATION: ${s.mem.grade.toUpperCase()}\nASSIGNED: UNION DIVISION, DISTRICT 5 PRECINCT\nDESIGNATION: ${G.desig(s)}`,
         s.mem.grade === 'Distinction' ? '@say Thirty|Distinction. One of three in this intake. Don\'t let it go to your head. Heads are where they shoot.' : s.mem.grade === 'Probationary' ? '@say Thirty|Probationary. JURY will be watching your file. So will I. Give us both a reason to stop.' : '@say Thirty|Adequate. The street will finish what I started.',

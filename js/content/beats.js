@@ -544,6 +544,7 @@
       enter: (s) => G.unlock(s, 'divisions'),
       text: [
         'The transfer application is a single sheet on Granite\'s desk. Five boxes. One signature line.',
+        '@img assets/img/emblems.jpg|Division emblems of the Combine Civil Authority',
         '@sys Choose your division. Each has requirements, built from the skills and record you earned. (Each division\'s storyline continues in the next chapter.)',
       ],
       choices: [
@@ -566,6 +567,7 @@
           SPEAR: 'SPEAR\'s Division Leader looks you over and says only: "Beyond the canal, nothing is quarantined. Everything is just *waiting*."',
         };
         return [
+          `@img assets/img/uniform-${s.div.toLowerCase()}.jpg|${s.div} — your new uniform`,
           lines[s.div],
           `@doc ${G.desig(s)}\nDIVISION: ${s.div}\nRANK: ${G.RANK_NAMES[s.rank].toUpperCase()}\nDAYS IN SERVICE: ${s.day}`,
           s.flags.mole ? 'And somewhere on Bazaar Row, a repairman with burned fingertips hears that a certain 03 has a new posting, and smiles over his soldering iron.' : null,

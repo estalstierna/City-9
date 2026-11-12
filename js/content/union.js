@@ -55,6 +55,7 @@
         `He reads names — designations — off the slate. When he reaches yours he pauses. "${s.mem.grade}." His mask turns a few degrees toward you. You can\'t tell what he thinks of that.`,
         'You are paired with a field trainer for your first weeks: a lean, restless UNION 02 with a cracked left lens and a habit of tapping his stick against his thigh like a metronome. **CCA.C9.D5-UNION-02-48151.** He tells you to call him *Rook*.',
         '@say Rook|Three rules. One: you don\'t take off the mask on the street, not even to scratch your nose. Two: you don\'t say a citizen\'s name out loud. Three: when I say run, you\'ve already been running for a second. Questions? Good. Board\'s over there.',
+        '@img assets/img/uniform-union.jpg|UNION patrol uniform — your kit from today',
         '@sys Each day you choose a duty from the board. Duties earn merit, which unlocks your next field evaluation. Evenings are yours: rest, train, visit people, or go where you shouldn\'t.',
       ],
       choices: [{ t: 'Check the duty board.', fx: { rel: { rook: 5 } }, go: 'u_board' }],

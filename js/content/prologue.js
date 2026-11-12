@@ -7,6 +7,7 @@
       safe: true,
       nosave: true,
       text: () => [
+        '@img assets/img/flag-city09.jpg|The civic flag of City 09',
         '@big CITY 09',
         '@sys CIVIL PROTECTION // RECRUITMENT TERMINAL // DISTRICT 5',
         'The river still runs through City 9. It runs past the dam that hums day and night, past the Citadel spire driven into the old cathedral square like a nail, past the Stacks where forty thousand citizens sleep in shifts.',
@@ -315,6 +316,7 @@
       },
       text: [
         'The Nexus was a courthouse once. The Union kept the columns and the wide stone steps and bolted everything else over with plates of dark alloy that sweat in the cold. Banners of the Universal Union hang the full height of the facade. Above the doors, a screen loops the face of City 9\'s Administrator — Halvard Lenz, silver-haired, gentle-voiced, endlessly reasonable.',
+        '@img assets/img/flag-cca.jpg|Banner of the Combine Civil Authority, Nexus steps',
         '@dispatch ...and those who serve the Union serve themselves. A Civil Protection officer never queues for bread. A Civil Protection officer never fears the night. Will you be afraid, or will you be the reason others feel safe?',
         'Inside, the hall is cold enough to see your breath. Thirty-odd citizens stand in a line painted on the floor. You recognise a few faces from the Stacks. Most stare at the floor.',
         'At the head of the line, behind a steel desk, sits a Protection Unit with a blue UNION armband and an officer\'s thick silver bar. A terminal light washes his lenses blue.',
