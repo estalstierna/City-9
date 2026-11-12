@@ -87,7 +87,127 @@ Divisionsfärgen sitter på **armbandet**, på emblemets **övre ringbåge** och
 - I mitten en **rund medaljong** med divisionsikonen i ben-vit/silver relief.
 - Smala vertikala nitade stag på båda sidor om chevronen.
 
-**Rangstreck på armbandet:** RcT = inga streck · 05–01 = 1–5 tunna streck (05 = 1 … 01 = 5) · EpU = ett tjockt streck · OfC och uppåt = tjockt streck plus 1–3 små stjärnor.
+**Rangstreck på armbandet:** se avsnitt 2b nedan för hela rangsystemet.
+
+---
+
+## 2b. RANGSYSTEM: insignier (kanon)
+
+Rang visas på **armbandet** (vänster överarm) och syns också på **hjälmen** per nivå.
+
+| Nivå | Rang | Armband | Hjälm |
+|---|---|---|---|
+| **Rekryt** | RcT | Grått armband, "C9:D5" och "RcT", inga streck | Ingen mask: grå träningsuniform, rakat huvud |
+| **Manskap** | 05 | Divisionsfärg, 1 tunt silverstreck | Standardhjälm |
+| | 04 | 2 tunna silverstreck | Standardhjälm |
+| | 03 | 3 tunna silverstreck | Standardhjälm |
+| | 02 | 4 tunna silverstreck | Standardhjälm |
+| | 01 | 5 tunna silverstreck | Standardhjälm |
+| **Elit** | EpU | 1 tjockt silverstreck | Linsringar i polerat mörkt stål, tunn silverlinje över hjässan |
+| **Officerare** | OfC | Tjockt silverstreck + 1 silverstjärna | Kamrand i divisionsfärg med silverkanter |
+| | SqL | Tjockt silverstreck + 2 silverstjärnor | Som OfC |
+| | DvL | Tjockt silverstreck + 3 silverstjärnor | Som OfC |
+| **Ledning** | AdC | Svart armband med guldkant, tjockt guldstreck + 1 guldstjärna | Grafitgrått skal, guldrand, guldringar runt linserna |
+| | CmD | Svart/guld, tjockt guldstreck + 2 guldstjärnor | Som AdC |
+| | SeC | Svart/guld, tjockt guldstreck + 3 guldstjärnor | Som AdC |
+| **Jordadministratör** | EA | Inget armband, ett sigill: guldlagerkrans runt CCA-chevronen | Ingen hjälm: visas bara som sigill |
+
+Ledningen (AdC och uppåt) står över divisionerna och bär därför svart och guld i stället för divisionsfärg.
+
+## PROMPT R1: Rangöversikt, alla rangar på en sida
+
+**Format:** 2:3 stående (eller 3:4). Bifoga armbandsarket och hjälmarket.
+
+```
+A single tall reference poster showing the complete rank structure of a fictional dystopian police force, "CIVIL PROTECTION — CITY 09", laid out like a military rank-insignia chart from an art bible. Neutral warm-grey paper background, thin ruled grid lines, everything aligned and evenly spaced.
+
+TITLE at the top in condensed off-white stencil letters on a charcoal strip: "CCA RANK STRUCTURE — CITY 09". A thin cyan rule beneath.
+
+LAYOUT: a vertical ladder read from the bottom (lowest) to the top (highest). Fourteen rows, grouped into six horizontal tier bands, each band with a small tier header on the left edge in stencil type and a slightly different background tint. In every row, from left to right: the rank code in large bold stencil letters, the full rank name in smaller letters beneath it, then a flat cloth armband swatch showing the insignia, then, once per tier band at the far right, a small three-quarter bust of the helmet worn at that tier.
+
+ARMBANDS (all wide woven cloth bands with stitched edges and black velcro ends, text "C9:D5" in bold off-white stencil in the centre, insignia on the right):
+
+TIER "RECRUIT" (bottom, grey band):
+- "RcT — Recruit": plain mid-grey armband with "C9:D5" and a small "RcT" stencil, no bars. Bust: a young recruit with a shaved head and no mask, wearing a plain grey training uniform with a high collar.
+
+TIER "PROTECTION UNITS" (blue band):
+- "05 — 05 Protection Unit": civil protection blue (#2F6FB5) armband, one thin silver bar.
+- "04 — 04 Protection Unit": blue armband, two thin silver bars.
+- "03 — 03 Protection Unit": blue armband, three thin silver bars.
+- "02 — 02 Protection Unit": blue armband, four thin silver bars.
+- "01 — 01 Protection Unit": blue armband, five thin silver bars.
+Bust: the standard off-white ceramic full-head gas-mask helmet with two large round dark lenses, a short cylindrical respirator canister and a black radio headset over the left ear.
+
+TIER "ELITE":
+- "EpU — Elite Protection Unit": blue armband, one single thick polished silver bar.
+Bust: the same helmet with polished dark-steel rings around both lenses and a thin silver line running from brow to crown.
+
+TIER "OFFICERS":
+- "OfC — Field Officer": blue armband, one thick silver bar plus one small five-point silver star.
+- "SqL — Squadron Leader": thick silver bar plus two small silver stars.
+- "DvL — Division Leader": thick silver bar plus three small silver stars.
+Bust: the helmet with a broad civil protection blue crest stripe from brow to crown edged by two fine silver pinstripes.
+
+TIER "COMMAND" (darker band):
+- "AdC — Adjutant Commander": black armband with gold (#C9A13B) piping, gold "C9:D5", one thick gold bar plus one gold star.
+- "CmD — Field Commander": black-and-gold armband, thick gold bar plus two gold stars.
+- "SeC — Sectorial Commander": black-and-gold armband, thick gold bar plus three gold stars.
+Bust: the helmet with a darker graphite-grey ceramic shell, a gold crest stripe from brow to crown and gold rings around both lenses.
+
+TIER "ADMINISTRATION" (top, black band with gold trim):
+- "EA — Earth Administrator": no armband and no figure. Instead a circular gold seal: a gold laurel wreath around a downward-pointing gold V-chevron with a gold circle in its notch, on black enamel, with the words "EARTH ADMINISTRATION" around the rim in small gold capitals.
+
+A thin vertical arrow running up the left margin labelled "AUTHORITY".
+
+FOOTER: a short legend in small stencil type: "THIN BAR = PROTECTION GRADE · THICK BAR = ELITE AND ABOVE · STAR = OFFICER GRADE · GOLD = COMMAND", and the small note "ARMBAND SHOWN IN UNION BLUE — OTHER DIVISIONS USE THEIR OWN COLOUR UP TO DvL".
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with silver, cyan and muted gold accents, worn fabric and scuffed ceramic textures, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+## PROMPT R2 + R3: Delad version (om R1 blir rörig)
+
+Fjorton rader med text är mycket för en bildmodell. Bli det fel, kör två ark och sätt ihop dem.
+
+**R2: Rekryt till Elit (RcT, 05–01, EpU)**, 3:2 liggande:
+
+```
+Rank insignia reference sheet for the enlisted grades of a fictional dystopian police force, "CIVIL PROTECTION — CITY 09". Title on a charcoal strip in off-white stencil: "CCA RANKS — RECRUIT TO ELITE". Neutral warm-grey background.
+
+Seven columns in a row, left to right, lowest to highest. Each column: at the top the rank code in large bold stencil and the full name beneath; in the middle a flat woven cloth armband swatch with stitched edges, black velcro ends and "C9:D5" in bold off-white stencil; at the bottom a small three-quarter helmet bust.
+1. "RcT — RECRUIT": plain mid-grey armband with small "RcT" stencil, no bars; bust: shaved-headed young recruit with no mask, grey high-collared training uniform.
+2. "05": civil protection blue (#2F6FB5) armband, one thin silver bar.
+3. "04": blue armband, two thin silver bars.
+4. "03": blue armband, three thin silver bars.
+5. "02": blue armband, four thin silver bars.
+6. "01": blue armband, five thin silver bars.
+Columns 2–6 share one bust: off-white ceramic full-head gas-mask helmet with large round dark lenses, cylindrical respirator canister, black radio headset.
+7. "EpU — ELITE PROTECTION UNIT": blue armband with one thick polished silver bar; bust: the same helmet with polished dark-steel lens rings and a thin silver line from brow to crown.
+
+A thin horizontal arrow beneath all columns labelled "AUTHORITY →".
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with silver and cyan accents, worn fabric and scuffed ceramic, crisp linework, subtle film grain, all text sharp and correctly spelled.
+```
+
+**R3: Officerare och ledning (OfC → EA)**, 3:2 liggande:
+
+```
+Rank insignia reference sheet for the officer and command grades of a fictional dystopian police force, "CIVIL PROTECTION — CITY 09". Title on a charcoal strip in off-white stencil: "CCA RANKS — OFFICERS & COMMAND". Neutral warm-grey background, the right third of the sheet tinted darker.
+
+Seven columns in a row, left to right, lowest to highest. Each column: rank code in large bold stencil and full name beneath at the top; a flat woven cloth armband swatch in the middle with "C9:D5" stencilled in the centre; a small three-quarter helmet bust at the bottom.
+1. "OfC — FIELD OFFICER": civil protection blue (#2F6FB5) armband, one thick silver bar plus one small five-point silver star.
+2. "SqL — SQUADRON LEADER": blue armband, thick silver bar plus two silver stars.
+3. "DvL — DIVISION LEADER": blue armband, thick silver bar plus three silver stars.
+Columns 1–3 share one bust: off-white ceramic full-head gas-mask helmet with a broad blue crest stripe from brow to crown edged by two fine silver pinstripes, large round dark lenses, cylindrical respirator, black radio headset.
+4. "AdC — ADJUTANT COMMANDER": black armband with gold (#C9A13B) piping and gold "C9:D5", one thick gold bar plus one gold star.
+5. "CmD — FIELD COMMANDER": black-and-gold armband, thick gold bar plus two gold stars.
+6. "SeC — SECTORIAL COMMANDER": black-and-gold armband, thick gold bar plus three gold stars.
+Columns 4–6 share one bust: the helmet with a darker graphite-grey ceramic shell, a gold crest stripe and gold rings around both lenses.
+7. "EA — EARTH ADMINISTRATOR": no armband and no figure; a circular gold seal on black enamel: a gold laurel wreath around a downward-pointing gold V-chevron with a gold circle in its notch, "EARTH ADMINISTRATION" around the rim in small gold capitals.
+
+A thin horizontal arrow beneath all columns labelled "AUTHORITY →".
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey palette with silver, blue and muted gold accents, worn fabric and scuffed ceramic, crisp linework, subtle film grain, all text sharp and correctly spelled.
+```
 
 ---
 

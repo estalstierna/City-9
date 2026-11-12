@@ -63,6 +63,7 @@ G.addCodex({
       <tr><td>05</td><td>05 Protection Unit</td></tr>
       <tr><td>RcT</td><td>Recruit</td></tr>
     </table>
+    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward wear black armbands trimmed in gold, with gold bars and stars, and graphite helmets with gold crests. The Earth Administrator wears no armband at all.</p>
     <p>Promotion through the 05–01 grades is earned by merit and field evaluation. Above 01, by selection — and by surviving the people who also want the post.</p>`,
   },
   divisions: {
