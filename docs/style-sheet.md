@@ -813,21 +813,27 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 
 Två varianter: **A** med mask (personalfoto, används i kontaktlistan) och **B** utan mask (taket, scenen `b_rook`).
 
-**A: Rook med mask**
+**A: Rook med mask** (Rev 2, skarpare mot referenserna). Bifoga rangarket `ranks-enlisted.jpg`, armbandsarket och Mira-porträttet.
 
 ```
-Head-and-shoulders personnel file portrait of a civil police officer known as "Rook", a UNION division 02 Protection Unit of an occupied dystopian Eastern-European city, facing the camera nearly straight on with the head turned a few degrees to his right, centred against a plain near-black background, lit like an identity registration photograph.
+Head-and-shoulders personnel file portrait of a civil police officer known as "Rook", a UNION division 02 Protection Unit. Body turned about 25 degrees so his LEFT shoulder and upper arm face the camera, head turned back toward the lens. Centred against a plain near-black background, lit like an identity registration photograph.
 
-HELMET: the standard-issue off-white to pale bone-grey ceramic full-head gas-mask helmet — smooth rounded skull dome with only a subtle raised centre seam and NO coloured stripe, two large round eye openings in thick black rubber rims with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with concentric ridged rings, a black radio headset with a stub antenna over the left ear. The LEFT lens (on the wearer's left, right side of the image) has a long diagonal crack running across it. The shell is heavily scuffed, chipped at the brow, grime in the seams — years of street duty.
+HELMET — copy exactly the helmet in column "02" of the FIRST attached image (the rank sheet): an off-white bone-grey ceramic full-head mask with a smooth rounded dome and only a thin raised centre seam, NO coloured stripe. The face is sculpted: two large round eye openings set in thick black rubber rims, angular cheek plates sweeping down from the eyes, and at the mouth a round gunmetal respirator filter with a second, smaller round filter directly beneath it. The ONLY radio is a compact rounded black earmuff-style headset cup over the LEFT ear (right side of the image) with ribbed housing and one short stub antenna no longer than a finger. Dark smoked lenses with a faint cyan sheen; the LEFT lens (right side of the image) has a long diagonal crack. Shell heavily scuffed and chipped at the brow.
 
-BODY: lean and wiry rather than broad. Dark charcoal-navy padded tactical jacket with a tall stand-up collar, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with thin civil protection blue edge stripes. On the left upper arm, just visible at the edge of the frame, a civil protection blue (#2F6FB5) cloth armband with "C9:D5" in off-white stencil and EXACTLY FOUR thin silver rank bars.
+ARMBAND — copy exactly the UNION armband in the SECOND attached image: a cloth band wrapped all the way around the left upper arm (a band, NOT a square patch), civil protection blue (#2F6FB5) with stitched edges. On the left a small circular glyph with a stun baton; in the centre "C9:D5" in bold off-white stencil; on the right EXACTLY FOUR thin silver bars standing VERTICALLY side by side.
 
-DETAILS: one gloved hand raised into frame holding a black stun baton loosely across the chest, a restless grip, thumb resting on the switch. A few ash flecks on the collar.
+UNIFORM: lean, wiry build. Dark charcoal-navy padded jacket with a tall stand-up collar, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with thin blue edge stripes.
 
-LIGHTING: flat, cold, slightly overhead registration-booth light, a faint cyan rim light at the edges as if from a scanner, a soft reflection in the cracked lens.
+DETAILS: one gloved hand holding a black stun baton loosely across the chest, thumb on the switch. A few ash flecks on the collar.
 
-STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and slate-blue palette with civil protection blue and cyan accents, subtle film grain, all text sharp and correctly spelled. Count the rank bars exactly: four.
+DO NOT include: a walkie-talkie or box radio on the helmet, a tall antenna, a square shoulder patch, horizontal rank bars, a single-cylinder respirator, a smooth featureless faceplate.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, faint cyan rim light at the edges, a soft reflection in the cracked lens.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated steel-grey and slate-blue palette with civil protection blue and cyan accents, subtle film grain, all text sharp and correctly spelled.
 ```
+
+**Allmän regel för enheter:** skriv "copy exactly the helmet/armband in the attached sheet", beskriv headsetet som en *rundad hörlurskåpa med kort stubbantenn*, strecken som *VERTICAL*, armbandet som ett *wraparound band, not a patch*, och lägg till en DO NOT-rad.
 
 **B: Rook utan mask, på taket**
 
@@ -854,9 +860,9 @@ Head-and-shoulders personnel file portrait of a civil police squadron leader kno
 
 BUILD: enormous — a huge, heavy man with a thick neck and shoulders that fill the frame edge to edge, completely still, like a wall. Nothing about the pose moves.
 
-HELMET: the off-white ceramic full-head gas-mask helmet, a larger and heavier-looking fit than standard, with a broad civil protection blue (#2F6FB5) officer's crest stripe from brow to crown edged by two fine silver pinstripes — the blue scratched and worn almost to grey in places. Two large round eye openings in thick black rubber rims with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with ridged rings, a black radio headset with a longer antenna over the left ear. The ceramic is old but well maintained.
+HELMET: the off-white ceramic full-head gas-mask helmet, a larger and heavier-looking fit than standard, with a broad civil protection blue (#2F6FB5) officer's crest stripe from brow to crown edged by two fine silver pinstripes — the blue scratched and worn almost to grey in places. Two large round eye openings in thick black rubber rims with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with ridged rings, sculpted cheek plates and a round respirator filter with a smaller round filter beneath it (copy the officer helmet in the attached rank sheet). The ONLY radio is a compact rounded black earmuff-style headset cup over the left ear with one short stub antenna. The ceramic is old but well maintained.
 
-UNIFORM: dark charcoal-navy padded tactical jacket with a tall stand-up collar, quilted ballistic vest with thick horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white double-bar patch on the left chest, a small round UNION division emblem patch on the right shoulder. On the left upper arm, a civil protection blue cloth armband with "C9:D5" in off-white stencil, ONE wide silver bar and EXACTLY TWO small silver five-point stars.
+UNIFORM: dark charcoal-navy padded tactical jacket with a tall stand-up collar, quilted ballistic vest with thick horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white double-bar patch on the left chest, a small round UNION division emblem patch on the right shoulder. Body turned slightly so the left upper arm is visible: a civil protection blue cloth band wrapped around the arm (NOT a square patch), stun baton glyph on the left, "C9:D5" in off-white stencil in the centre, then ONE wide VERTICAL silver bar and EXACTLY TWO small silver five-point stars. DO NOT include a walkie-talkie, a tall antenna, a square shoulder patch or horizontal bars.
 
 DETAILS: one huge gloved hand holding a grey data slate against his chest, its screen glowing faintly cyan with a duty roster. A steaming metal mug just visible at the bottom edge of the frame, steam curling up past the respirator.
 
