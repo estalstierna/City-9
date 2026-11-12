@@ -441,14 +441,144 @@ LIGHTING: flat, cold, slightly overhead registration-booth light, soft shadows u
 STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette, subtle film grain, believable unglamorous skin texture, no makeup, no smile, all text sharp and correctly spelled.
 ```
 
+### PROMPT C: Lojalist med utmärkelse
+
+**Format:** 3:2 liggande. Bifoga base citizen-arket som referens.
+
+```
+Costume design reference sheet of a "commended loyal citizen" of an occupied dystopian Eastern-European city, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CITY 09 — COMMENDED CITIZEN".
+
+FIGURE: one man in his late forties, shown full body in front view, side view and back view in a relaxed but upright A-pose. Well fed compared to other citizens: fuller cheeks, clean-shaven, short neatly parted dark hair with grey at the temples, a careful, eager-to-please half-smile that does not reach his eyes. Posture straight, chin slightly raised, hands at his sides with fingers together, like someone who knows he is being watched and wants to be seen behaving well.
+
+UNIFORM: the standard citizen uniform, visibly better than everyone else's. A hip-length work jacket of blue-teal denim-like canvas (#3E5F6E), noticeably cleaner, darker and less faded, recently issued, fitted to his size, with crisp seams; a short upright mandarin stand collar fully buttoned to the top; a vertical row of seven small dark grey buttons, all present and matching. A clean pale beige crew-neck undershirt barely visible at the collar and tucked in. Straight-leg dark indigo denim work trousers with a pressed crease, correct length. Polished dark brown leather work shoes.
+
+ID LABEL: on the wearer's right chest (left side of the image), a crisp bright white cloth label, perfectly straight, printed in black stencil "CID 22614" with a small barcode. Directly above the label, a small circular enamel commendation pin about 2.5 cm across: muted gold (#C9A13B) rim, a dark slate-blue centre, a tiny embossed downward V-chevron with a dot inside. Below the barcode, a thin printed gold line.
+
+ACCESSORIES: a laminated grey ration card with a gold corner stripe in a clear plastic sleeve clipped to the jacket's lower button, and a folded copy of an official civic bulletin under one arm.
+
+DETAIL INSETS: close-up of the commendation pin; close-up of the white ID label with gold line; the gold-striped priority ration card reading "PRIORITY ALLOCATION"; the polished shoe; a comparison inset showing the faded, stained standard citizen label next to his clean one, labelled "STANDARD" and "COMMENDED".
+
+CALLOUTS in small stencil type: "COMMENDATION PIN", "CITIZEN ID — COMMENDED", "PRIORITY RATION CARD", "NEW-ISSUE JACKET".
+
+MOOD: privileged but uneasy. He is safer than his neighbours, and they hate him for it. His hands are clean, his eyes are tired.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and blue-teal palette with small muted gold accents, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### PROMPT D: Medborgare under bevakning
+
+**Format:** 3:2 liggande. Bifoga base citizen-arket som referens.
+
+```
+Costume design reference sheet of a "citizen under surveillance" of an occupied dystopian Eastern-European city, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CITY 09 — CITIZEN UNDER WATCH".
+
+FIGURE: one woman in her late thirties, shown full body in front view, side view and back view. Thin and tense, with sharp cheekbones, dark circles under her eyes, dark brown hair cut short and unevenly as if by herself, a healing bruise on one cheekbone. Her shoulders are slightly hunched, arms held close to her body, head turned a few degrees as she glances sideways with nervous, watchful eyes.
+
+UNIFORM: the standard citizen uniform, older and worse than average. A hip-length faded blue-teal denim-like work jacket (#3E5F6E), very washed out, with one sleeve torn at the elbow and roughly darned, and a mismatched grey replacement button; the short mandarin stand collar is turned up. A grimy off-white crew-neck undershirt. Faded dark indigo denim work trousers, worn through at one knee. Cracked dark brown leather work shoes, one lace replaced with string.
+
+ID LABEL: on the wearer's right chest (left side of the image), the off-white cloth label printed in black stencil "CID 39058" with a small barcode, overprinted with a bold red (#A3262A) diagonal stripe from corner to corner, and a small red stencilled "OBS" in the lower right corner.
+
+SURVEILLANCE MARKINGS: on the back of the jacket, between the shoulder blades, a large faded red stencilled circle with a diagonal line through it and the district mark "D5" beneath. A thin grey plastic monitoring band is locked around her left wrist with a small blinking cyan light.
+
+DETAIL INSETS: close-up of the red-striped ID label with "OBS"; the back stencil; the wrist monitoring band with its cyan light; a printed surveillance notice on grey paper reading "CITIZEN UNDER OBSERVATION — REPORT IRREGULARITIES" with a barcode and a blank photo square; the darned sleeve.
+
+CALLOUTS in small stencil type: "OBSERVATION STRIPE", "BACK MARKING", "MONITORING BAND", "CITIZEN ID — FLAGGED".
+
+MOOD: she has been marked so everyone knows. Neighbours keep their distance. She expects to be stopped at every checkpoint.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and faded blue-teal palette with sharp red and small cyan accents, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+---
+
+## 5d. PORTRÄTT: HUVUDKARAKTÄRER
+
+Alla fyra följer samma uppställning som prompt B: framifrån, ID-fotokänsla, nästan svart bakgrund. Då passar de ihop i spelets kontaktlista. **Format:** 4:5. Bifoga base citizen-arket.
+
+### Mira (lillasyster, 17, D5 Stack 14, fabriken)
+
+```
+Head-and-shoulders character portrait of Mira, a seventeen-year-old girl from an occupied dystopian Eastern-European city, facing the camera nearly straight on with her head tilted very slightly down, eyes looking up into the lens, centred against a plain near-black background, lit like a registration photograph.
+
+FACE: a thin, pale, oval face, too sharp at the cheekbones from years of rations; a small pointed chin; straight dark eyebrows; large grey-green eyes that are tired but steady, with a hint of stubbornness and suppressed anger; faint shadows beneath them. A tiny healed scar on her lower lip. Natural unglamorous skin with a few freckles across the nose, no makeup. Expression: guarded and unsmiling, but her eyes are alive, someone who still draws in secret.
+
+HAIR: dark brown, shoulder length, roughly cut, tucked behind one ear, a few loose strands across her forehead. A worn-down pencil stub tucked behind her right ear.
+
+CLOTHING: the standard-issue citizen uniform — a faded blue-teal denim-like work jacket with a short upright mandarin stand collar, slightly too big for her, the collar button undone; a dirty off-white crew-neck undershirt. Over the jacket, the straps of grey canvas mill overalls. On the wearer's right chest (left side of the image), a small off-white cloth ID label printed in black stencil "CID 51420" with a tiny barcode. Faint blue dye stains on the jacket cuff.
+
+DETAILS: one hand raised into frame at the collar, the fingertips smudged grey with pencil graphite. A torn corner of a ration wrapper with a small pencil sketch peeks out of her breast pocket line.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, soft shadows under the eyes, a faint cyan rim light at the edges as if from a scanner.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and faded blue-teal palette, subtle film grain, believable skin texture, all text sharp and correctly spelled.
+```
+
+### Halloran (granne, 71, Stack 14 14-F)
+
+```
+Head-and-shoulders character portrait of Edvard Halloran, a seventy-one-year-old man from an occupied dystopian Eastern-European city, facing the camera straight on, centred against a plain near-black background, lit like a registration photograph.
+
+FACE: a long, weathered, deeply lined face; heavy grey eyebrows; pale blue eyes, kind and amused at the corners but watchful, the eyes of a man who has survived a war and decided to stay decent anyway; a large nose with broken veins; sunken cheeks; three days of white-grey stubble; thin lips set in a patient, faintly ironic line, almost a smile. Age spots on the temples. Natural unglamorous skin.
+
+HAIR: thin white-grey hair, combed back but unruly, thinning on top, longer at the neck.
+
+CLOTHING: over the standard-issue faded blue-teal citizen work jacket with its mandarin collar, he wears a heavy pre-war dark brown herringbone wool overcoat much older than the regime, with wide lapels, frayed edges, a missing button, and elbow patches in mismatched grey cloth. A knitted dark green scarf, unravelling at the ends, loosely around his neck. On the wearer's right chest of the citizen jacket (left side of the image), just visible between the coat lapels, a small off-white cloth ID label printed in black stencil "CID 10388" with a tiny barcode.
+
+DETAILS: a pair of round wire reading glasses with one taped arm folded into the coat's breast pocket. One gnarled hand visible at the edge of the frame, with old scars across the knuckles and a length of clear fishing line wound around the index finger.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light with a faint warm candle-like tint on one side of his face, a faint cyan rim light at the edges.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette of browns, greys and faded blue-teal, subtle film grain, believable aged skin texture, all text sharp and correctly spelled.
+```
+
+### Tomas Vey (rekrytkamrat, ca 22, D2 färgeriet)
+
+```
+Head-and-shoulders character portrait of Tomas Vey, a young man of about twenty-two from an occupied dystopian Eastern-European city, facing the camera straight on, centred against a plain near-black background, lit like a registration photograph.
+
+FACE: a broad, open, square-jawed face; a crooked nose that has clearly been broken at least once, bent slightly to the left; heavy brows; warm brown eyes with laugh lines already forming; a wide mouth caught in a lopsided, slightly embarrassed grin that is out of place in an identity photo; a small scar through his upper lip; a light shadow of stubble; ruddy cheeks. Unlike other citizens he looks stubbornly cheerful, though there is worry behind his eyes.
+
+HAIR: light brown, cropped very short at the sides and a little longer and messy on top.
+
+BUILD: enormous shoulders and a thick neck from years of hauling bales and dye barrels; the jacket strains across his chest and shoulders.
+
+CLOTHING: the standard-issue citizen uniform — a faded blue-teal denim-like work jacket with a short upright mandarin stand collar, clearly too small for him, the top two buttons undone because they will not close; a dirty off-white crew-neck undershirt. On the wearer's right chest (left side of the image), a small off-white cloth ID label printed in black stencil "CID 27716" with a tiny barcode. Deep indigo-blue dye stains soaked into both cuffs and spattered across one shoulder.
+
+DETAILS: one huge hand raised into the frame scratching the back of his neck, the knuckles scarred, the fingers stained blue to the second joint.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, soft shadows, a faint cyan rim light at the edges as if from a scanner.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and faded blue-teal palette with deep indigo stains, subtle film grain, believable skin texture, all text sharp and correctly spelled.
+```
+
+### Ilse Marek (rekrytkamrat, ca 28, D3 Canal Quarter, pumpmekaniker)
+
+```
+Head-and-shoulders character portrait of Ilse Marek, a woman of about twenty-eight from an occupied dystopian Eastern-European city, facing the camera straight on, centred against a plain near-black background, lit like a registration photograph.
+
+FACE: a narrow, angular face with high cheekbones and a long straight nose; thin lips pressed into a flat line; pale skin with a faint weathered tan across the nose from working outdoors; a thin white scar running vertically through her left eyebrow, splitting it in two; cool hazel eyes, very still and very focused, looking straight through the lens as if counting and measuring the person behind it. No expression to read: completely controlled, quietly dangerous. No makeup.
+
+HAIR: black hair pulled back tightly into a low, practical knot, a few short strands escaping at the temples.
+
+CLOTHING: the standard-issue citizen uniform — a faded blue-teal denim-like work jacket with a short upright mandarin stand collar buttoned all the way to the top, worn neatly; a dirty off-white crew-neck undershirt barely visible. On the wearer's right chest (left side of the image), a small off-white cloth ID label printed in black stencil "CID 83305" with a tiny barcode. On close inspection the label is a slightly different shade of white from the stitching around it, as if it has been replaced. Dark machine-oil stains on both cuffs and a smear of grey rust on the collar.
+
+DETAILS: one hand raised into frame at chest height, perfectly steady, the fingernails short and black with grease, a thin oily rag tucked into the jacket's lower button.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, hard shadows beneath the cheekbones, a faint cyan rim light at the edges as if from a scanner.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and faded blue-teal palette, subtle film grain, believable skin texture, all text sharp and correctly spelled.
+```
+
+**Tips:** kör Mira först. Bifoga sedan hennes porträtt som stilreferens (inte karaktärsreferens) till de andra tre, så får de samma ljus och bakgrund. Tomas är den enda som ler. Det är medvetet, så be modellen hålla fast vid det om den gör honom allvarlig.
+
 ### Varianter (byggs på basen senare)
 
 Lägg till i slutet av prompt A eller B:
 
 - **Nedgången / svältande:** `jacket torn at one shoulder and patched with mismatched grey fabric, ID label half peeled off, hollow cheeks, filthy hands`
 - **Fabriksarbetare (D2 the Works):** `blue dye stains on both forearms and the jacket front, a grey canvas work apron over the jacket, cotton dust in the hair`
-- **Lojalist, uppmärksammad medborgare:** `a small yellow circular commendation pin above the ID label, the jacket noticeably cleaner and better fitted`
-- **Under bevakning:** `a red diagonal stripe printed across the ID label, the person glancing sideways nervously`
+- **Lojalist med utmärkelse** (fullständig prompt: C): `a small yellow circular commendation pin above the ID label, the jacket noticeably cleaner and better fitted`
+- **Under bevakning** (fullständig prompt: D): `a red diagonal stripe printed across the ID label, the person glancing sideways nervously`
 ---
 
 ## 6. PROMPT 4: ARMBAND (sex varianter)
