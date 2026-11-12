@@ -49,7 +49,7 @@
       },
       text: (s) => [
         'The District 5 precinct is a converted tram depot at the edge of the Stacks. The old rails still run through the floor of the muster hall, polished by boots. Twenty units in masks stand in loose rows under the strip lights, smoking through their filters, checking weapons, ignoring you.',
-        'The squadron leader stands on a loading platform with a slate in one hand. Big. Slow-moving. A mask painted with a single grey stripe. **CCA.C9.D5-UNION-SqL-11902.** The squadron calls him *Granite*, and when he speaks you understand why.',
+        'The squadron leader stands on a loading platform with a slate in one hand. Big. Slow-moving. A broad blue officer\'s stripe down the crown of his mask, scratched almost to grey. **CCA.C9.D5-UNION-SqL-11902.** The squadron calls him *Granite*, and when he speaks you understand why.',
         '@say Granite|New fives. Welcome to D5. Forty thousand citizens. Twenty-two units. You can do the arithmetic. They outnumber us two thousand to one, and the only reason they don\'t tear us apart is that they believe we can\'t be torn.',
         '@say Granite|Don\'t ever let them stop believing it.',
         `He reads names — designations — off the slate. When he reaches yours he pauses. "${s.mem.grade}." His mask turns a few degrees toward you. You can\'t tell what he thinks of that.`,

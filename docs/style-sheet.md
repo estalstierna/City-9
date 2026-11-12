@@ -809,6 +809,82 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 
 **Tips:** kör Mira först. Bifoga sedan hennes porträtt som stilreferens (inte karaktärsreferens) till de andra tre, så får de samma ljus och bakgrund. Tomas är den enda som ler. Det är medvetet, så be modellen hålla fast vid det om den gör honom allvarlig.
 
+### Rook (UNION 02, din fälttränare)
+
+Två varianter: **A** med mask (personalfoto, används i kontaktlistan) och **B** utan mask (taket, scenen `b_rook`).
+
+**A: Rook med mask**
+
+```
+Head-and-shoulders personnel file portrait of a civil police officer known as "Rook", a UNION division 02 Protection Unit of an occupied dystopian Eastern-European city, facing the camera nearly straight on with the head turned a few degrees to his right, centred against a plain near-black background, lit like an identity registration photograph.
+
+HELMET: the standard-issue off-white to pale bone-grey ceramic full-head gas-mask helmet — smooth rounded skull dome with only a subtle raised centre seam and NO coloured stripe, two large round eye openings in thick black rubber rims with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with concentric ridged rings, a black radio headset with a stub antenna over the left ear. The LEFT lens (on the wearer's left, right side of the image) has a long diagonal crack running across it. The shell is heavily scuffed, chipped at the brow, grime in the seams — years of street duty.
+
+BODY: lean and wiry rather than broad. Dark charcoal-navy padded tactical jacket with a tall stand-up collar, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with thin civil protection blue edge stripes. On the left upper arm, just visible at the edge of the frame, a civil protection blue (#2F6FB5) cloth armband with "C9:D5" in off-white stencil and EXACTLY FOUR thin silver rank bars.
+
+DETAILS: one gloved hand raised into frame holding a black stun baton loosely across the chest, a restless grip, thumb resting on the switch. A few ash flecks on the collar.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, a faint cyan rim light at the edges as if from a scanner, a soft reflection in the cracked lens.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and slate-blue palette with civil protection blue and cyan accents, subtle film grain, all text sharp and correctly spelled. Count the rank bars exactly: four.
+```
+
+**B: Rook utan mask, på taket**
+
+```
+Head-and-shoulders character portrait of "Rook", a veteran civil police officer of an occupied dystopian Eastern-European city, seen unmasked for once, facing the camera in a slight three-quarter view, against a plain near-black background with only a faint hint of a cold night sky and distant red warning lights at the very edge.
+
+FACE: a man in his early forties, older than his restless movements suggest. A long narrow face with a long jaw, hollow cheeks, two days of dark stubble going grey at the chin. Sharp tired grey eyes, crow's feet, dark shadows beneath. A thin white scar runs vertically through his LEFT eyebrow (right side of the image), lining up exactly with where the crack would be on his mask lens. Dark brown hair cropped very short, flattened and damp from hours under the helmet, a red pressure line across the forehead and cheekbones from the mask seal. Expression: a dry, guarded half-smile that is mostly tiredness — the face of someone telling you a story he has never told anyone.
+
+MASK: the off-white ceramic gas-mask helmet pushed up onto the top of his head like a pair of goggles, its cracked left lens and respirator canister visible above his brow.
+
+CLOTHING: dark charcoal-navy padded jacket with the tall collar unzipped and folded open, the quilted vest beneath; a civil protection blue armband with four thin silver bars just visible on the left upper arm.
+
+DETAILS: a real pre-war cigarette between two fingers of a bare hand raised near his mouth, a thin curl of smoke drifting across the frame, the ember the only warm light in the image. Black tactical glove tucked into the collar.
+
+LIGHTING: cold blue-grey night light from above, a small warm orange glow from the cigarette ember on the underside of his face, faint cyan rim light at the edges.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette with one warm accent, subtle film grain, believable skin texture.
+```
+
+### Granite (UNION SqL, squadron leader D5)
+
+```
+Head-and-shoulders personnel file portrait of a civil police squadron leader known as "Granite", UNION division, District 5, of an occupied dystopian Eastern-European city, facing the camera dead straight on, perfectly square to the lens, centred against a plain near-black background, lit like an identity registration photograph.
+
+BUILD: enormous — a huge, heavy man with a thick neck and shoulders that fill the frame edge to edge, completely still, like a wall. Nothing about the pose moves.
+
+HELMET: the off-white ceramic full-head gas-mask helmet, a larger and heavier-looking fit than standard, with a broad civil protection blue (#2F6FB5) officer's crest stripe from brow to crown edged by two fine silver pinstripes — the blue scratched and worn almost to grey in places. Two large round eye openings in thick black rubber rims with dark smoked lenses that have a faint cyan sheen, a short cylindrical gunmetal respirator canister with ridged rings, a black radio headset with a longer antenna over the left ear. The ceramic is old but well maintained.
+
+UNIFORM: dark charcoal-navy padded tactical jacket with a tall stand-up collar, quilted ballistic vest with thick horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white double-bar patch on the left chest, a small round UNION division emblem patch on the right shoulder. On the left upper arm, a civil protection blue cloth armband with "C9:D5" in off-white stencil, ONE wide silver bar and EXACTLY TWO small silver five-point stars.
+
+DETAILS: one huge gloved hand holding a grey data slate against his chest, its screen glowing faintly cyan with a duty roster. A steaming metal mug just visible at the bottom edge of the frame, steam curling up past the respirator.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, heavy shadows beneath the helmet's brow, a faint cyan rim light at the edges.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and slate-blue palette with civil protection blue, silver and cyan accents, subtle film grain, all text sharp and correctly spelled. Count exactly: one wide bar, two stars.
+```
+
+### The Tinker (radioreparatör, Bazaar Row, motståndets kontakt)
+
+```
+Head-and-shoulders character portrait of a man known only as "the Tinker", a radio repairman on a black-market street in an occupied dystopian Eastern-European city, facing the camera straight on, looking at the viewer over the top of his spectacles, centred against a plain near-black background, lit like a registration photograph but with a warm work-lamp glow on one side.
+
+FACE: a man in his mid-sixties. Completely bald, the scalp shiny and lightly freckled with age spots, a fringe of short white stubble above the ears. A round, heavy face with jowls, a broad flattened nose, deep lines around the mouth, a neatly trimmed short grey beard. Thick heavy black-framed spectacles with scratched lenses, slid down to the end of his nose. Small, very sharp pale grey eyes peering over the frames — calm, amused, and examining you more thoroughly than any interrogator. A faint closed-mouth smile.
+
+CLOTHING: the standard-issue faded blue-teal citizen work jacket with a short mandarin stand collar and dark buttons, very worn and patched, under a heavy brown leather work apron scorched with small burn marks and solder spatter. On the wearer's right chest (left side of the image), the off-white cloth ID label printed in black stencil "CID 07731" with a small barcode, slightly singed at one corner. A coil of thin copper wire looped over one shoulder; a jeweller's loupe hanging on a cord around his neck.
+
+HANDS: both hands raised into frame at chest height holding a small gutted pre-war radio chassis full of valves and wires. His fingertips are visibly scarred and shiny from old solder burns, the nails short and black with grease. A thin wisp of soldering smoke rises from the chassis.
+
+HIDDEN DETAIL: on the inside of the radio's open back panel, scratched very small and faint, a lambda symbol "λ".
+
+LIGHTING: cold flat registration light from the front, a warm yellow work-lamp glow from the left side catching the spectacles and the solder smoke, faint cyan rim light at the edges.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette of browns and faded blue-teal with one warm accent, subtle film grain, believable aged skin texture, all text sharp and correctly spelled.
+```
+
+**Tips:** bifoga Mira-porträttet som stilreferens till alla tre, så matchar ljus och bakgrund kontaktlistan. För Rook A och Granite, bifoga även hjälmarket.
+
 ### Varianter (byggs på basen senare)
 
 Lägg till i slutet av prompt A eller B:
