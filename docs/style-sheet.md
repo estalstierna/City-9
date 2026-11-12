@@ -185,6 +185,8 @@ Columns 2–6 share one bust: off-white ceramic full-head gas-mask helmet with l
 
 A thin horizontal arrow beneath all columns labelled "AUTHORITY →".
 
+ACCURACY: count the bars and stars exactly as listed for each rank — never add or omit any. Every column must show a different count, increasing from left to right. Keep the rank codes exactly as written, with the same capitalisation.
+
 STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with silver and cyan accents, worn fabric and scuffed ceramic, crisp linework, subtle film grain, all text sharp and correctly spelled.
 ```
 
@@ -205,6 +207,8 @@ Columns 4–6 share one bust: the helmet with a darker graphite-grey ceramic she
 7. "EA — EARTH ADMINISTRATOR": no armband and no figure; a circular gold seal on black enamel: a gold laurel wreath around a downward-pointing gold V-chevron with a gold circle in its notch, "EARTH ADMINISTRATION" around the rim in small gold capitals.
 
 A thin horizontal arrow beneath all columns labelled "AUTHORITY →".
+
+ACCURACY: count the bars and stars exactly as listed for each rank — never add or omit any. Every column must show a different count, increasing from left to right. Keep the rank codes exactly as written, with the same capitalisation.
 
 STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey palette with silver, blue and muted gold accents, worn fabric and scuffed ceramic, crisp linework, subtle film grain, all text sharp and correctly spelled.
 ```
