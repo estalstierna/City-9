@@ -292,6 +292,7 @@
   }
 
   function render(sc) {
+    if (view === 'dossier') setView('story');
     archiveCurrent();
     const story = $('#story');
     const block = el('div', 'block current');
@@ -589,6 +590,7 @@
       </section>`;
     $('#side-content').innerHTML = html;
     $('#codex-count').textContent = S.codex.length ? `(${S.codex.length})` : '';
+    renderNav();
   }
 
   /* -------------------------------------------------------------- modals */
@@ -602,23 +604,79 @@
   }
   G.toast = toast;
 
-  function openModal(title, html) {
+  /* ---------------------------------------------------------- navigation
+     The mobile bottom bar is built from G.NAV. To add a feature tab later,
+     push an entry: { id, label, icon (svg string), act(s, G), badge?(s), if?(s) }. */
+
+  const ICONS = {
+    story: '<svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 10h7M9 14h7M9 18h4"/></svg>',
+    dossier: '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 17c.8-2 2-3 3.5-3s2.7 1 3.5 3M14.5 10h4M14.5 13.5h4"/></svg>',
+    codex: '<svg viewBox="0 0 24 24"><path d="M3.5 5.5c3-1 5.5-1 8.5 1 3-2 5.5-2 8.5-1v13c-3-1-5.5-1-8.5 1-3-2-5.5-2-8.5-1z"/><path d="M12 6.5v13"/></svg>',
+    menu: '<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+  };
+  G.ICONS = ICONS;
+  let view = 'story';
+
+  G.NAV = [
+    { id: 'story', label: 'Story', icon: ICONS.story, act: () => setView('story') },
+    { id: 'dossier', label: 'Dossier', icon: ICONS.dossier, act: () => setView(view === 'dossier' ? 'story' : 'dossier') },
+    { id: 'codex', label: 'Codex', icon: ICONS.codex, badge: (s) => s.codex.length || '', act: () => (view === 'codex' ? setView('story') : showCodex()) },
+    { id: 'menu', label: 'Menu', icon: ICONS.menu, act: () => (view === 'menu' ? setView('story') : showMenu()) },
+  ];
+
+  function setView(v) {
+    view = v;
+    $('#app').classList.toggle('side-open', v === 'dossier');
+    if (v === 'story' || v === 'dossier') $('#modal').classList.remove('open');
+    if (v === 'dossier') $('#sidebar').scrollTop = 0;
+    renderNav();
+  }
+  G.setView = setView;
+
+  function renderNav() {
+    const nav = $('#bottomnav');
+    if (!nav || !S) return;
+    nav.innerHTML = '';
+    G.NAV.forEach((n) => {
+      if (n.if && !n.if(S)) return;
+      const badge = n.badge ? n.badge(S) : '';
+      const b = el(
+        'button',
+        'nav-btn' + (view === n.id ? ' active' : ''),
+        `<span class="ico">${n.icon}</span><span class="nl">${n.label}</span>${badge !== '' && badge != null ? `<span class="badge">${badge}</span>` : ''}`
+      );
+      b.setAttribute('aria-label', n.label);
+      b.onclick = () => n.act(S, G);
+      nav.append(b);
+    });
+  }
+  G.renderNav = renderNav;
+
+  function openModal(title, html, kind) {
     $('#modal-title').textContent = title;
     $('#modal-body').innerHTML = html;
+    $('#modal-body').onclick = null;
     $('#modal').classList.add('open');
+    view = kind || 'modal';
+    $('#app').classList.remove('side-open');
+    renderNav();
   }
   function closeModal() {
     $('#modal').classList.remove('open');
+    if (view !== 'story' && view !== 'dossier') {
+      view = 'story';
+      renderNav();
+    }
   }
 
   function showCodex() {
-    if (!S.codex.length) return openModal('Codex', '<p class="sub">No records unlocked yet.</p>');
+    if (!S.codex.length) return openModal('Codex', '<p class="sub">No records unlocked yet.</p>', 'codex');
     const items = S.codex
       .map((id) => G.codexEntries[id])
       .filter(Boolean)
       .map((e, i) => `<details ${i === S.codex.length - 1 ? 'open' : ''}><summary>${e.title}</summary><div class="codex-body">${e.body}</div></details>`)
       .join('');
-    openModal('Codex // Union Records', items);
+    openModal('Codex // Union Records', items, 'codex');
     $('#modal-body').onclick = (e) => {
       if (e.target.tagName === 'IMG' && !e.target.classList.contains('full')) window.open(e.target.src, '_blank');
     };
@@ -636,7 +694,8 @@
         <button data-a="new" class="danger">New game</button>
       </div>
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
-      <p class="sub">The game autosaves after every scene in this browser. Checkpoints are written at the start of each day and at key story moments.</p>`
+      <p class="sub">The game autosaves after every scene in this browser. Checkpoints are written at the start of each day and at key story moments.</p>`,
+      'menu'
     );
     $('#modal-body').onclick = (e) => {
       const a = e.target.dataset && e.target.dataset.a;
@@ -663,7 +722,7 @@
     S = G.fresh();
     $('#btn-codex').onclick = showCodex;
     $('#btn-menu').onclick = showMenu;
-    $('#btn-side').onclick = () => $('#app').classList.toggle('side-open');
+    $('#btn-side').onclick = () => setView(view === 'dossier' ? 'story' : 'dossier');
     $('#modal-close').onclick = closeModal;
     $('#modal').onclick = (e) => {
       if (e.target.id === 'modal') closeModal();

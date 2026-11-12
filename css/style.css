@@ -252,27 +252,70 @@ img.full { display: block; width: 100%; height: auto; }
 #toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--panel); border: 1px solid var(--accent2); color: var(--accent); font-family: var(--mono); font-size: 13px; padding: 8px 14px; border-radius: 3px; opacity: 0; transition: all .25s; z-index: 60; pointer-events: none; }
 #toast.show { opacity: 1; transform: translateX(-50%); }
 
+/* ---------- bottom navigation (mobile) ---------- */
+#bottomnav { display: none; }
+.nav-btn { position: relative; }
+
 /* ---------- mobile ---------- */
 @media (max-width: 860px) {
-  /* On phones the whole page scrolls instead of an inner box sized to the
-     viewport. Installed web apps on some Android phones report a viewport
-     taller than the visible area, which left a dead band at the bottom. */
+  :root { --nav-h: 60px; --safe-b: env(safe-area-inset-bottom, 0px); }
+  /* The whole page scrolls on phones (an inner 100vh box left a dead band
+     at the bottom in installed web apps on some Android phones). */
   #app { display: block; height: auto; min-height: 100vh; }
-  #topbar { position: sticky; top: 0; background: var(--bg); padding-top: calc(10px + env(safe-area-inset-top, 0px)); }
-  #main { overflow: visible; padding-bottom: calc(45vh + env(safe-area-inset-bottom, 0px)); }
-  .block { scroll-margin-top: 64px; }
-  #btn-side { display: inline-block; }
-  #sidebar {
-    position: fixed; top: 49px; right: 0; bottom: 0; width: min(340px, 88vw);
-    padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
-    transform: translateX(100%); transition: transform .25s ease; z-index: 30;
-    box-shadow: -10px 0 30px rgba(0,0,0,.5);
-  }
-  .side-open #sidebar { transform: none; }
-  #main { padding-top: 22px; padding-left: 16px; padding-right: 16px; }
-  #tb-time { display: none; }
   body { font-size: 16px; }
+
+  /* top bar: identity only, full width */
+  #topbar {
+    position: sticky; top: 0;
+    background: var(--bg);
+    padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 9px;
+    flex-direction: column; align-items: flex-start; gap: 2px;
+  }
+  .brand { white-space: normal; overflow: visible; font-size: 14px; line-height: 1.35; word-break: break-all; }
+  .tb-right { width: 100%; }
+  #topbar .tb-right button { display: none; }
+  #tb-time { display: block !important; margin: 0; font-size: 11px; letter-spacing: .12em; }
+  .pregame #tb-time { display: none !important; }
+
+  #main { overflow: visible; padding: 22px 16px calc(45vh + var(--nav-h) + var(--safe-b)); }
+  .block { scroll-margin-top: 76px; }
+
+  /* dossier: full-screen panel above the bottom bar */
+  #sidebar {
+    position: fixed; top: 0; left: 0; right: 0; bottom: calc(var(--nav-h) + var(--safe-b));
+    width: auto; border-left: 0;
+    padding: calc(18px + env(safe-area-inset-top, 0px)) 18px 30px;
+    transform: translateY(16px); opacity: 0; pointer-events: none;
+    transition: transform .2s ease, opacity .2s ease; z-index: 30;
+  }
+  .side-open #sidebar { transform: none; opacity: 1; pointer-events: auto; }
+
+  /* modals (codex, menu, images) sit above the bottom bar */
+  #modal { bottom: calc(var(--nav-h) + var(--safe-b)); padding: 10px; align-items: flex-end; }
+  .modal-box { max-height: calc(100% - env(safe-area-inset-top, 0px) - 10px); }
+  #toast { bottom: calc(var(--nav-h) + var(--safe-b) + 14px); }
+
+  #bottomnav {
+    display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
+    height: calc(var(--nav-h) + var(--safe-b)); padding-bottom: var(--safe-b);
+    background: rgba(10,14,17,.97); border-top: 1px solid var(--line);
+    backdrop-filter: blur(6px);
+  }
+  .pregame #bottomnav { display: none; }
+  .nav-btn {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    background: none; border: 0; color: var(--dim); cursor: pointer;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn .ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; display: block; }
+  .nav-btn.active { color: var(--accent); }
+  .nav-btn.active::before { content: ''; position: absolute; top: 0; left: 28%; right: 28%; height: 2px; background: var(--accent); }
+  .nav-btn .badge {
+    position: absolute; top: 7px; left: calc(50% + 8px);
+    min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px;
+    background: var(--accent2); color: #fff; font-size: 10px; letter-spacing: 0; line-height: 16px; text-align: center;
+  }
+
   .say { grid-template-columns: 1fr; gap: 0; }
-  #topbar { padding: 10px 12px; }
-  #topbar button { padding: 5px 7px; font-size: 12px; }
 }
