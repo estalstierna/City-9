@@ -16,6 +16,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `emblems.jpg` + `emblems/*.png` | Divisionsemblem, helt ark och utklippta ikoner (256 px, transparent) |
 | `flag-cca.jpg`, `flag-city09.jpg` | Flaggorna |
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
+| `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
 Avvikelser från prompterna som nu är kanon: HELIX-emblemets båge är **turkos** (inte vit). JURY:s ärmmärke på uniformsarket är sköldformat; själva emblemet är runt. Ilses ögonbrynsärr sitter på hennes högra ögonbryn (porträttet är kanon). Miras ransonsomslag föreställer en kyrka, inte ett tak.
@@ -163,6 +164,49 @@ FOOTER: a short legend in small stencil type: "THIN BAR = PROTECTION GRADE · TH
 
 STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with silver, cyan and muted gold accents, worn fabric and scuffed ceramic textures, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
 ```
+
+## PROMPT R-MASTER: Alla 14 rangar på ett ark (bygger på R2 + R3)
+
+**Format:** 16:9 liggande (eller 3:2). Bifoga **båda rangarken** (`ranks-enlisted.jpg`, `ranks-command.jpg`) som referens. Layouten är två rader med sju kolumner, alltså samma som de två arken staplade.
+
+```
+A single wide master reference sheet showing the complete rank structure of a fictional dystopian police force, "CIVIL PROTECTION — CITY 09". Recreate the two attached rank sheets faithfully — same helmets, same armbands, same typography, same worn grey paper — combined into ONE poster with two stacked rows of seven columns.
+
+TITLE BANNER across the full width at the top, in large condensed off-white stencil letters on a weathered charcoal strip: "CCA RANK STRUCTURE — CITY 09", with a thin cyan rule beneath it. Below the title, a small subtitle in stencil type: "COMBINE CIVIL AUTHORITY · ALL DIVISIONS · ARMBAND SHOWN IN UNION BLUE".
+
+EACH COLUMN, top to bottom: the rank code in large bold stencil letters; the full rank name in smaller stencil letters beneath; a flat woven cloth armband swatch with stitched edges, black velcro ends and "C9:D5" in bold stencil; a three-quarter helmet bust. Columns are separated by thin vertical rules and slightly darker panels, like the references.
+
+TOP ROW — section label on the far left in small vertical stencil text: "ENLISTED". Left to right:
+1. "RcT" / "RECRUIT": plain mid-grey armband with "C9:D5 RcT", NO bars. Bust: a young recruit with a shaved head and no mask, in a dark grey high-collared training jacket.
+2. "05" / "05 PROTECTION UNIT": civil protection blue (#2F6FB5) armband, EXACTLY ONE thin silver bar.
+3. "04" / "04 PROTECTION UNIT": blue armband, EXACTLY TWO thin silver bars.
+4. "03" / "03 PROTECTION UNIT": blue armband, EXACTLY THREE thin silver bars.
+5. "02" / "02 PROTECTION UNIT": blue armband, EXACTLY FOUR thin silver bars.
+6. "01" / "01 PROTECTION UNIT": blue armband, EXACTLY FIVE thin silver bars.
+Columns 2–6 share the same bust: the off-white ceramic full-head gas-mask helmet with a raised centre seam, two large round dark lenses in black rubber rims, a cylindrical gunmetal respirator canister with ridged rings, and a black radio headset with stub antenna over the left ear, over a dark padded high collar.
+7. "EpU" / "ELITE PROTECTION UNIT": blue armband with ONE single wide polished silver bar (one bar, twice as wide as the thin bars — not two bars). Bust: the same helmet with a single thin silver-blue stripe from brow to crown and polished dark-steel rings around the lenses.
+
+BOTTOM ROW — section label on the far left in small vertical stencil text: "OFFICERS & COMMAND". The last four columns sit on a slightly darker panel. Left to right:
+8. "OfC" / "FIELD OFFICER": blue armband, one wide silver bar plus ONE silver five-point star.
+9. "SqL" / "SQUADRON LEADER": blue armband, one wide silver bar plus TWO silver stars.
+10. "DvL" / "DIVISION LEADER": blue armband, one wide silver bar plus THREE silver stars.
+Columns 8–10 share one bust: the off-white helmet with a broad civil protection blue crest stripe from brow to crown.
+11. "AdC" / "ADJUTANT COMMANDER": black armband with gold (#C9A13B) piping along both edges, gold "C9:D5", one wide gold bar plus ONE gold star.
+12. "CmD" / "FIELD COMMANDER": black-and-gold armband, one wide gold bar plus TWO gold stars.
+13. "SeC" / "SECTORIAL COMMANDER": black-and-gold armband, one wide gold bar plus THREE gold stars.
+Columns 11–13 share one bust: the helmet with a darker graphite-grey ceramic shell, a gold crest stripe from brow to crown, gold accent lines on the cheeks and gold rings around both lenses.
+14. "EA" / "EARTH ADMINISTRATOR": no armband and no figure. In their place, a large circular gold seal on black enamel: a gold laurel wreath around a downward-pointing gold V-chevron with a gold circle in its notch, the words "EARTH ADMINISTRATION" around the upper rim in small gold capitals.
+
+BETWEEN AND BELOW THE ROWS: under the top row a long horizontal arrow labelled "AUTHORITY →"; a second identical arrow under the bottom row.
+
+FOOTER LEGEND across the bottom in small stencil type, with tiny icons: "THIN BAR = PROTECTION GRADE  ·  WIDE BAR = ELITE AND ABOVE  ·  STAR = OFFICER GRADE  ·  GOLD ON BLACK = COMMAND  ·  SEAL = EARTH ADMINISTRATION". In the bottom right corner, very small: "CCA ART BIBLE — RANKS REV 1".
+
+ACCURACY: count the bars and stars exactly as listed for each rank — never add or omit any. Bars on the protection grades go 0, 1, 2, 3, 4, 5. Star counts go 1, 2, 3 for the officers and again 1, 2, 3 for command. Keep every rank code exactly as written, with the same capitalisation (RcT, EpU, OfC, SqL, DvL, AdC, CmD, SeC). All fourteen columns are the same width.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, matching the attached references exactly, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey palette with civil protection blue, silver, cyan and muted gold accents, worn fabric and scuffed ceramic textures, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+**Plan B:** om modellen inte klarar alla fjorton kolumner, ställ de två färdiga arken ovanpå varandra i ett bildprogram (Photopea är gratis i webbläsaren) och lägg titelbanderollen och legenden överst och underst. Det ger ofta det skarpaste resultatet.
 
 ## PROMPT R2 + R3: Delad version (om R1 blir rörig)
 

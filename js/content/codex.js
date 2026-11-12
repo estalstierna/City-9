@@ -47,7 +47,7 @@ G.addCodex({
   },
   hierarchy: {
     title: 'CCA Hierarchy',
-    body: `<table>
+    body: `<img src="assets/img/ranks-enlisted.jpg" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/ranks-command.jpg" alt="Ranks: officers and command" loading="lazy"><table>
       <tr><td>EA</td><td>Earth Administrator</td></tr>
       <tr><td>SeC</td><td>Sectorial Commander</td></tr>
       <tr><td>CmD</td><td>Field Commander</td></tr>
