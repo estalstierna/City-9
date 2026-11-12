@@ -299,6 +299,7 @@
       enter: (s) => G.unlock(s, 'helix'),
       text: [
         'The infirmary annex is the cleanest place you have ever been. White tile, steel trays, a hum of refrigeration. The HELIX instructor wears the white-banded sleeve and a mask with a green lens filter. Her designation reads **CCA.C9.D1-HELIX-02-77301**. Her voice, when she speaks, is unexpectedly tired.',
+        '@portrait assets/img/portraits/helix-77301.jpg|CCA.C9.D1-HELIX-02-77301',
         '@say HELIX 02|Protection Units first. VIPs second. Citizens if there is time, supplies, and an order. Write that on the inside of your skull.',
         'She teaches you biogel — a blue paste that seals wounds and burns like ice. Coagulant injectors. How to pack a gunshot wound with your fist. How to tell a dying man from a man who only thinks he is dying.',
         'On the third day, the doors bang open. Two units drag in a citizen from the Works, a mill hand of about forty, his left hand crushed in a loom. He is grey, sweating, and trying very hard not to scream.',

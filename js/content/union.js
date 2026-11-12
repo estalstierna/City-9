@@ -561,6 +561,7 @@
       },
       text: (s) => [
         'You wake under white light with a taste of copper in your mouth. There is a tube in your arm and someone has cut away half your uniform.',
+        '@portrait assets/img/portraits/helix-77301.jpg|HELIX-02-77301',
         '@say HELIX 02|Ah. Awake. Good. I dislike filling out the other form.',
         'It is the instructor from training — **HELIX-02-77301**, green lens, tired voice. She checks something on a slate.',
         '@say HELIX 02|Biogel, sutures, two units of synthetic blood. You will be on light duty for a day. Your squadron leader has been informed that you were careless. I was asked to put it in those words.',
