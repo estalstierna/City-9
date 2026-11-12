@@ -390,6 +390,67 @@ STYLE: gritty semi-realistic dystopian concept art, production design sheet qual
 
 ---
 
+## 5c. BASE CITIZEN (standardmedborgare)
+
+Grunduniformen som alla vanliga medborgare i City 09 bär. Medborgare med högre privilegier eller jobb hos olika instanser får egna varianter senare. Det här är basen.
+
+**Citizen ID (CID)** sitter på en vit tygetikett på **bärarens högra bröst** (vänster sida i bild). Kanoniskt format: `CID` följt av fem siffror, under det en liten streckkod. Exempel: `CID 48271`. Spelarens CID är samma som det femsiffriga numret i spelet.
+
+### PROMPT A: Base citizen, turnaround-ark
+
+**Format:** 3:2 liggande. Bifoga medborgarbilderna som referens.
+
+```
+Costume design reference sheet of the standard-issue civilian uniform worn by every ordinary citizen of an occupied dystopian Eastern-European city, on a neutral warm-grey background. Title at the top in condensed off-white stencil letters on a charcoal strip: "CITY 09 — BASE CITIZEN UNIFORM".
+
+MAIN ROW: three different citizens standing side by side in a relaxed neutral A-pose, full body, front view, all wearing the identical uniform:
+1. a man in his forties with a shaved head, gaunt cheeks, tired heavy-lidded eyes and stubble;
+2. an older man in his late fifties with short greying black hair combed back, deep lines around the mouth, a weary downturned expression;
+3. a woman in her thirties with short dark brown hair pulled back, pale skin, a flat guarded expression.
+Ordinary, believable faces: undernourished, unsmiling, not glamorous, no makeup, looking straight ahead.
+
+THE UNIFORM (identical on all three):
+- JACKET: a hip-length work jacket of heavy faded blue-teal denim-like canvas (#3E5F6E with lighter worn areas), straight boxy cut, long sleeves ending at the wrist, a short upright mandarin stand collar with no lapels, single-breasted with a vertical row of seven small dark grey buttons down the centre front, no breast pockets. The fabric is washed out and uneven in colour, darker at the seams, with dirt smudges, small faded stains and pilling at the elbows and cuffs.
+- ID PATCH: on the wearer's right chest (left side of the image), a small rectangular off-white cloth tape label about 8 cm wide, stitched on at the edges, printed in small black stencil letters "CID 48271" with a tiny barcode beneath. Each citizen has a different five-digit number: "CID 48271", "CID 30917", "CID 62054".
+- UNDERSHIRT: a plain crew-neck undershirt in dirty off-white/beige, visible at the collar opening and hanging a few centimetres below the jacket hem.
+- TROUSERS: straight-leg work trousers of dark indigo denim, faded at the thighs and knees, slightly too long and bunching above the shoes, no belt visible.
+- SHOES: scuffed dark brown leather work shoes with thick worn soles.
+
+SECOND ROW: the man from figure 1 shown in side view and back view (the back of the jacket is plain, with a faint stencilled district marking "D5" between the shoulder blades), plus detail insets: close-up of the CID chest label with barcode, the button row, the frayed cuff, the worn trouser knee, the shoe.
+
+CALLOUTS in small stencil type: "CIVILIAN WORK JACKET", "CITIZEN ID LABEL", "UNDERSHIRT", "WORK TROUSERS", "DISTRICT MARK".
+
+MOOD: everyone wears the same clothes, so nobody stands out. Clothes are issued, not chosen: badly fitted, mended, lived in for months. No jewellery, no personal items, no colour beyond the faded blue.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and faded blue-teal palette, worn and used materials, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+### PROMPT B: Citizen-porträtt (grund för alla NPC-porträtt)
+
+**Format:** 4:5 eller 1:1. Byt ut [hakparenteserna].
+
+```
+Head-and-shoulders portrait of an ordinary citizen of an occupied dystopian Eastern-European city, facing the camera straight on, centred, against a plain near-black background, like an identity registration photograph.
+
+PERSON: [age, gender, face, hair, expression — e.g. "a man in his thirties with short dark hair, a thin face with prominent cheekbones, dark stubble, tired brown eyes, a guarded neutral expression"].
+
+CLOTHING: the standard-issue citizen uniform — a faded blue-teal denim-like work jacket with a short upright mandarin stand collar and a row of small dark buttons, a dirty off-white crew-neck undershirt visible at the collar. On the wearer's right chest (left side of the image), a small off-white cloth ID label printed in black stencil "CID [five digits]" with a tiny barcode.
+
+LIGHTING: flat, cold, slightly overhead registration-booth light, soft shadows under the eyes and cheekbones, a faint cyan cast at the edges as if from a scanner.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette, subtle film grain, believable unglamorous skin texture, no makeup, no smile, all text sharp and correctly spelled.
+```
+
+### Varianter (byggs på basen senare)
+
+Lägg till i slutet av prompt A eller B:
+
+- **Nedgången / svältande:** `jacket torn at one shoulder and patched with mismatched grey fabric, ID label half peeled off, hollow cheeks, filthy hands`
+- **Fabriksarbetare (D2 the Works):** `blue dye stains on both forearms and the jacket front, a grey canvas work apron over the jacket, cotton dust in the hair`
+- **Lojalist, uppmärksammad medborgare:** `a small yellow circular commendation pin above the ID label, the jacket noticeably cleaner and better fitted`
+- **Under bevakning:** `a red diagonal stripe printed across the ID label, the person glancing sideways nervously`
+---
+
 ## 6. PROMPT 4: ARMBAND (sex varianter)
 
 ```
