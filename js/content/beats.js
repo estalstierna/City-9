@@ -295,6 +295,7 @@
       title: 'Precinct roof',
       text: [
         'Rook is on the precinct roof with his mask pushed up on his forehead, smoking a real cigarette. It\'s the first time you have seen his face: older than you expected, a long jaw, a scar through one eyebrow that matches the crack in his lens.',
+        '@portrait assets/img/portraits/rook-unmasked.jpg|Rook, unmasked',
         '@say Rook|Don\'t tell anyone you saw this. Sit.',
         '@say Rook|First week, I had a partner. Kid called Feliks. Good kid. Soft. A citizen stabbed him with a screwdriver in a ration line because Feliks turned his back to help an old woman pick up her packet. I keep thinking: if he\'d been harder, he\'d be alive. And then I think: if he\'d been harder, would it have mattered whether he was alive?',
         'He offers you the cigarette.',

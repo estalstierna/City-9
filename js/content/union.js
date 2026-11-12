@@ -50,10 +50,12 @@
       text: (s) => [
         'The District 5 precinct is a converted tram depot at the edge of the Stacks. The old rails still run through the floor of the muster hall, polished by boots. Twenty units in masks stand in loose rows under the strip lights, smoking through their filters, checking weapons, ignoring you.',
         'The squadron leader stands on a loading platform with a slate in one hand. Big. Slow-moving. A broad blue officer\'s stripe down the crown of his mask, scratched almost to grey. **CCA.C9.D5-UNION-SqL-11902.** The squadron calls him *Granite*, and when he speaks you understand why.',
+        '@portrait assets/img/portraits/granite.jpg|CCA.C9.D5-UNION-SqL-11902 — "Granite"',
         '@say Granite|New fives. Welcome to D5. Forty thousand citizens. Twenty-two units. You can do the arithmetic. They outnumber us two thousand to one, and the only reason they don\'t tear us apart is that they believe we can\'t be torn.',
         '@say Granite|Don\'t ever let them stop believing it.',
         `He reads names — designations — off the slate. When he reaches yours he pauses. "${s.mem.grade}." His mask turns a few degrees toward you. You can\'t tell what he thinks of that.`,
         'You are paired with a field trainer for your first weeks: a lean, restless UNION 02 with a cracked left lens and a habit of tapping his stick against his thigh like a metronome. **CCA.C9.D5-UNION-02-48151.** He tells you to call him *Rook*.',
+        '@portrait assets/img/portraits/rook.jpg|CCA.C9.D5-UNION-02-48151 — "Rook"',
         '@say Rook|Three rules. One: you don\'t take off the mask on the street, not even to scratch your nose. Two: you don\'t say a citizen\'s name out loud. Three: when I say run, you\'ve already been running for a second. Questions? Good. Board\'s over there.',
         '@img assets/img/uniform-union.jpg|UNION patrol uniform — your kit from today',
         '@sys Each day you choose a duty from the board. Duties earn merit, which unlocks your next field evaluation. Evenings are yours: rest, train, visit people, or go where you shouldn\'t.',

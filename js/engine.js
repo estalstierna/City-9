@@ -66,8 +66,8 @@
     mira: { name: 'Mira', role: 'Your sister · D5, Stack 14', img: 'mira' },
     tomas: { name: 'Tomas Vey', role: 'Fellow recruit', img: 'tomas' },
     ilse: { name: 'Ilse Marek', role: 'Fellow recruit', img: 'ilse' },
-    rook: { name: '"Rook"', role: 'UNION 02 · your field trainer' },
-    granite: { name: '"Granite"', role: 'UNION SqL · D5 squadron' },
+    rook: { name: '"Rook"', role: 'UNION 02 · your field trainer', img: 'rook' },
+    granite: { name: '"Granite"', role: 'UNION SqL · D5 squadron', img: 'granite' },
     halloran: { name: 'Old Halloran', role: 'Neighbour · Stack 14', img: 'halloran' },
     tinker: { name: 'The Tinker', role: 'Repairman · Bazaar Row' },
   };
