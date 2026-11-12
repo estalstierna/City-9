@@ -251,6 +251,7 @@
       },
       text: (s) => [
         'The stall is a wooden booth with a hinged counter, crowded with gutted radios, coils of copper, and a single lamp clamped to a shelf. Behind the counter sits a bald man with heavy spectacles and burned fingertips. He is soldering something with surgical care and does not look up.',
+        '@portrait assets/img/portraits/tinker.jpg|The Tinker — CID 07731, Bazaar Row',
         '@say Tinker|Closed. Unless you have something that needs fixing.',
         s.mem.tinkerVisits > 1 ? 'He glances up. Recognises you. Goes back to his soldering, a little more slowly.' : null,
       ],

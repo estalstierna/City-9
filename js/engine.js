@@ -69,7 +69,7 @@
     rook: { name: '"Rook"', role: 'UNION 02 · your field trainer', img: 'rook' },
     granite: { name: '"Granite"', role: 'UNION SqL · D5 squadron', img: 'granite' },
     halloran: { name: 'Old Halloran', role: 'Neighbour · Stack 14', img: 'halloran' },
-    tinker: { name: 'The Tinker', role: 'Repairman · Bazaar Row' },
+    tinker: { name: 'The Tinker', role: 'Repairman · Bazaar Row', img: 'tinker' },
   };
 
   const SAVE_KEY = 'c9rp_auto_v1';

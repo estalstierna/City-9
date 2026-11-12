@@ -314,6 +314,7 @@
     d_market_tinker: {
       text: (s) => [
         'At the end of the Row, a repairman\'s stall: radios, coils of copper, a lamp clamped to a shelf. A bald man with thick spectacles and burned fingertips solders something without looking up as you pass.',
+        '@portrait assets/img/portraits/tinker.jpg|The repairman at the end of the Row',
         s.flags.know_tinker ? 'You know who this is. *The Tinker.* The name from level 4, from the boy with the paint.' : 'Rook\'s stick taps his thigh a little faster as you pass. He doesn\'t say anything.',
       ],
       choices: (s) => [
