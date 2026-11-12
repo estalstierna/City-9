@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>City 9 // Civil Protection</title>
+  <meta name="description" content="A text roleplaying game set in an occupied city under the Universal Union. Enlist in the Combine Civil Authority and decide what kind of officer you become.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app" class="pregame">
+    <header id="topbar">
+      <div class="brand"><span class="glyph">◈</span> <span id="tb-desig">CITIZEN TERMINAL</span></div>
+      <div class="tb-right">
+        <span id="tb-time"></span>
+        <button id="btn-codex" title="Codex">Codex <span id="codex-count"></span></button>
+        <button id="btn-menu" title="Save / Load">Menu</button>
+        <button id="btn-side" title="Dossier">Dossier</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="story" aria-live="polite"></div>
+    </main>
+
+    <aside id="sidebar">
+      <div id="side-content"></div>
+    </aside>
+  </div>
+
+  <div id="modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-head"><span id="modal-title"></span><button id="modal-close" aria-label="Close">✕</button></div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+  <div id="toast"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <script src="js/engine.js"></script>
+  <script src="js/content/codex.js"></script>
+  <script src="js/content/prologue.js"></script>
+  <script src="js/content/training.js"></script>
+  <script src="js/content/union.js"></script>
+  <script src="js/content/duties.js"></script>
+  <script src="js/content/beats.js"></script>
+  <script>G.boot();</script>
+</body>
+</html>
