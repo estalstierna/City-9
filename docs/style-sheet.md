@@ -976,24 +976,30 @@ DO NOT include: a blue stripe, cyan lens glow, a cracked lens, a walkie-talkie o
 STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated near-black and steel-grey palette with deep crimson and silver accents, subtle film grain, all text sharp and correctly spelled.
 ```
 
-#### HELIX instruktören (HELIX 02-77301)
+#### HELIX-instruktören (HELIX 02-77301), Rev 2
 
-**Bifoga:** 1 `ref/02-helmet.jpg` · 2 `ref/02-armband.jpg` · 3 `ref/armband-helix.jpg` · 4 `uniform-helix.jpg` · 5 Mira-porträttet.
+**Bifoga i ordning:** 1 `ref/02-helmet.jpg` · 2 `ref/armband-helix.jpg` · 3 `ref/02-armband.jpg` · 4 `uniform-helix.jpg` · 5 Thirty- eller Granite-porträttet (stil för maskerade enheter). Kör den i en ny chatt.
 
 ```
-Head-and-shoulders personnel file portrait of a masked civil police field medic, a HELIX division 02 Protection Unit, designation 02-77301, a woman, in the exact framing, lighting and background of the FIFTH attached image: plain near-black background, flat cold clinical light, faint cyan rim light.
+Head-and-shoulders personnel file portrait of a masked civil police field medic, a woman, HELIX medical division, grade 02, in the exact framing, lighting and background of the FIFTH attached image: plain near-black background, flat cold clinical light from slightly above, faint pale-green rim light instead of cyan.
 
-POSE: slight 20-degree turn so her LEFT upper arm faces the camera, head straight to the lens. Slim build, shoulders a little rounded with fatigue. Both hands raised into frame at chest height, peeling off a pale grey nitrile glove worn over a black tactical glove, a few small fresh drops of blood on the nitrile.
+POSE: body turned about 25 degrees so her LEFT shoulder and upper arm face the camera, head turned back to look straight into the lens. Slim, narrow-shouldered build, posture composed but tired, shoulders a little rounded. Both hands raised into frame at chest height: she is peeling a thin pale grey nitrile glove off her left hand, revealing the black tactical glove beneath; a few small fresh drops of blood on the nitrile.
 
-HELMET — copy the shape of the helmet in the FIRST attached image exactly: off-white bone-grey ceramic shell, only a thin raised centre seam, NO coloured stripe; two large round eye openings in thick black rubber rims fitted with PALE GREEN-TINTED lenses; angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter beneath it; ONE compact rounded black earmuff-style headset over the left ear with a short stub antenna. The ceramic is clean, clinical, with faint scrubbed-out stains.
+HELMET — copy the exact shape of the helmet in the FIRST attached image:
+- off-white bone-grey ceramic shell, smooth rounded dome, only a thin raised centre seam, NO coloured stripe of any kind;
+- two large round eye openings in thick black rubber rims fitted with PALE GREEN-TINTED lenses that glow very faintly;
+- angular sculpted cheek plates sweeping down from the eyes;
+- a round gunmetal respirator filter with a second, smaller round filter directly beneath it;
+- the ONLY electronics: one compact rounded black earmuff-style headset cup over the LEFT ear (right side of the image) with one short stub antenna.
+PERSONAL WEAR: the ceramic is clean and clinical, wiped down many times, with faint pale ghost-stains where blood has been scrubbed off around the jaw.
 
-ARMBAND — a cloth band wrapped around her left upper arm (NOT a square patch) in the colours, fabric and glyph of the THIRD attached image (clinical white with teal piping, double-helix glyph on the left), with "C9:D1" in bold charcoal stencil and the insignia of the SECOND attached image: EXACTLY FOUR thin VERTICAL silver bars side by side.
+ARMBAND — a cloth band wrapped all the way around her left upper arm (a band, NOT a square patch), with the colours, fabric and glyph of the SECOND attached image: clinical white (#E9EEF0) with teal (#3FB8A8) piping along both edges and a circular double-helix glyph on the left. In the centre "C9:D1" in bold charcoal stencil. On the right the insignia of the THIRD attached image: EXACTLY FOUR thin VERTICAL silver bars standing side by side.
 
-UNIFORM — as in the FOURTH attached image: dark charcoal-navy padded jacket with a tall stand-up collar, quilted ballistic vest, light grey shoulder panels with teal edge stripes, a clean white band around the left forearm, a white vertical double-bar patch on the left chest. A small round HELIX emblem patch on the right shoulder.
+DESIGNATION: the stencilled designation "CCA.C9.D1-HELIX-02-77301" in small off-white letters on the left shoulder panel, directly above the armband. Everything clean, pressed, regulation-perfect.
 
-The stencilled designation "CCA.C9.D1-HELIX-02-77301" in small off-white letters on the left shoulder panel, directly above the armband.
+UNIFORM — as in the FOURTH attached image: dark charcoal-navy padded jacket with a tall stand-up collar zipped to the chin, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with thin teal edge stripes, a white vertical double-bar patch on the left chest, a clean white band wrapped around the left forearm. A white hard-shell medical satchel strap crosses her chest diagonally, and the top of a small glass canister of glowing pale-blue biogel shows in a loop on the strap.
 
-DO NOT include: a coloured stripe on the helmet, dark or cyan lenses, a cracked lens, a walkie-talkie or tall antenna, a square shoulder patch, horizontal bars, more or fewer than four bars.
+DO NOT include: a coloured stripe on the helmet; dark, black or cyan lenses; a cracked lens; a walkie-talkie or box radio; a tall antenna; a square shoulder patch; horizontal bars; more or fewer than four bars; "C9:D5" on the armband; a smiling or soft feminine mask — the helmet is the same unisex ceramic helmet as every other unit.
 
 STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated steel-grey palette with clinical white, teal and pale green accents, subtle film grain, all text sharp and correctly spelled.
 ```
