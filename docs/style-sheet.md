@@ -919,6 +919,92 @@ Lägg till i slutet av prompt A eller B:
 - **Fabriksarbetare (D2 the Works):** `blue dye stains on both forearms and the jacket front, a grey canvas work apron over the jacket, cotton dust in the hair`
 - **Lojalist med utmärkelse** (fullständig prompt: C): `a small yellow circular commendation pin above the ID label, the jacket noticeably cleaner and better fitted`
 - **Under bevakning** (fullständig prompt: D): `a red diagonal stripe printed across the ID label, the person glancing sideways nervously`
+### Thirty, the Magistrate, HELIX 02 & Katya (Rev 1)
+
+Samma uppställning som övriga porträtt. Utklippta referenser ligger i `assets/img/ref/`. **Bifoga alltid en referens per detalj, i den ordning prompten nämner dem.** Kör varje porträtt i en ny chatt, så att egenskaper från tidigare bilder (som Rooks spräckta lins) inte smittar av sig.
+
+#### Thirty (UNION OfC, drillinstruktör)
+
+**Bifoga:** 1 `ref/ofc-helmet.jpg` · 2 `ref/ofc-armband.jpg` · 3 Granite-porträttet (stil för maskerade enheter).
+
+```
+Head-and-shoulders personnel file portrait of a masked civil police drill instructor known to recruits as "Thirty", a UNION division Field Officer, in the exact framing, lighting and background of the THIRD attached image: plain near-black background, flat cold registration-booth light, faint cyan rim light.
+
+POSE: standing rigidly at attention, chest out, hands clasped behind his back (not visible), body turned about 20 degrees so his LEFT upper arm faces the camera, head turned square to the lens. Medium height, compact and hard, like a coiled spring.
+
+HELMET — copy exactly the helmet in the FIRST attached image: off-white bone-grey ceramic shell with one broad civil protection blue crest stripe from brow to crown; two large round eye openings in thick black rubber rims; angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter directly beneath it; ONE compact rounded black earmuff-style headset over the left ear with one short stub antenna.
+PERSONAL WEAR: a deep old gouge scar running diagonally across the ceramic over the LEFT eye socket (right side of the image) and scoring the rim of the left lens — the lens itself is intact, not cracked. The shell is otherwise immaculate and polished.
+
+ARMBAND — copy exactly the SECOND attached image, as a cloth band wrapped around his left upper arm (NOT a square patch): civil protection blue, "C9:D5" in off-white stencil, ONE wide VERTICAL silver bar followed by EXACTLY ONE large silver five-point star as tall as the letters.
+
+UNIFORM: dark charcoal-navy padded jacket with a tall stand-up collar zipped to the chin, quilted ballistic vest with horizontal padded ribs, light grey shoulder panels with blue edge stripes, a white vertical double-bar patch on the left chest. The stencilled designation "CCA.C9.D1-UNION-OfC-30117" in small off-white letters on the right shoulder plate. Everything pressed, tight, regulation-perfect.
+
+DO NOT include: a cracked lens, a walkie-talkie or box radio, a tall antenna, a square shoulder patch, thin or multiple bars, more than one star, any weapon in hand, a relaxed posture.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated steel-grey and slate-blue palette with civil protection blue, silver and cyan accents, subtle film grain, all text sharp and correctly spelled.
+```
+
+#### The Magistrate (JURY DvL)
+
+**Bifoga:** 1 `ref/dvl-helmet.jpg` · 2 `ref/dvl-armband.jpg` · 3 `ref/armband-jury.jpg` · 4 `uniform-jury.jpg` · 5 Granite-porträttet.
+
+```
+Head-and-shoulders personnel file portrait of a masked military police commander known as "the Magistrate", a JURY division Division Leader, in the exact framing, lighting and background of the FIFTH attached image: plain near-black background, but lit lower and colder than usual, with a faint deep-red rim light instead of cyan.
+
+POSE: perfectly still, upright, chin very slightly raised, head tilted a few degrees to one side as if listening to something only he can hear. Body turned about 20 degrees so his LEFT upper arm faces the camera. One gloved hand raised into frame, the fingers resting lightly together, almost delicate.
+
+HELMET — copy the shape of the helmet in the FIRST attached image exactly, but recoloured for JURY: off-white bone-grey ceramic shell with one broad DEEP CRIMSON (#A3262A) crest stripe from brow to crown edged by two fine silver pinstripes; two large round eye openings in thick black rubber rims fitted with very dark, almost black lenses that show only a faint red glint; angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter beneath it; ONE compact rounded black earmuff-style headset over the left ear with a short stub antenna. The ceramic is spotless, almost polished — no scratches, no grime.
+
+ARMBAND — a cloth band wrapped around his left upper arm (NOT a square patch) in the colour, fabric and glyph of the THIRD attached image (deep crimson, cracked-skull glyph on the left), with the insignia of the SECOND attached image: "C9:D5" in off-white stencil, ONE wide VERTICAL silver bar followed by EXACTLY THREE silver five-point stars, each as tall as the letters.
+
+UNIFORM — as in the FOURTH attached image: near-black charcoal padded jacket with a tall stand-up collar, near-black quilted ballistic vest, dark grey shoulder panels with crimson edge stripes, a white vertical double-bar patch on the left chest. Black polished leather gauntlets reaching toward the elbow. Everything immaculate and severe, almost ceremonial.
+
+DO NOT include: a blue stripe, cyan lens glow, a cracked lens, a walkie-talkie or tall antenna, a square shoulder patch, horizontal bars, fewer or more than three stars, any visible weapon, any dirt or wear.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated near-black and steel-grey palette with deep crimson and silver accents, subtle film grain, all text sharp and correctly spelled.
+```
+
+#### HELIX instruktören (HELIX 02-77301)
+
+**Bifoga:** 1 `ref/02-helmet.jpg` · 2 `ref/02-armband.jpg` · 3 `ref/armband-helix.jpg` · 4 `uniform-helix.jpg` · 5 Mira-porträttet.
+
+```
+Head-and-shoulders personnel file portrait of a masked civil police field medic, a HELIX division 02 Protection Unit, designation 02-77301, a woman, in the exact framing, lighting and background of the FIFTH attached image: plain near-black background, flat cold clinical light, faint cyan rim light.
+
+POSE: slight 20-degree turn so her LEFT upper arm faces the camera, head straight to the lens. Slim build, shoulders a little rounded with fatigue. Both hands raised into frame at chest height, peeling off a pale grey nitrile glove worn over a black tactical glove, a few small fresh drops of blood on the nitrile.
+
+HELMET — copy the shape of the helmet in the FIRST attached image exactly: off-white bone-grey ceramic shell, only a thin raised centre seam, NO coloured stripe; two large round eye openings in thick black rubber rims fitted with PALE GREEN-TINTED lenses; angular sculpted cheek plates; a round gunmetal respirator filter with a smaller round filter beneath it; ONE compact rounded black earmuff-style headset over the left ear with a short stub antenna. The ceramic is clean, clinical, with faint scrubbed-out stains.
+
+ARMBAND — a cloth band wrapped around her left upper arm (NOT a square patch) in the colours, fabric and glyph of the THIRD attached image (clinical white with teal piping, double-helix glyph on the left), with "C9:D5" in bold charcoal stencil and the insignia of the SECOND attached image: EXACTLY FOUR thin VERTICAL silver bars side by side.
+
+UNIFORM — as in the FOURTH attached image: dark charcoal-navy padded jacket with a tall stand-up collar, quilted ballistic vest, light grey shoulder panels with teal edge stripes, a clean white band around the left forearm, a white vertical double-bar patch on the left chest. A small round HELIX emblem patch on the right shoulder.
+
+DO NOT include: a coloured stripe on the helmet, dark or cyan lenses, a cracked lens, a walkie-talkie or tall antenna, a square shoulder patch, horizontal bars, more or fewer than four bars.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, matching the attached references exactly, desaturated steel-grey palette with clinical white, teal and pale green accents, subtle film grain, all text sharp and correctly spelled.
+```
+
+#### Katya (Miras vän, Stack 9, rebell)
+
+**Bifoga:** 1 Mira-porträttet · 2 `citizen-base.jpg`.
+
+```
+Head-and-shoulders character portrait of Katya, a seventeen-year-old mill girl from an occupied dystopian Eastern-European city, in the exact framing, lighting and background of the FIRST attached image: plain near-black background, flat cold registration-booth light, faint cyan rim light. She must look clearly like a different person from the girl in the first image.
+
+FACE: a round, open face with soft cheeks gone hollow from rations; a short upturned nose; thick dark-blonde eyebrows; wide-set light brown eyes with a frightened, defiant brightness, as if she has just decided something dangerous; chapped lips pressed together; a faint graze healing on her chin. Freckled, wind-reddened skin, no makeup.
+
+HAIR: dirty dark-blonde hair in a single thick braid over one shoulder, frayed strands escaping around her face, a strand of red thread tied at the end of the braid.
+
+CLOTHING — as in the SECOND attached image: the standard-issue faded blue-teal citizen work jacket with a short mandarin stand collar and a row of small dark buttons, a dirty off-white undershirt. On the wearer's right chest (left side of the image), the off-white cloth ID label printed in black stencil "CID 64187" above a small barcode. Grey canvas mill overall straps over the jacket, splashed with grey canal clay at the hem of what is visible.
+
+DETAILS: the corner of a folded hand-printed leaflet just visible inside her jacket; a thin smear of blue spray paint on the side of one hand raised to her collar.
+
+DO NOT include: a pencil behind the ear, dark brown shoulder-length hair, grey-green eyes (those belong to the girl in the first image); any weapon; makeup.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated steel-grey and faded blue-teal palette, subtle film grain, believable skin texture, all text sharp and correctly spelled.
+```
+
+
 ---
 
 ## 6. PROMPT 4: ARMBAND (sex varianter)
