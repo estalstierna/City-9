@@ -67,6 +67,18 @@ G.addCodex({
     </table>
     <p>Transfer applications open to units of grade 03 and above.</p>`,
   },
+  colours: {
+    title: 'Division colours & armbands',
+    body: `<p>Every unit wears a cloth armband on the left upper arm stencilled with city and district — <b>C9:D5</b> — in the colour of their division. Silver bars on the armband show rank: one bar for an 05, five for an 01, a thick bar for an EpU, and a thick bar with stars for officers.</p>
+    <table>
+      <tr><td>UNION</td><td>Civil Protection blue · stun baton emblem</td></tr>
+      <tr><td>HELIX</td><td>White with teal trim · double helix emblem</td></tr>
+      <tr><td>JURY</td><td>Crimson · cracked skull emblem</td></tr>
+      <tr><td>RAZOR</td><td>Gold · shield and blade emblem</td></tr>
+      <tr><td>SPEAR</td><td>Hazard orange · spearhead emblem</td></tr>
+      <tr><td>OA</td><td>Violet · chevrons under a star</td></tr>
+    </table>`,
+  },
   overwatch: {
     title: 'Overwatch',
     body: `<p>The Universal Union's military. The <b>Overwatch Transhuman Arm (OTA)</b> is the combative element, made of surgically altered soldiers in many specialised variants. <b>Overwatch Strategic Intelligence (OSI)</b> is the intelligence element.</p>

@@ -574,7 +574,7 @@
         s.phase = 'ended';
       },
       text: (s) => [
-        'They come for you at 03:15. Not UNION. JURY, four of them, with the Magistrate at the back in his black armband, hands folded behind him.',
+        'They come for you at 03:15. Not UNION. JURY, four of them, with the Magistrate at the back in his crimson armband, hands folded behind him.',
         '@say Magistrate|Your file, Protection Unit. It has been turning a colour for some time. Tonight it became the colour.',
         'You do not reach for your sidearm. You were trained well enough to know it would not matter.',
         'They take you down to level 4. Below the river line. The walls sweat. A ventilation fan ticks like a clock.',

@@ -549,7 +549,7 @@
       choices: [
         { t: '**UNION** — stay with Granite and the D5 squadron. The street is what you know.', fx: (s) => ((s.div = 'UNION'), null), go: 'ch1_end' },
         { t: '**HELIX** — the white band. Keep units alive. See the Nexus from beneath.', lock: (s) => (s.skills.medical < 3 ? 'Requires Field Medicine 3' : null), fx: (s) => ((s.div = 'HELIX'), null), go: 'ch1_end' },
-        { t: '**JURY** — the black band. Detention, interrogation, and the policing of your own.', lock: (s) => (s.skills.authority < 3 ? 'Requires Authority 3' : s.lp < 10 ? 'Requires Loyalty rating +10' : null), fx: (s) => ((s.div = 'JURY'), null), go: 'ch1_end' },
+        { t: '**JURY** — the crimson band. Detention, interrogation, and the policing of your own.', lock: (s) => (s.skills.authority < 3 ? 'Requires Authority 3' : s.lp < 10 ? 'Requires Loyalty rating +10' : null), fx: (s) => ((s.div = 'JURY'), null), go: 'ch1_end' },
         { t: '**RAZOR** — protect the VIPs and the Hardpoints. Stand beside the Administrator.', lock: (s) => (s.skills.firearms < 3 ? 'Requires Firearms 3' : s.lp < 15 ? 'Requires Loyalty rating +15' : null), fx: (s) => ((s.div = 'RAZOR'), null), go: 'ch1_end' },
         { t: '**SPEAR** — the offensive division. Cleared for the 404 zones beyond the canal.', lock: (s) => (s.skills.firearms < 3 ? 'Requires Firearms 3' : s.skills.fitness < 3 ? 'Requires Conditioning 3' : null), fx: (s) => ((s.div = 'SPEAR'), null), go: 'ch1_end' },
       ],
@@ -562,7 +562,7 @@
           UNION: 'You stay. Granite paints your third stripe and says nothing, which is how you know he is pleased.',
           HELIX: 'The HELIX instructor — 02-77301 — signs your transfer herself. "I asked for your file in training," she says. "I hoped I would see it again."',
           JURY: 'The Magistrate receives your application personally. "I wondered when," he says. "Welcome to the division that watches the watchers."',
-          RAZOR: 'RAZOR issues you a new mask with a gold-banded lens. Your first assignment is a hardpoint beneath the Citadel spire.',
+          RAZOR: 'RAZOR issues you a gold armband and a mask with a gold-banded lens. Your first assignment is a hardpoint beneath the Citadel spire.',
           SPEAR: 'SPEAR\'s Division Leader looks you over and says only: "Beyond the canal, nothing is quarantined. Everything is just *waiting*."',
         };
         return [
