@@ -1,6 +1,6 @@
 /* Service worker: makes the game installable and playable offline.
    Bump VERSION whenever files change so players get the update. */
-const VERSION = 'c9-v3';
+const VERSION = 'c9-v4';
 const SHELL = [
   './',
   './index.html',
@@ -18,7 +18,7 @@ const SHELL = [
 ];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL.map((u) => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
@@ -52,8 +52,10 @@ self.addEventListener('fetch', (e) => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // cache: 'no-cache' makes the browser revalidate with GitHub Pages instead of
+  // reusing its own 10-minute HTTP cache, so updates show up on the next launch.
   e.respondWith(
-    fetch(req)
+    fetch(req, { cache: 'no-cache' })
       .then((res) => {
         if (res.ok) {
           const copy = res.clone();
