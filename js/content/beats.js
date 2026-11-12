@@ -392,6 +392,7 @@
     exam_04_d: {
       text: (s) => [
         'One of the rebels lies against the lock wall, holding her stomach. A girl. Mill overalls. Seventeen, eighteen.',
+        '@portrait assets/img/portraits/katya.jpg|Katya — CID 64187, Stack 9',
         'You know her. **Katya**, from Stack 9. Mira\'s friend. She used to sleep over on your floor in the winter when her block\'s heating failed. She recognises your voice through the mask before you recognise her face.',
         '@say Katya|...It\'s you. Oh, God. Mira said you\'d gone over. I didn\'t believe her.',
         'Your three units are watching. Granite is going to read the report.',
