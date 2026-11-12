@@ -16,6 +16,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `emblems.jpg` + `emblems/*.png` | Divisionsemblem, helt ark och utklippta ikoner (256 px, transparent) |
 | `flag-cca.jpg`, `flag-city09.jpg` | Flaggorna |
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
+| `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse (800 px, plus 128 px miniatyrer till kontaktlistan) |
 

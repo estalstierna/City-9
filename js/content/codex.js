@@ -28,7 +28,7 @@ G.addCodex({
   },
   cca: {
     title: 'Combine Civil Authority',
-    body: `<img src="assets/img/flag-cca.jpg" alt="CCA flag" loading="lazy"><p>The primary branch of the Universal Union alongside the Overwatch Executive Branch. The CCA acts as the local authority of each city, keeping the peace and standing on the front line against rebellion. Its units patrol the streets, staff checkpoints, distribute rations and punish rule-breaking citizens.</p>
+    body: `<img src="assets/img/master-a.jpg" alt="Visual identity of the Civil Authority" loading="lazy"><img src="assets/img/flag-cca.jpg" alt="CCA flag" loading="lazy"><p>The primary branch of the Universal Union alongside the Overwatch Executive Branch. The CCA acts as the local authority of each city, keeping the peace and standing on the front line against rebellion. Its units patrol the streets, staff checkpoints, distribute rations and punish rule-breaking citizens.</p>
     <img src="assets/img/helmet.jpg" alt="Protection Unit helmet" loading="lazy">
     <p>Units are masked in public and addressed by designation, never by name. Service grants better rations, private quarters and the privilege of being feared.</p>`,
   },
