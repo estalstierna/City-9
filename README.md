@@ -11,6 +11,10 @@ Open `index.html` in a browser. It needs no build step or server and works from 
 - **Codex** holds lore you've unlocked: the hierarchy, divisions, Overwatch, radio codes and more.
 - **Menu** has the manual save slot, last checkpoint, export/import save codes and new game. The game autosaves after every scene.
 
+### Install as an app
+
+The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install app** / **Add to Home screen**. On iPhone in Safari: Share → **Add to Home Screen**. Once installed it runs full-screen and works offline. The service worker (`sw.js`) loads code from the network first, so updates arrive automatically. Bump `VERSION` in `sw.js` when you change files to clear old caches.
+
 ## Systems
 
 | System | How it works |
