@@ -341,6 +341,47 @@ Midjourney-tillägg: `--ar 3:2 --style raw --stylize 150 --sref <url> --cref <hj
 
 ---
 
+## 3b. PROMPT MASTER-BIBLE: hela identiteten på ett ark (Rev 2)
+
+Ett exempel av varje sak: symbol, hjälm, uniform, armband, emblem, sigill, flaggor och medborgare. Bygger på de godkända referenserna.
+
+**Format:** liggande 16:9. **Bifoga** (så många som verktyget tillåter, i den här ordningen): `uniform-union.jpg`, `helmet.jpg`, `armbands.jpg`, `emblems.jpg`, `flag-cca.jpg`, `flag-city09.jpg`, `ranks-command.jpg` (för EA-sigillet), `citizen-base.jpg`.
+
+```
+A single wide master "art bible" page for a fictional dystopian police force, "CIVIL PROTECTION — CITY 09", presenting one definitive example of every element of its visual identity on one poster. Recreate each element faithfully from the attached reference images — same designs, colours, wear and typography — arranged in a clean modular grid with thin ruled borders on weathered warm-grey paper. Every panel has a small numbered header in condensed stencil type.
+
+TITLE BANNER across the full width: "CIVIL PROTECTION // CITY 09 — VISUAL IDENTITY" in large off-white stencil letters on a weathered charcoal strip, a thin cyan rule beneath, and a small subtitle: "COMBINE CIVIL AUTHORITY · ART BIBLE REV 2".
+
+LAYOUT — three columns:
+
+LEFT COLUMN (narrow, stacked top to bottom):
+01 "SYMBOL": the core emblem of the authority drawn large and flat on black: a bold downward-pointing V-chevron with a solid circle nested in its notch, in muted gold (#C9A13B). Beneath it, the same symbol in off-white and in charcoal as one-colour variants.
+02 "SEAL OF EARTH ADMINISTRATION": a circular gold seal on black enamel — a gold laurel wreath around the gold V-chevron with its circle, the words "EARTH ADMINISTRATION" around the upper rim in small gold capitals.
+03 "FLAGS": two small flags side by side, each flat, 2:3 proportion. CCA FLAG: black field with alternating muted gold and off-white sunburst rays radiating from the bottom centre, a gold V-chevron with a circle in its notch in the upper half, a thin gold border, "C.C.A." stencilled at the bottom. CITY 09 FLAG: deep slate-blue field with a large off-white stencil "09" in the upper left, a thin black needle-like spire rising from a black five-arched dam, a white wave line beneath the dam, a narrow cyan stripe along the bottom.
+
+CENTRE COLUMN (wide, the visual focus):
+04 "UNIFORM — UNION 05": one full-body officer standing in a neutral A-pose, front view, large. Off-white ceramic full-head gas-mask helmet; dark charcoal-navy padded jacket with a tall stand-up collar; quilted ballistic vest with horizontal padded ribs; a white double-bar patch on the left chest; light grey shoulder panels with thin blue edge stripes; a round UNION emblem patch on the right sleeve; a civil protection blue armband "C9:D5" with one thin silver bar on the left upper arm; two black duty belts with silver buckles, a radio with a cyan light; black gloves; dark grey-green trousers with a light grey side stripe; tall black boots. A black stun baton with a glowing copper-coil tip hangs from the right hand. Thin callout lines label "HELMET", "VEST", "ARMBAND", "DIVISION PATCH", "DUTY BELT", "STUN BATON".
+
+RIGHT COLUMN (stacked top to bottom):
+05 "HELMET": the off-white ceramic full-head gas-mask helmet in two views side by side — front, and three-quarter — with a raised centre seam, two large round lenses in black rubber rims, a cylindrical gunmetal respirator canister with ridged rings and a black radio headset with stub antenna. A small inset beneath shows the lenses glowing pale cyan in darkness.
+06 "ARMBAND": one flat woven cloth armband swatch, civil protection blue (#2F6FB5), stitched edges, black velcro ends, a small circular stun-baton glyph on the left, "C9:D5" in bold off-white stencil in the centre, one thin silver rank bar on the right. Beneath it a thin strip of six small colour chips labelled UNION, HELIX, JURY, RAZOR, SPEAR, OA (blue, white-teal, crimson, gold, orange, violet).
+07 "DIVISION EMBLEM": the UNION emblem shown large — a bevelled brushed-steel ring whose upper arc is civil protection blue, a sharp downward steel V-chevron breaking through the top, a faint wireframe globe behind, a recessed central medallion with an embossed bone-white upright stun baton and two small electric arcs. Beneath it, the other five division emblems in a small row at one-third size: HELIX (teal arc, double helix), JURY (crimson arc, cracked skull), RAZOR (gold arc, shield split by a blade), SPEAR (orange arc, spearhead through a broken triangle), OA (violet arc, chevrons under a star).
+
+BOTTOM STRIP (full width, two panels side by side):
+08 "CITIZEN": a small full-body citizen in the standard-issue faded blue-teal work jacket with a mandarin collar and a row of dark buttons, dark indigo work trousers and worn brown shoes, standing in a neutral pose; next to them a close-up of the off-white cloth chest label reading "CID 48271" above a small barcode.
+09 "RANK INSIGNIA": a compact horizontal legend of small armband tabs in order: grey "RcT" with no bars; blue tabs with 1, 2, 3, 4 and 5 thin silver bars labelled 05, 04, 03, 02, 01; a blue tab with one wide silver bar labelled EpU; blue tabs with a wide bar and 1, 2, 3 silver stars labelled OfC, SqL, DvL; black-and-gold tabs with a wide gold bar and 1, 2, 3 gold stars labelled AdC, CmD, SeC; and the tiny gold seal labelled EA.
+
+FOOTER: a colour palette strip with labelled swatches — #2F6FB5 UNION, #3FB8A8 HELIX, #A3262A JURY, #C9A13B RAZOR / COMMAND, #D9641E SPEAR, #6B4FA0 OA, #26394A CITY 09, #5FC8DD CYAN, #3E5F6E CITIZEN, #1B2226 CHARCOAL — and a typography sample "STENCIL — C9:D5 — 0123456789".
+
+ACCURACY: keep every label and rank code exactly as written (RcT, EpU, OfC, SqL, DvL, AdC, CmD, SeC, EA). Count the bars and stars exactly as listed. Each element appears once at full detail; nothing is duplicated except the small emblem row and the insignia legend.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, matching the attached references exactly, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with civil protection blue, cyan, silver and muted gold accents, worn fabric and scuffed ceramic textures, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+```
+
+**Om det blir för mycket på en gång:** ta bort panel 08 och 09 (bottenremsan) och kör dem som ett separat ark. Panel 01–07 räcker för ett starkt huvudark.
+
+---
+
 ## 4. PROMPT 2: HJÄLM (detaljark)
 
 ```
