@@ -71,10 +71,10 @@
     const known = Object.values(s.files).filter((f) => !f.amputated);
     if (known.length && Math.random() < 0.3) {
       const f = G.pick(known);
-      return newEncounter(s, f.type, f.cid, f.desc, f.points, f.face !== undefined ? f.face : rint(0, 11));
+      return newEncounter(s, f.type, f.cid, f.desc, f.points, f.face !== undefined ? f.face : G.pickFace(f.type === 'cwu'));
     }
     const t = wpick(TYPES);
-    const face = rint(0, 11);
+    const face = G.pickFace ? G.pickFace(t.id === 'cwu') : rint(0, 11);
     return newEncounter(s, t.id, String(rint(10000, 99999)), G.faceDesc ? G.faceDesc(face) : G.pick(LOOKS), rint(t.prior[0], t.prior[1]), face);
   }
 

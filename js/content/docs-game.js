@@ -18,8 +18,27 @@
     { m: false, age: 'old woman', look: 'short white hair' },
     { m: false, age: 'young woman', look: 'a red-brown braid' },
   ].map((f, i) => ({ ...f, img: `assets/img/docs/faces/f${String(i + 1).padStart(2, '0')}.jpg` }));
+  /* twelve CWU members (assets/img/docs/faces-cwu/cNN.jpg), indices 12–23 */
+  FACES.push(
+    ...[
+      { m: true, age: 'man in his forties', look: 'short brown hair and a broad face' },
+      { m: true, age: 'man in his fifties', look: 'a grey crew cut and a thick moustache' },
+      { m: true, age: 'young man', look: 'dark curly hair and stubble' },
+      { m: true, age: 'old man', look: 'white swept-back hair and glasses pushed up on his forehead' },
+      { m: true, age: 'man in his thirties', look: 'red hair and a red beard' },
+      { m: true, age: 'heavy man in his fifties', look: 'a flat cap and a double chin' },
+      { m: false, age: 'woman in her thirties', look: 'a dark ponytail and hoop earrings' },
+      { m: false, age: 'woman in her fifties', look: 'a grey bob and square glasses' },
+      { m: false, age: 'young woman', look: 'light brown hair under a cloth cap' },
+      { m: false, age: 'woman in her forties', look: 'cropped black hair' },
+      { m: false, age: 'old woman', look: 'white hair in a bun' },
+      { m: false, age: 'woman in her thirties', look: 'fair braids and freckles' },
+    ].map((f, i) => ({ ...f, cwu: true, img: `assets/img/docs/faces-cwu/c${String(i + 1).padStart(2, '0')}.jpg` }))
+  );
+  const facePool = (cwu) => FACES.map((f, i) => i).filter((i) => !!FACES[i].cwu === !!cwu);
+  G.pickFace = (cwu) => pick(facePool(cwu));
   G.DOC_FACES = FACES;
-  G.faceDesc = (i) => `${/^[aeiou]/.test(FACES[i].age) ? 'an' : 'a'} ${FACES[i].age} with ${FACES[i].look}`;
+  G.faceDesc = (i) => `${/^[aeiou]/.test(FACES[i].age) ? 'an' : 'a'} ${FACES[i].age} with ${FACES[i].look}${FACES[i].cwu ? ' in the ochre CWU jacket' : ''}`;
 
   const STAMPS = [
     { shape: 'round', col: 'blue' },
@@ -54,8 +73,9 @@
     const R = rulesFor(s);
     const today = G.cycle(s);
     const o = (opts && opts.person) || {};
-    const faceIdx = o.faceIdx !== undefined ? o.faceIdx : rint(0, FACES.length - 1);
-    const person = { face: FACES[faceIdx], faceIdx, cwu: o.cwu !== undefined ? o.cwu : Math.random() < 0.18, obs: o.obs !== undefined ? o.obs : Math.random() < 0.15 };
+    const isCwu = o.cwu !== undefined ? o.cwu : o.faceIdx !== undefined ? !!FACES[o.faceIdx].cwu : Math.random() < 0.18;
+    const faceIdx = o.faceIdx !== undefined && !!FACES[o.faceIdx].cwu === isCwu ? o.faceIdx : G.pickFace(isCwu);
+    const person = { face: FACES[faceIdx], faceIdx, cwu: isCwu, obs: o.obs !== undefined ? o.obs : !isCwu && Math.random() < 0.15 };
     const cid = String(rint(10000, 99999));
     const card = { cid, name: pick(SURNAMES), district: 'D5', expires: today + rint(2, 40), photo: faceIdx, obs: person.obs, cwu: person.cwu };
     const cardOnly = !!(opts && opts.cardOnly);
@@ -87,7 +107,7 @@
         permit.cid = mutateCid(cid);
         break;
       case 'photo': {
-        const same = FACES.map((f, i) => i).filter((i) => i !== faceIdx && FACES[i].m === person.face.m);
+        const same = facePool(person.cwu).filter((i) => i !== faceIdx && FACES[i].m === person.face.m);
         card.photo = pick(same);
         break;
       }
@@ -129,7 +149,7 @@
   function describe(p) {
     const f = p.face;
     const art = /^[aeiou]/.test(f.age) ? 'An' : 'A';
-    return `${art} ${f.age} with ${f.look}${p.cwu ? ', in an ochre CWU jacket' : ''}.`;
+    return `${art} ${f.age} with ${f.look}${p.cwu ? ', in the ochre CWU jacket' : ''}.`;
   }
 
   function barcode(cid) {
