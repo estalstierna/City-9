@@ -2,7 +2,7 @@
 G.addCodex({
   city9: {
     title: 'City 09',
-    body: `<img src="assets/img/flag-city09.jpg" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
+    body: `<img src="assets/img/env/e01-city.jpg" alt="City 09 at dawn" loading="lazy"><img src="assets/img/flag-city09.jpg" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
     <table>
       <tr><td>D1</td><td>The Nexus — administration, Civil Protection headquarters, training wing, detention levels.</td></tr>
       <tr><td>D2</td><td>The Works — textile mills and the ration-packing plant. Shift sirens at 05:40 and 17:40.</td></tr>

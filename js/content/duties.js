@@ -263,6 +263,7 @@
     d_market_1: {
       title: 'Bazaar Row — foot patrol',
       text: [
+        '@img assets/img/env/e03-bazaar.jpg|Bazaar Row',
         'Bazaar Row at noon: rusting market stalls under tarpaulins, citizens bartering in murmurs, the smell of boiled bones and hot metal. Your boots clear a path in front of you without you having to do anything at all.',
         'Halfway down, Rook stops and points his stick up. On the wall above a shuttered shop, fresh blue paint is still dripping: half a lambda, unfinished. And on the roof gutter above it, a skinny kid with a paint tin is frozen like a cat.',
         'He sees you. He runs.',

@@ -7,7 +7,7 @@
       safe: true,
       nosave: true,
       text: () => [
-        '@img assets/img/flag-city09.jpg|The civic flag of City 09',
+        '@img assets/img/env/e01-city.jpg|City 09 at dawn',
         '@big CITY 09',
         '@sys CIVIL PROTECTION // RECRUITMENT TERMINAL // DISTRICT 5',
         'The river still runs through City 9. It runs past the dam that hums day and night, past the Citadel spire driven into the old cathedral square like a nail, past the Stacks where forty thousand citizens sleep in shifts.',
@@ -164,6 +164,7 @@
       },
       title: 'Stack 14, Unit 14-C — 06:10',
       text: (s) => [
+        '@img assets/img/env/e02-apartment.jpg|Stack 14, Unit 14-C',
         'The broadcast screen in the stairwell wakes the block before the light does.',
         '@dispatch Attention, residents of District 5. Your Administrator reminds you: compliance is a gift you give your neighbours. Report irregular behaviour. Today\'s ration window opens at nine.',
         'Unit 14-C is two rooms and a window taped over with plastic. The radiator knocks like someone trying to get in. Mira is already up, sitting on the sill in her mill overalls, knees to her chest, drawing on the back of a ration wrapper with a pencil stub worn down to the width of a fingernail.',
@@ -240,6 +241,7 @@
     p_street: {
       title: 'Bazaar Row — 07:20',
       text: [
+        '@img assets/img/env/e03-bazaar.jpg|Bazaar Row, the canal bridge checkpoint',
         'The street is all elbows and steam. Citizens move in the same direction — toward the mills, the ration lines, the transit gates — with the same blue overalls and the same downward look. A scanner drone glides above the crowd at the height of the second-floor windows, its lens clicking as it photographs faces.',
         'At the checkpoint where Bazaar Row meets the canal bridge, two Protection Units have a man down on the wet cobbles. He is maybe fifty. His papers are scattered in the gutter. One unit holds him with a boot between the shoulder blades while the other works a stunstick in short, bored strokes across his back.',
         '@say Protection Unit|Pick it up. Pick up your card. I said *pick it up*.',
