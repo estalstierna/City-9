@@ -20,6 +20,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e06-parade.jpg` … `env/e10-ration.jpg` | Miljöer E01 till E10 (godkända). E01 är stilreferens för alla miljöer |
 | `ota-soldier.jpg` + `ref/ota-soldier-front.jpg`, `ref/ota-soldier-helmet.jpg` | OTA-soldat (O1, godkänd). Två cyan linser. Ryggvyn är spegelvänd, så bifoga framvyn |
+| `ota-elite.jpg` + `ref/ota-elite-front.jpg` | OTA-elit (O2, godkänd). Rött visirband. Ryggvyn är spegelvänd, så bifoga framvyn |
 | `ota-insignia.jpg` + `ref/ota-*.jpg` | Overwatch: grundgrafik (O0, Rev 1) och utklippta emblem, axelplåtar och märken |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty, HELIX 02-77301, Katya (800 px, plus 128 px miniatyrer till kontaktlistan) |

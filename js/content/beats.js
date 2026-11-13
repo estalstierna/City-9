@@ -144,6 +144,7 @@
         'The siren starts at 04:12. Not the shift siren. The long, rising, two-tone wail you have only heard on recordings.',
         '@dispatch Attention, all units. Sociostatus declared, District 2. Anticitizen detonation at the ration-packing plant. Overwatch assumes command. All Civil Protection units in D2 and D5 will comply with Overwatch directives. Repeat: Overwatch assumes command.',
         'By 05:00 you are standing in the rubble-strewn yard of the Works with the rest of the squad. The packing plant is a black shell. Fire crews spray water on something that is still burning. Somewhere under the steel there are bodies.',
+        '@img assets/img/ota-elite.jpg|Overwatch Elite, C9 Garrison',
         'An Overwatch squad leader — a tall soldier with a white-painted shoulder plate — addresses Granite as though Granite were a junior private.',
         '@say Overwatch|Civil Protection will clear residential block 2-11. All occupants to the yard for processing. Resistance will be met with full force. Execute.',
         'Block 2-11 is where the mill workers live. Tomas grew up there. Mira\'s friend Katya lives there.',
