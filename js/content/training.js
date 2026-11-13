@@ -27,6 +27,8 @@
         s.phase = 'training';
         G.unlock(s, 'hierarchy');
         G.unlock(s, 'terms');
+        G.unlock(s, 'crimes');
+        G.unlock(s, 'contraband');
       },
       text: [
         '@img assets/img/env/e06-parade.jpg|Training Wing, parade floor, 05:00',
