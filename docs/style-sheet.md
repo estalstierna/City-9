@@ -1084,12 +1084,33 @@ STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Ea
 DO NOT include: neon cyberpunk signs, modern cars, readable text except the "C.C.A." on the banners, logos of real brands, characters from existing games.
 ```
 
-### E05 Barack 3 · bifoga: ranks-enlisted, E01
+### E05 Barack 3 (Rev 2) · bifoga: ranks-enlisted, E01
+Rev 1 gav överlappande sängar och dubblerade figurer. Rev 2 låser perspektivet, sängmodellen och antalet personer.
 ```
-Interior concept art of a long concrete military barracks at night, in the colour palette and atmosphere of the SECOND attached image. Forty steel bunk beds in two rows with grey wool blankets; a single narrow window high in the wall letting in a thin shaft of cold blue light; green-painted lower walls, flaking; a cast-iron radiator at the far end. A few recruits who look exactly like the "RcT" recruit in the FIRST attached image — shaved heads, plain grey high-collared training jackets, no masks — sit on their bunks or lie awake staring at the ceiling, seen from behind or in shadow, each with a small square bandage at the base of the skull. Half the corridor lights dead; one flickers.
-STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey and slate-blue palette with sharp cyan accents, atmospheric haze, subtle film grain, high detail.
-DO NOT include: neon, readable text, logos of real brands, characters from existing games.
+Interior concept art of a long concrete military barracks at night, in the colour palette and atmosphere of the SECOND attached image.
+
+CAMERA: eye-level, standing in the middle of the central aisle, looking straight down its length in strict one-point perspective. All lines converge to a single vanishing point at the far wall. Symmetrical composition.
+
+ROOM: a long, narrow concrete hall about eight metres wide. A clear empty central aisle of bare wet concrete floor, two metres wide, runs from the camera to the far wall. At the far end, high up near the ceiling, a single small barred window lets in one thin shaft of cold blue moonlight that falls diagonally across the aisle. Below it, a white cast-iron radiator. Walls painted dark green up to waist height, grey concrete above, flaking. Two bare bulbs in metal shades hang from the ceiling; only one is lit, dimly.
+
+BUNKS — a simple, orderly, repeating layout: along EACH side wall stands one straight row of identical two-tier steel bunk beds, all exactly the same size, all placed side-on to the aisle with their short ends facing the aisle. Each bunk is a simple rectangular frame of square steel tube with one lower and one upper bed, a thin mattress and a folded grey wool blanket. Between every two bunks stands one narrow grey steel locker, creating a clear one-metre gap. The rows repeat evenly into the distance — roughly ten bunks per side — and NEVER overlap, intersect or merge.
+
+PEOPLE — only four recruits, each in a clearly defined place, all looking like the "RcT" recruit in the FIRST attached image (shaved head, plain dark grey high-collared training jacket, no mask, a small square white bandage at the base of the skull):
+1. Left foreground: one recruit sitting on the edge of a LOWER bunk, feet on the floor, elbows on knees, seen from behind and slightly to the side, staring at the floor.
+2. Right middle ground: one recruit lying on his back on an UPPER bunk, hands behind his head, staring at the ceiling.
+3. Left middle ground: one recruit sitting on a lower bunk unlacing a boot.
+4. Far end, small: one recruit standing alone in the shaft of moonlight beneath the window, looking up at it.
+All other bunks are empty, blankets folded.
+
+MOOD: quiet, cold, exhausted, tense. Long shadows, the only light from the moon shaft and one weak bulb.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey, dark green and slate-blue palette with sharp cyan moonlight, atmospheric haze, subtle film grain, high detail, architecturally coherent.
+
+DO NOT include: overlapping, intersecting or merged bunk beds; people inside or behind bed frames; duplicated or identical repeated figures; more than four people; three-tier bunks; beds at random angles; neon; readable text; logos; characters from existing games.
 ```
+Om det ändå blir rörigt: ta bort person 2 och 3.
+
+**Allmänt för interiörer med många likadana objekt:** lås kamerans perspektiv, beskriv *ett* objekt exakt och hur de upprepas med jämna mellanrum, ge varje person en egen plats och pose, och förbjud överlapp och dubblering i DO NOT-raden.
 
 ### E06 Exercisgolvet och rangstegen · bifoga: ranks-enlisted, ranks-command, thirty, E01
 ```
