@@ -1458,11 +1458,57 @@ Egen design för City 09 i genrens formspråk. Kopierar inte spelets modeller. *
 |---|---|---|
 | Huvud | Mörk grafitgrå sluten hjälm, två kantiga linser som lyser **cyan** | Vit skulpterad hjälm, ett smalt horisontellt **rött** sensorband |
 | Kropp | Vadderad väst och plattor, kamouflage i skiffer-blått och grått | Vit segmenterad rustning, svarta leder |
-| Märkning | Stencil "C9-OTA" och enhetsnummer på bröstplattan, orange varningstriangel på axeln | Guld-chevron (CCA-symbolen) på bröstet, röd axelmarkering |
+| Märkning | Sexkantigt emblem med cyan visir, 1 cyan chevron på axelplåten, "C9-OTA 4471", varningstriangel | Vitt sexkantsemblem med rött visir, röd chevron och kant på axelplåten, "C9-OTA-E 0019" |
 | Vapen | Kompakt pulsgevär med cyan energicell | Längre, tyngre gevär med röd energicell |
 
+### O0 Overwatch grundgrafik (kör först)
+
+**Kanon:** Overwatch bär **inga tygarmband**. Rang och enhet visas med målade axelplåtar och bröstmärken. Formen är en **sexkant**, och CCA:s form är rund. Symbolen är Unionens V-chevron med cirkel inne i en sexkant, med en smal lysande **visirslits** tvärs över: cyan för infanteri, rött för elit, guld för befäl.
+
+**Rang:** OWS Soldat (1 cyan chevron) · OWS-L Gruppchef (2 cyan chevrons + sexkant) · OWE Elit (röd chevron, vit plåt) · ORD Ordinal (röd chevron i röd sexkant, guldkant) · OWC Overwatch Commander (guldchevron i guldsexkant, svart plåt).
+
+**Format:** 16:9. **Bifoga:** 1 `master-a.jpg` · 2 `emblems.jpg` (bara som kontrast).
+
+```
+A single wide insignia and markings design sheet for "OVERWATCH", the transhuman military branch of the Universal Union garrisoned in City 09. Presented like a production art-bible page: clean modular grid, thin ruled borders, weathered warm-grey paper, numbered panel headers and short callouts in condensed off-white stencil type — match the layout, typography and rendering of the FIRST attached image.
+
+DESIGN LANGUAGE: Overwatch must look clearly different from the round civil police emblems in the SECOND attached image (shown only for contrast — do not copy their round steel ring). Overwatch markings are HEXAGONAL, angular and severe, like military hardware stencils and machined metal. They share only one element with the civil police: the Union symbol — a downward-pointing V-chevron with a solid circle in its notch.
+
+TITLE BANNER on a charcoal strip: "OVERWATCH — C9 GARRISON — INSIGNIA & MARKINGS", thin red rule beneath.
+
+01 "OVERWATCH EMBLEM" (large, centre-left): a flat-topped hexagon of dark machined graphite metal with a thin bevelled edge. Inside it, the Union V-chevron with its circle in brushed steel, and a single narrow horizontal visor slit cut straight across the hexagon at the height of the circle, glowing pale CYAN (#5FC8DD), as if the emblem is watching. Two small rivets at the top corners. Beneath it in stencil: "OVERWATCH".
+
+02 "BRANCH VARIANTS" (row of three smaller copies of the same emblem, same design, only the visor colour and edge trim change):
+- "INFANTRY": cyan visor slit, plain graphite edge.
+- "ELITE": deep RED (#B3261E) visor slit, white enamel hexagon face instead of graphite.
+- "COMMAND": muted gold (#C9A13B) visor slit, gold edge trim.
+
+03 "SHOULDER PLATE MARKINGS" (row of five curved armour shoulder plates seen from the side, painted, NOT cloth armbands), each labelled with its rank code beneath:
+- "OWS — SOLDIER": graphite plate, one thin cyan chevron stencilled pointing down, small "C9" stencil.
+- "OWS-L — SQUAD LEADER": graphite plate, two cyan chevrons and a small cyan hexagon outline.
+- "OWE — ELITE": white plate, one bold red chevron and a red band around the plate's edge.
+- "ORD — ORDINAL": white plate, red chevron inside a red hexagon, a thin gold edge.
+- "OWC — OVERWATCH COMMANDER": black plate, gold chevron inside a gold hexagon, the full emblem from panel 01 small above it.
+
+04 "CHEST STENCILS": three rectangular stencil plates in off-white on dark grey: "C9-OTA 4471", "C9-OTA-L 0306", "C9-OTA-E 0019", each with a small barcode and the emblem from panel 01 at the left.
+
+05 "HAZARD & UNIT PATCHES": a small orange-and-black hazard triangle patch with a lightning mark (infantry); a red-and-black hexagonal patch (elite); a small square "C9 GARRISON" patch with the city's number "09".
+
+06 "ENERGY CELL CODES": three small cylindrical rifle energy cells side by side — glowing cyan (infantry), red (elite), gold (command) — labelled.
+
+07 "BANNER": a tall narrow vertical military banner, graphite black with a thin red border, the emblem from panel 01 large in the upper half, and beneath it in stencil "OVERWATCH".
+
+FOOTER: palette swatches labelled — #1E2328 GRAPHITE, #E8E6DF ELITE WHITE, #5FC8DD INFANTRY CYAN, #B3261E ELITE RED, #C9A13B COMMAND GOLD, #D9641E HAZARD ORANGE — and the note "OTA INSIGNIA — REV 1".
+
+ACCURACY: the emblem design must be identical in every panel. Count the chevrons exactly as listed. Keep every label and code exactly as written.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated graphite and steel-grey palette with cyan, red and gold accents, machined metal and chipped paint textures, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+
+DO NOT include: round emblems or steel rings like the civil police; cloth armbands; skulls; the words "Combine" or "Half-Life"; logos of real brands; any existing game's exact insignia.
+```
+
 ### O1 OTA-soldat
-**Format:** 16:9. **Bifoga:** 1 `uniform-union.jpg` (för kontrast, *inte* att kopiera) · 2 `master-a.jpg` (stil och typsnitt) · 3 `env/e11`-bilden när den finns, annars `env/e03-bazaar.jpg`.
+**Format:** 16:9. **Bifoga:** 1 `uniform-union.jpg` (för kontrast, *inte* att kopiera) · 2 `master-a.jpg` (stil och typsnitt) · 3 O0-insignia-arket.
 ```
 Costume design turnaround sheet of a soldier of "OVERWATCH", the transhuman military of an occupied Eastern-European city called City 09, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SECOND attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — INFANTRY".
 
@@ -1472,7 +1518,7 @@ BUILD: tall (about 1.95 m), broad, unnaturally still and symmetrical, more machi
 
 HEAD: a fully enclosed dark graphite-grey composite helmet with no visible seams for a face, a rounded crown and a forward-jutting jaw guard; two angular, slightly slanted lens apertures glowing pale CYAN (#5FC8DD); a short ribbed breathing tube running from the jaw guard down into a filter unit on the left side of the chest; a thin vertical antenna at the back of the helmet.
 
-BODY: a heavily padded ballistic vest with segmented rigid plates over the chest and shoulders, worn over a high-collared fatigue suit printed in an urban camouflage of slate-blue, mid-grey and charcoal; armoured forearm guards and thick knee and thigh plates; black gloves; heavy black combat boots. Stencilled in small off-white letters on the chest plate: "C9-OTA 4471". A small orange-and-black hazard triangle patch on the left shoulder.
+BODY: a heavily padded ballistic vest with segmented rigid plates over the chest and shoulders, worn over a high-collared fatigue suit printed in an urban camouflage of slate-blue, mid-grey and charcoal; armoured forearm guards and thick knee and thigh plates; black gloves; heavy black combat boots. Markings copied exactly from the THIRD attached image (the Overwatch insignia sheet): on the LEFT shoulder plate the "OWS — SOLDIER" marking (one thin cyan chevron and "C9"); on the chest plate the "C9-OTA 4471" stencil plate with the hexagonal Overwatch emblem; the orange hazard triangle patch on the right shoulder.
 
 EQUIPMENT ROW: a compact bullpup pulse rifle in dark grey with a glowing cyan energy cell in the stock; spare cells on a bandolier; a grenade with a cyan indicator ring; a field radio.
 
@@ -1480,11 +1526,11 @@ DETAIL INSETS: the helmet from the front with both lenses lit; the chest stencil
 
 STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with cyan accents, worn and scuffed materials, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
 
-DO NOT include: a gas-mask helmet like the civil police; an armband; a single round eye; exposed skin or face; neon; logos of real brands; any existing game's exact character design.
+DO NOT include: a gas-mask helmet like the civil police; any cloth armband; round emblems; a single round eye; exposed skin or face; neon; logos of real brands; any existing game's exact character design.
 ```
 
 ### O2 OTA-elit (vit)
-**Format:** 16:9. **Bifoga:** 1 den färdiga O1-bilden (samma soldatfamilj) · 2 `master-a.jpg` · 3 `flag-cca.jpg` (guldchevronen).
+**Format:** 16:9. **Bifoga:** 1 den färdiga O1-bilden (samma soldatfamilj) · 2 `master-a.jpg` · 3 O0-insignia-arket.
 ```
 Costume design turnaround sheet of an ELITE soldier of "OVERWATCH", the transhuman military of City 09, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SECOND attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — ELITE".
 
@@ -1494,7 +1540,7 @@ BUILD: very tall (about 2.05 m), broad-shouldered, perfectly upright, motionless
 
 HEAD: a sculpted, smooth WHITE ceramic-composite helmet, taller and more angular than the soldier's, with a sharp ridge from brow to crown; instead of two lenses, a single narrow horizontal visor band glowing deep RED across the eyes; a black armoured jaw guard with a ribbed breathing tube to a chest filter; two short swept-back antenna fins at the back.
 
-BODY: white segmented armour plates over the chest, abdomen, shoulders, forearms and thighs, with black flexible joints and a black high-collared undersuit; a large raised neck collar; black gloves; tall black armoured boots. On the centre of the chest plate, a small muted gold (#C9A13B) downward V-chevron with a circle in its notch — the emblem shown in the THIRD attached image. A deep red band painted around the left upper arm. Stencilled small in charcoal on the right shoulder plate: "C9-OTA-E 0019". The white armour is clean but faintly scuffed, never dirty.
+BODY: white segmented armour plates over the chest, abdomen, shoulders, forearms and thighs, with black flexible joints and a black high-collared undersuit; a large raised neck collar; black gloves; tall black armoured boots. Markings copied exactly from the THIRD attached image (the Overwatch insignia sheet): on the centre of the chest plate the ELITE variant of the hexagonal Overwatch emblem (white face, red visor slit); on the LEFT shoulder plate the "OWE — ELITE" marking (one bold red chevron, red edge band); the "C9-OTA-E 0019" stencil plate below the emblem; the red-and-black hexagonal patch on the right shoulder. The white armour is clean but faintly scuffed, never dirty.
 
 EQUIPMENT ROW: a long heavy pulse rifle in black and white with a glowing RED energy cell; a sidearm; a sealed command data unit; a red-ringed energy grenade.
 
@@ -1502,7 +1548,7 @@ DETAIL INSETS: the helmet front with the red visor band lit; the gold chest chev
 
 STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated palette of white, black and steel-grey with deep red and muted gold accents, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
 
-DO NOT include: a single round eye; two lenses; a gas-mask helmet; camouflage; an armband with text; exposed skin; neon; logos of real brands; any existing game's exact character design.
+DO NOT include: a single round eye; two lenses; a gas-mask helmet; camouflage; any cloth armband; exposed skin; neon; logos of real brands; any existing game's exact character design.
 ```
 
 **Ordning:** O1 först, sedan O2 med O1 bifogad, så blir de samma styrka i olika rang.
