@@ -827,6 +827,35 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 4. Lägg till i DO NOT-raden: `the face of any person in the attached images`.
 5. Om ett referensark med kläder också innehåller ansikten (citizen-base, citizen-watch, citizen-cwu), skriv "clothing and markings only, not the face".
 
+### Regel: designationspatch (gäller alla enheter, Rev 2)
+
+Varje enhets designation står på en **sydd tygpatch** på **vänster axel/överarm, direkt ovanför armbandet**, aldrig direkt på tyget och aldrig på bröstet. Patchen har **alltid två rader**:
+
+```
+CCA.C<STAD>.D<DISTRIKT>
+<DIVISION>-<RANG>-<ID>
+```
+
+| Fält | Värde | Exempel |
+|---|---|---|
+| STAD | stadens nummer, utan inledande nolla | `C9`, `C17` |
+| DISTRIKT | distriktets nummer | `D5`, `D1` |
+| DIVISION | division i versaler | `UNION`, `HELIX`, `JURY`, `RAZOR`, `SPEAR`, `VECTOR`, `GRID`, `OA` |
+| RANG | rangkod exakt som i rangsystemet | `05`–`01`, `EpU`, `OfC`, `SqL`, `DvL`, `AdC`, `CmD`, `SeC` |
+| ID | fem siffror | `40337` |
+
+Exempel: `CCA.C9.D5` / `HELIX-OfC-40337`. En enhet från en annan stad: `CCA.C17.D3` / `UNION-02-11870`. Distriktet på armbandet ska matcha patchen (`C9:D5` ↔ `CCA.C9.D5`; en enhet från C17 bär `C17:D3`).
+
+**Storlek och utförande (enhetligt):**
+- Patchen är ett liggande rektangulärt tygstycke, ungefär **lika brett som armbandet är högt × 2**, med smal överkastsöm i samma mörka färg som jackan (mörk kolgrå på mörk jacka), hörnen lätt rundade.
+- Text i **kondenserad benvit stencil i versaler**, **samma teckenhöjd på båda raderna**: varje rad ungefär **hälften så hög som texten "C9:D5" på armbandet**. Raderna är vänsterställda, med ett litet mellanrum mellan dem. Inget annat på patchen: ingen logga, ingen ram i divisionsfärg.
+- Ledning (AdC och uppåt) använder samma patch men med **guld** text på svart.
+- VEIL: patchen finns men är täckt av en remsa svart tejp.
+
+**Promptrad** (byt bara värdena inom citattecken):
+`DESIGNATION PATCH: on the left upper arm, directly above the armband, a small sewn rectangular cloth patch in dark charcoal with a thin overlocked edge in the same colour, slightly rounded corners, about twice as wide as the armband is tall. On it, exactly two lines of condensed off-white stencil capitals, left-aligned, both lines the same letter height — each line about half the height of the "C9:D5" lettering on the armband: line one "CCA.C9.D5", line two "HELIX-OfC-40337". Nothing else on the patch.`
+Lägg till `the designation printed directly on the jacket or on one line` i DO NOT-raden.
+
 **Allmän regel för utrustningsrader:** varje föremål får en etikett direkt under sig, i liten benvit stencil på en gemensam baslinje. Föremålen står i en rak rad med jämna mellanrum och samma skala. Lista föremål och etikett parvis i prompten (`ITEM — "LABEL"`) och lägg till `unlabelled equipment` i DO NOT-raden. Detaljbilder får också korta etiketter. Promptrad:
 `EQUIPMENT ROW: the items stand in one straight row, evenly spaced, at the same scale, each on its own with clear space around it. Directly beneath EACH item, on the same baseline, a short label in small condensed off-white stencil capitals, spelled exactly as listed: [...]. Every item has exactly one label; no item without a label, no label without an item.`
 
@@ -836,7 +865,7 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 - Skriv "copy exactly the helmet/armband in the attached image" och bifoga en utklippt referens per detalj (`assets/img/ref/`).
 - Beskriv headsetet som en *rundad hörlurskåpa med kort stubbantenn*, strecken som *VERTICAL* och armbandet som ett *wraparound band, not a patch*.
 - Avsluta med en DO NOT-rad.
-- **Designation på axeln (kanon):** enhetens fullständiga designation stencilerad med små benvita bokstäver på **vänster axelpanel, direkt ovanför armbandet**. Distriktet på armbandet ska matcha designationen, så en D1-enhet bär `C9:D1`. Promptrad: `The stencilled designation "CCA.C9.D5-UNION-02-48151" in small off-white letters on the left shoulder panel, directly above the armband. Everything pressed, tight, regulation-perfect.`
+- **Designation på axeln (kanon, Rev 2): se "Regel: designationspatch" i avsnitt 0.** Patchen sitter på vänster axel, direkt ovanför armbandet, och har alltid två rader.
 
 ### Rook, Granite & the Tinker (Rev 3)
 
