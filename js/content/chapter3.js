@@ -105,7 +105,7 @@
         '@big CHAPTER THREE',
         '@sys ALL DIVISIONS · THE LONG NIGHT',
         'For three days the relay from City 17 has carried nothing but priority codes and static. Nobody in the precinct says the name of the city out loud. Everybody listens to the static.',
-        'On the fourth morning, transports come down over the river in the dark, one after another, and settle on the Nexus roof like crows on a wire.',
+        'On the fourth morning, Airwatch transports come down over the river in the dark, one after another, and settle on the Nexus roof like crows on a wire. Behind them, slower, two gunships with a cyan line across their noses. By noon the whole city has learned the sound of their rotors.',
         s.div === 'JURY' ? 'Level 4 hears it through the ceiling. The Magistrate stops writing for the first time you can remember.' : s.div === 'UNION' ? 'Granite watches them from the muster hall window with his mask in his hands.' : `Your ${s.div} squadron watches them from the yard, and nobody makes a joke about it.`,
         '@radio All C9 units. Sociostatus is declared. Overwatch assumes command authority as of 06:00. Report to the Nexus briefing hall by division.',
       ],
@@ -531,7 +531,7 @@
         return [
           '@img assets/img/env/e13-pumphouse.webp|Pump house 2, the spillway',
           'The day goes in briefings and checks of kit nobody needs to check. Nobody eats much.',
-          `At 21:40 you take your post at ${post(s)}. The relocation train is lit up in the D4 yards across the river like a long, patient animal. The Spire hums. The dam roars.`,
+          `At 21:40 you take your post at ${post(s)}. The relocation train is lit up in the D4 yards across the river like a long, patient animal. The Spire hums. The dam roars. High over the river a Shrike gunship circles, its searchlight sweeping the water, the spillway, your post, and moving on.`,
           s.c3.watched ? 'An Overwatch soldier takes position four metres behind you and does not move again. Your red sticker, it seems, has a body.' : null,
           intel >= 5
             ? 'Overwatch knows everything: the pump house, the hatch, the time. There are soldiers in the dark on both banks with their slits dimmed, waiting. Whoever comes through that door tonight is walking into a closed fist.'
@@ -559,7 +559,7 @@
     c3_hold: {
       text: (s) => [
         '@say You|Civil Protection! Drop it! *Drop it!*',
-        s.c3.intel >= 5 ? 'You barely finish the word before the far bank lights up. Overwatch was always going to do this part. Your part was to be standing here when it did.' : 'They do not drop it. Somebody fires first; it does not matter who. You go forward into it.',
+        s.c3.intel >= 5 ? 'You barely finish the word before the far bank lights up, and the Shrike drops out of the dark over the spillway with its chin turret already turning. Overwatch was always going to do this part. Your part was to be standing here when it did.' : 'They do not drop it. Somebody fires first; it does not matter who. You go forward into it.',
       ],
       choices: (s) => [
         {
@@ -593,7 +593,7 @@
       text: (s) => [
         'You turn and look at the river. You count. You make yourself count slowly.',
         s.c3.device === 'left' ? 'At four hundred, junction 7 goes off inside the dam with a sound like a door slamming in the next street, and every light in City 9 goes out at once.' : 'At five hundred and ten, the pump house shudders, and every light in City 9 goes out at once.',
-        'The Spire goes dark over the river for the first time since the war. Without its hum the dam sounds different: just water. Across the river, the forcefields at the D4 yards collapse with a sigh you can hear from here, and then there are torches running along the train, and doors opening, and people.',
+        'The Spire goes dark over the river for the first time since the war. Without its hum the dam sounds different: just water. The Shrike swings hard toward the yards, its searchlight the only light left in the city, and it is still turning when the fields fall. Across the river, the forcefields at the D4 yards collapse with a sigh you can hear from here, and then there are torches running along the train, and doors opening, and people.',
         'When the emergency lighting comes back, eleven minutes later, there is nobody on the spillway but you. The Overwatch soldiers on the far bank are moving toward the yards, too late.',
       ],
       choices: [{ t: 'Dawn.', fx: { res: 30, cons: 12, susp: 8 }, go: 'c3_5' }],
@@ -770,7 +770,7 @@
     c3_sweep_ow: { text: ['You step back. The squad leader steps forward. You do not watch. You hear it anyway.'], choices: [{ t: 'End of shift.', go: 'u_duty_end' }] },
     c3_sweep_r: {
       title: 'Curfew sweep — routine',
-      text: (s) => [pick(['Three hours of empty streets and closed shutters. The squad does not speak to you once.', 'A man is caught on a roof after curfew. The squad deals with him before you reach the ladder.', 'You find a lambda chalked on a ration hatch and scrub it off while the squad watches you scrub.']), s.susp >= 50 ? 'The squad leader keeps you in front of it the whole night, never behind.' : null],
+      text: (s) => [pick(['Three hours of empty streets and closed shutters. The squad does not speak to you once.', 'A man is caught on a roof after curfew. The squad deals with him before you reach the ladder.', 'You find a lambda chalked on a ration hatch and scrub it off while the squad watches you scrub.', 'A Shrike passes low over Bazaar Row. Every shutter on the street rattles. The squad does not look up, so neither do you.']), s.susp >= 50 ? 'The squad leader keeps you in front of it the whole night, never behind.' : null],
       choices: [{ t: 'End of shift.', fx: { merit: 2 }, go: 'u_duty_end' }],
     },
   });

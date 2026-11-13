@@ -8,6 +8,8 @@
     'Lambda graffiti on Bazaar Row, six new marks overnight. Somebody is getting brave. Make them less brave.',
     'Relocation train departs D4 at 18:00. Two hundred citizens. Expect families at the gates. Expect tears. Do not expect to care.',
     'Dispatch reports a power fault in Stack 9. Citizens will blame us. Let them, quietly.',
+    'Airwatch is flying the D3 canals tonight. If a searchlight finds you, stand still and show your armband. Do not wave. They do not wave back.',
+    'A scanner drone photographed three units smoking on a roof in D4 yesterday. Airwatch sent the pictures to JURY before it sent them to me. Don’t be on a roof.',
   ];
 
   /* pick today's duty offers */

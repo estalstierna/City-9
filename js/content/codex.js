@@ -125,6 +125,7 @@ G.addCodex({
     <p>Overwatch wears no cloth. Its markings are painted on armour: a hexagon cut by a glowing visor slit — cyan for infantry, red for elites, gold for command. Rank is counted in chevrons on the shoulder plate. Civil Protection units learn to read them from across a street, and to step aside.</p>
     <img src="assets/img/vehicle-ota.webp" alt="Overwatch assault transport" loading="lazy">
     <p>Overwatch moves in its own vehicles. The <b>OTA-T assault transport</b> is a Civil Protection PT-V hull rebuilt by the Union: composite armour grown over the old steel, a single visor slit across the cab, a remote pulse turret, six soldiers on a rear ramp. When one parks outside a precinct, the precinct is no longer in charge.</p>
+    <p>The sky belongs to <b>Airwatch</b>, the airborne branch of the OTA: scanner drones, transports and gunships.</p>
     <p>OSI recruitment is classified. Units who ask about it tend to be transferred somewhere quiet.</p>`,
   },
   codes: {
@@ -140,6 +141,7 @@ G.addCodex({
       <tr><td>10-91</td><td>Pick up / transport required</td></tr>
       <tr><td>11-99</td><td>Unit down</td></tr>
       <tr><td>CODE 3</td><td>Respond immediately</td></tr>
+      <tr><td>10-78 AIR</td><td>Unit requests Airwatch support (through Dispatch; rarely answered outside sociostatus)</td></tr>
       <tr><td>LAMBDA</td><td>Anticitizen activity / resistance sign</td></tr>
     </table>`,
   },
@@ -378,9 +380,25 @@ G.addCodex({
   },
 });
 
+G.addCodex({
+  airwatch: {
+    title: 'Airwatch',
+    body: `<p><b>Airwatch</b> is the airborne branch of the Overwatch Transhuman Arm. It owns the sky over every Union city: the scanner drones that photograph balconies, the transports that came down on the Nexus roof, and the gunships.</p>
+    <p>Its emblem is the Overwatch hexagon cut by a cyan visor slit, flanked by two swept rotor blades. It is painted on hulls and on the shoulder plates of aircrew, never sewn: Airwatch, like the rest of Overwatch, wears no cloth.</p>
+    <table>
+      <tr><td>Base</td><td>The Nexus roof pads, District 1. Two gunships and a transport flight have been stationed in City 9 since the transports arrived.</td></tr>
+      <tr><td>Gunship</td><td>The <b>Shrike</b>: a tandem two-seat armoured helicopter, pilot behind and above the gunner, with a chin turret, stub-wing rocket pods and a small rear bay that carries cargo, or six soldiers dropped onto a roof in under a minute.</td></tr>
+      <tr><td>Hull codes</td><td>AW-S 09-1 and AW-S 09-2. Citizens can tell them apart by sound. Units are not supposed to try.</td></tr>
+      <tr><td>Aircrew</td><td>Transhuman, sealed into flight armour, plugged into the airframe through the back of the helmet. No Civil Protection unit has seen one outside a cockpit.</td></tr>
+      <tr><td>Requests</td><td>Civil Protection cannot task Airwatch. A unit may request air support through Dispatch with code 10-78 AIR. Outside a sociostatus, the request is logged and almost never answered.</td></tr>
+    </table>
+    <p>Under sociostatus Airwatch flies the curfew. A Shrike's searchlight can read a CID label from two hundred metres. Citizens in the Stacks call the sound of its rotors <i>the knock</i>, because it always comes before one.</p>`,
+  },
+});
+
 G.CODEX_GROUPS = [
   { title: 'City 9', ids: ['city9', 'spire', 'citizens', 'resistance'] },
-  { title: 'The Universal Union', ids: ['union', 'overwatch', 'sociostatus', 'biosignal'] },
+  { title: 'The Universal Union', ids: ['union', 'overwatch', 'airwatch', 'sociostatus', 'biosignal'] },
   { title: 'Civil Protection', ids: ['cca', 'designation', 'hierarchy', 'divisions', 'colours', 'uniforms', 'equipment', 'vehicles'] },
   { title: 'Divisions', ids: ['helix', 'jury', 'vector', 'grid', 'veil'] },
   { title: 'Law', ids: ['crimes', 'contraband', 'verdicts'] },

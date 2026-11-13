@@ -1806,6 +1806,18 @@ Egen design. Förlagan (spelmodellen) bifogas **inte**, så att den inte kopiera
 
 Full prompt-text finns i chatthistoriken (2026-11-13).
 
+## 5m. AIRWATCH (Overwatch, luftburen gren)
+
+Egen design. Förlagan (spelmodellen) bifogas **inte**. Airwatch bär inget tyg: alla märken är målade på pansar och skrov. Emblem: Overwatch-hexagonen med cyan visirslits, flankerad av två bakåtsvepta rotorblad.
+
+| Bild | Fil i spelet | Bifoga i ordning | Märkning |
+|---|---|---|---|
+| A1 Airwatch-emblem och märkning | `airwatch-insignia.jpg` · emblem → `emblems/airwatch.png` | 1 ota-insignia · 2 vehicle-ota | hexagon + visirslits + två rotorblad; stjärtfena-märke; skulderplatta för besättning |
+| A2 Airwatch-besättning (pilot och skytt) | `airwatch-crew.jpg` | 1 ota-soldier · 2 A1 | förseglad flygrustning, navelsträng i hjälmens nacke, chevroner på skulderplattan |
+| A3 Shrike-gunship | `airwatch-shrike.jpg` | 1 vehicle-ota · 2 A1 · 3 A2 · 4 env/e01-city | tandem pilot/skytt, koaxiala rotorer, hakturret, raketkapslar, litet lastutrymme för 6, "AW-S 09-2" |
+
+Lore: codex-posten "airwatch" (The Universal Union). Shrike är baserad på Nexus tak; koden 10-78 AIR; medborgarna kallar rotorljudet "the knock". Full prompt-text finns i chatthistoriken (2026-11-13).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

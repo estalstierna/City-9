@@ -52,6 +52,8 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 
 6. **Chapter 3, "The Long Night"** (all divisions, one grade up): City 17 goes quiet on the relay and Overwatch declares sociostatus in City 9 under Field Commander *Vigil* and Task Force LOCK. The canal cells plan one night without the dam conduit, to drop the forcefields at the D4 yards and stop a relocation train. Stages: the briefing; an evening approach by your canal contact (Ilse, the Tinker or Katya, depending on your history), whom you can help, ignore or report; a division assignment (UNION raid under an Overwatch lens, JURY courier interrogation, HELIX triage at a bombed RDT, RAZOR forged card on the dam crest, SPEAR chalk route in the drains, VECTOR family in an infested culvert, GRID device on the Spire conduit); a biosignal screening that can put an Overwatch soldier at your shoulder; the night itself (hold, look away, fire a false flare, or leave your post for Mira); and the morning after, which can include a one-in-ten reprisal at Plaza 5. Under sociostatus there is a curfew-sweep duty with Overwatch. The intel you gather across the chapter decides how ready Overwatch is on the night.
 
+7. **Airwatch** (the airborne branch of Overwatch) runs through the whole game: a gunship over the first sociostatus, a searchlight over the rail-yard sweeps, a Shrike holding station over relocation day, transports and gunships on the Nexus roof in chapter 3 and the Shrike over the spillway on the long night. Codex entry *Airwatch*; radio code 10-78 AIR. Hooks live in `js/content/airwatch.js`.
+
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
 ## Art
