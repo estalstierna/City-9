@@ -819,6 +819,13 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 
 **Tips:** kör Mira först. Bifoga sedan hennes porträtt som stilreferens (inte karaktärsreferens) till de andra tre, så får de samma ljus och bakgrund. Tomas är den enda som ler. Det är medvetet, så be modellen hålla fast vid det om den gör honom allvarlig.
 
+**Allmän regel för unika ansikten (gäller alla karaktärsporträtt utan mask):**
+1. Bifoga **aldrig ett ansikte som stilreferens**. Använd ett **maskerat porträtt** (Granite, Rook eller Thirty) för ljus, bakgrund och utsnitt. Bifoga ett ansikte bara när det ska vara *samma person*.
+2. Ta alltid med stilraden: `Use the attached portrait ONLY for lighting, framing, background and rendering style. Do NOT copy any face, hair, age, gender, expression or clothing from it. This is a completely different person.`
+3. Skriv en **fingeravtrycksrad** med minst sex konkreta drag, varav två ovanliga: ansiktsform, näsa, ögon (färg, form, avstånd), hud och ursprung (variera), ett kännetecken (ärr, födelsemärke, glugg, utstående öron) samt hår och skägg.
+4. Lägg till i DO NOT-raden: `the face of any person in the attached images`.
+5. Om ett referensark med kläder också innehåller ansikten (citizen-base, citizen-watch, citizen-cwu), skriv "clothing and markings only, not the face".
+
 **Allmän regel för siffror och koder:** skriv varje kod direkt i beskrivningen av den person eller det föremål den tillhör, inte i en gemensam lista, och avsluta med "Check every digit: …".
 
 **Allmän regel för enhetsporträtt:**
@@ -969,7 +976,7 @@ DO NOT include: armour, gas masks, weapons, police armbands, bright safety yello
 
 ### CWU-porträtt
 
-Samma ID-fotouppställning som övriga porträtt. **Bifoga:** 1 `portraits/mira.jpg` (stil, ljus och bakgrund) · 2 `citizen-cwu.jpg` (CWU-jackan, märket och etiketten).
+Samma ID-fotouppställning som övriga porträtt. **Bifoga:** 1 `portraits/granite.jpg` (bara stil, ljus och bakgrund, se regeln för unika ansikten) · 2 `citizen-cwu.jpg` (CWU-jackan, märket och etiketten).
 
 **Mall: valfri CWU-medborgare** (byt ut [hakparenteserna])
 ```
@@ -1763,8 +1770,8 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 |---|---|---|
 | K1 Wick | ref/02-helmet, armbands, portraits/rook | CCA.C9.D5-UNION-05-61207, 1 streck, ny och oskadad |
 | K2 Vesna | ref/02-helmet, ref/armband-jury, ref/02-armband, uniform-jury, portraits/magistrate | CCA.C9.D5-JURY-02-30961, 4 streck, ingen rand |
-| K3 Halvorsen | portraits/mira, citizen-cwu | CID 47715, CWU-arbetarmärke |
-| K4 Lida Koval | portraits/mira, citizen-watch | CID 58210 med OBS-rand, övervakningsband, röd sjalett |
+| K3 Halvorsen | portraits/granite (stil), citizen-cwu | CID 47715, CWU-arbetarmärke |
+| K4 Lida Koval | portraits/granite (stil), citizen-watch | CID 58210 med OBS-rand, övervakningsband, röd sjalett |
 | E17 Magistratens kontor | portraits/magistrate, env/e07-level4 | |
 | E18 Relokeringståget | ref/ota-elite-front, citizen-base, uniform-union, env/e12-railyard | |
 | E19 Nexus-taket | K2, ref/spire-context, env/e15-roof | |
