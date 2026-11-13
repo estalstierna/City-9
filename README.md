@@ -88,6 +88,17 @@ js/content/systems.js discipline, promotion boards, subtle signs (hooks into exi
 js/content/raids.js   apartment raids, incident reports, informants
 ```
 
+Tests (Playwright with Chromium):
+
+```
+npm install && npx playwright install chromium
+npm test              # full suite, a few minutes
+npm run test:quick    # about a minute
+node tests/run.js --only=saves   # one suite by name
+```
+
+The suite checks that every scene, check and duty target exists, every image the code names is on disk, the service worker caches every script, and then plays the game at random: a new character through chapter 1, the service loop with raids, reports, informants, boards and discipline, both chapter 2 arcs, the document minigame on phone and desktop, and save export/import plus loading an older save. Run it before every push.
+
 Scenes are plain objects:
 
 ```js

@@ -1,0 +1,12 @@
+{
+  "name": "city-9",
+  "private": true,
+  "description": "City 9 // Civil Protection: a text RP game. No build step; the game runs straight from index.html.",
+  "scripts": {
+    "test": "node tests/run.js",
+    "test:quick": "node tests/run.js --quick"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}
