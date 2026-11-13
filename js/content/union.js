@@ -76,18 +76,18 @@
         if (b) return b;
       },
       text: (s) => {
-        const promo = G.PROMO[s.rank];
+        const promo = G.promoFor(s);
         return [
           '@say Granite|' + s.mem.brief,
           s.hp < 50 ? 'Your ribs ache under the vest. Rook watches you strap it on and says nothing, which from Rook is concern.' : null,
           promo && s.merit >= promo.merit && !s.flags['passed_' + promo.next]
-            ? `@sys Your merit qualifies you for the ${promo.next} field evaluation. Request it from Granite when you are ready.`
+            ? `@sys Your merit qualifies you for promotion to ${promo.next}. Request it when you are ready.`
             : null,
           '@sys Choose today\'s duty.',
         ];
       },
       choices: (s) => {
-        const promo = G.PROMO[s.rank];
+        const promo = G.promoFor(s);
         const list = s.duty.offers.map((k) => {
           const d = G.duties[k];
           const isNew = !s.duty.done[k];
@@ -104,7 +104,7 @@
           };
         });
         if (promo && s.merit >= promo.merit) {
-          list.unshift({ t: `**Request your ${promo.next} field evaluation from Granite.**`, tag: 'EVALUATION', tagCls: 'loyal', go: 'exam_' + promo.next });
+          list.unshift({ t: `**Request your ${promo.next} ${G.promoRoute && G.promoRoute(s) === 'pb_start' ? 'promotion board' : 'field evaluation'}.**`, tag: 'EVALUATION', tagCls: 'loyal', go: (st) => (G.promoRoute ? G.promoRoute(st) : 'exam_' + promo.next) });
         }
         return list;
       },

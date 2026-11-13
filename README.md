@@ -30,6 +30,12 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Law | Verdict boxes in scenes cite the crime level and penalty (points, detainment cycles). At 20 penalty points a citizen is amputated. Full tables are in the Codex. |
 | Stop & search | Routine duties offer a search. A random citizen (standard, OBS, CWU or commended) is scanned, searched and questioned with skill checks, then you pass a verdict by the crime table. Penalty points are saved per CID in **Case files** in the Dossier; citizens can turn up again, and at 20 points or any Level 7 violation the verdict is amputation. |
 | Document inspection | A minigame that replaces the dice roll at Canal Gate 3. Compare an ID card and transit permit against the cycle's bulletin (valid stamp, OBS and CWU rules). Tap the faulty field and deny, or approve. Perception adds time and, from level 3, a hint. Routine checkpoint shifts have a timed three-citizen queue. "Let instinct decide" falls back to a skill roll. Engine: any scene can declare `mini: { type, opts, pass, fail, skill }`. |
+| Discipline | Mistakes put strikes on your service record: MINOR (1) or SERIOUS (2). One strike is a verbal warning, two a written reprimand, three a demotion by one grade with probation and a **final warning**. Three more after that, or a single GRAVE act (helping an anticitizen escape and getting caught), go to a JURY tribunal: *Deserviced*, stripped back to an OBS citizen, or executed for collaboration. A clean first offence can plead once. Strikes expire after eight clean days. Hearings happen at morning muster. |
+| Promotion board | Required before the 03 field evaluation, for 02 → 01 and 01 → EpU, and to win back a grade lost to demotion. Five written questions on codes, law and ranks, then three oral questions built from your own file (discipline, amputations, report audits, unregistered assets). Merit surplus helps; strikes, final warnings, demotions and a hidden JURY annotation (high suspicion) hurt. Pass at 5. A failed board can be retaken after three days. |
+| Apartment raids | A duty from day 2, and the result of informant tips. Enter by procedure (the occupant may flush evidence), breach (fast and loud), or quietly with the warden's key (tips only). Limited minutes on site: search spots (perception), question the occupant for a hunch, or toss the flat (finds everything, costs conscience). Complications: children, a bedridden elder, a watching neighbour. A concealed person can be detained, amputated, or let out of the window, which is a GRAVE risk if your partner sees it. |
+| Incident reports | After raids and after stops with findings. The slate pre-fills the report from your lens log; strike lines, add embellishments ("subject resisted": +5 points to the citizen and merit for you) or confess. JURY audits reports later against the footage, your partner (who protects you more the better you get on) and the citizen. You are never told which report was checked; a discrepancy turns up days later at a hearing. |
+| Informants | Turn a citizen with a chargeable violation into an asset, during a stop or a raid. Registered assets earn merit but their names leak; off-book assets are against regulation. Meet them in the evening: pay, lean on them, or ask what the street says about you. Their tips appear on the duty board as raids. Reliability is hidden, and you only see a ✓/✗ record. Some assets are resistance plants: their tips are traps, or, if the resistance trusts you, messages. Assets can be burned or killed after raids. |
+| Subtle signs | Suspicion stays hidden. As it rises, the morning and evening text starts to notice things: a turned locker latch, a partner going quiet, a JURY unit facing your table, a footage upload that doesn't go to Dispatch. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
 ## Structure (Chapter 1)
@@ -75,6 +81,11 @@ js/content/training.js
 js/content/union.js   duty loop, evenings, Mira, infirmary, endings
 js/content/duties.js  the seven duties
 js/content/beats.js   story beats, evaluations, division select
+js/content/search.js  stop & search, case files
+js/content/docs-game.js  document inspection minigame
+js/content/chapter2.js   UNION and JURY arcs, interrogation
+js/content/systems.js discipline, promotion boards, subtle signs (hooks into existing scenes)
+js/content/raids.js   apartment raids, incident reports, informants
 ```
 
 Scenes are plain objects:

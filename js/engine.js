@@ -52,6 +52,14 @@
     '04': { next: '03', merit: 60 },
   };
 
+  /* the promotion that is open to this unit right now, or null (systems.js adds boards and probation) */
+  G.promoFor = (s) => {
+    const p = G.PROMO[s.rank];
+    if (!p || (p.if && !p.if(s))) return null;
+    if (G.promoBlocked && G.promoBlocked(s)) return null;
+    return p;
+  };
+
   G.ITEMS = {
     leaflet: { name: 'Rebel leaflet', desc: 'A hand-printed sheet with a lambda in the corner. Seditious print.', contraband: true, grade: 'red' },
     drawing: { name: "Mira's drawing", desc: 'A ration wrapper with a pencil sketch on the inside: two kids on a rooftop, looking at a sky with no Citadel in it.' },
@@ -229,6 +237,9 @@
   };
 
   G.promote = (s, rank) => {
+    /* never jump more than one grade (a demoted unit climbs back one step at a time) */
+    const cur = G.rankIdx(s.rank);
+    if (G.rankIdx(rank) > cur + 1 && cur >= 1) rank = G.RANKS[cur + 1];
     s.rank = rank;
     s.flags['exam_' + rank] = false;
     note(`PROMOTED → ${G.RANK_NAMES[rank].toUpperCase()}`, 'promo');
@@ -567,7 +578,7 @@
     $('#tb-desig').textContent = inGame && S.phase !== 'creation' && S.phase !== 'prologue' ? G.desig(S) : !inGame || S.phase === 'creation' ? 'CITIZEN TERMINAL' : `CITIZEN ${S.name.toUpperCase()} // D5`;
     $('#tb-time').textContent = S.phase === 'union' ? `DAY ${S.day} · ${S.time.toUpperCase()}` : S.phase === 'training' ? `TRAINING · WEEK ${Math.min(4, S.bt.count + 1)}` : S.time.toUpperCase();
 
-    const promo = G.PROMO[S.rank];
+    const promo = G.PROMO[S.rank] && (!G.PROMO[S.rank].if || G.PROMO[S.rank].if(S)) ? G.PROMO[S.rank] : null;
     const meritLine = promo
       ? `<div class="bar"><span style="width:${clamp((S.merit / promo.merit) * 100, 0, 100)}%"></span></div><div class="sub">${S.merit} / ${promo.merit} toward ${promo.next} evaluation</div>`
       : `<div class="sub">${S.merit} merit</div>`;
