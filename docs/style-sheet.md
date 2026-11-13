@@ -1168,6 +1168,50 @@ DO NOT include: neon, readable text, logos of real brands, characters from exist
 
 ---
 
+## 5f. CITADELLET I CITY 09, referensark
+
+Ett eget torn för City 09 i samma formspråk som genren: ett mörkt monolitiskt blad med plattor i lager, en exponerad kärna och hängande kablar. Det kopierar inte spelets torn. Kännetecken: kronan delar sig i ett V (CCA-chevronen), tornet matas från dammen, det är inslaget genom den gamla katedralen, kärnan lyser cyan och höjden är cirka 2 400 m.
+
+**Format:** 16:9. **Bifoga:** 1 `flag-city09.jpg` · 2 `master-a.jpg` · 3 E01 (när den finns). Bifoga *inte* spelskärmdumpar eller andras fanart som referens, eftersom resultatet då blir en kopia.
+
+```
+A single wide architectural concept reference sheet for a colossal alien tower that dominates "City 09", an occupied Eastern-European river city. Presented like a production design art-bible page: clean modular grid, thin ruled borders, weathered warm-grey paper, numbered panel headers and short technical callouts in condensed off-white stencil type. Match the style and typography of the SECOND attached image. The spire shown in the FIRST attached image (the city flag) is a simplified symbol of this tower.
+
+TITLE BANNER across the top on a charcoal strip: "CITY 09 — THE SPIRE — STRUCTURAL REFERENCE", thin cyan rule beneath.
+
+THE TOWER (design rules, consistent in every panel):
+- A sheer, monolithic, blade-like tower of dark gunmetal-blue alien alloy with a faint oily sheen, roughly 2,400 metres tall, impossibly thin for its height.
+- Built from tall flat layered plates and slabs stacked and offset against each other, some overhanging, with thin vertical rods and broken conduits hanging from their lower edges like icicles.
+- Two-thirds of the way up, the outer plates part to reveal an exposed mechanical core: stacked ribbed rings, gantries and vertical shafts glowing a cold pale CYAN (#5FC8DD) from within.
+- The CROWN splits into two tall sharp prongs leaning slightly apart, forming a downward-pointing V shape in silhouette, with a small dark circular void hovering between them.
+- Thin service ladders and small cantilevered platforms run up one edge.
+- Dozens of enormous black cables hang in long sagging curves from the upper sections down into the city on all sides.
+- At its base it has been driven straight through an old cathedral: fragments of a gothic nave, a broken bell tower and stone buttresses are fused into and crushed by the alloy foundation.
+- Massive armoured power conduits run from the base across the river to the five arches of a concrete hydroelectric dam, glowing cyan at their joints.
+
+PANELS:
+01 "FRONT ELEVATION" (left, full sheet height): the entire tower from base to crown, orthographic, with a vertical height scale on the left edge marked every 100 metres from 0 to 2,500, and horizontal rules at 600, 1,200, 1,800 and 2,400 m labelled "BASE", "LOWER SPINE", "CORE", "CROWN".
+02 "SIDE ELEVATION": the same tower from the side, showing how thin the blade is and how the plates overlap in depth.
+03 "PLAN VIEW": the footprint from above — an elongated, slightly asymmetric blade shape with cables radiating outward like spokes, the cathedral ruins and the river with its dam marked.
+04 "BASE — CATHEDRAL": close-up of the foundation swallowing the gothic cathedral, cable anchors, guard platforms, a tiny line of figures at a checkpoint for scale.
+05 "CORE": close-up of the exposed glowing cyan core between the split plates, ribbed rings and gantries, a small aircraft silhouette for scale.
+06 "CROWN": close-up of the two V-prongs with the hovering dark circular void between them, faint lightning in the clouds around it.
+07 "IN CONTEXT": a small painted view from street level among grey Soviet-era apartment blocks at dawn, the tower rising through low cloud, its top lost in a slowly turning storm, cables sagging over the rooftops, birds circling.
+08 "SCALE": the tower beside small silhouettes of City 09's own buildings at the same scale — a 12-storey apartment block labelled "STACK 14", a columned courthouse labelled "NEXUS", the dam labelled "DAM" — all tiny at the foot of the tower.
+
+FOOTER: palette swatches labelled — #2A3542 ALLOY, #1B2226 SHADOW, #5FC8DD CORE CYAN, #8A9399 CATHEDRAL STONE — and the small note "SPIRE REF — REV 1".
+
+ACCURACY: the tower design must be identical in every panel. Keep all labels exactly as written.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey and gunmetal-blue palette with sharp cyan accents, atmospheric haze, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+
+DO NOT include: green light, a flat rectangular top, real-world skyscrapers, the words "Citadel" or "City 17", any existing game's exact tower design, neon signs, logos.
+```
+
+När tornet är klart: bifoga panel 01 i alla miljöprompter där tornet syns (E01, E02, E12, E15).
+
+---
+
 ## 6. PROMPT 4: ARMBAND (sex varianter)
 
 ```
