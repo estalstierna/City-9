@@ -8,7 +8,7 @@
   const pick = (a) => a[Math.floor(Math.random() * a.length)];
   const DIVS = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
 
-  G.PEOPLE.vigil = { name: '"Vigil"', role: 'OA CmD · Task Force LOCK', img: null };
+  G.PEOPLE.vigil = { name: '"Vigil"', role: 'OA CmD · Task Force LOCK', img: 'vigil' };
   G.PEOPLE.katya = G.PEOPLE.katya || { name: 'Katya', role: 'Canal Quarter', img: 'katya' };
   G.PEOPLE.tinker = G.PEOPLE.tinker || { name: 'The Tinker', role: 'Repairman · Bazaar Row', img: 'tinker' };
   G.PEOPLE.ilse = G.PEOPLE.ilse || { name: 'Ilse Marek', role: 'Fellow recruit', img: 'ilse' };
@@ -114,11 +114,15 @@
 
     c3_0: {
       title: 'The Nexus — briefing hall',
+      enter: (s) => {
+        if (s.rel.vigil === undefined) s.rel.vigil = 0;
+      },
       text: (s) => [
         '@img assets/img/env/e04-nexus.webp|The Nexus',
         'Every division in City 9 is in the hall at once, which you have never seen: the white bands of HELIX, the gold of RAZOR, crimson, orange, chemical green, copper. And along the back wall, not in rows, not at ease, a squad of Overwatch soldiers in grey armour with a single cyan slit for a face.',
         '@img assets/img/ota-soldier.webp|Overwatch infantry, C9 deployment',
         'On the platform stands a unit you have only seen in photographs. Graphite mask with a gold crest. A black armband trimmed in gold: one wide gold bar, two gold stars. **CCA.C9.D1-OA-CmD-00417.** The Academy calls the Field Commander *Vigil*, because nobody has ever seen the Commander sleep.',
+        '@portrait assets/img/portraits/vigil.webp|CCA.C9.D1-OA-CmD-00417 — "Vigil"',
         '@say Vigil|You will have heard rumours about City 17. Forget them. City 17 is not your concern. *This* city is. When one city coughs, the Union checks the others for fever.',
         '@say Vigil|The canal cells have a phrase on their frequencies this week: *the long night*. They intend one night without power. We intend that they do not get it. You are Task Force LOCK. Every division. One chain of command, and at the top of it, until sociostatus is lifted, Overwatch.',
         `@sys Your division’s post on the night: **${post(s)}**.`,
@@ -140,7 +144,7 @@
     },
     c3_0_bold: {
       text: ['A murmur, cut off. Vigil walks to the edge of the platform and looks down at you for a long time.', '@say Vigil|Because Overwatch cannot tell a frightened citizen from a guilty one. You can. For now. Name and designation, Protection Unit — no. I see it. I will remember it.', 'After the briefing, a gold-banded RAZOR aide finds you in the corridor and tells you the Commander has asked for your file. In a good way, the aide thinks. Probably.'],
-      choices: [{ t: 'Muster.', fx: adv(0, { merit: 3, flag: { vigil_noticed: true } }), go: 'c3_0_end' }],
+      choices: [{ t: 'Muster.', fx: adv(0, { merit: 3, flag: { vigil_noticed: true }, rel: { vigil: 15 } }), go: 'c3_0_end' }],
     },
     c3_0_bold_bad: {
       text: ['The hall goes silent in a way that has weight. Vigil says nothing at all. Two Overwatch soldiers detach from the back wall, walk the length of the hall, and stand behind you for the rest of the briefing.', 'They do not touch you. They do not need to.'],
@@ -336,6 +340,7 @@
     c3_razor: {
       title: 'The dam crest — hardpoint',
       text: [
+        '@img assets/img/env/e21-damcrest.webp|The dam crest, broadcast at dawn',
         'The Administrator records a broadcast on the dam crest at dawn: the river behind, the Spire in the distance, a message to the city about *gratitude*. RAZOR holds the hardpoint.',
         'In the gold-banded line beside you stands an 03 from your own squadron, Sallow. His access card, clipped to his vest, is the wrong shade of white by a hair. You have stared at enough cards at Canal Gate 3 to know what a forged laminate looks like.',
       ],
@@ -419,6 +424,7 @@
     c3_grid: {
       title: 'Conduit junction 7 — inside the dam',
       text: [
+        '@img assets/img/env/e20-junction.webp|Junction 7',
         'Junction 7 is a vault inside the dam where the conduit to the Spire crosses the river: a trunk of cable as thick as a tram, humming so loudly you feel it in your teeth. GRID inspects it every week. This week, Overwatch watches the inspection.',
         'Behind an access panel, taped to the cable sheath where only an engineer would look, you find a flat grey box with a clock in it, and a wire, and very neat soldering. Somebody with burned fingertips did that soldering.',
       ],
@@ -679,7 +685,7 @@
     },
     c3_rep_spared: {
       text: ['The plaza waits. Vigil comes down the cinema steps, one at a time, and stands beside you, and looks at the rows.', '@say Vigil|Proportional. Yes. The Protection Unit is correct. The reprisal is administered to the pump house crew already in custody, and to no one in this plaza.', 'The Overwatch soldier clicks something long. Vigil does not answer it. The citizens are sent home. Many of them look back at you on the way out. You do not know what their faces mean.'],
-      choices: [{ t: 'Report to the Commander.', fx: { cons: 10, merit: 2, susp: 6, flag: { vigil_noticed: true } }, go: 'c3_6' }],
+      choices: [{ t: 'Report to the Commander.', fx: { cons: 10, merit: 2, susp: 6, flag: { vigil_noticed: true }, rel: { vigil: 10 } }, go: 'c3_6' }],
     },
     c3_rep_overruled: {
       text: ['Vigil does not move from the cinema steps. The Overwatch soldier puts a gauntlet on your shoulder and turns you back to the rows.', 'Another unit does the choosing. You stand beside it, because you were ordered to.'],
@@ -706,6 +712,7 @@
         const r = s.c3.result;
         return [
           'Vigil’s office is on the top floor of the Nexus and has no chair for visitors. The Commander stands at a window that looks at the Spire.',
+          '@portrait assets/img/portraits/vigil.webp|Field Commander Vigil',
           r === 'held'
             ? '@say Vigil|You stood where you were put and did what you were for. Overwatch has noted it. So have I. Those are not the same thing.'
             : r === 'open'

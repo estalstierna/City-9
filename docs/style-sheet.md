@@ -1790,7 +1790,7 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 | E20 Kopplingsrum 7 | `env/e20-junction.jpg` | 1 uniform-grid · 2 spire-ref · 3 env/e01-city | |
 | E21 Dammkrönet i gryningen | `env/e21-damcrest.jpg` | 1 env/e01-city · 2 uniform-razor · 3 ota-soldier · 4 flag-city09 | |
 
-Full prompt-text finns i chatthistoriken (2026-11-13). Vigil är kommandogrupp: svart armband med guldkant, grafitgrå hjälm med guldrand och guldringar runt linserna, aldrig divisionsfärg.
+**Klara (2026-11-13):** K5, E20 och E21 är genererade och inlagda. Full prompt-text finns i chatthistoriken. Vigil är kommandogrupp: svart armband med guldkant, grafitgrå hjälm med guldrand och guldringar runt linserna, aldrig divisionsfärg.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
