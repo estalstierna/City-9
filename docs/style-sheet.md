@@ -1612,6 +1612,86 @@ DO NOT include: a single round eye; two lenses; a gas-mask helmet; camouflage; c
 
 ---
 
+## 5h. DOKUMENTMALLAR & ID-FOTON (minispel: dokumentgranskning)
+
+Bildmodellen gör **tomma mallar**, och spelet lägger text, siffror, stämpel och streckkod ovanpå. Layouten anges i procent så att fälten hamnar rätt. Tolv ID-foton används i stället för ett generiskt ansikte, så att felet "fel foto" går att se.
+
+**Fotonas egenskaper (kanon för minispelet):**
+| # | Kön | Ålder | Drag |
+|---|---|---|---|
+| 1 | man | 30-tal | kort mörkt hår |
+| 2 | man | 50-tal | grått hår, glasögon |
+| 3 | man | 20-tal | ljust hår |
+| 4 | man | 40-tal | rakat huvud, ärr på kinden |
+| 5 | man | 60-tal | flintskallig, vit skäggstubb, glasögon |
+| 6 | man | 30-tal | mörkt hår, helskägg |
+| 7 | kvinna | 20-tal | mörkt uppsatt hår |
+| 8 | kvinna | 40-tal | grå knut, glasögon |
+| 9 | kvinna | 30-tal | kort ljust hår |
+| 10 | kvinna | 50-tal | mörkt hår, grå sjalett |
+| 11 | kvinna | 60-tal | kort vitt hår, ärr på hakan |
+| 12 | kvinna | 20-tal | rödbrun fläta |
+
+### D1 ID-kort, tom mall (3:2) · bifoga: citizen-base, master-a
+```
+A single flat, perfectly top-down product photo of a BLANK laminated citizen identity card for a dystopian occupied city, filling the whole frame edge to edge on no background (the card IS the image), 3:2 landscape, high resolution, even soft lighting, no perspective, no shadow, no hands.
+
+CARD DESIGN: off-white to pale cream security card stock with a faint guilloche line pattern and a very faint large watermark of a downward-pointing V-chevron with a circle in its notch in the centre. Rounded corners. A thin glossy laminate sheen.
+
+EXACT LAYOUT (measured as % of the card width and height, from the top-left corner):
+- HEADER STRIP: full width, from 0% to 14% height, solid dark slate-blue (#26394A), completely EMPTY — no text.
+- PHOTO BOX: x 4%–30%, y 20%–82%: an empty rectangular frame with a thin dark border and a plain light-grey fill, nothing inside it.
+- FOUR FIELD BOXES on the right, x 35%–96%, stacked, each a thin-ruled empty box with a tiny blank label strip at its top-left:
+  box 1 y 20%–33%, box 2 y 36%–49%, box 3 y 52%–65%, box 4 y 68%–81%.
+- BARCODE ZONE: x 35%–96%, y 85%–94%: an empty white strip with a thin border.
+- STATUS STRIP: full width, y 95%–100%, plain mid-grey, empty.
+- A small iridescent holographic square seal at x 22%–30%, y 84%–94%, with a tiny chevron emblem embossed in it.
+
+Leave EVERY box, label strip and strip completely blank — no letters, no numbers, no placeholder text, no barcode lines, no face. Only the printed frame, rules, pattern, watermark and hologram.
+
+STYLE: realistic product photograph of a worn but intact document, faint scuffs on the laminate, desaturated palette of cream, slate-blue and grey, crisp sharp edges.
+
+DO NOT include: any text or numbers; a face or silhouette; logos of real brands or real countries; a perspective angle; a background surface.
+```
+
+### D2 Transittillstånd, tom mall (3:2) · bifoga: D1-bilden
+```
+A single flat, perfectly top-down photo of a BLANK printed transit permit form for checkpoints in a dystopian occupied city, filling the whole frame edge to edge on no background, 3:2 landscape, high resolution, even soft lighting, no perspective, no shadow, no hands. It belongs to the same document system as the attached identity card: same palette, same thin rules, same chevron watermark.
+
+PAPER: thin grey-green recycled paper, slightly creased once across the middle, a perforated tear-off edge along the left side, faint coffee-ring stain in one corner, a very faint large chevron watermark.
+
+EXACT LAYOUT (% of width and height from top-left):
+- HEADER: full width, y 0%–13%, a solid charcoal band, completely EMPTY.
+- THREE FIELD BOXES on the left half, x 6%–58%, each a thin-ruled empty box with a tiny blank label strip at its top-left:
+  box 1 y 20%–38%, box 2 y 42%–60%, box 3 y 64%–82%.
+- STAMP AREA on the right, x 64%–94%, y 22%–80%: an empty dotted-outline square where an official stamp would go, nothing inside it.
+- FOOTER LINE: x 6%–94%, y 88%–95%: a single empty signature rule.
+
+Leave every box, strip, stamp area and line completely blank — no letters, no numbers, no stamp, no signature.
+
+STYLE: realistic document photograph, desaturated grey-green, slate and charcoal palette, crisp edges, subtle paper texture.
+
+DO NOT include: any text or numbers; a stamp; a photo; logos of real brands or real countries; a perspective angle; a background surface.
+```
+
+### D3 Tolv ID-foton (4:3) · bifoga: portraits/mira, citizen-base
+```
+A contact sheet of TWELVE identity-card photographs arranged in a strict grid of 4 columns × 3 rows on a pure white background, every photo exactly the same size, separated by equal white gaps, no borders, no text, no numbers.
+
+EVERY PHOTO: head-and-shoulders, facing the camera straight on, neutral unsmiling expression, plain flat light-grey background, flat cold registration-booth lighting from slightly above, exactly the same framing and scale, wearing the faded blue-teal citizen work jacket with a mandarin collar from the SECOND attached image. Painterly-realistic style and lighting matching the FIRST attached image. Ordinary, believable, slightly undernourished faces, no makeup.
+
+THE TWELVE PEOPLE, left to right, top to bottom:
+Row 1: 1) man, early 30s, short dark hair, clean-shaven. 2) man, mid 50s, grey hair, round wire glasses. 3) man, early 20s, fair hair, thin face. 4) man, 40s, shaved head, a pale scar across his left cheek.
+Row 2: 5) man, 60s, bald with white stubble, thick black glasses. 6) man, late 30s, dark hair, full dark beard. 7) woman, early 20s, dark hair tied back. 8) woman, 40s, grey hair in a bun, glasses.
+Row 3: 9) woman, early 30s, short fair hair. 10) woman, 50s, dark hair under a grey headscarf. 11) woman, 60s, short white hair, a scar on her chin. 12) woman, mid 20s, red-brown hair in a braid over one shoulder.
+
+All twelve must be clearly different people.
+
+DO NOT include: text, numbers, labels, ID labels on the jackets, smiles, makeup, uniforms, helmets, borders around photos.
+```
+
+---
+
 ## 6. PROMPT 4: ARMBAND (sex varianter)
 
 ```
