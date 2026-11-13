@@ -856,6 +856,8 @@ Exempel: `CCA.C9.D5` / `HELIX-OfC-40337`. En enhet från en annan stad: `CCA.C17
 `DESIGNATION PATCH: on the left upper arm, directly above the armband, a small sewn rectangular cloth patch in dark charcoal with a thin overlocked edge in the same colour, slightly rounded corners, about twice as wide as the armband is tall. On it, exactly two lines of condensed off-white stencil capitals, left-aligned, both lines the same letter height — each line about half the height of the "C9:D5" lettering on the armband: line one "CCA.C9.D5", line two "HELIX-OfC-40337". Nothing else on the patch.`
 Lägg till `the designation printed directly on the jacket or on one line` i DO NOT-raden.
 
+**Testad (2026-11-13):** Magistraten (JURY DvL, full prompt Rev 2) gav exakt två rader, samma teckenhöjd, rätt placering och rätt storlek i förhållande till armbandet. Regeln fungerar som den står.
+
 **Allmän regel för utrustningsrader:** varje föremål får en etikett direkt under sig, i liten benvit stencil på en gemensam baslinje. Föremålen står i en rak rad med jämna mellanrum och samma skala. Lista föremål och etikett parvis i prompten (`ITEM — "LABEL"`) och lägg till `unlabelled equipment` i DO NOT-raden. Detaljbilder får också korta etiketter. Promptrad:
 `EQUIPMENT ROW: the items stand in one straight row, evenly spaced, at the same scale, each on its own with clear space around it. Directly beneath EACH item, on the same baseline, a short label in small condensed off-white stencil capitals, spelled exactly as listed: [...]. Every item has exactly one label; no item without a label, no label without an item.`
 
