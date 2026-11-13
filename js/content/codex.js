@@ -20,6 +20,7 @@ G.addCodex({
     <img src="assets/img/citizen-commended.jpg" alt="Commended citizen" loading="lazy">
     <p><b>Citizens under observation</b> have a red diagonal stripe and the mark <b>OBS</b> printed across their label, a red barred circle on the back and a monitoring band locked to the wrist. Report irregularities.</p>
     <img src="assets/img/citizen-watch.jpg" alt="Citizen under watch" loading="lazy">
+    <img src="assets/img/citizen-cwu.jpg" alt="Civil Workers' Union" loading="lazy">
     <p><b>Civil Workers' Union (CWU)</b> members run the ration terminals, the licensed shops and the maintenance crews. Over the citizen jacket they wear an ochre work jacket with a reflective band and a union badge; their ID label carries an ochre stripe marked <b>CWU</b>. They eat better, are exempt from food and medical contraband rules, and are trusted by nobody — not by the Union, and not by their neighbours.</p>`,
   },
   spire: {

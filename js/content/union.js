@@ -399,7 +399,7 @@
       text: [
         'Mira is sitting on the floor with her back to the radiator when you come in. She has a split lip and she is trying to hide it with her hand.',
         '@say Mira|It\'s nothing. It\'s — it\'s not nothing. It\'s Brask. The foreman. He wasn\'t nicer for long.',
-        'It comes out slowly. Brask controls the shift rosters on the dye floor. He puts girls who refuse him on the dye vats, where the fumes take your lungs in a year. Mira refused him. He hit her. Tomorrow she starts on the vats.',
+        'It comes out slowly. Brask is the CWU supervisor on the dye floor — ochre jacket, flat cap, a gold chevron on his union badge — and he controls the shift rosters. He puts girls who refuse him on the dye vats, where the fumes take your lungs in a year. Mira refused him. He hit her. Tomorrow she starts on the vats.',
         '@say Mira|I\'m not asking you to do anything. I know what you\'d have to do. I just — I needed to tell someone who wasn\'t scared of him.',
       ],
       choices: [

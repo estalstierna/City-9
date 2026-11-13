@@ -22,6 +22,7 @@
       text: [
         '@img assets/img/env/e10-ration.jpg|Plaza 5, ration distribution',
         'The ration dispensary is a steel wall in the side of the old cinema with six hatches in it. When a citizen puts a card into the slot, a hatch opens and a grey packet slides out: nutrient bar, a can of sector water, a sachet of something that is supposed to be coffee.',
+        'Behind the steel wall, CWU workers in ochre jackets feed the RDT hatches from pallets, never looking out through the slots.',
         'The queue goes around the plaza twice. Three hundred citizens, maybe more, silent except for coughing.',
         '@say Rook|Two rules for ration line. Keep it moving. Keep it quiet. A line that stops is a line that thinks.',
         'An hour in, a woman in a shawl reaches the hatch. She puts in a card. Packet. Then, quickly, she puts in a second card. Your lenses flag it automatically — a soft amber chime in your ear. **CARD HOLDER DECEASED: 9 DAYS.**',

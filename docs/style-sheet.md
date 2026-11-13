@@ -19,6 +19,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e01-city.jpg` … `env/e16-tinker.jpg` | Alla miljöer E01 till E16 (godkända) (godkända). E01 är stilreferens för alla miljöer |
+| `citizen-cwu.jpg` | CWU, Civil Workers' Union: worker och supervisor (godkänd) |
 | `ota-soldier.jpg` + `ref/ota-soldier-front.jpg`, `ref/ota-soldier-helmet.jpg` | OTA-soldat (O1, godkänd). Två cyan linser. Ryggvyn är spegelvänd, så bifoga framvyn |
 | `ota-elite.jpg` + `ref/ota-elite-front.jpg` | OTA-elit (O2, godkänd). Rött visirband. Ryggvyn är spegelvänd, så bifoga framvyn |
 | `ota-insignia.jpg` + `ref/ota-*.jpg` | Overwatch: grundgrafik (O0, Rev 1) och utklippta emblem, axelplåtar och märken |
