@@ -43,7 +43,7 @@
         const r = R(s);
         const inf = r.inf ? infById(s, r.inf) : null;
         return [
-          '@img assets/img/env/e02-apartment.webp|A flat in the Stacks',
+          '@img assets/img/env/e22-ptv-night.webp|PT-V D5-07, the Stacks',
           inf
             ? `@sys TIP — your asset ${inf.name} says the occupant of ${r.addr} ${r.claimText}.`
             : `@dispatch Warrant, ${r.addr}. A neighbour reports that the occupant ${r.claimText}. Serve and search.`,
@@ -130,7 +130,7 @@
       title: (s) => `${R(s).addr} — ${R(s).time} minute${R(s).time === 1 ? '' : 's'} on site`,
       text: (s) => {
         const r = R(s);
-        const L = r.last.length ? r.last.slice() : ['One room. A table, two chairs, a stove with a flue pipe, a mattress on a frame, a wardrobe with a mirror gone dark, a ventilation grille high on the wall.' + (r.comp === 'kids' ? ' A toy box under the window.' : '') + (r.comp === 'elder' ? ' On the mattress, an old woman under three blankets, watching you.' : '')];
+        const L = r.last.length ? r.last.slice() : ['@img assets/img/env/e02-apartment.webp|A flat in the Stacks', 'One room. A table, two chairs, a stove with a flue pipe, a mattress on a frame, a wardrobe with a mirror gone dark, a ventilation grille high on the wall.' + (r.comp === 'kids' ? ' A toy box under the window.' : '') + (r.comp === 'elder' ? ' On the mattress, an old woman under three blankets, watching you.' : '')];
         r.last = [];
         if (r.found.length) L.push('@sys FOUND SO FAR: ' + r.found.map((f) => `${RITEMS[f.id].name} (${RITEMS[f.id].grade.toUpperCase()})`).join('; ') + '.');
         if (r.hint && !r.searched[r.hint]) L.push(`Their eyes keep going to the ${SPOTS[r.hint].n}.`);

@@ -231,6 +231,7 @@
     c3_union: {
       title: 'Stack 9 — with Overwatch',
       text: [
+        '@img assets/img/env/e22-ptv-night.webp|PT-V D5-07 outside Stack 9',
         '@dispatch Task Force LOCK, UNION element: warrant, Stack 9, flat 3C. Suspected relay operator for the canal frequencies. Overwatch will observe.',
         'An Overwatch soldier walks up the stairwell behind you. It does not need the handrail. It does not need anything. It stops on the landing and watches you with its slit, and you understand that today the raid is not what is being examined.',
       ],
