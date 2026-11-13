@@ -1732,6 +1732,24 @@ All twelve must be clearly different people.
 DO NOT include: text, numbers, labels, ID labels on the jackets, smiles, makeup, uniforms, helmets, borders around photos.
 ```
 
+### D4 Tolv CWU-ID-foton (4:3) · bifoga: D3-arket (de tolv ID-fotona), citizen-cwu
+Tolv nya personer i CWU-jacka. Används för CWU-medlemmar i dokumentgranskningen och visitationerna. Egenskaper: 1 man 40-tal kort brunt hår · 2 man 50-tal grå snagg, mustasch · 3 man sent 20-tal mörkt lockigt · 4 man 60-tal vitt bakåtkammat, läsglasögon i pannan · 5 man 30-tal rött hår och skägg · 6 man 50-tal kraftig, flintskallig, keps · 7 kvinna 30-tal mörk hästsvans · 8 kvinna 50-tal grå page, fyrkantiga glasögon · 9 kvinna 20-tal ljusbrunt under tygmössa · 10 kvinna 40-tal kortklippt svart · 11 kvinna 60-tal vit knut · 12 kvinna 30-tal ljusa flätor, fräknar.
+```
+A contact sheet of TWELVE identity-card photographs of Civil Workers' Union (CWU) members, arranged in a strict grid of 4 columns × 3 rows on a pure white background, every photo exactly the same size, separated by equal white gaps, no borders, no text, no numbers. Match the FIRST attached image exactly in layout, framing, scale, plain light-grey photo background, flat cold registration-booth lighting and painterly-realistic style — but these are twelve DIFFERENT people from the ones in that image.
+
+EVERY PHOTO: head-and-shoulders, facing the camera straight on, neutral unsmiling expression. Each person wears the CWU uniform copied from the SECOND attached image: the muted ochre-yellow (#B8902F) quilted CWU work jacket with a grey reflective band across the chest, over the faded blue-teal citizen jacket with its mandarin collar, and the small round CWU union badge on the left chest (right side of the image). Slightly better fed and better groomed than ordinary citizens, but still tired. No ID labels visible.
+
+THE TWELVE PEOPLE, left to right, top to bottom:
+Row 1: 1) man, 40s, short brown hair, clean-shaven, broad face. 2) man, 50s, grey crew cut, thick grey moustache. 3) man, late 20s, dark curly hair, light stubble. 4) man, 60s, white hair combed back, deep lines, reading glasses pushed up on his forehead.
+Row 2: 5) man, 30s, ginger hair and short ginger beard. 6) man, 50s, heavy-set, bald, double chin, flat grey cap with a short peak. 7) woman, 30s, dark hair in a low ponytail, small hoop earrings. 8) woman, 50s, short grey bob, square glasses.
+Row 3: 9) woman, 20s, light brown hair under a grey cloth cap. 10) woman, 40s, black hair cut very short, sharp cheekbones. 11) woman, 60s, white hair in a bun, a kind but wary face. 12) woman, 30s, fair hair in two short braids, freckles.
+
+All twelve must be clearly different people, and different from everyone in the FIRST attached image.
+
+DO NOT include: text, numbers, labels, ID labels, smiles, makeup, bright safety yellow or neon, uniforms other than the CWU jacket, helmets, borders around photos.
+```
+
+
 ---
 
 ## 6. PROMPT 4: ARMBAND (sex varianter)
