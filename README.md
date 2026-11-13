@@ -29,6 +29,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Contraband | Carried items can be graded GREEN / YELLOW / RED / BLACK. Higher grades weigh more heavily if JURY finds them in an audit. |
 | Law | Verdict boxes in scenes cite the crime level and penalty (points, detainment cycles). At 20 penalty points a citizen is amputated. Full tables are in the Codex. |
 | Stop & search | Routine duties offer a search. A random citizen (standard, OBS, CWU or commended) is scanned, searched and questioned with skill checks, then you pass a verdict by the crime table. Penalty points are saved per CID in **Case files** in the Dossier; citizens can turn up again, and at 20 points or any Level 7 violation the verdict is amputation. |
+| Document inspection | A minigame that replaces the dice roll at Canal Gate 3. Compare an ID card and transit permit against the cycle's bulletin (valid stamp, OBS and CWU rules). Tap the faulty field and deny, or approve. Perception adds time and, from level 3, a hint. Routine checkpoint shifts have a timed three-citizen queue. "Let instinct decide" falls back to a skill roll. Engine: any scene can declare `mini: { type, opts, pass, fail, skill }`. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
 ## Structure (Chapter 1)

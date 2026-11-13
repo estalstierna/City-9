@@ -147,7 +147,7 @@
         'But the paper is wrong. Too white. Fresh.',
       ],
       choices: [
-        { t: 'Scan it closely.', check: { skill: 'perception', diff: 0, pass: 'd_check_spot', fail: 'd_check_miss' } },
+        { t: 'Inspect his papers properly.', tag: 'INSPECT', tagCls: 'duty', go: 'd_check_docs' },
         { t: 'Wave him through. The scanner didn\'t flag it.', go: 'd_check_miss' },
       ],
     },
@@ -244,6 +244,7 @@
       choices: (s) => [
         { t: 'Enforce it. Every rule, every time.', fx: { merit: 2, lp: 1, cons: -1 }, go: END },
         { t: 'Pull someone out of the queue for a full search.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' },
+        { t: 'Work the queue: inspect papers against the clock.', tag: 'INSPECT', tagCls: 'duty', go: 'd_check_queue' },
         { t: 'Look the other way, just this once.', fx: { merit: 1, cons: 2, susp: 2 }, go: END },
         {
           t: 'Watch for the red headscarf. Let her through with a forged log entry.',

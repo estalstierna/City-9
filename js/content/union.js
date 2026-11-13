@@ -46,7 +46,7 @@
         s.time = 'Morning';
         s.rel.rook = s.rel.rook || 0;
         s.rel.granite = s.rel.granite || 0;
-        ['terms', 'crimes', 'contraband', 'equipment'].forEach((c) => G.unlock(s, c));
+        ['terms', 'crimes', 'contraband', 'equipment', 'docs'].forEach((c) => G.unlock(s, c));
       },
       text: (s) => [
         '@img assets/img/env/e09-precinct.jpg|District 5 Precinct, the old tram depot',

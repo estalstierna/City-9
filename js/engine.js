@@ -339,6 +339,34 @@
       setTimeout(() => inp.focus(), 50);
     }
 
+    if (sc.mini && G.MINIGAMES && G.MINIGAMES[sc.mini.type]) {
+      const m = sc.mini;
+      let settled = false;
+      const settle = (ok, data) => {
+        if (settled) return;
+        settled = true;
+        S.lastMini = data || null;
+        S.lastCheck = ok;
+        if (m.skill) G.gainXP(S, m.skill, ok ? 1 : 0.5);
+        const sk = block.querySelector('.mini-skip');
+        if (sk) sk.remove();
+        setTimeout(() => go(ok ? m.pass : m.fail), 250);
+      };
+      G.MINIGAMES[m.type](block, resolve(m.opts) || {}, settle);
+      if (m.skill) {
+        const pct = G.chance(S, m.skill, (m.diff || 0) + 10);
+        const sk = el('button', 'mini-skip', `Let instinct decide instead — ${G.SKILLS[m.skill].toUpperCase()} ${pct}%`);
+        sk.onclick = () => {
+          const roll = 1 + G.rand(100);
+          appendRoll(m.skill, pct, roll, roll <= pct);
+          const mg = block.querySelector('.mini');
+          if (mg) mg.remove();
+          settle(roll <= pct, null);
+        };
+        block.append(sk);
+      }
+    }
+
     const list = el('div', 'choices');
     let n = 0;
     (resolve(sc.choices) || []).forEach((c) => {

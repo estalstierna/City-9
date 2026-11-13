@@ -173,6 +173,58 @@ details.kit small { display: block; color: var(--faint); font-size: 11.5px; line
 .case.hot .bar span, .case.dead .bar span { background: var(--red); }
 .case.dead { opacity: .55; }
 
+/* ---------- document inspection minigame ---------- */
+.mini.docs { margin-top: 16px; }
+.bulletin { border: 1px solid var(--accent2); background: rgba(95,200,221,.06); border-radius: 3px; padding: 8px 10px; font-family: var(--mono); font-size: 12px; }
+.bulletin .bh { color: var(--accent); letter-spacing: .12em; margin-bottom: 4px; }
+.bulletin .rules { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--text); }
+.bulletin .rules .stamp { width: 18px; height: 18px; vertical-align: -5px; }
+.tbar { height: 4px; background: #0b1114; margin-top: 8px; border-radius: 2px; overflow: hidden; }
+.tbar span { display: block; height: 100%; background: var(--accent); transition: width .1s linear; }
+.tbar span.low { background: var(--red); }
+.mini .who { font-style: italic; margin: 10px 0; }
+.docs-row { display: grid; grid-template-columns: 1.25fr 1fr; gap: 10px; }
+.doc-card { background: #e7e2d6; color: #1d2227; border-radius: 4px; padding: 8px; font-family: var(--mono); box-shadow: 0 3px 10px rgba(0,0,0,.35); }
+.doc-card.permit { background: #cfd2cc; }
+.doc-card.permit.empty { display: flex; align-items: stretch; }
+.doc-card.id.cwu { border-bottom: 6px solid #b8902f; }
+.doc-card .dh { font-size: 9.5px; letter-spacing: .1em; border-bottom: 1px solid #9a968c; padding-bottom: 3px; margin-bottom: 6px; }
+.idgrid { display: grid; grid-template-columns: 70px 1fr; gap: 6px; }
+.fld { display: block; width: 100%; text-align: left; background: transparent; border: 1.5px dashed transparent; border-radius: 3px; padding: 3px 5px; margin: 2px 0; font: inherit; color: inherit; cursor: pointer; }
+.fld:hover { border-color: #8f8b80; }
+.fld small { display: block; font-size: 9px; letter-spacing: .1em; color: #5b5f62; }
+.fld b { font-size: 14px; letter-spacing: .04em; }
+.fld .photo { width: 100%; height: auto; display: block; border: 1px solid #8a8678; }
+.fld .stamp { width: 52px; height: 52px; display: block; margin: 2px auto; transform: rotate(-8deg); }
+.fld.flag { border: 2px solid var(--red); background: rgba(217,83,74,.12); }
+.fld.hint { box-shadow: inset 0 0 0 1px rgba(226,168,63,.6); }
+.fld.truth { outline: 2px solid var(--amber); outline-offset: 1px; }
+.fld .obs { color: #fff; background: #a3262a; padding: 0 5px; }
+.fld .cwu-s { color: #1d2227; background: #b8902f; padding: 0 5px; }
+.mini-act { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.mini-act .choice:disabled { opacity: .5; }
+.mini-skip { margin-top: 10px; background: none; border: 0; color: var(--faint); font-family: var(--mono); font-size: 12px; text-decoration: underline; cursor: pointer; padding: 4px 0; }
+.hintline { margin-top: 8px; }
+@media (max-width: 860px) {
+  .bulletin { position: sticky; top: 64px; z-index: 5; background: #0e171c; font-size: 10.5px; padding: 6px 8px; }
+  .bulletin .rules { gap: 2px 10px; }
+  .docs-row { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .doc-card { padding: 5px; }
+  .doc-card .dh { font-size: 7.5px; letter-spacing: .04em; }
+  .idgrid { grid-template-columns: 1fr; gap: 0; }
+  .idgrid .fld .photo { width: 54px; margin: 0 auto; }
+  .fld { padding: 2px 3px; margin: 1px 0; }
+  .fld small { font-size: 7.5px; letter-spacing: .05em; }
+  .fld b { font-size: 12px; }
+  .fld .stamp { width: 36px; height: 36px; }
+  .mini .who { font-size: 14px; margin: 6px 0; }
+  .mini-act { flex-direction: row; position: sticky; bottom: calc(var(--nav-h) + var(--safe-b) + 6px); z-index: 6; background: var(--bg); padding: 6px 0; margin-top: 6px; }
+  .mini-act .choice { padding: 9px 10px; font-size: 14px; }
+  .mini-act .choice .long { display: none; }
+  .mini-act .choice { justify-content: center; font-family: var(--mono); letter-spacing: .1em; }
+  .mini-act .choice .lbl { flex: 0 0 auto; }
+}
+
 /* ---------- choices ---------- */
 .choices { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; }
 .choice {
