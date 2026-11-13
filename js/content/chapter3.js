@@ -532,6 +532,7 @@
           '@img assets/img/env/e13-pumphouse.webp|Pump house 2, the spillway',
           'The day goes in briefings and checks of kit nobody needs to check. Nobody eats much.',
           `At 21:40 you take your post at ${post(s)}. The relocation train is lit up in the D4 yards across the river like a long, patient animal. The Spire hums. The dam roars. High over the river a Shrike gunship circles, its searchlight sweeping the water, the spillway, your post, and moving on.`,
+          '@img assets/img/env/e23-shrike-stacks.webp|The Shrike over the Stacks, 21:50',
           s.c3.watched ? 'An Overwatch soldier takes position four metres behind you and does not move again. Your red sticker, it seems, has a body.' : null,
           intel >= 5
             ? 'Overwatch knows everything: the pump house, the hatch, the time. There are soldiers in the dark on both banks with their slits dimmed, waiting. Whoever comes through that door tonight is walking into a closed fist.'
@@ -752,6 +753,7 @@
     c3_sweep: {
       title: 'Curfew sweep — D5, 21:00',
       text: [
+        '@img assets/img/env/e23-shrike-stacks.webp|AW-S 09-2 over the Stacks',
         'You walk Bazaar Row after curfew beside an Overwatch squad. The shutters are all down. The squad moves the way water moves, without talking.',
         'In a doorway you find a boy of perhaps twelve with a ration bag and a ration card that is not his. The squad leader’s slit turns toward him, then toward you. It clicks. Your mask translates: *Civil Protection: process.*',
       ],

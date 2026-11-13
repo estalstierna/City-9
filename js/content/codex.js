@@ -392,6 +392,7 @@ G.addCodex({
       <tr><td>Aircrew</td><td><img src="assets/img/airwatch-crew.webp" alt="Airwatch aircrew" loading="lazy">Transhuman, sealed into flight armour, plugged into the airframe through the back of the helmet. Rank is painted on the left shoulder plate under the emblem: two cyan chevrons for the pilot, one for the gunner. No Civil Protection unit has seen one outside a cockpit.</td></tr>
       <tr><td>Requests</td><td>Civil Protection cannot task Airwatch. A unit may request air support through Dispatch with code 10-78 AIR. Outside a sociostatus, the request is logged and almost never answered.</td></tr>
     </table>
+    <img src="assets/img/env/e23-shrike-stacks.webp" alt="A Shrike over the Stacks at curfew" loading="lazy">
     <p>Under sociostatus Airwatch flies the curfew. A Shrike's searchlight can read a CID label from two hundred metres. Citizens in the Stacks call the sound of its rotors <i>the knock</i>, because it always comes before one.</p>`,
   },
 });
