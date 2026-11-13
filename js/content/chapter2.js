@@ -479,9 +479,8 @@
       title: 'D4 Rail Yards — 05:40',
       checkpoint: true,
       text: (s) => [
-        '@img assets/img/env/e12-railyard.jpg|The relocation train',
+        '@img assets/img/env/e18-relocation.jpg|D4 — the relocation train',
         'The train is twelve cars long and painted the grey of everything else. Overwatch stands at the doors of every car, white armour beaded with drizzle. Their lenses do not move.',
-        '@img assets/img/ota-elite.jpg|Overwatch, C9 Garrison',
         'Two hundred citizens stand behind a rope line in the cold with one bag each. Behind them, behind a second line held by UNION, the families who were not chosen are watching the ones who were.',
         '@dispatch Citizens of District 5. Your reassignment is a privilege. City 22 needs your hands. The Union thanks you for your service.',
         '@say Granite|PTs, interlock. Wick, stay on my three. Nobody touches Overwatch. Nobody.',
@@ -639,7 +638,7 @@
         G.unlock(s, 'interrogation');
       },
       text: (s) => [
-        '@portrait assets/img/portraits/magistrate.jpg|CCA.C9.D5-JURY-DvL-02842',
+        '@img assets/img/env/e17-magistrate.jpg|Level 4 — the Magistrate’s office',
         'The Magistrate’s office has no window. It has a desk, two chairs, and one wall covered from floor to ceiling in grey file boxes, each stencilled with a CID.',
         '@say Magistrate|You read files. Good. Here is yours.',
         'He slides a thin folder across the desk. Your own designation on the tab. He does not let go of it.',
@@ -820,13 +819,14 @@
         const suspected = s.c2.ev.you >= 2 || s.susp >= 40;
         return suspected
           ? [
-              '@portrait assets/img/portraits/vesna.jpg|Vesna',
+              '@img assets/img/env/e19-roof.jpg|The roof of the Nexus',
               'Vesna asks you to come up to the roof. It is the first time she has asked you anything.',
               'The wind up here is strong enough to lean on. The Spire fills half the sky.',
               '@say Vesna|Gate 3 logs. Your key. A basket marked linen. You know what I think.',
               '@say Vesna|Here’s what I don’t know. Why I haven’t told him yet.',
             ]
           : [
+              '@img assets/img/env/e19-roof.jpg|The roof of the Nexus',
               'Vesna asks you to come up to the roof. The wind is strong enough to lean on.',
               '@say Vesna|You should know something about the Magistrate before tomorrow. He doesn’t need the truth. He needs a name, and a file thick enough to hold it. If you give him the right name, good. If you give him a name, also good. If you give him nothing — that is the only wrong answer.',
               '@say Vesna|I’m telling you because I think you’d try to give him the truth. And I think that’s going to get you killed one day.',
@@ -858,7 +858,7 @@
       title: 'The tribunal',
       checkpoint: true,
       text: (s) => [
-        '@portrait assets/img/portraits/magistrate.jpg|The Magistrate',
+        '@img assets/img/env/e17-magistrate.jpg|The tribunal',
         'The Magistrate’s office. Two chairs. The wall of grey boxes. Vesna stands by the door. On the desk, open, your case file — every scrap you have gathered, laid out in order.',
         `@doc CASE: THE LEAK · D5 PRECINCT\nROOK — evidence ${s.c2.ev.rook}\nHALVORSEN — evidence ${s.c2.ev.halvorsen}${s.c2.ev.you ? '\nUNASSIGNED (Gate 3 key entries) — ' + s.c2.ev.you : ''}`,
         '@say Magistrate|A name, three.',
