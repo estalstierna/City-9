@@ -562,6 +562,9 @@
         { t: '**HELIX** — the white band. Keep units alive. See the Nexus from beneath.', lock: (s) => (s.skills.medical < 3 ? 'Requires Field Medicine 3' : null), fx: (s) => ((s.div = 'HELIX'), null), go: 'ch1_end' },
         { t: '**JURY** — the crimson band. Detention, interrogation, and the policing of your own.', lock: (s) => (s.skills.authority < 3 ? 'Requires Authority 3' : s.lp < 10 ? 'Requires Loyalty rating +10' : null), fx: (s) => ((s.div = 'JURY'), null), go: 'ch1_end' },
         { t: '**RAZOR** — protect the VIPs and the Hardpoints. Stand beside the Administrator.', lock: (s) => (s.skills.firearms < 3 ? 'Requires Firearms 3' : s.lp < 15 ? 'Requires Loyalty rating +15' : null), fx: (s) => ((s.div = 'RAZOR'), null), go: 'ch1_end' },
+        { t: '**VECTOR** — necrotic containment and research. The sealed suits that go in after SPEAR.', lock: (s) => (s.skills.medical < 2 ? 'Requires Field Medicine 2' : s.skills.fitness < 2 ? 'Requires Conditioning 2' : null), fx: (s) => ((s.div = 'VECTOR'), G.unlock(s, 'vector'), null), go: 'ch1_end' },
+        { t: '**GRID** — Union infrastructure. Forcefields, hardpoints, the conduits to the Spire.', lock: (s) => (s.skills.comms < 3 ? 'Requires Radio & Protocol 3' : null), fx: (s) => ((s.div = 'GRID'), G.unlock(s, 'grid'), null), go: 'ch1_end' },
+        { t: '**VEIL** — there is no box for this on the form.', lock: () => 'No application exists. VEIL chooses.', go: 'ch1_end' },
         { t: '**SPEAR** — the offensive division. Cleared for the 404 zones beyond the canal.', lock: (s) => (s.skills.firearms < 3 ? 'Requires Firearms 3' : s.skills.fitness < 3 ? 'Requires Conditioning 3' : null), fx: (s) => ((s.div = 'SPEAR'), null), go: 'ch1_end' },
       ],
     },
@@ -574,10 +577,12 @@
           HELIX: 'The HELIX instructor — 02-77301 — signs your transfer herself. "I asked for your file in training," she says. "I hoped I would see it again."',
           JURY: 'The Magistrate receives your application personally. "I wondered when," he says. "Welcome to the division that watches the watchers."',
           RAZOR: 'RAZOR issues you a gold armband and a mask with a gold-banded lens. Your first assignment is a hardpoint beneath the Citadel spire.',
+          VECTOR: 'VECTOR fits you for a sealed suit before it gives you a desk. "You will be decontaminated twice a shift," the technician says. "You will stop noticing the smell in a month. That is when you should start worrying."',
+          GRID: 'GRID hands you a calibration key and a power cell before anyone says your name. "Something is always broken," your new squadron leader says. "Somebody always broke it."',
           SPEAR: 'SPEAR\'s Division Leader looks you over and says only: "Beyond the canal, nothing is quarantined. Everything is just *waiting*."',
         };
         return [
-          `@img assets/img/uniform-${s.div.toLowerCase()}.jpg|${s.div} — your new uniform`,
+          ['UNION', 'HELIX', 'JURY', 'RAZOR', 'SPEAR'].includes(s.div) ? `@img assets/img/uniform-${s.div.toLowerCase()}.jpg|${s.div} — your new uniform` : null,
           lines[s.div],
           `@doc ${G.desig(s)}\nDIVISION: ${s.div}\nRANK: ${G.RANK_NAMES[s.rank].toUpperCase()}\nDAYS IN SERVICE: ${s.day}`,
           s.flags.mole ? 'And somewhere on Bazaar Row, a repairman with burned fingertips hears that a certain 03 has a new posting, and smiles over his soldering iron.' : null,

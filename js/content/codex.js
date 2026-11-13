@@ -82,6 +82,8 @@ G.addCodex({
       <tr><td>JURY</td><td>Military police. Detention of citizens, interrogation, forced confessions, internal discipline.</td></tr>
       <tr><td>RAZOR</td><td>Protection of VIPs and Hardpoints.</td></tr>
       <tr><td>SPEAR</td><td>Offensive division, cleared to enter 404 zones.</td></tr>
+      <tr><td>VECTOR</td><td>Necrotic containment and research. Follows SPEAR into the 404 zones once the shooting stops: seals breaches, burns infestation, recovers specimens.</td></tr>
+      <tr><td>GRID</td><td>Union infrastructure and engineering. Forcefields, hardpoints, scanners, biosignal relays, combine locks. CWU fixes the city; GRID fixes the cage.</td></tr>
       <tr><td>OA</td><td>Officer Academy — exclusive to 01 Protection Units of any division.</td></tr>
     </table>
     <p>Transfer applications open to units of grade 03 and above.</p>`,
@@ -95,6 +97,8 @@ G.addCodex({
       <tr><td>JURY</td><td>Crimson · cracked skull emblem</td></tr>
       <tr><td>RAZOR</td><td>Gold · shield and blade emblem</td></tr>
       <tr><td>SPEAR</td><td>Hazard orange · spearhead emblem</td></tr>
+      <tr><td>VECTOR</td><td>Chemical yellow-green · cracked cell held by a clamp</td></tr>
+      <tr><td>GRID</td><td>Copper · lightning bolt through a hex nut</td></tr>
       <tr><td>OA</td><td>Violet · chevrons under a star</td></tr>
     </table>
     <img src="assets/img/armbands.jpg" alt="Division armbands" loading="lazy">`,
@@ -327,3 +331,19 @@ G.addCodex({
     },
   });
 })();
+
+G.addCodex({
+  vector: {
+    title: 'VECTOR Division',
+    body: '<p><i>"What comes out of the quarantine does not go back in. It goes into a jar."</i></p><p>VECTOR follows SPEAR into the 404 zones once the shooting stops. Its units seal breaches, burn infestation, recover specimens and run the containment laboratories beneath the Nexus. They wear sealed suits over their uniforms and are decontaminated twice a shift. Other units do not share mess tables with VECTOR. Officially, this is for hygiene.</p>',
+  },
+  grid: {
+    title: 'GRID Division',
+    body: '<p><i>"Every light in City 9 is a promise. GRID keeps the promises."</i></p><p>When a forcefield flickers, a scanner goes dark or a hardpoint loses power, GRID is sent — usually under fire, because resistance cells cut the power before they move. GRID maintains everything the Union built: biosignal relays, combine locks, broadcast masts, the conduits from the dam to the Spire. No citizen, not even CWU, may touch Union technology.</p>',
+  },
+  veil: {
+    title: '[NO RECORD]',
+    body: '<p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. It describes units with no designation on their shoulders and no colour on their armbands, who handle what no other division is told about. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses.</p><p>If you are reading this, someone wanted you to.</p>',
+  },
+});
+

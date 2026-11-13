@@ -576,7 +576,7 @@
     let html = `
       <section>
         <h3>Dossier</h3>
-        ${S.div ? `<img class="emblem" src="assets/img/emblems/${S.div.toLowerCase()}.png" alt="${S.div} emblem">` : ''}
+        ${S.div ? `<img class="emblem" src="assets/img/emblems/${S.div.toLowerCase()}.png" alt="${S.div} emblem" onerror="this.remove()">` : ''}
         <div class="kv"><span>Name</span><b>${S.name}</b></div>
         <div class="kv"><span>Designation</span><b class="mono">${S.phase === 'prologue' || S.phase === 'creation' ? '— unassigned —' : G.desig(S)}</b></div>
         <div class="kv"><span>Rank</span><b>${S.phase === 'prologue' || S.phase === 'creation' ? 'Citizen' : G.RANK_NAMES[S.rank]}</b></div>

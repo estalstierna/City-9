@@ -1779,6 +1779,21 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 
 ---
 
+## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
+
+| Division | Roll | Färg | Ikon | Krav |
+|---|---|---|---|---|
+| **VECTOR** | Nekrotisk inneslutning och forskning. Kommer efter SPEAR i 404-zonerna | Kemiskt gulgrön `#9DB23A` | Sprucken sexkantscell som hålls ihop av en klämma | Field Medicine 2, Conditioning 2 |
+| **GRID** | Unionens infrastruktur: kraftfält, hardpoints, skannrar, biosignalnät och lås. CWU lagar staden, GRID lagar buren | Koppar `#B5652E` | Blixt genom en sexkantsmutter | Radio & Protocol 3 |
+| **VEIL** | Finns officiellt inte. Avledning, spaning, eliminering. Skild från OSI, men lånas ibland ut | Ingen, svart på svart med gråa streck | **Tom medaljong** | Endast inbjudan |
+
+**Kanon:** VEIL har ingen designation på axeln (den är svartmålad), ingen stad eller distrikt på armbandet, ingen emblemlapp, matt svart keramisk mask och linser utan sken. VECTOR bär förseglad dräkt över uniformen och har dubbla filter. GRID har svetsvisir, kopparband och kraftcell på ryggen.
+
+Prompterna **V1** (emblem), **V2** (armband) och **V3–V5** (uniformer) finns i chatthistoriken (2026-11-13). Ordning: V1 och V2 först, sedan uniformerna med V1 och V2 bifogade.
+Exempeldesignationer: `CCA.C9.D1-VECTOR-03-55190`, `CCA.C9.D1-GRID-03-70448`.
+
+---
+
 ## 6. PROMPT 4: ARMBAND (sex varianter)
 
 ```
