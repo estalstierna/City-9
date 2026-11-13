@@ -3,12 +3,21 @@
   G.MINIGAMES = G.MINIGAMES || {};
 
   const SURNAMES = ['Orlova', 'Halek', 'Brodsky', 'Vey', 'Kessel', 'Marek', 'Danek', 'Sokol', 'Petrak', 'Lind', 'Havel', 'Novak', 'Ruzek', 'Frank', 'Koval', 'Zeman', 'Bartos', 'Mraz'];
-  const HAIR = [
-    { id: 'dark', label: 'dark hair', col: '#2b2420' },
-    { id: 'grey', label: 'grey hair', col: '#9a9a96' },
-    { id: 'fair', label: 'fair hair', col: '#b89a62' },
-    { id: 'shaved', label: 'a shaved head', col: null },
-  ];
+  /* the twelve ID photos (assets/img/docs/faces/fNN.jpg) and what an officer can see */
+  const FACES = [
+    { m: true, age: 'man in his thirties', look: 'short dark hair' },
+    { m: true, age: 'man in his fifties', look: 'grey hair and wire glasses' },
+    { m: true, age: 'young man', look: 'fair hair and a thin face' },
+    { m: true, age: 'man in his forties', look: 'a shaved head and a scar across his cheek' },
+    { m: true, age: 'old man', look: 'a bald head, white stubble and heavy black glasses' },
+    { m: true, age: 'man in his late thirties', look: 'dark hair and a full beard' },
+    { m: false, age: 'young woman', look: 'dark hair tied back' },
+    { m: false, age: 'woman in her forties', look: 'grey hair in a bun and glasses' },
+    { m: false, age: 'woman in her thirties', look: 'short fair hair' },
+    { m: false, age: 'woman in her fifties', look: 'a grey headscarf' },
+    { m: false, age: 'old woman', look: 'short white hair' },
+    { m: false, age: 'young woman', look: 'a red-brown braid' },
+  ].map((f, i) => ({ ...f, img: `assets/img/docs/faces/f${String(i + 1).padStart(2, '0')}.jpg` }));
   const STAMPS = [
     { shape: 'round', col: 'blue' },
     { shape: 'round', col: 'red' },
@@ -21,7 +30,7 @@
   const pick = (a) => a[Math.floor(Math.random() * a.length)];
   const mutateCid = (cid) => {
     const i = rint(0, 4);
-    let d = String((+cid[i] + rint(1, 8)) % 10);
+    const d = String((+cid[i] + rint(1, 8)) % 10);
     return cid.slice(0, i) + d + cid.slice(i + 1);
   };
 
@@ -32,44 +41,22 @@
   function rulesFor(s) {
     s.mem.docRules = s.mem.docRules || {};
     if (s.mem.docRules.day !== s.day) {
-      s.mem.docRules = {
-        day: s.day,
-        stamp: pick(STAMPS),
-        obsBanned: Math.random() < 0.6,
-        cwuNoPermit: Math.random() < 0.5,
-      };
+      s.mem.docRules = { day: s.day, stamp: pick(STAMPS), obsBanned: Math.random() < 0.6, cwuNoPermit: Math.random() < 0.5 };
     }
     return s.mem.docRules;
   }
 
-  /* build one case. opts.force = issue id to force, opts.person = description override */
+  /* opts.force = issue id; opts.person = { faceIdx, cwu, obs } */
   function makeCase(s, opts) {
     const R = rulesFor(s);
     const today = G.cycle(s);
-    const person = {
-      male: Math.random() < 0.5,
-      hair: pick(HAIR),
-      glasses: Math.random() < 0.35,
-      scar: Math.random() < 0.3,
-      age: pick(['young', 'middle-aged', 'old']),
-      cwu: Math.random() < 0.18,
-      obs: Math.random() < 0.15,
-    };
-    if (opts && opts.person) Object.assign(person, opts.person);
+    const o = (opts && opts.person) || {};
+    const faceIdx = o.faceIdx !== undefined ? o.faceIdx : rint(0, FACES.length - 1);
+    const person = { face: FACES[faceIdx], faceIdx, cwu: o.cwu !== undefined ? o.cwu : Math.random() < 0.18, obs: o.obs !== undefined ? o.obs : Math.random() < 0.15 };
     const cid = String(rint(10000, 99999));
-    const card = {
-      cid,
-      name: pick(SURNAMES),
-      district: 'D5',
-      expires: today + rint(2, 30),
-      photo: { hair: person.hair, glasses: person.glasses, scar: person.scar },
-      obs: person.obs,
-      cwu: person.cwu,
-      stamp: { ...R.stamp },
-    };
-    const permit = person.cwu && R.cwuNoPermit ? null : { cid, dest: 'D3', valid: today + rint(0, 3), stamp: { ...R.stamp } };
+    const card = { cid, name: pick(SURNAMES), district: 'D5', expires: today + rint(2, 40), photo: faceIdx, obs: person.obs, cwu: person.cwu };
+    let permit = person.cwu && R.cwuNoPermit ? null : { cid, dest: 'D3', valid: today + rint(0, 3), stamp: { ...R.stamp } };
 
-    /* which issues are possible */
     const possible = ['expired', 'cid', 'photo', 'stamp', 'dest', 'nopermit'];
     if (R.obsBanned) possible.push('obs');
     let issue = opts && opts.force !== undefined ? opts.force : Math.random() < 0.38 ? null : pick(possible);
@@ -84,28 +71,26 @@
         permit.cid = mutateCid(cid);
         break;
       case 'photo': {
-        const other = HAIR.filter((h) => h.id !== person.hair.id);
-        card.photo = { ...card.photo, hair: pick(other) };
-        if (Math.random() < 0.5) card.photo.glasses = !card.photo.glasses;
+        const same = FACES.map((f, i) => i).filter((i) => i !== faceIdx && FACES[i].m === person.face.m);
+        card.photo = pick(same);
         break;
       }
       case 'stamp': {
         const bad = STAMPS.filter((x) => !(x.shape === R.stamp.shape && x.col === R.stamp.col));
-        (permit || card).stamp = { ...pick(bad), forged: true };
+        permit.stamp = { ...pick(bad), forged: true };
         break;
       }
       case 'dest':
         permit.dest = pick(['D1', 'D4', '404']);
         break;
       case 'nopermit':
-        if (permit) card._permitMissing = true;
+        permit = null;
         break;
       case 'obs':
         card.obs = true;
         break;
     }
-    const hasPermit = permit && !card._permitMissing;
-    return { person, card, permit: hasPermit ? permit : null, issue, rules: R, today, field: fieldOf(issue) };
+    return { person, card, permit, issue, rules: R, today, field: fieldOf(issue) };
   }
 
   function fieldOf(issue) {
@@ -124,20 +109,22 @@
   G.DOC_ISSUE_TEXT = ISSUE_TEXT;
 
   function describe(p) {
-    const bits = [p.age, p.male ? 'man' : 'woman', 'with ' + p.hair.label];
-    if (p.glasses) bits.push('glasses');
-    if (p.scar) bits.push('a scar across one cheek');
-    let t = (/^[aeiou]/.test(bits[0]) ? 'An ' : 'A ') + bits[0] + ' ' + bits[1] + ' ' + bits.slice(2).join(', ');
-    if (p.cwu) t += ', in an ochre CWU jacket';
-    return t + '.';
+    const f = p.face;
+    const art = /^[aeiou]/.test(f.age) ? 'An' : 'A';
+    return `${art} ${f.age} with ${f.look}${p.cwu ? ', in an ochre CWU jacket' : ''}.`;
   }
 
-  function face(photo) {
-    const h = photo.hair;
-    const hair = h.col ? `<path d="M14 26c0-12 8-18 18-18s18 6 18 18c-4-5-10-7-18-7s-14 2-18 7z" fill="${h.col}"/>` : '';
-    const glasses = photo.glasses ? '<g fill="none" stroke="#222" stroke-width="1.6"><circle cx="25" cy="32" r="4.5"/><circle cx="39" cy="32" r="4.5"/><path d="M29.5 32h5"/></g>' : '';
-    const scar = photo.scar ? '<path d="M40 38l6 5" stroke="#8a3b36" stroke-width="1.6"/>' : '';
-    return `<svg viewBox="0 0 64 72" class="photo"><rect width="64" height="72" fill="#cfd3d1"/><ellipse cx="32" cy="34" rx="15" ry="18" fill="#d9b9a0"/>${hair}<circle cx="25" cy="32" r="1.6" fill="#222"/><circle cx="39" cy="32" r="1.6" fill="#222"/><path d="M27 44q5 3 10 0" stroke="#7a5446" stroke-width="1.5" fill="none"/>${glasses}${scar}<path d="M8 72c4-12 13-16 24-16s20 4 24 16z" fill="#3e5f6e"/></svg>`;
+  function barcode(cid) {
+    let x = 0;
+    let bars = '';
+    const base = (cid + cid.split('').reverse().join('') + '7').split('').map(Number);
+    const digits = [].concat(base, base.map((d) => (d * 7 + 3) % 10), base.map((d) => (d * 3 + 1) % 10), base);
+    digits.forEach((d, i) => {
+      const w = 1 + (d % 3);
+      bars += `<rect x="${x}" y="0" width="${w}" height="20" fill="#1d2227"/>`;
+      x += w + 1 + ((d + i) % 2);
+    });
+    return `<svg class="barcode" viewBox="0 0 ${x} 20" preserveAspectRatio="none">${bars}</svg>`;
   }
 
   function stampSvg(st) {
@@ -174,46 +161,50 @@
       let left = seconds;
       const R = c.rules;
       const hint = perc >= 3 && c.field;
-      const F = (key, inner, extra) => `<button class="fld${hint && c.field === key ? ' hint' : ''}" data-f="${key}" ${extra || ''}>${inner}</button>`;
-      const stampKey = 'stamp';
+      /* F(key, style, inner, label) — a clickable hot zone positioned in % over the template */
+      const F = (key, pos, inner, label) =>
+        `<button class="hz${hint && c.field === key ? ' hint' : ''}" data-f="${key}" style="${pos}">${label ? `<i class="lab">${label}</i>` : ''}${inner}</button>`;
+      const box = (l, t, w, h) => `left:${l}%;top:${t}%;width:${w}%;height:${h}%`;
+
+      const idHtml = `
+        <div class="dcard idcard ${c.card.cwu ? 'cwu' : ''}">
+          <img class="tpl" src="assets/img/docs/id-card.jpg" alt="">
+          <span class="hdr">UNIVERSAL UNION · CITIZEN IDENTIFICATION</span>
+          ${F('card.photo', box(3.2, 16.8, 26.8, 54.6), `<img class="face" src="${FACES[c.card.photo].img}" alt="">`)}
+          ${F('card.cid', box(63, 16.8, 34.2, 11.4), `<b>${c.card.cid}</b>`, 'CID')}
+          ${F('card.name', box(63, 31.4, 34.2, 11.4), `<b>${c.card.name.toUpperCase()}</b>`, 'SURNAME')}
+          ${F('card.district', box(63, 45.9, 34.2, 11.3), `<b>${c.card.district}</b>`, 'DISTRICT')}
+          ${F('card.expires', box(63, 60.4, 34.2, 11), `<b>${c.card.expires}</b>`, 'VALID THROUGH')}
+          <span class="bc" style="${box(19.5, 76.5, 77, 10)}">${barcode(c.card.cid)}</span>
+          ${F('card.obs', box(0, 90.5, 100, 8.5), `<b class="st">${c.card.obs ? '<span class="obs">OBS — UNDER OBSERVATION</span>' : c.card.cwu ? '<span class="cwu-s">CWU — CIVIL WORKERS’ UNION</span>' : 'STANDARD CITIZEN'}</b>`)}
+        </div>`;
+
       const permitHtml = c.permit
-        ? `<div class="doc-card permit">
-            <div class="dh">TRANSIT PERMIT · CANAL GATE 3</div>
-            ${F('permit.cid', `<small>CID</small><b>${c.permit.cid}</b>`)}
-            ${F('permit.dest', `<small>DESTINATION</small><b>${c.permit.dest}</b>`)}
-            ${F('permit.valid', `<small>VALID UNTIL CYCLE</small><b>${c.permit.valid}</b>`)}
-            ${F(stampKey, stampSvg(c.permit.stamp), 'aria-label="stamp"')}
+        ? `<div class="dcard permit">
+            <img class="tpl" src="assets/img/docs/permit.jpg" alt="">
+            <span class="hdr">TRANSIT PERMIT · CANAL GATE 3</span>
+            ${F('permit.cid', box(4.4, 18.7, 42.4, 15.4), `<b>${c.permit.cid}</b>`, 'CID')}
+            ${F('permit.dest', box(4.4, 38.4, 42.4, 15.4), `<b>${c.permit.dest}</b>`, 'DESTINATION')}
+            ${F('permit.valid', box(4.4, 57.8, 42.4, 15.3), `<b>${c.permit.valid}</b>`, 'VALID UNTIL CYCLE')}
+            ${F('stamp', box(67.1, 19.8, 29.3, 51.8), stampSvg(c.permit.stamp))}
+            <span class="sig">${c.card.name.charAt(0)}. ${c.card.name}</span>
           </div>`
-        : `<div class="doc-card permit empty">${F('permit.missing', '<small>TRANSIT PERMIT</small><b>— none presented —</b>')}</div>`;
+        : `<div class="dcard permit nopermit">${F('permit.missing', box(0, 0, 100, 100), `<b>NO TRANSIT PERMIT PRESENTED</b>${c.card.cwu ? '<small>The citizen points at the CWU stripe on the card.</small>' : '<small>Only the ID card was handed through the slot.</small>'}`)}</div>`;
 
       wrap.innerHTML = `
         <div class="bulletin">
           <div class="bh">CHECKPOINT BULLETIN · CYCLE ${c.today}${count > 1 ? ` · CITIZEN ${idx} OF ${count}` : ''}</div>
           <div class="rules">
-            <span>Valid stamp today: ${stampSvg(R.stamp)} <b>${R.stamp.shape === 'hex' ? 'hexagonal' : 'round'}, ${R.stamp.col}</b></span>
-            <span>ID must not be expired</span>
-            <span>Permit CID must match card · destination D3 only</span>
-            <span>${R.obsBanned ? '<b>OBS citizens: DENY</b>' : 'OBS citizens: permitted'}</span>
-            <span>${R.cwuNoPermit ? 'CWU: no permit required' : 'CWU: permit required'}</span>
+            <span>Valid stamp: ${stampSvg(R.stamp)} <b>${R.stamp.shape === 'hex' ? 'hexagonal' : 'round'}, ${R.stamp.col}</b></span>
+            <span>ID valid through cycle ${c.today} or later</span>
+            <span>Permit CID = card CID · destination D3</span>
+            <span>${R.obsBanned ? '<b>OBS: DENY</b>' : 'OBS: permitted'}</span>
+            <span>${R.cwuNoPermit ? 'CWU: no permit needed' : 'CWU: permit required'}</span>
           </div>
           ${timed ? '<div class="tbar"><span></span></div>' : ''}
         </div>
         <p class="who">${describe(c.person)}</p>
-        <div class="docs-row">
-          <div class="doc-card id ${c.card.cwu ? 'cwu' : ''}">
-            <div class="dh">UNIVERSAL UNION · CITIZEN IDENTIFICATION</div>
-            <div class="idgrid">
-              ${F('card.photo', face(c.card.photo), 'aria-label="photo"')}
-              <div class="idf">
-                ${F('card.cid', `<small>CID</small><b>${c.card.cid}</b>`)}
-                ${F('card.name', `<small>SURNAME</small><b>${c.card.name.toUpperCase()}</b>`)}
-                ${F('card.expires', `<small>VALID THROUGH CYCLE</small><b>${c.card.expires}</b>`)}
-              </div>
-            </div>
-            ${F('card.obs', `<small>STATUS</small><b>${c.card.obs ? '<span class="obs">OBS</span>' : c.card.cwu ? '<span class="cwu-s">CWU</span>' : 'STANDARD'}</b>`)}
-          </div>
-          ${permitHtml}
-        </div>
+        <div class="docs-row">${idHtml}${permitHtml}</div>
         <p class="sub hintline">Tap the field that is wrong, then deny. Or approve if everything checks out.</p>
         <div class="mini-act">
           <button class="choice approve"><span class="num">✓</span><span class="lbl">APPROVE<span class="long"> — let them through</span></span></button>
@@ -225,7 +216,7 @@
         let ok;
         if (verdict === 'timeout') ok = false;
         else if (!c.issue) ok = verdict === 'approve';
-        else ok = verdict === 'deny' && flagged && (flagged === c.field || (c.field === 'stamp' && flagged === 'stamp'));
+        else ok = verdict === 'deny' && flagged === c.field;
         if (ok) correct++;
         results.push({ ok, issue: c.issue, verdict, flagged });
         wrap.querySelectorAll('button').forEach((b) => (b.disabled = true));
@@ -242,19 +233,19 @@
             ? `<b>CORRECT</b> — ${c.issue ? ISSUE_TEXT[c.issue] + '.' : 'their papers were in order.'}`
             : `<b>MISTAKE</b> — ${c.issue ? (verdict === 'approve' ? 'you let them through, but ' + ISSUE_TEXT[c.issue] + '.' : 'right call, wrong reason: ' + ISSUE_TEXT[c.issue] + '.') : 'their papers were in order. You turned away an innocent citizen.'}`;
         wrap.append(msg);
-        setTimeout(next, count > 1 ? 1300 : 1100);
+        setTimeout(next, count > 1 ? 1400 : 1100);
       };
 
-      wrap.querySelectorAll('.fld').forEach((b) =>
+      wrap.querySelectorAll('.hz').forEach((b) =>
         b.addEventListener('click', () => {
-          wrap.querySelectorAll('.fld').forEach((x) => x.classList.remove('flag'));
-          if (flagged === b.dataset.f) {
-            flagged = null;
-          } else {
+          wrap.querySelectorAll('.hz').forEach((x) => x.classList.remove('flag'));
+          if (flagged === b.dataset.f) flagged = null;
+          else {
             flagged = b.dataset.f;
             b.classList.add('flag');
           }
-          wrap.querySelector('.reason').textContent = flagged ? 'cite the flagged field' : 'select the faulty field first';
+          const r = wrap.querySelector('.reason');
+          if (r) r.textContent = flagged ? 'cite the flagged field' : 'select the faulty field first';
         })
       );
       wrap.querySelector('.approve').onclick = () => finish('approve');
@@ -263,7 +254,7 @@
       if (timed) {
         const bar = wrap.querySelector('.tbar span');
         bar.style.width = '100%';
-        left = seconds + 0.6; // grace while the view scrolls into place
+        left = seconds + 0.6;
         timer = setInterval(() => {
           left -= 0.1;
           bar.style.width = Math.max(0, (left / seconds) * 100) + '%';
@@ -272,9 +263,7 @@
         }, 100);
       }
       setTimeout(() => {
-        const top = wrap.getBoundingClientRect().top + window.scrollY - (window.innerWidth <= 860 ? 70 : 20);
-        const main = document.getElementById('main');
-        if (window.innerWidth <= 860) window.scrollTo({ top, behavior: 'smooth' });
+        if (window.innerWidth <= 860) window.scrollTo({ top: wrap.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
         else wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 350);
     }
@@ -287,7 +276,7 @@
     d_check_docs: {
       title: 'Canal Gate 3 — inspection',
       text: ['You take the papers through the slot. Card and permit. His hands are shaking so badly the permit rattles.', '@sys Inspect the documents. Your Perception skill gives you more time and, from level 3, a hint.'],
-      mini: { type: 'docs', opts: { count: 1, first: { force: 'stamp', person: { male: true, age: 'old', obs: false, cwu: false } } }, pass: 'd_check_spot', fail: 'd_check_miss', skill: 'perception', diff: 0 },
+      mini: { type: 'docs', opts: { count: 1, first: { force: 'stamp', person: { faceIdx: 4, obs: false, cwu: false } } }, pass: 'd_check_spot', fail: 'd_check_miss', skill: 'perception', diff: 0 },
     },
 
     /* routine: work the queue, timed */
@@ -317,7 +306,7 @@
       title: 'Document inspection',
       body: `<p>At every hardpoint the bulletin for the current cycle lists the valid stamp, who may pass and what papers they need. Check, in order:</p>
       <table>
-        <tr><td>PHOTO</td><td>Hair, glasses, scars — does the face match the citizen in front of you?</td></tr>
+        <tr><td>PHOTO</td><td>Does the face on the card belong to the citizen in front of you? Age, hair, glasses, beard, scars.</td></tr>
         <tr><td>EXPIRY</td><td>The card must be valid through today’s cycle or later.</td></tr>
         <tr><td>CID</td><td>The permit’s CID must match the card exactly, digit for digit.</td></tr>
         <tr><td>DESTINATION</td><td>Canal Gate 3 admits to D3 only.</td></tr>
