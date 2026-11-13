@@ -166,7 +166,7 @@
         G.startIq(s, pick(SUBJECTS), 'j_cells_end');
         G.unlock(s, 'interrogation');
       },
-      text: (s) => [`@img assets/img/env/e07-level4.jpg|Level 4`, `Vesna drops a file on the table: ${s.iq.name}, ${s.iq.desc}.`, '@say Vesna|Three cycles. Bring me something I can file.'],
+      text: (s) => [`@img assets/img/env/e07-level4.webp|Level 4`, `Vesna drops a file on the table: ${s.iq.name}, ${s.iq.desc}.`, '@say Vesna|Three cycles. Bring me something I can file.'],
       choices: () => [{ t: 'Go in.', go: 'iq_round' }],
     },
     j_cells_end: {
@@ -319,9 +319,9 @@
         s.rel.wick = s.rel.wick || 0;
       },
       text: (s) => [
-        '@portrait assets/img/portraits/granite.jpg|Granite',
+        '@portrait assets/img/portraits/granite.webp|Granite',
         '@say Granite|Three stripes. That means you get somebody to keep alive.',
-        '@portrait assets/img/portraits/wick.jpg|CCA.C9.D5-UNION-05-61207 — "Wick"',
+        '@portrait assets/img/portraits/wick.webp|CCA.C9.D5-UNION-05-61207 — "Wick"',
         'Standing at attention beside his desk is a 05 so new his armband still has fold lines in it. Thin, eighteen, a Stack 9 face. **CCA.C9.D5-UNION-05-61207.** He has a habit of touching his mask seal, as if checking it is still there.',
         '@say Granite|Your trainee. The squad calls him Wick, because he burns down fast. Make him last.',
         s.flags.tomas_gone ? 'Your protection team is two now: you and Wick.' : '@say Granite|Vey goes with you as your second. Try not to let him teach the boy any songs.',
@@ -461,7 +461,7 @@
         const L = s.c2.list;
         const res = s.flags.mole || s.res >= 30;
         return [
-          '@portrait assets/img/portraits/wick.jpg|Wick',
+          '@portrait assets/img/portraits/wick.webp|Wick',
         L.includes('ander') ? 'Wick finds you in the locker room. He has his mask in his hands and his face is wet.' : 'Wick finds you in the locker room. He is grinning, which you have never seen.',
           L.includes('ander') ? '@say Wick|Ander’s on the list. You — you had Stack 9. You had the list. Three. Tell me it wasn’t you.' : '@say Wick|Ander isn’t on it. I checked twice. I don’t know what you did, three. Thank you.',
           res ? 'Later, on the way home, a man with burned fingertips falls into step beside you for exactly ten paces.' : null,
@@ -509,7 +509,7 @@
       title: 'D4 Rail Yards — 05:40',
       checkpoint: true,
       text: (s) => [
-        '@img assets/img/env/e18-relocation.jpg|D4 — the relocation train',
+        '@img assets/img/env/e18-relocation.webp|D4 — the relocation train',
         'The train is twelve cars long and painted the grey of everything else. Overwatch stands at the doors of every car, white armour beaded with drizzle. Their lenses do not move.',
         'Two hundred citizens stand behind a rope line in the cold with one bag each. Behind them, behind a second line held by UNION, the families who were not chosen are watching the ones who were.',
         '@dispatch Citizens of District 5. Your reassignment is a privilege. City 22 needs your hands. The Union thanks you for your service.',
@@ -535,7 +535,7 @@
       choices: [{ t: 'Get up.', fx: { hp: -25, cons: 6 }, go: 'c2_u4_personal' }],
     },
     c2_u4_chase: {
-      text: ['@portrait assets/img/portraits/lida.jpg|The woman in the red headscarf', 'You run toward the fire. In the smoke behind the signal box there is a ladder, and at the top of the ladder a woman in a red headscarf, who looks down at you, recognises your mask, and does not shoot.', 'Then she is gone over the wall.'],
+      text: ['@portrait assets/img/portraits/lida.webp|The woman in the red headscarf', 'You run toward the fire. In the smoke behind the signal box there is a ladder, and at the top of the ladder a woman in a red headscarf, who looks down at you, recognises your mask, and does not shoot.', 'Then she is gone over the wall.'],
       choices: [{ t: 'Let her go. Find your people.', fx: { res: 6, cons: 3 }, go: 'c2_u4_personal' }, { t: 'Report her description to Dispatch.', fx: { merit: 5, lp: 3, res: -15 }, go: 'c2_u4_personal' }],
     },
     c2_u4_surge: {
@@ -560,14 +560,14 @@
         const L = s.c2.list;
         if (L.includes('mira'))
           return [
-            '@portrait assets/img/portraits/mira.jpg|Mira',
+            '@portrait assets/img/portraits/mira.webp|Mira',
             'Mira reaches the ramp of car seven. She stops. She turns her head and finds your lenses in the crowd, among a hundred identical lenses, and she knows which ones are yours.',
             '@say Mira|Did you do this?',
             'The Overwatch at the door raises its rifle a few centimetres. *Move.*',
           ];
         if (L.includes('halloran'))
           return [
-            '@portrait assets/img/portraits/halloran.jpg|Halloran',
+            '@portrait assets/img/portraits/halloran.webp|Halloran',
             'Halloran reaches the ramp and cannot climb it. His stick slides on the wet steel. The Overwatch at the door watches him without moving.',
             '@say Halloran|Give an old man a hand, officer?',
             'He says *officer*. He knows exactly who you are.',
@@ -631,7 +631,7 @@
       text: (s) =>
         s.mem.c2pass
           ? [
-              '@portrait assets/img/portraits/granite.jpg|Granite',
+              '@portrait assets/img/portraits/granite.webp|Granite',
               '@say Granite|Two hundred. Delivered. The Nexus is pleased with D5. I’m told to tell you that.',
               'He takes the stencil and the white paint out of his drawer and paints a fourth stripe on your armour himself, the way he did the second.',
               '@say Granite|02. Exemptions apply from grade 02, you’ll have read. Whoever you have left is safe now. For now.',
@@ -668,14 +668,14 @@
         G.unlock(s, 'interrogation');
       },
       text: (s) => [
-        '@img assets/img/env/e17-magistrate.jpg|Level 4 — the Magistrate’s office',
+        '@img assets/img/env/e17-magistrate.webp|Level 4 — the Magistrate’s office',
         'The Magistrate’s office has no window. It has a desk, two chairs, and one wall covered from floor to ceiling in grey file boxes, each stencilled with a CID.',
         '@say Magistrate|You read files. Good. Here is yours.',
         'He slides a thin folder across the desk. Your own designation on the tab. He does not let go of it.',
         '@say Magistrate|Not today. Today I need you to read someone else’s. Someone in the District 5 precinct is talking to the canals. Baskets cleared at Gate 3 that should not have been. A raid on block 2-11 that found forty empty beds. A roster that walked out of the armoury and turned up on Bazaar Row.',
         '@say Magistrate|Find the mouth. Bring me three pieces of evidence and a name. You will work with 02 Vesna.',
         'In the corner, a JURY 02 you did not notice was there looks up from a slate. Narrow, very still. The recruits upstairs say she once interrogated her own brother and filed it in under an hour.',
-        '@portrait assets/img/portraits/vesna.jpg|CCA.C9.D5-JURY-02-30961 — Vesna',
+        '@portrait assets/img/portraits/vesna.webp|CCA.C9.D5-JURY-02-30961 — Vesna',
         '@say Vesna|Don’t worry. I only bite the guilty.',
         playerLeak(s) ? 'Your heart rate is very steady. You make sure of it. Every one of those things the Magistrate just listed, you know more about than he does.' : null,
         '@sys A case board has been added to your dossier.',
@@ -696,8 +696,8 @@
         G.startIq(s, { name: 'Lida Koval', desc: 'the courier in the red headscarf, taken at Gate 3 with a basket of coagulant', guilty: true, knows: s.c2.truth === 'you' ? 'a unit at Gate 3 marks the baskets "linen, cleared" — I never saw his face, only his armband' : 'a clerk in your armoury sells the duty rosters for tokens, and we buy them', hard: 4 }, 'c2_j1_end');
       },
       text: (s) => [
-        '@img assets/img/env/e07-level4.jpg|Level 4',
-        '@portrait assets/img/portraits/lida.jpg|Lida Koval — CID 58210 · OBS',
+        '@img assets/img/env/e07-level4.webp|Level 4',
+        '@portrait assets/img/portraits/lida.webp|Lida Koval — CID 58210 · OBS',
         'They bring her in with a sack over her head. When they take it off, she looks at your lenses for a long time.',
         s.flags.res_task_failed ? 'You know her. You arrested her yourself, at Gate 3, with Rook watching. She knows you too.' : 'A woman in her thirties with a red headscarf, an old burn on her wrist, and nothing at all in her face.',
         '@say Vesna|Your subject. Three cycles. I’ll be behind the glass.',
@@ -759,7 +759,7 @@
     },
     c2_j2_ledger: {
       text: (s) => [
-        '@portrait assets/img/portraits/halvorsen.jpg|Halvorsen — CWU armoury clerk · CID 47715',
+        '@portrait assets/img/portraits/halvorsen.webp|Halvorsen — CWU armoury clerk · CID 47715',
         'You go through the ledger line by line. Sign-outs, returns, discrepancies. A clerk named **Halvorsen** has signed for the duty roster binder eleven times this month. The binder is supposed to leave the cage twice.',
         s.c2.truth === 'halvorsen' ? 'And three of those eleven sign-outs fall on the nights before the raids that went wrong.' : 'He has also been selling confiscated batteries back to Bazaar Row. He is a thief. Whether he is the leak is another question.',
       ],
@@ -808,7 +808,7 @@
         G.startIq(s, { name: '"Rook" — UNION 02-48151', desc: 'a suspected leak in the D5 precinct', guilty: false, knows: s.c2.truth === 'halvorsen' ? 'Halvorsen sells the rosters. Everyone on the night squad knows. Nobody says, because he sells batteries cheap' : s.rel.rook >= 20 ? 'I know who it is, five. I’m not going to say it. Not to you, of all people' : 'I don’t know who it is. I know it isn’t me', hard: 5 }, 'c2_j3_end');
       },
       text: (s) => [
-        '@portrait assets/img/portraits/rook-unmasked.jpg|Rook, unmasked',
+        '@portrait assets/img/portraits/rook-unmasked.webp|Rook, unmasked',
         'They have taken his mask. Without it, under the caged bulb, he looks older than he did on the roof. He looks at your lenses and laughs, once, without any humour in it.',
         '@say Rook|Five. Well. Three now. Look at you. Crimson suits you.',
         '@say Vesna|Three cycles. He’s a veteran. He knows the room.',
@@ -849,14 +849,14 @@
         const suspected = s.c2.ev.you >= 2 || s.susp >= 40;
         return suspected
           ? [
-              '@img assets/img/env/e19-roof.jpg|The roof of the Nexus',
+              '@img assets/img/env/e19-roof.webp|The roof of the Nexus',
               'Vesna asks you to come up to the roof. It is the first time she has asked you anything.',
               'The wind up here is strong enough to lean on. The Spire fills half the sky.',
               '@say Vesna|Gate 3 logs. Your key. A basket marked linen. You know what I think.',
               '@say Vesna|Here’s what I don’t know. Why I haven’t told him yet.',
             ]
           : [
-              '@img assets/img/env/e19-roof.jpg|The roof of the Nexus',
+              '@img assets/img/env/e19-roof.webp|The roof of the Nexus',
               'Vesna asks you to come up to the roof. The wind is strong enough to lean on.',
               '@say Vesna|You should know something about the Magistrate before tomorrow. He doesn’t need the truth. He needs a name, and a file thick enough to hold it. If you give him the right name, good. If you give him a name, also good. If you give him nothing — that is the only wrong answer.',
               '@say Vesna|I’m telling you because I think you’d try to give him the truth. And I think that’s going to get you killed one day.',
@@ -888,7 +888,7 @@
       title: 'The tribunal',
       checkpoint: true,
       text: (s) => [
-        '@img assets/img/env/e17-magistrate.jpg|The tribunal',
+        '@img assets/img/env/e17-magistrate.webp|The tribunal',
         'The Magistrate’s office. Two chairs. The wall of grey boxes. Vesna stands by the door. On the desk, open, your case file — every scrap you have gathered, laid out in order.',
         `@doc CASE: THE LEAK · D5 PRECINCT\nROOK — evidence ${s.c2.ev.rook}\nHALVORSEN — evidence ${s.c2.ev.halvorsen}${s.c2.ev.you ? '\nUNASSIGNED (Gate 3 key entries) — ' + s.c2.ev.you : ''}`,
         '@say Magistrate|A name, three.',
@@ -929,7 +929,7 @@
           '@say Magistrate|Good. It holds.',
           n === 'rook'
             ? 'They take Rook at 04:00 from his bunk. You are not there. Two days later his file comes back up to Level 4 stamped AMPUTATED, and is boxed and stencilled and put on the wall with all the others.'
-            : '@portrait assets/img/portraits/halvorsen.jpg|Halvorsen',
+            : '@portrait assets/img/portraits/halvorsen.webp|Halvorsen',
           n === 'rook'
             ? ''
             : 'They take Halvorsen at the armoury cage in front of the night squad. He screams that he only sold batteries. Nobody on the night squad says anything.',

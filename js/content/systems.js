@@ -648,7 +648,7 @@
         const sup = superior(s);
         const h = s.mem.hear;
         const L = [];
-        if (sup.img) L.push(`@portrait assets/img/portraits/${sup.img}.jpg|${sup.cap}`);
+        if (sup.img) L.push(`@portrait assets/img/portraits/${sup.img}.webp|${sup.cap}`);
         L.push(`@doc DISCIPLINARY NOTICE — ${G.short(s)}\n${h.items.map((x) => `${x.sev === 'serious' ? 'SERIOUS' : 'MINOR'}: ${x.reason}`).join('\n')}`);
         const say = (t) => L.push(`@say ${sup.name}|${t}`);
         if (h.out === 'warning') {
@@ -682,7 +682,7 @@
       },
       text: (s) => [
         'They do not knock. Two JURY units in crimson bands collect you from the locker room and walk you down, below the river line, to a room with one table, one chair and a ventilation fan that ticks like a clock.',
-        '@portrait assets/img/portraits/magistrate.jpg|JURY-DvL-02842 — the Magistrate',
+        '@portrait assets/img/portraits/magistrate.webp|JURY-DvL-02842 — the Magistrate',
         `@doc TRIBUNAL — ${G.desig(s)}\nCHARGE: ${s.mem.trib.reason.toUpperCase()}\nPRIOR RECORD: ${s.disc.log.length} entr${s.disc.log.length === 1 ? 'y' : 'ies'} · ${s.disc.demotions} demotion${s.disc.demotions === 1 ? '' : 's'}`,
         s.mem.trib.kind === 'collab'
           ? '@say Magistrate|Aiding an anticitizen. There is no level for that in the book you were trained on, Protection Unit, because the book was not written for us. It was written for them.'

@@ -618,7 +618,7 @@
         ${Object.keys(S.rel)
           .map((k) => {
             const pp = G.PEOPLE[k];
-            const face = pp.img ? `<img class="face" src="assets/img/portraits/${pp.img}-thumb.jpg" alt="">` : '<i class="face none"></i>';
+            const face = pp.img ? `<img class="face" src="assets/img/portraits/${pp.img}-thumb.webp" alt="">` : '<i class="face none"></i>';
             return `<div class="kv contact">${face}<span>${pp.name}<small>${pp.role}</small></span><b>${relWord(S.rel[k])}</b></div>`;
           })
           .join('')}

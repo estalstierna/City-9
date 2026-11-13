@@ -136,8 +136,14 @@ suite('static: every image the code names exists on disk', async () => {
       if (!fs.existsSync(path.join(ROOT, m[0]))) out.push(`${f}: ${m[0]}`);
     }
   }
+  /* the game loads .webp; a .jpg path in code means tools/optimize-images.py was not run or a path was missed */
+  for (const f of files) {
+    const src = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    for (const m of src.matchAll(/assets\/img\/(?!ref\/)[\w\-./]+\.jpg/g)) out.push(`${f}: ${m[0]} should be .webp`);
+  }
+  for (const f of ['portraits/rook-thumb', 'portraits/granite', 'docs/faces/f01', 'docs/faces-cwu/c12', 'docs/id-card']) if (!fs.existsSync(path.join(ROOT, `assets/img/${f}.webp`))) out.push('missing ' + f + '.webp');
   /* templated names */
-  for (const d of ['union', 'helix', 'jury', 'razor', 'spear', 'vector', 'grid', 'oa']) if (!fs.existsSync(path.join(ROOT, `assets/img/uniform-${d}.jpg`))) out.push('uniform-' + d);
+  for (const d of ['union', 'helix', 'jury', 'razor', 'spear', 'vector', 'grid', 'oa']) if (!fs.existsSync(path.join(ROOT, `assets/img/uniform-${d}.webp`))) out.push('uniform-' + d);
   for (const d of ['union', 'helix', 'jury', 'razor', 'spear', 'oa', 'vector', 'grid', 'veil']) if (!fs.existsSync(path.join(ROOT, `assets/img/emblems/${d}.png`))) out.push('emblem ' + d);
   return out;
 });

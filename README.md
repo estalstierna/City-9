@@ -56,6 +56,16 @@ Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resis
 
 Reference art (helmet, division uniforms, armbands, emblems, flags) lives in `assets/img/`. It appears in scenes, in the Codex and as your division emblem in the Dossier. The prompts that produced it are in `docs/style-sheet.md`. In scene text, add an image with `'@img assets/img/file.jpg|Caption'`.
 
+### Image pipeline
+
+The game loads `.webp` files. Each `.jpg` beside them is the source, and the file to attach to image prompts (`docs/style-sheet.md` names them). After adding or replacing art:
+
+```
+python3 tools/optimize-images.py   # writes .webp for new/changed .jpg, palettises PNG emblems and icons
+```
+
+`assets/img/ref/` holds prompt references only and is never loaded by the game. The test suite fails if code points at a `.jpg` or at an image that does not exist.
+
 ## Mobile navigation
 
 On phones the actions sit in a bottom bar (Story, Dossier, Codex, Menu) and the top bar shows only your designation and the time. The bar is built from `G.NAV` in `js/engine.js`. To add a tab for a future feature (map, inventory, orders…), push an entry from any content file:

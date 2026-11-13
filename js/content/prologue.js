@@ -7,7 +7,7 @@
       safe: true,
       nosave: true,
       text: () => [
-        '@img assets/img/env/e01-city.jpg|City 09 at dawn',
+        '@img assets/img/env/e01-city.webp|City 09 at dawn',
         '@big CITY 09',
         '@sys CIVIL PROTECTION // RECRUITMENT TERMINAL // DISTRICT 5',
         'The river still runs through City 9. It runs past the dam that hums day and night, past the Citadel spire driven into the old cathedral square like a nail, past the Stacks where forty thousand citizens sleep in shifts.',
@@ -164,11 +164,11 @@
       },
       title: 'Stack 14, Unit 14-C — 06:10',
       text: (s) => [
-        '@img assets/img/env/e02-apartment.jpg|Stack 14, Unit 14-C',
+        '@img assets/img/env/e02-apartment.webp|Stack 14, Unit 14-C',
         'The broadcast screen in the stairwell wakes the block before the light does.',
         '@dispatch Attention, residents of District 5. Your Administrator reminds you: compliance is a gift you give your neighbours. Report irregular behaviour. Today\'s ration window opens at nine.',
         'Unit 14-C is two rooms and a window taped over with plastic. The radiator knocks like someone trying to get in. Mira is already up, sitting on the sill in her mill overalls, knees to her chest, drawing on the back of a ration wrapper with a pencil stub worn down to the width of a fingernail.',
-        '@portrait assets/img/portraits/mira.jpg|Mira — CID 51420',
+        '@portrait assets/img/portraits/mira.webp|Mira — CID 51420',
         '@say Mira|You\'re really going.',
         'It isn\'t a question. She saw the slip in your pocket last night. She doesn\'t look up from the drawing.',
         '@say Mira|They take the face off you, you know. Old Halloran says they put something in your head and after a while you stop being sad about anything.',
@@ -215,7 +215,7 @@
     p_morning_2: {
       text: (s) => [
         'There is a knock on the door — three soft taps, the neighbourly kind. Old Halloran from 14-F stands in the hall in a coat older than the Union, holding half a loaf of real bread wrapped in newspaper.',
-        '@portrait assets/img/portraits/halloran.jpg|Edvard Halloran — CID 10388',
+        '@portrait assets/img/portraits/halloran.webp|Edvard Halloran — CID 10388',
         '@say Halloran|For the road. Don\'t ask where I got it, and I won\'t ask where you\'re going.',
         `He looks at you a moment too long. He was the one who carried you and Mira out of the old apartment the night the sky opened, during the war. He used to call you *${N(s)} the stubborn*.`,
         '@say Halloran|Your father would have had opinions. But your father isn\'t here, and the girl needs feeding. Go on.',
@@ -241,7 +241,7 @@
     p_street: {
       title: 'Bazaar Row — 07:20',
       text: [
-        '@img assets/img/env/e03-bazaar.jpg|Bazaar Row, the canal bridge checkpoint',
+        '@img assets/img/env/e03-bazaar.webp|Bazaar Row, the canal bridge checkpoint',
         'The street is all elbows and steam. Citizens move in the same direction — toward the mills, the ration lines, the transit gates — with the same blue overalls and the same downward look. A scanner drone glides above the crowd at the height of the second-floor windows, its lens clicking as it photographs faces.',
         'At the checkpoint where Bazaar Row meets the canal bridge, two Protection Units have a man down on the wet cobbles. He is maybe fifty. His papers are scattered in the gutter. One unit holds him with a boot between the shoulder blades while the other works a stunstick in short, bored strokes across his back.',
         '@say Protection Unit|Pick it up. Pick up your card. I said *pick it up*.',
@@ -321,7 +321,7 @@
         G.unlock(s, 'cca');
       },
       text: [
-        '@img assets/img/env/e04-nexus.jpg|The Nexus, District 1',
+        '@img assets/img/env/e04-nexus.webp|The Nexus, District 1',
         'The Nexus was a courthouse once. The Union kept the columns and the wide stone steps and bolted everything else over with plates of dark alloy that sweat in the cold. Banners of the Universal Union hang the full height of the facade. Above the doors, a screen loops the face of City 9\'s Administrator — Halvard Lenz, silver-haired, gentle-voiced, endlessly reasonable.',
         '@dispatch ...and those who serve the Union serve themselves. A Civil Protection officer never queues for bread. A Civil Protection officer never fears the night. Will you be afraid, or will you be the reason others feel safe?',
         'Inside, the hall is cold enough to see your breath. Thirty-odd citizens stand in a line painted on the floor. You recognise a few faces from the Stacks. Most stare at the floor.',
@@ -468,12 +468,12 @@
       title: 'Training Wing — Barracks 3',
       checkpoint: true,
       text: [
-        '@img assets/img/env/e05-barracks.jpg|Training Wing, Barracks 3',
+        '@img assets/img/env/e05-barracks.webp|Training Wing, Barracks 3',
         'Barracks 3 is a long concrete room with forty bunks and one window too high to see out of. The heating works. There is a toilet that flushes. Half the intake simply sits on their bunks and stares at the radiator as if it might be a trick.',
         'The bunk above yours belongs to a broad young man with a mill-worker\'s shoulders and a crooked nose. He is already unwrapping the bar from his welcome ration, and he grins at you with a mouth full of nutrient paste.',
-        '@portrait assets/img/portraits/tomas.jpg|Tomas Vey — CID 27716, D2 dye floor',
+        '@portrait assets/img/portraits/tomas.webp|Tomas Vey — CID 27716, D2 dye floor',
         '@say Tomas|Tomas. Tomas Vey. D2, the Works — dye floor. You?',
-        '@portrait assets/img/portraits/ilse.jpg|Ilse Marek — CID 83305, D3 pump works',
+        '@portrait assets/img/portraits/ilse.webp|Ilse Marek — CID 83305, D3 pump works',
         'Across the aisle, a narrow-faced woman sits cross-legged on her bunk, lacing her boots with careful, practised loops. She hasn\'t touched her ration. Her eyes move over every new arrival, counting.',
         '@say Tomas|That\'s Ilse. Don\'t bother. I tried. She looked at me like I was a census form.',
       ],

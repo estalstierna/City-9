@@ -3,7 +3,7 @@
   G.MINIGAMES = G.MINIGAMES || {};
 
   const SURNAMES = ['Orlova', 'Halek', 'Brodsky', 'Vey', 'Kessel', 'Marek', 'Danek', 'Sokol', 'Petrak', 'Lind', 'Havel', 'Novak', 'Ruzek', 'Frank', 'Koval', 'Zeman', 'Bartos', 'Mraz'];
-  /* the twelve ID photos (assets/img/docs/faces/fNN.jpg) and what an officer can see */
+  /* the twelve ID photos (assets/img/docs/faces/fNN.webp) and what an officer can see */
   const FACES = [
     { m: true, age: 'man in his thirties', look: 'short dark hair' },
     { m: true, age: 'man in his fifties', look: 'grey hair and wire glasses' },
@@ -17,8 +17,8 @@
     { m: false, age: 'woman in her fifties', look: 'a grey headscarf' },
     { m: false, age: 'old woman', look: 'short white hair' },
     { m: false, age: 'young woman', look: 'a red-brown braid' },
-  ].map((f, i) => ({ ...f, img: `assets/img/docs/faces/f${String(i + 1).padStart(2, '0')}.jpg` }));
-  /* twelve CWU members (assets/img/docs/faces-cwu/cNN.jpg), indices 12–23 */
+  ].map((f, i) => ({ ...f, img: `assets/img/docs/faces/f${String(i + 1).padStart(2, '0')}.webp` }));
+  /* twelve CWU members (assets/img/docs/faces-cwu/cNN.webp), indices 12–23 */
   FACES.push(
     ...[
       { m: true, age: 'man in his forties', look: 'short brown hair and a broad face' },
@@ -33,7 +33,7 @@
       { m: false, age: 'woman in her forties', look: 'cropped black hair' },
       { m: false, age: 'old woman', look: 'white hair in a bun' },
       { m: false, age: 'woman in her thirties', look: 'fair braids and freckles' },
-    ].map((f, i) => ({ ...f, cwu: true, img: `assets/img/docs/faces-cwu/c${String(i + 1).padStart(2, '0')}.jpg` }))
+    ].map((f, i) => ({ ...f, cwu: true, img: `assets/img/docs/faces-cwu/c${String(i + 1).padStart(2, '0')}.webp` }))
   );
   const facePool = (cwu) => FACES.map((f, i) => i).filter((i) => !!FACES[i].cwu === !!cwu);
   G.pickFace = (cwu) => pick(facePool(cwu));
@@ -206,7 +206,7 @@
 
       const idHtml = `
         <div class="dcard idcard ${c.card.cwu ? 'cwu' : ''}">
-          <img class="tpl" src="assets/img/docs/id-card.jpg" alt="">
+          <img class="tpl" src="assets/img/docs/id-card.webp" alt="">
           <span class="hdr">UNIVERSAL UNION · CITIZEN IDENTIFICATION</span>
           ${F('card.photo', box(3.2, 16.8, 26.8, 54.6), `<img class="face" src="${FACES[c.card.photo].img}" alt="">`)}
           ${F('card.cid', box(63, 16.8, 34.2, 11.4), `<b>${c.card.cid}</b>`, 'CID')}
@@ -225,7 +225,7 @@
         </div>`;
       const permitHtml = c.cardOnly ? scanHtml : c.permit
         ? `<div class="dcard permit">
-            <img class="tpl" src="assets/img/docs/permit.jpg" alt="">
+            <img class="tpl" src="assets/img/docs/permit.webp" alt="">
             <span class="hdr">TRANSIT PERMIT · CANAL GATE 3</span>
             ${F('permit.cid', box(4.4, 18.7, 42.4, 15.4), `<b>${c.permit.cid}</b>`, 'CID')}
             ${F('permit.dest', box(4.4, 38.4, 42.4, 15.4), `<b>${c.permit.dest}</b>`, 'DEST.')}

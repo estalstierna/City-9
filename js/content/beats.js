@@ -60,7 +60,7 @@
       title: 'Locker room — 05:50',
       text: (s) => [
         'You open your locker and the Magistrate is standing behind you. You didn\'t hear him come in. Two JURY units block the door.',
-        '@portrait assets/img/portraits/magistrate.jpg|JURY-DvL-02842',
+        '@portrait assets/img/portraits/magistrate.webp|JURY-DvL-02842',
         '@say Magistrate|Protection Unit. Random audit. Stand by your locker. Hands where I can see them.',
         'One of the JURY units begins to search your locker. The other holds a scanner to the base of your skull — reading your biosignal as you breathe.',
         contraband(s).length ? `You are carrying contraband: **${contraband(s).map((i) => G.ITEMS[i].name).join(', ')}**. It is in your coat. Your coat is on the hook, eighty centimetres from the JURY unit\'s hand.` : 'There is nothing in your locker. You are almost sure there is nothing in your locker.',
@@ -145,7 +145,7 @@
         'The siren starts at 04:12. Not the shift siren. The long, rising, two-tone wail you have only heard on recordings.',
         '@dispatch Attention, all units. Sociostatus declared, District 2. Anticitizen detonation at the ration-packing plant. Overwatch assumes command. All Civil Protection units in D2 and D5 will comply with Overwatch directives. Repeat: Overwatch assumes command.',
         'By 05:00 you are standing in the rubble-strewn yard of the Works with the rest of the squad. The packing plant is a black shell. Fire crews spray water on something that is still burning. Somewhere under the steel there are bodies.',
-        '@img assets/img/ota-elite.jpg|Overwatch Elite, C9 Garrison',
+        '@img assets/img/ota-elite.webp|Overwatch Elite, C9 Garrison',
         'An Overwatch squad leader — a tall soldier with a white-painted shoulder plate — addresses Granite as though Granite were a junior private.',
         '@say Overwatch|Civil Protection will clear residential block 2-11. All occupants to the yard for processing. Resistance will be met with full force. Execute.',
         'Block 2-11 is where the mill workers live. Tomas grew up there. Mira\'s friend Katya lives there.',
@@ -195,7 +195,7 @@
       title: 'Canal Quarter — the old pump house',
       text: (s) => [
         'A note in your locker, no signature, in neat block letters: *PUMP HOUSE 4. 20:00. COME AS A CITIZEN.*',
-        '@img assets/img/env/e13-pumphouse.jpg|Pump House 4, Canal Quarter',
+        '@img assets/img/env/e13-pumphouse.webp|Pump House 4, Canal Quarter',
         'Pump House 4 stands at the end of a towpath in D3, half its windows boarded, its great iron wheel rusted solid. Inside it is dark and smells of river. Ilse is sitting on the wheel housing, out of uniform, her boots dangling.',
         s.flags.ilse_threatened ? '@say Ilse|You threatened me in training. I know. I\'m giving you a second chance. People don\'t usually get one.' : '@say Ilse|You came. Good. I thought you might be the type who doesn\'t.',
         '@say Ilse|Here\'s the thing. Next time you\'re on Canal Gate 3, a woman will come through. Red headscarf. Basket of laundry. Under the laundry is coagulant for a man who got shot in your old neighbour\'s apartment. The scanner will flag the basket. You won\'t.',
@@ -298,9 +298,9 @@
     b_rook: {
       title: 'Precinct roof',
       text: [
-        '@img assets/img/env/e15-roof.jpg|The roof',
+        '@img assets/img/env/e15-roof.webp|The roof',
         'Rook is on the precinct roof with his mask pushed up on his forehead, smoking a real cigarette. It\'s the first time you have seen his face: older than you expected, a long jaw, a scar through one eyebrow that matches the crack in his lens.',
-        '@portrait assets/img/portraits/rook-unmasked.jpg|Rook, unmasked',
+        '@portrait assets/img/portraits/rook-unmasked.webp|Rook, unmasked',
         '@say Rook|Don\'t tell anyone you saw this. Sit.',
         '@say Rook|First week, I had a partner. Kid called Feliks. Good kid. Soft. A citizen stabbed him with a screwdriver in a ration line because Feliks turned his back to help an old woman pick up her packet. I keep thinking: if he\'d been harder, he\'d be alive. And then I think: if he\'d been harder, would it have mattered whether he was alive?',
         'He offers you the cigarette.',
@@ -370,7 +370,7 @@
     exam_04_b: {
       title: 'The lock bridge',
       text: (s) => [
-        '@img assets/img/env/e14-lockbridge.jpg|The lock bridge, 06:30',
+        '@img assets/img/env/e14-lockbridge.webp|The lock bridge, 06:30',
         'Thursday. 06:30. Fog on the canals, thick as wet wool. The truck grinds through the Canal Quarter at walking pace with you on the running board and three units in the back with the ration crates.',
         'At the lock bridge the fog is so heavy you can\'t see the far side. The lock gates are closed. They shouldn\'t be closed.',
         s.mem.ex > 0 ? 'You studied this. There\'s a pump house on the left bank with a clear line of sight to the bridge, and the lock-keeper\'s hut on the right. If you were going to ambush a truck, you would use both.' : 'You stop the truck. You don\'t like it, but you can\'t say why.',
@@ -398,7 +398,7 @@
     exam_04_d: {
       text: (s) => [
         'One of the rebels lies against the lock wall, holding her stomach. A girl. Mill overalls. Seventeen, eighteen.',
-        '@portrait assets/img/portraits/katya.jpg|Katya — CID 64187, Stack 9',
+        '@portrait assets/img/portraits/katya.webp|Katya — CID 64187, Stack 9',
         'You know her. **Katya**, from Stack 9. Mira\'s friend. She used to sleep over on your floor in the winter when her block\'s heating failed. She recognises your voice through the mask before you recognise her face.',
         '@say Katya|...It\'s you. Oh, God. Mira said you\'d gone over. I didn\'t believe her.',
         'Your three units are watching. Granite is going to read the report.',
@@ -485,7 +485,7 @@
     },
     exam_03_b: {
       text: (s) => [
-        '@img assets/img/env/e15-roof.jpg|Stack 1, the relay antenna',
+        '@img assets/img/env/e15-roof.webp|Stack 1, the relay antenna',
         'They come at 02:20, not up the stairwell but across a plank laid from the roof of Stack 2, six metres of darkness and nothing beneath. Four figures with satchels.',
         s.flags.ex_read ? 'You saw this coming. A unit is already waiting at the parapet where the plank lands.' : 'The first one is across before anybody sees him.',
         s.flags.mole ? 'And you realise — with a cold drop in your stomach — that one of the figures moves like Ilse. Watch the feet.' : 'Satchel charges. If one reaches the mast, the district goes dark.',
@@ -554,7 +554,7 @@
       enter: (s) => G.unlock(s, 'divisions'),
       text: [
         'The transfer application is a single sheet on Granite\'s desk. Five boxes. One signature line.',
-        '@img assets/img/emblems.jpg|Division emblems of the Combine Civil Authority',
+        '@img assets/img/emblems.webp|Division emblems of the Combine Civil Authority',
         '@sys Choose your division. Each has requirements, built from the skills and record you earned. (Each division\'s storyline continues in the next chapter.)',
       ],
       choices: [
@@ -582,7 +582,7 @@
           SPEAR: 'SPEAR\'s Division Leader looks you over and says only: "Beyond the canal, nothing is quarantined. Everything is just *waiting*."',
         };
         return [
-          ['UNION', 'HELIX', 'JURY', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'].includes(s.div) ? `@img assets/img/uniform-${s.div.toLowerCase()}.jpg|${s.div} — your new uniform` : null,
+          ['UNION', 'HELIX', 'JURY', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'].includes(s.div) ? `@img assets/img/uniform-${s.div.toLowerCase()}.webp|${s.div} — your new uniform` : null,
           lines[s.div],
           `@doc ${G.desig(s)}\nDIVISION: ${s.div}\nRANK: ${G.RANK_NAMES[s.rank].toUpperCase()}\nDAYS IN SERVICE: ${s.day}`,
           s.flags.mole ? 'And somewhere on Bazaar Row, a repairman with burned fingertips hears that a certain 03 has a new posting, and smiles over his soldering iron.' : null,

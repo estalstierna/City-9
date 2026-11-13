@@ -2,7 +2,7 @@
 G.addCodex({
   city9: {
     title: 'City 09',
-    body: `<img src="assets/img/env/e01-city.jpg" alt="City 09 at dawn" loading="lazy"><img src="assets/img/flag-city09.jpg" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
+    body: `<img src="assets/img/env/e01-city.webp" alt="City 09 at dawn" loading="lazy"><img src="assets/img/flag-city09.webp" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
     <table>
       <tr><td>D1</td><td>The Nexus — administration, Civil Protection headquarters, training wing, detention levels.</td></tr>
       <tr><td>D2</td><td>The Works — textile mills and the ration-packing plant. Shift sirens at 05:40 and 17:40.</td></tr>
@@ -15,17 +15,17 @@ G.addCodex({
   citizens: {
     title: 'Citizen dress & identification',
     body: `<p>Every citizen is issued the same clothes: a faded blue work jacket with a stand collar, an undershirt, work trousers and shoes. A white cloth label on the right chest carries the <b>Citizen ID</b> — <b>CID</b> and five digits — above a barcode. The district is stencilled on the back.</p>
-    <img src="assets/img/citizen-base.jpg" alt="Base citizen uniform" loading="lazy">
+    <img src="assets/img/citizen-base.webp" alt="Base citizen uniform" loading="lazy">
     <p><b>Commended citizens</b> receive a gold-rimmed pin above the label, a gold line beneath the barcode, a new-issue jacket and a priority ration card. Their neighbours notice.</p>
-    <img src="assets/img/citizen-commended.jpg" alt="Commended citizen" loading="lazy">
+    <img src="assets/img/citizen-commended.webp" alt="Commended citizen" loading="lazy">
     <p><b>Citizens under observation</b> have a red diagonal stripe and the mark <b>OBS</b> printed across their label, a red barred circle on the back and a monitoring band locked to the wrist. Report irregularities.</p>
-    <img src="assets/img/citizen-watch.jpg" alt="Citizen under watch" loading="lazy">
-    <img src="assets/img/citizen-cwu.jpg" alt="Civil Workers' Union" loading="lazy">
+    <img src="assets/img/citizen-watch.webp" alt="Citizen under watch" loading="lazy">
+    <img src="assets/img/citizen-cwu.webp" alt="Civil Workers' Union" loading="lazy">
     <p><b>Civil Workers' Union (CWU)</b> members run the ration terminals, the licensed shops and the maintenance crews. Over the citizen jacket they wear an ochre work jacket with a reflective band and a union badge; their ID label carries an ochre stripe marked <b>CWU</b>. They eat better, are exempt from food and medical contraband rules, and are trusted by nobody — not by the Union, and not by their neighbours.</p>`,
   },
   spire: {
     title: 'The Spire',
-    body: `<img src="assets/img/spire-ref.jpg" alt="The Spire of City 09" loading="lazy">
+    body: `<img src="assets/img/spire-ref.webp" alt="The Spire of City 09" loading="lazy">
     <p>Citizens call it the Citadel when no one is listening, and "the Spire" when someone is. Twenty-four hundred metres of dark alloy driven through the old cathedral square like a nail, its crown split into two prongs around a hovering black void. A cold cyan core glows two-thirds of the way up. Conduits as thick as trams run from its foot across the river to the dam, which has not stopped humming since the war.</p>
     <p>No citizen has been inside. Very few units have. The ones who come back do not discuss it.</p>`,
   },
@@ -36,8 +36,8 @@ G.addCodex({
   },
   cca: {
     title: 'Combine Civil Authority',
-    body: `<img src="assets/img/master-a.jpg" alt="Visual identity of the Civil Authority" loading="lazy"><img src="assets/img/flag-cca.jpg" alt="CCA flag" loading="lazy"><p>The primary branch of the Universal Union alongside the Overwatch Executive Branch. The CCA acts as the local authority of each city, keeping the peace and standing on the front line against rebellion. Its units patrol the streets, staff checkpoints, distribute rations and punish rule-breaking citizens.</p>
-    <img src="assets/img/helmet.jpg" alt="Protection Unit helmet" loading="lazy">
+    body: `<img src="assets/img/master-a.webp" alt="Visual identity of the Civil Authority" loading="lazy"><img src="assets/img/flag-cca.webp" alt="CCA flag" loading="lazy"><p>The primary branch of the Universal Union alongside the Overwatch Executive Branch. The CCA acts as the local authority of each city, keeping the peace and standing on the front line against rebellion. Its units patrol the streets, staff checkpoints, distribute rations and punish rule-breaking citizens.</p>
+    <img src="assets/img/helmet.webp" alt="Protection Unit helmet" loading="lazy">
     <p>Units are masked in public and addressed by designation, never by name. Every unit's full designation is stencilled in small off-white letters on the left shoulder panel, directly above the division armband. Service grants better rations, private quarters and the privilege of being feared.</p>`,
   },
   designation: {
@@ -55,7 +55,7 @@ G.addCodex({
   },
   hierarchy: {
     title: 'CCA Hierarchy',
-    body: `<img src="assets/img/ranks-enlisted.jpg" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/ranks-command.jpg" alt="Ranks: officers and command" loading="lazy"><table>
+    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><table>
       <tr><td>EA</td><td>Earth Administrator</td></tr>
       <tr><td>SeC</td><td>Sectorial Commander</td></tr>
       <tr><td>CmD</td><td>Field Commander</td></tr>
@@ -76,7 +76,7 @@ G.addCodex({
   },
   divisions: {
     title: 'Field Divisions',
-    body: `<img src="assets/img/emblems.jpg" alt="Division emblems" loading="lazy"><img src="assets/img/emblems-new.jpg" alt="VECTOR, GRID and VEIL emblems" loading="lazy"><table>
+    body: `<img src="assets/img/emblems.webp" alt="Division emblems" loading="lazy"><img src="assets/img/emblems-new.webp" alt="VECTOR, GRID and VEIL emblems" loading="lazy"><table>
       <tr><td>UNION</td><td>The basic policing division, performing general patrol duties. Every graduate begins here.</td></tr>
       <tr><td>HELIX</td><td>Medical division. Treats injuries sustained by protection forces and VIPs. Requires field medicine aptitude.</td></tr>
       <tr><td>JURY</td><td>Military police. Detention of citizens, interrogation, forced confessions, internal discipline.</td></tr>
@@ -101,27 +101,27 @@ G.addCodex({
       <tr><td>GRID</td><td>Copper · lightning bolt through a hex nut</td></tr>
       <tr><td>OA</td><td>Violet · chevrons under a star</td></tr>
     </table>
-    <img src="assets/img/armbands.jpg" alt="Division armbands" loading="lazy"><img src="assets/img/armbands-new.jpg" alt="VECTOR, GRID and VEIL armbands" loading="lazy">`,
+    <img src="assets/img/armbands.webp" alt="Division armbands" loading="lazy"><img src="assets/img/armbands-new.webp" alt="VECTOR, GRID and VEIL armbands" loading="lazy">`,
   },
   uniforms: {
     title: 'Uniform reference — all divisions',
     body: `<p>Standard issue for every division shares the same helmet, jacket, vest and duty belts. The division shows in the armband, the crest stripe and the kit.</p>
-    <p><b>UNION</b> — patrol.</p><img src="assets/img/uniform-union.jpg" alt="UNION uniform" loading="lazy">
-    <p><b>HELIX</b> — field medic.</p><img src="assets/img/uniform-helix.jpg" alt="HELIX uniform" loading="lazy">
-    <p><b>JURY</b> — detention & interrogation.</p><img src="assets/img/uniform-jury.jpg" alt="JURY uniform" loading="lazy">
-    <p><b>RAZOR</b> — hardpoint & VIP protection.</p><img src="assets/img/uniform-razor.jpg" alt="RAZOR uniform" loading="lazy">
-    <p><b>SPEAR</b> — 404 zone assault.</p><img src="assets/img/uniform-spear.jpg" alt="SPEAR uniform" loading="lazy">
-    <p><b>OA</b> — Officer Academy command uniform.</p><img src="assets/img/uniform-oa.jpg" alt="OA uniform" loading="lazy">
-    <p><b>VECTOR</b> — containment specialist.</p><img src="assets/img/uniform-vector.jpg" alt="VECTOR uniform" loading="lazy">
-    <p><b>GRID</b> — field engineer.</p><img src="assets/img/uniform-grid.jpg" alt="GRID uniform" loading="lazy">`,
+    <p><b>UNION</b> — patrol.</p><img src="assets/img/uniform-union.webp" alt="UNION uniform" loading="lazy">
+    <p><b>HELIX</b> — field medic.</p><img src="assets/img/uniform-helix.webp" alt="HELIX uniform" loading="lazy">
+    <p><b>JURY</b> — detention & interrogation.</p><img src="assets/img/uniform-jury.webp" alt="JURY uniform" loading="lazy">
+    <p><b>RAZOR</b> — hardpoint & VIP protection.</p><img src="assets/img/uniform-razor.webp" alt="RAZOR uniform" loading="lazy">
+    <p><b>SPEAR</b> — 404 zone assault.</p><img src="assets/img/uniform-spear.webp" alt="SPEAR uniform" loading="lazy">
+    <p><b>OA</b> — Officer Academy command uniform.</p><img src="assets/img/uniform-oa.webp" alt="OA uniform" loading="lazy">
+    <p><b>VECTOR</b> — containment specialist.</p><img src="assets/img/uniform-vector.webp" alt="VECTOR uniform" loading="lazy">
+    <p><b>GRID</b> — field engineer.</p><img src="assets/img/uniform-grid.webp" alt="GRID uniform" loading="lazy">`,
   },
   overwatch: {
     title: 'Overwatch',
     body: `<p>The Universal Union's military. The <b>Overwatch Transhuman Arm (OTA)</b> is the combative element, made of surgically altered soldiers in many specialised variants. <b>Overwatch Strategic Intelligence (OSI)</b> is the intelligence element.</p>
     <p>OTA operates side by side with the CCA. CCA personnel cannot issue orders to OTA and vice versa — unless a <b>sociostatus</b> is active, in which case Overwatch takes authority over most CCA personnel.</p>
-    <img src="assets/img/ota-soldier.jpg" alt="Overwatch infantry" loading="lazy">
-    <img src="assets/img/ota-elite.jpg" alt="Overwatch elite" loading="lazy">
-    <img src="assets/img/ota-insignia.jpg" alt="Overwatch insignia" loading="lazy">
+    <img src="assets/img/ota-soldier.webp" alt="Overwatch infantry" loading="lazy">
+    <img src="assets/img/ota-elite.webp" alt="Overwatch elite" loading="lazy">
+    <img src="assets/img/ota-insignia.webp" alt="Overwatch insignia" loading="lazy">
     <p>Overwatch wears no cloth. Its markings are painted on armour: a hexagon cut by a glowing visor slit — cyan for infantry, red for elites, gold for command. Rank is counted in chevrons on the shoulder plate. Civil Protection units learn to read them from across a street, and to step aside.</p>
     <p>OSI recruitment is classified. Units who ask about it tend to be transferred somewhere quiet.</p>`,
   },
@@ -165,11 +165,11 @@ G.addCodex({
   },
   helix: {
     title: 'HELIX Division',
-    body: `<img src="assets/img/uniform-helix.jpg" alt="HELIX uniform" loading="lazy"><p>HELIX medics wear a white armband trimmed in teal and carry biogel, coagulant and a sidearm they are trained to use without hesitation. They treat Protection Units first, VIPs second, citizens when ordered. Their infirmary sits beneath the Nexus.</p>`,
+    body: `<img src="assets/img/uniform-helix.webp" alt="HELIX uniform" loading="lazy"><p>HELIX medics wear a white armband trimmed in teal and carry biogel, coagulant and a sidearm they are trained to use without hesitation. They treat Protection Units first, VIPs second, citizens when ordered. Their infirmary sits beneath the Nexus.</p>`,
   },
   jury: {
     title: 'JURY Division',
-    body: `<img src="assets/img/uniform-jury.jpg" alt="JURY uniform" loading="lazy"><p>Military police of the CCA. JURY handles detention, interrogation and forced confession, and polices other units for malcompliance. A JURY unit at your door is never good news, whatever uniform you wear.</p>`,
+    body: `<img src="assets/img/uniform-jury.webp" alt="JURY uniform" loading="lazy"><p>Military police of the CCA. JURY handles detention, interrogation and forced confession, and polices other units for malcompliance. A JURY unit at your door is never good news, whatever uniform you wear.</p>`,
   },
 });
 
@@ -337,15 +337,15 @@ G.addCodex({
 G.addCodex({
   vector: {
     title: 'VECTOR Division',
-    body: '<img src="assets/img/uniform-vector.jpg" alt="VECTOR uniform" loading="lazy"><p><i>"What comes out of the quarantine does not go back in. It goes into a jar."</i></p><p>VECTOR follows SPEAR into the 404 zones once the shooting stops. Its units seal breaches, burn infestation, recover specimens and run the containment laboratories beneath the Nexus. They wear sealed suits over their uniforms and are decontaminated twice a shift. Other units do not share mess tables with VECTOR. Officially, this is for hygiene.</p>',
+    body: '<img src="assets/img/uniform-vector.webp" alt="VECTOR uniform" loading="lazy"><p><i>"What comes out of the quarantine does not go back in. It goes into a jar."</i></p><p>VECTOR follows SPEAR into the 404 zones once the shooting stops. Its units seal breaches, burn infestation, recover specimens and run the containment laboratories beneath the Nexus. They wear sealed suits over their uniforms and are decontaminated twice a shift. Other units do not share mess tables with VECTOR. Officially, this is for hygiene.</p>',
   },
   grid: {
     title: 'GRID Division',
-    body: '<img src="assets/img/uniform-grid.jpg" alt="GRID uniform" loading="lazy"><p><i>"Every light in City 9 is a promise. GRID keeps the promises."</i></p><p>When a forcefield flickers, a scanner goes dark or a hardpoint loses power, GRID is sent — usually under fire, because resistance cells cut the power before they move. GRID maintains everything the Union built: biosignal relays, combine locks, broadcast masts, the conduits from the dam to the Spire. No citizen, not even CWU, may touch Union technology.</p>',
+    body: '<img src="assets/img/uniform-grid.webp" alt="GRID uniform" loading="lazy"><p><i>"Every light in City 9 is a promise. GRID keeps the promises."</i></p><p>When a forcefield flickers, a scanner goes dark or a hardpoint loses power, GRID is sent — usually under fire, because resistance cells cut the power before they move. GRID maintains everything the Union built: biosignal relays, combine locks, broadcast masts, the conduits from the dam to the Spire. No citizen, not even CWU, may touch Union technology.</p>',
   },
   veil: {
     title: '[NO RECORD]',
-    body: '<img src="assets/img/uniform-veil.jpg" alt="[NO RECORD]" loading="lazy"><p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. VEIL has no Protection Units — no recruits, no 05s, no ladder to climb. Every operative was first a Field Officer or higher in another division, and disappeared from it overnight. Their old files say <i>Transferred: Officer Academy</i>, or simply <i>Deserviced</i>. Their old squads hold a wake.</p><p>Rank inside VEIL is worn but almost invisible: officer insignia in dull grey on a black band, a crest stripe of gloss black lacquer that shows only when the light catches it. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses — and it only chooses officers.</p><p>If you are reading this, someone wanted you to.</p>',
+    body: '<img src="assets/img/uniform-veil.webp" alt="[NO RECORD]" loading="lazy"><p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. VEIL has no Protection Units — no recruits, no 05s, no ladder to climb. Every operative was first a Field Officer or higher in another division, and disappeared from it overnight. Their old files say <i>Transferred: Officer Academy</i>, or simply <i>Deserviced</i>. Their old squads hold a wake.</p><p>Rank inside VEIL is worn but almost invisible: officer insignia in dull grey on a black band, a crest stripe of gloss black lacquer that shows only when the light catches it. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses — and it only chooses officers.</p><p>If you are reading this, someone wanted you to.</p>',
   },
 });
 

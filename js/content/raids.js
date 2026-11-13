@@ -43,7 +43,7 @@
         const r = R(s);
         const inf = r.inf ? infById(s, r.inf) : null;
         return [
-          '@img assets/img/env/e02-apartment.jpg|A flat in the Stacks',
+          '@img assets/img/env/e02-apartment.webp|A flat in the Stacks',
           inf
             ? `@sys TIP — your asset ${inf.name} says the occupant of ${r.addr} ${r.claimText}.`
             : `@dispatch Warrant, ${r.addr}. A neighbour reports that the occupant ${r.claimText}. Serve and search.`,

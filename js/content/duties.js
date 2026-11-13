@@ -20,9 +20,9 @@
     d_ration_1: {
       title: 'Plaza 5 — ration dispensary',
       text: [
-        '@img assets/img/env/e10-ration.jpg|Plaza 5, ration distribution',
+        '@img assets/img/env/e10-ration.webp|Plaza 5, ration distribution',
         'The ration dispensary is a steel wall in the side of the old cinema with six hatches in it. When a citizen puts a card into the slot, a hatch opens and a grey packet slides out: nutrient bar, a can of sector water, a sachet of something that is supposed to be coffee.',
-        '@img assets/img/portraits/rdt-worker.jpg|Behind hatch 4',
+        '@img assets/img/portraits/rdt-worker.webp|Behind hatch 4',
         'Behind the steel wall, CWU workers in ochre jackets feed the RDT hatches from pallets, never looking out through the slots.',
         'The queue goes around the plaza twice. Three hundred citizens, maybe more, silent except for coughing.',
         '@say Rook|Two rules for ration line. Keep it moving. Keep it quiet. A line that stops is a line that thinks.',
@@ -123,7 +123,7 @@
     d_ration_r: {
       title: 'Plaza 5 — ration line',
       text: [
-        '@img assets/img/env/e10-ration.jpg|Plaza 5',
+        '@img assets/img/env/e10-ration.webp|Plaza 5',
         'The ration line again. Three hundred faces, one grey packet each.',
         G.pick([
           'A small boy tries to slip under the barrier rope to get to the front. His sister hisses at him to come back. He freezes when he sees you looking.',
@@ -142,7 +142,7 @@
     d_check_1: {
       title: 'Canal Gate 3',
       text: [
-        '@img assets/img/env/e11-gate.jpg|Canal Gate 3',
+        '@img assets/img/env/e11-gate.webp|Canal Gate 3',
         'Canal Gate 3 is a steel cage built across the old stone bridge into the Canal Quarter. A scanner arch, a booth, a barrier, a Combine banner snapping in the wind. Citizens pass in single file, papers held up to the scanner.',
         'Mid-morning, a man of about sixty steps up to the arch. His hands are shaking. His papers are a relocation permit to D3 — the stamp is right, the photograph is him.',
         'But the paper is wrong. Too white. Fresh.',
@@ -180,7 +180,7 @@
       enter: (s) => G.unlock(s, 'overwatch'),
       text: [
         'At 14:00, the queue goes completely silent.',
-        '@img assets/img/ota-soldier.jpg|Overwatch infantry, C9 Garrison',
+        '@img assets/img/ota-soldier.webp|Overwatch infantry, C9 Garrison',
         'A squad of Overwatch soldiers comes up the bridge from the Canal Quarter: four of them, tall, armoured in dark plates, faces hidden behind single glowing lenses. Their radios speak in a dry clicking language that isn\'t meant for human ears. Citizens flatten against the railing.',
         'The squad leader stops at your booth. His voice is a synthesized rasp.',
         '@say Overwatch|Protection Unit. Surrender checkpoint log. Passage records, past seventy-two hours.',
@@ -233,7 +233,7 @@
     d_check_r: {
       title: 'Canal Gate 3',
       text: (s) => [
-        '@img assets/img/env/e11-gate.jpg|Canal Gate 3',
+        '@img assets/img/env/e11-gate.webp|Canal Gate 3',
         'The gate again. The scanner hums, the queue shuffles, the river slides by black under the bridge.',
         G.pick([
           'A woman tries to bring a bag of river clams across without a permit. They are still alive, clicking against each other.',
@@ -256,7 +256,7 @@
     },
     d_check_res_ok: {
       text: [
-        '@portrait assets/img/portraits/lida.jpg|Red headscarf, basket of laundry',
+        '@portrait assets/img/portraits/lida.webp|Red headscarf, basket of laundry',
         'She comes at 15:20, a woman in a red headscarf with a basket of laundry. Under the laundry, you know, is a box of HELIX coagulant stolen from the Nexus. The scanner flags the basket.',
         'You log it as *linen, cleared*, and wave her through without looking at her face.',
         'That night, there is a small chalk mark on the wall of the precinct latrine, low down, where only someone looking would see. **λ**. Then someone else scrubs it away.',
@@ -276,7 +276,7 @@
     d_market_1: {
       title: 'Bazaar Row — foot patrol',
       text: [
-        '@img assets/img/env/e03-bazaar.jpg|Bazaar Row',
+        '@img assets/img/env/e03-bazaar.webp|Bazaar Row',
         'Bazaar Row at noon: rusting market stalls under tarpaulins, citizens bartering in murmurs, the smell of boiled bones and hot metal. Your boots clear a path in front of you without you having to do anything at all.',
         'Halfway down, Rook stops and points his stick up. On the wall above a shuttered shop, fresh blue paint is still dripping: half a lambda, unfinished. And on the roof gutter above it, a skinny kid with a paint tin is frozen like a cat.',
         'He sees you. He runs.',
@@ -329,7 +329,7 @@
     d_market_tinker: {
       text: (s) => [
         'At the end of the Row, a repairman\'s stall: radios, coils of copper, a lamp clamped to a shelf. A bald man with thick spectacles and burned fingertips solders something without looking up as you pass.',
-        '@portrait assets/img/portraits/tinker.jpg|The repairman at the end of the Row',
+        '@portrait assets/img/portraits/tinker.webp|The repairman at the end of the Row',
         s.flags.know_tinker ? 'You know who this is. *The Tinker.* The name from level 4, from the boy with the paint.' : 'Rook\'s stick taps his thigh a little faster as you pass. He doesn\'t say anything.',
       ],
       choices: (s) => [
@@ -578,7 +578,7 @@
     d_rail_1: {
       title: 'D4 Rail Yards — 23:40',
       text: [
-        '@img assets/img/env/e12-railyard.jpg|D4 Rail Yards, 23:40',
+        '@img assets/img/env/e12-railyard.webp|D4 Rail Yards, 23:40',
         'The rail yards after curfew are a forest of dead freight cars and rusting cranes, lit only by the green standby lamps of the transit line and the occasional sweep of a scanner. Rook takes point. Two 04s from the night squad flank you. Your torch beam makes everything look like it\'s moving.',
         'Night sweeps draw sidearms from the armoury whatever your grade: a USP-Match signed out against your designation, eighteen rounds counted out and counted back in at dawn.',
         '@radio D5 PT, Dispatch. Biosignal anomaly in the yard. Coagulate and examine. Sword is NOT authorised. 10-4.',
@@ -658,7 +658,7 @@
     d_rail_r: {
       title: 'Rail yard sweep',
       text: [
-        '@img assets/img/env/e12-railyard.jpg|D4 Rail Yards',
+        '@img assets/img/env/e12-railyard.webp|D4 Rail Yards',
         'The yards at night again. Rust, cold, green lamps.',
         G.pick([
           'You find a campfire, still warm, inside a boxcar. A child\'s shoe beside it. Nobody there.',

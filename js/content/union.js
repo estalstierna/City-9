@@ -49,17 +49,17 @@
         ['terms', 'crimes', 'contraband', 'equipment', 'docs'].forEach((c) => G.unlock(s, c));
       },
       text: (s) => [
-        '@img assets/img/env/e09-precinct.jpg|District 5 Precinct, the old tram depot',
+        '@img assets/img/env/e09-precinct.webp|District 5 Precinct, the old tram depot',
         'The District 5 precinct is a converted tram depot at the edge of the Stacks. The old rails still run through the floor of the muster hall, polished by boots. Twenty units in masks stand in loose rows under the strip lights, smoking through their filters, checking weapons, ignoring you.',
         'The squadron leader stands on a loading platform with a slate in one hand. Big. Slow-moving. A broad blue officer\'s stripe down the crown of his mask, scratched almost to grey. **CCA.C9.D5-UNION-SqL-11902.** The squadron calls him *Granite*, and when he speaks you understand why.',
-        '@portrait assets/img/portraits/granite.jpg|CCA.C9.D5-UNION-SqL-11902 — "Granite"',
+        '@portrait assets/img/portraits/granite.webp|CCA.C9.D5-UNION-SqL-11902 — "Granite"',
         '@say Granite|New fives. Welcome to D5. Forty thousand citizens. Twenty-two units. You can do the arithmetic. They outnumber us two thousand to one, and the only reason they don\'t tear us apart is that they believe we can\'t be torn.',
         '@say Granite|Don\'t ever let them stop believing it.',
         `He reads names — designations — off the slate. When he reaches yours he pauses. "${s.mem.grade}." His mask turns a few degrees toward you. You can\'t tell what he thinks of that.`,
         'You are paired with a field trainer for your first weeks: a lean, restless UNION 02 with a cracked left lens and a habit of tapping his stick against his thigh like a metronome. **CCA.C9.D5-UNION-02-48151.** He tells you to call him *Rook*.',
-        '@portrait assets/img/portraits/rook.jpg|CCA.C9.D5-UNION-02-48151 — "Rook"',
+        '@portrait assets/img/portraits/rook.webp|CCA.C9.D5-UNION-02-48151 — "Rook"',
         '@say Rook|Three rules. One: you don\'t take off the mask on the street, not even to scratch your nose. Two: you don\'t say a citizen\'s name out loud. Three: when I say run, you\'ve already been running for a second. Questions? Good. Board\'s over there.',
-        '@img assets/img/uniform-union.jpg|UNION patrol uniform — your kit from today',
+        '@img assets/img/uniform-union.webp|UNION patrol uniform — your kit from today',
         '@sys Each day you choose a duty from the board. Duties earn merit, which unlocks your next field evaluation. Evenings are yours: rest, train, visit people, or go where you shouldn\'t.',
       ],
       choices: [{ t: 'Check the duty board.', fx: { rel: { rook: 5 } }, go: 'u_board' }],
@@ -253,9 +253,9 @@
         s.mem.tinkerVisits = (s.mem.tinkerVisits || 0) + 1;
       },
       text: (s) => [
-        '@img assets/img/env/e16-tinker.jpg|The repairman\'s stall, Bazaar Row',
+        '@img assets/img/env/e16-tinker.webp|The repairman\'s stall, Bazaar Row',
         'The stall is a wooden booth with a hinged counter, crowded with gutted radios, coils of copper, and a single lamp clamped to a shelf. Behind the counter sits a bald man with heavy spectacles and burned fingertips. He is soldering something with surgical care and does not look up.',
-        '@portrait assets/img/portraits/tinker.jpg|The Tinker — CID 07731, Bazaar Row',
+        '@portrait assets/img/portraits/tinker.webp|The Tinker — CID 07731, Bazaar Row',
         '@say Tinker|Closed. Unless you have something that needs fixing.',
         s.mem.tinkerVisits > 1 ? 'He glances up. Recognises you. Goes back to his soldering, a little more slowly.' : null,
       ],
@@ -400,7 +400,7 @@
       text: [
         'Mira is sitting on the floor with her back to the radiator when you come in. She has a split lip and she is trying to hide it with her hand.',
         '@say Mira|It\'s nothing. It\'s — it\'s not nothing. It\'s Brask. The foreman. He wasn\'t nicer for long.',
-        '@portrait assets/img/portraits/brask.jpg|Brask — CWU supervisor, dye floor · CID 30882',
+        '@portrait assets/img/portraits/brask.webp|Brask — CWU supervisor, dye floor · CID 30882',
         'It comes out slowly. Brask is the CWU supervisor on the dye floor — ochre jacket, flat cap, a gold chevron on his union badge — and he controls the shift rosters. He puts girls who refuse him on the dye vats, where the fumes take your lungs in a year. Mira refused him. He hit her. Tomorrow she starts on the vats.',
         '@say Mira|I\'m not asking you to do anything. I know what you\'d have to do. I just — I needed to tell someone who wasn\'t scared of him.',
       ],
@@ -413,7 +413,7 @@
 
     ev_mira_brask_ok: {
       text: [
-        '@portrait assets/img/portraits/brask.jpg|Brask, in his glass office above the vats',
+        '@portrait assets/img/portraits/brask.webp|Brask, in his glass office above the vats',
         'You visit the dye floor the next morning during your patrol, mask on, Rook a step behind you. You find Brask in his glass office above the vats.',
         'You don\'t touch him. You don\'t have to. You stand very close, and you say his name — which units never do — and you tell him the exact address of his apartment, and the name of his wife, and the number of the ration window she uses.',
         'Then you tell him that a girl called Mira will be on the inspection line from now on, and that if her name ever appears on the vat roster you will come back.',
@@ -426,7 +426,7 @@
 
     ev_mira_brask_bad: {
       text: [
-        '@portrait assets/img/portraits/brask.jpg|Brask',
+        '@portrait assets/img/portraits/brask.webp|Brask',
         'You find Brask in his glass office. You tell him to leave Mira alone. You say her name.',
         'Brask smiles. He is a fat man with small, wet eyes, and he has been bullied by units before.',
         '@say Brask|Mira. Your sister, is it? Funny. I file reports too, officer. On workers who get special treatment. On units who abuse their position for family. JURY loves those reports.',
@@ -570,7 +570,7 @@
       },
       text: (s) => [
         'You wake under white light with a taste of copper in your mouth. There is a tube in your arm and someone has cut away half your uniform.',
-        '@portrait assets/img/portraits/helix-77301.jpg|HELIX-02-77301',
+        '@portrait assets/img/portraits/helix-77301.webp|HELIX-02-77301',
         '@say HELIX 02|Ah. Awake. Good. I dislike filling out the other form.',
         'It is the instructor from training — **HELIX-02-77301**, green lens, tired voice. She checks something on a slate.',
         '@say HELIX 02|Biogel, sutures, two units of synthetic blood. You will be on light duty for a day. Your squadron leader has been informed that you were careless. I was asked to put it in those words.',
@@ -589,7 +589,7 @@
       },
       text: (s) => [
         'They come for you at 03:15. Not UNION. JURY, four of them, with the Magistrate at the back in his crimson armband, hands folded behind him.',
-        '@portrait assets/img/portraits/magistrate.jpg|JURY-DvL-02842',
+        '@portrait assets/img/portraits/magistrate.webp|JURY-DvL-02842',
         '@say Magistrate|Your file, Protection Unit. It has been turning a colour for some time. Tonight it became the colour.',
         'You do not reach for your sidearm. You were trained well enough to know it would not matter.',
         'They take you down to level 4. Below the river line. The walls sweat. A ventilation fan ticks like a clock.',

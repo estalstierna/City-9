@@ -31,10 +31,10 @@
         G.unlock(s, 'contraband');
       },
       text: [
-        '@img assets/img/env/e06-parade.jpg|Training Wing, parade floor, 05:00',
+        '@img assets/img/env/e06-parade.webp|Training Wing, parade floor, 05:00',
         'They wake you with a siren at 04:45 and a bucket of cold water for whoever is slowest. By 05:00 the forty recruits of Intake 9-114 stand on a painted grid in the parade hall, breath steaming, implant sites throbbing.',
         'The drill instructor walks the lines with his hands behind his back. His mask is scarred along the left lens, his UNION-blue armband crossed with an officer\'s thick silver bar. His designation is stencilled on his shoulder plate: **CCA.C9.D1-UNION-OfC-30117**. Before the week is out every recruit will call him *Thirty*, and never to his face.',
-        '@portrait assets/img/portraits/thirty.jpg|CCA.C9.D1-UNION-OfC-30117 — "Thirty"',
+        '@portrait assets/img/portraits/thirty.webp|CCA.C9.D1-UNION-OfC-30117 — "Thirty"',
         '@say Thirty|You are not citizens any more. You are not yet Protection Units. You are *recruits*, which is the lowest form of life inside these walls. A citizen at least knows what he is.',
         '@say Thirty|Four weeks. Each week you are assigned to one block of instruction. The blocks you choose will decide what kind of unit you become, and what kind of unit you become decides whether you come home at night. At the end there is an evaluation. It will be live. It will be in your own district. Some of you will fail it.',
         '@say Thirty|Above you is the ladder.',
@@ -305,7 +305,7 @@
       enter: (s) => G.unlock(s, 'helix'),
       text: [
         'The infirmary annex is the cleanest place you have ever been. White tile, steel trays, a hum of refrigeration. The HELIX instructor wears the white-banded sleeve and a mask with a green lens filter. Her designation reads **CCA.C9.D1-HELIX-02-77301**. Her voice, when she speaks, is unexpectedly tired.',
-        '@portrait assets/img/portraits/helix-77301.jpg|CCA.C9.D1-HELIX-02-77301',
+        '@portrait assets/img/portraits/helix-77301.webp|CCA.C9.D1-HELIX-02-77301',
         '@say HELIX 02|Protection Units first. VIPs second. Citizens if there is time, supplies, and an order. Write that on the inside of your skull.',
         'She teaches you biogel — a blue paste that seals wounds and burns like ice. Coagulant injectors. How to pack a gunshot wound with your fist. How to tell a dying man from a man who only thinks he is dying.',
         'On the third day, the doors bang open. Two units drag in a citizen from the Works, a mill hand of about forty, his left hand crushed in a loom. He is grey, sweating, and trying very hard not to scream.',
@@ -532,10 +532,10 @@
         G.unlock(s, 'contraband');
       },
       text: [
-        '@img assets/img/env/e07-level4.jpg|Detention level 4',
+        '@img assets/img/env/e07-level4.webp|Detention level 4',
         'Level 4 is below the river line. The walls sweat. The corridors are lit by single caged bulbs, and somewhere a ventilation fan ticks like a clock.',
         'The JURY instructor waits in an observation room with a one-way window. His armband is crimson. His designation reads **CCA.C9.D5-JURY-DvL-02842**. A Division Leader — four rungs above anyone who has ever spoken to you. The recruits call him *the Magistrate*.',
-        '@portrait assets/img/portraits/magistrate.jpg|CCA.C9.D5-JURY-DvL-02842 — "the Magistrate"',
+        '@portrait assets/img/portraits/magistrate.webp|CCA.C9.D5-JURY-DvL-02842 — "the Magistrate"',
         '@say Magistrate|Everyone talks. Everyone. The only questions are how long, and whether what they say is true. JURY exists to shorten the first and guarantee the second.',
         'On the other side of the glass, a boy of perhaps sixteen sits chained to a steel table. His fingers are stained with blue paint. On the table in front of him is a photograph of a wall in D5 with a lambda painted across it two metres high.',
         '@say Magistrate|He painted it. He did not choose the place. Someone told him where, and gave him the paint. I want a name. You will go in and ask him for it.',
@@ -779,7 +779,7 @@
     bt_raid_2: {
       title: 'Unit 14-F',
       text: [
-        '@img assets/img/env/e08-halloran.jpg|Unit 14-F, 23:10',
+        '@img assets/img/env/e08-halloran.webp|Unit 14-F, 23:10',
         'Tomas breaches the door with his shoulder. The lock was never very good.',
         'Halloran is sitting at his kitchen table in his coat, as though he has been waiting for you. A single candle. A cup of something that isn\'t sector water. He looks up at the six of you, and then at you, and something in his face folds closed.',
         '@say Halloran|Ah. Well. At least it\'s someone who knows to wipe their boots.',
@@ -961,7 +961,7 @@
       text: (s) => [
         'Three days later, Intake 9-114 stands on the painted grid one last time. Thirty-one of the forty who started. Nobody mentions the other nine.',
         'They call you forward one at a time. A HELIX medic fits the mask over your face and seals it at the back of your skull. For a moment you cannot breathe — then the filter clicks, and the air comes in cold and tasting faintly of metal, and the world goes slightly blue through the lenses.',
-        '@img assets/img/helmet.jpg|Standard-issue Protection Unit helmet',
+        '@img assets/img/helmet.webp|Standard-issue Protection Unit helmet',
         'You hear your own breath, amplified. It doesn\'t sound like you.',
         `@doc FINAL EVALUATION: ${s.mem.grade.toUpperCase()}\nASSIGNED: UNION DIVISION, DISTRICT 5 PRECINCT\nDESIGNATION: ${G.desig(s)}`,
         s.mem.grade === 'Distinction' ? '@say Thirty|Distinction. One of three in this intake. Don\'t let it go to your head. Heads are where they shoot.' : s.mem.grade === 'Probationary' ? '@say Thirty|Probationary. JURY will be watching your file. So will I. Give us both a reason to stop.' : '@say Thirty|Adequate. The street will finish what I started.',
