@@ -256,6 +256,7 @@
     },
     d_check_res_ok: {
       text: [
+        '@portrait assets/img/portraits/lida.jpg|Red headscarf, basket of laundry',
         'She comes at 15:20, a woman in a red headscarf with a basket of laundry. Under the laundry, you know, is a box of HELIX coagulant stolen from the Nexus. The scanner flags the basket.',
         'You log it as *linen, cleared*, and wave her through without looking at her face.',
         'That night, there is a small chalk mark on the wall of the precinct latrine, low down, where only someone looking would see. **λ**. Then someone else scrubs it away.',

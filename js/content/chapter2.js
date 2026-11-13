@@ -506,7 +506,7 @@
       choices: [{ t: 'Get up.', fx: { hp: -25, cons: 6 }, go: 'c2_u4_personal' }],
     },
     c2_u4_chase: {
-      text: ['You run toward the fire. In the smoke behind the signal box there is a ladder, and at the top of the ladder a woman in a red headscarf, who looks down at you, recognises your mask, and does not shoot.', 'Then she is gone over the wall.'],
+      text: ['@portrait assets/img/portraits/lida.jpg|The woman in the red headscarf', 'You run toward the fire. In the smoke behind the signal box there is a ladder, and at the top of the ladder a woman in a red headscarf, who looks down at you, recognises your mask, and does not shoot.', 'Then she is gone over the wall.'],
       choices: [{ t: 'Let her go. Find your people.', fx: { res: 6, cons: 3 }, go: 'c2_u4_personal' }, { t: 'Report her description to Dispatch.', fx: { merit: 5, lp: 3, res: -15 }, go: 'c2_u4_personal' }],
     },
     c2_u4_surge: {
@@ -668,6 +668,7 @@
       },
       text: (s) => [
         '@img assets/img/env/e07-level4.jpg|Level 4',
+        '@portrait assets/img/portraits/lida.jpg|Lida Koval — CID 58210 · OBS',
         'They bring her in with a sack over her head. When they take it off, she looks at your lenses for a long time.',
         s.flags.res_task_failed ? 'You know her. You arrested her yourself, at Gate 3, with Rook watching. She knows you too.' : 'A woman in her thirties with a red headscarf, an old burn on her wrist, and nothing at all in her face.',
         '@say Vesna|Your subject. Three cycles. I’ll be behind the glass.',
