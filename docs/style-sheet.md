@@ -926,6 +926,40 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 ```
 
 
+### PROMPT E: CWU, Civil Workers' Union
+
+Medborgare med arbetsprivilegier: driver ransoneringsterminaler (RDT), butiker, reparationer och underhåll. CWU-medlemmar undantas från kontrabandsreglerna för mat och medicin, får bättre ransoner och har ett eget märke. Vanliga medborgare litar inte på dem. CCA ser dem som användbara verktyg.
+
+**Kanon:** ockragul arbetsjacka (#B8902F) över medborgarjackan, ett reflexband i grått, en CWU-bricka på bröstet och en CID-etikett med **gul rand och texten "CWU"**. Två grader: **Worker** (gul etikettrand) och **Supervisor** (gul rand + liten guldchevron på brickan, keps med skärm).
+
+**Format:** 3:2 liggande. **Bifoga i ordning:** 1 `citizen-base.jpg` · 2 `citizen-commended.jpg` · 3 `master-a.jpg` (layout och typsnitt).
+
+```
+Costume design reference sheet of the "CIVIL WORKERS' UNION" (CWU) uniform, worn by privileged working citizens of an occupied dystopian Eastern-European city, City 09, on a neutral warm-grey background. Match the layout, typography and rendering of the THIRD attached image. Title on a charcoal strip in condensed off-white stencil: "CITY 09 — CIVIL WORKERS' UNION (CWU)".
+
+RELATION: the CWU uniform is built on top of the standard citizen uniform in the FIRST attached image — same faded blue-teal jacket with mandarin collar, same trousers and shoes — so it is clearly a citizen, but visibly better provided for, like the commended citizen in the SECOND attached image. It must NOT look like police or military.
+
+MAIN ROW — two figures, full body, front view, neutral pose:
+1. "CWU WORKER": a woman in her forties, practical and tired, short tied-back hair. Over the citizen jacket she wears a hip-length quilted work jacket in muted ochre-yellow (#B8902F) with a single horizontal reflective grey band across the chest and back, large patch pockets and a tool loop. A canvas tool belt with a wrench, a ration-terminal service key on a lanyard and a small torch. Work gloves tucked into the belt.
+2. "CWU SUPERVISOR": a heavier man in his fifties, clean-shaven, a flat cap with a short stiff peak. The same ochre work jacket, newer and cleaner, worn open over a grey knitted waistcoat; a clipboard under one arm; a small brass whistle on a chain.
+
+SECOND ROW: side and back views of the worker. On the back of the ochre jacket, stencilled large in charcoal: "CWU" above "C9:D5", and the reflective band across the shoulders.
+
+MARKINGS:
+- Union badge on the LEFT chest of the ochre jacket: a round enamel badge, charcoal centre, ochre rim, a stylised spanner crossed with a ration packet, the letters "CWU" beneath. On the supervisor's badge, a tiny gold downward chevron above the spanner.
+- Citizen ID label on the wearer's RIGHT chest (left side of the image), the off-white cloth label "CID 51877" (worker) and "CID 30412" (supervisor) with a barcode, plus a solid ochre-yellow stripe along the bottom edge with "CWU" printed in it.
+
+DETAIL INSETS: the CWU badge (worker and supervisor versions); the ID label with ochre stripe; the ration-terminal service key; the stencilled back; a comparison of three ID labels side by side labelled "STANDARD" (plain), "COMMENDED" (gold line) and "CWU" (ochre stripe).
+
+CALLOUTS in small stencil type: "CWU WORK JACKET", "REFLECTIVE BAND", "UNION BADGE", "CID — CWU", "SERVICE KEY", "SUPERVISOR CAP".
+
+MOOD: useful, tolerated, slightly better fed than everyone else — and aware that both the police and their neighbours are watching them.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and faded blue-teal palette with muted ochre-yellow accents, worn and used materials, crisp linework under painted rendering, subtle film grain, clean orthographic presentation, all text sharp and correctly spelled.
+
+DO NOT include: armour, gas masks, weapons, police armbands, bright safety yellow or neon high-visibility colours, modern brand logos, characters from existing games.
+```
+
 ### Varianter (byggs på basen senare)
 
 Lägg till i slutet av prompt A eller B:
