@@ -1820,6 +1820,8 @@ Egen design. Förlagan (spelmodellen) bifogas **inte**. Airwatch bär inget tyg:
 
 Undvik orden "rear"/"back" om trupputrymmet i prompten: modellen flyttar då dörrarna bakåt. Skriv "troop bay … sliding side doors on the left and right flanks".
 
+| E23 Shrike över the Stacks | `env/e23-shrike-stacks.jpg` | 1 airwatch-shrike · 2 env/e03-bazaar · 3 citizen-base · 4 env/e01-city | natt, utegångsförbud, regn, sökarljus på fasaden, "AW-S 09-2" |
+
 Lore: codex-posten "airwatch" (The Universal Union). Shrike är baserad på Nexus tak; koden 10-78 AIR; medborgarna kallar rotorljudet "the knock". Full prompt-text finns i chatthistoriken (2026-11-13).
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
