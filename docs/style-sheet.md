@@ -827,6 +827,9 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 4. Lägg till i DO NOT-raden: `the face of any person in the attached images`.
 5. Om ett referensark med kläder också innehåller ansikten (citizen-base, citizen-watch, citizen-cwu), skriv "clothing and markings only, not the face".
 
+**Allmän regel för utrustningsrader:** varje föremål får en etikett direkt under sig, i liten benvit stencil på en gemensam baslinje. Föremålen står i en rak rad med jämna mellanrum och samma skala. Lista föremål och etikett parvis i prompten (`ITEM — "LABEL"`) och lägg till `unlabelled equipment` i DO NOT-raden. Detaljbilder får också korta etiketter. Promptrad:
+`EQUIPMENT ROW: the items stand in one straight row, evenly spaced, at the same scale, each on its own with clear space around it. Directly beneath EACH item, on the same baseline, a short label in small condensed off-white stencil capitals, spelled exactly as listed: [...]. Every item has exactly one label; no item without a label, no label without an item.`
+
 **Allmän regel för siffror och koder:** skriv varje kod direkt i beskrivningen av den person eller det föremål den tillhör, inte i en gemensam lista, och avsluta med "Check every digit: …".
 
 **Allmän regel för enhetsporträtt:**
@@ -1791,6 +1794,10 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 
 Prompterna **V1** (emblem), **V2** (armband) och **V3–V5** (uniformer) finns i chatthistoriken (2026-11-13). V5 Rev 2 (officersversionen) bifogar `ref/ofc-helmet.jpg` och `ref/ofc-armband.jpg`. Ordning: V1 och V2 först, sedan uniformerna med V1 och V2 bifogade.
 Exempeldesignationer: `CCA.C9.D1-VECTOR-03-55190`, `CCA.C9.D1-GRID-03-70448`.
+
+
+**Utrustningsetiketter (Rev 2):** VECTOR: DECON LANCE, INCINERATOR, SPECIMEN CASE, SAMPLE JARS, HAZARD METER, SIDEARM 9MM, HAZARD TAPE. GRID: MULTI-DRIVER, DIAGNOSTIC SLATE, FIELD CALIBRATION KEY, CABLE SPOOL, POWER CELL, SIDEARM 9MM, SERVICE KNIFE. VEIL: SUPPRESSED SIDEARM, BLACK BLADE, GRAPPLE LINE, DEAD SLATE, LOCK PICKS, VIAL CASE, BLANK ID, SEALED ORDERS. V3 och V4 Rev 2, samt redigeringsprompten för VEIL-etiketterna, finns i chatthistoriken.
+VEIL-arket (Rev 1) fick fel emblem i titeln och detaljbilden. Ersätt det med V1-emblemet (tom medaljong) när det finns.
 
 ### V2a Armband VECTOR och GRID (3:2) · bifoga: 1 armbands · 2 ref/02-armband · 3 V1-emblemarket
 ```
