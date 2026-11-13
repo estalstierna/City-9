@@ -194,6 +194,7 @@
       title: 'Canal Quarter — the old pump house',
       text: (s) => [
         'A note in your locker, no signature, in neat block letters: *PUMP HOUSE 4. 20:00. COME AS A CITIZEN.*',
+        '@img assets/img/env/e13-pumphouse.jpg|Pump House 4, Canal Quarter',
         'Pump House 4 stands at the end of a towpath in D3, half its windows boarded, its great iron wheel rusted solid. Inside it is dark and smells of river. Ilse is sitting on the wheel housing, out of uniform, her boots dangling.',
         s.flags.ilse_threatened ? '@say Ilse|You threatened me in training. I know. I\'m giving you a second chance. People don\'t usually get one.' : '@say Ilse|You came. Good. I thought you might be the type who doesn\'t.',
         '@say Ilse|Here\'s the thing. Next time you\'re on Canal Gate 3, a woman will come through. Red headscarf. Basket of laundry. Under the laundry is coagulant for a man who got shot in your old neighbour\'s apartment. The scanner will flag the basket. You won\'t.',
@@ -296,6 +297,7 @@
     b_rook: {
       title: 'Precinct roof',
       text: [
+        '@img assets/img/env/e15-roof.jpg|The roof',
         'Rook is on the precinct roof with his mask pushed up on his forehead, smoking a real cigarette. It\'s the first time you have seen his face: older than you expected, a long jaw, a scar through one eyebrow that matches the crack in his lens.',
         '@portrait assets/img/portraits/rook-unmasked.jpg|Rook, unmasked',
         '@say Rook|Don\'t tell anyone you saw this. Sit.',
@@ -366,6 +368,7 @@
     exam_04_b: {
       title: 'The lock bridge',
       text: (s) => [
+        '@img assets/img/env/e14-lockbridge.jpg|The lock bridge, 06:30',
         'Thursday. 06:30. Fog on the canals, thick as wet wool. The truck grinds through the Canal Quarter at walking pace with you on the running board and three units in the back with the ration crates.',
         'At the lock bridge the fog is so heavy you can\'t see the far side. The lock gates are closed. They shouldn\'t be closed.',
         s.mem.ex > 0 ? 'You studied this. There\'s a pump house on the left bank with a clear line of sight to the bridge, and the lock-keeper\'s hut on the right. If you were going to ambush a truck, you would use both.' : 'You stop the truck. You don\'t like it, but you can\'t say why.',
@@ -480,6 +483,7 @@
     },
     exam_03_b: {
       text: (s) => [
+        '@img assets/img/env/e15-roof.jpg|Stack 1, the relay antenna',
         'They come at 02:20, not up the stairwell but across a plank laid from the roof of Stack 2, six metres of darkness and nothing beneath. Four figures with satchels.',
         s.flags.ex_read ? 'You saw this coming. A unit is already waiting at the parapet where the plank lands.' : 'The first one is across before anybody sees him.',
         s.flags.mole ? 'And you realise — with a cold drop in your stomach — that one of the figures moves like Ilse. Watch the feet.' : 'Satchel charges. If one reaches the mast, the district goes dark.',

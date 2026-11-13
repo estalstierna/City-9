@@ -138,6 +138,7 @@
     d_check_1: {
       title: 'Canal Gate 3',
       text: [
+        '@img assets/img/env/e11-gate.jpg|Canal Gate 3',
         'Canal Gate 3 is a steel cage built across the old stone bridge into the Canal Quarter. A scanner arch, a booth, a barrier, a Combine banner snapping in the wind. Citizens pass in single file, papers held up to the scanner.',
         'Mid-morning, a man of about sixty steps up to the arch. His hands are shaking. His papers are a relocation permit to D3 — the stamp is right, the photograph is him.',
         'But the paper is wrong. Too white. Fresh.',
@@ -227,6 +228,7 @@
     d_check_r: {
       title: 'Canal Gate 3',
       text: (s) => [
+        '@img assets/img/env/e11-gate.jpg|Canal Gate 3',
         'The gate again. The scanner hums, the queue shuffles, the river slides by black under the bridge.',
         G.pick([
           'A woman tries to bring a bag of river clams across without a permit. They are still alive, clicking against each other.',
@@ -563,6 +565,7 @@
     d_rail_1: {
       title: 'D4 Rail Yards — 23:40',
       text: [
+        '@img assets/img/env/e12-railyard.jpg|D4 Rail Yards, 23:40',
         'The rail yards after curfew are a forest of dead freight cars and rusting cranes, lit only by the green standby lamps of the transit line and the occasional sweep of a scanner. Rook takes point. Two 04s from the night squad flank you. Your torch beam makes everything look like it\'s moving.',
         '@radio D5 sweep team, Dispatch. Biosignal anomaly reported in the yard. Proceed with caution. 10-4.',
         'You pass a relocation car with its doors chained shut. Something inside it has been written on the walls with a fingernail.',
@@ -639,6 +642,7 @@
     d_rail_r: {
       title: 'Rail yard sweep',
       text: [
+        '@img assets/img/env/e12-railyard.jpg|D4 Rail Yards',
         'The yards at night again. Rust, cold, green lamps.',
         G.pick([
           'You find a campfire, still warm, inside a boxcar. A child\'s shoe beside it. Nobody there.',
