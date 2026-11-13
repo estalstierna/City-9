@@ -343,7 +343,7 @@ G.addCodex({
   },
   veil: {
     title: '[NO RECORD]',
-    body: '<p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. It describes units with no designation on their shoulders and no colour on their armbands, who handle what no other division is told about. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses.</p><p>If you are reading this, someone wanted you to.</p>',
+    body: '<p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. VEIL has no Protection Units — no recruits, no 05s, no ladder to climb. Every operative was first a Field Officer or higher in another division, and disappeared from it overnight. Their old files say <i>Transferred: Officer Academy</i>, or simply <i>Deserviced</i>. Their old squads hold a wake.</p><p>Rank inside VEIL is worn but almost invisible: officer insignia in dull grey on a black band, a crest stripe of gloss black lacquer that shows only when the light catches it. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses — and it only chooses officers.</p><p>If you are reading this, someone wanted you to.</p>',
   },
 });
 

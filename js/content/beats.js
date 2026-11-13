@@ -564,7 +564,7 @@
         { t: '**RAZOR** — protect the VIPs and the Hardpoints. Stand beside the Administrator.', lock: (s) => (s.skills.firearms < 3 ? 'Requires Firearms 3' : s.lp < 15 ? 'Requires Loyalty rating +15' : null), fx: (s) => ((s.div = 'RAZOR'), null), go: 'ch1_end' },
         { t: '**VECTOR** — necrotic containment and research. The sealed suits that go in after SPEAR.', lock: (s) => (s.skills.medical < 2 ? 'Requires Field Medicine 2' : s.skills.fitness < 2 ? 'Requires Conditioning 2' : null), fx: (s) => ((s.div = 'VECTOR'), G.unlock(s, 'vector'), null), go: 'ch1_end' },
         { t: '**GRID** — Union infrastructure. Forcefields, hardpoints, the conduits to the Spire.', lock: (s) => (s.skills.comms < 3 ? 'Requires Radio & Protocol 3' : null), fx: (s) => ((s.div = 'GRID'), G.unlock(s, 'grid'), null), go: 'ch1_end' },
-        { t: '**VEIL** — there is no box for this on the form.', lock: () => 'No application exists. VEIL chooses.', go: 'ch1_end' },
+        { t: '**VEIL** — there is no box for this on the form.', lock: () => 'No application exists. VEIL chooses — and only from officers.', go: 'ch1_end' },
         { t: '**SPEAR** — the offensive division. Cleared for the 404 zones beyond the canal.', lock: (s) => (s.skills.firearms < 3 ? 'Requires Firearms 3' : s.skills.fitness < 3 ? 'Requires Conditioning 3' : null), fx: (s) => ((s.div = 'SPEAR'), null), go: 'ch1_end' },
       ],
     },
