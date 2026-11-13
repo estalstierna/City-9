@@ -111,6 +111,7 @@
     codex: [],
     visits: {},
     mem: {},
+    files: {},
   });
 
   /* ------------------------------------------------------------- helpers */
@@ -589,6 +590,21 @@
                 : G.kitFor(S)
                     .map((e) => `<details class="kit"><summary>${e.name}</summary><small>${e.desc}</small></details>`)
                     .join('')
+            }</section>`
+          : ''
+      }
+      ${
+        S.files && Object.keys(S.files).length
+          ? `<section><h3>Case files</h3>${Object.values(S.files)
+              .sort((a, b) => (b.last || 0) - (a.last || 0))
+              .slice(0, 6)
+              .map((f) => {
+                const pts = Math.min(20, f.points);
+                const cls = f.amputated ? 'dead' : pts >= 15 ? 'hot' : pts >= 8 ? 'warm' : '';
+                return `<div class="case ${cls}"><div class="kv"><span>CID ${f.cid}<small>${f.amputated ? 'AMPUTATED' : f.lastVerdict || ''} · ${f.stops} stop${f.stops > 1 ? 's' : ''}</small></span><b>${f.amputated ? '—' : pts + ' / 20'}</b></div><div class="bar"><span style="width:${(pts / 20) * 100}%"></span></div></div>`;
+              })
+              .join('')}${
+              Object.keys(S.files).length > 6 ? `<div class="sub">${Object.keys(S.files).length - 6} older files</div>` : ''
             }</section>`
           : ''
       }

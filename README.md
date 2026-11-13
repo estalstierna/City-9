@@ -28,6 +28,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Issued kit | Standard CCA equipment shown in the Dossier, growing with rank: USP-Match at 04, Beta vest at 03, MP7A1 at 01, plasteel mask inserts at EpU. |
 | Contraband | Carried items can be graded GREEN / YELLOW / RED / BLACK. Higher grades weigh more heavily if JURY finds them in an audit. |
 | Law | Verdict boxes in scenes cite the crime level and penalty (points, detainment cycles). At 20 penalty points a citizen is amputated. Full tables are in the Codex. |
+| Stop & search | Routine duties offer a search. A random citizen (standard, OBS, CWU or commended) is scanned, searched and questioned with skill checks, then you pass a verdict by the crime table. Penalty points are saved per CID in **Case files** in the Dossier; citizens can turn up again, and at 20 points or any Level 7 violation the verdict is amputation. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
 ## Structure (Chapter 1)

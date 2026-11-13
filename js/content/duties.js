@@ -132,6 +132,7 @@
       ],
       choices: [
         { t: 'Keep it moving. That is the job.', fx: { merit: 2 }, go: END },
+        { t: 'Stop and search a citizen from the crowd.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' },
         { t: 'Do the small decent thing, whatever it is, quickly enough that no one notices.', check: { skill: 'deception', diff: -10, pass: END, fail: END, okFx: { merit: 2, cons: 2 }, failFx: { merit: 1, susp: 2 } } },
       ],
     },
@@ -242,6 +243,7 @@
       ],
       choices: (s) => [
         { t: 'Enforce it. Every rule, every time.', fx: { merit: 2, lp: 1, cons: -1 }, go: END },
+        { t: 'Pull someone out of the queue for a full search.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' },
         { t: 'Look the other way, just this once.', fx: { merit: 1, cons: 2, susp: 2 }, go: END },
         {
           t: 'Watch for the red headscarf. Let her through with a forged log entry.',
@@ -330,6 +332,7 @@
       choices: (s) => [
         { t: 'Search the stall.', if: (s) => s.flags.know_tinker && !s.flags.tinker_arrested, check: { skill: 'perception', diff: 10, pass: 'd_market_tinker_find', fail: 'd_market_tinker_clean' } },
         { t: 'Walk on.', fx: { merit: 1 }, go: END },
+        { t: 'Walk on, and stop the first citizen who looks away from your mask.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' },
       ],
     },
     d_market_tinker_find: {
@@ -384,6 +387,7 @@
       choices: [
         { t: 'Patrol hard. Let them see the mask.', fx: { merit: 2, lp: 1 }, go: END },
         { t: 'Patrol light. Watch more than you\'re watched.', fx: { merit: 1, xp: { perception: 1 } }, go: END },
+        { t: 'Stop and search a citizen from the crowd.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' },
       ],
     },
 
@@ -463,7 +467,7 @@
           'You find a cat in apartment 22-14. Pets are malcompliance. The cat looks at you like it knows.',
         ]),
       ],
-      choices: routineEnd({ merit: 2 }),
+      choices: [...routineEnd({ merit: 2 }), { t: 'Search a resident on the stairwell.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' }],
     },
 
     /* ======================================================== BROADCAST */
@@ -520,7 +524,7 @@
           'The broadcast freezes for eleven seconds, the Administrator\'s mouth half open. Three hundred citizens stand perfectly still, waiting, afraid to be seen reacting.',
         ]),
       ],
-      choices: routineEnd({ merit: 2 }),
+      choices: [...routineEnd({ merit: 2 }), { t: 'Pull a citizen who was not watching the screen.', tag: 'SEARCH', tagCls: 'duty', go: 'ss_start' }],
     },
 
     /* =========================================================== ESCORT */
