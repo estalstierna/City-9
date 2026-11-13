@@ -148,6 +148,15 @@ suite('static: every image the code names exists on disk', async () => {
   return out;
 });
 
+suite('static: every codex entry belongs to a codex chapter', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const loose = await page.evaluate(() => {
+    const placed = new Set((G.CODEX_GROUPS || []).flatMap((g) => g.ids));
+    return Object.keys(G.codexEntries).filter((id) => !placed.has(id)).map((id) => 'codex entry not in G.CODEX_GROUPS: ' + id);
+  });
+  return loose.concat(errors);
+});
+
 suite('static: service worker caches every script index.html loads', async () => {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');

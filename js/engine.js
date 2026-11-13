@@ -95,13 +95,20 @@
   /* Bump SAVE_VERSION when the shape of the state changes, and push a migration that
      upgrades older saves: G.MIGRATIONS.push({ to: 3, fn: (s) => { ... } }). Fields that simply
      appear in G.fresh() need no migration: loading merges every saved object over its default. */
-  G.SAVE_VERSION = 2;
+  G.SAVE_VERSION = 3;
   G.MIGRATIONS = [
     {
       to: 2,
       fn: (s) => {
         /* v1 → v2: shared systems (discipline, informants, reports, boards) — defaults come from G.fresh */
         if (s.rank && G.RANKS && G.rankIdx(s.rank) >= 2) s.flags['passed_' + s.rank] = true;
+      },
+    },
+    {
+      to: 3,
+      fn: (s) => {
+        /* v2 → v3: codex tracks unread entries; everything unlocked before counts as read */
+        s.codexSeen = (s.codex || []).slice();
       },
     },
   ];
@@ -142,6 +149,7 @@
     duty: { offers: [], day: -1, done: {} },
     flags: {},
     codex: [],
+    codexSeen: [],
     visits: {},
     mem: {},
     files: {},
@@ -738,7 +746,7 @@
   G.NAV = [
     { id: 'story', label: 'Story', icon: ICONS.story, act: () => setView('story') },
     { id: 'dossier', label: 'Dossier', icon: ICONS.dossier, act: () => setView(view === 'dossier' ? 'story' : 'dossier') },
-    { id: 'codex', label: 'Codex', icon: ICONS.codex, badge: (s) => s.codex.length || '', act: () => (view === 'codex' ? setView('story') : showCodex()) },
+    { id: 'codex', label: 'Codex', icon: ICONS.codex, badge: (s) => s.codex.filter((c) => !(s.codexSeen || []).includes(c)).length || '', act: () => (view === 'codex' ? setView('story') : showCodex()) },
     { id: 'menu', label: 'Menu', icon: ICONS.menu, act: () => (view === 'menu' ? setView('story') : showMenu()) },
   ];
 
@@ -787,16 +795,53 @@
     }
   }
 
+  /* Codex: entries grouped by G.CODEX_GROUPS (content decides the order), unread marked NEW,
+     a filter box for long lists. Entries in no group fall under "Other records". */
   function showCodex() {
     if (!S.codex.length) return openModal('Codex', '<p class="sub">No records unlocked yet.</p>', 'codex');
-    const items = S.codex
-      .map((id) => G.codexEntries[id])
-      .filter(Boolean)
-      .map((e, i) => `<details ${i === S.codex.length - 1 ? 'open' : ''}><summary>${e.title}</summary><div class="codex-body">${e.body}</div></details>`)
-      .join('');
-    openModal('Codex // Union Records', items, 'codex');
-    $('#modal-body').onclick = (e) => {
+    S.codexSeen = S.codexSeen || [];
+    const unread = new Set(S.codex.filter((c) => !S.codexSeen.includes(c)));
+    const newest = S.codex[S.codex.length - 1];
+    const groups = (G.CODEX_GROUPS || []).map((g) => ({ title: g.title, ids: g.ids.filter((id) => S.codex.includes(id) && G.codexEntries[id]) }));
+    const placed = new Set(groups.flatMap((g) => g.ids));
+    const rest = S.codex.filter((id) => !placed.has(id) && G.codexEntries[id]);
+    if (rest.length) groups.push({ title: 'Other records', ids: rest });
+    const entry = (id) => {
+      const e = G.codexEntries[id];
+      const isNew = unread.has(id);
+      return `<details class="cx-entry" data-id="${id}" ${id === newest && isNew ? 'open' : ''}><summary>${e.title}${isNew ? '<span class="cx-new">NEW</span>' : ''}</summary><div class="codex-body">${e.body}</div></details>`;
+    };
+    const html =
+      `<input class="cx-search" type="search" placeholder="Search the records…" aria-label="Search the codex">` +
+      groups
+        .filter((g) => g.ids.length)
+        .map((g) => {
+          const n = g.ids.filter((id) => unread.has(id)).length;
+          const open = g.ids.includes(newest) && unread.has(newest);
+          return `<details class="cx-group" ${open ? 'open' : ''}><summary><span>${g.title}</span><small>${g.ids.length}${n ? ` · <b>${n} new</b>` : ''}</small></summary>${g.ids.map(entry).join('')}</details>`;
+        })
+        .join('');
+    openModal('Codex // Union Records', html, 'codex');
+    S.codexSeen = S.codex.slice();
+    store(SAVE_KEY);
+    renderNav();
+    const body = $('#modal-body');
+    body.onclick = (e) => {
       if (e.target.tagName === 'IMG' && !e.target.classList.contains('full')) window.open(e.target.src, '_blank');
+    };
+    const search = body.querySelector('.cx-search');
+    search.oninput = () => {
+      const q = search.value.trim().toLowerCase();
+      body.querySelectorAll('.cx-group').forEach((g) => {
+        let any = false;
+        g.querySelectorAll('.cx-entry').forEach((d) => {
+          const hit = !q || d.textContent.toLowerCase().includes(q);
+          d.hidden = !hit;
+          any = any || hit;
+        });
+        g.hidden = !any;
+        if (q) g.open = any;
+      });
     };
   }
 

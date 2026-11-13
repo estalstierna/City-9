@@ -360,3 +360,16 @@ G.addCodex({
   },
 });
 
+/* Codex chapters, in reading order. Any entry not listed here is shown under "Other records".
+   Add new entries to the group they belong to. */
+G.CODEX_GROUPS = [
+  { title: 'City 9', ids: ['city9', 'spire', 'citizens', 'resistance'] },
+  { title: 'The Universal Union', ids: ['union', 'overwatch', 'sociostatus', 'biosignal'] },
+  { title: 'Civil Protection', ids: ['cca', 'designation', 'hierarchy', 'divisions', 'colours', 'uniforms', 'equipment'] },
+  { title: 'Divisions', ids: ['helix', 'jury', 'vector', 'grid', 'veil'] },
+  { title: 'Law', ids: ['crimes', 'contraband', 'verdicts'] },
+  { title: 'Language & codes', ids: ['terms', 'codes'] },
+  { title: 'Procedure', ids: ['stopsearch', 'docs', 'raids', 'reports', 'informants', 'interrogation', 'screening'] },
+  { title: 'Service record', ids: ['discipline', 'board'] },
+];
+

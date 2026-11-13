@@ -429,3 +429,32 @@ details.kit small { display: block; color: var(--faint); font-size: 11.5px; line
 
 /* a little more finger room on the document hot zones, without overlapping neighbours */
 .hz::before { content: ''; position: absolute; inset: -4px -2px; }
+
+/* codex: chapters, unread marks, search */
+.cx-search { width: 100%; box-sizing: border-box; margin: 0 0 12px; padding: 10px 12px; background: #0b1216; border: 1px solid var(--line); border-radius: 3px; color: var(--text); font: inherit; font-size: 15px; }
+.cx-search:focus { outline: none; border-color: var(--accent2); }
+.cx-group { border: 1px solid var(--line); border-radius: 3px; margin: 0 0 10px; padding: 0 12px; }
+.cx-group > summary { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 12px 0; cursor: pointer; font-family: var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); font-size: 14px; }
+.cx-group > summary small { font-size: 11px; color: var(--faint); letter-spacing: .08em; white-space: nowrap; }
+.cx-group > summary small b { color: var(--amber); font-weight: 400; }
+.cx-group[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: 4px; }
+.cx-entry { border-bottom: 1px solid rgba(255,255,255,.04); }
+.cx-entry:last-child { border-bottom: 0; }
+.cx-entry > summary { padding: 9px 0; cursor: pointer; }
+.cx-new { display: inline-block; margin-left: 8px; padding: 1px 6px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--amber); border: 1px solid var(--amber); border-radius: 2px; vertical-align: 2px; }
+
+/* codex tables: let the term column wrap, and on phones stack term above its text */
+.codex-body td:first-child { white-space: normal; width: 34%; }
+@media (max-width: 600px) {
+  .codex-body table, .codex-body tbody, .codex-body tr, .codex-body td { display: block; width: auto; }
+  .codex-body tr { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .codex-body td { border: 0; padding: 0; }
+  .codex-body td:first-child { width: auto; margin-bottom: 3px; font-size: 13px; }
+}
+#modal-body details.cx-group { padding: 0 12px; border: 1px solid var(--line); border-radius: 3px; margin: 0 0 8px; }
+#modal-body details.cx-group > summary { list-style: none; padding: 11px 0; color: var(--accent); letter-spacing: .12em; }
+#modal-body details.cx-group > summary::-webkit-details-marker { display: none; }
+#modal-body details.cx-group > summary span::before { content: '▸ '; color: var(--accent2); }
+#modal-body details.cx-group[open] > summary span::before { content: '▾ '; }
+#modal-body details.cx-entry { padding: 2px 0; }
+@media (max-width: 600px) { #modal-body details.cx-group > summary { letter-spacing: .07em; font-size: 13px; } }
