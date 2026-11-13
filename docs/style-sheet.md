@@ -1824,6 +1824,22 @@ Undvik orden "rear"/"back" om trupputrymmet i prompten: modellen flyttar då dö
 
 Lore: codex-posten "airwatch" (The Universal Union). Shrike är baserad på Nexus tak; koden 10-78 AIR; medborgarna kallar rotorljudet "the knock". Full prompt-text finns i chatthistoriken (2026-11-13).
 
+## 5n. KAPITEL 4 och generiska enhetsporträtt
+
+Generiska porträtt för patrullgruppen och andra namnlösa enheter. Tre porträtt per bild (inte nio), så att armband, streck och ränder hålls isär. Manskap = standardhjälm utan rand + två tunna stående streck. Officer (OfC) = kamrand i divisionsfärg med silverkant + ett brett streck och en stjärna. Varje porträtt har en egen designation och ett eget slitagemärke.
+
+| Ark | Fil i spelet | Vänster · mitten · höger | Bifoga |
+|---|---|---|---|
+| P1 | `portraits/units-p1.jpg` → `unit-union-04`, `unit-helix-04`, `unit-jury-04` | UNION 04 · HELIX 04 · JURY 04 | mira, ranks-enlisted, armbands |
+| P2 | `portraits/units-p2.jpg` → `unit-razor-04`, `unit-spear-04`, `unit-vector-04` | RAZOR 04 · SPEAR 04 · VECTOR 04 | mira, ranks-enlisted, armbands, armbands-new |
+| P3 | `portraits/units-p3.jpg` → `unit-union-ofc`, `unit-helix-ofc`, `unit-jury-ofc` | UNION OfC · HELIX OfC · JURY OfC | mira, ranks-command, armbands |
+| P4 | `portraits/units-p4.jpg` → `unit-razor-ofc`, `unit-spear-ofc`, `unit-vector-ofc` | RAZOR OfC · SPEAR OfC · VECTOR OfC | mira, ranks-command, armbands, armbands-new |
+| P5 | `portraits/units-p5.jpg` → `unit-grid-04`, `unit-grid-ofc`, `unit-veil-ofc` | GRID 04 · GRID OfC · VEIL OfC | mira, ranks-enlisted, ranks-command, armbands-new |
+| E24 Utdelningsdagen | `env/e24-ration-day.jpg` | Plaza 5 full, Overwatch på taket, Shrike med släckt ljus | env/e10-ration, citizen-base, uniform-union, ota-soldier, airwatch-shrike |
+| E25 Lastkajen i D2 | `env/e25-warehouse.jpg` | lagret öppnat, säckar längs kanalen, λ på dörrkarmen | citizen-base, env/e12-railyard, env/e01-city |
+
+Full prompt-text finns i chatthistoriken (2026-11-13).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
