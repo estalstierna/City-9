@@ -212,7 +212,7 @@
           ${F('card.cid', box(63, 16.8, 34.2, 11.4), `<b>${c.card.cid}</b>`, 'CID')}
           ${F('card.name', box(63, 31.4, 34.2, 11.4), `<b>${c.card.name.toUpperCase()}</b>`, 'SURNAME')}
           ${F('card.district', box(63, 45.9, 34.2, 11.3), `<b>${c.card.district}</b>`, 'DISTRICT')}
-          ${F('card.expires', box(63, 60.4, 34.2, 11), `<b>${c.card.expires}</b>`, 'VALID THROUGH')}
+          ${F('card.expires', box(63, 60.4, 34.2, 11), `<b>${c.card.expires}</b>`, 'EXPIRES')}
           <span class="bc" style="${box(19.5, 76.5, 77, 10)}">${barcode(c.card.cid)}</span>
           ${F('card.obs', box(0, 90.5, 100, 8.5), `<b class="st">${c.card.obs ? '<span class="obs">OBS — UNDER OBSERVATION</span>' : c.card.cwu ? '<span class="cwu-s">CWU — CIVIL WORKERS’ UNION</span>' : 'STANDARD CITIZEN'}</b>`)}
         </div>`;
@@ -228,8 +228,8 @@
             <img class="tpl" src="assets/img/docs/permit.jpg" alt="">
             <span class="hdr">TRANSIT PERMIT · CANAL GATE 3</span>
             ${F('permit.cid', box(4.4, 18.7, 42.4, 15.4), `<b>${c.permit.cid}</b>`, 'CID')}
-            ${F('permit.dest', box(4.4, 38.4, 42.4, 15.4), `<b>${c.permit.dest}</b>`, 'DESTINATION')}
-            ${F('permit.valid', box(4.4, 57.8, 42.4, 15.3), `<b>${c.permit.valid}</b>`, 'VALID UNTIL CYCLE')}
+            ${F('permit.dest', box(4.4, 38.4, 42.4, 15.4), `<b>${c.permit.dest}</b>`, 'DEST.')}
+            ${F('permit.valid', box(4.4, 57.8, 42.4, 15.3), `<b>${c.permit.valid}</b>`, 'VALID TO')}
             ${F('stamp', box(67.1, 19.8, 29.3, 51.8), stampSvg(c.permit.stamp))}
             <span class="sig">${c.card.name.charAt(0)}. ${c.card.name}</span>
           </div>`
@@ -240,10 +240,10 @@
           <div class="bh">${c.cardOnly ? 'FIELD ID CHECK' : 'CHECKPOINT BULLETIN'} · CYCLE ${c.today}${count > 1 ? ` · CITIZEN ${idx} OF ${count}` : ''}</div>
           <div class="rules">${
             c.cardOnly
-              ? `<span>ID valid through cycle ${c.today} or later</span><span>Photo must match the subject</span><span>Printed CID = chip CID</span><span>Card status = database status</span>`
+              ? `<span>ID expires cycle ${c.today} or later</span><span>Photo must match the subject</span><span>Printed CID = chip CID</span><span>Card status = database status</span>`
               : `
             <span>Valid stamp: ${stampSvg(R.stamp)} <b>${R.stamp.shape === 'hex' ? 'hexagonal' : 'round'}, ${R.stamp.col}</b></span>
-            <span>ID valid through cycle ${c.today} or later</span>
+            <span>ID expires cycle ${c.today} or later</span>
             <span>Permit CID = card CID · destination D3</span>
             <span>${R.obsBanned ? '<b>OBS: DENY</b>' : 'OBS: permitted'}</span>
             <span>${R.cwuNoPermit ? 'CWU: no permit needed' : 'CWU: permit required'}</span>`
