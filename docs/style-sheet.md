@@ -1764,7 +1764,7 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 | K1 Wick | ref/02-helmet, armbands, portraits/rook | CCA.C9.D5-UNION-05-61207, 1 streck, ny och oskadad |
 | K2 Vesna | ref/02-helmet, ref/armband-jury, ref/02-armband, uniform-jury, portraits/magistrate | CCA.C9.D5-JURY-02-30961, 4 streck, ingen rand |
 | K3 Halvorsen | portraits/mira, citizen-cwu | CID 47715, CWU-arbetarmärke |
-| K4 Lida Koval | portraits/mira, citizen-base | CID 58210 med OBS-rand, röd sjalett |
+| K4 Lida Koval | portraits/mira, citizen-watch | CID 58210 med OBS-rand, övervakningsband, röd sjalett |
 | E17 Magistratens kontor | portraits/magistrate, env/e07-level4 | |
 | E18 Relokeringståget | ref/ota-elite-front, citizen-base, uniform-union, env/e12-railyard | |
 | E19 Nexus-taket | K2, ref/spire-context, env/e15-roof | |
