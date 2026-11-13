@@ -122,7 +122,7 @@
     },
     d_ration_r: {
       title: 'Plaza 5 — ration line',
-      text: [
+      text: () => [
         '@img assets/img/env/e10-ration.webp|Plaza 5',
         'The ration line again. Three hundred faces, one grey packet each.',
         G.pick([
@@ -379,7 +379,7 @@
     },
     d_market_r: {
       title: 'Bazaar Row',
-      text: [
+      text: () => [
         'Bazaar Row again. Stalls, smoke, murmuring.',
         G.pick([
           'A stall-keeper sells you a hot potato for no tokens at all and won\'t look at you while he does it.',
@@ -462,7 +462,7 @@
     },
     d_insp_r: {
       title: 'Census sweep',
-      text: [
+      text: () => [
         'Door after door. Faces, scanners, green lights. Two hundred citizens in a day, and the scanner says all of them exist.',
         G.pick([
           'One door is opened by a child who stares at you and then salutes, perfectly, the way they teach it in the block schools.',
@@ -519,7 +519,7 @@
     },
     d_cast_r: {
       title: 'Loyalty Hour',
-      text: [
+      text: () => [
         '@dispatch ...those who remember the old world remember only its comforts and never its cruelties. The Union asks only that you remember correctly...',
         G.pick([
           'A woman in the front row weeps through the whole broadcast. Nobody can tell if it\'s devotion or grief. You can\'t either.',
@@ -563,7 +563,7 @@
     },
     d_escort_r: {
       title: 'Detainee transfer',
-      text: [
+      text: () => [
         'Another detainee, another walk across the bridge. Cuffs, silence, the river below.',
         G.pick([
           'This one is a woman who laughs the whole way, softly, at nothing.',
@@ -657,7 +657,7 @@
     },
     d_rail_r: {
       title: 'Rail yard sweep',
-      text: [
+      text: () => [
         '@img assets/img/env/e12-railyard.webp|D4 Rail Yards',
         'The yards at night again. Rust, cold, green lamps.',
         G.pick([

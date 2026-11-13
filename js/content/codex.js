@@ -398,13 +398,13 @@ G.addCodex({
 });
 
 G.CODEX_GROUPS = [
-  { title: 'City 9', ids: ['city9', 'spire', 'citizens', 'resistance'] },
+  { title: 'City 9', ids: ['city9', 'spire', 'district5', 'citizens', 'resistance'] },
   { title: 'The Universal Union', ids: ['union', 'overwatch', 'airwatch', 'sociostatus', 'biosignal'] },
   { title: 'Civil Protection', ids: ['cca', 'designation', 'hierarchy', 'divisions', 'colours', 'uniforms', 'equipment', 'vehicles'] },
   { title: 'Divisions', ids: ['helix', 'jury', 'vector', 'grid', 'veil'] },
   { title: 'Law', ids: ['crimes', 'contraband', 'verdicts'] },
   { title: 'Language & codes', ids: ['terms', 'codes'] },
-  { title: 'Procedure', ids: ['stopsearch', 'docs', 'raids', 'reports', 'informants', 'interrogation', 'screening'] },
-  { title: 'Service record', ids: ['discipline', 'board'] },
+  { title: 'Procedure', ids: ['stopsearch', 'docs', 'crowd', 'raids', 'reports', 'informants', 'interrogation', 'screening'] },
+  { title: 'Service record', ids: ['discipline', 'board', 'squad'] },
 ];
 

@@ -239,12 +239,14 @@
     raid_person_caught: {
       enter: (s) => {
         const p = partner(s);
-        if (p.key && partnerRel(s) >= 60 && !s.flags['covered_' + p.key]) {
-          s.flags['covered_' + p.key] = true;
+        const ck = 'covered_' + (p.key || (p.member ? 'sq' + p.member.id : ''));
+        if ((p.key || p.member) && partnerRel(s) >= 60 && !s.flags[ck]) {
+          s.flags[ck] = true;
           R(s).person.fate = 'released';
           R(s).person.covered = true;
           s.mem.covered = true;
-          G.fx(s, { susp: 8, rel: { [p.key]: -10 }, cons: 6, res: 8 });
+          if (p.member) p.member.loyal = Math.max(0, p.member.loyal - 10);
+          G.fx(s, p.key ? { susp: 8, rel: { [p.key]: -10 }, cons: 6, res: 8 } : { susp: 8, cons: 6, res: 8 });
         } else {
           s.mem.covered = false;
           R(s).person.fate = 'detained';
@@ -360,7 +362,8 @@
       enter: (s) => {
         const p = partner(s);
         G.discipline(s, 'serious', 'Attempted planting of evidence during a raid');
-        if (p.key) G.fx(s, { rel: { [p.key]: -10 } });
+        if (p.member) p.member.loyal = Math.max(0, p.member.loyal - 10);
+        else if (p.key) G.fx(s, { rel: { [p.key]: -10 } });
       },
       text: (s) => [`You kneel by the mattress. The leaflets are halfway out of your pouch when ${pName(s)} says, from the doorway, very quietly: “Put them back.”`, 'You put them back. It goes in your file anyway.'],
       choices: [{ t: 'Verdict.', go: 'raid_verdict' }],

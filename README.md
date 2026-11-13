@@ -36,6 +36,10 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Incident reports | After raids and after stops with findings. The slate pre-fills the report from your lens log; strike lines, add embellishments ("subject resisted": +5 points to the citizen and merit for you) or confess. JURY audits reports later against the footage, your partner (who protects you more the better you get on) and the citizen. You are never told which report was checked; a discrepancy turns up days later at a hearing. |
 | Informants | Turn a citizen with a chargeable violation into an asset, during a stop or a raid. Registered assets earn merit but their names leak; off-book assets are against regulation. Meet them in the evening: pay, lean on them, or ask what the street says about you. Their tips appear on the duty board as raids. Reliability is hidden, and you only see a ✓/✗ record. Some assets are resistance plants: their tips are traps, or, if the resistance trusts you, messages. Assets can be burned or killed after raids. |
 | Subtle signs | Suspicion stays hidden. As it rises, the morning and evening text starts to notice things: a turned locker latch, a partner going quiet, a JURY unit facing your table, a footage upload that doesn't go to Dispatch. |
+| Protection team | From grade 03 (formally in chapter 4) you lead three units: people from your history (Rook, Wick, Tomas, Vesna) and assigned units. Each has a trait (steady, hothead, medic, by the book, eyes, soft) that adds to one skill and shapes how they react to your choices. The most loyal member is your partner and the witness on your reports. Members can be hurt, transferred, file statements against you, cover for you once, and in scenes marked RISK, die; replacements arrive the next morning. Evenings with the team are vignettes per trait. |
+| District stability | Stack 9, Stack 14, Stack 22, Bazaar Row and Plaza 5 each have hidden order and resentment. Choices tagged BY THE BOOK raise both, MERCY lowers both, AMPUTATE/BRUTAL raise both a lot. High resentment boils over into attacks; low order lets the canal cells in. Both become morning events. The Dossier shows a colour map (green, amber, red), never numbers. Plaza 5's state sets how hot a crowd starts. |
+| Crowd control | A real-time minigame on ration and broadcast duties, and the climax of chapter 4: three sectors with rising tension, a few units to post, a voice that works below 75, agitators to pull out, and a baton that works instantly and is remembered. Any sector at 100 is a riot. |
+| Variety | Routine duties become one of 25+ vignettes three times in four (rotating, never the same twice in a row). Each morning has a line of the city that follows the world state, and sometimes an encounter on the way to muster. Evenings offer two rotating places (cards, the roof, the canal, a letter, the night broadcast, Halloran, a case-file follow-up) and sometimes a knock at the door first. People from your case files come back. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
 ## Structure (Chapter 1)
@@ -53,6 +57,8 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 6. **Chapter 3, "The Long Night"** (all divisions, one grade up): City 17 goes quiet on the relay and Overwatch declares sociostatus in City 9 under Field Commander *Vigil* and Task Force LOCK. The canal cells plan one night without the dam conduit, to drop the forcefields at the D4 yards and stop a relocation train. Stages: the briefing; an evening approach by your canal contact (Ilse, the Tinker or Katya, depending on your history), whom you can help, ignore or report; a division assignment (UNION raid under an Overwatch lens, JURY courier interrogation, HELIX triage at a bombed RDT, RAZOR forged card on the dam crest, SPEAR chalk route in the drains, VECTOR family in an infested culvert, GRID device on the Spire conduit); a biosignal screening that can put an Overwatch soldier at your shoulder; the night itself (hold, look away, fire a false flare, or leave your post for Mira); and the morning after, which can include a one-in-ten reprisal at Plaza 5. Under sociostatus there is a curfew-sweep duty with Overwatch. The intel you gather across the chapter decides how ready Overwatch is on the night.
 
 7. **Airwatch** (the airborne branch of Overwatch) runs through the whole game: a gunship over the first sociostatus, a searchlight over the rail-yard sweeps, a Shrike holding station over relocation day, transports and gunships on the Nexus roof in chapter 3 and the Shrike over the spillway on the long night. Codex entry *Airwatch*; radio code 10-78 AIR. Hooks live in `js/content/airwatch.js`.
+
+8. **Chapter 4, "Sixty Grams"** (all divisions, one grade up): City 17 drains the Union's cities, and City 9's ration is cut by sixty grams. Vigil orders every team lead to name one of their own for transfer to City 17. Your canal contact plans to empty the D2 packing-plant warehouse on ration day while every unit holds Plaza 5. You get one day to prepare the district (release emergency stores, raid the agitators, walk the blocks, or work your sources), then ration day itself is played as a crowd-control set piece. If the plaza holds, you decide what happens at the warehouse; if it riots, Overwatch on the roof decides, unless you stand in front of it. A letter from City 17 closes the chapter.
 
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
@@ -100,6 +106,11 @@ js/content/docs-game.js  document inspection minigame
 js/content/chapter2.js   UNION and JURY arcs, interrogation
 js/content/systems.js discipline, promotion boards, subtle signs (hooks into existing scenes)
 js/content/raids.js   apartment raids, incident reports, informants
+js/content/squad.js   protection team
+js/content/world.js   district stability, mornings, evenings, echoes
+js/content/routines.js routine duty variants
+js/content/crowd.js   crowd-control minigame
+js/content/chapter3.js, chapter4.js
 ```
 
 Tests (Playwright with Chromium):

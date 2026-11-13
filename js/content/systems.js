@@ -19,6 +19,8 @@
 
   /* who stands next to you, and who you answer to */
   const partner = (s) => {
+    const sq = G.squadPartner && G.squadPartner(s);
+    if (sq) return sq;
     if (s.div === 'JURY' && s.rel.vesna !== undefined) return { key: 'vesna', name: 'Vesna' };
     if (s.div === 'UNION' && s.rel.wick !== undefined && s.c2 && s.c2.stage >= 1) return { key: 'wick', name: 'Wick' };
     if ((!s.div || s.div === 'UNION') && s.rel.rook !== undefined) return { key: 'rook', name: 'Rook' };
@@ -26,6 +28,7 @@
   };
   const partnerRel = (s) => {
     const p = partner(s);
+    if (p.rel !== undefined) return p.rel;
     return p.key ? s.rel[p.key] || 0 : 20;
   };
   const superior = (s) => {

@@ -178,7 +178,7 @@
     },
 
     ev_train_done: {
-      text: [
+      text: () => [
         G.pick([
           'By the end your arms are shaking and your head is full of noise. It is a good kind of exhaustion, the kind that leaves no room for thinking.',
           'An 01 from another squadron watches you for a while, then leaves without comment. You decide to take that as a compliment.',

@@ -268,6 +268,109 @@ suite('chapter 3 for every division', async (browser) => {
   return out.concat(errors);
 });
 
+suite('chapter 4 for every division (squad, district, crowd)', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const ends = {};
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
+    await page.evaluate(
+      ({ div, i }) => {
+        try {
+          localStorage.clear();
+        } catch (e) {}
+        G.newGame();
+        const s = G.state();
+        Object.assign(s, { name: 'Tester', phase: 'union', rank: div === 'UNION' || div === 'JURY' ? '01' : '02', div, day: 50, merit: 150, lp: 12, res: i % 2 ? 35 : 5, chapter: 3 });
+        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+        Object.assign(s.rel, { rook: 30, granite: 20, ilse: 10, tinker: 10, tomas: 10 });
+        s.mem.grade = 'Graded';
+        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
+        s.c2 = { div, stage: 9, next: 20 };
+        s.flags.c2_end_day = 20;
+        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held', intel: 3 };
+        if (i % 3 === 0) {
+          const inf = G._sys.recruit(s, { cid: '12345', type: 'standard', face: 2 }, true);
+          inf.trust = 50;
+        }
+        G.goto('u_board');
+      },
+      { div, i }
+    );
+    const w = await randomWalk(page, QUICK ? 300 : 450, { stopAt: ['c4_end'] });
+    out.push(...w.problems.map((p) => div + ': ' + p));
+    if (!w.seen.c4_start) out.push(div + ': chapter 4 never started');
+    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
+  }
+  if (!ends.c4_end) out.push('no run reached c4_end: ' + JSON.stringify(ends));
+  return out.concat(errors);
+});
+
+suite('district events fire from high resentment and low order', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  for (const kind of ['r', 'o']) {
+    const r = await page.evaluate((kind) => {
+      G.newGame();
+      const s = G.state();
+      Object.assign(s, { name: 'T', phase: 'union', rank: '03', div: 'UNION', day: 9 });
+      s.mem.grade = 'G';
+      let hit = null;
+      for (let i = 0; i < 20 && !hit; i++) {
+        Object.keys(s.dist).forEach((k) => (s.dist[k] = kind === 'r' ? { o: 60, r: 95 } : { o: 10, r: 20 }));
+        s.world.ev = null;
+        s.world.mDay = -1;
+        G.goto('u_night');
+        if (s.scene === 'w_event') hit = s.world.evNow.kind;
+      }
+      const btn = document.querySelector('#story .block.current .choice');
+      if (btn) btn.click();
+      return hit;
+    }, kind);
+    if (r !== (kind === 'r' ? 'rev' : 'res')) out.push('district event did not fire for ' + kind + ': ' + r);
+  }
+  return out.concat(errors);
+});
+
+suite('crowd control minigame: winnable by play, losable by neglect', async (browser) => {
+  const out = [];
+  for (const [label, play] of [['played', true], ['ignored', false]]) {
+    const { page, errors } = await openGame(browser, devices['iPhone 13']);
+    await page.evaluate(SERVICE, {});
+    await page.evaluate(() => {
+      G.state().day = 5;
+      G.goto('cr_ration');
+    });
+    const t0 = Date.now();
+    while (Date.now() - t0 < 60000) {
+      const st = await page.evaluate(() => G.state().scene);
+      if (st !== 'cr_ration') break;
+      if (play)
+        await page.evaluate(() => {
+          const secs = [...document.querySelectorAll('#story .block.current .cr-sec')];
+          const val = (el) => parseFloat(el.querySelector('.cr-bar span').style.width) || 0;
+          secs.sort((a, b) => val(b) - val(a));
+          const free = document.querySelector('#story .block.current .cr-units small');
+          if (free && !free.textContent.startsWith('0')) secs[0].querySelector('.cr-post').click();
+          const sp = document.querySelector('#story .block.current .cr-speak');
+          if (sp && !sp.disabled && val(secs[0]) < 75) sp.click();
+          const pull = secs[0].querySelector('.cr-pull');
+          if (val(secs[0]) > 70 && !pull.disabled) pull.click();
+          const bt = document.querySelector('#story .block.current .cr-baton');
+          if (val(secs[0]) > 88 && bt && !bt.disabled) bt.click();
+        });
+      await page.waitForTimeout(400);
+    }
+    const end = await page.evaluate(() => G.state().scene);
+    if (play && end !== 'cr_ration_ok') out.push('a played crowd should be winnable, ended at ' + end);
+    if (!play && end !== 'cr_ration_bad') out.push('an ignored crowd should riot, ended at ' + end);
+    const ovf = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
+    if (ovf) out.push('crowd minigame overflows on phone');
+    out.push(...errors);
+  }
+  return out;
+});
+
 suite('document inspection minigame on phone and desktop', async (browser) => {
   const out = [];
   for (const opts of [{ viewport: { width: 1300, height: 950 } }, devices['iPhone 13']]) {

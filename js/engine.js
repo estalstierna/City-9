@@ -187,10 +187,14 @@
     return s.rank === 'RcT' ? `RcT-${s.uid}` : `${s.rank}-${s.uid}`;
   };
 
+  /* G.chanceMods: functions (s, skill) => number added to every check of that skill
+     (e.g. a squad member with the right trait). Kept small; the dice still decide. */
+  G.chanceMods = [];
   G.chance = (s, skill, diff) => {
     const lvl = s.skills[skill] || 0;
     let c = 40 + lvl * 12 - (diff || 0);
     if (s.hp < 40) c -= 10;
+    G.chanceMods.forEach((m) => (c += m(s, skill) || 0));
     return clamp(c, 5, 95);
   };
 
@@ -457,10 +461,21 @@
       );
   }
 
+  /* G.onChoose: functions (s, choice, sceneId) run whenever the player picks a choice, before
+     its effects — used by systems that react to the *kind* of choice (its tag), such as district
+     stability. They must not change the scene. */
+  G.onChoose = [];
   function choose(c, label) {
     if (busy) return;
     busy = true;
     appendChosen(label);
+    G.onChoose.forEach((h) => {
+      try {
+        h(S, c, S.scene);
+      } catch (e) {
+        console.error(e);
+      }
+    });
     if (c.act) {
       busy = false;
       c.act(S, G);
