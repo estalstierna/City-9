@@ -202,10 +202,12 @@ details.kit small { display: block; color: var(--faint); font-size: 11.5px; line
 .dcard .bc { position: absolute; display: block; }
 .dcard .barcode { width: 100%; height: 100%; display: block; }
 .dcard .sig { position: absolute; left: 6%; top: 76%; font-family: 'Brush Script MT', 'Segoe Script', cursive; font-size: 5cqw; color: #2a3a52; opacity: .8; transform: rotate(-2deg); }
-.hz:hover { box-shadow: inset 0 0 0 2px rgba(29,34,39,.35); }
-.hz.flag { box-shadow: inset 0 0 0 3px var(--red); background: rgba(217,83,74,.16); }
-.hz.hint { box-shadow: inset 0 0 0 2px rgba(226,168,63,.7); }
-.hz.truth { box-shadow: inset 0 0 0 3px var(--amber) !important; }
+/* highlight layer sits above the photo/stamp so every field shows its frame */
+.hz::after { content: ''; position: absolute; inset: 0; border-radius: 2px; pointer-events: none; z-index: 2; transition: box-shadow .12s, background .12s; }
+.hz:hover::after { box-shadow: inset 0 0 0 2px rgba(29,34,39,.35); }
+.hz.hint::after { box-shadow: inset 0 0 0 2px rgba(226,168,63,.7); }
+.hz.flag::after { box-shadow: inset 0 0 0 3px var(--red); background: rgba(217,83,74,.18); }
+.hz.truth::after { box-shadow: inset 0 0 0 3px var(--amber); }
 .mini-act { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
 .mini-act .choice:disabled { opacity: .5; }
 .mini-skip { margin-top: 10px; background: none; border: 0; color: var(--faint); font-family: var(--mono); font-size: 12px; text-decoration: underline; cursor: pointer; padding: 4px 0; }
