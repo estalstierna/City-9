@@ -1792,6 +1792,31 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 Prompterna **V1** (emblem), **V2** (armband) och **V3–V5** (uniformer) finns i chatthistoriken (2026-11-13). V5 Rev 2 (officersversionen) bifogar `ref/ofc-helmet.jpg` och `ref/ofc-armband.jpg`. Ordning: V1 och V2 först, sedan uniformerna med V1 och V2 bifogade.
 Exempeldesignationer: `CCA.C9.D1-VECTOR-03-55190`, `CCA.C9.D1-GRID-03-70448`.
 
+### V2 Armband för VECTOR, GRID och VEIL (Rev 2)
+**Format:** 3:2. **Bifoga i ordning:** 1 `armbands.jpg` · 2 `ref/02-armband.jpg` · 3 `ref/ofc-armband.jpg` · 4 V1-emblemarket. Distrikt: **C9:D1** (baserna ligger under Nexus).
+```
+Product-style flat lay reference sheet of THREE military cloth armbands, side by side in one row on a neutral warm-grey background, all exactly the same size and evenly spaced. Each armband is shown flat from directly above, and beneath it a small second view of the same band wrapped around an upper arm in a dark padded sleeve.
+
+MATCH THE FIRST ATTACHED IMAGE EXACTLY in: band width and proportions, heavy woven fabric, double-stitched edges, black velcro tabs at both ends, the condensed bold stencil typeface, and the layout — a small circular embroidered glyph on the LEFT, the text in the CENTRE, rank insignia on the RIGHT. Glyphs match the icons in the FOURTH attached image, simplified to a small embroidered circle.
+
+THE THREE ARMBANDS, left to right:
+
+1. "VECTOR" — chemical yellow-green (#9DB23A). The fabric is heavy-duty with a slightly glossy rubberised, chemical-resistant coating, and faint pale bleach splashes from decontamination near one end. Glyph: a cracked hexagonal cell held shut by a bolted clamp, in charcoal. Centre text "C9:D1" in charcoal stencil. Rank: copy the insignia of the SECOND attached image — EXACTLY THREE thin VERTICAL silver bars standing side by side, evenly spaced.
+
+2. "GRID" — burnished copper (#B5652E) woven fabric with a faint metallic thread, a small scorch mark at one velcro end. Glyph: a lightning bolt passing straight through a hexagonal nut, in off-white. Centre text "C9:D1" in off-white stencil. Rank: copy the insignia of the SECOND attached image — EXACTLY THREE thin VERTICAL silver bars standing side by side, evenly spaced.
+
+3. "VEIL" — matte charcoal-black fabric with NO colour at all, no sheen, no wear. Glyph: an EMPTY embroidered circle with nothing inside it. The centre is completely BLANK — no city, no district, no text of any kind. Rank: copy the OFFICER insignia of the THIRD attached image — ONE wide VERTICAL bar followed by ONE small five-point star — but embroidered in dull matte grey thread instead of silver, so it barely shows against the black. VEIL has no thin enlisted bars.
+
+LABELS: beneath each armband its name in bold condensed off-white stencil on the sheet background: "VECTOR", "GRID", "VEIL". Under "VEIL", in smaller stencil: "OFFICERS ONLY".
+
+ACCURACY: count the insignia exactly — VECTOR three thin bars, GRID three thin bars, VEIL one wide bar and one star. All bars stand VERTICALLY. VEIL carries no text in its centre. Keep every label exactly as written.
+
+STYLE: realistic fabric texture and stitching, clean product-photography lighting from upper left, soft shadows, desaturated palette, all text sharp and correctly spelled.
+
+DO NOT include: horizontal bars; extra or misspelled text; the real-world biohazard trefoil; a wrench or spanner; silver or shiny insignia on VEIL; any colour on VEIL; "C9:D5" on any of the three; neon; logos of real brands.
+```
+
+
 ---
 
 ## 6. PROMPT 4: ARMBAND (sex varianter)
