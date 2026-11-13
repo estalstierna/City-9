@@ -428,45 +428,18 @@
 
     /* ================================================== INCIDENT REPORT */
     rep_draft: {
-      title: (s) => `Incident report — ${s.rep.cur.title}`,
-      text: (s) => {
-        const rp = s.rep.cur;
-        const on = rp.facts.filter((f) => f.on !== false).map((f) => '· ' + f.text);
-        const add = rp.adds.filter((a) => a.on).map((a) => '· ' + a.text);
-        const struck = rp.facts.filter((f) => f.on === false).length;
-        return [
-          !s.rep.seen ? '@sys Your slate pre-fills the report from your lens log. You may strike lines, or add your own. You sign it; JURY audits a share of reports against the footage, and against what witnesses say. You will not be told whether yours is checked.' : null,
-          `@doc INCIDENT REPORT — ${G.short(s)} — DAY ${s.day}\n${on.concat(add).join('\n')}${struck ? `\n[${struck} line${struck > 1 ? 's' : ''} struck]` : ''}\nSIGNED: ${G.desig(s)}`,
-        ];
-      },
-      choices: (s) => {
-        const rp = s.rep.cur;
-        const list = [];
-        rp.facts.forEach((f, i) => {
-          if (f.lock) return;
-          list.push({
-            t: f.on === false ? `Restore: *${f.short}*` : `Strike: *${f.short}*`,
-            tag: f.on === false ? 'STRUCK' : '',
-            fx: (st) => ((st.rep.cur.facts[i].on = st.rep.cur.facts[i].on === false), (st.rep.seen = true), null),
-            go: 'rep_draft',
-          });
-        });
-        rp.adds.forEach((a, i) => {
-          list.push({
-            t: a.on ? `Remove: ${a.short}` : a.confess ? `Disclose ${a.short}.` : `Add: ${a.short}`,
-            tag: a.confess ? 'CONFESS' : a.lie ? 'EMBELLISH' : '',
-            tagCls: a.confess ? 'mercy' : 'risk',
-            fx: (st) => ((st.rep.cur.adds[i].on = !st.rep.cur.adds[i].on), (st.rep.seen = true), null),
-            go: 'rep_draft',
-          });
-        });
-        list.push({ t: '**Sign and file.**', tag: 'FILE', tagCls: 'loyal', go: 'rep_file' });
-        return list;
-      },
+      title: (s) => `Incident report — ${s.rep.cur ? s.rep.cur.title : ''}`,
+      text: (s) => [
+        !s.rep.seen
+          ? '@sys Your slate pre-fills the report from your lens log. Untick a line to strike it; tick an addition to put it in. You sign it. JURY audits a share of reports against the footage and against what witnesses say. You will not be told whether yours is checked.'
+          : null,
+      ],
+      mini: { type: 'report', pass: 'rep_file', fail: 'rep_file' },
     },
     rep_file: {
       enter: (s) => {
         const rp = s.rep.cur;
+        if (!rp) return END;
         s.rep.seen = true;
         s.rep.filed++;
         const fx = {};
@@ -523,7 +496,7 @@
         s.mem.repDeath ? `@law The added charge brings CID ${s.mem.repDeath} to twenty penalty points. The van is dispatched without you.` : null,
         'Most reports are never read again. Some are read very carefully, years later, by someone holding your lens footage in the other hand.',
       ],
-      choices: (s) => [{ t: 'End of shift.', go: s.rep.cur.ret || END }],
+      choices: (s) => [{ t: 'End of shift.', go: (s.rep.cur && s.rep.cur.ret) || END }],
     },
 
     /* ================================================== INFORMANTS */
@@ -668,6 +641,63 @@
     },
   });
 
+  /* ================================================ REPORT EDITOR
+     Rendered in place as a minigame: ticking a line updates the draft live, and only the
+     signed version stays in the story log once the block is archived. */
+  G.MINIGAMES = G.MINIGAMES || {};
+  G.MINIGAMES.report = (block, opts, done) => {
+    const s = G.state();
+    const rp = s.rep.cur;
+    if (!rp) return done(true, null);
+    const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\*(.+?)\*/g, '<em>$1</em>');
+    const doc = document.createElement('div');
+    doc.className = 'doc rep-doc';
+    const draw = () => {
+      const lines = rp.facts.filter((f) => f.on !== false).map((f) => '· ' + esc(f.text)).concat(rp.adds.filter((a) => a.on).map((a) => '· ' + esc(a.text)));
+      const struck = rp.facts.filter((f) => f.on === false).length;
+      doc.innerHTML = `INCIDENT REPORT — ${G.short(s)} — DAY ${s.day}\n${lines.join('\n')}${struck ? `\n<span class="rep-struck">[${struck} line${struck > 1 ? 's' : ''} struck]</span>` : ''}\nSIGNED: ${G.desig(s)}`;
+    };
+    draw();
+    const box = document.createElement('div');
+    box.className = 'choices rep-edit';
+    const row = (label, checked, locked, tag, tagCls, onChange) => {
+      const r = document.createElement('label');
+      r.className = 'rep-row' + (locked ? ' locked' : '');
+      r.innerHTML = `<input type="checkbox" ${checked ? 'checked' : ''} ${locked ? 'disabled' : ''}><span>${tag ? `<span class="tag ${tagCls || ''}">${tag}</span>` : ''}${esc(label)}</span>`;
+      if (!locked)
+        r.querySelector('input').onchange = (e) => {
+          onChange(e.target.checked);
+          s.rep.seen = true;
+          draw();
+        };
+      return r;
+    };
+    const h1 = document.createElement('div');
+    h1.className = 'rep-h';
+    h1.textContent = 'From your lens log';
+    box.append(h1);
+    rp.facts.forEach((f) => box.append(row(f.text, f.on !== false, !!f.lock, '', '', (v) => (f.on = v))));
+    if (rp.adds.length) {
+      const h2 = document.createElement('div');
+      h2.className = 'rep-h';
+      h2.textContent = 'Your additions';
+      box.append(h2);
+      rp.adds.forEach((a) => box.append(row(a.confess ? `Disclose ${a.short}.` : a.text, !!a.on, false, a.confess ? 'CONFESS' : 'EMBELLISH', a.confess ? 'mercy' : 'risk', (v) => (a.on = v))));
+    }
+    const sign = document.createElement('button');
+    sign.className = 'choice';
+    sign.innerHTML = '<span class="num">›</span><span class="lbl"><span class="tag loyal">FILE</span><strong>Sign and file.</strong></span>';
+    sign.onclick = () => {
+      sign.disabled = true;
+      done(true, null);
+    };
+    box.append(sign);
+    const wrap = document.createElement('div');
+    wrap.className = 'mini rep-mini';
+    wrap.append(doc, box);
+    block.append(wrap);
+  };
+
   /* ================================================ SIDE PANEL */
   G.sideExtras = G.sideExtras || [];
   G.sideExtras.push((S) => {
@@ -688,7 +718,7 @@
     return `<section><h3>Informants</h3>${live
       .map((x) => {
         const st = { active: trustWord(x.trust), suspect: 'SUSPECT', burned: 'BURNED', dead: 'DEAD', gone: 'GONE' }[x.status];
-        return `<div class="kv contact"><img class="face" src="${face(x.face)}" alt=""><span>${x.name}<small>CID ${x.cid} · ${x.good}✓ ${x.bad}✗${x.registered ? '' : ' · off book'}</small></span><b>${st}</b></div>`;
+        return `<div class="kv contact"><img class="face" src="${face(x.face)}" alt=""><span>${x.name}<small>CID ${x.cid} · ${x.good}✓ ${x.bad}✗${x.registered ? '' : ' · off&nbsp;book'}</small></span><b>${st}</b></div>`;
       })
       .join('')}${S.inf.tip ? `<div class="sub">Open tip: ${S.inf.tip.addr}</div>` : ''}</section>`;
   });

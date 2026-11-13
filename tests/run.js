@@ -72,7 +72,7 @@ async function randomWalk(page, steps, opts) {
       ended = info.scene;
       break;
     }
-    const inp = await page.$('#story .block.current input');
+    const inp = await page.$('#story .block.current .input-row input');
     if (inp) {
       await inp.fill('Tester');
       await page.click('#story .block.current .input-row .choice');

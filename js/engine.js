@@ -361,7 +361,8 @@
         if (m.skill) G.gainXP(S, m.skill, ok ? 1 : 0.5);
         const sk = block.querySelector('.mini-skip');
         if (sk) sk.remove();
-        setTimeout(() => go(ok ? m.pass : m.fail), 250);
+        const mine = S;
+        setTimeout(() => S === mine && go(ok ? m.pass : m.fail), 250);
       };
       G.MINIGAMES[m.type](block, resolve(m.opts) || {}, settle);
       if (m.skill) {
@@ -442,9 +443,10 @@
       appendRoll(c.check.skill, pct, roll, ok);
       if (ok && c.check.okFx) G.fx(S, resolve(c.check.okFx));
       if (!ok && c.check.failFx) G.fx(S, resolve(c.check.failFx));
+      const mine = S;
       setTimeout(() => {
         busy = false;
-        go(ok ? c.check.pass : c.check.fail);
+        if (S === mine) go(ok ? c.check.pass : c.check.fail);
       }, G.CHECK_DELAY);
       return;
     }
