@@ -1,6 +1,6 @@
 /* Service worker: makes the game installable and playable offline.
    Bump VERSION whenever files change so players get the update. */
-const VERSION = 'c9-v32';
+const VERSION = 'c9-v33';
 const SHELL = [
   './',
   './index.html',
@@ -15,6 +15,7 @@ const SHELL = [
   './js/content/beats.js',
   './js/content/search.js',
   './js/content/docs-game.js',
+  './js/content/chapter2.js',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
 ];

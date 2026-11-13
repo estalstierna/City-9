@@ -39,6 +39,11 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 3. **UNION service**: a daily duty board with 7 duties, each with a full first event and a routine version. Evenings are for Mira, Tomas, training or Bazaar Row. Story beats include Granite's warning, a JURY audit, sociostatus with Overwatch in command, Ilse's request, Tomas's theft, Rook's story and the resistance's offer.
 4. **Promotions**: the 04 evaluation (ration truck ambush) and the 03 evaluation (antenna hardpoint), then **division selection** (UNION / HELIX / JURY / RAZOR / SPEAR, each with requirements).
 
+5. **Chapter 2** (grade 03 → 02), one arc per division:
+   - **UNION, "The Quota"**: you lead a protection team and train a new 05, Wick. A relocation quota hits District 5 and you must compile six names for Stacks 9 and 14 (Mira's exemption has been withdrawn). The arc ends on relocation day at the D4 rail yards. The resistance can use your information, and the people on your list board the train or don't.
+   - **JURY, "The Leak"**: under the Magistrate and with 02 Vesna, you hunt the precinct leak. Interrogations run three cycles (press, lie, listen, apply), and innocents can give false confessions. You search records, interrogate Rook and present a name at a tribunal. A case board in the Dossier tracks evidence. If *you* are the leak, you can wipe logs, frame someone or confess.
+   - New JURY duties (interrogation cycle, unit audit) replace street duties for JURY. UNION gets a protection team patrol.
+
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
 ## Art

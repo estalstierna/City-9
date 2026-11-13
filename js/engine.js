@@ -621,6 +621,7 @@
             }</section>`
           : ''
       }
+      ${(G.sideExtras || []).map((f) => f(S) || '').join('')}
       ${
         S.files && Object.keys(S.files).length
           ? `<section><h3>Case files</h3>${Object.values(S.files)
