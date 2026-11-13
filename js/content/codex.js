@@ -272,6 +272,17 @@ G.addCodex({
     ['BLACK', '#a58ad8', ['BETA / GAMMA-grade armour', 'Firearms', 'Union command locks', 'Explosives of any kind']],
   ];
 
+  /* The law as the game computes it — one source for stop & search, raids and anything later.
+     A charge is { name, lvl }. */
+  G.LAW = {
+    LEVEL_POINTS: { 1: 0, 2: 2, 3: 3, 4: 5, 5: 7, 6: 12, 7: 99 },
+    GRADE_LEVEL: { green: 2, yellow: 4, red: 5, black: 7 },
+    AMPUTATE_AT: 20,
+    points: (charges) => charges.reduce((n, c) => n + G.LAW.LEVEL_POINTS[c.lvl], 0),
+    top: (charges) => charges.reduce((m, c) => (c.lvl > m.lvl ? c : m), { lvl: 0, name: '' }),
+    lethal: (filePoints, charges) => charges.some((c) => c.lvl >= 7) || filePoints + G.LAW.points(charges) >= G.LAW.AMPUTATE_AT,
+  };
+
   G.CONTRA_GRADES = { green: { label: 'GREEN', colour: '#6fbf73', susp: 5 }, yellow: { label: 'YELLOW', colour: '#e2a83f', susp: 12 }, red: { label: 'RED', colour: '#d9534a', susp: 25 }, black: { label: 'BLACK', colour: '#a58ad8', susp: 45 } };
 
   /* Issued kit, by rank. `from` = lowest rank that holds it, `until` = rank at which it is replaced. */

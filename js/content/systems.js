@@ -36,27 +36,6 @@
   G.partnerOf = partner;
   G.superiorOf = superior;
 
-  const wrapPre = (id, fn) => {
-    const sc = G.scenes[id];
-    if (!sc) return;
-    const old = sc.enter;
-    sc.enter = (s, g) => {
-      const r = fn(s, g);
-      if (r) return r;
-      return old ? old(s, g) : undefined;
-    };
-  };
-  const wrapPost = (id, fn) => {
-    const sc = G.scenes[id];
-    if (!sc) return;
-    const old = sc.enter;
-    sc.enter = (s, g) => {
-      const r = old ? old(s, g) : undefined;
-      const r2 = fn(s, g);
-      return r2 || r;
-    };
-  };
-  const textOf = (sc, s, g) => [].concat((typeof sc === 'function' ? sc(s, g) : sc) || []);
 
   /* ======================================================= DISCIPLINE
      minor = 1 strike, serious = 2. 1: warning · 2: written reprimand · 3: demotion + final warning.
@@ -269,8 +248,7 @@
   }
 
   /* ========================================================== RAIDS */
-  const GRADE_LEVEL = { green: 2, yellow: 4, red: 5, black: 7 };
-  const LEVEL_POINTS = { 1: 0, 2: 2, 3: 3, 4: 5, 5: 7, 6: 12, 7: 99 };
+  const { GRADE_LEVEL, LEVEL_POINTS } = G.LAW;
   const RITEMS = {
     leaflets: { name: 'a bundle of lambda leaflets', grade: 'red', give: 'leaflet' },
     plates: { name: 'printing plates with a lambda cut into them', grade: 'red' },
@@ -511,83 +489,83 @@
   /* ==================================================== DUTY + HUB HOOKS */
   G.duties.raid = { name: 'Apartment raid', desc: 'A warrant for a flat in the Stacks, sworn on a neighbour’s report.', first: 'raid_new', routine: 'raid_new', if: (s) => s.day >= 2 };
 
-  wrapPre('u_board', (s) => morning(s));
-  const board = G.scenes.u_board;
-  const boardText = board.text;
-  board.text = (s, g) => {
-    ensure(s);
-    const lines = textOf(boardText, s, g);
-    const extra = [];
-    s.inf.news = s.inf.news.filter((n) => {
-      if (n.day > s.day) return true;
-      const x = infById(s, n.id);
-      if (!x || x.status === 'dead' || x.status === 'gone') return false;
-      x.status = n.kind === 'dead' ? 'dead' : 'burned';
-      extra.push(n.kind === 'dead' ? `@dispatch DB recovered, D3 canal, lock 2. CID ${x.cid}. Identified as ${x.name}. Somebody has carved a word into the lock gate beside it: RAT.` : `@sys Your asset ${x.name} did not come to the last meeting place. Their door in the Stacks has the word RAT painted across it. They will not speak to a mask again.`);
-      if (n.kind === 'dead') G.fx(s, { cons: -3 });
-      return false;
-    });
-    if (s.inf.tip && s.day > s.inf.tip.day + 3) {
-      extra.push('@sys The tip on ' + s.inf.tip.addr + ' has gone cold. Whatever was there has been moved.');
-      s.inf.tip = null;
-    }
-    if (s.disc.probation > s.day) extra.push(`@sys PROBATION: no promotion request until day ${s.disc.probation}.`);
-    const t = tell(s);
-    if (t) extra.push(t);
-    lines.splice(Math.max(0, lines.length - 1), 0, ...extra);
-    return lines;
-  };
-  const boardChoices = board.choices;
-  board.choices = (s, g) => {
-    const list = textOf(boardChoices, s, g);
-    const tip = s.inf && s.inf.tip;
-    if (tip && tip.day < s.day)
-      list.splice(list.length, 0, {
-        t: `**Raid on a tip** — ${tip.addr}. ${infById(s, tip.inf).name} says the occupant ${CLAIMS.find((c) => c.id === tip.claim).claim}.`,
-        tag: 'TIP',
-        tagCls: 'duty',
-        fx: (st) => ((st.duty.current = null), (st.time = 'Day'), null),
-        go: 'raid_tip',
+  /* morning: hearings and tribunals before the board; street news is settled once, on arrival */
+  G.extend('u_board', {
+    before: (s) => morning(s),
+    after: (s) => {
+      ensure(s);
+      const extra = [];
+      s.inf.news = s.inf.news.filter((n) => {
+        if (n.day > s.day) return true;
+        const x = infById(s, n.id);
+        if (!x || x.status === 'dead' || x.status === 'gone') return false;
+        x.status = n.kind === 'dead' ? 'dead' : 'burned';
+        extra.push(n.kind === 'dead' ? `@dispatch DB recovered, D3 canal, lock 2. CID ${x.cid}. Identified as ${x.name}. Somebody has carved a word into the lock gate beside it: RAT.` : `@sys Your asset ${x.name} did not come to the last meeting place. Their door in the Stacks has the word RAT painted across it. They will not speak to a mask again.`);
+        if (n.kind === 'dead') G.fx(s, { cons: -3 });
+        return false;
       });
-    return list;
-  };
+      if (s.inf.tip && s.day > s.inf.tip.day + 3) {
+        extra.push('@sys The tip on ' + s.inf.tip.addr + ' has gone cold. Whatever was there has been moved.');
+        s.inf.tip = null;
+      }
+      if (s.disc.probation > s.day) extra.push(`@sys PROBATION: no promotion request until day ${s.disc.probation}.`);
+      const t = tell(s);
+      if (t) extra.push(t);
+      s.mem.boardExtra = extra;
+    },
+    text: (lines, s) => {
+      lines.splice(Math.max(0, lines.length - 1), 0, ...(s.mem.boardExtra || []));
+      return lines;
+    },
+    choices: (list, s) => {
+      const tip = s.inf && s.inf.tip;
+      const x = tip && infById(s, tip.inf);
+      if (tip && x && tip.day < s.day)
+        list.push({
+          t: `**Raid on a tip** — ${tip.addr}. ${x.name} says the occupant ${CLAIMS.find((c) => c.id === tip.claim).claim}.`,
+          tag: 'TIP',
+          tagCls: 'duty',
+          fx: (st) => ((st.duty.current = null), (st.time = 'Day'), null),
+          go: 'raid_tip',
+        });
+      return list;
+    },
+  });
 
-  const ev = G.scenes.u_evening;
-  const evText = ev.text;
-  ev.text = (s, g) => {
-    const lines = textOf(evText, s, g);
-    const t = tell(s);
-    if (t) lines.splice(Math.max(0, lines.length - 1), 0, t);
-    return lines;
-  };
-  const evChoices = ev.choices;
-  ev.choices = (s, g) => {
-    const list = textOf(evChoices, s, g);
-    if (activeInf(s).length) list.splice(Math.max(0, list.length - 1), 0, { t: 'Meet one of your informants.', tag: 'ASSET', tagCls: 'duty', go: 'inf_pick' });
-    return list;
-  };
+  G.extend('u_evening', {
+    after: (s) => {
+      s.mem.eveTell = tell(s);
+    },
+    text: (lines, s) => {
+      if (s.mem.eveTell) lines.splice(Math.max(0, lines.length - 1), 0, s.mem.eveTell);
+      return lines;
+    },
+    choices: (list, s) => {
+      if (activeInf(s).length) list.splice(Math.max(0, list.length - 1), 0, { t: 'Meet one of your informants.', tag: 'ASSET', tagCls: 'duty', go: 'inf_pick' });
+      return list;
+    },
+  });
 
   /* stop & search: recruit, report, discipline */
-  const ssv = G.scenes.ss_verdict;
-  const ssvChoices = ssv.choices;
-  ssv.choices = (s, g) => {
-    const list = textOf(ssvChoices, s, g);
-    const c = s.ss;
-    const found = c.items.filter((x) => x.found && !x.exempt);
-    const lethal = list.some((o) => o.tag === 'AMPUTATE');
-    if (found.length && !lethal && activeInf(s).length < 4)
-      list.splice(Math.max(0, list.length - 1), 0, { t: 'Drop it — if they report to you from now on.', tag: 'ASSET', tagCls: 'duty', fx: (st) => ((st.ss.result = 'recruit'), null), go: 'inf_recruit' });
-    return list;
-  };
-  wrapPost('ss_result', (s) => {
-    const c = s.ss;
-    if (c.result === 'falsify_caught') G.discipline(s, 'serious', 'Evidence grade mismatch on a stop & search (flagged by slate)');
-    if (c.result === 'warn' && c.items.some((x) => x.found && !x.exempt && GRADE_LEVEL[x.grade] >= 5)) G.discipline(s, 'minor', 'RED contraband released with a warning');
+  G.extend('ss_verdict', {
+    choices: (list, s) => {
+      const c = s.ss;
+      const found = c.items.filter((x) => x.found && !x.exempt);
+      const lethal = list.some((o) => o.tag === 'AMPUTATE');
+      if (found.length && !lethal && activeInf(s).length < 4)
+        list.splice(Math.max(0, list.length - 1), 0, { t: 'Drop it — if they report to you from now on.', tag: 'ASSET', tagCls: 'duty', fx: (st) => ((st.ss.result = 'recruit'), null), go: 'inf_recruit' });
+      return list;
+    },
   });
-  const ssr = G.scenes.ss_result;
-  const ssrChoices = ssr.choices;
   const ssNotable = (c) => c.items.some((x) => x.found) || c.bribe;
-  ssr.choices = (s, g) => (ssNotable(s.ss) && s.phase === 'union' ? [{ t: 'Write the incident report.', tag: 'REPORT', tagCls: 'duty', go: (st) => G.startReport(st, ssReport(st)) }] : textOf(ssrChoices, s, g));
+  G.extend('ss_result', {
+    after: (s) => {
+      const c = s.ss;
+      if (c.result === 'falsify_caught') G.discipline(s, 'serious', 'Evidence grade mismatch on a stop & search (flagged by slate)');
+      if (c.result === 'warn' && c.items.some((x) => x.found && !x.exempt && GRADE_LEVEL[x.grade] >= 5)) G.discipline(s, 'minor', 'RED contraband released with a warning');
+    },
+    choices: (list, s) => (ssNotable(s.ss) && s.phase === 'union' ? [{ t: 'Write the incident report.', tag: 'REPORT', tagCls: 'duty', go: (st) => G.startReport(st, ssReport(st)) }] : list),
+  });
 
   /* existing failures that now land on your disciplinary record */
   const HOOKS = {
@@ -597,7 +575,7 @@
     exam_04_free_bad: ['serious', 'Detainee escape during field evaluation'],
     c2_j2_wipe_fail: ['serious', 'Attempted alteration of a detention record'],
   };
-  Object.keys(HOOKS).forEach((id) => wrapPost(id, (s) => G.discipline(s, HOOKS[id][0], HOOKS[id][1])));
+  Object.keys(HOOKS).forEach((id) => G.extend(id, { after: (s) => G.discipline(s, HOOKS[id][0], HOOKS[id][1]) }));
 
   /* ============================================================ SCENES */
   G.addScenes({

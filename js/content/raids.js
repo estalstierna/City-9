@@ -9,7 +9,7 @@
   const face = (i) => (G.DOC_FACES && G.DOC_FACES[i] ? G.DOC_FACES[i].img : null);
 
   const charges = (s) => raidCharges(s);
-  const pts = (list) => list.reduce((n, c) => n + LEVEL_POINTS[c.lvl], 0);
+  const pts = G.LAW.points;
 
   G.addScenes({
     /* ================================================== RAID */
@@ -319,7 +319,7 @@
         const r = R(s);
         const ch = charges(s);
         const total = r.occ.points + pts(ch);
-        const lethal = ch.some((c) => c.lvl >= 7) || total >= 20;
+        const lethal = G.LAW.lethal(r.occ.points, ch);
         return [
           `@doc CID ${r.occ.cid} — ${r.occ.name.toUpperCase()}\nPENALTY POINTS ON FILE: ${r.occ.points} / 20`,
           r.found.length ? '@sys RECOVERED: ' + r.found.map((f) => `${RITEMS[f.id].name} (${RITEMS[f.id].grade.toUpperCase()})${f.planted ? ' — planted' : ''}`).join('; ') + '.' : '@sys RECOVERED: nothing.',
@@ -332,8 +332,8 @@
         const r = R(s);
         const ch = charges(s);
         const total = r.occ.points + pts(ch);
-        const lethal = ch.some((c) => c.lvl >= 7) || total >= 20;
-        const top = ch.reduce((m, c) => (c.lvl > m.lvl ? c : m), { lvl: 0 });
+        const lethal = G.LAW.lethal(r.occ.points, ch);
+        const top = G.LAW.top(ch);
         const set = (v) => (st) => ((R(st).result = v), null);
         const o = [];
         if (ch.length) {
@@ -370,7 +370,7 @@
       enter: (s) => {
         const r = R(s);
         const ch = charges(s);
-        const top = ch.reduce((m, c) => (c.lvl > m.lvl ? c : m), { lvl: 0 });
+        const top = G.LAW.top(ch);
         const res = r.result;
         let add = 0;
         let status = 'NO FINDINGS';

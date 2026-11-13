@@ -126,4 +126,13 @@ G.addScenes({
 });
 ```
 
+### Conventions that keep the code maintainable
+
+- **Extending a scene from another file:** use `G.extend(id, { before, after, text, choices })` instead of overwriting `G.scenes[id]`. `before` and `after` run around the scene's own `enter` and may redirect; `text` and `choices` receive the resolved lists and return new ones. `G.ext` shows every extension per scene.
+- **Law:** penalty points, contraband levels and the amputation threshold live in `G.LAW` (`js/content/codex.js`), next to the tables the player reads.
+- **Saves:** when the state changes shape, raise `G.SAVE_VERSION` in `js/engine.js` and push a migration onto `G.MIGRATIONS`. New fields that have a default in `G.fresh()` need no migration: loading merges each saved object over its default.
+- **Service worker:** `python3 tools/bump-sw.py` sets `VERSION` from a hash of the cached files. The tests fail if it is stale.
+- **Images:** `python3 tools/optimize-images.py` after adding art (see *Image pipeline*).
+- **Before pushing:** `npm test`.
+
 *Half-Life is a trademark of Valve Corporation. This is a non-commercial fan work with original writing and characters; it contains no assets from the games.*

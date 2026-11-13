@@ -154,6 +154,16 @@ suite('static: service worker caches every script index.html loads', async () =>
   return [...html.matchAll(/<script src="([^"]+)"/g)].map((m) => m[1]).filter((s) => !sw.includes(`'./${s}'`)).map((s) => 'sw.js SHELL lacks ' + s);
 });
 
+suite('static: service worker VERSION matches the code it caches', async () => {
+  const { execFileSync } = require('child_process');
+  try {
+    execFileSync('python3', [path.join(ROOT, 'tools/bump-sw.py'), '--check'], { stdio: 'pipe' });
+    return [];
+  } catch (e) {
+    return [String(e.stdout || e.message).trim()];
+  }
+});
+
 suite('full game from a new character (random play)', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -261,6 +271,8 @@ suite('saves: autosave, export and import round-trip', async (browser) => {
     G.goto('u_board');
     const s = JSON.parse(JSON.stringify(G.state()));
     ['disc', 'inf', 'rep', 'pb', 'raid', 'ss', 'iq', 'c2', 'stats'].forEach((k) => delete s[k]);
+    s.v = 1;
+    delete s.mem.boardExtra;
     localStorage.setItem('c9rp_auto_v1', JSON.stringify(s));
     return G.continueGame();
   });

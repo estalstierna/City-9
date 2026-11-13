@@ -977,10 +977,8 @@
   });
 
   /* chapter one now leads into chapter two */
-  const ch1 = G.scenes.ch1_end;
-  if (ch1) {
-    ch1.choices = [{ t: 'Continue to Chapter Two.', go: 'c2_start' }];
-    const oldText = ch1.text;
-    ch1.text = (s, g) => (typeof oldText === 'function' ? oldText(s, g) : oldText).map((l) => (typeof l === 'string' && l.startsWith('@sys CHAPTER ONE COMPLETE') ? '@sys CHAPTER ONE COMPLETE.' : l));
-  }
+  G.extend('ch1_end', {
+    text: (lines) => lines.map((l) => (typeof l === 'string' && l.startsWith('@sys CHAPTER ONE COMPLETE') ? '@sys CHAPTER ONE COMPLETE.' : l)),
+    choices: () => [{ t: 'Continue to Chapter Two.', go: 'c2_start' }],
+  });
 })();

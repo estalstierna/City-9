@@ -1,8 +1,7 @@
 /* STOP & SEARCH — procedural citizen encounters with verdicts and persistent case files */
 (function () {
   const END = 'u_duty_end';
-  const LEVEL_POINTS = { 1: 0, 2: 2, 3: 3, 4: 5, 5: 7, 6: 12, 7: 99 };
-  const GRADE_LEVEL = { green: 2, yellow: 4, red: 5, black: 7 };
+  const { LEVEL_POINTS, GRADE_LEVEL } = G.LAW;
 
   const TYPES = [
     { id: 'standard', w: 55, label: 'Citizen', prior: [0, 6] },
@@ -116,7 +115,7 @@
       .forEach((x) => list.push({ name: `Possession of ${x.grade.toUpperCase()} contraband (${x.name.replace(/^an? /, '')})`, lvl: GRADE_LEVEL[x.grade] }));
     return list;
   };
-  const pointsFor = (charges) => charges.reduce((n, c) => n + LEVEL_POINTS[c.lvl], 0);
+  const pointsFor = G.LAW.points;
 
   function fileCitizen(s, c, add, status) {
     s.files = s.files || {};

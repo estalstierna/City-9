@@ -13,6 +13,18 @@
   G.CHECK_DELAY = 450;
 
   G.addScenes = (obj) => Object.assign(G.scenes, obj);
+
+  /* Scene extensions: a later file can add behaviour to an existing scene without rewriting it.
+       G.extend('u_board', {
+         before: (s, G) => 'other_scene' | undefined,   // runs before the scene's own enter; may redirect
+         after:  (s, G) => 'other_scene' | undefined,   // runs after it
+         text:   (lines, s, G) => lines,                // receives the resolved paragraphs
+         choices:(list, s, G) => list,                  // receives the resolved choices
+       });
+     Extensions run in the order they were registered. G.ext lists them per scene. */
+  G.ext = {};
+  G.extend = (id, e) => (G.ext[id] = G.ext[id] || []).push(e);
+  const exts = (id) => G.ext[id] || [];
   G.addCodex = (obj) => Object.assign(G.codexEntries, obj);
 
   /* ---------------------------------------------------------------- data */
@@ -80,6 +92,19 @@
     tinker: { name: 'The Tinker', role: 'Repairman · Bazaar Row', img: 'tinker' },
   };
 
+  /* Bump SAVE_VERSION when the shape of the state changes, and push a migration that
+     upgrades older saves: G.MIGRATIONS.push({ to: 3, fn: (s) => { ... } }). Fields that simply
+     appear in G.fresh() need no migration: loading merges every saved object over its default. */
+  G.SAVE_VERSION = 2;
+  G.MIGRATIONS = [
+    {
+      to: 2,
+      fn: (s) => {
+        /* v1 → v2: shared systems (discipline, informants, reports, boards) — defaults come from G.fresh */
+        if (s.rank && G.RANKS && G.rankIdx(s.rank) >= 2) s.flags['passed_' + s.rank] = true;
+      },
+    },
+  ];
   const SAVE_KEY = 'c9rp_auto_v1';
   const CP_KEY = 'c9rp_checkpoint_v1';
   const MANUAL_KEY = 'c9rp_manual_v1';
@@ -89,7 +114,7 @@
   let busy = false;
 
   G.fresh = () => ({
-    v: 1,
+    v: G.SAVE_VERSION,
     scene: 'title',
     name: 'Citizen',
     bg: null,
@@ -304,7 +329,7 @@
     if (blocks.length > 25) blocks[0].remove();
   }
 
-  function render(sc) {
+  function render(sc, id) {
     if (view === 'dossier') setView('story');
     archiveCurrent();
     const story = $('#story');
@@ -317,7 +342,8 @@
       block.append(n);
       notes = [];
     }
-    const text = [].concat(resolve(sc.text) || []);
+    let text = [].concat(resolve(sc.text) || []);
+    exts(id).forEach((e) => e.text && (text = [].concat(e.text(text, S, G) || [])));
     let i = 0;
     text.forEach((p) => {
       const node = para(p);
@@ -381,7 +407,9 @@
 
     const list = el('div', 'choices');
     let n = 0;
-    (resolve(sc.choices) || []).forEach((c) => {
+    let choiceList = [].concat(resolve(sc.choices) || []);
+    exts(id).forEach((e) => e.choices && (choiceList = [].concat(e.choices(choiceList, S, G) || [])));
+    choiceList.forEach((c) => {
       if (c.if && !c.if(S, G)) return;
       const locked = c.lock ? c.lock(S, G) : null;
       const label = resolve(c.t);
@@ -470,15 +498,24 @@
     }
     S.scene = id;
     S.visits[id] = (S.visits[id] || 0) + 1;
+    const redirect = (r) => typeof r === 'string' && r !== id;
+    for (const e of exts(id)) {
+      const r = e.before && e.before(S, G);
+      if (redirect(r)) return G.goto(r, depth + 1);
+    }
     if (sc.enter) {
       const r = sc.enter(S, G);
-      if (typeof r === 'string' && r !== id) return G.goto(r, depth + 1);
+      if (redirect(r)) return G.goto(r, depth + 1);
+    }
+    for (const e of exts(id)) {
+      const r = e.after && e.after(S, G);
+      if (redirect(r)) return G.goto(r, depth + 1);
     }
     if (!sc.safe && !sc.ending) {
       if (S.susp >= 100) return G.goto('end_amputated', depth + 1);
       if (S.hp <= 0) return G.goto('infirmary', depth + 1);
     }
-    render(sc);
+    render(sc, id);
     if (sc.nosave) return;
     if (sc.checkpoint) store(CP_KEY);
     store(SAVE_KEY);
@@ -499,12 +536,16 @@
       if (!raw) return null;
       const obj = JSON.parse(raw);
       const base = G.fresh();
-      return Object.assign(base, obj, {
-        skills: Object.assign(base.skills, obj.skills),
-        xp: Object.assign(base.xp, obj.xp),
-        bt: Object.assign(base.bt, obj.bt),
-        duty: Object.assign(base.duty, obj.duty),
-      });
+      const out = Object.assign({}, base, obj);
+      /* one level deep: a saved object is merged over its default, so new sub-fields get values */
+      for (const k in base) {
+        const b = base[k];
+        if (b && typeof b === 'object' && !Array.isArray(b) && obj[k] && typeof obj[k] === 'object' && !Array.isArray(obj[k])) out[k] = Object.assign({}, b, obj[k]);
+      }
+      const from = out.v || 1;
+      G.MIGRATIONS.filter((m) => m.to > from && m.to <= G.SAVE_VERSION).sort((a, b) => a.to - b.to).forEach((m) => m.fn(out));
+      out.v = G.SAVE_VERSION;
+      return out;
     } catch (e) {
       return null;
     }
@@ -523,7 +564,7 @@
     notes = [];
     note(label || 'RECORD RESTORED', 'codex');
     const sc = G.scenes[S.scene] || G.scenes.title;
-    render(sc);
+    render(sc, G.scenes[S.scene] ? S.scene : 'title');
     store(SAVE_KEY);
     return true;
   }
