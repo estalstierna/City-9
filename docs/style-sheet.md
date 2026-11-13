@@ -19,6 +19,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e06-parade.jpg` … `env/e10-ration.jpg` | Miljöer E01 till E10 (godkända). E01 är stilreferens för alla miljöer |
+| `ota-insignia.jpg` + `ref/ota-*.jpg` | Overwatch: grundgrafik (O0, Rev 1) och utklippta emblem, axelplåtar och märken |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty, HELIX 02-77301, Katya (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
@@ -1507,51 +1508,68 @@ STYLE: gritty semi-realistic dystopian concept art, production design sheet qual
 DO NOT include: round emblems or steel rings like the civil police; cloth armbands; skulls; the words "Combine" or "Half-Life"; logos of real brands; any existing game's exact insignia.
 ```
 
-### O1 OTA-soldat
-**Format:** 16:9. **Bifoga:** 1 `uniform-union.jpg` (för kontrast, *inte* att kopiera) · 2 `master-a.jpg` (stil och typsnitt) · 3 O0-insignia-arket.
+### O1 OTA-soldat (Rev 2)
+**Format:** 16:9. Kör i ny chatt. **Bifoga i ordning:**
+1 `ref/ota-emblem-infantry.jpg` · 2 `ref/ota-shoulder-ows.jpg` · 3 `ref/ota-chest-4471.jpg` · 4 `ref/ota-patch-hazard.jpg` · 5 `master-a.jpg` (layout och typsnitt) · 6 `uniform-union.jpg` (bara kontrast)
+
 ```
-Costume design turnaround sheet of a soldier of "OVERWATCH", the transhuman military of an occupied Eastern-European city called City 09, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SECOND attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — INFANTRY".
+Costume design turnaround sheet of an infantry soldier of "OVERWATCH", the transhuman military of the occupied city of City 09: full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the FIFTH attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — INFANTRY (OWS)".
 
-This soldier must look clearly different from, heavier and more military than, the civil police officer in the FIRST attached image — that image is shown only for contrast; do NOT copy its helmet, armband or uniform.
+CONTRAST: this soldier must look clearly heavier, more military and less human than the civil police officer in the SIXTH attached image. That image is for contrast ONLY — do not copy its helmet, armband or uniform.
 
-BUILD: tall (about 1.95 m), broad, unnaturally still and symmetrical, more machine than man. No skin visible anywhere.
+BUILD: tall (about 1.95 m), broad, unnaturally still and symmetrical. No skin visible anywhere.
 
-HEAD: a fully enclosed dark graphite-grey composite helmet with no visible seams for a face, a rounded crown and a forward-jutting jaw guard; two angular, slightly slanted lens apertures glowing pale CYAN (#5FC8DD); a short ribbed breathing tube running from the jaw guard down into a filter unit on the left side of the chest; a thin vertical antenna at the back of the helmet.
+HEAD: a fully enclosed dark graphite (#1E2328) composite helmet with a smooth rounded crown, no facial features, and a forward-jutting jaw guard. Two angular, slightly slanted lens apertures glowing pale cyan (#5FC8DD). A short ribbed breathing tube runs from the jaw guard to a filter unit on the left side of the chest. One thin vertical antenna at the back of the helmet.
 
-BODY: a heavily padded ballistic vest with segmented rigid plates over the chest and shoulders, worn over a high-collared fatigue suit printed in an urban camouflage of slate-blue, mid-grey and charcoal; armoured forearm guards and thick knee and thigh plates; black gloves; heavy black combat boots. Markings copied exactly from the THIRD attached image (the Overwatch insignia sheet): on the LEFT shoulder plate the "OWS — SOLDIER" marking (one thin cyan chevron and "C9"); on the chest plate the "C9-OTA 4471" stencil plate with the hexagonal Overwatch emblem; the orange hazard triangle patch on the right shoulder.
+BODY: a heavily padded graphite ballistic vest with segmented rigid plates over the chest; a high-collared fatigue suit in urban camouflage of slate-blue, mid-grey and charcoal; armoured forearm guards; thick knee and thigh plates; black gloves; heavy black combat boots. Two large curved armoured shoulder plates (pauldrons).
 
-EQUIPMENT ROW: a compact bullpup pulse rifle in dark grey with a glowing cyan energy cell in the stock; spare cells on a bandolier; a grenade with a cyan indicator ring; a field radio.
+MARKINGS — copy each exactly from the attached references, painted or stencilled on armour, never on cloth:
+- LEFT shoulder plate: exactly the marking in the SECOND attached image — one thin downward cyan chevron with "C9" stencilled beneath, on scuffed graphite.
+- Centre of the chest plate: exactly the plate in the THIRD attached image — a riveted dark plate with the hexagonal emblem on the left and "C9-OTA 4471" with a barcode.
+- Back of the helmet and on the back plate: the hexagonal emblem in the FIRST attached image — graphite hexagon, steel V-chevron with a circle, a glowing cyan visor slit across it.
+- RIGHT shoulder plate: the orange-and-black hazard triangle with a lightning mark from the FOURTH attached image.
 
-DETAIL INSETS: the helmet from the front with both lenses lit; the chest stencil; the shoulder hazard patch; the energy cell.
+EQUIPMENT ROW: a compact bullpup pulse rifle in dark grey with a glowing cyan energy cell; spare cyan energy cells in a belt pouch; a grenade with a cyan indicator ring; a field radio.
 
-STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with cyan accents, worn and scuffed materials, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+DETAIL INSETS: the helmet from the front with both lenses lit; the left shoulder plate; the chest plate; the cyan energy cell.
 
-DO NOT include: a gas-mask helmet like the civil police; any cloth armband; round emblems; a single round eye; exposed skin or face; neon; logos of real brands; any existing game's exact character design.
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated graphite, steel-grey and slate-blue palette with cyan and small orange accents, worn and scuffed materials, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+
+DO NOT include: a gas-mask helmet like the civil police; any cloth armband; round emblems; a single round eye; red or gold markings; exposed skin or face; neon; logos of real brands; any existing game's exact character design.
 ```
 
-### O2 OTA-elit (vit)
-**Format:** 16:9. **Bifoga:** 1 den färdiga O1-bilden (samma soldatfamilj) · 2 `master-a.jpg` · 3 O0-insignia-arket.
-```
-Costume design turnaround sheet of an ELITE soldier of "OVERWATCH", the transhuman military of City 09, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SECOND attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — ELITE".
+### O2 OTA-elit (Rev 2)
+**Format:** 16:9. Kör i ny chatt. **Bifoga i ordning:**
+1 den färdiga O1-bilden · 2 `ref/ota-emblem-elite.jpg` · 3 `ref/ota-shoulder-owe.jpg` · 4 `ref/ota-chest-e0019.jpg` · 5 `ref/ota-patch-elite.jpg` · 6 `master-a.jpg`
 
-This is the elite rank of the same force as the soldier in the FIRST attached image: same overall silhouette and proportions, but taller, more armoured and visibly superior.
+```
+Costume design turnaround sheet of an ELITE soldier of "OVERWATCH", the transhuman military of City 09: full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SIXTH attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — ELITE (OWE)".
+
+RELATION: this is the elite rank of the same force as the soldier in the FIRST attached image — same overall silhouette, proportions, rifle type and armour construction — but taller, more armoured and clearly superior. Where the soldier is graphite and camouflage, the elite is WHITE and BLACK.
 
 BUILD: very tall (about 2.05 m), broad-shouldered, perfectly upright, motionless.
 
-HEAD: a sculpted, smooth WHITE ceramic-composite helmet, taller and more angular than the soldier's, with a sharp ridge from brow to crown; instead of two lenses, a single narrow horizontal visor band glowing deep RED across the eyes; a black armoured jaw guard with a ribbed breathing tube to a chest filter; two short swept-back antenna fins at the back.
+HEAD: a sculpted smooth WHITE (#E8E6DF) ceramic-composite helmet, taller and more angular than the soldier's, with a sharp ridge from brow to crown. Instead of two lenses, ONE narrow horizontal visor band glowing deep red (#B3261E) straight across the eyes. A black armoured jaw guard with a ribbed breathing tube to a chest filter. Two short swept-back antenna fins at the back.
 
-BODY: white segmented armour plates over the chest, abdomen, shoulders, forearms and thighs, with black flexible joints and a black high-collared undersuit; a large raised neck collar; black gloves; tall black armoured boots. Markings copied exactly from the THIRD attached image (the Overwatch insignia sheet): on the centre of the chest plate the ELITE variant of the hexagonal Overwatch emblem (white face, red visor slit); on the LEFT shoulder plate the "OWE — ELITE" marking (one bold red chevron, red edge band); the "C9-OTA-E 0019" stencil plate below the emblem; the red-and-black hexagonal patch on the right shoulder. The white armour is clean but faintly scuffed, never dirty.
+BODY: white segmented armour plates over chest, abdomen, shoulders, forearms and thighs, with black flexible joints and a black high-collared undersuit; a large raised neck collar; black gloves; tall black armoured boots. The white is clean and faintly scuffed, never dirty.
+
+MARKINGS — copy each exactly from the attached references, painted on the white armour:
+- Centre of the chest plate: exactly the emblem in the SECOND attached image — a white hexagon with a red V-chevron, a red circle and a glowing red visor slit across it.
+- LEFT shoulder plate: exactly the marking in the THIRD attached image — one bold downward red chevron on white, with a red band along the plate's edge.
+- Below the chest emblem: exactly the plate in the FOURTH attached image — "C9-OTA-E 0019" with the small emblem and a barcode.
+- RIGHT shoulder plate: the red-and-black hexagonal patch from the FIFTH attached image.
 
 EQUIPMENT ROW: a long heavy pulse rifle in black and white with a glowing RED energy cell; a sidearm; a sealed command data unit; a red-ringed energy grenade.
 
-DETAIL INSETS: the helmet front with the red visor band lit; the gold chest chevron; the red arm band; the energy cell.
+DETAIL INSETS: the helmet front with the red visor band lit; the chest emblem; the left shoulder plate; the red energy cell.
 
-STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated palette of white, black and steel-grey with deep red and muted gold accents, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated palette of white, black and steel-grey with deep red accents, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
 
-DO NOT include: a single round eye; two lenses; a gas-mask helmet; camouflage; any cloth armband; exposed skin; neon; logos of real brands; any existing game's exact character design.
+DO NOT include: a single round eye; two lenses; a gas-mask helmet; camouflage; cyan markings; gold markings; any cloth armband; round emblems; exposed skin; neon; logos of real brands; any existing game's exact character design.
 ```
 
-**Ordning:** O1 först, sedan O2 med O1 bifogad, så blir de samma styrka i olika rang.
+**Utklippta Overwatch-referenser** i `assets/img/ref/`: `ota-emblem` (huvudemblem), `ota-emblem-infantry`, `-elite`, `-command`, `ota-shoulder-ows`, `-owsl`, `-owe`, `ota-chest-4471`, `ota-chest-e0019`, `ota-patch-hazard`, `ota-patch-elite`. Hela arket: `ota-insignia.jpg`.
+
 
 ---
 
