@@ -70,7 +70,7 @@
       title: (s) => `Muster hall — Day ${s.day}`,
       enter: (s) => {
         s.time = 'Morning';
-        ['terms', 'crimes', 'contraband', 'equipment', 'docs', 'stopsearch'].forEach((c) => G.unlock(s, c));
+        ['terms', 'crimes', 'contraband', 'equipment', 'vehicles', 'docs', 'stopsearch'].forEach((c) => G.unlock(s, c));
         if (s.duty.day !== s.day) genOffers(s);
         const b = dueBeat(s, 'morning');
         if (b) return b;

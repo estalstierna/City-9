@@ -123,6 +123,8 @@ G.addCodex({
     <img src="assets/img/ota-elite.webp" alt="Overwatch elite" loading="lazy">
     <img src="assets/img/ota-insignia.webp" alt="Overwatch insignia" loading="lazy">
     <p>Overwatch wears no cloth. Its markings are painted on armour: a hexagon cut by a glowing visor slit — cyan for infantry, red for elites, gold for command. Rank is counted in chevrons on the shoulder plate. Civil Protection units learn to read them from across a street, and to step aside.</p>
+    <img src="assets/img/vehicle-ota.webp" alt="Overwatch assault transport" loading="lazy">
+    <p>Overwatch moves in its own vehicles. The <b>OTA-T assault transport</b> is a Civil Protection PT-V hull rebuilt by the Union: composite armour grown over the old steel, a single visor slit across the cab, a remote pulse turret, six soldiers on a rear ramp. When one parks outside a precinct, the precinct is no longer in charge.</p>
     <p>OSI recruitment is classified. Units who ask about it tend to be transferred somewhere quiet.</p>`,
   },
   codes: {
@@ -362,10 +364,24 @@ G.addCodex({
 
 /* Codex chapters, in reading order. Any entry not listed here is shown under "Other records".
    Add new entries to the group they belong to. */
+G.addCodex({
+  vehicles: {
+    title: 'Civil Protection vehicles',
+    body: `<img src="assets/img/vehicle-ptv.webp" alt="PT-V protection team vehicle" loading="lazy">
+    <p>The <b>PT-V</b> — Protection Team, Vehicle — is the workhorse of every precinct: a six-wheeled armoured transport built from flat welded steel on a pre-war truck chassis, with a crowd ram on the nose, vision slits instead of windows, a roof cupola with a mounted gun and searchlight, and a scanner mast that reads every biosignal and label in the street it drives down.</p>
+    <table>
+      <tr><td>Crew</td><td>Driver, gunner in the cupola, and a protection team of up to eight on the rear benches.</td></tr>
+      <tr><td>Use</td><td>Raids, transfers to the Nexus, crowd control at ration lines, relocation days.</td></tr>
+      <tr><td>Numbering</td><td>District and hull: <b>PT-V D5-07</b> is the seventh vehicle of District 5. The number is stencilled on the nose, the sides and the rear doors.</td></tr>
+      <tr><td>Doctrine</td><td>A PT-V is not built to fight. It is built to arrive. Most of the work is done by the sound of it in the street.</td></tr>
+    </table>`,
+  },
+});
+
 G.CODEX_GROUPS = [
   { title: 'City 9', ids: ['city9', 'spire', 'citizens', 'resistance'] },
   { title: 'The Universal Union', ids: ['union', 'overwatch', 'sociostatus', 'biosignal'] },
-  { title: 'Civil Protection', ids: ['cca', 'designation', 'hierarchy', 'divisions', 'colours', 'uniforms', 'equipment'] },
+  { title: 'Civil Protection', ids: ['cca', 'designation', 'hierarchy', 'divisions', 'colours', 'uniforms', 'equipment', 'vehicles'] },
   { title: 'Divisions', ids: ['helix', 'jury', 'vector', 'grid', 'veil'] },
   { title: 'Law', ids: ['crimes', 'contraband', 'verdicts'] },
   { title: 'Language & codes', ids: ['terms', 'codes'] },

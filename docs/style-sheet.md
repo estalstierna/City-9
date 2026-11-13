@@ -1802,6 +1802,8 @@ Egen design. Förlagan (spelmodellen) bifogas **inte**, så att den inte kopiera
 | V6 Overwatch-transport | `vehicle-ota.jpg` | 1 V5 · 2 ota-insignia · 3 ota-soldier | samma skrov, kompositpansar, en cyan visirslits, fjärrstyrt torn, hexagonemblem, "OTA-T 09-3", inget blått |
 | E22 PT-V i Stack 9 | `env/e22-ptv-night.jpg` | 1 V5 · 2 uniform-union · 3 env/e03-bazaar · 4 env/e01-city | natt, regn, sökarljus, fyra enheter kliver ut |
 
+**Klara:** V5 och V6 är genererade och inlagda (codex: Civil Protection vehicles, Overwatch). E22 återstår.
+
 Full prompt-text finns i chatthistoriken (2026-11-13).
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
