@@ -865,7 +865,7 @@ Lägg till `the designation printed directly on the jacket or on one line` i DO 
 - Skriv "copy exactly the helmet/armband in the attached image" och bifoga en utklippt referens per detalj (`assets/img/ref/`).
 - Beskriv headsetet som en *rundad hörlurskåpa med kort stubbantenn*, strecken som *VERTICAL* och armbandet som ett *wraparound band, not a patch*.
 - Avsluta med en DO NOT-rad.
-- **Designation på axeln (kanon, Rev 2): se "Regel: designationspatch" i avsnitt 0.** Patchen sitter på vänster axel, direkt ovanför armbandet, och har alltid två rader.
+- **Designation på axeln (kanon, Rev 2): se "Regel: designationspatch" ovan.** Patchen sitter på vänster axel, direkt ovanför armbandet, och har alltid två rader.
 
 ### Rook, Granite & the Tinker (Rev 3)
 
