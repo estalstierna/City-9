@@ -1754,6 +1754,22 @@ DO NOT include: text, numbers, labels, ID labels, smiles, makeup, bright safety 
 
 ---
 
+## 5i. KAPITEL 2: nya karaktärer och miljöer
+
+Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kontor, E18 Relokeringsdagen och E19 Nexus-taket finns i chatthistoriken (2026-11-13) och följer de allmänna reglerna i 5d och 5e-2.
+
+| Bild | Bifoga | Designation / CID |
+|---|---|---|
+| K1 Wick | ref/02-helmet, armbands, portraits/rook | CCA.C9.D5-UNION-05-61207, 1 streck, ny och oskadad |
+| K2 Vesna | ref/02-helmet, ref/armband-jury, ref/02-armband, uniform-jury, portraits/magistrate | CCA.C9.D5-JURY-02-30961, 4 streck, ingen rand |
+| K3 Halvorsen | portraits/mira, citizen-cwu | CID 47715, CWU-arbetarmärke |
+| K4 Lida Koval | portraits/mira, citizen-base | CID 58210 med OBS-rand, röd sjalett |
+| E17 Magistratens kontor | portraits/magistrate, env/e07-level4 | |
+| E18 Relokeringståget | ref/ota-elite-front, citizen-base, uniform-union, env/e12-railyard | |
+| E19 Nexus-taket | K2, ref/spire-context, env/e15-roof | |
+
+---
+
 ## 6. PROMPT 4: ARMBAND (sex varianter)
 
 ```
