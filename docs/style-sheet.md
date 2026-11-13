@@ -19,6 +19,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e06-parade.jpg` … `env/e10-ration.jpg` | Miljöer E01 till E10 (godkända). E01 är stilreferens för alla miljöer |
+| `ota-soldier.jpg` + `ref/ota-soldier-front.jpg`, `ref/ota-soldier-helmet.jpg` | OTA-soldat (O1, godkänd). Två cyan linser. Ryggvyn är spegelvänd, så bifoga framvyn |
 | `ota-insignia.jpg` + `ref/ota-*.jpg` | Overwatch: grundgrafik (O0, Rev 1) och utklippta emblem, axelplåtar och märken |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty, HELIX 02-77301, Katya (800 px, plus 128 px miniatyrer till kontaktlistan) |
@@ -1540,7 +1541,7 @@ DO NOT include: a gas-mask helmet like the civil police; any cloth armband; roun
 
 ### O2 OTA-elit (Rev 2)
 **Format:** 16:9. Kör i ny chatt. **Bifoga i ordning:**
-1 den färdiga O1-bilden · 2 `ref/ota-emblem-elite.jpg` · 3 `ref/ota-shoulder-owe.jpg` · 4 `ref/ota-chest-e0019.jpg` · 5 `ref/ota-patch-elite.jpg` · 6 `master-a.jpg`
+1 `ota-soldier.jpg` (eller `ref/ota-soldier-front.jpg`) · 2 `ref/ota-emblem-elite.jpg` · 3 `ref/ota-shoulder-owe.jpg` · 4 `ref/ota-chest-e0019.jpg` · 5 `ref/ota-patch-elite.jpg` · 6 `master-a.jpg`
 
 ```
 Costume design turnaround sheet of an ELITE soldier of "OVERWATCH", the transhuman military of City 09: full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SIXTH attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — ELITE (OWE)".

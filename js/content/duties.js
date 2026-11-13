@@ -174,6 +174,7 @@
       enter: (s) => G.unlock(s, 'overwatch'),
       text: [
         'At 14:00, the queue goes completely silent.',
+        '@img assets/img/ota-soldier.jpg|Overwatch infantry, C9 Garrison',
         'A squad of Overwatch soldiers comes up the bridge from the Canal Quarter: four of them, tall, armoured in dark plates, faces hidden behind single glowing lenses. Their radios speak in a dry clicking language that isn\'t meant for human ears. Citizens flatten against the railing.',
         'The squad leader stops at your booth. His voice is a synthesized rasp.',
         '@say Overwatch|Protection Unit. Surrender checkpoint log. Passage records, past seventy-two hours.',

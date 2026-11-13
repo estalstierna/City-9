@@ -111,6 +111,7 @@ G.addCodex({
     title: 'Overwatch',
     body: `<p>The Universal Union's military. The <b>Overwatch Transhuman Arm (OTA)</b> is the combative element, made of surgically altered soldiers in many specialised variants. <b>Overwatch Strategic Intelligence (OSI)</b> is the intelligence element.</p>
     <p>OTA operates side by side with the CCA. CCA personnel cannot issue orders to OTA and vice versa — unless a <b>sociostatus</b> is active, in which case Overwatch takes authority over most CCA personnel.</p>
+    <img src="assets/img/ota-soldier.jpg" alt="Overwatch infantry" loading="lazy">
     <img src="assets/img/ota-insignia.jpg" alt="Overwatch insignia" loading="lazy">
     <p>Overwatch wears no cloth. Its markings are painted on armour: a hexagon cut by a glowing visor slit — cyan for infantry, red for elites, gold for command. Rank is counted in chevrons on the shoulder plate. Civil Protection units learn to read them from across a street, and to step aside.</p>
     <p>OSI recruitment is classified. Units who ask about it tend to be transferred somewhere quiet.</p>`,
