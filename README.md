@@ -25,6 +25,9 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Loyalty rating | How the Union sees you. Some divisions require it. |
 | Hidden: Suspicion | Your file at JURY. At 100 you are *amputated*. Choices that raise it show `[ OBSERVED ]`. |
 | Hidden: Conscience / Resistance | Track the kind of person you're becoming and how much the City 9 resistance trusts you. |
+| Issued kit | Standard CCA equipment shown in the Dossier, growing with rank: USP-Match at 04, Beta vest at 03, MP7A1 at 01, plasteel mask inserts at EpU. |
+| Contraband | Carried items can be graded GREEN / YELLOW / RED / BLACK. Higher grades weigh more heavily if JURY finds them in an audit. |
+| Law | Verdict boxes in scenes cite the crime level and penalty (points, detainment cycles). At 20 penalty points a citizen is amputated. Full tables are in the Codex. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
 ## Structure (Chapter 1)

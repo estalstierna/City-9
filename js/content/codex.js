@@ -164,3 +164,162 @@ G.addCodex({
     body: `<img src="assets/img/uniform-jury.jpg" alt="JURY uniform" loading="lazy"><p>Military police of the CCA. JURY handles detention, interrogation and forced confession, and polices other units for malcompliance. A JURY unit at your door is never good news, whatever uniform you wear.</p>`,
   },
 });
+
+/* ------------------------------------------------------------------
+   CCA reference material: terminology, law, contraband, equipment
+   ------------------------------------------------------------------ */
+(function () {
+  const row = (a, b) => `<tr><td>${a}</td><td>${b}</td></tr>`;
+  const table = (pairs) => `<table>${pairs.map((p) => row(p[0], p[1])).join('')}</table>`;
+
+  const TERMS = [
+    ['Administer', 'To apply a given action or verdict.'],
+    ['Airwatch', 'Airborne branch of the Overwatch Arm.'],
+    ['Amputate', 'Execute. Kill.'],
+    ['Anti-Citizen', 'An unruly citizen demonstrating active endangerment to sociostability.'],
+    ['Audcon', 'Audio confirmation — the unit can hear the person or object.'],
+    ['Biotic', 'Any xenian creature or figure.'],
+    ['Bio-Signal', 'Stabilisation readouts given by the trackers implanted in units.'],
+    ['Bug', 'Burrowing insectoid species from the Outlands.'],
+    ['Cauterize', 'To permanently sever access to a location.'],
+    ['Clamp', 'To temporarily block access to a location.'],
+    ['Coagulate', 'Spread out across an area to cover more ground.'],
+    ['Contact', 'Hostiles spotted; prepare to confirm and engage.'],
+    ['Contact Confirm', 'Contact is confirmed hostile; engage immediately.'],
+    ['Contain', 'Clamp off entrances and confine a situation to certain areas.'],
+    ['Converge', 'Move to a location, usually with haste.'],
+    ['Deploy', 'Deployment of equipment or a squad.'],
+    ['Deservicement', 'Death of a Union agent.'],
+    ['Dismount', 'Exit or leave a manned hardpoint.'],
+    ['Document', 'Take note of a situation by updating the APB.'],
+    ['Evasion', 'Evasive activity to avoid stabilisation teams or prosecution.'],
+    ['Examine', 'Investigate. Look into.'],
+    ['Expired', 'Death of a subject.'],
+    ['Harden', 'Maintain a defensive position.'],
+    ['Hardpoint', 'Forcefield or checkpoint at a key location.'],
+    ['Individual', 'A specific person of interest.'],
+    ['Infested', 'Parasitic or necrotic influence within a given area.'],
+    ['Inject', 'Breach into a room.'],
+    ['Inquire', 'Interrogate through questioning.'],
+    ['Interlock', 'Group together into a protection team.'],
+    ['Isolate', 'Disband a large group of citizens.'],
+    ['Lock', 'Hold your assigned position.'],
+    ['Malcompliance', 'Failure to co-operate.'],
+    ['Malignant', 'A dangerous or threatening individual.'],
+    ['Midnight', 'Surprise attack: enter quietly, then ambush.'],
+    ['Necrotic', 'A human under parasitic influence.'],
+    ['Non-Sanctioned', 'Not approved or allocated.'],
+    ['Pacify', 'Render incapable of performing typical functions; re-educate.'],
+    ['Perimeter', 'A defensive line or area.'],
+    ['Policide', 'The killing of an officer or unit.'],
+    ['Preserve', 'Preserve sociostability in a given area.'],
+    ['Protection Team / PT', 'A patrol group of at least two Civil Authority officers.'],
+    ['PT-V', 'A protection team in an APC.'],
+    ['RDT', 'Ration Distribution Terminal.'],
+    ['Respond', 'Respond to a request or given edict.'],
+    ['Restrict', 'Deny access through a checkpoint or area.'],
+    ['Search', 'Search an individual or group for contraband or items of interest.'],
+    ['Serve', 'Follow.'],
+    ['Service Cycle', 'One day/night cycle of on-duty service.'],
+    ['Shield', 'Defend a given checkpoint or area.'],
+    ['Stabilize', 'Restore order by any means necessary. Lethal or non-lethal is decided by the commanding authority.'],
+    ['Stand-by', 'Awaiting orders.'],
+    ['Sterilize', 'To remove.'],
+    ['Suspend', 'Cease a given action.'],
+    ['Sword', 'Action call: weapons may be freely used.'],
+    ['Tag', 'Assign a code to a subject (10-96P, etc.).'],
+    ['Verdict', 'An imposed punishment for a given transgression.'],
+    ['Violation', 'A crime or transgression committed by an individual.'],
+    ['Violator', 'Anyone committing, or who has committed, a crime.'],
+    ['Virome', 'A human under toxic parasitic influence.'],
+    ['Viscerator', 'An airborne bladed drone.'],
+    ['Viscon', 'Visual confirmation — the unit can see the person or object.'],
+  ];
+  const ABBR = [
+    ['ADW', 'Assault with a deadly weapon'],
+    ['APB', 'All-points bulletin'],
+    ['BOLO', 'Be on lookout'],
+    ['DB', 'Dead body'],
+    ['GOA', 'Gone on arrival'],
+    ['PT', 'Protection team'],
+    ['UPA', 'Unauthorised procreative activity'],
+    ['UPI', 'Unidentified person of interest'],
+    ['UTL', 'Unable to locate'],
+  ];
+
+  const LEVELS = [
+    ['Level 1', 'Re-education', ['Running', 'Yelling', 'Jumping', 'General uncivil behaviour', 'Loitering']],
+    ['Level 2', '2 penalty points · re-education', ['Minor citizen harassment (verbal)', 'Trespassing', 'Throwing objects', 'Wasting an officer’s time', 'Possession of GREEN contraband']],
+    ['Level 3', '3 penalty points · 1 detainment cycle · re-education', ['Threatening or assaulting a citizen', 'Failure to apply', 'Fleeing from an officer or crime scene', 'Theft / burglary', 'Withholding information from CCA officers', 'Disobeying an officer’s orders']],
+    ['Level 4', '5 penalty points · 2 detainment cycles · re-education', ['Public display of affection', 'Trespassing into a deserviced sector (404 zone)', 'Major citizen harassment (physical)', 'Threatening a unit', 'Vandalism', 'Resisting arrest or questioning', 'Possession of YELLOW contraband']],
+    ['Level 5', '7 penalty points · 3 detainment cycles · re-education', ['Vandalism of Union property', 'Assaulting a CCA unit', 'Assaulting a high-priority citizen', 'Kidnapping', 'Citizen homicide', 'Possession of RED contraband']],
+    ['Level 6', '12 penalty points · 6 detainment cycles · 2 interrogation cycles · re-education', ['Arson', 'Unauthorised procreative activity', 'Trespassing into the Nexus', 'Rebel conspiracy']],
+    ['Level 7', 'Amputation', ['Policide', 'Politically motivated terrorism', 'Participating in a riot', 'Assassination of an Administrator', 'Mental imperfection', 'Physical imperfection', 'Possession of BLACK contraband']],
+  ];
+
+  const CONTRA = [
+    ['GREEN', '#6fbf73', ['Non-approved food (incl. ration tiers above the holder’s grade)', 'Non-approved clothing', 'Non-approved alcohol', 'Spray cans', 'Small amounts of biogel (one vial)', 'Small amounts of pharmaceuticals', 'Unregistered tobacco']],
+    ['YELLOW', '#e2a83f', ['Large amounts of biogel', 'Large amounts of pharmaceuticals', 'Narcotics (personal quantity)', 'Antidepressants', 'Non-authorised ID and access cards', 'Non-approved backpacks', 'Zip-ties', 'Unregistered radio receivers']],
+    ['RED', '#d9534a', ['Lethal melee weapons', 'Narcotics (distribution quantity)', 'Ammunition of any kind', 'Door breaches', 'ALPHA-grade armour', 'Stun batons', 'Handheld radios and transmitters', 'Seditious print (leaflets, lambda material)', 'Union locks (unless CWU or high-level loyalist)']],
+    ['BLACK', '#a58ad8', ['BETA / GAMMA-grade armour', 'Firearms', 'Union command locks', 'Explosives of any kind']],
+  ];
+
+  G.CONTRA_GRADES = { green: { label: 'GREEN', colour: '#6fbf73', susp: 5 }, yellow: { label: 'YELLOW', colour: '#e2a83f', susp: 12 }, red: { label: 'RED', colour: '#d9534a', susp: 25 }, black: { label: 'BLACK', colour: '#a58ad8', susp: 45 } };
+
+  /* Issued kit, by rank. `from` = lowest rank that holds it, `until` = rank at which it is replaced. */
+  G.EQUIPMENT = [
+    { id: 'training', name: 'Grey training uniform', from: 'RcT', until: '05', desc: 'High-collared recruit fatigues. No mask — the mask is earned.' },
+    { id: 'jacket', name: 'Polycarbonate fabric jacket', from: '05', desc: 'Slash-resistant, polycarbonate-infused fabric. Keeps out rain and cold. Not spike-resistant.' },
+    { id: 'slacks', name: 'Dark grey polycarbonate slacks', from: '05', desc: 'Cut for mobility. Moisture- and temperature-resistant.' },
+    { id: 'mask', name: 'Ceramic-polymer gas mask', from: '05', until: 'EpU', desc: 'Hardened ceramic-polymer shell, acrylic lenses, smoke and gas filtration. A voice encoder hides the wearer’s gender and identity.' },
+    { id: 'mask_ins', name: 'Gas mask with plasteel inserts', from: 'EpU', until: 'DvL', desc: 'The standard mask reinforced with rare plasteel inserts. Issued to EpU and above.' },
+    { id: 'mask_full', name: 'Full plasteel gas mask', from: 'DvL', desc: 'Solid plasteel construction. Issued to Division Leaders and above, and to Overwatch.' },
+    { id: 'baton', name: 'Standard-issue stun baton', from: '05', desc: 'Black steel rod, rubberised grip, static emulator. LOW: pain. MEDIUM: puts a citizen on the ground. HIGH: unconsciousness. MAXIMUM is locked — it drains the battery and has killed citizens with one strike.' },
+    { id: 'knife', name: 'Folding service knife', from: '05', desc: 'Pocket or belt clip. Mostly for cutting zip-ties. Capable of personal defence.' },
+    { id: 'vest_a', name: 'Alpha-grade kevlar vest', from: '05', until: '03', desc: 'Level II-A. Stops most handgun rounds. Stab- and slash-proof against conventional blades.' },
+    { id: 'vest_b', name: 'Beta-grade kevlar vest', from: '03', desc: 'Level III-A. Reliable up to .44 Magnum, more layers against blades. EpU and above may add ballistic inserts.' },
+    { id: 'boots', name: 'Jet-black jackboots', from: '05', desc: 'Heavy, steel-toed, water-resistant, brief protection against hot surfaces.' },
+    { id: 'radio', name: 'Handheld radio', from: '05', desc: 'Belt-clipped, linked to the microphone in your mask. Lose the radio and the mask goes silent.' },
+    { id: 'gloves', name: 'Vulcanised rubber gloves', from: '05', desc: 'High-traction black gloves. Nothing slips.' },
+    { id: 'belts', name: 'Nylon utility belts and slings (3)', from: '05', desc: 'Magazine holsters, pouches, weapon slings.' },
+    { id: 'hygiene', name: 'Hygiene kit', from: 'RcT', desc: 'Comb, straight razor, toothbrush, toothpaste, shaving cream.' },
+    { id: 'usp', name: 'USP-Match 9mm handgun', from: '04', desc: '18-round magazine, 9mm hollow-point, under-mounted flashlight. Issued at grade 04. Before that, sidearms are signed out from the armoury for a single shift.' },
+    { id: 'mp7', name: 'MP7A1 submachine gun', from: '01', desc: '45-round magazine, 4.6mm armour-piercing, folding foregrip, holographic sight, under-barrel grenade launcher. Issued at grade 01; may later be exchanged for another primary for sterilised credits.' },
+  ];
+
+  G.kitFor = (s) => {
+    const r = G.rankIdx(s.rank);
+    return G.EQUIPMENT.filter((e) => r >= G.rankIdx(e.from) && (!e.until || r < G.rankIdx(e.until)));
+  };
+
+  G.addCodex({
+    terms: {
+      title: 'CCA terminology',
+      body: `<p><i>All recruits are responsible for learning these terms on their own.</i></p>${table(TERMS)}<p><b>Abbreviations</b></p>${table(ABBR)}`,
+    },
+    crimes: {
+      title: 'Crimes & verdicts',
+      body: `<p>Every violation carries a level. Penalty points accumulate on the citizen's file and never expire. <b>At 20 penalty points the citizen is amputated as a threat to sociostability.</b></p>
+      ${LEVELS.map((l) => `<p><b>${l[0]}</b> — <i>${l[1]}</i></p><ul>${l[2].map((x) => `<li>${x}</li>`).join('')}</ul>`).join('')}`,
+    },
+    contraband: {
+      title: 'Contraband grades',
+      body: `<p>Contraband is graded by colour. Possession of each grade is its own violation: GREEN is Level 2, YELLOW Level 4, RED Level 5, BLACK Level 7. Food and medical contraband rules do not apply to members of the Civil Workers' Union (CWU).</p>
+      ${CONTRA.map((c) => `<p><b style="color:${c[1]}">${c[0]}</b></p><ul>${c[2].map((x) => `<li>${x}</li>`).join('')}</ul>`).join('')}`,
+    },
+    equipment: {
+      title: 'Civil Authority equipment',
+      body: `<p><b>Standard issue (05 and above)</b></p>${table(G.EQUIPMENT.filter((e) => e.from === '05' && !['vest_b'].includes(e.id)).map((e) => [e.name, e.desc]))}
+      <p><b>Special issue</b></p>${table([
+        ['USP-Match (04+)', G.EQUIPMENT.find((e) => e.id === 'usp').desc],
+        ['Beta-grade vest (03–01)', G.EQUIPMENT.find((e) => e.id === 'vest_b').desc],
+        ['MP7A1 (01+)', G.EQUIPMENT.find((e) => e.id === 'mp7').desc],
+        ['Plasteel masks', 'Inserts for EpU and above. Full plasteel for DvL and above, and for Overwatch.'],
+      ])}
+      <p><b>Priority command equipment</b></p>${table([
+        ['OSIAR (Overwatch)', 'Overwatch Standard Issue Assault Rifle. A very large pulse rifle built by the Union after the Seven Hour War. Fires dense pulse rounds from a detachable 30-round energy cell, accurate and fully automatic. Its recoil is too violent for an un-augmented human to control.'],
+        ['Gamma armour system', '&lt;:: CLASSIFIED BY SeC ::&gt;'],
+      ])}`,
+    },
+  });
+})();

@@ -35,6 +35,7 @@
     },
     d_ration_1_detain: {
       text: [
+        '@law THEFT (RATION FRAUD) · LEVEL 3 — 3 penalty points · 1 detainment cycle · re-education',
         'You take her arm. The children start crying in unison, a terrible high siren. The woman doesn\'t fight. She just keeps saying *he would have wanted them fed, he would have wanted them fed* while Rook cuffs her.',
         'The line watches without watching. It moves faster after that.',
         '@say Rook|Good. Fast, clean. The kids go to the block warden. She\'ll be out in a week, probably, and she\'ll never do it again.',
@@ -155,6 +156,7 @@
         '@say Old man|My daughter is in D3. She is having a child. *A child*, officer. She is hiding — you know what they do. I only want to see her once. Please.',
         'He slides something through the slot: half a pack of pre-war cigarettes.',
         'A child. In a city under the suppression field, where children are not born. If it\'s true, it is the most dangerous secret in the Canal Quarter.',
+        '@law NON-AUTHORISED ID (YELLOW) · LEVEL 4 for him. UNAUTHORISED PROCREATIVE ACTIVITY · LEVEL 6 for his daughter — 12 penalty points · 6 detainment cycles · 2 interrogation cycles.',
       ],
       choices: [
         { t: 'Detain him for forgery. Report the pregnancy claim.', tag: 'REPORT', tagCls: 'loyal', fx: { merit: 5, lp: 4, cons: -10, res: -5 }, go: 'd_check_ota' },
@@ -282,6 +284,7 @@
     d_market_catch: {
       text: [
         'You catch him three roofs over, where the gutter ends in nothing and he has to choose between you and a twelve-metre drop. He chooses you. Good.',
+        '@law VANDALISM · LEVEL 4 — 5 penalty points · 2 detainment cycles. Spray can: GREEN contraband.',
         'He can\'t be older than twelve. Blue paint to the elbows. A bruise on his cheek that\'s older than today.',
         '@say Boy|I didn\'t — I wasn\'t — someone paid me a ration bar, I don\'t even know what it *means*.',
         'Rook arrives, breathing hard, and leans on a chimney.',
@@ -433,6 +436,7 @@
     },
     d_insp_end_report: {
       text: [
+        '@law WITHHOLDING INFORMATION FROM CCA OFFICERS · LEVEL 3 — 3 penalty points each · 1 detainment cycle',
         'The old woman goes in a wheelchair, because she cannot walk down seven floors. The couple go in cuffs. On the landing, neighbours have opened their doors a crack to watch, and they close them all at once as you come out, like a row of eyelids.',
       ],
       choices: [{ t: 'End of shift.', go: END }],
@@ -479,6 +483,7 @@
       text: [
         'You take him by the collar and spin him around to face the screen. He stumbles, catches himself, looks up at the Administrator\'s enormous face with total incomprehension — and then you understand.',
         'His eyes are milky white. He is blind. He was praying.',
+        '@law GENERAL UNCIVIL BEHAVIOUR · LEVEL 1 — re-education. And, if anyone writes it down: PHYSICAL IMPERFECTION · LEVEL 7.',
         'The crowd doesn\'t move. Somewhere in it, someone laughs, very short, and stops.',
       ],
       choices: [
@@ -567,7 +572,8 @@
       text: [
         '@img assets/img/env/e12-railyard.jpg|D4 Rail Yards, 23:40',
         'The rail yards after curfew are a forest of dead freight cars and rusting cranes, lit only by the green standby lamps of the transit line and the occasional sweep of a scanner. Rook takes point. Two 04s from the night squad flank you. Your torch beam makes everything look like it\'s moving.',
-        '@radio D5 sweep team, Dispatch. Biosignal anomaly reported in the yard. Proceed with caution. 10-4.',
+        'Night sweeps draw sidearms from the armoury whatever your grade: a USP-Match signed out against your designation, eighteen rounds counted out and counted back in at dawn.',
+        '@radio D5 PT, Dispatch. Biosignal anomaly in the yard. Coagulate and examine. Sword is NOT authorised. 10-4.',
         'You pass a relocation car with its doors chained shut. Something inside it has been written on the walls with a fingernail.',
         'Then a sound, very small: a pebble skittering off steel, somewhere above you.',
       ],
@@ -578,6 +584,7 @@
     },
     d_rail_spot: {
       text: [
+        '@radio ...Contact. Grain car, north row. Requesting contact confirm.',
         'There — on the roof of a grain car, a silhouette against the city glow. A rifle. Two more figures behind the next car, crouched, waiting for the sweep team to walk into the gap between them.',
         'You have maybe two seconds before they realise you\'ve seen them.',
       ],
@@ -620,6 +627,7 @@
       text: [
         'The first shot comes from above and takes one of the 04s in the neck. He falls without a sound. The second hits you in the chest plate like a hammer and you go down between the rails with no air in your lungs.',
         'Gunfire everywhere. Torchlight flailing. Rook\'s voice on the radio, flat and fast: *"11-99, 11-99, D4 yard, 10-78, all units—"*',
+        '@radio 11-99, D4 yard. Deservicement confirmed. Sword, sword, sword.',
         'By the time the APC arrives the rebels are gone. The 04 is dead. You have two cracked ribs and a bruise the shape of a bullet over your heart.',
       ],
       choices: [{ t: 'End of shift.', fx: { hp: -30, merit: 2 }, go: END }],

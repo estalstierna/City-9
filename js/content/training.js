@@ -26,6 +26,7 @@
       enter: (s) => {
         s.phase = 'training';
         G.unlock(s, 'hierarchy');
+        G.unlock(s, 'terms');
       },
       text: [
         '@img assets/img/env/e06-parade.jpg|Training Wing, parade floor, 05:00',
@@ -36,6 +37,8 @@
         '@say Thirty|Four weeks. Each week you are assigned to one block of instruction. The blocks you choose will decide what kind of unit you become, and what kind of unit you become decides whether you come home at night. At the end there is an evaluation. It will be live. It will be in your own district. Some of you will fail it.',
         '@say Thirty|Above you is the ladder.',
         'He points up. Painted on the wall above the parade floor, ten metres high, is the CCA hierarchy, Recruit at the bottom and the Earth Administrator at the top, a long way up.',
+        '@say Thirty|Inside these walls you speak the Union\'s language. *Viscon. Audcon. Contain. Stabilize. Amputate.* All recruits are responsible for learning these terms on their own. Nobody will teach them to you twice.',
+        '@sys CCA terminology has been added to your Codex.',
         '@say Thirty|Every man and woman on that ladder started on this floor. Most died on the second rung. Dismissed to selection.',
       ],
       choices: [{ t: 'Go to the assignment board.', go: 'bt_hub' }],
@@ -227,7 +230,7 @@
       text: [
         'At the end of the session Thirty calls the intake together around a single mat. On it, Tomas lies flat on his back after losing to a recruit twice his weight. He has tapped. He is holding up a hand in surrender.',
         '@say Thirty|The citizen has surrendered. Good. Now he will remember why. *You* —',
-        'He points at you, and holds out his own stunstick. The dial is turned all the way up.',
+        'He points at you, and holds out his own stunstick. The dial is turned to HIGH. The fourth setting, MAXIMUM, is locked — it is the only thing on that stick Thirty is not permitted to use.',
         '@say Thirty|— finish the lesson.',
         'Tomas stares at you from the mat. Forty recruits wait.',
       ],
@@ -521,7 +524,11 @@
 
     bt_jury: {
       title: 'Detention level 4 — JURY instruction',
-      enter: (s) => G.unlock(s, 'jury'),
+      enter: (s) => {
+        G.unlock(s, 'jury');
+        G.unlock(s, 'crimes');
+        G.unlock(s, 'contraband');
+      },
       text: [
         '@img assets/img/env/e07-level4.jpg|Detention level 4',
         'Level 4 is below the river line. The walls sweat. The corridors are lit by single caged bulbs, and somewhere a ventilation fan ticks like a clock.',
@@ -841,7 +848,9 @@
     bt_raid_apply: {
       text: [
         'Thirty sets the transmitter on the kitchen table beside the candle.',
-        '@say Thirty|Edvard Halloran. Possession of an unregistered transmitter is major malcompliance. Before he goes to JURY, the Union will remind him of his obligations. Recruit.',
+        '@say Thirty|Edvard Halloran. Possession of a transmitter. RED contraband.',
+        '@law POSSESSION OF RED CONTRABAND · LEVEL 5 — 7 penalty points · 3 detainment cycles · re-education',
+        '@say Thirty|Before he goes to JURY, the Union will remind him of his obligations. Recruit.',
         'He is looking at you.',
         '@say Thirty|Apply.',
         'Halloran sets down his cup. He folds his hands on the table, the way he did when he used to listen to your homework. He nods to you — very slightly. *It\'s all right.*',
@@ -895,7 +904,8 @@
         '@say You|See the coil, sir? Single-wound. No oscillator. It\'s a receiver — pre-war shortwave, built up to pull in the old music stations from the Outlands. Major malcompliance would be a transmitter. This is minor. Listening.',
         'You have no idea if any of that is true. You say it like it is.',
         'Thirty takes the set and turns it in his hands for a long, long time.',
-        '@say Thirty|...Minor malcompliance. Confiscation and a ration penalty. The occupant goes on watch.',
+        '@say Thirty|...An unregistered receiver. YELLOW, not RED. Confiscation. The occupant goes on watch.',
+        '@law POSSESSION OF YELLOW CONTRABAND · LEVEL 4 — 5 penalty points · 2 detainment cycles · re-education',
         'He sets the radio under his arm. On the way out he pauses beside you.',
         '@say Thirty|Signals intelligence says it transmitted. Twice. Last week. I wonder who is wrong — signals intelligence, or you.',
       ],
@@ -940,6 +950,7 @@
         if (sc < 4) s.susp = Math.min(100, s.susp + 5);
         G.unlock(s, 'divisions');
         G.unlock(s, 'colours');
+        G.unlock(s, 'equipment');
         G.unlock(s, 'uniforms');
         G.unlock(s, 'overwatch');
         G.unlock(s, 'verdicts');
@@ -956,7 +967,7 @@
         s.flags.halloran_fate === 'spared'
           ? 'Halloran is still in 14-F, on a watch list. Mira writes you a note through the precinct mail: *He says to tell you he has run out of sweets.*'
           : s.flags.halloran_fate === 'detained'
-          ? 'Halloran was transferred to JURY. A clerk tells you he was released after six days with a ration penalty. Old men are not worth the cell space.'
+          ? 'Halloran was transferred to JURY. A clerk tells you he was released after three detainment cycles with seven penalty points on his file. Thirteen more and he is a threat to sociostability. Old men are not worth the cell space, until they are.'
           : 'Nobody tells you where Halloran went. You look it up on the terminal. His file says *RELOCATED*.',
         '@dispatch Attention: Protection Unit graduates of intake 9-114. You are now the Union\'s eyes in the dark. Report to your precinct. Sociostability is your responsibility.',
       ],

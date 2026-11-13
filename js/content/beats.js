@@ -87,11 +87,12 @@
     b_audit_found: {
       text: (s) => [
         'You shift your weight toward your coat. The JURY unit\'s hand is already there. He pulls the coat off the hook and turns out the pocket.',
-        `**${contraband(s).map((i) => G.ITEMS[i].name).join(', ')}.**`,
+        `**${contraband(s).map((i) => G.ITEMS[i].name + ' — ' + G.CONTRA_GRADES[G.ITEMS[i].grade || 'green'].label).join(', ')}.**`,
+        '@say Magistrate|For a citizen, that would be a verdict. For a unit, it is something worse: a question.',
         'The Magistrate takes it from him between two fingers and looks at it for a long time.',
         '@say Magistrate|Well. Now we have something to talk about.',
       ],
-      choices: [{ t: 'Say nothing.', fx: (s) => ({ take: contraband(s), susp: 30, lp: -10, merit: -5 }), go: 'b_audit_bad' }],
+      choices: [{ t: 'Say nothing.', fx: (s) => ({ take: contraband(s), susp: contraband(s).reduce((n, i) => n + (G.CONTRA_GRADES[G.ITEMS[i].grade || 'green'].susp), 5), lp: -10, merit: -5 }), go: 'b_audit_bad' }],
     },
     b_audit_ok: {
       text: [
@@ -358,6 +359,7 @@
       text: (s) => [
         '@say Granite|You want your 04. Fine. Thursday\'s ration truck through the Canal Quarter. Intelligence says a cell is going to hit it at the lock bridge.',
         s.flags.truck_intel ? 'Intelligence, you realise, is *you* — the detainee on the bridge, the crowbar, the map. Your report made it all the way up.' : 'He doesn\'t say where the intelligence came from. He never does.',
+        '@say Granite|The armoury will sign out a USP-Match to you for the escort. Get used to the weight. If this goes well, you keep it.',
         '@say Granite|You\'re on the truck. Four units, one driver, three hundred ration packs. You command the escort. If the truck arrives, you get your stripe. If it doesn\'t — then we\'ll talk about whether you get another chance.',
       ],
       choices: [

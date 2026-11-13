@@ -53,12 +53,12 @@
   };
 
   G.ITEMS = {
-    leaflet: { name: 'Rebel leaflet', desc: 'A hand-printed sheet with a lambda in the corner. Contraband. Possession is malcompliance.', contraband: true },
+    leaflet: { name: 'Rebel leaflet', desc: 'A hand-printed sheet with a lambda in the corner. Seditious print.', contraband: true, grade: 'red' },
     drawing: { name: "Mira's drawing", desc: 'A ration wrapper with a pencil sketch on the inside: two kids on a rooftop, looking at a sky with no Citadel in it.' },
     ration: { name: 'Spare ration pack', desc: 'Grey nutrient bar, a can of sector water. Worth more than tokens in the Stacks.' },
     medkit: { name: 'HELIX field kit', desc: 'Biogel, sutures, a coagulant injector. Issued property. Logged by serial number.' },
-    cigarettes: { name: 'Pre-war cigarettes', desc: 'Half a pack, brand worn off. Black-market currency.' },
-    keycard: { name: 'Canal Gate 3 keycard', desc: 'A maintenance card. It should not be in your pocket.', contraband: true },
+    cigarettes: { name: 'Pre-war cigarettes', desc: 'Half a pack, brand worn off. Black-market currency. Unregistered tobacco.', contraband: true, grade: 'green' },
+    keycard: { name: 'Canal Gate 3 keycard', desc: 'A maintenance card. It should not be in your pocket. Non-authorised access card.', contraband: true, grade: 'yellow' },
     photo: { name: 'Old photograph', desc: 'Your parents, before the war. The colours have gone the shade of weak tea.' },
   };
 
@@ -267,6 +267,7 @@
       return el('div', 'say', `<span class="speaker">${who}</span><span class="line">${inline(line)}</span>`);
     }
     if (p.startsWith('@doc ')) return el('div', 'doc', inline(p.slice(5)));
+    if (p.startsWith('@law ')) return el('div', 'law', `<span class="lbl">VERDICT</span>${inline(p.slice(5))}`);
     if (p.startsWith('@img ') || p.startsWith('@portrait ')) {
       const isP = p.startsWith('@portrait ');
       const parts = p.slice(isP ? 10 : 5).split('|');
@@ -580,11 +581,29 @@
           })
           .join('')}
       </section>
+      ${
+        G.kitFor && S.phase !== 'creation'
+          ? `<section><h3>Issued kit</h3>${
+              S.phase === 'prologue'
+                ? '<div class="sub">Nothing yet. You are a citizen.</div>'
+                : G.kitFor(S)
+                    .map((e) => `<details class="kit"><summary>${e.name}</summary><small>${e.desc}</small></details>`)
+                    .join('')
+            }</section>`
+          : ''
+      }
       <section>
         <h3>Carried</h3>
         ${
           S.items.length
-            ? S.items.map((k) => `<div class="item ${G.ITEMS[k].contraband ? 'contra' : ''}" title="${G.ITEMS[k].desc}">${G.ITEMS[k].name}<small>${G.ITEMS[k].desc}</small></div>`).join('')
+            ? S.items
+                .map((k) => {
+                  const it = G.ITEMS[k];
+                  const g = it.grade && G.CONTRA_GRADES ? G.CONTRA_GRADES[it.grade] : null;
+                  const chip = g ? `<span class="grade" style="color:${g.colour};border-color:${g.colour}">${g.label}</span>` : '';
+                  return `<div class="item ${it.contraband ? 'contra' : ''}" title="${it.desc}">${chip}${it.name}<small>${it.desc}</small></div>`;
+                })
+                .join('')
             : '<div class="sub">Nothing of note.</div>'
         }
       </section>`;

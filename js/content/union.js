@@ -1,9 +1,9 @@
 /* UNION SERVICE — the daily loop: duty board, duties, evenings, promotions, endings */
 (function () {
   const BRIEFS = [
-    'Sociostability in D5 is rated *amber*. Ration fraud is up four percent. Do not let it reach five.',
+    'Sociostability in D5 is rated *amber*. Ration fraud is up four percent. Preserve, document, and do not let it reach five.',
     'Overwatch has a squad moving through D4 tonight. Stay off their channel and out of their way.',
-    'A unit in D3 was found in the canal this morning, biosignal cut at 02:14. That is all you need to know about curfew enforcement.',
+    'Deservicement in D3 overnight — a unit found in the canal, biosignal cut at 02:14. Policide is Level 7. Somebody in the Canal Quarter is going to be amputated. Make sure it is the right somebody.',
     'The Administrator broadcasts at noon. Every screen in the district will be watched. By citizens, and by us.',
     'Lambda graffiti on Bazaar Row, six new marks overnight. Somebody is getting brave. Make them less brave.',
     'Relocation train departs D4 at 18:00. Two hundred citizens. Expect families at the gates. Expect tears. Do not expect to care.',
@@ -46,6 +46,7 @@
         s.time = 'Morning';
         s.rel.rook = s.rel.rook || 0;
         s.rel.granite = s.rel.granite || 0;
+        ['terms', 'crimes', 'contraband', 'equipment'].forEach((c) => G.unlock(s, c));
       },
       text: (s) => [
         '@img assets/img/env/e09-precinct.jpg|District 5 Precinct, the old tram depot',
@@ -130,7 +131,7 @@
       text: (s) => [
         G.pick([
           'The shift siren goes at 18:00. You stand in the locker room with your mask in your hands and look at it for a while before you put it in the locker.',
-          'You hand in your sidearm at the armoury cage. The clerk counts the rounds back in one at a time, the same way every night.',
+          (s.rank === '05' ? 'You hand your stun baton in at the armoury cage. The clerk checks the battery, logs the voltage setting and hangs it on a numbered hook, the same way every night.' : 'You hand in your USP-Match at the armoury cage. The clerk counts the rounds back in one at a time, the same way every night.'),
           'The precinct mess smells of boiled protein and wet wool. Somebody has scratched a tally of days on the wall above the urn. It goes to four hundred and stops.',
           'Outside the precinct windows the Stacks light up one by one, grey squares in grey walls. Somewhere out there is the window with the plastic over it.',
         ]),
@@ -520,7 +521,9 @@
 
     ev_mira_reported: {
       text: [
-        'They take her at dawn. A juvenile warning, as you said. Three days in the D5 holding cells. A note on her file. A ration penalty.',
+        'They take her at dawn. Seditious print is RED contraband — Level 5. Because the report came from her own brother, JURY records it as a juvenile first offence and reduces it.',
+        '@law POSSESSION OF SEDITIOUS PRINT · REDUCED TO LEVEL 3 — 3 penalty points · 1 detainment cycle · re-education',
+        'Three days in the D5 holding cells. Three points on a file that will follow her for the rest of her life. Seventeen more and the Union stops counting.',
         'When she comes home she doesn\'t speak to you. She doesn\'t open the door. You stand on the landing in your civilian coat and listen to her not open it.',
         'Mrs Orlova on the third floor no longer flattens herself against the wall when you pass. She turns her back.',
         '@say Granite|Your own sister. That\'s commitment. The Union notices commitment.',
