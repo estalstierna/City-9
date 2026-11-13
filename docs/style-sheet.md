@@ -1212,7 +1212,7 @@ DO NOT include: neon, readable text, logos of real brands, characters from exist
 | E08 Hallorans kök | 1 `portraits/halloran.jpg` · 2 `uniform-union.jpg` · 3 `env/e02-apartment.jpg` |
 | E09 Stationen | 1 `uniform-union.jpg` · 2 `portraits/granite.jpg` · 3 `flag-cca.jpg` · 4 `env/e06-parade.jpg` |
 | E10 Plaza 5 | 1 `citizen-base.jpg` · 2 `uniform-union.jpg` · 3 `env/e04-nexus.jpg` |
-| E11 Canal Gate 3 | 1 `uniform-union.jpg` · 2 `citizen-base.jpg` · 3 `flag-cca.jpg` · 4 `env/e03-bazaar.jpg` |
+| E11 Canal Gate 3 | 1 `uniform-union.jpg` · 2 `citizen-base.jpg` · 3 `flag-cca.jpg` · 4 `ref/ota-soldier-front.jpg` · 5 `env/e03-bazaar.jpg` |
 | E12 Bangården | 1 `uniform-union.jpg` · 2 `ref/spire-context.jpg` · 3 `env/e01-city.jpg` |
 | E13 Pump House 4 | 1 `portraits/ilse.jpg` · 2 `citizen-base.jpg` · 3 `env/e05-barracks.jpg` |
 | E14 Slussbron | 1 `uniform-union.jpg` · 2 `portraits/katya.jpg` · 3 `env/e03-bazaar.jpg` |
@@ -1297,10 +1297,10 @@ STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Ea
 DO NOT include: multiple overlapping queues; duplicated identical figures; more than six hatches; neon; readable text; logos; characters from existing games.
 ```
 
-### E11 Canal Gate 3 (d_check_1)
-**Bifoga:** 1 uniform-union · 2 citizen-base · 3 flag-cca · 4 e03-bazaar
+### E11 Canal Gate 3 (d_check_1), Rev 4
+**Bifoga:** 1 uniform-union · 2 citizen-base · 3 flag-cca · 4 `ref/ota-soldier-front.jpg` · 5 e03-bazaar
 ```
-Concept art of a security checkpoint across an old stone bridge over a black canal. The checkpoint is the same steel cage seen in the background of the FOURTH attached image, now seen up close; match that image's colour grading and level of detail.
+Concept art of a security checkpoint across an old stone bridge over a black canal. The checkpoint is the same steel cage seen in the background of the FIFTH attached image, now seen up close; match that image's colour grading and level of detail.
 
 CAMERA: eye-level on the bridge, looking straight along it toward the far bank.
 
@@ -1308,12 +1308,12 @@ STRUCTURE: a steel lattice cage enclosing the bridge; in the middle a single glo
 
 PEOPLE:
 - A single-file line of about ten citizens dressed exactly like the SECOND attached image, holding papers up toward the arch.
-- Two masked officers dressed exactly like the FIRST attached image: one inside the booth behind the window, one standing at the arch.
-- Approaching from the far end of the bridge, a squad of exactly FOUR tall soldiers in heavy dark plated armour with single round glowing visor lenses, clearly larger and more military than the police; the citizens press against the railings to let them pass.
+- Two masked civil police officers dressed exactly like the FIRST attached image: one inside the booth behind the window, one standing at the arch.
+- Walking toward the camera from the far end of the bridge, a squad of exactly FOUR soldiers dressed exactly like the FOURTH attached image — dark graphite enclosed helmets with TWO glowing cyan lenses, urban camouflage, heavy shoulder plates, pulse rifles held low — clearly taller and more military than the police. The citizens press against the railings to let them pass.
 
 STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey and slate-blue palette with sharp cyan accents, atmospheric haze, subtle film grain, high detail.
 
-DO NOT include: soldiers wearing the police gas-mask helmet; more than four soldiers; neon; readable text; logos; characters from existing games.
+DO NOT include: soldiers wearing the police gas-mask helmet; police wearing soldier armour; more than four soldiers; white armour; neon; readable text; logos; characters from existing games.
 ```
 
 ### E12 Bangården i D4, natt (d_rail_1)
