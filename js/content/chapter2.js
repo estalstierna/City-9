@@ -77,6 +77,24 @@
     apply: ['You set your stunstick to LOW and lay it on the table where they can see it. Then you pick it up.', 'You do what the room is for.'],
   };
 
+  /* unit audit variants — `if` limits a variant to certain saves */
+  const AUDITS = [
+    { id: 'batteries', who: 'a UNION 04 from the night squad', find: 'a carton of confiscated batteries with the evidence tags cut off', lvl: 'theft of seized property', note: 'The same batteries turn up on Bazaar Row every week at half the ration price. Now you know where from.' },
+    { id: 'biogel', who: 'a HELIX 03', find: 'six vials of biogel rolled in a sock', lvl: 'diversion of medical stock', note: 'Her hands shake slightly while you count them. Not fear. Withdrawal, maybe, or exhaustion.', say: 'There are children in Stack 6 with the cough. Six vials. The infirmary has six hundred.', sayWho: 'HELIX 03' },
+    { id: 'photo', who: 'a UNION 05 barely out of training', find: 'a photograph of a girl in a pre-war dress, and a lock of dark hair tied with thread', lvl: 'unregistered personal effects', note: 'He goes very red under the collar of his mask. On the back of the photograph: a name and a Stack number.' },
+    { id: 'brandy', who: 'a RAZOR 02 from the Nexus hardpoint', find: 'a sealed bottle of pre-war brandy and an envelope with forty tokens', lvl: 'bribery', note: 'The envelope is addressed in a careful hand to "the gentleman at Gate 3". Someone is paying for passage.' },
+    { id: 'leaflet', who: 'a UNION 03 with a spotless file', find: 'a lambda leaflet folded small inside a glove', lvl: 'possession of seditious print', note: 'He swears he confiscated it on patrol and forgot to log it. His face says he believes it. His heart rate says otherwise.', refer: { merit: 6, cons: -5 }, favour: { res: 4 } },
+    { id: 'pills', who: 'an EpU with nineteen years of service', find: 'a tin of unlabelled sleeping pills', lvl: 'unregistered pharmaceuticals', note: 'Nineteen years in the mask. The tin is nearly empty. You do not need to ask why.', say: 'I don\u2019t sleep, three. Not since the first year. Write it how you want.', sayWho: 'EpU' },
+    { id: 'drawings', who: 'a UNION 04', find: 'a sketchbook full of pencil drawings of citizens in the ration line — faces, hands, a child asleep on a bag', lvl: 'unauthorised documentation of citizens', note: 'They are good. Better than good. Every face has a CID written underneath it in tiny letters.' },
+    { id: 'radio', who: 'a UNION 02 on the checkpoint rota', find: 'a pre-war shortwave receiver tuned to a frequency that only plays static', lvl: 'unregistered receiver (YELLOW)', note: 'You turn it on. Static, and under it, very faint, a woman reading numbers in a language you half-recognise.', refer: { merit: 6, res: -3 }, favour: { res: 5, susp: 2 } },
+    { id: 'tokens', who: 'a HELIX 04 who works the infirmary night shift', find: 'a ration-card printing plate wrapped in a towel', lvl: 'forgery of Union documents', note: 'Not a few tokens on the side. A plate. Someone in this precinct has been printing citizens extra food for months.', refer: { merit: 8, lp: 3, cons: -6 }, favour: { cons: 4, susp: 5 } },
+    { id: 'mask', who: 'a UNION 05 on his second week', find: 'a cracked mask lens wrapped in cloth, and a dead unit\u2019s designation tag', lvl: 'retention of deserviced unit property', note: 'The tag reads 05-61207. You know the number.', if: (s) => s.flags.wick_dead, say: 'He trained with me. I wanted something of his. That\u2019s all.', sayWho: '05' },
+    { id: 'tomas', who: 'Tomas Vey', find: 'three ampoules of HELIX respiratory serum and a letter from his mother, folded so many times it is soft as cloth', lvl: 'diversion of medical stock', note: 'He does not stand at attention. He just looks at you.', if: (s) => s.rel.tomas !== undefined && !s.flags.tomas_gone, say: 'You going to do it, then? You of all people?', sayWho: 'Tomas', refer: { rel: { tomas: -100 }, flag: { tomas_gone: true }, cons: -15 }, warn: { rel: { tomas: -10 } }, favour: { rel: { tomas: 20 } } },
+    { id: 'granite', who: 'Granite himself, who requested the audit of his own locker', find: 'nothing but a spare filter, a slate, and a list of every unit he has lost in twelve years, written by hand', lvl: 'no violation', note: 'He watches you read the list. There are thirty-one names. The last one is recent.', if: (s) => s.rel.granite !== undefined, say: 'Write that I\u2019m clean, three. Then come back tomorrow and do it again. That\u2019s how this works.', sayWho: 'Granite', refer: { merit: 0, lp: 0, cons: 0, rel: { granite: -20 } }, warn: { merit: 1, cons: 0 }, favour: { rel: { granite: 10 }, susp: 0 } },
+    { id: 'jury', who: 'a JURY 04 from your own floor', find: 'copies of three Level 4 interrogation files, the confessions crossed out in red ink', lvl: 'removal of classified records', note: 'In the margin of each, in the same red ink: *false*.', refer: { merit: 6, lp: 2 }, favour: { res: 6, susp: 4 } },
+    { id: 'child', who: 'a UNION 03 with a gentle voice', find: 'a child\u2019s knitted mitten and a page torn from a ration ledger with one name circled', lvl: 'unregistered personal effects', note: 'The circled name belongs to a family on the D5 relocation list. The mitten is very small.' },
+  ];
+
   G.addScenes({
     iq_round: {
       title: (s) => `Interrogation — ${s.iq.name}`,
@@ -178,23 +196,35 @@
     j_audit: {
       title: 'Unit audit — precinct lockers',
       enter: (s) => {
-        s.mem.ja = pick([
-          { who: 'a UNION 04 from the night squad', find: 'a carton of confiscated batteries with the evidence tags cut off', lvl: 'theft of seized property' },
-          { who: 'a HELIX 03', find: 'six vials of biogel in a sock', lvl: 'diversion of medical stock' },
-          { who: 'a UNION 05 barely out of training', find: 'a photograph of a girl in a pre-war dress, and a lock of hair', lvl: 'unregistered personal effects' },
-          { who: 'a RAZOR 02', find: 'a sealed bottle of pre-war brandy and an envelope of tokens', lvl: 'bribery' },
-        ]);
+        const all = AUDITS.filter((a) => !a.if || a.if(s));
+        s.mem.jaUsed = s.mem.jaUsed || [];
+        let pool = all.filter((a) => !s.mem.jaUsed.includes(a.id));
+        if (!pool.length) {
+          s.mem.jaUsed = [];
+          pool = all;
+        }
+        const a = pick(pool);
+        s.mem.jaUsed.push(a.id);
+        s.mem.ja = a.id;
       },
-      text: (s) => [
-        'JURY audits its own. Twice a week, without warning, a crimson armband walks into a precinct locker room and everyone stops talking.',
-        `Today it is ${s.mem.ja.who}. They stand at attention while you open their locker. Inside: **${s.mem.ja.find}**.`,
-        `@law ${s.mem.ja.lvl.toUpperCase()} · UNIT MALCOMPLIANCE — referral to the Magistrate`,
-      ],
-      choices: [
-        { t: 'Refer them. JURY watches the watchers.', tag: 'BY THE BOOK', tagCls: 'loyal', fx: { merit: 4, lp: 2, cons: -3 }, go: 'u_duty_end' },
-        { t: 'Log a warning and confiscate. No referral.', fx: { merit: 2, cons: 2 }, go: 'u_duty_end' },
-        { t: 'Close the locker. "Clean." They owe you now.', tag: 'FAVOUR', tagCls: 'mercy', fx: { merit: 1, susp: 3, flag: { owed_favour: true } }, go: 'u_duty_end' },
-      ],
+      text: (s) => {
+        const a = AUDITS.find((x) => x.id === s.mem.ja);
+        return [
+          'JURY audits its own. Twice a week, without warning, a crimson armband walks into a precinct locker room and everyone stops talking.',
+          `Today it is ${a.who}. They stand at attention while you open the locker. Inside: **${a.find}**.`,
+          a.note,
+          a.say ? `@say ${a.sayWho || 'The unit'}|${a.say}` : null,
+          `@law ${a.lvl.toUpperCase()} · UNIT MALCOMPLIANCE — referral to the Magistrate`,
+        ];
+      },
+      choices: (s) => {
+        const a = AUDITS.find((x) => x.id === s.mem.ja);
+        return [
+          { t: 'Refer them. JURY watches the watchers.', tag: 'BY THE BOOK', tagCls: 'loyal', fx: Object.assign({ merit: 4, lp: 2, cons: -3 }, a.refer || {}), go: 'u_duty_end' },
+          { t: 'Log a warning and confiscate. No referral.', fx: Object.assign({ merit: 2, cons: 2 }, a.warn || {}), go: 'u_duty_end' },
+          { t: 'Close the locker. "Clean." They owe you now.', tag: 'FAVOUR', tagCls: 'mercy', fx: Object.assign({ merit: 1, susp: 3, flag: { owed_favour: true } }, a.favour || {}), go: 'u_duty_end' },
+        ];
+      },
     },
     j_audit_r: { enter: () => 'j_audit', text: [] },
 
