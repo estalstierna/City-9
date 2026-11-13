@@ -144,6 +144,7 @@ suite('static: every image the code names exists on disk', async () => {
   for (const f of ['portraits/rook-thumb', 'portraits/granite', 'docs/faces/f01', 'docs/faces-cwu/c12', 'docs/id-card']) if (!fs.existsSync(path.join(ROOT, `assets/img/${f}.webp`))) out.push('missing ' + f + '.webp');
   /* templated names */
   for (const d of ['union', 'helix', 'jury', 'razor', 'spear', 'vector', 'grid', 'oa']) if (!fs.existsSync(path.join(ROOT, `assets/img/uniform-${d}.webp`))) out.push('uniform-' + d);
+  for (const d of ['union', 'helix', 'jury', 'razor', 'spear', 'vector', 'grid']) for (const r of ['04', 'ofc']) for (const t of ['', '-thumb']) if (!fs.existsSync(path.join(ROOT, `assets/img/portraits/unit-${d}-${r}${t}.webp`))) out.push(`unit portrait ${d}-${r}${t}`);
   for (const d of ['union', 'helix', 'jury', 'razor', 'spear', 'oa', 'vector', 'grid', 'veil']) if (!fs.existsSync(path.join(ROOT, `assets/img/emblems/${d}.png`))) out.push('emblem ' + d);
   return out;
 });

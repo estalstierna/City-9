@@ -69,7 +69,17 @@
     G.unlock(s, 'squad');
   };
 
-  const face = (m) => (m.key && G.PEOPLE[m.key] && G.PEOPLE[m.key].img ? `assets/img/portraits/${G.PEOPLE[m.key].img}-thumb.webp` : 'assets/img/portraits/unit-thumb.webp');
+  /* assigned units wear their division's generic portrait: enlisted (05–01) or officer (OfC+). VEIL has none. */
+  const UNIT_DIVS = ['union', 'helix', 'jury', 'razor', 'spear', 'vector', 'grid'];
+  const unitImg = (s, m) => {
+    const d = (s.div || 'UNION').toLowerCase();
+    const div = UNIT_DIVS.includes(d) ? d : 'union';
+    const off = G.rankIdx(m.rank) >= G.rankIdx('OfC');
+    return `unit-${div}-${off ? 'ofc' : '04'}`;
+  };
+  G.unitImg = unitImg;
+  const face = (m) => (m.key && G.PEOPLE[m.key] && G.PEOPLE[m.key].img ? `assets/img/portraits/${G.PEOPLE[m.key].img}-thumb.webp` : `assets/img/portraits/${unitImg(G.state(), m)}-thumb.webp`);
+  const portrait = (m) => (m.key && G.PEOPLE[m.key] && G.PEOPLE[m.key].img ? `assets/img/portraits/${G.PEOPLE[m.key].img}.webp` : `assets/img/portraits/${unitImg(G.state(), m)}.webp`);
   const loyalWord = (v) => (v >= 75 ? 'Devoted' : v >= 55 ? 'Loyal' : v >= 35 ? 'Steady' : v >= 18 ? 'Doubtful' : 'Hostile');
   G.squadFace = face;
 
@@ -207,7 +217,7 @@
         const sup = G.superiorOf ? G.superiorOf(s).name : 'Your SqL';
         return [
           `@say ${sup}|You have a team now. Three units. They ride with you, they stand with you, and what they do is on your file as much as theirs.`,
-          ...active(s).map((m) => `**${m.name}**, ${m.rank}. ${m.bio} *(${TRAITS[m.trait].label}: ${TRAITS[m.trait].note}.)*`),
+          ...active(s).flatMap((m) => [`@portrait ${portrait(m)}|${m.name} — ${m.rank}`, `**${m.name}**, ${m.rank}. ${m.bio} *(${TRAITS[m.trait].label}: ${TRAITS[m.trait].note}.)*`]),
           '@sys Your team is listed in the Dossier. Each member helps with one kind of check, has an opinion about how you work, and can be hurt, transferred or worse. The most loyal one stands next to you as your partner, and is the witness on your reports.',
         ];
       },
@@ -225,7 +235,7 @@
         const m = s.squad.members.find((x) => x.id === s.mem.vig.id);
         return [
           'Your team takes the corner table in the mess, the one under the tally on the wall. Masks off. Nobody looks at anyone else’s face for long; it is still strange.',
-          `@portrait ${face(m)}|${m.name}`,
+          `@portrait ${portrait(m)}|${m.name}`,
           ...VIGNETTES[m.trait][s.mem.vig.i](m),
         ];
       },

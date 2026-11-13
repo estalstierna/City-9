@@ -1838,6 +1838,8 @@ Generiska porträtt för patrullgruppen och andra namnlösa enheter. Tre porträ
 | E24 Utdelningsdagen | `env/e24-ration-day.jpg` | Plaza 5 full, Overwatch på taket, Shrike med släckt ljus | env/e10-ration, citizen-base, uniform-union, ota-soldier, airwatch-shrike |
 | E25 Lastkajen i D2 | `env/e25-warehouse.jpg` | lagret öppnat, säckar längs kanalen, λ på dörrkarmen | citizen-base, env/e12-railyard, env/e01-city |
 
+**Klara (2026-11-13):** P1–P5 inlagda, 14 porträtt + miniatyrer (`portraits/unit-<div>-04|ofc`). VEIL-porträttet i P5 är **bortklippt** och används inte; VEIL får en egen separat prompt. **Kvar att rätta:** manskapsarmbanden i P1 (HELIX, JURY), P2 (alla tre) och P5 (GRID 04) visar TRE streck i stället för två; bara UNION 04 är rätt.
+
 Full prompt-text finns i chatthistoriken (2026-11-13).
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
