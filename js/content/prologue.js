@@ -160,6 +160,7 @@
         s.time = 'Morning';
         G.unlock(s, 'city9');
         G.unlock(s, 'citizens');
+        G.unlock(s, 'spire');
       },
       title: 'Stack 14, Unit 14-C — 06:10',
       text: (s) => [

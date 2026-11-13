@@ -21,6 +21,12 @@ G.addCodex({
     <p><b>Citizens under observation</b> have a red diagonal stripe and the mark <b>OBS</b> printed across their label, a red barred circle on the back and a monitoring band locked to the wrist. Report irregularities.</p>
     <img src="assets/img/citizen-watch.jpg" alt="Citizen under watch" loading="lazy">`,
   },
+  spire: {
+    title: 'The Spire',
+    body: `<img src="assets/img/spire-ref.jpg" alt="The Spire of City 09" loading="lazy">
+    <p>Citizens call it the Citadel when no one is listening, and "the Spire" when someone is. Twenty-four hundred metres of dark alloy driven through the old cathedral square like a nail, its crown split into two prongs around a hovering black void. A cold cyan core glows two-thirds of the way up. Conduits as thick as trams run from its foot across the river to the dam, which has not stopped humming since the war.</p>
+    <p>No citizen has been inside. Very few units have. The ones who come back do not discuss it.</p>`,
+  },
   union: {
     title: 'The Universal Union',
     body: `<p>The authority that rules Earth since the Seven Hour War. The Union speaks to its cities through Administrators and broadcast screens, and acts through two branches: the <b>Combine Civil Authority</b> (local policing) and <b>Overwatch</b> (the military and intelligence apparatus).</p>

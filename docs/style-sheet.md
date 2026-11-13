@@ -17,6 +17,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `flag-cca.jpg`, `flag-city09.jpg` | Flaggorna |
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
+| `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty, HELIX 02-77301, Katya (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
@@ -1208,7 +1209,7 @@ STYLE: gritty semi-realistic dystopian concept art, production design sheet qual
 DO NOT include: green light, a flat rectangular top, real-world skyscrapers, the words "Citadel" or "City 17", any existing game's exact tower design, neon signs, logos.
 ```
 
-När tornet är klart: bifoga panel 01 i alla miljöprompter där tornet syns (E01, E02, E12, E15).
+Godkänt Rev 1: bifoga `ref/spire-elevation.jpg` (form) och `ref/spire-context.jpg` (hur det ser ut från staden) i E01, E02, E12 och E15. Obs: panel 08 i arket har fel skala. Tornet ska vara cirka 50 gånger högre än Stack 14.
 
 ---
 
