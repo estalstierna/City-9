@@ -20,6 +20,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e01-city.jpg` … `env/e16-tinker.jpg` | Alla miljöer E01 till E16 (godkända) (godkända). E01 är stilreferens för alla miljöer |
 | `citizen-cwu.jpg` | CWU, Civil Workers' Union: worker och supervisor (godkänd) |
+| `portraits/wick.jpg`, `portraits/vesna.jpg`, `portraits/halvorsen.jpg` | Kapitel 2: Wick (UNION 05), Vesna (JURY 02), Halvorsen (CWU) |
 | `portraits/brask.jpg`, `portraits/rdt-worker.jpg` | Brask (CWU-supervisor) och RDT-arbetaren vid Plaza 5 |
 | `docs/faces-cwu/c01–c12.jpg` | Tolv CWU-ID-foton (D4). Redigerad med redigeringsprompten, och fyra märken lagades i efterhand. c06 har supervisorns chevron |
 | `docs/id-card.jpg`, `docs/permit.jpg`, `docs/faces/f01–f12.jpg` | Dokumentmallar (tomma) och tolv ID-foton för dokumentgranskningen (godkända) |

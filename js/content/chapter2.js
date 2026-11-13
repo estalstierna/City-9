@@ -4,8 +4,8 @@
   const pick = (a) => a[Math.floor(Math.random() * a.length)];
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
 
-  G.PEOPLE.wick = { name: '"Wick"', role: 'UNION 05 · your trainee' };
-  G.PEOPLE.vesna = { name: 'Vesna', role: 'JURY 02 · your partner' };
+  G.PEOPLE.wick = { name: '"Wick"', role: 'UNION 05 · your trainee', img: 'wick' };
+  G.PEOPLE.vesna = { name: 'Vesna', role: 'JURY 02 · your partner', img: 'vesna' };
   G.PEOPLE.magistrate = { name: 'The Magistrate', role: 'JURY DvL-02842', img: 'magistrate' };
 
   /* advance the chapter-two stage; `gap` days until the next beat may fire */
@@ -291,6 +291,7 @@
       text: (s) => [
         '@portrait assets/img/portraits/granite.jpg|Granite',
         '@say Granite|Three stripes. That means you get somebody to keep alive.',
+        '@portrait assets/img/portraits/wick.jpg|CCA.C9.D5-UNION-05-61207 — "Wick"',
         'Standing at attention beside his desk is a 05 so new his armband still has fold lines in it. Thin, eighteen, a Stack 9 face. **CCA.C9.D5-UNION-05-61207.** He has a habit of touching his mask seal, as if checking it is still there.',
         '@say Granite|Your trainee. The squad calls him Wick, because he burns down fast. Make him last.',
         s.flags.tomas_gone ? 'Your protection team is two now: you and Wick.' : '@say Granite|Vey goes with you as your second. Try not to let him teach the boy any songs.',
@@ -430,7 +431,8 @@
         const L = s.c2.list;
         const res = s.flags.mole || s.res >= 30;
         return [
-          L.includes('ander') ? 'Wick finds you in the locker room. He has his mask in his hands and his face is wet.' : 'Wick finds you in the locker room. He is grinning, which you have never seen.',
+          '@portrait assets/img/portraits/wick.jpg|Wick',
+        L.includes('ander') ? 'Wick finds you in the locker room. He has his mask in his hands and his face is wet.' : 'Wick finds you in the locker room. He is grinning, which you have never seen.',
           L.includes('ander') ? '@say Wick|Ander’s on the list. You — you had Stack 9. You had the list. Three. Tell me it wasn’t you.' : '@say Wick|Ander isn’t on it. I checked twice. I don’t know what you did, three. Thank you.',
           res ? 'Later, on the way home, a man with burned fingertips falls into step beside you for exactly ten paces.' : null,
           res ? '@say Tinker|The train leaves the D4 yard at dawn. We want the departure track and the escort strength. That’s all. Nobody has to die.' : null,
@@ -644,6 +646,7 @@
         '@say Magistrate|Not today. Today I need you to read someone else’s. Someone in the District 5 precinct is talking to the canals. Baskets cleared at Gate 3 that should not have been. A raid on block 2-11 that found forty empty beds. A roster that walked out of the armoury and turned up on Bazaar Row.',
         '@say Magistrate|Find the mouth. Bring me three pieces of evidence and a name. You will work with 02 Vesna.',
         'In the corner, a JURY 02 you did not notice was there looks up from a slate. Narrow, very still. The recruits upstairs say she once interrogated her own brother and filed it in under an hour.',
+        '@portrait assets/img/portraits/vesna.jpg|CCA.C9.D5-JURY-02-30961 — Vesna',
         '@say Vesna|Don’t worry. I only bite the guilty.',
         playerLeak(s) ? 'Your heart rate is very steady. You make sure of it. Every one of those things the Magistrate just listed, you know more about than he does.' : null,
         '@sys A case board has been added to your dossier.',
@@ -726,6 +729,7 @@
     },
     c2_j2_ledger: {
       text: (s) => [
+        '@portrait assets/img/portraits/halvorsen.jpg|Halvorsen — CWU armoury clerk · CID 47715',
         'You go through the ledger line by line. Sign-outs, returns, discrepancies. A clerk named **Halvorsen** has signed for the duty roster binder eleven times this month. The binder is supposed to leave the cage twice.',
         s.c2.truth === 'halvorsen' ? 'And three of those eleven sign-outs fall on the nights before the raids that went wrong.' : 'He has also been selling confiscated batteries back to Bazaar Row. He is a thief. Whether he is the leak is another question.',
       ],
@@ -815,6 +819,7 @@
         const suspected = s.c2.ev.you >= 2 || s.susp >= 40;
         return suspected
           ? [
+              '@portrait assets/img/portraits/vesna.jpg|Vesna',
               'Vesna asks you to come up to the roof. It is the first time she has asked you anything.',
               'The wind up here is strong enough to lean on. The Spire fills half the sky.',
               '@say Vesna|Gate 3 logs. Your key. A basket marked linen. You know what I think.',
@@ -893,6 +898,9 @@
           '@say Magistrate|Good. It holds.',
           n === 'rook'
             ? 'They take Rook at 04:00 from his bunk. You are not there. Two days later his file comes back up to Level 4 stamped AMPUTATED, and is boxed and stencilled and put on the wall with all the others.'
+            : '@portrait assets/img/portraits/halvorsen.jpg|Halvorsen',
+          n === 'rook'
+            ? ''
             : 'They take Halvorsen at the armoury cage in front of the night squad. He screams that he only sold batteries. Nobody on the night squad says anything.',
           !s.c2.correct ? (s.c2.truth === 'you' ? 'The leaks stop for a while. They stop because you stop. It is the only reason, and only you and perhaps Vesna know it.' : 'The leaks do not stop. Three weeks later, another raid finds empty beds.') : 'The leaks stop. You were right. It does not feel the way you expected being right would feel.',
           `@doc PROMOTION: ${G.desig(s)}`,
