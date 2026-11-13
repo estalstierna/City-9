@@ -226,6 +226,39 @@ suite('chapter 2 arcs (UNION and JURY)', async (browser) => {
   return out.concat(errors);
 });
 
+suite('chapter 3 for every division', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const ends = {};
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
+    await page.evaluate(
+      ({ div, i }) => {
+        try {
+          localStorage.clear();
+        } catch (e) {}
+        G.newGame();
+        const s = G.state();
+        Object.assign(s, { name: 'Tester', phase: 'union', rank: div === 'UNION' || div === 'JURY' ? '02' : '03', div, day: 30, merit: 120, lp: 12, res: i % 2 ? 35 : 5 });
+        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+        Object.assign(s.rel, { rook: 30, granite: 20, ilse: 10, tinker: 10 });
+        s.mem.grade = 'Graded';
+        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
+        s.c2 = { div, stage: 9, next: 20 };
+        s.flags.c2_end_day = 20;
+        G.goto('u_board');
+      },
+      { div, i }
+    );
+    const w = await randomWalk(page, QUICK ? 250 : 400, { stopAt: ['c3_end'] });
+    out.push(...w.problems.map((p) => div + ': ' + p));
+    if (!w.seen.c3_start) out.push(div + ': chapter 3 never started');
+    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
+  }
+  if (!ends.c3_end) out.push('no run reached c3_end: ' + JSON.stringify(ends));
+  return out.concat(errors);
+});
+
 suite('document inspection minigame on phone and desktop', async (browser) => {
   const out = [];
   for (const opts of [{ viewport: { width: 1300, height: 950 } }, devices['iPhone 13']]) {

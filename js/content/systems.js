@@ -450,7 +450,7 @@
     if ((r.result === 'full' || r.result === 'top') && r.status !== 'AMPUTATED')
       adds.push({ id: 'resist', text: 'Occupant resisted entry (Level 4, 5 penalty points).', short: '“Occupant resisted entry.”', lie: true, wit: [p.key ? 'partner' : null, 'scanner'], sev: 'minor', onFx: { merit: 2 }, addPts: 5 });
     if (r.planted) adds.push({ id: 'confess', text: 'The recovered leaflets were placed by the reporting unit.', short: 'that you planted the leaflets', confess: true, reason: 'Self-reported: planted evidence during a raid', sev: 'serious' });
-    return { title: `Raid · ${r.addr}`, cid: r.occ.cid, facts, adds, ret: 'u_duty_end' };
+    return { title: `Raid · ${r.addr}`, cid: r.occ.cid, facts, adds, ret: r.ret || 'u_duty_end' };
   }
 
   /* ======================================================= SUBTLE TELLS */
