@@ -582,7 +582,7 @@
           SPEAR: 'SPEAR\'s Division Leader looks you over and says only: "Beyond the canal, nothing is quarantined. Everything is just *waiting*."',
         };
         return [
-          ['UNION', 'HELIX', 'JURY', 'RAZOR', 'SPEAR'].includes(s.div) ? `@img assets/img/uniform-${s.div.toLowerCase()}.jpg|${s.div} — your new uniform` : null,
+          ['UNION', 'HELIX', 'JURY', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'].includes(s.div) ? `@img assets/img/uniform-${s.div.toLowerCase()}.jpg|${s.div} — your new uniform` : null,
           lines[s.div],
           `@doc ${G.desig(s)}\nDIVISION: ${s.div}\nRANK: ${G.RANK_NAMES[s.rank].toUpperCase()}\nDAYS IN SERVICE: ${s.day}`,
           s.flags.mole ? 'And somewhere on Bazaar Row, a repairman with burned fingertips hears that a certain 03 has a new posting, and smiles over his soldering iron.' : null,

@@ -76,7 +76,7 @@ G.addCodex({
   },
   divisions: {
     title: 'Field Divisions',
-    body: `<img src="assets/img/emblems.jpg" alt="Division emblems" loading="lazy"><table>
+    body: `<img src="assets/img/emblems.jpg" alt="Division emblems" loading="lazy"><img src="assets/img/emblems-new.jpg" alt="VECTOR, GRID and VEIL emblems" loading="lazy"><table>
       <tr><td>UNION</td><td>The basic policing division, performing general patrol duties. Every graduate begins here.</td></tr>
       <tr><td>HELIX</td><td>Medical division. Treats injuries sustained by protection forces and VIPs. Requires field medicine aptitude.</td></tr>
       <tr><td>JURY</td><td>Military police. Detention of citizens, interrogation, forced confessions, internal discipline.</td></tr>
@@ -101,7 +101,7 @@ G.addCodex({
       <tr><td>GRID</td><td>Copper · lightning bolt through a hex nut</td></tr>
       <tr><td>OA</td><td>Violet · chevrons under a star</td></tr>
     </table>
-    <img src="assets/img/armbands.jpg" alt="Division armbands" loading="lazy">`,
+    <img src="assets/img/armbands.jpg" alt="Division armbands" loading="lazy"><img src="assets/img/armbands-new.jpg" alt="VECTOR, GRID and VEIL armbands" loading="lazy">`,
   },
   uniforms: {
     title: 'Uniform reference — all divisions',
@@ -111,7 +111,9 @@ G.addCodex({
     <p><b>JURY</b> — detention & interrogation.</p><img src="assets/img/uniform-jury.jpg" alt="JURY uniform" loading="lazy">
     <p><b>RAZOR</b> — hardpoint & VIP protection.</p><img src="assets/img/uniform-razor.jpg" alt="RAZOR uniform" loading="lazy">
     <p><b>SPEAR</b> — 404 zone assault.</p><img src="assets/img/uniform-spear.jpg" alt="SPEAR uniform" loading="lazy">
-    <p><b>OA</b> — Officer Academy command uniform.</p><img src="assets/img/uniform-oa.jpg" alt="OA uniform" loading="lazy">`,
+    <p><b>OA</b> — Officer Academy command uniform.</p><img src="assets/img/uniform-oa.jpg" alt="OA uniform" loading="lazy">
+    <p><b>VECTOR</b> — containment specialist.</p><img src="assets/img/uniform-vector.jpg" alt="VECTOR uniform" loading="lazy">
+    <p><b>GRID</b> — field engineer.</p><img src="assets/img/uniform-grid.jpg" alt="GRID uniform" loading="lazy">`,
   },
   overwatch: {
     title: 'Overwatch',
@@ -335,15 +337,15 @@ G.addCodex({
 G.addCodex({
   vector: {
     title: 'VECTOR Division',
-    body: '<p><i>"What comes out of the quarantine does not go back in. It goes into a jar."</i></p><p>VECTOR follows SPEAR into the 404 zones once the shooting stops. Its units seal breaches, burn infestation, recover specimens and run the containment laboratories beneath the Nexus. They wear sealed suits over their uniforms and are decontaminated twice a shift. Other units do not share mess tables with VECTOR. Officially, this is for hygiene.</p>',
+    body: '<img src="assets/img/uniform-vector.jpg" alt="VECTOR uniform" loading="lazy"><p><i>"What comes out of the quarantine does not go back in. It goes into a jar."</i></p><p>VECTOR follows SPEAR into the 404 zones once the shooting stops. Its units seal breaches, burn infestation, recover specimens and run the containment laboratories beneath the Nexus. They wear sealed suits over their uniforms and are decontaminated twice a shift. Other units do not share mess tables with VECTOR. Officially, this is for hygiene.</p>',
   },
   grid: {
     title: 'GRID Division',
-    body: '<p><i>"Every light in City 9 is a promise. GRID keeps the promises."</i></p><p>When a forcefield flickers, a scanner goes dark or a hardpoint loses power, GRID is sent — usually under fire, because resistance cells cut the power before they move. GRID maintains everything the Union built: biosignal relays, combine locks, broadcast masts, the conduits from the dam to the Spire. No citizen, not even CWU, may touch Union technology.</p>',
+    body: '<img src="assets/img/uniform-grid.jpg" alt="GRID uniform" loading="lazy"><p><i>"Every light in City 9 is a promise. GRID keeps the promises."</i></p><p>When a forcefield flickers, a scanner goes dark or a hardpoint loses power, GRID is sent — usually under fire, because resistance cells cut the power before they move. GRID maintains everything the Union built: biosignal relays, combine locks, broadcast masts, the conduits from the dam to the Spire. No citizen, not even CWU, may touch Union technology.</p>',
   },
   veil: {
     title: '[NO RECORD]',
-    body: '<p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. VEIL has no Protection Units — no recruits, no 05s, no ladder to climb. Every operative was first a Field Officer or higher in another division, and disappeared from it overnight. Their old files say <i>Transferred: Officer Academy</i>, or simply <i>Deserviced</i>. Their old squads hold a wake.</p><p>Rank inside VEIL is worn but almost invisible: officer insignia in dull grey on a black band, a crest stripe of gloss black lacquer that shows only when the light catches it. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses — and it only chooses officers.</p><p>If you are reading this, someone wanted you to.</p>',
+    body: '<img src="assets/img/uniform-veil.jpg" alt="[NO RECORD]" loading="lazy"><p><i>"There is no VEIL division. If there were, you would not be reading this."</i></p><p>This entry should not exist. VEIL has no Protection Units — no recruits, no 05s, no ladder to climb. Every operative was first a Field Officer or higher in another division, and disappeared from it overnight. Their old files say <i>Transferred: Officer Academy</i>, or simply <i>Deserviced</i>. Their old squads hold a wake.</p><p>Rank inside VEIL is worn but almost invisible: officer insignia in dull grey on a black band, a crest stripe of gloss black lacquer that shows only when the light catches it. Diversion. Reconnaissance. Removal. Nobody applies. VEIL chooses — and it only chooses officers.</p><p>If you are reading this, someone wanted you to.</p>',
   },
 });
 
