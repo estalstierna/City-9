@@ -815,6 +815,8 @@ STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp de
 
 **Tips:** kör Mira först. Bifoga sedan hennes porträtt som stilreferens (inte karaktärsreferens) till de andra tre, så får de samma ljus och bakgrund. Tomas är den enda som ler. Det är medvetet, så be modellen hålla fast vid det om den gör honom allvarlig.
 
+**Allmän regel för siffror och koder:** skriv varje kod direkt i beskrivningen av den person eller det föremål den tillhör, inte i en gemensam lista, och avsluta med "Check every digit: …".
+
 **Allmän regel för enhetsporträtt:**
 - Skriv "copy exactly the helmet/armband in the attached image" och bifoga en utklippt referens per detalj (`assets/img/ref/`).
 - Beskriv headsetet som en *rundad hörlurskåpa med kort stubbantenn*, strecken som *VERTICAL* och armbandet som ett *wraparound band, not a patch*.
@@ -941,14 +943,14 @@ Costume design reference sheet of the "CIVIL WORKERS' UNION" (CWU) uniform, worn
 RELATION: the CWU uniform is built on top of the standard citizen uniform in the FIRST attached image — same faded blue-teal jacket with mandarin collar, same trousers and shoes — so it is clearly a citizen, but visibly better provided for, like the commended citizen in the SECOND attached image. It must NOT look like police or military.
 
 MAIN ROW — two figures, full body, front view, neutral pose:
-1. "CWU WORKER": a woman in her forties, practical and tired, short tied-back hair. Over the citizen jacket she wears a hip-length quilted work jacket in muted ochre-yellow (#B8902F) with a single horizontal reflective grey band across the chest and back, large patch pockets and a tool loop. A canvas tool belt with a wrench, a ration-terminal service key on a lanyard and a small torch. Work gloves tucked into the belt.
-2. "CWU SUPERVISOR": a heavier man in his fifties, clean-shaven, a flat cap with a short stiff peak. The same ochre work jacket, newer and cleaner, worn open over a grey knitted waistcoat; a clipboard under one arm; a small brass whistle on a chain.
+1. "CWU WORKER": a woman in her forties, practical and tired, short tied-back hair. Over the citizen jacket she wears a hip-length quilted work jacket in muted ochre-yellow (#B8902F) with a single horizontal reflective grey band across the chest and back, large patch pockets and a tool loop. A canvas tool belt with a wrench, a ration-terminal service key on a lanyard and a small torch. Work gloves tucked into the belt. On her right chest (left side of the image) her ID label reads exactly "CID 51877".
+2. "CWU SUPERVISOR": a heavier man in his fifties, clean-shaven, a flat cap with a short stiff peak. The same ochre work jacket, newer and cleaner, worn open over a grey knitted waistcoat; a clipboard under one arm; a small brass whistle on a chain. On his right chest (left side of the image) his ID label reads exactly "CID 30412".
 
 SECOND ROW: side and back views of the worker. On the back of the ochre jacket, stencilled large in charcoal: "CWU" above "C9:D5", and the reflective band across the shoulders.
 
 MARKINGS:
 - Union badge on the LEFT chest of the ochre jacket: a round enamel badge, charcoal centre, ochre rim, a stylised spanner crossed with a ration packet, the letters "CWU" beneath. On the supervisor's badge, a tiny gold downward chevron above the spanner.
-- Citizen ID label on the wearer's RIGHT chest (left side of the image), the off-white cloth label "CID 51877" (worker) and "CID 30412" (supervisor) with a barcode, plus a solid ochre-yellow stripe along the bottom edge with "CWU" printed in it.
+- ID labels: each is an off-white cloth label with a barcode and a solid ochre-yellow stripe along the bottom edge with "CWU" printed in it. Check every digit: the worker is 51877, the supervisor is 30412.
 
 DETAIL INSETS: the CWU badge (worker and supervisor versions); the ID label with ochre stripe; the ration-terminal service key; the stencilled back; a comparison of three ID labels side by side labelled "STANDARD" (plain), "COMMENDED" (gold line) and "CWU" (ochre stripe).
 
