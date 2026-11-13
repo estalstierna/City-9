@@ -15,7 +15,9 @@
   <meta name="apple-mobile-web-app-title" content="City 9">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=block" rel="stylesheet">
+  <!-- paint the dark background before the stylesheet arrives, so the app never flashes white -->
+  <style>html, body { background: #0a0e11; color: #c9d3d8; margin: 0; }</style>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -66,14 +68,10 @@
   <script>
     G.boot();
     if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      /* No reload when a new version takes over: the service worker fetches the game's code
+         network-first, so an online launch already runs the newest code. A reload here only
+         made the app flash on every launch after an update. */
       navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then((reg) => reg.update()).catch(() => {});
-      // when a new version takes over, reload once so the new layout is used
-      let reloaded = false;
-      navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (reloaded) return;
-        reloaded = true;
-        location.reload();
-      });
     }
   </script>
 </body>

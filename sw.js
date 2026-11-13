@@ -1,6 +1,7 @@
 /* Service worker: makes the game installable and playable offline.
    VERSION is a hash of the cached files: run python3 tools/bump-sw.py after changing code (the tests check it). */
-const VERSION = 'c9-af33bb269a';
+const VERSION = 'c9-21162b2d47';
+const MEDIA = 'c9-media-1'; /* images and fonts: kept across code updates */
 const SHELL = [
   './',
   './index.html',
@@ -30,7 +31,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== VERSION && k !== MEDIA).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -49,7 +50,7 @@ self.addEventListener('fetch', (e) => {
         fetch(req).then((res) => {
           if (res.ok || res.type === 'opaque') {
             const copy = res.clone();
-            caches.open(VERSION).then((c) => c.put(req, copy));
+            caches.open(MEDIA).then((c) => c.put(req, copy));
           }
           return res;
         })
