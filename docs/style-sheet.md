@@ -1449,6 +1449,66 @@ Godkänt Rev 1: bifoga `ref/spire-elevation.jpg` (form) och `ref/spire-context.j
 
 ---
 
+## 5g. OVERWATCH (OTA), konceptark
+
+Egen design för City 09 i genrens formspråk. Kopierar inte spelets modeller. **Bifoga inte spelskärmdumpar.** Overwatch ska kännas tyngre, mer militärt och mindre mänskligt än CCA. Bär aldrig CCA:s keramiska gasmaskhjälm eller CCA-armband.
+
+**Kanon:**
+| | OTA-soldat | OTA-elit |
+|---|---|---|
+| Huvud | Mörk grafitgrå sluten hjälm, två kantiga linser som lyser **cyan** | Vit skulpterad hjälm, ett smalt horisontellt **rött** sensorband |
+| Kropp | Vadderad väst och plattor, kamouflage i skiffer-blått och grått | Vit segmenterad rustning, svarta leder |
+| Märkning | Stencil "C9-OTA" och enhetsnummer på bröstplattan, orange varningstriangel på axeln | Guld-chevron (CCA-symbolen) på bröstet, röd axelmarkering |
+| Vapen | Kompakt pulsgevär med cyan energicell | Längre, tyngre gevär med röd energicell |
+
+### O1 OTA-soldat
+**Format:** 16:9. **Bifoga:** 1 `uniform-union.jpg` (för kontrast, *inte* att kopiera) · 2 `master-a.jpg` (stil och typsnitt) · 3 `env/e11`-bilden när den finns, annars `env/e03-bazaar.jpg`.
+```
+Costume design turnaround sheet of a soldier of "OVERWATCH", the transhuman military of an occupied Eastern-European city called City 09, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SECOND attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — INFANTRY".
+
+This soldier must look clearly different from, heavier and more military than, the civil police officer in the FIRST attached image — that image is shown only for contrast; do NOT copy its helmet, armband or uniform.
+
+BUILD: tall (about 1.95 m), broad, unnaturally still and symmetrical, more machine than man. No skin visible anywhere.
+
+HEAD: a fully enclosed dark graphite-grey composite helmet with no visible seams for a face, a rounded crown and a forward-jutting jaw guard; two angular, slightly slanted lens apertures glowing pale CYAN (#5FC8DD); a short ribbed breathing tube running from the jaw guard down into a filter unit on the left side of the chest; a thin vertical antenna at the back of the helmet.
+
+BODY: a heavily padded ballistic vest with segmented rigid plates over the chest and shoulders, worn over a high-collared fatigue suit printed in an urban camouflage of slate-blue, mid-grey and charcoal; armoured forearm guards and thick knee and thigh plates; black gloves; heavy black combat boots. Stencilled in small off-white letters on the chest plate: "C9-OTA 4471". A small orange-and-black hazard triangle patch on the left shoulder.
+
+EQUIPMENT ROW: a compact bullpup pulse rifle in dark grey with a glowing cyan energy cell in the stock; spare cells on a bandolier; a grenade with a cyan indicator ring; a field radio.
+
+DETAIL INSETS: the helmet from the front with both lenses lit; the chest stencil; the shoulder hazard patch; the energy cell.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated steel-grey and slate-blue palette with cyan accents, worn and scuffed materials, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+
+DO NOT include: a gas-mask helmet like the civil police; an armband; a single round eye; exposed skin or face; neon; logos of real brands; any existing game's exact character design.
+```
+
+### O2 OTA-elit (vit)
+**Format:** 16:9. **Bifoga:** 1 den färdiga O1-bilden (samma soldatfamilj) · 2 `master-a.jpg` · 3 `flag-cca.jpg` (guldchevronen).
+```
+Costume design turnaround sheet of an ELITE soldier of "OVERWATCH", the transhuman military of City 09, full body, front view, side view and back view in a neutral A-pose, plus detail insets and an equipment row, on a neutral warm-grey background. Match the layout, typography and rendering quality of the SECOND attached image. Title on a charcoal strip in condensed off-white stencil: "OVERWATCH — C9 GARRISON — ELITE".
+
+This is the elite rank of the same force as the soldier in the FIRST attached image: same overall silhouette and proportions, but taller, more armoured and visibly superior.
+
+BUILD: very tall (about 2.05 m), broad-shouldered, perfectly upright, motionless.
+
+HEAD: a sculpted, smooth WHITE ceramic-composite helmet, taller and more angular than the soldier's, with a sharp ridge from brow to crown; instead of two lenses, a single narrow horizontal visor band glowing deep RED across the eyes; a black armoured jaw guard with a ribbed breathing tube to a chest filter; two short swept-back antenna fins at the back.
+
+BODY: white segmented armour plates over the chest, abdomen, shoulders, forearms and thighs, with black flexible joints and a black high-collared undersuit; a large raised neck collar; black gloves; tall black armoured boots. On the centre of the chest plate, a small muted gold (#C9A13B) downward V-chevron with a circle in its notch — the emblem shown in the THIRD attached image. A deep red band painted around the left upper arm. Stencilled small in charcoal on the right shoulder plate: "C9-OTA-E 0019". The white armour is clean but faintly scuffed, never dirty.
+
+EQUIPMENT ROW: a long heavy pulse rifle in black and white with a glowing RED energy cell; a sidearm; a sealed command data unit; a red-ringed energy grenade.
+
+DETAIL INSETS: the helmet front with the red visor band lit; the gold chest chevron; the red arm band; the energy cell.
+
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, cold overcast lighting from upper left, desaturated palette of white, black and steel-grey with deep red and muted gold accents, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+
+DO NOT include: a single round eye; two lenses; a gas-mask helmet; camouflage; an armband with text; exposed skin; neon; logos of real brands; any existing game's exact character design.
+```
+
+**Ordning:** O1 först, sedan O2 med O1 bifogad, så blir de samma styrka i olika rang.
+
+---
+
 ## 6. PROMPT 4: ARMBAND (sex varianter)
 
 ```
