@@ -1,6 +1,6 @@
 /* Service worker: makes the game installable and playable offline.
    Bump VERSION whenever files change so players get the update. */
-const VERSION = 'c9-v13';
+const VERSION = 'c9-v14';
 const SHELL = [
   './',
   './index.html',

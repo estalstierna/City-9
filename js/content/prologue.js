@@ -321,8 +321,8 @@
         G.unlock(s, 'cca');
       },
       text: [
+        '@img assets/img/env/e04-nexus.jpg|The Nexus, District 1',
         'The Nexus was a courthouse once. The Union kept the columns and the wide stone steps and bolted everything else over with plates of dark alloy that sweat in the cold. Banners of the Universal Union hang the full height of the facade. Above the doors, a screen loops the face of City 9\'s Administrator — Halvard Lenz, silver-haired, gentle-voiced, endlessly reasonable.',
-        '@img assets/img/flag-cca.jpg|Banner of the Combine Civil Authority, Nexus steps',
         '@dispatch ...and those who serve the Union serve themselves. A Civil Protection officer never queues for bread. A Civil Protection officer never fears the night. Will you be afraid, or will you be the reason others feel safe?',
         'Inside, the hall is cold enough to see your breath. Thirty-odd citizens stand in a line painted on the floor. You recognise a few faces from the Stacks. Most stare at the floor.',
         'At the head of the line, behind a steel desk, sits a Protection Unit with a blue UNION armband and an officer\'s thick silver bar. A terminal light washes his lenses blue.',
@@ -468,6 +468,7 @@
       title: 'Training Wing — Barracks 3',
       checkpoint: true,
       text: [
+        '@img assets/img/env/e05-barracks.jpg|Training Wing, Barracks 3',
         'Barracks 3 is a long concrete room with forty bunks and one window too high to see out of. The heating works. There is a toilet that flushes. Half the intake simply sits on their bunks and stares at the radiator as if it might be a trick.',
         'The bunk above yours belongs to a broad young man with a mill-worker\'s shoulders and a crooked nose. He is already unwrapping the bar from his welcome ration, and he grins at you with a mouth full of nutrient paste.',
         '@portrait assets/img/portraits/tomas.jpg|Tomas Vey — CID 27716, D2 dye floor',
