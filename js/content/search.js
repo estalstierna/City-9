@@ -71,13 +71,14 @@
     const known = Object.values(s.files).filter((f) => !f.amputated);
     if (known.length && Math.random() < 0.3) {
       const f = G.pick(known);
-      return newEncounter(s, f.type, f.cid, f.desc, f.points);
+      return newEncounter(s, f.type, f.cid, f.desc, f.points, f.face !== undefined ? f.face : rint(0, 11));
     }
     const t = wpick(TYPES);
-    return newEncounter(s, t.id, String(rint(10000, 99999)), G.pick(LOOKS), rint(t.prior[0], t.prior[1]));
+    const face = rint(0, 11);
+    return newEncounter(s, t.id, String(rint(10000, 99999)), G.faceDesc ? G.faceDesc(face) : G.pick(LOOKS), rint(t.prior[0], t.prior[1]), face);
   }
 
-  function newEncounter(s, type, cid, desc, points) {
+  function newEncounter(s, type, cid, desc, points, face) {
     const items = [];
     let n = Math.random() < 0.35 ? 0 : Math.random() < 0.7 ? 1 : 2;
     if (type === 'commended') n = Math.min(n, 1);
@@ -89,6 +90,7 @@
     const obs = Math.random() < 0.4 ? G.pick(BEHAVIOUR) : null;
     return {
       cid,
+      face,
       type,
       desc,
       points,
@@ -108,6 +110,7 @@
   const chargeable = (c) => {
     const list = [];
     if (c.obs) list.push({ name: c.obs.name, lvl: c.obs.lvl });
+    if (c.idIssue) list.push(c.idIssue === 'expired' ? { name: 'Expired identification', lvl: 2 } : { name: 'Possession of YELLOW contraband (non-authorised ID card)', lvl: 4 });
     foundItems(c)
       .filter((x) => !x.exempt)
       .forEach((x) => list.push({ name: `Possession of ${x.grade.toUpperCase()} contraband (${x.name.replace(/^an? /, '')})`, lvl: GRADE_LEVEL[x.grade] }));
@@ -117,7 +120,7 @@
 
   function fileCitizen(s, c, add, status) {
     s.files = s.files || {};
-    const f = s.files[c.cid] || { cid: c.cid, type: c.type, desc: c.desc, points: c.points, stops: 0 };
+    const f = s.files[c.cid] || { cid: c.cid, type: c.type, desc: c.desc, face: c.face, points: c.points, stops: 0 };
     f.points = Math.min(99, c.points + add);
     f.stops = (f.stops || 0) + 1;
     f.last = s.day;
@@ -152,6 +155,7 @@
           c.record
             ? `You know this one. CID ${c.cid} — ${c.desc}. Your lenses chime softly: the file is already open.`
             : `You stop ${c.desc}. The jacket says *${typeLabel(c.type)}*.`,
+          c.face !== undefined ? `@portrait ${G.DOC_FACES[c.face].img}|The subject` : null,
           c.obs ? c.obs.text : 'Nothing about them stands out. That is never a reason not to look.',
           '@say You|Civil Protection. Stand still. Hands where I can see them.',
           ...summary(c),
@@ -165,12 +169,56 @@
       choices: (s) => {
         const c = E(s);
         return [
-          { t: 'Scan their CID and pull the file.', if: () => !c.did.id, check: { skill: 'comms', diff: -20, pass: 'ss_id', fail: 'ss_id_slow' } },
+          { t: 'Check their ID card against the chip and their face.', tag: 'INSPECT', tagCls: 'duty', if: () => !c.did.id, go: 'ss_docs' },
           { t: 'Search them — pockets, lining, boots.', if: () => !c.did.search, check: { skill: 'perception', diff: 0, pass: 'ss_search_ok', fail: 'ss_search_bad' } },
           { t: 'Question them. Where are they going, and why?', if: () => !c.did.q, check: { skill: 'authority', diff: 0, pass: 'ss_q_ok', fail: 'ss_q_bad' } },
           { t: '**Pass verdict.**', tag: 'VERDICT', tagCls: 'duty', if: () => c.did.id || c.did.search || c.did.q, go: 'ss_verdict' },
         ];
       },
+    },
+
+    ss_docs: {
+      title: 'Field ID check',
+      text: ['You hold out your hand. They give you the card. Your lens reader pings the chip.'],
+      mini: {
+        type: 'docs',
+        opts: (s) => {
+          const c = s.ss;
+          return { count: 1, cardOnly: true, showFace: true, first: { person: { faceIdx: c.face, cwu: c.type === 'cwu', obs: c.type === 'watch' } } };
+        },
+        pass: 'ss_docs_done',
+        fail: 'ss_docs_done',
+        skill: 'perception',
+        diff: -10,
+      },
+    },
+    ss_docs_done: {
+      enter: (s) => {
+        const c = s.ss;
+        c.did.id = true;
+        const r = s.lastMini && s.lastMini.results ? s.lastMini.results[0] : null;
+        c.idResult = r;
+        if (r && r.ok && r.issue) c.idIssue = r.issue.replace('chip', '');
+        if (r && !r.issue && r.verdict === 'deny') c.wrongId = true;
+      },
+      text: (s) => {
+        const c = s.ss;
+        const r = c.idResult;
+        return [
+          !r
+            ? 'You run the card through the reader and trust your gut.'
+            : r.ok && r.issue
+            ? `You were right: ${G.DOC_ISSUE_TEXT[r.issue]}. That goes in the file.`
+            : r.ok
+            ? 'The card is genuine. The file opens.'
+            : r.issue
+            ? 'You hand the card back. Only later, reviewing the scan, do you see it: ' + G.DOC_ISSUE_TEXT[r.issue] + '.'
+            : 'You call it a forgery. The reader disagrees. The citizen says nothing, which is the most dangerous thing they could say.',
+          c.points >= 15 ? `**${c.points} penalty points.** Five more and this file stops being a file.` : c.points >= 8 ? `${c.points} penalty points. A pattern.` : c.points ? `${c.points} penalty points. Minor.` : 'Clean file. Not one point.',
+          c.type === 'cwu' ? 'CWU registration. Food and medical contraband rules do not apply.' : c.type === 'commended' ? 'A gold commendation flag. Priority allocation.' : c.type === 'watch' ? 'OBS flag. Under observation.' : null,
+        ];
+      },
+      choices: () => [{ t: 'Continue.', fx: (s) => (s.ss.wrongId ? { merit: -1 } : null), go: 'ss_hub' }],
     },
 
     ss_id: {
@@ -387,7 +435,7 @@
       title: 'Stop & search procedure',
       body: `<p>Any unit may stop any citizen at any time. Procedure, in any order:</p>
       <table>
-        <tr><td>SCAN</td><td>Read the CID label. The file shows class (standard, OBS, CWU, commended) and penalty points on record.</td></tr>
+        <tr><td>ID CHECK</td><td>Compare the card with the subject's face, the chip scan and the database status. A forged or altered card is YELLOW contraband; an expired one is Level 2. The file then shows class and penalty points.</td></tr>
         <tr><td>SEARCH</td><td>Pockets, lining, boots. A careless search finds only what is in plain sight.</td></tr>
         <tr><td>INQUIRE</td><td>Question the subject. Pressure sometimes produces a confession — and sometimes an offer.</td></tr>
         <tr><td>VERDICT</td><td>Charge every violation found, the most serious only, or release with a warning. Points are permanent. <b>At 20 points, or on any Level 7 violation, the verdict is amputation.</b></td></tr>

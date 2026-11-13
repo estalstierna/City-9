@@ -18,6 +18,9 @@
     { m: false, age: 'old woman', look: 'short white hair' },
     { m: false, age: 'young woman', look: 'a red-brown braid' },
   ].map((f, i) => ({ ...f, img: `assets/img/docs/faces/f${String(i + 1).padStart(2, '0')}.jpg` }));
+  G.DOC_FACES = FACES;
+  G.faceDesc = (i) => `${/^[aeiou]/.test(FACES[i].age) ? 'an' : 'a'} ${FACES[i].age} with ${FACES[i].look}`;
+
   const STAMPS = [
     { shape: 'round', col: 'blue' },
     { shape: 'round', col: 'red' },
@@ -55,13 +58,26 @@
     const person = { face: FACES[faceIdx], faceIdx, cwu: o.cwu !== undefined ? o.cwu : Math.random() < 0.18, obs: o.obs !== undefined ? o.obs : Math.random() < 0.15 };
     const cid = String(rint(10000, 99999));
     const card = { cid, name: pick(SURNAMES), district: 'D5', expires: today + rint(2, 40), photo: faceIdx, obs: person.obs, cwu: person.cwu };
-    let permit = person.cwu && R.cwuNoPermit ? null : { cid, dest: 'D3', valid: today + rint(0, 3), stamp: { ...R.stamp } };
+    const cardOnly = !!(opts && opts.cardOnly);
+    let permit = cardOnly || (person.cwu && R.cwuNoPermit) ? null : { cid, dest: 'D3', valid: today + rint(0, 3), stamp: { ...R.stamp } };
+    const scan = { cid, obs: person.obs, cwu: person.cwu };
 
-    const possible = ['expired', 'cid', 'photo', 'stamp', 'dest', 'nopermit'];
-    if (R.obsBanned) possible.push('obs');
-    let issue = opts && opts.force !== undefined ? opts.force : Math.random() < 0.38 ? null : pick(possible);
-    if (person.obs && R.obsBanned) issue = issue || 'obs';
-    if (!permit && ['cid', 'dest', 'nopermit', 'stamp'].includes(issue)) issue = 'expired';
+    let issue;
+    if (cardOnly) {
+      issue = opts.force !== undefined ? opts.force : Math.random() < 0.55 ? null : pick(['expired', 'photo', 'cid', 'obs']);
+      if (issue === 'obs') {
+        scan.obs = true;
+        card.obs = false;
+      }
+      if (issue === 'cid') scan.cid = mutateCid(cid);
+      if (issue === 'cid' || issue === 'obs') issue = issue + 'chip';
+    } else {
+      const possible = ['expired', 'cid', 'photo', 'stamp', 'dest', 'nopermit'];
+      if (R.obsBanned) possible.push('obs');
+      issue = opts && opts.force !== undefined ? opts.force : Math.random() < 0.38 ? null : pick(possible);
+      if (person.obs && R.obsBanned) issue = issue || 'obs';
+      if (!permit && ['cid', 'dest', 'nopermit', 'stamp'].includes(issue)) issue = 'expired';
+    }
 
     switch (issue) {
       case 'expired':
@@ -90,11 +106,11 @@
         card.obs = true;
         break;
     }
-    return { person, card, permit, issue, rules: R, today, field: fieldOf(issue) };
+    return { person, card, permit, scan, cardOnly, issue, rules: R, today, field: fieldOf(issue) };
   }
 
   function fieldOf(issue) {
-    return { expired: 'card.expires', cid: 'permit.cid', photo: 'card.photo', stamp: 'stamp', dest: 'permit.dest', nopermit: 'permit.missing', obs: 'card.obs' }[issue] || null;
+    return { expired: 'card.expires', cid: 'permit.cid', photo: 'card.photo', stamp: 'stamp', dest: 'permit.dest', nopermit: 'permit.missing', obs: 'card.obs', cidchip: 'card.cid', obschip: 'card.obs' }[issue] || null;
   }
 
   const ISSUE_TEXT = {
@@ -105,6 +121,8 @@
     dest: 'the permit was for the wrong district',
     nopermit: 'there was no transit permit',
     obs: 'citizens under observation are barred today',
+    cidchip: 'the printed CID did not match the chip — a forged card',
+    obschip: 'the card hid an OBS flag that the database shows — an altered card',
   };
   G.DOC_ISSUE_TEXT = ISSUE_TEXT;
 
@@ -154,7 +172,7 @@
         done(ok, { correct, count, results });
         return;
       }
-      const c = idx === 0 && opts.first ? makeCase(s, opts.first) : makeCase(s, {});
+      const c = makeCase(s, { ...(idx === 0 && opts.first ? opts.first : {}), cardOnly: !!opts.cardOnly });
       idx++;
       let flagged = null;
       let timer = null;
@@ -179,7 +197,13 @@
           ${F('card.obs', box(0, 90.5, 100, 8.5), `<b class="st">${c.card.obs ? '<span class="obs">OBS — UNDER OBSERVATION</span>' : c.card.cwu ? '<span class="cwu-s">CWU — CIVIL WORKERS’ UNION</span>' : 'STANDARD CITIZEN'}</b>`)}
         </div>`;
 
-      const permitHtml = c.permit
+      const scanHtml = `<div class="dcard scanner">
+          <div class="sc-h">◈ CHIP SCAN · CID LABEL READER</div>
+          <div class="sc-r"><span>CHIP CID</span><b>${c.scan.cid}</b></div>
+          <div class="sc-r"><span>DATABASE STATUS</span><b class="${c.scan.obs ? 'red' : c.scan.cwu ? 'och' : ''}">${c.scan.obs ? 'OBS — UNDER OBSERVATION' : c.scan.cwu ? 'CWU' : 'STANDARD'}</b></div>
+          <div class="sc-r"><span>READ</span><b>OK · ${c.today}</b></div>
+        </div>`;
+      const permitHtml = c.cardOnly ? scanHtml : c.permit
         ? `<div class="dcard permit">
             <img class="tpl" src="assets/img/docs/permit.jpg" alt="">
             <span class="hdr">TRANSIT PERMIT · CANAL GATE 3</span>
@@ -193,17 +217,20 @@
 
       wrap.innerHTML = `
         <div class="bulletin">
-          <div class="bh">CHECKPOINT BULLETIN · CYCLE ${c.today}${count > 1 ? ` · CITIZEN ${idx} OF ${count}` : ''}</div>
-          <div class="rules">
+          <div class="bh">${c.cardOnly ? 'FIELD ID CHECK' : 'CHECKPOINT BULLETIN'} · CYCLE ${c.today}${count > 1 ? ` · CITIZEN ${idx} OF ${count}` : ''}</div>
+          <div class="rules">${
+            c.cardOnly
+              ? `<span>ID valid through cycle ${c.today} or later</span><span>Photo must match the subject</span><span>Printed CID = chip CID</span><span>Card status = database status</span>`
+              : `
             <span>Valid stamp: ${stampSvg(R.stamp)} <b>${R.stamp.shape === 'hex' ? 'hexagonal' : 'round'}, ${R.stamp.col}</b></span>
             <span>ID valid through cycle ${c.today} or later</span>
             <span>Permit CID = card CID · destination D3</span>
             <span>${R.obsBanned ? '<b>OBS: DENY</b>' : 'OBS: permitted'}</span>
-            <span>${R.cwuNoPermit ? 'CWU: no permit needed' : 'CWU: permit required'}</span>
-          </div>
+            <span>${R.cwuNoPermit ? 'CWU: no permit needed' : 'CWU: permit required'}</span>`
+          }</div>
           ${timed ? '<div class="tbar"><span></span></div>' : ''}
         </div>
-        <p class="who">${describe(c.person)}</p>
+        ${opts.showFace ? `<div class="subject"><img src="${c.person.face.img}" alt=""><span>THE SUBJECT<br><small>${describe(c.person)}</small></span></div>` : `<p class="who">${describe(c.person)}</p>`}
         <div class="docs-row">${idHtml}${permitHtml}</div>
         <p class="sub hintline">Tap the field that is wrong, then deny. Or approve if everything checks out.</p>
         <div class="mini-act">

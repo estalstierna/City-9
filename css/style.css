@@ -212,6 +212,7 @@ details.kit small { display: block; color: var(--faint); font-size: 11.5px; line
 .hintline { margin-top: 8px; }
 @media (max-width: 860px) {
   .dcard.nopermit { aspect-ratio: 6 / 1; }
+
   .bulletin { position: sticky; top: 64px; z-index: 5; font-size: 10.5px; padding: 6px 8px; }
   .bulletin .rules { gap: 1px 10px; }
   .docs-row { grid-template-columns: 1fr; gap: 8px; }
@@ -221,6 +222,28 @@ details.kit small { display: block; color: var(--faint); font-size: 11.5px; line
   .mini-act .choice .long { display: none; }
   .mini-act .choice .lbl { flex: 0 0 auto; }
   .hintline { display: none; }
+}
+
+.dcard.scanner { background: #0b1418; border: 1px solid var(--accent2); box-shadow: none; padding: 5% 6%; display: flex; flex-direction: column; justify-content: center; gap: 5%; color: var(--accent); }
+.dcard.scanner .sc-h { font-size: 3.4cqw; letter-spacing: .14em; opacity: .8; }
+.dcard.scanner .sc-r { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dotted #22323b; padding-bottom: 2%; }
+.dcard.scanner .sc-r span { font-size: 3cqw; color: var(--dim); letter-spacing: .1em; }
+.dcard.scanner .sc-r b { font-size: 5cqw; letter-spacing: .08em; color: #d6f3f9; }
+.dcard.scanner .sc-r b.red { color: #ff8a80; font-size: 3.8cqw; }
+.dcard.scanner .sc-r b.och { color: #e2b95a; }
+.subject { display: flex; gap: 12px; align-items: center; margin: 10px 0; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; color: var(--accent); }
+.subject img { width: 96px; height: 96px; object-fit: cover; border: 1px solid var(--line); border-radius: 3px; }
+.subject small { display: block; margin-top: 4px; font-family: var(--sans); font-style: italic; letter-spacing: 0; color: var(--text); font-size: 14px; }
+
+@media (max-width: 860px) {
+  .mini .dcard.scanner { aspect-ratio: auto; padding: 10px 14px; gap: 6px; }
+  .mini .dcard.scanner .sc-h { font-size: 10px; }
+  .mini .dcard.scanner .sc-r span { font-size: 10px; }
+  .mini .dcard.scanner .sc-r b { font-size: 15px; }
+  .mini .dcard.scanner .sc-r b.red { font-size: 12px; }
+  .mini .subject { margin: 6px 0; gap: 10px; }
+  .mini .subject img { width: 64px; height: 64px; }
+  .mini .subject small { font-size: 13px; }
 }
 
 /* ---------- choices ---------- */

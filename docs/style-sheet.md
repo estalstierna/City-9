@@ -964,6 +964,47 @@ STYLE: gritty semi-realistic dystopian concept art, production design sheet qual
 DO NOT include: armour, gas masks, weapons, police armbands, bright safety yellow or neon high-visibility colours, modern brand logos, characters from existing games.
 ```
 
+### CWU-porträtt
+
+Samma ID-fotouppställning som övriga porträtt. **Bifoga:** 1 `portraits/mira.jpg` (stil, ljus och bakgrund) · 2 `citizen-cwu.jpg` (CWU-jackan, märket och etiketten).
+
+**Mall: valfri CWU-medborgare** (byt ut [hakparenteserna])
+```
+Head-and-shoulders character portrait of a member of the Civil Workers' Union (CWU) of an occupied dystopian Eastern-European city, in the exact framing, lighting and plain near-black background of the FIRST attached image, lit like a registration photograph.
+
+PERSON: [age, gender, face, hair, expression].
+
+CLOTHING — copy exactly from the SECOND attached image: the muted ochre-yellow (#B8902F) quilted CWU work jacket with a grey reflective band across the chest, worn over the faded blue-teal citizen jacket with its mandarin collar. On the LEFT chest the round CWU union badge (charcoal centre, ochre rim, spanner crossed with a ration packet, "CWU"). On the wearer's RIGHT chest (left side of the image) the off-white ID label reading exactly "CID [five digits]" above a barcode, with the ochre stripe printed "CWU" along its bottom edge.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette with muted ochre accents, subtle film grain, believable skin texture, all text sharp and correctly spelled. Check every digit of the CID.
+
+DO NOT include: armour, masks, weapons, bright safety yellow or neon, logos of real brands.
+```
+
+**Brask, CWU-supervisor på färgeriet (Miras förman)**
+```
+Head-and-shoulders character portrait of Brask, a CWU supervisor on the dye floor of a textile mill in an occupied dystopian Eastern-European city, in the exact framing, lighting and plain near-black background of the FIRST attached image, facing the camera straight on.
+
+FACE: a heavy man in his fifties with a fat, fleshy face and a double chin; small, wet, pale eyes set close together that look at the viewer with a smug, appraising half-smile; a thin greasy moustache; ruddy cheeks with broken veins; short thinning hair combed flat and oily under the cap. The face of a petty tyrant who knows exactly how far his little power reaches.
+
+CLOTHING — copy exactly from the SECOND attached image (the CWU SUPERVISOR): a grey flat cap with a short stiff peak; the ochre CWU work jacket, newer and cleaner than a worker's, worn open over a grey knitted waistcoat stretched over his belly; the round CWU badge on the LEFT chest WITH the small gold chevron above the spanner; a small brass whistle on a chain; on the wearer's RIGHT chest (left side of the image) the ID label reading exactly "CID 30882" above a barcode, with the ochre "CWU" stripe. Faint blue dye stains on his cuffs, though his hands are clean.
+
+DETAILS: one thick hand holds a clipboard with a shift roster against his chest.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism with crisp detail, desaturated palette with muted ochre accents, subtle film grain, believable skin texture, all text sharp and correctly spelled. Check every digit: 30882.
+
+DO NOT include: armour, masks, weapons, bright safety yellow or neon, logos of real brands.
+```
+
+**RDT-arbetaren på Plaza 5** (anonym CWU-arbetare bakom ransoneringsluckorna)
+```
+Character portrait of a CWU ration-terminal worker seen through the open dispensing hatch of a steel ration wall, in the lighting and palette of the FIRST attached image: a tired woman in her thirties with hair tied under a grey cloth cap, the ochre CWU work jacket from the SECOND attached image with its reflective band and union badge, sliding a grey ration packet through the hatch toward the viewer. Only her head, shoulders and hands are visible, framed by the riveted steel rim of the hatch; behind her a dim storeroom of stacked grey ration crates. She avoids eye contact.
+
+STYLE: gritty semi-realistic dystopian portrait, painterly realism, desaturated palette with muted ochre accents, subtle film grain.
+
+DO NOT include: readable text other than "CWU" on the badge, armour, masks, weapons, neon, logos.
+```
+
 ### Varianter (byggs på basen senare)
 
 Lägg till i slutet av prompt A eller B:
