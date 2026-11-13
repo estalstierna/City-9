@@ -1816,6 +1816,8 @@ Egen design. Förlagan (spelmodellen) bifogas **inte**. Airwatch bär inget tyg:
 | A2 Airwatch-besättning (pilot och skytt) | `airwatch-crew.jpg` | 1 ota-soldier · 2 A1 | förseglad flygrustning, navelsträng i hjälmens nacke, chevroner på skulderplattan |
 | A3 Shrike-gunship | `airwatch-shrike.jpg` | 1 vehicle-ota · 2 A1 · 3 A2 · 4 env/e01-city | tandem pilot/skytt, koaxiala rotorer, hakturret, raketkapslar, trupputrymme (6) mitt på kroppen med skjutdörrar på båda sidor, ingen dörr baktill, "AW-S 09-2" (Rev 2) |
 
+**Klara:** A1, A2 och A3 (Rev 2, redigerad till 3 soldater per dörr) är inlagda i codex-posten Airwatch. A2 har ett stavfel i en etikett ("UARNESS RELEASE").
+
 Undvik orden "rear"/"back" om trupputrymmet i prompten: modellen flyttar då dörrarna bakåt. Skriv "troop bay … sliding side doors on the left and right flanks".
 
 Lore: codex-posten "airwatch" (The Universal Union). Shrike är baserad på Nexus tak; koden 10-78 AIR; medborgarna kallar rotorljudet "the knock". Full prompt-text finns i chatthistoriken (2026-11-13).

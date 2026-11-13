@@ -383,13 +383,13 @@ G.addCodex({
 G.addCodex({
   airwatch: {
     title: 'Airwatch',
-    body: `<p><b>Airwatch</b> is the airborne branch of the Overwatch Transhuman Arm. It owns the sky over every Union city: the scanner drones that photograph balconies, the transports that came down on the Nexus roof, and the gunships.</p>
+    body: `<img src="assets/img/airwatch-insignia.webp" alt="Airwatch insignia" loading="lazy"><p><b>Airwatch</b> is the airborne branch of the Overwatch Transhuman Arm. It owns the sky over every Union city: the scanner drones that photograph balconies, the transports that came down on the Nexus roof, and the gunships.</p>
     <p>Its emblem is the Overwatch hexagon cut by a cyan visor slit, flanked by two swept rotor blades. It is painted on hulls and on the shoulder plates of aircrew, never sewn: Airwatch, like the rest of Overwatch, wears no cloth.</p>
     <table>
       <tr><td>Base</td><td>The Nexus roof pads, District 1. Two gunships and a transport flight have been stationed in City 9 since the transports arrived.</td></tr>
-      <tr><td>Gunship</td><td>The <b>Shrike</b>: a tandem two-seat armoured helicopter, pilot behind and above the gunner, with a chin turret, stub-wing rocket pods and a small rear bay that carries cargo, or six soldiers dropped onto a roof in under a minute.</td></tr>
+      <tr><td>Gunship</td><td><img src="assets/img/airwatch-shrike.webp" alt="Shrike gunship" loading="lazy">The <b>Shrike</b>: a tandem two-seat armoured helicopter, pilot behind and above the gunner, with a chin turret, stub-wing rocket pods and a small rear bay that carries cargo, or six soldiers dropped onto a roof in under a minute.</td></tr>
       <tr><td>Hull codes</td><td>AW-S 09-1 and AW-S 09-2. Citizens can tell them apart by sound. Units are not supposed to try.</td></tr>
-      <tr><td>Aircrew</td><td>Transhuman, sealed into flight armour, plugged into the airframe through the back of the helmet. No Civil Protection unit has seen one outside a cockpit.</td></tr>
+      <tr><td>Aircrew</td><td><img src="assets/img/airwatch-crew.webp" alt="Airwatch aircrew" loading="lazy">Transhuman, sealed into flight armour, plugged into the airframe through the back of the helmet. Rank is painted on the left shoulder plate under the emblem: two cyan chevrons for the pilot, one for the gunner. No Civil Protection unit has seen one outside a cockpit.</td></tr>
       <tr><td>Requests</td><td>Civil Protection cannot task Airwatch. A unit may request air support through Dispatch with code 10-78 AIR. Outside a sociostatus, the request is logged and almost never answered.</td></tr>
     </table>
     <p>Under sociostatus Airwatch flies the curfew. A Shrike's searchlight can read a CID label from two hundred metres. Citizens in the Stacks call the sound of its rotors <i>the knock</i>, because it always comes before one.</p>`,
