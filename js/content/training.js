@@ -523,6 +523,7 @@
       title: 'Detention level 4 — JURY instruction',
       enter: (s) => G.unlock(s, 'jury'),
       text: [
+        '@img assets/img/env/e07-level4.jpg|Detention level 4',
         'Level 4 is below the river line. The walls sweat. The corridors are lit by single caged bulbs, and somewhere a ventilation fan ticks like a clock.',
         'The JURY instructor waits in an observation room with a one-way window. His armband is crimson. His designation reads **CCA.C9.D5-JURY-DvL-02842**. A Division Leader — four rungs above anyone who has ever spoken to you. The recruits call him *the Magistrate*.',
         '@portrait assets/img/portraits/magistrate.jpg|CCA.C9.D5-JURY-DvL-02842 — "the Magistrate"',
@@ -769,6 +770,7 @@
     bt_raid_2: {
       title: 'Unit 14-F',
       text: [
+        '@img assets/img/env/e08-halloran.jpg|Unit 14-F, 23:10',
         'Tomas breaches the door with his shoulder. The lock was never very good.',
         'Halloran is sitting at his kitchen table in his coat, as though he has been waiting for you. A single candle. A cup of something that isn\'t sector water. He looks up at the six of you, and then at you, and something in his face folds closed.',
         '@say Halloran|Ah. Well. At least it\'s someone who knows to wipe their boots.',

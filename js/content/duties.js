@@ -20,6 +20,7 @@
     d_ration_1: {
       title: 'Plaza 5 — ration dispensary',
       text: [
+        '@img assets/img/env/e10-ration.jpg|Plaza 5, ration distribution',
         'The ration dispensary is a steel wall in the side of the old cinema with six hatches in it. When a citizen puts a card into the slot, a hatch opens and a grey packet slides out: nutrient bar, a can of sector water, a sachet of something that is supposed to be coffee.',
         'The queue goes around the plaza twice. Three hundred citizens, maybe more, silent except for coughing.',
         '@say Rook|Two rules for ration line. Keep it moving. Keep it quiet. A line that stops is a line that thinks.',
@@ -119,6 +120,7 @@
     d_ration_r: {
       title: 'Plaza 5 — ration line',
       text: [
+        '@img assets/img/env/e10-ration.jpg|Plaza 5',
         'The ration line again. Three hundred faces, one grey packet each.',
         G.pick([
           'A small boy tries to slip under the barrier rope to get to the front. His sister hisses at him to come back. He freezes when he sees you looking.',

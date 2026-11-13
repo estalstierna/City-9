@@ -48,6 +48,7 @@
         s.rel.granite = s.rel.granite || 0;
       },
       text: (s) => [
+        '@img assets/img/env/e09-precinct.jpg|District 5 Precinct, the old tram depot',
         'The District 5 precinct is a converted tram depot at the edge of the Stacks. The old rails still run through the floor of the muster hall, polished by boots. Twenty units in masks stand in loose rows under the strip lights, smoking through their filters, checking weapons, ignoring you.',
         'The squadron leader stands on a loading platform with a slate in one hand. Big. Slow-moving. A broad blue officer\'s stripe down the crown of his mask, scratched almost to grey. **CCA.C9.D5-UNION-SqL-11902.** The squadron calls him *Granite*, and when he speaks you understand why.',
         '@portrait assets/img/portraits/granite.jpg|CCA.C9.D5-UNION-SqL-11902 — "Granite"',

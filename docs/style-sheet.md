@@ -18,7 +18,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
-| `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e06-parade.jpg` | Miljöer E01 till E06 (godkända). E01 är stilreferens för alla miljöer |
+| `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e06-parade.jpg` … `env/e10-ration.jpg` | Miljöer E01 till E10 (godkända). E01 är stilreferens för alla miljöer |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty, HELIX 02-77301, Katya (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
@@ -1193,7 +1193,7 @@ DO NOT include: neon, readable text, logos of real brands, characters from exist
 
 ## 5e-2. ÅTERSTÅENDE MILJÖSCENER (Rev 3), E07 till E16
 
-**Klart och godkänt:** E01 stad, E02 lägenhet, E03 Bazaar Row, E04 Nexus, E05 barack, E06 exercisgolv (`assets/img/env/`).
+**Klart och godkänt:** E01 till E10 (`assets/img/env/`).
 
 **Regler för alla nedan:**
 1. Kör varje scen i en **ny chatt**.
