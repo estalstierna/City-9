@@ -18,7 +18,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
 | `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
-| `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg` | Miljöer E01 till E05 (godkända). E01 är stilreferens för alla miljöer |
+| `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e06-parade.jpg` | Miljöer E01 till E06 (godkända). E01 är stilreferens för alla miljöer |
 | `ranks-enlisted.jpg`, `ranks-command.jpg` | Rangarken: RcT till EpU och OfC till EA |
 | `portraits/*.jpg` (+ `-thumb.jpg`) | Porträtt: Mira, Halloran, Tomas, Ilse, Rook (med och utan mask), Granite, the Tinker, the Magistrate, Thirty, HELIX 02-77301, Katya (800 px, plus 128 px miniatyrer till kontaktlistan) |
 
@@ -1188,6 +1188,220 @@ Concept art of a tiny wooden repair booth at the end of a black-market street at
 STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, cold dusk light with one warm lamp, desaturated palette, atmospheric haze, subtle film grain, high detail.
 DO NOT include: neon, readable text, logos of real brands, characters from existing games.
 ```
+
+---
+
+## 5e-2. ÅTERSTÅENDE MILJÖSCENER (Rev 3), E07 till E16
+
+**Klart och godkänt:** E01 stad, E02 lägenhet, E03 Bazaar Row, E04 Nexus, E05 barack, E06 exercisgolv (`assets/img/env/`).
+
+**Regler för alla nedan:**
+1. Kör varje scen i en **ny chatt**.
+2. Bifoga **exakt de filer som står, i den ordningen**. Prompten räknar dem ("FIRST", "SECOND" …).
+3. Den **sista bilagan är alltid en godkänd miljöbild**. Den styr ljus, färg och detaljnivå.
+4. Där tornet syns bifogas `ref/spire-context.jpg`, så att tornet ser likadant ut som i E01 till E04.
+5. Om verktyget tar emot färre bilagor: stryk från slutet av listan, men behåll alltid karaktärsporträtten och uniformen.
+6. Varje prompt har låst kamera, ett tydligt antal personer med egna platser och en DO NOT-rad, så att inget blir dubblerat eller överlappande.
+
+| Scen | Bifoga i ordning |
+|---|---|
+| E07 Nivå 4 | 1 `portraits/magistrate.jpg` · 2 `env/e05-barracks.jpg` |
+| E08 Hallorans kök | 1 `portraits/halloran.jpg` · 2 `uniform-union.jpg` · 3 `env/e02-apartment.jpg` |
+| E09 Stationen | 1 `uniform-union.jpg` · 2 `portraits/granite.jpg` · 3 `flag-cca.jpg` · 4 `env/e06-parade.jpg` |
+| E10 Plaza 5 | 1 `citizen-base.jpg` · 2 `uniform-union.jpg` · 3 `env/e04-nexus.jpg` |
+| E11 Canal Gate 3 | 1 `uniform-union.jpg` · 2 `citizen-base.jpg` · 3 `flag-cca.jpg` · 4 `env/e03-bazaar.jpg` |
+| E12 Bangården | 1 `uniform-union.jpg` · 2 `ref/spire-context.jpg` · 3 `env/e01-city.jpg` |
+| E13 Pump House 4 | 1 `portraits/ilse.jpg` · 2 `citizen-base.jpg` · 3 `env/e05-barracks.jpg` |
+| E14 Slussbron | 1 `uniform-union.jpg` · 2 `portraits/katya.jpg` · 3 `env/e03-bazaar.jpg` |
+| E15 Taket | 1 `portraits/rook-unmasked.jpg` · 2 `ref/spire-context.jpg` · 3 `env/e01-city.jpg` |
+| E16 Tinkers stånd | 1 `portraits/tinker.jpg` · 2 `citizen-base.jpg` · 3 `env/e03-bazaar.jpg` |
+
+### E07 Nivå 4, förhörsrummet (bt_jury, b_audit)
+**Bifoga:** 1 magistrate · 2 e05-barracks
+```
+Interior concept art of an interrogation room below river level in a police headquarters. Match the lighting quality, colour grading and level of detail of the SECOND attached image, but darker and colder.
+
+CAMERA: eye-level, from the corner behind the prisoner's shoulder, looking across the table toward a large one-way mirror on the far wall.
+
+ROOM: small, about four by five metres. Sweating rust-stained concrete walls; a single caged bulb hanging low over the table; a slow ventilation fan in the ceiling; puddles and a floor drain; a heavy steel door on the left with a faint red emergency light above it.
+
+FURNITURE: one steel table bolted to the floor in the centre, a single photograph lying face-up on it showing a large painted symbol on a wall. Two steel chairs.
+
+PEOPLE — exactly two:
+1. Foreground right, seen from behind and slightly to the side: a thin teenage boy in a faded blue-teal citizen jacket, sitting at the table, head bowed, wrists chained to a ring on the table, blue paint on his fingers.
+2. In the one-way mirror on the far wall — only as a dim REFLECTION, not standing in the room — the masked officer from the FIRST attached image: off-white ceramic helmet with a crimson crest stripe, dark red-glinting lenses, black leather gauntlets, hands folded behind his back, perfectly still.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, cold low-key light, desaturated near-black and steel-grey palette with deep crimson accents, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: gore or visible injuries; the officer standing inside the room; more than two people; readable text; logos; characters from existing games.
+```
+
+### E08 Hallorans kök under razzian (bt_raid_2)
+**Bifoga:** 1 halloran · 2 uniform-union · 3 e02-apartment
+```
+Interior concept art of an old man's tiny tenement kitchen at 23:00 during a police raid. The room has the same architecture, peeling wallpaper, window and colour grading as the apartment in the THIRD attached image — it is the flat next door.
+
+CAMERA: eye-level from the far corner of the kitchen, looking toward the forced-open front door, the old man at the table in the middle ground.
+
+ROOM: a single wooden table with one candle and a cup of tea; a cast-iron radiator under a plastic-taped window on the right wall, its front panel pried half open with a dish towel wrapped around something inside; drawers pulled out and emptied onto the floor; a thin mattress tipped against the wall; the front door hanging open, its lock broken.
+
+PEOPLE — exactly four:
+1. Seated at the table facing the camera: the old man from the FIRST attached image — same face, white hair, brown herringbone overcoat, green scarf — calm, hands folded on the table.
+2–4. Three masked officers dressed exactly like the SECOND attached image (plain off-white helmets, no stripes): one in the doorway, two in the dark stairwell behind, their torch beams crossing the room.
+
+LIGHT: warm candlelight on the old man's face against cold blue torch beams and stairwell darkness.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated palette with one warm accent, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: violence in progress; weapons pointed at him; more than four people; readable text; logos; characters from existing games.
+```
+
+### E09 District 5-stationen (u_start)
+**Bifoga:** 1 uniform-union · 2 granite · 3 flag-cca · 4 e06-parade
+```
+Interior concept art of a police precinct built inside a converted tram depot. Match the lighting, colour grading and detail level of the FOURTH attached image.
+
+CAMERA: eye-level from the end of the hall, looking down its length in one-point perspective toward a raised loading platform at the far end.
+
+ARCHITECTURE: a long hall with an arched iron-and-glass roof on riveted girders; two old tram rails running straight down the centre of the polished concrete floor; steel lockers in one straight row along the left wall; an armoury cage with a counter along the right wall; a duty board glowing with cyan entries beside the platform. One large banner that is an exact copy of the flag in the THIRD attached image hangs from the roof girders above the platform. Grey morning light through grimy glass.
+
+PEOPLE:
+- On the raised platform, alone and centred: the huge squadron leader from the SECOND attached image — broad blue crest stripe on his helmet, data slate in hand — completely still.
+- On the floor, about twelve masked officers dressed exactly like the FIRST attached image (plain off-white helmets, blue armbands), standing in two loose, evenly spaced rows facing the platform, seen from behind. One checks a pistol, one smokes through his filter.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey and slate-blue palette with civil protection blue and cyan accents, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: duplicated identical figures; more than one officer on the platform; crest stripes on the floor officers' helmets; neon; readable text; logos; characters from existing games.
+```
+
+### E10 Plaza 5, ransoneringskön (d_ration_1)
+**Bifoga:** 1 citizen-base · 2 uniform-union · 3 e04-nexus
+```
+Wide concept art of a ration distribution plaza. Match the architecture style, weather, colour grading and level of detail of the THIRD attached image.
+
+CAMERA: eye-level from the corner of the plaza, three-quarter view, the dispensing wall on the right, the queue snaking toward the camera.
+
+ARCHITECTURE: the side of an old cinema replaced by a massive riveted steel wall with SIX identical square dispensing hatches in one straight row at chest height, a small glowing screen above each. Above them, a large broadcast screen on the cinema facade showing a blurred grey face. Rope barriers on steel posts guide the queue.
+
+PEOPLE:
+- About eighty citizens dressed exactly like the FIRST attached image, in ONE continuous queue that follows the rope barriers in a single S-curve across the plaza toward the hatches, heads down, holding ID cards. People in front are larger and detailed; those further back become smaller and simpler.
+- Four masked officers dressed exactly like the SECOND attached image, standing at evenly spaced points along the queue with stun batons.
+
+DETAILS: light rain, wet paving reflecting the hatches, a single dropped grey ration packet in a puddle in the foreground.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey and slate-blue palette with sharp cyan accents, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: multiple overlapping queues; duplicated identical figures; more than six hatches; neon; readable text; logos; characters from existing games.
+```
+
+### E11 Canal Gate 3 (d_check_1)
+**Bifoga:** 1 uniform-union · 2 citizen-base · 3 flag-cca · 4 e03-bazaar
+```
+Concept art of a security checkpoint across an old stone bridge over a black canal. The checkpoint is the same steel cage seen in the background of the FOURTH attached image, now seen up close; match that image's colour grading and level of detail.
+
+CAMERA: eye-level on the bridge, looking straight along it toward the far bank.
+
+STRUCTURE: a steel lattice cage enclosing the bridge; in the middle a single glowing cyan scanner arch; beside it a small armoured booth with a thick window; a lowered striped barrier. A small banner copied exactly from the THIRD attached image hangs on the cage. Crumbling warehouses line both banks, the canal black and still beneath.
+
+PEOPLE:
+- A single-file line of about ten citizens dressed exactly like the SECOND attached image, holding papers up toward the arch.
+- Two masked officers dressed exactly like the FIRST attached image: one inside the booth behind the window, one standing at the arch.
+- Approaching from the far end of the bridge, a squad of exactly FOUR tall soldiers in heavy dark plated armour with single round glowing visor lenses, clearly larger and more military than the police; the citizens press against the railings to let them pass.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey and slate-blue palette with sharp cyan accents, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: soldiers wearing the police gas-mask helmet; more than four soldiers; neon; readable text; logos; characters from existing games.
+```
+
+### E12 Bangården i D4, natt (d_rail_1)
+**Bifoga:** 1 uniform-union · 2 spire-context · 3 e01-city
+```
+Night concept art of an abandoned rail yard on the edge of the city shown in the THIRD attached image; match that image's level of detail but at night.
+
+CAMERA: low, at track level between two rows of freight cars, looking down a straight corridor of rails toward the horizon.
+
+YARD: two straight rows of dead rusting freight cars and grain wagons, one row on each side, coupled end to end; tall cranes against a low sky; puddles between the rails reflecting green standby lamps on short posts. In the middle ground on the left, a sealed relocation wagon with chained doors. On the horizon, the colossal dark tower from the SECOND attached image — same tapering shape, two-pronged crown, cyan core — with tiny red warning lights, half hidden in drizzle.
+
+PEOPLE — exactly four:
+1–3. Three masked officers dressed exactly like the FIRST attached image, walking away from the camera down the corridor in a loose wedge, torch beams cutting through the rain.
+4. On the roof of a grain car far ahead on the right, a barely visible crouching silhouette with a rifle.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, cold night light, desaturated steel-grey and slate-blue palette with green, cyan and small red accents, rain, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: a different tower design; merged or floating train cars; neon; readable text; logos; characters from existing games.
+```
+
+### E13 Pump House 4 (b_ilse, bt_run)
+**Bifoga:** 1 ilse · 2 citizen-base · 3 e05-barracks
+```
+Interior concept art of a derelict pump house at the end of a canal towpath at night. Match the moonlight, colour grading and level of detail of the THIRD attached image.
+
+CAMERA: eye-level from just inside the door, looking across the room toward the great wheel.
+
+ROOM: a tall brick industrial hall; a single vast iron pump wheel, rusted solid, fills the right half of the frame on a stone housing; tall windows along the left wall, half boarded up, thin bars of cold moonlight falling across a wet floor; river water glinting through iron floor grates; pipes and gauges with cracked glass along the walls. Near the floor by a drainage grate, a small chalk lambda symbol "λ" about the size of a hand.
+
+PEOPLE — exactly one:
+- Sitting on top of the wheel housing with her boots dangling, small in the frame, watching the door: the woman from the FIRST attached image — same narrow face, scar through the eyebrow, black hair in a tight knot — out of uniform, wearing the citizen jacket from the SECOND attached image.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist industrial ruin, cold moonlight, desaturated steel-grey and slate-blue palette with faint cyan accents, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: more than one person; a large lambda; any uniform or mask on her; neon; readable text; logos; characters from existing games.
+```
+
+### E14 Slussbron i dimma (exam_04_b)
+**Bifoga:** 1 uniform-union · 2 katya · 3 e03-bazaar
+```
+Concept art of a canal lock bridge at dawn in thick fog, in the same city as the THIRD attached image; match its colour grading and level of detail but with heavy white fog.
+
+CAMERA: eye-level just behind the truck, looking past it along the bridge into the fog.
+
+SCENE: a narrow iron bridge crossing a pair of closed wooden lock gates; the far end vanishes into white mist. On the near side a grey armoured ration truck, stopped, headlights cutting cones into the fog. On the left bank a crumbling brick pump house with dark windows; on the right a small lock-keeper's hut. Wet cobbles, black water below the gates.
+
+PEOPLE:
+- One masked officer dressed exactly like the FIRST attached image standing on the truck's running board, looking ahead.
+- In the fog on the far side of the bridge, three or four barely visible dark human silhouettes, waiting.
+- Crouching half-hidden behind the lock-keeper's hut, small: the girl from the SECOND attached image — braid with a red thread, citizen jacket — holding a length of pipe.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, cold diffuse fog light, desaturated steel-grey and slate-blue palette with sharp cyan accents, heavy atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: gunfire or explosions; visible weapons other than the pipe; neon; readable text; logos; characters from existing games.
+```
+
+### E15 Taket på Stack 1 (b_rook, exam_03)
+**Bifoga:** 1 rook-unmasked · 2 spire-context · 3 e01-city
+```
+Night concept art of the roof of a tall apartment block in the city of the THIRD attached image, looking out over the same skyline at night.
+
+CAMERA: on the roof, behind and slightly to the side of the man at the parapet, looking past him over the city.
+
+ROOF: a tall steel broadcast antenna mast with blinking red lights on the left; thick cable trunks and square ventilation housings; a single stairwell door. Wind and drizzle. A wooden plank bridges the gap to the neighbouring rooftop. Beyond the parapet, the endless grid of tenement blocks with scattered lit windows, the dam and, dominating the horizon, the colossal dark tower from the SECOND attached image — same tapering shape, two-pronged crown, glowing cyan core, cables sagging into the city.
+
+PEOPLE — exactly one:
+- At the parapet, three-quarter view from behind, small in the frame: the man from the FIRST attached image — same face, mask pushed up on top of his head, blue armband — a cigarette ember glowing, smoke drifting.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, cold night light, desaturated steel-grey and slate-blue palette with small red and warm ember accents, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: a different tower design; more than one person; neon; readable text; logos; characters from existing games.
+```
+
+### E16 Tinkers stånd i skymningen (ev_tinker)
+**Bifoga:** 1 tinker · 2 citizen-base · 3 e03-bazaar
+```
+Concept art of a tiny wooden repair booth at the end of the black-market street shown in the THIRD attached image, now at dusk; match that image's architecture, colour grading and level of detail.
+
+CAMERA: eye-level, three-quarter view of the booth from across the street.
+
+BOOTH: a small wooden stall with a hinged counter crowded with gutted radios, coils of copper wire, glass valves and tools; a single warm work lamp clamped to a shelf; behind the counter a faded curtain hiding a back room. The rest of the street is cold and blue: tarpaulins, crates, laundry lines, a scanner drone light far above.
+
+PEOPLE:
+- Behind the counter, bent over a soldering iron with a wisp of smoke rising: the old man from the FIRST attached image — same bald head, heavy black spectacles, leather apron with the pinned CID tag.
+- Two or three citizens dressed exactly like the SECOND attached image passing in the street with heads down, not looking at the booth.
+
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, cold dusk light with one warm lamp, desaturated palette, atmospheric haze, subtle film grain, high detail.
+
+DO NOT include: police in the scene; a visible lambda; neon; readable text; logos; characters from existing games.
+```
+
 
 ---
 
