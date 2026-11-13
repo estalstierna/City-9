@@ -1799,6 +1799,8 @@ Exempeldesignationer: `CCA.C9.D1-VECTOR-03-55190`, `CCA.C9.D1-GRID-03-70448`.
 **Utrustningsetiketter (Rev 2):** VECTOR: DECON LANCE, INCINERATOR, SPECIMEN CASE, SAMPLE JARS, HAZARD METER, SIDEARM 9MM, HAZARD TAPE. GRID: MULTI-DRIVER, DIAGNOSTIC SLATE, FIELD CALIBRATION KEY, CABLE SPOOL, POWER CELL, SIDEARM 9MM, SERVICE KNIFE. VEIL: SUPPRESSED SIDEARM, BLACK BLADE, GRAPPLE LINE, DEAD SLATE, LOCK PICKS, VIAL CASE, BLANK ID, SEALED ORDERS. V3 och V4 Rev 2, samt redigeringsprompten för VEIL-etiketterna, finns i chatthistoriken.
 VEIL-arket (Rev 1) fick fel emblem i titeln och detaljbilden. Ersätt det med V1-emblemet (tom medaljong) när det finns.
 
+**Emblemregel:** gör alltid emblemet först, som en egen kvadratisk bild (V1-single), och bifoga det sedan. I uniformsprompten ska det kopieras exakt som en plan broderad patch, aldrig ritas om. Geometrin ska skrivas ut: stålring, färgad ÖVRE båge, stål-V som pekar NEDÅT genom toppen och en glyf i en infälld medaljong. Om emblemet ändå blir fel byts det ut genom kompositing i efterhand.
+
 ### V2a Armband VECTOR och GRID (3:2) · bifoga: 1 armbands · 2 ref/02-armband · 3 V1-emblemarket
 ```
 Product-style flat lay reference sheet of TWO military cloth armbands, side by side on a neutral warm-grey background, exactly the same size and evenly spaced. Each is shown flat from directly above, and beneath it a small second view of the same band wrapped around an upper arm in a dark padded sleeve.
