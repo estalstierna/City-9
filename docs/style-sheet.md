@@ -1792,6 +1792,18 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 
 **Klara (2026-11-13):** K5, E20 och E21 är genererade och inlagda. Full prompt-text finns i chatthistoriken. Vigil är kommandogrupp: svart armband med guldkant, grafitgrå hjälm med guldrand och guldringar runt linserna, aldrig divisionsfärg.
 
+## 5l. FORDON
+
+Egen design. Förlagan (spelmodellen) bifogas **inte**, så att den inte kopieras. Fordonsnumret ska vara konsekvent överallt på fordonet.
+
+| Bild | Fil i spelet | Bifoga i ordning | Märkning |
+|---|---|---|---|
+| V5 PT-V (CCA) | `vehicle-ptv.jpg` | 1 master-a · 2 uniform-union · 3 env/e01-city | 6x6, kilnos med folkmasseplog, siktspringor, takkupol + skannermast, blått band, CCA-emblem på dörrarna, "PT-V D5-07" |
+| V6 Overwatch-transport | `vehicle-ota.jpg` | 1 V5 · 2 ota-insignia · 3 ota-soldier | samma skrov, kompositpansar, en cyan visirslits, fjärrstyrt torn, hexagonemblem, "OTA-T 09-3", inget blått |
+| E22 PT-V i Stack 9 | `env/e22-ptv-night.jpg` | 1 V5 · 2 uniform-union · 3 env/e03-bazaar · 4 env/e01-city | natt, regn, sökarljus, fyra enheter kliver ut |
+
+Full prompt-text finns i chatthistoriken (2026-11-13).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
