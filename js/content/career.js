@@ -106,7 +106,7 @@
     const dc = G.DIV_CAST && G.DIV_CAST[div];
     if (dc) {
       out.push({ name: G.PEOPLE[dc.chief.key].name, rank: 'OfC', note: 'your officer', desig: dc.chief.cap.split(' — ')[0], key: dc.chief.key });
-      const PD = { HELIX: ['5', '36812'], RAZOR: ['5', '62158'], SPEAR: ['5', '74430'], VECTOR: ['1', '55841'], GRID: ['1', '70519'] }[div] || ['5', '10000'];
+      const PD = { HELIX: ['5', '36812'], RAZOR: ['5', '62156'], SPEAR: ['5', '71430'], VECTOR: ['1', '55841'], GRID: ['1', '70519'] }[div] || ['5', '10000'];
       out.push({ name: G.PEOPLE[dc.partner.key].name, rank: dc.partner.rank, note: 'your partner', desig: D(PD[0], dc.partner.rank, PD[1]), key: dc.partner.key });
     }
     (s.squad && s.squad.members ? s.squad.members : []).forEach((m) => {
