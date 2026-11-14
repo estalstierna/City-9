@@ -290,3 +290,30 @@
   G.extend('dd_vtest', { text: top('assets/img/necrotic-sheet.webp', 'What a bite becomes') });
   G.extend('c3_1', { text: (lines, s) => (s.c3 && s.c3.approach ? lines.concat('@img assets/img/resistance-sheet.webp|The canal cells') : lines) });
 })();
+
+/* SC-9 LANTERN — GRID's scanner drones. A codex entry, a drone over the stairwell before raids,
+   and the entry unlocks on GRID duty. */
+(function () {
+  G.addCodex({
+    scanners: {
+      title: 'SC-9 "Lantern" scanner drones',
+      body: `<img src="assets/img/drone-scanner.webp" alt="SC-9 Lantern scanner drone" loading="lazy">
+      <p>Civil Protection's eyes above head height. A hexagonal body, two copper-cowled fans and a collar of six slit lenses that turns slowly while the drone hangs over a street, a landing or a queue. GRID builds, docks and repairs them. JURY reads what they see.</p>
+      <p><b>Patrol</b>: collar cyan, drone drifting on a set route. <b>Scan</b>: a cone of white light on one face, the flash bar firing, the CID read and logged. <b>Alert</b>: collar red, strobe on the antenna, the nearest unit called by name.</p>
+      <p>Citizens call them <i>lanterns</i>, and say a lantern on your landing at night means a door is going in before morning. They are usually right.</p>`,
+    },
+  });
+  G.CODEX_GROUPS.find((g) => g.title === 'Civil Protection').ids.push('scanners');
+
+  G.extend('raid_start', {
+    after: (s) => G.unlock(s, 'scanners'),
+    text: (lines) => {
+      const i = lines.findIndex((l) => typeof l === 'string' && l.startsWith('@img '));
+      lines.splice(i + 1, 0, 'A Lantern is already on the landing when you get there, fans whispering, collar turning slowly cyan. It has been filming the door for an hour.');
+      return lines;
+    },
+  });
+  G.afterRender.push((sc, id) => {
+    if (/^dd_g/.test(id)) G.unlock(G.state(), 'scanners');
+  });
+})();

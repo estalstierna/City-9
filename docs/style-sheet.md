@@ -1964,6 +1964,8 @@ Full prompt-text finns i chatthistoriken (2026-11-14).
 
 Egen design: en smal sexkantig "lykta" med två kanalfläktar, en roterande sensorkrage och en blixtlist. Det är inte ett klot med ett stort objektiv. GRID sköter drönaren, och JURY granskar det den filmar. Medborgarna kallar den "the lantern".
 
+**Klar (2026-11-14):** D1 inlagd: codex-posten *SC-9 "Lantern" scanner drones* (Civil Protection), en Lantern i trapphuset före varje razzia, och posten låses upp i GRID-uppdrag.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
