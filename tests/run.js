@@ -450,6 +450,91 @@ suite('chapter 6 for every division (Collection, the railway)', async (browser) 
   return out.concat(errors);
 });
 
+suite('chapter 7 for every division (Anticitizen One)', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const ends = {};
+  const nights = {};
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  for (const [i, div] of (QUICK ? divs.concat(divs.slice(0, 3)) : divs.concat(divs, divs)).entries()) {
+    await page.evaluate(
+      ({ div, i }) => {
+        try { localStorage.clear(); } catch (e) {}
+        G.newGame();
+        const s = G.state();
+        Object.assign(s, { name: 'Tester', phase: 'union', rank: i % 2 ? 'OfC' : 'EpU', div, day: 110, merit: 300, lp: 30, res: i % 3 ? 35 : 5, chapter: 6 });
+        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+        Object.assign(s.rel, { rook: 30, granite: 20, tomas: 10, mira: 40 });
+        s.mem.grade = 'Graded';
+        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
+        if (i % 3 === 0) s.flags.veil_shadow = true;
+        s.c2 = { div, stage: 9, next: 20, arc: true, done: true };
+        s.flags.c2_end_day = 20;
+        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held' };
+        s.c4 = { stage: 9, done: true, endDay: 66, sentName: '"Salt"' };
+        s.c5 = { stage: 9, done: true, endDay: 86, veil: 'accepted' };
+        s.c6 = { stage: 9, done: true, endDay: 106, train: i % 2 ? 'ran' : 'stopped', kinPart: 'promise', kin: { key: 'mira', name: 'Mira', img: 'mira' } };
+        G.formSquad(s);
+        G.goto('u_board');
+      },
+      { div, i }
+    );
+    const w = await randomWalk(page, QUICK ? 350 : 500, { stopAt: ['c7_end', 'disc_tribunal'] });
+    out.push(...w.problems.map((p) => div + ': ' + p));
+    if (!w.seen.c7_start) out.push(div + ': chapter 7 never started');
+    const n = await page.evaluate(() => G.state().c7 && G.state().c7.night);
+    nights[n || 'none'] = (nights[n || 'none'] || 0) + 1;
+    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
+  }
+  if (!ends.c7_end && !ends.disc_tribunal) out.push('no run reached c7_end: ' + JSON.stringify(ends));
+  console.log('    ch7 nights:', JSON.stringify(nights));
+  return out.concat(errors);
+});
+
+suite('division transfer exam at grade 01', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const res = { pass: 0, fail: 0 };
+  for (let i = 0; i < (QUICK ? 6 : 12); i++) {
+    const from = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'][i % 7];
+    await page.evaluate((from) => {
+      try { localStorage.clear(); } catch (e) {}
+      G.newGame();
+      const s = G.state();
+      Object.assign(s, { name: 'T', phase: 'union', rank: '01', div: from, day: 40, merit: 150, lp: 20 });
+      Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+      s.mem.grade = 'G';
+      s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
+      G.formSquad(s);
+      s.mem.xferDay = -1;
+      s.world.mDay = s.day;
+      G.goto('xfer_pick');
+    }, from);
+    const w = await randomWalk(page, 120, { stopAt: ['xfer_res'] });
+    out.push(...w.problems.map((p) => from + ': ' + p));
+    const r = await page.evaluate(() => ({ div: G.state().div, x: G.state().xfer, flags: G.state().flags }));
+    if (!r.x) { out.push(from + ': no exam taken'); continue; }
+    if (r.x.pass) {
+      res.pass++;
+      if (r.div !== r.x.to) out.push(from + ': passed but division did not change');
+    } else {
+      res.fail++;
+      if (r.div !== from) out.push(from + ': failed but division changed');
+      if (!(r.flags['xfer_block_' + r.x.to] > 40)) out.push(from + ': failed but no reapply block');
+    }
+  }
+  /* blocked division cannot be chosen */
+  const locked = await page.evaluate(() => {
+    const s = G.state();
+    s.flags.xfer_block_GRID = s.day + 14;
+    s.div = 'UNION';
+    G.goto('xfer_pick');
+    return [...document.querySelectorAll('#story .block.current .choice')].some((b) => /GRID/.test(b.innerText) && b.disabled);
+  });
+  if (!locked) out.push('a blocked division could still be applied for');
+  return out.concat(errors);
+});
+
 suite('district events fire from high resentment and low order', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];

@@ -77,6 +77,10 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 
 10. **Chapter 6, "Collection"** (all divisions, officer's work): Overwatch collects Civil Protection reserves every week as *candidates for conversion*, and you choose who from your team goes. A "railway" moves people north on the D4 coal line toward City 17; you track it down (tail a signalman, lean on informants, read the manifests, or raid a flat) and find someone you love on the passenger list. On Thursday night you are the officer on scene: stop the train, let it run, call Airwatch, shield it from the Shrike yourself, or — in VEIL's shadow — tag the last wagon so VEIL can follow it north. Squadron Leader becomes reachable through an officer board after this chapter.
 
+11. **Chapter 7, "Anticitizen One"** (all divisions): the Union gives the man from City 17 a designation and puts a blurred figure on every screen. Still no name, still no face. Overwatch pulls two thirds of the City 9 garrison north, and Civil Protection holds the city alone. You place your teams (Nexus, Stacks or armoury). The canal cells, or VEIL, tell you when D5 will rise. Plaza 5 starts to chant under the screens (crowd control, or cut the screens). On the night the screens go dark you hold, open the armoury, order a stand-down, negotiate a truce on a landing, or walk among them for VEIL. The chapter ends with Nova Prospekt on the radio.
+
+12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
+
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
 ## Art
@@ -137,6 +141,8 @@ js/content/minigames2.js circuit and tail minigames
 js/content/minigames3.js triage, watch, breach, sample minigames
 js/content/chapter5.js The Academy, VEIL
 js/content/chapter6.js Collection, the railway
+js/content/transfer.js division transfer exam (grade 01)
+js/content/chapter7.js Anticitizen One, the night the screens go dark
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
