@@ -5,7 +5,7 @@
    cover for you — and, in scenes marked RISK, die. A replacement arrives the next morning. */
 (function () {
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
   const TRAITS = {
     steady: { label: 'Steady', skill: 'authority', likes: 'loyal', note: 'never raises the voice; crowds calm down around them' },

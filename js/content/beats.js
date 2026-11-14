@@ -594,3 +594,45 @@
     },
   });
 })();
+
+/* CHAPTER SCAFFOLD — shared by chapters 4 onward.
+   G.chapter({ n: 7, stages: [[1, 'evening', 'c7_1'], [2, 'morning', 'c7_2']] }) does three things:
+   - makes the previous chapter's end scene record the day it ended (s.c6.endDay) and say
+     "Chapter Seven begins in a few days" instead of "Chapter Seven is coming";
+   - adds the beat that starts this chapter (scene c7_start) two days after that;
+   - adds one beat per stage: when s.c7.stage === n and s.day >= s.c7.next, play the scene.
+   It returns the helpers every chapter used to define for itself:
+   adv(gap, extra) moves to the next stage (gap days later, default 1) and applies extra;
+   set(obj, fx) merges obj into the chapter state and applies fx. */
+(function () {
+  const WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+  G.chapterWord = (n) => WORDS[n] || String(n);
+  const apply = (s, extra) => (extra ? (typeof extra === 'function' ? extra(s) : extra) : null);
+
+  G.chapter = ({ n, stages, gap = 2 }) => {
+    const key = 'c' + n;
+    const prev = 'c' + (n - 1);
+    const done = `@sys CHAPTER ${G.chapterWord(n - 1).toUpperCase()} COMPLETE`;
+    G.extend(prev + '_end', {
+      after: (s) => {
+        if (s[prev] && s[prev].endDay === undefined) s[prev].endDay = s.day;
+      },
+      text: (lines) => lines.map((l) => (typeof l === 'string' && l.startsWith(done) ? `${done}. Chapter ${G.chapterWord(n)} begins in a few days.` : l)),
+    });
+    G.beats.push({
+      id: key + '_go',
+      time: 'morning',
+      when: (s) => s.phase === 'union' && s[prev] && s[prev].done && !s[key] && s.day >= (s[prev].endDay !== undefined ? s[prev].endDay : -99) + gap,
+      scene: key + '_start',
+    });
+    (stages || []).forEach(([st, time, scene]) => G.beats.push({ id: key + 's' + st, time, when: (s) => s[key] && s[key].stage === st && s.day >= s[key].next, scene }));
+    return {
+      adv: (days, extra) => (s) => {
+        s[key].stage++;
+        s[key].next = s.day + (days === undefined ? 1 : days);
+        return apply(s, extra);
+      },
+      set: (o, fx) => (s) => (Object.assign(s[key], o), apply(s, fx)),
+    };
+  };
+})();

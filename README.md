@@ -121,7 +121,7 @@ js/content/prologue.js
 js/content/training.js
 js/content/union.js   duty loop, evenings, Mira, infirmary, endings
 js/content/duties.js  the seven duties
-js/content/beats.js   story beats, evaluations, division select
+js/content/beats.js   story beats, evaluations, division select, G.chapter scaffold
 js/content/search.js  stop & search, case files
 js/content/docs-game.js  document inspection minigame
 js/content/chapter2.js   UNION and JURY arcs, interrogation
@@ -146,6 +146,8 @@ js/content/chapter7.js Anticitizen One, the night the screens go dark
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
+
+Writing a new chapter: start the file with `const { adv, set } = G.chapter({ n: 8, stages: [[1, 'evening', 'c8_1'], …] })`. That records when chapter 7 ended, starts `c8_start` two days later and plays each stage scene on its beat. Scene hooks (`enter`, `before`, `after`) redirect only by returning a scene id. Write them with braces, `(s) => { s.c8.x = 'held'; }`, so an assignment is not returned by mistake. The engine reports a stray string as a console error, and the tests fail on it.
 
 Tests (Playwright with Chromium):
 

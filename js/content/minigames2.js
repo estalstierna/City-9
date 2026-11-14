@@ -7,7 +7,7 @@
 (function () {
   G.MINIGAMES = G.MINIGAMES || {};
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
   /* ================================================================ CIRCUIT */
   const N = 1, E = 2, S = 4, W = 8;

@@ -6,31 +6,12 @@
    whose description they were given every morning.
    The man from City 17 is still never named. */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const C = (s) => s.c5;
-  const adv = (gap, extra) => (s) => {
-    s.c5.stage++;
-    s.c5.next = s.day + (gap === undefined ? 1 : gap);
-    return extra ? (typeof extra === 'function' ? extra(s) : extra) : null;
-  };
-  const set = (o, fx) => (s) => (Object.assign(s.c5, o), typeof fx === 'function' ? fx(s) : fx || null);
+  const { adv, set } = G.chapter({ n: 5, stages: [[1, 'evening', 'c5_1'], [2, 'morning', 'c5_2'], [3, 'evening', 'c5_3'], [4, 'morning', 'c5_4']] });
 
   G.PEOPLE.censor = { name: '"Censor"', role: 'OA SqL · Academy instructor', img: 'censor' };
   G.PEOPLE.veilc = { name: 'The man with no patch', role: 'VEIL · no designation', img: 'veil-ofc' };
-
-  G.extend('c4_end', {
-    after: (s) => {
-      if (s.c4 && s.c4.endDay === undefined) s.c4.endDay = s.day;
-    },
-    text: (lines) => lines.map((l) => (typeof l === 'string' && l.startsWith('@sys CHAPTER FOUR COMPLETE') ? '@sys CHAPTER FOUR COMPLETE. Chapter Five begins in a few days.' : l)),
-  });
-  const ready = (s) => s.phase === 'union' && s.c4 && s.c4.done && !s.c5 && s.day >= (s.c4.endDay !== undefined ? s.c4.endDay : -99) + 2;
-  G.beats.push({ id: 'c5_go', time: 'morning', when: ready, scene: 'c5_start' });
-  const stage = (id, n, time, scene) => G.beats.push({ id, time, when: (s) => s.c5 && s.c5.stage === n && s.day >= s.c5.next, scene });
-  stage('c5s1', 1, 'evening', 'c5_1');
-  stage('c5s2', 2, 'morning', 'c5_2');
-  stage('c5s3', 3, 'evening', 'c5_3');
-  stage('c5s4', 4, 'morning', 'c5_4');
 
   /* Academy days replace the duty board's first line while you are a candidate */
   G.extend('u_board', {

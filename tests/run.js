@@ -126,6 +126,21 @@ suite('static: every scene, check and duty target exists', async (browser) => {
   return missing.concat(errors);
 });
 
+suite('engine: an enter hook returning a non-scene string is reported, not followed', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const r = await page.evaluate(() => {
+    G.addScenes({ t_guard: { enter: (s) => (s.flags.t_guard = 'held'), text: ['guard ok'], choices: [{ t: 'Back', go: 'title' }] } });
+    G.newGame();
+    G.goto('t_guard');
+    return { scene: G.state().scene, text: document.querySelector('#story .block.current').textContent };
+  });
+  const out = [];
+  if (r.scene !== 't_guard' || !/guard ok/.test(r.text)) out.push('scene did not render: ' + JSON.stringify(r));
+  const reported = errors.filter((e) => /Ignored non-scene return "held"/.test(e));
+  if (!reported.length) out.push('no console error for the stray return value');
+  return out.concat(errors.filter((e) => !/Ignored non-scene return "held"/.test(e)));
+});
+
 suite('static: every image the code names exists on disk', async () => {
   const files = ['index.html', 'manifest.json', 'css/style.css', 'sw.js', ...fs.readdirSync(path.join(ROOT, 'js')).filter((f) => f.endsWith('.js')).map((f) => 'js/' + f), ...fs.readdirSync(path.join(ROOT, 'js/content')).map((f) => 'js/content/' + f)];
   const out = [];
@@ -341,154 +356,100 @@ suite('chapter 3 for every division', async (browser) => {
   return out.concat(errors);
 });
 
-suite('chapter 4 for every division (squad, district, crowd)', async (browser) => {
+/* Chapters 4 onward share one setup: a Union unit with every earlier chapter done, two days
+   after the last one ended. `tweak(s, div, i)` runs in the page (it is sent as source, so it
+   can use G but not variables from this file) to set rank, resistance, relations and flags. */
+const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106 };
+async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) {
   const { page, errors } = await openGame(browser);
   const out = [];
   const ends = {};
   const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
-  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
+  for (const [i, div] of (runs || (QUICK ? divs : divs.concat(divs))).entries()) {
     await page.evaluate(
-      ({ div, i }) => {
-        try {
-          localStorage.clear();
-        } catch (e) {}
-        G.newGame();
-        const s = G.state();
-        Object.assign(s, { name: 'Tester', phase: 'union', rank: div === 'UNION' || div === 'JURY' ? '01' : '02', div, day: 50, merit: 150, lp: 12, res: i % 2 ? 35 : 5, chapter: 3 });
-        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
-        Object.assign(s.rel, { rook: 30, granite: 20, ilse: 10, tinker: 10, tomas: 10 });
-        s.mem.grade = 'Graded';
-        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
-        s.c2 = { div, stage: 9, next: 20 };
-        s.flags.c2_end_day = 20;
-        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held', intel: 3 };
-        if (i % 3 === 0) {
-          const inf = G._sys.recruit(s, { cid: '12345', type: 'standard', face: 2 }, true);
-          inf.trust = 50;
-        }
-        G.goto('u_board');
-      },
-      { div, i }
-    );
-    const w = await randomWalk(page, QUICK ? 300 : 450, { stopAt: ['c4_end'] });
-    out.push(...w.problems.map((p) => div + ': ' + p));
-    if (!w.seen.c4_start) out.push(div + ': chapter 4 never started');
-    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
-  }
-  if (!ends.c4_end) out.push('no run reached c4_end: ' + JSON.stringify(ends));
-  return out.concat(errors);
-});
-
-suite('chapter 5 for every division (Academy, VEIL)', async (browser) => {
-  const { page, errors } = await openGame(browser);
-  const out = [];
-  const ends = {};
-  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
-  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
-    await page.evaluate(
-      ({ div, i }) => {
+      ({ n, div, i, src, CH_END }) => {
         try { localStorage.clear(); } catch (e) {}
         G.newGame();
         const s = G.state();
-        Object.assign(s, { name: 'Tester', phase: 'union', rank: i % 2 ? 'EpU' : '01', div, day: 70, merit: 200, lp: 22, res: i % 3 ? 35 : 5, chapter: 4 });
+        Object.assign(s, { name: 'Tester', phase: 'union', div, day: CH_END[n - 1] + 4, chapter: n - 1 });
         Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
         Object.assign(s.rel, { rook: 30, granite: 20, tomas: 10 });
         s.mem.grade = 'Graded';
         s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
         s.c2 = { div, stage: 9, next: 20, arc: true, done: true };
         s.flags.c2_end_day = 20;
-        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held', intel: 3 };
-        s.c4 = { stage: 9, done: true, endDay: 66, sentName: '"Salt"' };
-        G.formSquad(s);
+        if (n > 3) s.c3 = { stage: 5, done: true, endDay: CH_END[3], result: 'held', intel: 3 };
+        if (n > 4) s.c4 = { stage: 9, done: true, endDay: CH_END[4], sentName: '"Salt"' };
+        if (n > 5) s.c5 = { stage: 9, done: true, endDay: CH_END[5], veil: 'accepted' };
+        if (n > 6) s.c6 = { stage: 9, done: true, endDay: CH_END[6], train: 'stopped', kinPart: 'promise', kin: { key: 'mira', name: 'Mira', img: 'mira' } };
+        new Function('return ' + src)()(s, div, i);
         G.goto('u_board');
       },
-      { div, i }
+      { n, div, i, src: tweak.toString(), CH_END }
     );
-    const w = await randomWalk(page, QUICK ? 350 : 500, { stopAt: ['c5_end'], prefer: /VEIL|Go\.|Follow her|COMMAND/ });
+    const w = await randomWalk(page, steps, { stopAt: stopAt || ['c' + n + '_end'], prefer });
     out.push(...w.problems.map((p) => div + ': ' + p));
-    if (!w.seen.c5_start) out.push(div + ': chapter 5 never started');
+    if (!w.seen['c' + n + '_start']) out.push(div + ': chapter ' + n + ' never started');
     ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
   }
-  if (!ends.c5_end) out.push('no run reached c5_end: ' + JSON.stringify(ends));
-  return out.concat(errors);
-});
+  if (!(stopAt || ['c' + n + '_end']).some((e) => ends[e])) out.push('no run reached c' + n + '_end: ' + JSON.stringify(ends));
+  return { out: out.concat(errors), page };
+}
 
-suite('chapter 6 for every division (Collection, the railway)', async (browser) => {
-  const { page, errors } = await openGame(browser);
-  const out = [];
-  const ends = {};
-  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
-  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
-    await page.evaluate(
-      ({ div, i }) => {
-        try { localStorage.clear(); } catch (e) {}
-        G.newGame();
-        const s = G.state();
-        Object.assign(s, { name: 'Tester', phase: 'union', rank: i % 2 ? 'OfC' : 'EpU', div, day: 90, merit: 260, lp: 25, res: i % 3 ? 35 : 5, chapter: 5 });
-        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
-        Object.assign(s.rel, { rook: 30, granite: 20, tomas: 10 });
-        if (i % 2) s.rel.mira = 40;
-        s.mem.grade = 'Graded';
-        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
-        if (i % 3 === 0) s.flags.veil_shadow = true;
-        s.c2 = { div, stage: 9, next: 20, arc: true, done: true };
-        s.flags.c2_end_day = 20;
-        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held' };
-        s.c4 = { stage: 9, done: true, endDay: 66, sentName: '"Salt"' };
-        s.c5 = { stage: 9, done: true, endDay: 86, veil: 'accepted' };
-        G.formSquad(s);
-        G.goto('u_board');
-      },
-      { div, i }
-    );
-    const w = await randomWalk(page, QUICK ? 350 : 500, { stopAt: ['c6_end'] });
-    out.push(...w.problems.map((p) => div + ': ' + p));
-    if (!w.seen.c6_start) out.push(div + ': chapter 6 never started');
-    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
-  }
-  if (!ends.c6_end) out.push('no run reached c6_end: ' + JSON.stringify(ends));
-  return out.concat(errors);
-});
+suite('chapter 4 for every division (squad, district, crowd)', async (browser) =>
+  (await chapterSuite(browser, {
+    n: 4,
+    steps: QUICK ? 300 : 450,
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: div === 'UNION' || div === 'JURY' ? '01' : '02', merit: 150, lp: 12, res: i % 2 ? 35 : 5 });
+      Object.assign(s.rel, { ilse: 10, tinker: 10 });
+      s.c2 = { div, stage: 9, next: 20 };
+      if (i % 3 === 0) G._sys.recruit(s, { cid: '12345', type: 'standard', face: 2 }, true).trust = 50;
+    },
+  })).out
+);
+
+suite('chapter 5 for every division (Academy, VEIL)', async (browser) =>
+  (await chapterSuite(browser, {
+    n: 5,
+    steps: QUICK ? 350 : 500,
+    prefer: /VEIL|Go\.|Follow her|COMMAND/,
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: i % 2 ? 'EpU' : '01', merit: 200, lp: 22, res: i % 3 ? 35 : 5 });
+      G.formSquad(s);
+    },
+  })).out
+);
+
+suite('chapter 6 for every division (Collection, the railway)', async (browser) =>
+  (await chapterSuite(browser, {
+    n: 6,
+    steps: QUICK ? 350 : 500,
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: i % 2 ? 'OfC' : 'EpU', merit: 260, lp: 25, res: i % 3 ? 35 : 5 });
+      if (i % 2) s.rel.mira = 40;
+      if (i % 3 === 0) s.flags.veil_shadow = true;
+      G.formSquad(s);
+    },
+  })).out
+);
 
 suite('chapter 7 for every division (Anticitizen One)', async (browser) => {
-  const { page, errors } = await openGame(browser);
-  const out = [];
-  const ends = {};
-  const nights = {};
   const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
-  for (const [i, div] of (QUICK ? divs.concat(divs.slice(0, 3)) : divs.concat(divs, divs)).entries()) {
-    await page.evaluate(
-      ({ div, i }) => {
-        try { localStorage.clear(); } catch (e) {}
-        G.newGame();
-        const s = G.state();
-        Object.assign(s, { name: 'Tester', phase: 'union', rank: i % 2 ? 'OfC' : 'EpU', div, day: 110, merit: 300, lp: 30, res: i % 3 ? 35 : 5, chapter: 6 });
-        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
-        Object.assign(s.rel, { rook: 30, granite: 20, tomas: 10, mira: 40 });
-        s.mem.grade = 'Graded';
-        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
-        if (i % 3 === 0) s.flags.veil_shadow = true;
-        s.c2 = { div, stage: 9, next: 20, arc: true, done: true };
-        s.flags.c2_end_day = 20;
-        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held' };
-        s.c4 = { stage: 9, done: true, endDay: 66, sentName: '"Salt"' };
-        s.c5 = { stage: 9, done: true, endDay: 86, veil: 'accepted' };
-        s.c6 = { stage: 9, done: true, endDay: 106, train: i % 2 ? 'ran' : 'stopped', kinPart: 'promise', kin: { key: 'mira', name: 'Mira', img: 'mira' } };
-        G.formSquad(s);
-        G.goto('u_board');
-      },
-      { div, i }
-    );
-    const w = await randomWalk(page, QUICK ? 350 : 500, { stopAt: ['c7_end', 'disc_tribunal'] });
-    out.push(...w.problems.map((p) => div + ': ' + p));
-    if (!w.seen.c7_start) out.push(div + ': chapter 7 never started');
-    const n = await page.evaluate(() => G.state().c7 && G.state().c7.night);
-    nights[n || 'none'] = (nights[n || 'none'] || 0) + 1;
-    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
-  }
-  if (!ends.c7_end && !ends.disc_tribunal) out.push('no run reached c7_end: ' + JSON.stringify(ends));
-  console.log('    ch7 nights:', JSON.stringify(nights));
-  return out.concat(errors);
+  const { out, page } = await chapterSuite(browser, {
+    n: 7,
+    steps: QUICK ? 350 : 500,
+    runs: QUICK ? divs.concat(divs.slice(0, 3)) : divs.concat(divs, divs),
+    stopAt: ['c7_end', 'disc_tribunal'],
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: i % 2 ? 'OfC' : 'EpU', merit: 300, lp: 30, res: i % 3 ? 35 : 5 });
+      s.rel.mira = 40;
+      if (i % 3 === 0) s.flags.veil_shadow = true;
+      s.c6.train = i % 2 ? 'ran' : 'stopped';
+      G.formSquad(s);
+    },
+  });
+  return out;
 });
 
 suite('division transfer exam at grade 01', async (browser) => {

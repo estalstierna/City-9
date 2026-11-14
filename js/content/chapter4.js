@@ -6,7 +6,7 @@
    hot the plaza is; the crowd-control minigame is the day itself; your team is who stands with you.
    (Still no name and no face from City 17. Only the requests, and a letter.) */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const C = (s) => s.c4;
   const sup = (s) => (G.superiorOf ? G.superiorOf(s).name : 'Granite');
   const team = (s) => (s.squad && s.squad.formed ? G.squadActive(s) : []);
@@ -18,26 +18,7 @@
     if (!s.flags.tinker_arrested && s.rel.tinker !== undefined) return { key: 'tinker', name: 'The Tinker', img: 'tinker' };
     return { key: 'katya', name: 'Katya', img: 'katya' };
   };
-  const adv = (gap, extra) => (s) => {
-    s.c4.stage++;
-    s.c4.next = s.day + (gap === undefined ? 1 : gap);
-    return extra ? (typeof extra === 'function' ? extra(s) : extra) : null;
-  };
-
-  /* chapter three records the day it ended */
-  G.extend('c3_end', {
-    after: (s) => {
-      if (s.c3 && s.c3.endDay === undefined) s.c3.endDay = s.day;
-    },
-    text: (lines) => lines.map((l) => (typeof l === 'string' && l.startsWith('@sys CHAPTER THREE COMPLETE') ? '@sys CHAPTER THREE COMPLETE. Chapter Four begins in a few days.' : l)),
-  });
-  const ready = (s) => s.phase === 'union' && s.c3 && s.c3.done && !s.c4 && s.day >= (s.c3.endDay !== undefined ? s.c3.endDay : -99) + 2;
-
-  G.beats.push({ id: 'c4_go', time: 'morning', when: ready, scene: 'c4_start' });
-  const stage = (id, n, time, scene) => G.beats.push({ id, time, when: (s) => s.c4 && s.c4.stage === n && s.day >= s.c4.next, scene });
-  stage('c4s1', 1, 'evening', 'c4_1');
-  stage('c4s2', 2, 'morning', 'c4_2');
-  stage('c4s3', 3, 'morning', 'c4_3');
+  const { adv, set } = G.chapter({ n: 4, stages: [[1, 'evening', 'c4_1'], [2, 'morning', 'c4_2'], [3, 'morning', 'c4_3']] });
 
   /* the ration cut on every hatch notice while it lasts */
   G.extend('u_board', {

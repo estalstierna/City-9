@@ -5,7 +5,7 @@
    Scene usage: mini: { type: 'crowd', opts: { sectors, seconds, units, rate, start, events, block }, pass, fail, skill: 'authority' } */
 (function () {
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
   const DEFAULT_EVENTS = [
     'A woman screams that her card was refused',

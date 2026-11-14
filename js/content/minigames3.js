@@ -11,7 +11,7 @@
 (function () {
   G.MINIGAMES = G.MINIGAMES || {};
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const lvl = (k) => ((G.state().skills || {})[k] || 0);
   const shell = (cls, title, help) => {
     const root = document.createElement('div');

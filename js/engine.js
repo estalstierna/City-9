@@ -561,18 +561,26 @@
     }
     S.scene = id;
     S.visits[id] = (S.visits[id] || 0) + 1;
-    const redirect = (r) => typeof r === 'string' && r !== id;
+    /* A hook redirects by returning a scene id. Any other string is almost always an
+       assignment used as an arrow-function body — (s) => (s.x = 'held') — so it is
+       reported and ignored instead of sending the player to a "scene not found" page. */
+    const redirect = (r, where) => {
+      if (typeof r !== 'string' || r === id) return false;
+      if (G.scenes[r]) return true;
+      console.error(`Ignored non-scene return "${r}" from ${where} of scene "${id}" (wrap the arrow body in braces)`);
+      return false;
+    };
     for (const e of exts(id)) {
       const r = e.before && e.before(S, G);
-      if (redirect(r)) return G.goto(r, depth + 1);
+      if (redirect(r, 'extend.before')) return G.goto(r, depth + 1);
     }
     if (sc.enter) {
       const r = sc.enter(S, G);
-      if (redirect(r)) return G.goto(r, depth + 1);
+      if (redirect(r, 'enter')) return G.goto(r, depth + 1);
     }
     for (const e of exts(id)) {
       const r = e.after && e.after(S, G);
-      if (redirect(r)) return G.goto(r, depth + 1);
+      if (redirect(r, 'extend.after')) return G.goto(r, depth + 1);
     }
     if (!sc.safe && !sc.ending) {
       if (S.susp >= 100) return G.goto('end_amputated', depth + 1);

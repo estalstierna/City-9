@@ -3,7 +3,7 @@
    existing scenes instead of rewriting them. Applies to every division. */
 (function () {
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
   /* ------------------------------------------------------------ state */
   const ensure = (s) => {

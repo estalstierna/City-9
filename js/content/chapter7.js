@@ -5,12 +5,7 @@
    what you do on the day the screens chant, and which side you are on when D5 rises.
    He is named only by his Union designation: Anticitizen One. No name, no face. */
 (function () {
-  const adv = (gap, extra) => (s) => {
-    s.c7.stage++;
-    s.c7.next = s.day + (gap === undefined ? 1 : gap);
-    return extra ? (typeof extra === 'function' ? extra(s) : extra) : null;
-  };
-  const set = (o, fx) => (s) => (Object.assign(s.c7, o), typeof fx === 'function' ? fx(s) : fx || null);
+  const { adv, set } = G.chapter({ n: 7, stages: [[1, 'evening', 'c7_1'], [2, 'morning', 'c7_2'], [3, 'evening', 'c7_3']] });
   const sup = (s) => (G.superiorOf ? G.superiorOf(s).name : 'Your officer');
   const veil = (s) => !!s.flags.veil_shadow;
   const contact = (s) => {
@@ -18,19 +13,6 @@
     if (s.rel.ilse !== undefined && !s.flags.ilse_gone && !s.flags.ilse_arrested) return { key: 'ilse', name: 'Ilse', img: 'ilse' };
     return { key: 'katya', name: 'Katya', img: 'katya' };
   };
-
-  G.extend('c6_end', {
-    after: (s) => {
-      if (s.c6 && s.c6.endDay === undefined) s.c6.endDay = s.day;
-    },
-    text: (lines) => lines.map((l) => (typeof l === 'string' && l.startsWith('@sys CHAPTER SIX COMPLETE') ? '@sys CHAPTER SIX COMPLETE. Chapter Seven begins in a few days.' : l)),
-  });
-  const ready = (s) => s.phase === 'union' && s.c6 && s.c6.done && !s.c7 && s.day >= (s.c6.endDay !== undefined ? s.c6.endDay : -99) + 2;
-  G.beats.push({ id: 'c7_go', time: 'morning', when: ready, scene: 'c7_start' });
-  const stage = (id, n, time, scene) => G.beats.push({ id, time, when: (s) => s.c7 && s.c7.stage === n && s.day >= s.c7.next, scene });
-  stage('c7s1', 1, 'evening', 'c7_1');
-  stage('c7s2', 2, 'morning', 'c7_2');
-  stage('c7s3', 3, 'evening', 'c7_3');
 
   G.extend('u_board', {
     text: (lines, s) => {

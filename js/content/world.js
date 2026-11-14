@@ -6,7 +6,7 @@
    - Evenings: a rotating choice of places, sometimes a knock at the door first.
    - Echoes: people from your case files come back. */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
 
   /* ========================================================== BLOCKS */

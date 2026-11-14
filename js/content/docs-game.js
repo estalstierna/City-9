@@ -66,7 +66,7 @@
   const STAMP_HEX = { blue: '#2f6fb5', red: '#a3262a' };
 
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const mutateCid = (cid) => {
     const i = rint(0, 4);
     const d = String((+cid[i] + rint(1, 8)) % 10);

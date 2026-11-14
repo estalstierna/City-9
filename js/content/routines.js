@@ -5,7 +5,7 @@
    Format: { duty, id, title, if?(s), text: [..] | fn(s), choices: [{ t, tag?, tagCls?, fx?, check?: { skill, diff, okFx?, failFx? }, go? }] } */
 (function () {
   const END = 'u_duty_end';
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
 
   const V = [

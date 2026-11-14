@@ -5,7 +5,7 @@
    Every division gets its own assignment in the middle; the night itself is shared.
    (The man from City 17 is never named or seen here. The relay only gets noisier.) */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const DIVS = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
 
   G.PEOPLE.vigil = { name: '"Vigil"', role: 'OA CmD · Task Force LOCK', img: 'vigil' };

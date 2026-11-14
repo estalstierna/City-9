@@ -5,7 +5,7 @@
    - rumours: what happened in the other divisions' stories reaches you as talk in the mess;
    - echoes: your own chapter-two choices come back in chapters three and four. */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
   G.addCodex({
     war: {

@@ -6,7 +6,7 @@
    Chapter-two arcs for these divisions live in arcs.js. */
 (function () {
   const END = 'u_duty_end';
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
 
   /* ================================================================ CAST */
   const P = (key, name, role, img) => (G.PEOPLE[key] = { name, role, img });

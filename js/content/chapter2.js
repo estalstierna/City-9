@@ -1,7 +1,7 @@
 /* CHAPTER TWO — UNION: "The Quota"  ·  JURY: "The Leak"
    Grade 03 → 02. Story beats are staged per division and interleave with the duty board. */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  const pick = G.pick;
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
 
   G.PEOPLE.wick = { name: '"Wick"', role: 'UNION 05 · your trainee', img: 'wick' };

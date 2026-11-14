@@ -6,13 +6,8 @@
    VEIL, if you are in its shadow, wants the railway alive so it can follow it north.
    The man from City 17 is still never named or seen. */
 (function () {
-  const pick = (a) => a[Math.floor(Math.random() * a.length)];
-  const adv = (gap, extra) => (s) => {
-    s.c6.stage++;
-    s.c6.next = s.day + (gap === undefined ? 1 : gap);
-    return extra ? (typeof extra === 'function' ? extra(s) : extra) : null;
-  };
-  const set = (o, fx) => (s) => (Object.assign(s.c6, o), typeof fx === 'function' ? fx(s) : fx || null);
+  const pick = G.pick;
+  const { adv, set } = G.chapter({ n: 6, stages: [[1, 'evening', 'c6_1'], [2, 'morning', 'c6_2'], [3, 'evening', 'c6_3'], [4, 'evening', 'c6_4']] });
   const team = (s) => (s.squad && s.squad.formed ? G.squadActive(s) : []);
   const sup = (s) => (G.superiorOf ? G.superiorOf(s).name : 'Your officer');
   const veil = (s) => !!s.flags.veil_shadow;
@@ -24,20 +19,6 @@
     if (s.rel.halloran !== undefined && !s.flags.halloran_relocated) return { key: 'halloran', name: 'Old Halloran', img: 'halloran', who: 'your neighbour from Stack 14' };
     return { key: 'katya', name: 'Katya', img: 'katya', who: 'the girl from the lock culvert' };
   };
-
-  G.extend('c5_end', {
-    after: (s) => {
-      if (s.c5 && s.c5.endDay === undefined) s.c5.endDay = s.day;
-    },
-    text: (lines) => lines.map((l) => (typeof l === 'string' && l.startsWith('@sys CHAPTER FIVE COMPLETE') ? '@sys CHAPTER FIVE COMPLETE. Chapter Six begins in a few days.' : l)),
-  });
-  const ready = (s) => s.phase === 'union' && s.c5 && s.c5.done && !s.c6 && s.day >= (s.c5.endDay !== undefined ? s.c5.endDay : -99) + 2;
-  G.beats.push({ id: 'c6_go', time: 'morning', when: ready, scene: 'c6_start' });
-  const stage = (id, n, time, scene) => G.beats.push({ id, time, when: (s) => s.c6 && s.c6.stage === n && s.day >= s.c6.next, scene });
-  stage('c6s1', 1, 'evening', 'c6_1');
-  stage('c6s2', 2, 'morning', 'c6_2');
-  stage('c6s3', 3, 'evening', 'c6_3');
-  stage('c6s4', 4, 'evening', 'c6_4');
 
   G.extend('u_board', {
     text: (lines, s) => {
