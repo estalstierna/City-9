@@ -95,7 +95,7 @@
   /* Bump SAVE_VERSION when the shape of the state changes, and push a migration that
      upgrades older saves: G.MIGRATIONS.push({ to: 3, fn: (s) => { ... } }). Fields that simply
      appear in G.fresh() need no migration: loading merges every saved object over its default. */
-  G.SAVE_VERSION = 3;
+  G.SAVE_VERSION = 4;
   G.MIGRATIONS = [
     {
       to: 2,
@@ -109,6 +109,13 @@
       fn: (s) => {
         /* v2 → v3: codex tracks unread entries; everything unlocked before counts as read */
         s.codexSeen = (s.codex || []).slice();
+      },
+    },
+    {
+      to: 4,
+      fn: (s) => {
+        /* v3 → v4: field notes; a unit already in service has learnt the basics the hard way */
+        if (s.phase === 'union' && (s.day || 0) > 3 && G.HINTS) s.hintsSeen = G.HINTS.map((h) => h.id);
       },
     },
   ];
@@ -467,6 +474,13 @@
     });
     if (n) block.append(list);
     story.append(block);
+    (G.afterRender || []).forEach((f) => {
+      try {
+        f(sc, id, block);
+      } catch (e) {
+        console.error(e);
+      }
+    });
     requestAnimationFrame(() => block.scrollIntoView({ behavior: G.reducedMotion() ? 'auto' : 'smooth', block: 'start' }));
     updateSidebar();
   }
@@ -944,6 +958,7 @@
         <button data-a="new">Records &amp; new game</button>
       </div>
       <div class="menu textsize"><span>Text size</span><button data-a="fs-">A−</button><button data-a="fs+">A+</button></div>
+      <div class="menu textsize"><span>Tips</span><button data-a="tips">${prefs().tips === false ? 'Off' : 'On'}</button></div>
       <div class="menu textsize"><span>Sound</span><button data-a="snd">${G.audio && G.audio.on() ? 'On' : 'Off'}</button>
       </div>
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
@@ -962,6 +977,13 @@
         toast('Copy the code to keep your record.');
       }
       if (a === 'import' && G.importSave($('#save-code').value)) closeModal();
+      if (a === 'tips') {
+        const p = prefs();
+        p.tips = p.tips === false;
+        savePrefs(p);
+        e.target.textContent = p.tips ? 'On' : 'Off';
+        return;
+      }
       if (a === 'snd' && G.audio) {
         e.target.textContent = G.audio.toggle() ? 'On' : 'Off';
         return;
@@ -992,6 +1014,9 @@
       localStorage.setItem('c9rp_prefs', JSON.stringify(p));
     } catch (e) {}
   }
+  G.prefs = prefs;
+  G.savePrefs = savePrefs;
+  G.afterRender = G.afterRender || [];
   G.TEXT_SIZES = [15, 17, 19, 21];
   G.applyTextSize = () => {
     const n = prefs().text || 17;

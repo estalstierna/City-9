@@ -591,3 +591,12 @@ button, .choice, .nav-btn, .hz, .rep-row { touch-action: manipulation; -webkit-t
 .sm-row b { color: var(--accent); font-size: 20px; }
 .tl-bars .suit span { background: #6fbf73; }
 @media (max-width: 600px) { .triage .m3-body { grid-template-columns: 1fr 1fr; } .watch .m3-body { grid-template-columns: repeat(4, 1fr); } }
+
+/* onboarding field notes */
+.hint { border: 1px solid #5a4a22; border-left: 3px solid var(--amber); background: rgba(226,168,63,.06); border-radius: 3px; padding: 10px 12px; margin: 6px 0 14px; animation: fadein .4s ease both; }
+.hint-h { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); margin-bottom: 4px; }
+.hint-t { font-size: 14.5px; line-height: 1.5; }
+.hint-b { display: flex; gap: 8px; margin-top: 8px; }
+.hint-b button { font-family: var(--mono); font-size: 12px; padding: 6px 10px; background: none; border: 1px solid var(--line); color: var(--dim); border-radius: 3px; cursor: pointer; }
+.hint-b button:first-child { color: var(--amber); border-color: #5a4a22; }
+.block.past .hint { display: none; }

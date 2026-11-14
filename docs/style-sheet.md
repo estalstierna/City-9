@@ -1896,6 +1896,16 @@ Full prompt-text finns i chatthistoriken (2026-11-13).
 
 Full prompt-text finns i chatthistoriken (2026-11-14). Enheter följer regeln för designationspatch; VEIL har patchen täckt av svart tejp.
 
+## 5p. KAPITEL 5
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| K11 Censor (OA SqL) | `portraits/censor.jpg` | portraits/mira · ranks-command · uniform-oa — violett kamrand, 1 brett streck + 2 stjärnor, patch "CCA.C9.D1" / "OA-SqL-00733" |
+| E34 Officer Academy | `env/e34-academy.jpg` | uniform-oa · spire-ref · env/e04-nexus · env/e01-city |
+| E35 VEIL-mötet i trapphuset | `env/e35-veil-stairwell.jpg` | portraits/veil-ofc · env/e02-apartment · env/e01-city |
+
+Full prompt-text finns i chatthistoriken (2026-11-14).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
