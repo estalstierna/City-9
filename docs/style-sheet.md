@@ -1956,6 +1956,14 @@ Full prompt-text finns i chatthistoriken (2026-11-14).
 
 **Klara (2026-11-14):** E39 (start, Plaza 5, codex), E40 (natten), E41 (slutet om du lät D5 få sin natt) inlagda.
 
+## 5t. SKANNERDRÖNARE
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| D1 SC-9 "Lantern", konceptark | `drone-scanner.jpg` | 1 master-a · 2 emblems-new · 3 uniform-grid · 4 vehicle-ptv |
+
+Egen design: en smal sexkantig "lykta" med två kanalfläktar, en roterande sensorkrage och en blixtlist. Det är inte ett klot med ett stort objektiv. GRID sköter drönaren, och JURY granskar det den filmar. Medborgarna kallar den "the lantern".
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
