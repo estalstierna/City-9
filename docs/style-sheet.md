@@ -1873,6 +1873,27 @@ Generiska porträtt för patrullgruppen och andra namnlösa enheter. Tre porträ
 
 Full prompt-text finns i chatthistoriken (2026-11-13).
 
+## 5o. DIVISIONSMILJÖER, BIPERSONER OCH VEIL (2026-11-14)
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| P-fix Manskapsporträtt | ersätter `portraits/units-p1/p2/p5` | arket som ska rättas |
+| E26 HELIX-avdelningen | `env/e26-helix-ward.jpg` | uniform-helix · env/e04-nexus · env/e01-city |
+| E27 Våningen utan nummer | `env/e27-vector-lab.jpg` | uniform-vector · env/e07-level4 · env/e01-city |
+| E28 404-muren och Old Town | `env/e28-404-wall.jpg` | uniform-spear · spire-ref · env/e01-city |
+| E29 Hardpoint D1-3 | `env/e29-hardpoint.jpg` | uniform-razor · citizen-cwu · env/e11-gate · env/e01-city |
+| E30 The Works | `env/e30-works.jpg` | citizen-base · citizen-cwu · uniform-helix · env/e01-city |
+| E31 Spårvagnsdepån | `env/e31-tram-depot.jpg` | uniform-spear · env/e12-railyard · env/e01-city |
+| E32 Spirans fot | `env/e32-spire-base.jpg` | spire-ref · uniform-grid · env/e20-junction · env/e01-city |
+| E33 Block 11 | `env/e33-block11.jpg` | citizen-base · env/e02-apartment · env/e01-city |
+| K6 Specimen Nine | `portraits/nine.jpg` | portraits/mira · env/e27 (om klar) |
+| K7 Dana | `portraits/dana.jpg` | portraits/mira · citizen-base |
+| K8 Overseer Strand | `portraits/strand.jpg` | portraits/granite · flag-cca |
+| K9 Administratören | `portraits/administrator.jpg` | portraits/granite · flag-city09 |
+| K10 VEIL-officer | `portraits/veil-ofc.jpg` | portraits/mira · uniform-veil · ref/ofc-helmet |
+
+Full prompt-text finns i chatthistoriken (2026-11-14). Enheter följer regeln för designationspatch; VEIL har patchen täckt av svart tejp.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
