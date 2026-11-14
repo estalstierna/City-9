@@ -740,7 +740,7 @@
         <tr><td>After a final warning</td><td>Three further strikes: tribunal.</td></tr>
         <tr><td>GRAVE</td><td>Collaboration with anticitizens. Straight to tribunal.</td></tr>
       </table>
-      <p>Strikes expire after eight clean days of service. A final warning lifts after twenty. Tribunals end in deservicement — removal from service — and, where collaboration is proven, in the other meaning of the word.</p>`,
+      <p>Strikes expire after six clean days of service. A final warning lifts after twenty. Tribunals end in deservicement — removal from service — and, where collaboration is proven, in the other meaning of the word.</p>`,
     },
     board: {
       title: 'Promotion boards',

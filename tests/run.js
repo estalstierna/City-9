@@ -444,6 +444,57 @@ suite('crowd control minigame: winnable by play, losable by neglect', async (bro
   return out;
 });
 
+suite('circuit and tail minigames', async (browser) => {
+  const out = [];
+  const { page, errors } = await openGame(browser, devices['iPhone 13']);
+  const solv = await page.evaluate(() => {
+    const T = G._circuitTest;
+    let bad = 0;
+    for (let i = 0; i < 300; i++) {
+      const b = T.makeBoard(4 + (i % 2), 5 + (i % 2));
+      if (!b) { bad++; continue; }
+      const g = b.grid;
+      b.grid = b.sol;
+      if (!T.powered(b).done) bad++;
+      b.grid = g;
+    }
+    return bad;
+  });
+  if (solv) out.push(solv + ' of 300 circuit boards were unsolvable');
+  /* play the circuit by setting the solution through rotations */
+  await page.evaluate(SERVICE, { div: 'GRID', rank: '03' });
+  await page.evaluate(() => G.goto('mg_grid'));
+  await page.waitForTimeout(300);
+  const solved = await page.evaluate(async () => {
+    const tiles = [...document.querySelectorAll('#story .block.current .ci-tile')];
+    for (let k = 0; k < 4 * tiles.length && G.state().scene === 'mg_grid'; k++) {
+      tiles[k % tiles.length].click();
+    }
+    return G.state().scene;
+  });
+  await page.waitForTimeout(600);
+  const sc = await page.evaluate(() => G.state().scene);
+  if (!/^mg_grid/.test(sc)) out.push('circuit scene left unexpectedly: ' + sc);
+  /* tail: always hang back -> lose; mostly keep pace -> some result */
+  await page.evaluate(() => G.goto('mg_tail'));
+  await page.waitForTimeout(300);
+  for (let i = 0; i < 12; i++) {
+    const done = await page.evaluate(() => {
+      const b = document.querySelector('#story .block.current .tl-btns [data-d="far"]');
+      if (!b || b.disabled) return true;
+      b.click();
+      return false;
+    });
+    if (done) break;
+  }
+  await page.waitForTimeout(500);
+  const t = await page.evaluate(() => G.state().scene);
+  if (t !== 'mg_tail_bad') out.push('hanging back every block should lose the subject, got ' + t);
+  const ovf = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
+  if (ovf) out.push('minigame overflows on phone');
+  return out.concat(errors);
+});
+
 suite('document inspection minigame on phone and desktop', async (browser) => {
   const out = [];
   for (const opts of [{ viewport: { width: 1300, height: 950 } }, devices['iPhone 13']]) {

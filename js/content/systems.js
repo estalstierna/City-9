@@ -82,7 +82,7 @@
       else d.pending.push({ sev: q.sev, reason: q.reason });
       return false;
     });
-    if (d.w > 0 && s.day - d.last >= 8 && !d.pending.length) {
+    if (d.w > 0 && s.day - d.last >= 6 && !d.pending.length) {
       d.w--;
       d.last = s.day;
       G.note('DISCIPLINARY STRIKE EXPIRED', 'codex');
@@ -805,8 +805,11 @@
         if (d.demotions) mods.push(['Prior demotion', -1]);
         if (s.susp >= 50) mods.push(['JURY observer annotation', -1]);
         pb.mods = mods;
-        pb.total = pb.score + Math.max(0, pb.os) + mods.reduce((n, m) => n + m[1], 0);
-        pb.need = ['OfC', 'SqL'].includes(pb.next) ? 6 : pb.next === 'DvL' ? 7 : 5;
+        /* penalties never make a board impossible: together they cost at most 2 points */
+        const neg = Math.max(-2, mods.filter((m) => m[1] < 0).reduce((n, m) => n + m[1], 0));
+        pb.total = pb.score + Math.max(0, pb.os) + mods.filter((m) => m[1] > 0).reduce((n, m) => n + m[1], 0) + neg;
+        pb.regain = !!s.flags['passed_' + pb.next];
+        pb.need = ['OfC', 'SqL'].includes(pb.next) ? 6 : pb.next === 'DvL' ? 7 : pb.regain ? 4 : 5;
         pb.pass = pb.total >= pb.need;
         if (pb.pass) {
           if (pb.next === '03' && !s.flags.passed_03) {
@@ -817,8 +820,8 @@
             G.fx(s, { merit: 3, lp: 2 });
           }
         } else {
-          pb.retry = s.day + 3;
-          G.fx(s, { merit: -8 });
+          pb.retry = s.day + 2;
+          G.fx(s, { merit: -4 });
         }
       },
       title: 'Board decision',
@@ -833,7 +836,7 @@
             ? pb.exam
               ? `@say ${superior(s).name}|The board is satisfied. The field evaluation follows. Now.`
               : `@say ${superior(s).name}|${G.RANK_NAMES[s.rank]}. The board has spoken. Try to deserve it.`
-            : `@say ${superior(s).name}|Not today. Come back in three days with a better file, or a better memory.`,
+            : `@say ${superior(s).name}|Not today. Come back in two days with a better file, or a better memory.`,
           pb.pass && !pb.exam ? `@doc PROMOTION: ${G.desig(s)}` : null,
         ];
       },
