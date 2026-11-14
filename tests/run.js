@@ -741,6 +741,58 @@ suite('division minigames: triage, watch, breach, sample', async (browser) => {
   return out.concat(errors);
 });
 
+suite('GRID Lantern dock: drone search minigame and the first shift', async (browser) => {
+  const out = [];
+  const { page, errors } = await openGame(browser, devices['iPhone 13']);
+  await page.evaluate(SERVICE, { div: 'GRID', rank: '03', skill: 3 });
+  const play = async (scene, step, ms) => {
+    await page.evaluate((sc) => G.goto(sc), scene);
+    const t0 = Date.now();
+    while (Date.now() - t0 < ms) {
+      const sc = await page.evaluate(() => G.state().scene);
+      if (sc !== scene) return sc;
+      await page.evaluate(step);
+      await page.waitForTimeout(150);
+    }
+    return page.evaluate(() => G.state().scene);
+  };
+  const owned = await page.evaluate(() => !!G.duties.glantern && G.duties.glantern.if(G.state()));
+  if (!owned) out.push('Lantern dock is not a GRID duty');
+  /* finding the window wins; scanning only far corners runs out of charges */
+  let r = await play('glan_fly_r', () => {
+    const t = G._lanternTarget;
+    const b = t && document.querySelector(`#story .block.current .ln-win[data-r="${t.r}"][data-c="${t.c}"]`);
+    if (b && !b.disabled) b.click();
+  }, 15000);
+  if (r !== 'glan_fly_r_ok') out.push('lantern found the window but ended at ' + r);
+  r = await play('glan_fly_r', () => {
+    const t = G._lanternTarget;
+    const far = [...document.querySelectorAll('#story .block.current .ln-win:not(.scanned):not(:disabled)')].find((b) => Math.max(Math.abs(b.dataset.r - t.r), Math.abs(b.dataset.c - t.c)) >= 3);
+    if (far) far.click();
+  }, 15000);
+  if (r !== 'glan_fly_r_bad') out.push('lantern scanning only far windows should lose, got ' + r);
+  r = await play('glan_fly_r', () => {}, 60000);
+  if (r !== 'glan_fly_r_bad') out.push('lantern left alone should run out of battery, got ' + r);
+  /* the first shift, start to end, a few times */
+  const ends = {};
+  for (let i = 0; i < (QUICK ? 4 : 8); i++) {
+    await page.evaluate(() => { G.state().tokens = 10; G.goto('dd_glantern'); });
+    const w = await randomWalk(page, 80, {
+      stopAt: ['u_evening', 'u_night', 'u_board'],
+      each: () => {
+        const t = G._lanternTarget;
+        const b = t && document.querySelector(`#story .block.current .ln-win[data-r="${t.r}"][data-c="${t.c}"]`);
+        if (b && !b.disabled && Math.random() < 0.5) b.click();
+      },
+    });
+    out.push(...w.problems);
+    ['glan_roof', 'glan_repair', 'glan_film', 'glan_fly'].forEach((sc) => w.seen[sc] || out.push('first shift skipped ' + sc));
+    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
+  }
+  if (ends.none) out.push('first shift did not finish: ' + JSON.stringify(ends));
+  return out.concat(errors);
+});
+
 suite('document inspection minigame on phone and desktop', async (browser) => {
   const out = [];
   for (const opts of [{ viewport: { width: 1300, height: 950 } }, devices['iPhone 13']]) {

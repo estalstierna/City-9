@@ -621,3 +621,11 @@ body.anim-off .block > * { animation: none; }
 .vols .vol i { width: 40px; }
 .vols.muted { opacity: .4; }
 .vols .vol button { flex: 0 0 40px; }
+/* lantern (GRID drone search) */
+.lantern .ln-grid { display: grid; gap: 5px; padding: 8px; background: #0b1013; border: 1px solid var(--line); border-radius: 3px; }
+.ln-win { aspect-ratio: 3 / 4; min-height: 40px; background: linear-gradient(#1a2329, #12191d); border: 1px solid #2a363d; border-radius: 2px; color: var(--dim); font-family: var(--mono); font-size: 11px; cursor: pointer; padding: 0; }
+.ln-win:hover:not(:disabled) { border-color: var(--accent); }
+.ln-win.cold { background: #14222b; color: #6fa3c0; }
+.ln-win.warm { background: #3a2a14; color: #e2a83f; }
+.ln-win.hot { background: #4a1c18; color: #ff8a70; }
+.ln-win.hit, .ln-win.target { background: #f2f0e8; color: #111; border-color: #fff; box-shadow: 0 0 12px rgba(242,240,232,.6); }
