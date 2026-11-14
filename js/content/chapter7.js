@@ -52,6 +52,7 @@
       text: [
         '@big CHAPTER SEVEN',
         '@sys ALL DIVISIONS · ANTICITIZEN ONE',
+        '@img assets/img/env/e39-screens.webp|Plaza 5, 06:00',
         'At 06:00 every broadcast screen in City 9 goes white, then shows a single still image: a blurred figure in a doorway, too far from the camera to have a face. Beneath it, in the Union’s plain type, a designation.',
         '@doc ANTICITIZEN ONE\nWANTED FOR CRIMES AGAINST THE UNIVERSAL UNION.\nANY CITIZEN WITH INFORMATION WILL BE REWARDED.\nANY CITIZEN WHO SHELTERS THIS INDIVIDUAL WILL BE AMPUTATED.',
         'By 06:20 the first chalk lambda has appeared under the screen on Plaza 5. By 07:00 there is one under every screen in District 5.',
@@ -108,7 +109,7 @@
       checkpoint: true,
       title: 'Plaza 5 — the screens',
       text: (s) => [
-        '@img assets/img/env/e24-ration-day.webp|Plaza 5',
+        '@img assets/img/env/e39-screens.webp|Plaza 5 — the screens',
         'Sunday noon. The screens on Plaza 5 show the blurred figure for the hundredth time, and today the plaza does something it has never done: it starts to chant. Not words. One syllable, over and over, under its breath, so that no single mouth can be blamed. *Lam. Bda. Lam. Bda.*',
         'There is no Overwatch on the cinema roof. There is you, your teams, and three hundred people who have realised the same thing.',
       ],
@@ -145,7 +146,7 @@
         s.time = 'Night';
       },
       text: (s) => [
-        '@img assets/img/env/e23-shrike-stacks.webp|District 5, 21:00',
+        '@img assets/img/env/e40-dark-stairs.webp|Stack 14, 21:00',
         'At 21:00 every screen in City 9 goes dark at once, and then every light in District 5. In the silence you hear it start: doors opening on every landing of every Stack, feet on the stairs, a single voice shouting a single syllable, and then a thousand.',
         s.c7.posture === 'nexus' ? 'Your teams are on the Nexus steps, behind sandbags, facing a city that has gone dark.' : s.c7.posture === 'stacks' ? 'Your teams are on the stairs of Stack 14 when the lights go. The people coming down the stairs know your teams’ faces.' : 'Your teams hold the armoury cage and the Plaza 5 hatches. Whatever happens tonight, it will have to come through you to get guns or bread.',
         s.c7.side === 'cells' ? `On your radio, on a channel that is not a Union channel, ${s.c7.who.name}’s voice: *Now.*` : veil(s) ? 'In your earpiece, VEIL: *Let it begin. Then give us names.*' : '@radio All C9 units: civil disorder, all districts. Officers hold. Repeat, officers hold.',
@@ -250,6 +251,7 @@
       text: (s) => {
         const n = s.c7.night;
         return [
+          n === 'aside' ? '@img assets/img/env/e41-stack-flag.webp|Stack 14, dawn' : null,
           n === 'aside' ? 'There is a canal-cell flag on the roof of Stack 14 for nineteen hours before a Shrike burns it off. Somebody photographs it. By the end of the week the photograph is in every city on the freight line.' : n === 'held' ? 'District 5 is quiet. The chalk under the screens is scrubbed every morning and back every night.' : 'District 5 is quiet in the way a bruise is quiet.',
           '@radio …relayed from City 17: Anticitizen One has been sighted at the prison complex known as Nova Prospekt. All units on the freight lines north of City 9 are to report any train that does not keep its schedule…',
           'In the mess, a 05 nobody knows asks out loud what Anticitizen One looks like. Nobody answers. The screen above the urn shows the blurred figure in the doorway, and everyone looks at it, and nobody sees a face.',
@@ -264,7 +266,7 @@
   G.addCodex({
     anticitizen: {
       title: 'Anticitizen One',
-      body: `<p>The Union's designation for the individual sought since the incident in City 17. Broadcast to every city with a single blurred image — a figure in a doorway, too far from the camera for a face — and a reward.</p>
+      body: `<img src="assets/img/env/e39-screens.webp" alt="Anticitizen One" loading="lazy"><p>The Union's designation for the individual sought since the incident in City 17. Broadcast to every city with a single blurred image — a figure in a doorway, too far from the camera for a face — and a reward.</p>
       <p>No name has been released. Units who repeat names they have heard in the canals are reminded that the Union has issued a designation, and that designations are what the Union uses.</p>
       <p>The lambda chalked beneath the screens is the same mark the canal cells have used for years. Since the broadcast, JURY no longer catalogues it. There are too many.</p>`,
     },

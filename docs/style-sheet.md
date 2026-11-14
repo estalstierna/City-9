@@ -1941,7 +1941,7 @@ Full prompt-text finns i chatthistoriken (2026-11-14).
 | E40 Natten skärmarna slocknar (Stack 14) | `env/e40-dark-stairs.jpg` | env/e23-shrike-stacks · citizen-base · uniform-union |
 | E41 Flaggan på Stack 14 i gryningen | `env/e41-stack-flag.jpg` | resistance-sheet · env/e23-shrike-stacks · airwatch-shrike |
 
-Till dess används e24 och e23 som platshållare.
+**Klara (2026-11-14):** E39 (start, Plaza 5, codex), E40 (natten), E41 (slutet om du lät D5 få sin natt) inlagda.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
