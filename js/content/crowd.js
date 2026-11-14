@@ -122,7 +122,7 @@
 
     const TICK = 0.25;
     const timer = setInterval(() => {
-      if (!document.body.contains(root) || G.state() !== S) return clearInterval(timer);
+      if (!document.body.contains(root) || !root.closest('.block.current') || G.state() !== S) return clearInterval(timer);
       if (document.hidden || st.over) return;
       st.left -= TICK;
       st.speakCd = Math.max(0, st.speakCd - TICK);

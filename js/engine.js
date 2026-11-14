@@ -410,8 +410,9 @@
     if (sc.mini && G.MINIGAMES && G.MINIGAMES[sc.mini.type]) {
       const m = sc.mini;
       let settled = false;
+      const ownScene = S.scene;
       const settle = (ok, data) => {
-        if (settled) return;
+        if (settled || S.scene !== ownScene) return;
         settled = true;
         S.lastMini = data || null;
         S.lastCheck = ok;

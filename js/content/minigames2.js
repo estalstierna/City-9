@@ -137,7 +137,7 @@
       if (p.done) finish(true);
     }
     const timer = setInterval(() => {
-      if (!document.body.contains(root) || G.state() !== S) return clearInterval(timer);
+      if (!document.body.contains(root) || !root.closest('.block.current') || G.state() !== S) return clearInterval(timer);
       if (document.hidden || over) return;
       left -= 0.25;
       root.querySelector('.cr-clock').textContent = Math.ceil(left) + 's';
@@ -218,7 +218,7 @@
     };
     root.querySelectorAll('.tl-btns button').forEach((bt) => (bt.onclick = () => act(bt.dataset.d)));
     const timer = setInterval(() => {
-      if (!document.body.contains(root) || G.state() !== S) return clearInterval(timer);
+      if (!document.body.contains(root) || !root.closest('.block.current') || G.state() !== S) return clearInterval(timer);
       if (document.hidden || st.over) return;
       st.t -= 0.25;
       if (st.t <= 0) {

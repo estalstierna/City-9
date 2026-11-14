@@ -529,6 +529,63 @@ suite('circuit and tail minigames', async (browser) => {
   return out.concat(errors);
 });
 
+suite('division minigames: triage, watch, breach, sample', async (browser) => {
+  const out = [];
+  const { page, errors } = await openGame(browser, devices['iPhone 13']);
+  await page.evaluate(SERVICE, { div: 'HELIX', rank: '03', skill: 3 });
+  const play = async (scene, step, ms) => {
+    await page.evaluate((sc) => G.goto(sc), scene);
+    const t0 = Date.now();
+    while (Date.now() - t0 < ms) {
+      const sc = await page.evaluate(() => G.state().scene);
+      if (sc !== scene) return sc;
+      await page.evaluate(step);
+      await page.waitForTimeout(120);
+    }
+    return await page.evaluate(() => G.state().scene);
+  };
+  /* good play wins */
+  let r = await play('mg_triage', () => {
+    const pts = [...document.querySelectorAll('#story .block.current .tri-pt')].filter((b) => !b.disabled);
+    const working = pts.filter((b) => b.classList.contains('work'));
+    if (working.length < 2) {
+      const low = pts.filter((b) => !b.classList.contains('work')).sort((a, b) => parseFloat(a.querySelector('.cr-bar span').style.width) - parseFloat(b.querySelector('.cr-bar span').style.width))[0];
+      if (low) low.click();
+    }
+  }, 50000);
+  if (r !== 'mg_triage_ok') out.push('triage played well ended at ' + r);
+  r = await play('mg_watch', () => {
+    const h = document.querySelector('#story .block.current .wt-face.hot');
+    if (h) h.click();
+  }, 50000);
+  if (r !== 'mg_watch_ok') out.push('watch played well ended at ' + r);
+  r = await play('mg_breach', () => {
+    const f = document.querySelector('#story .block.current .br-fig.show');
+    if (!f) return;
+    const hostile = /wrench|pistol|lunging|crowbar/.test(f.textContent);
+    const btn = document.querySelector(`#story .block.current [data-a="${hostile ? 'fire' : 'hold'}"]`);
+    if (btn) btn.click();
+  }, 50000);
+  if (r !== 'mg_breach_ok') out.push('breach played well ended at ' + r);
+  r = await play('mg_sample', () => {
+    const b = document.querySelector('#story .block.current [data-a="out"]');
+    const nEl = document.querySelector('#story .block.current .sm-n');
+    if (!b || !nEl) return;
+    const n = +nEl.textContent;
+    const risk = parseFloat(document.querySelector('#story .block.current .risk span').style.width);
+    if (b && !b.disabled) (n >= 3 && risk > 45 ? b : document.querySelector('#story .block.current [data-a="take"]')).click();
+  }, 30000);
+  if (!/^mg_sample_(ok|bad)$/.test(r)) out.push('sample did not finish: ' + r);
+  /* neglect loses */
+  r = await play('mg_triage', () => {}, 50000);
+  if (r !== 'mg_triage_bad') out.push('ignored triage should lose, got ' + r);
+  r = await play('mg_breach', () => {}, 50000);
+  if (r !== 'mg_breach_bad') out.push('frozen breach should lose, got ' + r);
+  const ovf = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1);
+  if (ovf) out.push('overflow on phone');
+  return out.concat(errors);
+});
+
 suite('document inspection minigame on phone and desktop', async (browser) => {
   const out = [];
   for (const opts of [{ viewport: { width: 1300, height: 950 } }, devices['iPhone 13']]) {

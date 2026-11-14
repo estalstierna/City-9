@@ -46,6 +46,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Lore | New records: the Seven Hour War, the Sevrin Dam, the Nexus by level, the Works, ration tiers, Old Town, and the canal cells' chalk language, each unlocked where you first meet it. Rumours from the other divisions' stories reach you in the mess; your own chapter-two choices echo in chapters three and four; chalk signs appear on the morning walk. `js/content/lore.js`. |
 | Interface | Text size (Menu), foldable Dossier sections that remember their state, tap feedback on choices, images that fade in with a placeholder, and reduced motion when the device asks for it. |
 | More minigames | **Circuit** (GRID): rotate conduit tiles to bring power from source to load before the clock runs out; Radio & Protocol buys time. Offered on forcefield repair and at junction 7. **Tail** (JURY, VEIL): follow a subject block by block, reading each street to choose your distance; crowds hide you but lose them, quiet streets punish being close. `js/content/minigames2.js`. |
+| Division minigames | Every division has its own: UNION document inspection and crowd control, JURY interrogation and tailing, GRID circuit repair, **HELIX triage** (patients fade in real time, two hands, tap to work on them), **RAZOR hardpoint watch** (one face at a time shows a tell; catch the threats, spare the innocent), **SPEAR breach** (door by door, FIRE or HOLD in a heartbeat), **VECTOR sampling** (press your luck against the suit's integrity). Each is offered inside its division's duties and can be skipped with a skill roll. `js/content/minigames3.js`. |
 | Sound | Procedural Web Audio, no files: the dam's hum under everything, wind and rain outdoors, a drone underground, and small cues for choices, radio traffic, skill checks, promotions and being observed. Toggle in the Menu. `js/audio.js`. |
 | Balance | Promotion-board penalties together cost at most 2 points (a board can no longer become impossible), regaining a grade lost to demotion passes at 4, a failed board costs 4 merit and can be retaken after two days, and strikes expire after six clean days. |
 | Save records | Four records side by side. The title screen lists each record (name, rank, division, day, chapter) to continue, starts a new life in an empty record, or erases one you choose. Each record has its own autosave, checkpoint and manual save; saves from before records existed are record 1. The in-game menu leads back to the records. |
@@ -130,6 +131,7 @@ js/content/duties2.js more division duties (ten per division)
 js/content/lore.js    lore records, rumours, echoes, chalk
 js/content/career.js  rank perks, promotion ceremony, officer gates, roster tab
 js/content/minigames2.js circuit and tail minigames
+js/content/minigames3.js triage, watch, breach, sample minigames
 js/content/chapter5.js The Academy, VEIL
 js/audio.js           procedural sound
 ```
