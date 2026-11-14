@@ -75,7 +75,7 @@
   });
 
   /* ================================================================ BUILDER */
-  const scenes = {};
+  const scenes = G.scenes; /* duties built later (duties2.js) land straight in the scene registry */
   const DD_BLOCK = {};
   const lines = (v, s) => [].concat((typeof v === 'function' ? v(s) : v) || []);
   function build(id, def) {
@@ -104,7 +104,13 @@
   }
   G.divDuty = (d) => {
     const base = 'dd_' + d.key;
-    G.duties[d.key] = { name: d.name, desc: d.desc, first: base, routine: base + '_r', if: (s) => s.div === d.div && (!d.if || d.if(s)) };
+    G.duties[d.key] = {
+      name: d.name,
+      desc: d.desc + (d.minRank ? ` (${d.minRank} and above)` : ''),
+      first: base,
+      routine: base + '_r',
+      if: (s) => (s.div || 'UNION') === d.div && (!d.minRank || G.rankIdx(s.rank) >= G.rankIdx(d.minRank)) && (!d.if || d.if(s)),
+    };
     build(base, d.first);
     d.routine.forEach((r, i) => build(`${base}_r${i}`, r));
     scenes[base + '_r'] = {

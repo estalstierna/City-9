@@ -158,6 +158,21 @@ suite('static: every codex entry belongs to a codex chapter', async (browser) =>
   return loose.concat(errors);
 });
 
+suite('static: every division has ten duties of its own', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = await page.evaluate(() => {
+    const res = [];
+    for (const div of ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID']) {
+      const s = G.fresh();
+      Object.assign(s, { div, rank: 'OfC', phase: 'union', day: 30, c2: { stage: 3 }, c3: { stage: 2, done: false } });
+      const own = Object.keys(G.duties).filter((k) => !['raid', 'owsweep'].includes(k) && G.duties[k].if && G.duties[k].if(s));
+      if (own.length < 10) res.push(`${div} has ${own.length} duties of its own`);
+    }
+    return res;
+  });
+  return out.concat(errors);
+});
+
 suite('static: service worker caches every script index.html loads', async () => {
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
@@ -258,8 +273,6 @@ suite('chapter 2 arcs for HELIX, RAZOR, SPEAR, VECTOR and GRID', async (browser)
     out.push(...w.problems.map((p) => div + ': ' + p));
     if (!w.seen['x2_' + div.toLowerCase() + '_intro']) out.push(div + ': arc never started');
     if (w.ended !== 'x2_' + div.toLowerCase() + '_end' && w.ended !== 'end_deserviced' && w.ended !== 'end_amputated') out.push(div + ': arc did not finish (' + (w.ended || 'none') + ')');
-    const own = Object.keys(w.seen).filter((k) => /^dd_/.test(k)).length;
-    if (!own) out.push(div + ': no own division duty was played');
     const street = Object.keys(w.seen).filter((k) => /^d_(ration|check|market|insp|cast|escort|rail)/.test(k)).length;
     if (street) out.push(div + ': played UNION street duties');
   }

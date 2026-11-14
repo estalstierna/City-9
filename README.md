@@ -41,6 +41,10 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Crowd control | A real-time minigame on ration and broadcast duties, and the climax of chapter 4: three sectors with rising tension, a few units to post, a voice that works below 75, agitators to pull out, and a baton that works instantly and is remembered. Any sector at 100 is a riot. |
 | Variety | Routine duties become one of 25+ vignettes three times in four (rotating, never the same twice in a row). Each morning has a line of the city that follows the world state, and sometimes an encounter on the way to muster. Evenings offer two rotating places (cards, the roof, the canal, a letter, the night broadcast, Halloran, a case-file follow-up) and sometimes a knock at the door first. People from your case files come back. |
 | Division duties | Every division has its own duty board. UNION keeps the street duties; HELIX (infirmary night shift, field medic, fitness certification), RAZOR (hardpoint watch, VIP escort, armoury audit), SPEAR (404 perimeter, building clearance, tag recovery), VECTOR (decontamination, containment labs, canal sampling), GRID (forcefield repair, scanner masts, lock calibration) and JURY (interrogation, unit audit, surveillance, tribunal clerk, the archive) each have their own, with rotating routine variants. All divisions can also be sent on apartment raids. Duties are built from data with `G.divDuty` in `js/content/divisions.js`. |
+| Ten duties per division | Every division now has ten duties of its own (UNION's street duties plus field training and the night desk; JURY adds prisoner transport, witness statements, a listening post, death inquiries and promotion reviews; HELIX, RAZOR, SPEAR, VECTOR and GRID seven more each). Some are rank-gated: officers' work such as instructing recruits, the Administrator's residence, the tram depot recon, the Archivist's records or the foot of the Spire (02 or 01 and above). `js/content/duties2.js`. |
+| Career and roster | Every grade unlocks something real (pay per shift, a sidearm that improves Firearms checks, Authority bonuses, a bigger protection team, private quarters, more health). A promotion opens a ceremony card with the new insignia, what it unlocks and your new roster position. The **Roster** tab (bottom bar and top bar) lists every unit in your division by rank with you among them, your next rank, its requirements and perks. Officer grades are slow on purpose: OfC after chapter four, SqL after chapter six, DvL after chapter eight, each through a stricter board. `js/content/career.js`. |
+| Lore | New records: the Seven Hour War, the Sevrin Dam, the Nexus by level, the Works, ration tiers, Old Town, and the canal cells' chalk language, each unlocked where you first meet it. Rumours from the other divisions' stories reach you in the mess; your own chapter-two choices echo in chapters three and four; chalk signs appear on the morning walk. `js/content/lore.js`. |
+| Interface | Text size (Menu), foldable Dossier sections that remember their state, tap feedback on choices, images that fade in with a placeholder, and reduced motion when the device asks for it. |
 | Save records | Four records side by side. The title screen lists each record (name, rank, division, day, chapter) to continue, starts a new life in an empty record, or erases one you choose. Each record has its own autosave, checkpoint and manual save; saves from before records existed are record 1. The in-game menu leads back to the records. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
@@ -117,6 +121,9 @@ js/content/crowd.js   crowd-control minigame
 js/content/chapter3.js, chapter4.js
 js/content/divisions.js division cast, duty builder, division duties
 js/content/arcs.js    chapter-two arcs for HELIX, RAZOR, SPEAR, VECTOR, GRID
+js/content/duties2.js more division duties (ten per division)
+js/content/lore.js    lore records, rumours, echoes, chalk
+js/content/career.js  rank perks, promotion ceremony, officer gates, roster tab
 ```
 
 Tests (Playwright with Chromium):
