@@ -45,6 +45,9 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Career and roster | Every grade unlocks something real (pay per shift, a sidearm that improves Firearms checks, Authority bonuses, a bigger protection team, private quarters, more health). A promotion opens a ceremony card with the new insignia, what it unlocks and your new roster position. The **Roster** tab (bottom bar and top bar) lists every unit in your division by rank with you among them, your next rank, its requirements and perks. Officer grades are slow on purpose: OfC after chapter four, SqL after chapter six, DvL after chapter eight, each through a stricter board. `js/content/career.js`. |
 | Lore | New records: the Seven Hour War, the Sevrin Dam, the Nexus by level, the Works, ration tiers, Old Town, and the canal cells' chalk language, each unlocked where you first meet it. Rumours from the other divisions' stories reach you in the mess; your own chapter-two choices echo in chapters three and four; chalk signs appear on the morning walk. `js/content/lore.js`. |
 | Interface | Text size (Menu), foldable Dossier sections that remember their state, tap feedback on choices, images that fade in with a placeholder, and reduced motion when the device asks for it. |
+| More minigames | **Circuit** (GRID): rotate conduit tiles to bring power from source to load before the clock runs out; Radio & Protocol buys time. Offered on forcefield repair and at junction 7. **Tail** (JURY, VEIL): follow a subject block by block, reading each street to choose your distance; crowds hide you but lose them, quiet streets punish being close. `js/content/minigames2.js`. |
+| Sound | Procedural Web Audio, no files: the dam's hum under everything, wind and rain outdoors, a drone underground, and small cues for choices, radio traffic, skill checks, promotions and being observed. Toggle in the Menu. `js/audio.js`. |
+| Balance | Promotion-board penalties together cost at most 2 points (a board can no longer become impossible), regaining a grade lost to demotion passes at 4, a failed board costs 4 merit and can be retaken after two days, and strikes expire after six clean days. |
 | Save records | Four records side by side. The title screen lists each record (name, rank, division, day, chapter) to continue, starts a new life in an empty record, or erases one you choose. Each record has its own autosave, checkpoint and manual save; saves from before records existed are record 1. The in-game menu leads back to the records. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
@@ -67,6 +70,8 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 8. **Chapter 4, "Sixty Grams"** (all divisions, one grade up): City 17 drains the Union's cities, and City 9's ration is cut by sixty grams. Vigil orders every team lead to name one of their own for transfer to City 17. Your canal contact plans to empty the D2 packing-plant warehouse on ration day while every unit holds Plaza 5. You get one day to prepare the district (release emergency stores, raid the agitators, walk the blocks, or work your sources), then ration day itself is played as a crowd-control set piece. If the plaza holds, you decide what happens at the warehouse; if it riots, Overwatch on the roof decides, unless you stand in front of it. A letter from City 17 closes the chapter.
 
    - **HELIX, RAZOR, SPEAR, VECTOR and GRID** each have their own chapter-two arc (grade 03 → 02), with their own officer and partner: HELIX *The Ward* (Matron, Lark: a canal courier kept alive for JURY), RAZOR *The Guest* (Bastion, Brace: an auditor from City 1 and a leak in the squad), SPEAR *Beyond the Canal* (Kiln, Rasp: a lost squad and a settlement inside the quarantine zone), VECTOR *Specimen Nine* (the Archivist, Gauze: a woman the infection does not take), GRID *The Blackout List* (Foreman, Solder: whose block goes dark this winter). `js/content/arcs.js`.
+
+9. **Chapter 5, "The Academy"** (all divisions): a unit comes back from City 17 with a description they were given every morning and no name. Vigil sends you to the Officer Academy (doctrine with instructor *Censor*, a live command exercise played as crowd control, a graduation board) — the main road to Field Officer. In parallel VEIL leaves an envelope sealed with an empty circle: meet them, refuse, or report it; if you accept, follow a dead-drop courier (tail minigame) and decide what VEIL is told. Graduating with VEIL's trust puts you in VEIL's shadow: you keep your division's armband, a black one waits in your locker, and an unlisted assignment can appear on your board.
 
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
@@ -124,6 +129,9 @@ js/content/arcs.js    chapter-two arcs for HELIX, RAZOR, SPEAR, VECTOR, GRID
 js/content/duties2.js more division duties (ten per division)
 js/content/lore.js    lore records, rumours, echoes, chalk
 js/content/career.js  rank perks, promotion ceremony, officer gates, roster tab
+js/content/minigames2.js circuit and tail minigames
+js/content/chapter5.js The Academy, VEIL
+js/audio.js           procedural sound
 ```
 
 Tests (Playwright with Chromium):

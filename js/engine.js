@@ -942,7 +942,8 @@
         <button data-a="import">Import save code</button>
         <button data-a="new">Records &amp; new game</button>
       </div>
-      <div class="menu textsize"><span>Text size</span><button data-a="fs-">A−</button><button data-a="fs+">A+</button>
+      <div class="menu textsize"><span>Text size</span><button data-a="fs-">A−</button><button data-a="fs+">A+</button></div>
+      <div class="menu textsize"><span>Sound</span><button data-a="snd">${G.audio && G.audio.on() ? 'On' : 'Off'}</button>
       </div>
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
       <p class="sub">The game autosaves after every scene in this browser. Checkpoints are written at the start of each day and at key story moments.</p>`,
@@ -960,6 +961,10 @@
         toast('Copy the code to keep your record.');
       }
       if (a === 'import' && G.importSave($('#save-code').value)) closeModal();
+      if (a === 'snd' && G.audio) {
+        e.target.textContent = G.audio.toggle() ? 'On' : 'Off';
+        return;
+      }
       if (a === 'fs-' || a === 'fs+') {
         toast(`Text size ${G.setTextSize(a === 'fs+' ? 1 : -1)}`);
         return;

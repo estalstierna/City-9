@@ -54,7 +54,7 @@
   /* ================================================================ OFFICER GATES */
   const discClean = (s) => !s.disc || (!s.disc.final && !s.disc.w);
   Object.assign(G.PROMO, {
-    EpU: { next: 'OfC', merit: 260, board: true, gate: 'Chapter four complete · Loyalty +20 · no active strikes or final warning', if: (s) => !!(s.c4 && s.c4.done) && s.lp >= 20 && discClean(s) },
+    EpU: { next: 'OfC', merit: 260, board: true, gate: 'The Officer Academy (chapter five) — or, after chapter four, an officer board with Loyalty +20 and no active strikes', if: (s) => !!(s.c4 && s.c4.done) && s.lp >= 20 && discClean(s) },
     OfC: { next: 'SqL', merit: 360, board: true, gate: 'Chapter six complete · Loyalty +30 · clean record', if: (s) => (s.chapter || 1) >= 7 && s.lp >= 30 && discClean(s) },
     SqL: { next: 'DvL', merit: 480, board: true, gate: 'Chapter eight complete · Loyalty +35 · never demoted · suspicion low', if: (s) => (s.chapter || 1) >= 9 && s.lp >= 35 && discClean(s) && !(s.disc && s.disc.demotions) && s.susp < 30 },
   });
@@ -228,7 +228,7 @@
     career: {
       title: 'Grades and what they bring',
       body: `<table>${RANK_ORDER.map((r) => `<tr><td>${r}</td><td>${(PERKS[r] || []).join('<br>')}<br><small>${GATES[r] || (G.PROMO[r] && G.PROMO[r].gate) || ''}</small></td></tr>`).join('')}</table>
-      <p>Officer grades are earned slowly: <b>Field Officer</b> only after the events of chapter four, <b>Squadron Leader</b> after chapter six, <b>Division Leader</b> after chapter eight, each through an officer board that is harder to pass than any before it. Most units retire as an 02. A few become 01. Almost nobody becomes DvL.</p>`,
+      <p>Officer grades are earned slowly: <b>Field Officer</b> through the Officer Academy in chapter five (or a hard officer board after chapter four), <b>Squadron Leader</b> after chapter six, <b>Division Leader</b> after chapter eight, each through an officer board that is harder to pass than any before it. Most units retire as an 02. A few become 01. Almost nobody becomes DvL.</p>`,
     },
   });
   G.CODEX_GROUPS.find((g) => g.title === 'Service record').ids.unshift('career');

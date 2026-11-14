@@ -210,7 +210,7 @@ suite('service loop and shared systems (raids, reports, informants, boards, disc
   const { page, errors } = await openGame(browser);
   const out = [];
   const seen = {};
-  const runs = QUICK ? 3 : 8;
+  const runs = QUICK ? 5 : 10;
   for (let r = 0; r < runs; r++) {
     const o = [{}, { rank: '04', merit: 70 }, { div: 'JURY', rank: '03', merit: 140 }, { div: 'GRID', rank: '03' }][r % 4];
     await page.evaluate(SERVICE, o);
@@ -376,6 +376,40 @@ suite('chapter 4 for every division (squad, district, crowd)', async (browser) =
     ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
   }
   if (!ends.c4_end) out.push('no run reached c4_end: ' + JSON.stringify(ends));
+  return out.concat(errors);
+});
+
+suite('chapter 5 for every division (Academy, VEIL)', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const ends = {};
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
+    await page.evaluate(
+      ({ div, i }) => {
+        try { localStorage.clear(); } catch (e) {}
+        G.newGame();
+        const s = G.state();
+        Object.assign(s, { name: 'Tester', phase: 'union', rank: i % 2 ? 'EpU' : '01', div, day: 70, merit: 200, lp: 22, res: i % 3 ? 35 : 5, chapter: 4 });
+        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+        Object.assign(s.rel, { rook: 30, granite: 20, tomas: 10 });
+        s.mem.grade = 'Graded';
+        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
+        s.c2 = { div, stage: 9, next: 20, arc: true, done: true };
+        s.flags.c2_end_day = 20;
+        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held', intel: 3 };
+        s.c4 = { stage: 9, done: true, endDay: 66, sentName: '"Salt"' };
+        G.formSquad(s);
+        G.goto('u_board');
+      },
+      { div, i }
+    );
+    const w = await randomWalk(page, QUICK ? 350 : 500, { stopAt: ['c5_end'], prefer: /VEIL|Go\.|Follow her|COMMAND/ });
+    out.push(...w.problems.map((p) => div + ': ' + p));
+    if (!w.seen.c5_start) out.push(div + ': chapter 5 never started');
+    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
+  }
+  if (!ends.c5_end) out.push('no run reached c5_end: ' + JSON.stringify(ends));
   return out.concat(errors);
 });
 

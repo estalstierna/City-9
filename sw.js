@@ -1,6 +1,6 @@
 /* Service worker: makes the game installable and playable offline.
    VERSION is a hash of the cached files: run python3 tools/bump-sw.py after changing code (the tests check it). */
-const VERSION = 'c9-d4484aea3d';
+const VERSION = 'c9-9c3201248f';
 const MEDIA = 'c9-media-1'; /* images and fonts: kept across code updates */
 const SHELL = [
   './',
@@ -8,6 +8,7 @@ const SHELL = [
   './manifest.json',
   './css/style.css',
   './js/engine.js',
+  './js/audio.js',
   './js/content/codex.js',
   './js/content/prologue.js',
   './js/content/training.js',
@@ -29,6 +30,7 @@ const SHELL = [
   './js/content/chapter4.js',
   './js/content/divisions.js',
   './js/content/duties2.js',
+  './js/content/chapter5.js',
   './js/content/arcs.js',
   './js/content/lore.js',
   './js/content/career.js',
