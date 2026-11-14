@@ -1896,6 +1896,19 @@ Full prompt-text finns i chatthistoriken (2026-11-13).
 
 Full prompt-text finns i chatthistoriken (2026-11-14). Enheter följer regeln för designationspatch; VEIL har patchen täckt av svart tejp.
 
+## 5o. PROMPTMALL (använd för alla nya bilder)
+
+1. **Rubrik:** `## <ID> <namn> (16:9 för miljö, 4:5 för porträtt)`.
+2. **Bifoga:** en numrerad lista med filerna. Prompten hänvisar till dem som FIRST, SECOND, THIRD … attached image.
+3. **Prompten** ligger i ett kodblock, i den här ordningen:
+   - scen, ljus och palett, med hänvisning till bilagorna;
+   - figurerna, där varje figur knyts till en bilaga;
+   - **ARMBAND** och **DESIGNATION PATCH** som egna stycken när CP-enheter syns. Armbandet sitter runt vänster överarm. Lappen sitter direkt ovanför armbandet, med två rader `CCA.C9.D<n>` / `<DIV>-<RANK>-<ID>`, där varje rad är ungefär halva höjden av "C9:D<n>". Aldrig på ryggen. Aldrig en lambda på CP-armband;
+   - `Mood:` en rad;
+   - `STYLE:` gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, palett, subtle film grain, high detail;
+   - `DO NOT include:` läsbar text utöver den avsedda, varumärken, karaktärer från befintliga spel, samt scenens egna fallgropar.
+4. **Efter prompten:** var bilden hamnar i spelet.
+
 ## 5p. KAPITEL 5
 
 | Bild | Fil i spelet | Bifoga i ordning |
