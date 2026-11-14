@@ -249,3 +249,10 @@
   G.extend('dd_rresidence', { text: after(/dressing gown/, pic('administrator', 'The Administrator of City 9, 03:00')), after: (s) => s.rel.administrator === undefined && G.fx(s, { rel: { administrator: 0 } }) });
   if (G.codexEntries.war) G.codexEntries.war.body = G.codexEntries.war.body.replace('</p>', '</p><img src="assets/img/portraits/administrator.webp" alt="The Administrator" loading="lazy">');
 })();
+
+/* chapter four: the loading dock */
+(function () {
+  const dock = '@img assets/img/env/e25-warehouse.webp|The loading dock behind the packing plant, D2';
+  ['c4_wh_stop', 'c4_wh_let'].forEach((id) => G.extend(id, { text: (lines) => [dock].concat(lines) }));
+  if (G.codexEntries.works) G.codexEntries.works.body += '<img src="assets/img/env/e25-warehouse.webp" alt="The loading dock" loading="lazy">';
+})();

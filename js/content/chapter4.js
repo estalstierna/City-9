@@ -238,7 +238,7 @@
       checkpoint: true,
       title: 'Ration day — Plaza 5',
       text: (s) => [
-        '@img assets/img/env/e10-ration.webp|Plaza 5, ration day',
+        '@img assets/img/env/e24-ration-day.webp|Plaza 5, ration day',
         'Plaza 5 is full by 05:00. Not the usual line: the whole of District 5, standing in the cold, waiting to be given less. The screens show the dam. Nobody watches.',
         'Every division of Task Force LOCK is here: UNION on the barriers, HELIX in the cinema doorway, JURY vans in the side street, RAZOR on the steps around Vigil, GRID on the RDT panels, SPEAR in reserve, VECTOR’s suits by the drains as if they expected something to come up them.',
         'An Overwatch squad stands on the cinema roof with its rifles across its chests. Above them, a Shrike holds station with its searchlight off, which is somehow worse.',
