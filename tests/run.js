@@ -413,6 +413,43 @@ suite('chapter 5 for every division (Academy, VEIL)', async (browser) => {
   return out.concat(errors);
 });
 
+suite('chapter 6 for every division (Collection, the railway)', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const ends = {};
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  for (const [i, div] of (QUICK ? divs : divs.concat(divs)).entries()) {
+    await page.evaluate(
+      ({ div, i }) => {
+        try { localStorage.clear(); } catch (e) {}
+        G.newGame();
+        const s = G.state();
+        Object.assign(s, { name: 'Tester', phase: 'union', rank: i % 2 ? 'OfC' : 'EpU', div, day: 90, merit: 260, lp: 25, res: i % 3 ? 35 : 5, chapter: 5 });
+        Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+        Object.assign(s.rel, { rook: 30, granite: 20, tomas: 10 });
+        if (i % 2) s.rel.mira = 40;
+        s.mem.grade = 'Graded';
+        s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = s.flags.passed_02 = true;
+        if (i % 3 === 0) s.flags.veil_shadow = true;
+        s.c2 = { div, stage: 9, next: 20, arc: true, done: true };
+        s.flags.c2_end_day = 20;
+        s.c3 = { stage: 5, done: true, endDay: 46, result: 'held' };
+        s.c4 = { stage: 9, done: true, endDay: 66, sentName: '"Salt"' };
+        s.c5 = { stage: 9, done: true, endDay: 86, veil: 'accepted' };
+        G.formSquad(s);
+        G.goto('u_board');
+      },
+      { div, i }
+    );
+    const w = await randomWalk(page, QUICK ? 350 : 500, { stopAt: ['c6_end'] });
+    out.push(...w.problems.map((p) => div + ': ' + p));
+    if (!w.seen.c6_start) out.push(div + ': chapter 6 never started');
+    ends[w.ended || 'none'] = (ends[w.ended || 'none'] || 0) + 1;
+  }
+  if (!ends.c6_end) out.push('no run reached c6_end: ' + JSON.stringify(ends));
+  return out.concat(errors);
+});
+
 suite('district events fire from high resentment and low order', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];

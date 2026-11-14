@@ -55,8 +55,8 @@
   const discClean = (s) => !s.disc || (!s.disc.final && !s.disc.w);
   Object.assign(G.PROMO, {
     EpU: { next: 'OfC', merit: 260, board: true, gate: 'The Officer Academy (chapter five) — or, after chapter four, an officer board with Loyalty +20 and no active strikes', if: (s) => !!(s.c4 && s.c4.done) && s.lp >= 20 && discClean(s) },
-    OfC: { next: 'SqL', merit: 360, board: true, gate: 'Chapter six complete · Loyalty +30 · clean record', if: (s) => (s.chapter || 1) >= 7 && s.lp >= 30 && discClean(s) },
-    SqL: { next: 'DvL', merit: 480, board: true, gate: 'Chapter eight complete · Loyalty +35 · never demoted · suspicion low', if: (s) => (s.chapter || 1) >= 9 && s.lp >= 35 && discClean(s) && !(s.disc && s.disc.demotions) && s.susp < 30 },
+    OfC: { next: 'SqL', merit: 360, board: true, gate: 'Chapter six complete · Loyalty +30 · clean record', if: (s) => !!(s.c6 && s.c6.done) && s.lp >= 30 && discClean(s) },
+    SqL: { next: 'DvL', merit: 480, board: true, gate: 'Chapter eight complete · Loyalty +35 · never demoted · suspicion low', if: (s) => !!(s.c8 && s.c8.done) && s.lp >= 35 && discClean(s) && !(s.disc && s.disc.demotions) && s.susp < 30 },
   });
   const GATES = {
     '05': 'Field evaluation (25 merit)',

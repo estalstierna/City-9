@@ -47,6 +47,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | Interface | Text size (Menu), foldable Dossier sections that remember their state, tap feedback on choices, images that fade in with a placeholder, and reduced motion when the device asks for it. |
 | More minigames | **Circuit** (GRID): rotate conduit tiles to bring power from source to load before the clock runs out; Radio & Protocol buys time. Offered on forcefield repair and at junction 7. **Tail** (JURY, VEIL): follow a subject block by block, reading each street to choose your distance; crowds hide you but lose them, quiet streets punish being close. `js/content/minigames2.js`. |
 | Division minigames | Every division has its own: UNION document inspection and crowd control, JURY interrogation and tailing, GRID circuit repair, **HELIX triage** (patients fade in real time, two hands, tap to work on them), **RAZOR hardpoint watch** (one face at a time shows a tell; catch the threats, spare the innocent), **SPEAR breach** (door by door, FIRE or HOLD in a heartbeat), **VECTOR sampling** (press your luck against the suit's integrity). Each is offered inside its division's duties and can be skipped with a skill roll. `js/content/minigames3.js`. |
+| Field notes | The first time each system appears (skill checks, tags, the duty board, Dossier, OBSERVED, Codex, stop & search, minigames, raids, reports, informants, discipline, boards, the district map, your team, crowd control, the Roster, sociostatus), a short note explains it, one per scene. Tips can be turned off in the Menu. `js/content/onboarding.js`. |
 | Sound | Procedural Web Audio, no files: the dam's hum under everything, wind and rain outdoors, a drone underground, and small cues for choices, radio traffic, skill checks, promotions and being observed. Toggle in the Menu. `js/audio.js`. |
 | Balance | Promotion-board penalties together cost at most 2 points (a board can no longer become impossible), regaining a grade lost to demotion passes at 4, a failed board costs 4 merit and can be retaken after two days, and strikes expire after six clean days. |
 | Save records | Four records side by side. The title screen lists each record (name, rank, division, day, chapter) to continue, starts a new life in an empty record, or erases one you choose. Each record has its own autosave, checkpoint and manual save; saves from before records existed are record 1. The in-game menu leads back to the records. |
@@ -73,6 +74,8 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **HELIX, RAZOR, SPEAR, VECTOR and GRID** each have their own chapter-two arc (grade 03 → 02), with their own officer and partner: HELIX *The Ward* (Matron, Lark: a canal courier kept alive for JURY), RAZOR *The Guest* (Bastion, Brace: an auditor from City 1 and a leak in the squad), SPEAR *Beyond the Canal* (Kiln, Rasp: a lost squad and a settlement inside the quarantine zone), VECTOR *Specimen Nine* (the Archivist, Gauze: a woman the infection does not take), GRID *The Blackout List* (Foreman, Solder: whose block goes dark this winter). `js/content/arcs.js`.
 
 9. **Chapter 5, "The Academy"** (all divisions): a unit comes back from City 17 with a description they were given every morning and no name. Vigil sends you to the Officer Academy (doctrine with instructor *Censor*, a live command exercise played as crowd control, a graduation board) — the main road to Field Officer. In parallel VEIL leaves an envelope sealed with an empty circle: meet them, refuse, or report it; if you accept, follow a dead-drop courier (tail minigame) and decide what VEIL is told. Graduating with VEIL's trust puts you in VEIL's shadow: you keep your division's armband, a black one waits in your locker, and an unlisted assignment can appear on your board.
+
+10. **Chapter 6, "Collection"** (all divisions, officer's work): Overwatch collects Civil Protection reserves every week as *candidates for conversion*, and you choose who from your team goes. A "railway" moves people north on the D4 coal line toward City 17; you track it down (tail a signalman, lean on informants, read the manifests, or raid a flat) and find someone you love on the passenger list. On Thursday night you are the officer on scene: stop the train, let it run, call Airwatch, shield it from the Shrike yourself, or — in VEIL's shadow — tag the last wagon so VEIL can follow it north. Squadron Leader becomes reachable through an officer board after this chapter.
 
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
@@ -133,6 +136,8 @@ js/content/career.js  rank perks, promotion ceremony, officer gates, roster tab
 js/content/minigames2.js circuit and tail minigames
 js/content/minigames3.js triage, watch, breach, sample minigames
 js/content/chapter5.js The Academy, VEIL
+js/content/chapter6.js Collection, the railway
+js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
 
