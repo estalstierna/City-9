@@ -60,6 +60,7 @@
     return out;
   }
 
+  G.squadRecruit = (s) => newUnit(s);
   G.formSquad = (s) => {
     const sq = ensure(s);
     if (sq.formed) return;
@@ -68,7 +69,7 @@
     known(s)
       .slice(0, 2)
       .forEach((k) => make(s, k));
-    while (active(s).length < 3) newUnit(s);
+    while (active(s).length < (G.squadSize ? G.squadSize(s) : 3)) newUnit(s);
     G.unlock(s, 'squad');
   };
 

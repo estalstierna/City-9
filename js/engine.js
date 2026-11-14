@@ -338,6 +338,10 @@
       const src = parts[0].trim();
       const cap = parts[1] ? parts[1].trim() : '';
       const f = el('figure', isP ? 'pic portrait' : 'pic', `<img src="${src}" alt="${cap.replace(/"/g, '')}" loading="lazy">${cap ? `<figcaption>${inline(cap)}</figcaption>` : ''}`);
+      const im = f.querySelector('img');
+      const shown = () => f.classList.add('loaded');
+      if (im.complete && im.naturalWidth) shown();
+      else (im.onload = shown), (im.onerror = shown);
       f.onclick = () => openModal(cap || 'Reference', `<img class="full" src="${src}" alt="">`);
       return f;
     }
@@ -450,13 +454,19 @@
       n++;
       btn.innerHTML = `<span class="num">${n}</span><span class="lbl">${tags}${inline(label)}${locked ? `<span class="why">${locked}</span>` : ''}</span>`;
       if (locked) btn.disabled = true;
-      else btn.onclick = () => choose(c, label);
+      else
+        btn.onclick = () => {
+          if (busy) return;
+          list.classList.add('picked');
+          btn.classList.add('chosen-btn');
+          choose(c, label);
+        };
       btn.dataset.n = n;
       list.append(btn);
     });
     if (n) block.append(list);
     story.append(block);
-    requestAnimationFrame(() => block.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    requestAnimationFrame(() => block.scrollIntoView({ behavior: G.reducedMotion() ? 'auto' : 'smooth', block: 'start' }));
     updateSidebar();
   }
 
@@ -772,6 +782,24 @@
         }
       </section>`;
     $('#side-content').innerHTML = html;
+    const shut = prefs().collapsed || [];
+    $('#side-content')
+      .querySelectorAll('section > h3')
+      .forEach((h) => {
+        const sec = h.parentElement;
+        const key = h.textContent.trim();
+        sec.classList.add('fold');
+        if (shut.includes(key)) sec.classList.add('collapsed');
+        h.setAttribute('role', 'button');
+        h.tabIndex = 0;
+        h.onclick = () => {
+          const p = prefs();
+          p.collapsed = p.collapsed || [];
+          sec.classList.toggle('collapsed');
+          p.collapsed = sec.classList.contains('collapsed') ? p.collapsed.concat(key) : p.collapsed.filter((k) => k !== key);
+          savePrefs(p);
+        };
+      });
     $('#codex-count').textContent = S.codex.length ? `(${S.codex.length})` : '';
     renderNav();
   }
@@ -835,6 +863,7 @@
   }
   G.renderNav = renderNav;
 
+  G.openModal = (t, h, k) => openModal(t, h, k);
   function openModal(title, html, kind) {
     $('#modal-title').textContent = title;
     $('#modal-body').innerHTML = html;
@@ -913,6 +942,8 @@
         <button data-a="import">Import save code</button>
         <button data-a="new">Records &amp; new game</button>
       </div>
+      <div class="menu textsize"><span>Text size</span><button data-a="fs-">A−</button><button data-a="fs+">A+</button>
+      </div>
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
       <p class="sub">The game autosaves after every scene in this browser. Checkpoints are written at the start of each day and at key story moments.</p>`,
       'menu'
@@ -929,6 +960,10 @@
         toast('Copy the code to keep your record.');
       }
       if (a === 'import' && G.importSave($('#save-code').value)) closeModal();
+      if (a === 'fs-' || a === 'fs+') {
+        toast(`Text size ${G.setTextSize(a === 'fs+' ? 1 : -1)}`);
+        return;
+      }
       if (a === 'new') {
         closeModal();
         $('#story').innerHTML = '';
@@ -937,9 +972,39 @@
     };
   }
 
+  /* ------------------------------------------------------------- prefs
+     Per-device conveniences (not part of any save): text size, folded dossier sections. */
+  function prefs() {
+    try {
+      return JSON.parse(localStorage.getItem('c9rp_prefs') || '{}');
+    } catch (e) {
+      return {};
+    }
+  }
+  function savePrefs(p) {
+    try {
+      localStorage.setItem('c9rp_prefs', JSON.stringify(p));
+    } catch (e) {}
+  }
+  G.TEXT_SIZES = [15, 17, 19, 21];
+  G.applyTextSize = () => {
+    const n = prefs().text || 17;
+    document.documentElement.style.setProperty('--fs', n + 'px');
+  };
+  G.setTextSize = (dir) => {
+    const p = prefs();
+    const i = G.TEXT_SIZES.indexOf(p.text || 17);
+    p.text = G.TEXT_SIZES[Math.max(0, Math.min(G.TEXT_SIZES.length - 1, i + dir))];
+    savePrefs(p);
+    G.applyTextSize();
+    return p.text;
+  };
+  G.reducedMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
   /* ---------------------------------------------------------------- boot */
 
   G.boot = () => {
+    G.applyTextSize();
     S = G.fresh();
     $('#btn-codex').onclick = showCodex;
     $('#btn-menu').onclick = showMenu;

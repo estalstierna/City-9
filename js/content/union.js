@@ -155,7 +155,7 @@
       enter: (s) => {
         s.day++;
         s.time = 'Morning';
-        if (s.hp < s.maxhp) s.hp = Math.min(s.maxhp, s.hp + 10);
+        if (s.hp < s.maxhp) s.hp = Math.min(s.maxhp, s.hp + (G.rankIdx(s.rank) >= G.rankIdx('02') ? 20 : 10));
         return 'u_board';
       },
       text: [],

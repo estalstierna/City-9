@@ -806,7 +806,8 @@
         if (s.susp >= 50) mods.push(['JURY observer annotation', -1]);
         pb.mods = mods;
         pb.total = pb.score + Math.max(0, pb.os) + mods.reduce((n, m) => n + m[1], 0);
-        pb.pass = pb.total >= 5;
+        pb.need = ['OfC', 'SqL'].includes(pb.next) ? 6 : pb.next === 'DvL' ? 7 : 5;
+        pb.pass = pb.total >= pb.need;
         if (pb.pass) {
           if (pb.next === '03' && !s.flags.passed_03) {
             s.flags.pb_03 = true;
@@ -825,7 +826,7 @@
         const pb = s.pb;
         const wrong = pb.wrong.map((i) => `✗ ${QS[i].q.replace(/\*\*/g, '')} — ${QS[i].a}`);
         return [
-          `@doc BOARD SCORESHEET — ${G.short(s)} → ${pb.next}\nWRITTEN: ${pb.score} / 5\nORAL: ${Math.max(0, pb.os)} / 3\n${pb.mods.map((m) => `${m[0].toUpperCase()}: ${m[1] > 0 ? '+' : ''}${m[1]}`).join('\n')}${pb.mods.length ? '\n' : ''}TOTAL: ${pb.total} — PASS AT 5`,
+          `@doc BOARD SCORESHEET — ${G.short(s)} → ${pb.next}\nWRITTEN: ${pb.score} / 5\nORAL: ${Math.max(0, pb.os)} / 3\n${pb.mods.map((m) => `${m[0].toUpperCase()}: ${m[1] > 0 ? '+' : ''}${m[1]}`).join('\n')}${pb.mods.length ? '\n' : ''}TOTAL: ${pb.total} — PASS AT ${pb.need || 5}`,
           wrong.length ? '@sys Corrections: ' + wrong.join(' · ') : null,
           s.susp >= 50 ? 'The JURY observer hands the Field Officer a single folded sheet. She reads it, folds it again, and does not look at you.' : null,
           pb.pass
