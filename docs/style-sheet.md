@@ -1904,6 +1904,8 @@ Full prompt-text finns i chatthistoriken (2026-11-14). Enheter följer regeln f�
 | E34 Officer Academy | `env/e34-academy.jpg` | uniform-oa · spire-ref · env/e04-nexus · env/e01-city |
 | E35 VEIL-mötet i trapphuset | `env/e35-veil-stairwell.jpg` | portraits/veil-ofc · env/e02-apartment · env/e01-city |
 
+**Klara (2026-11-14):** K11, E34, E35 inlagda.
+
 Full prompt-text finns i chatthistoriken (2026-11-14).
 
 ## 5q. KAPITEL 6
@@ -1913,6 +1915,8 @@ Full prompt-text finns i chatthistoriken (2026-11-14).
 | E36 Insamlingen på Nexus tak | `env/e36-collection.jpg` | vehicle-ota · ota-soldier · uniform-union · env/e19-roof |
 | E37 Kolsidospåret, torsdag natt | `env/e37-coal-siding.jpg` | citizen-base · env/e12-railyard · airwatch-shrike · env/e01-city |
 | E38 Namnen i kolvagnen | `env/e38-coal-wagon.jpg` | portraits/mira · env/e12-railyard |
+
+**Klara (2026-11-14):** E36, E37, E38 inlagda.
 
 Full prompt-text finns i chatthistoriken (2026-11-14).
 

@@ -58,6 +58,7 @@
         if (G.formSquad) G.formSquad(s);
       },
       text: (s) => [
+        '@img assets/img/env/e36-collection.webp|Collection, the Nexus roof',
         '@big CHAPTER SIX',
         '@sys ALL DIVISIONS · COLLECTION',
         'The first collection transport lands on the Nexus roof on a Sunday at 05:00. An Overwatch soldier walks down the ramp with a slate, reads eleven designations aloud, and eleven units walk up the ramp without their masks, because they will not need them.',
@@ -137,6 +138,7 @@
         s.c6.found = true;
       },
       text: (s) => [
+        '@img assets/img/env/e38-coal-wagon.webp|Inside the coal wagon',
         'The railway is a lock-keeper’s hut on the freight line north of the D4 yards, a signalman who switches a coal train onto a siding for six minutes every Thursday night, and a list of names chalked on the inside of a coal wagon.',
         `One of the names on the wagon is written in a hand you know. ${s.c6.kin.name}.`,
       ],
@@ -181,7 +183,7 @@
         s.time = 'Night';
       },
       text: (s) => [
-        '@img assets/img/env/e23-shrike-stacks.webp|Airwatch over the freight line',
+        '@img assets/img/env/e37-coal-siding.webp|The coal siding, Thursday night',
         `${s.c6.kinPart === 'arrested' ? 'Without its organiser the railway runs anyway, ragged and late.' : 'The railway runs.'} At 23:40 the coal train slows into the siding. Shapes come out of the lock-keeper’s hut and the culverts, carrying children, carrying bags. Forty people, more.`,
         'High over the river a Shrike turns its searchlight along the line, slowly, toward the siding.',
         veil(s) ? 'In your earpiece, on a channel that should not exist, a flat voice: *Let it run. Tag the wagon. We follow it north.*' : `@radio All LOCK units, ${sup(s)}. Contact on the freight line. Officers on scene have command.`,
@@ -294,12 +296,12 @@
   G.addCodex({
     collection: {
       title: 'Reserve collection',
-      body: `<p>From the City 17 incident onward, Overwatch draws Civil Protection reserves from every city by weekly quota. Officers select. Overwatch collects. The units are flown out without their masks.</p>
+      body: `<img src="assets/img/env/e36-collection.webp" alt="Collection" loading="lazy"><p>From the City 17 incident onward, Overwatch draws Civil Protection reserves from every city by weekly quota. Officers select. Overwatch collects. The units are flown out without their masks.</p>
       <p>The collection slates list them as <i>candidates for conversion</i>. Overwatch soldiers were once something else. Nobody in Civil Protection says aloud what.</p>`,
     },
     railway: {
       title: 'The railway',
-      body: `<p>Overwatch's name for the network that moves people north along the freight lines toward City 17: doctors, engineers, deserters, anyone the resistance there needs. In City 9 it runs on the D4 coal line, through a signalman's six-minute siding on Thursday nights.</p>
+      body: `<img src="assets/img/env/e38-coal-wagon.webp" alt="The names in the wagon" loading="lazy"><p>Overwatch's name for the network that moves people north along the freight lines toward City 17: doctors, engineers, deserters, anyone the resistance there needs. In City 9 it runs on the D4 coal line, through a signalman's six-minute siding on Thursday nights.</p>
       <p>The names of the passengers are chalked inside the wagons. Nobody has ever crossed one out.</p>`,
     },
   });

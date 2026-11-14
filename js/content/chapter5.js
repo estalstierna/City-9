@@ -15,7 +15,7 @@
   };
   const set = (o, fx) => (s) => (Object.assign(s.c5, o), typeof fx === 'function' ? fx(s) : fx || null);
 
-  G.PEOPLE.censor = { name: '"Censor"', role: 'OA SqL · Academy instructor', img: null };
+  G.PEOPLE.censor = { name: '"Censor"', role: 'OA SqL · Academy instructor', img: 'censor' };
   G.PEOPLE.veilc = { name: 'The man with no patch', role: 'VEIL · no designation', img: 'veil-ofc' };
 
   G.extend('c4_end', {
@@ -82,8 +82,9 @@
     c5_0: {
       title: 'The Officer Academy — Nexus, sixth floor',
       text: [
-        '@img assets/img/uniform-oa.webp|Officer Academy command uniform',
+        '@img assets/img/env/e34-academy.webp|The Officer Academy, sixth floor of the Nexus',
         'The Academy is a single long room with violet carpet and windows that look at the Spire. Twelve candidates from every division sit at steel desks. At the front stands an instructor in a long greatcoat with a violet armband: two stars, a crest stripe of violet edged in silver. The Academy calls the instructor *Censor*.',
+        '@portrait assets/img/portraits/censor.webp|CCA.C9.D1-OA-SqL-00733 — "Censor"',
         '@say Censor|Units obey. Officers decide what obedience is for. Your first lesson. A district is starving. The ration is cut. A crowd forms at an RDT. You have three teams and Overwatch on the roof. Doctrine, candidate?',
       ],
       choices: [
@@ -126,6 +127,7 @@
     c5_1_meet: {
       title: 'Stack 22 — the stairwell, 23:00',
       text: (s) => [
+        '@img assets/img/env/e35-veil-stairwell.webp|Stack 22, the fourth landing',
         'The stairwell light is out on every floor. On the fourth landing someone is standing very still against the wall in a black jacket with a black armband: a dull grey bar, a dull grey star, an empty circle. Where the designation patch should be there is a strip of black tape.',
         '@portrait assets/img/portraits/veil-ofc.webp|No designation',
         '@say VEIL|You are going to be an officer. That makes you interesting. Before it makes you useful, we would like to know what you are.',
@@ -303,10 +305,11 @@
   G.addCodex({
     academy: {
       title: 'The Officer Academy',
-      body: `<img src="assets/img/uniform-oa.webp" alt="Officer Academy" loading="lazy"><p>The sixth floor of the Nexus. Candidates are selected by the Field Commander from units of grade 01 and above, and from Elite Protection Units. Doctrine in the mornings, their own divisions in the afternoons, and a command exercise in a live district.</p>
+      body: `<img src="assets/img/env/e34-academy.webp" alt="Officer Academy" loading="lazy"><p>The sixth floor of the Nexus. Candidates are selected by the Field Commander from units of grade 01 and above, and from Elite Protection Units. Doctrine in the mornings, their own divisions in the afternoons, and a command exercise in a live district.</p>
       <p>Instructors wear violet armbands and the crest stripe of the OA. Graduates are made Field Officers when their grade allows. Most candidates are sent back once before they graduate. Some candidates do not come back at all; their files read <i>Transferred: Officer Academy</i>.</p>`,
     },
   });
   const grp = G.CODEX_GROUPS.find((g) => g.title === 'Civil Protection');
   if (grp) grp.ids.push('academy');
+  G.extend('c5_0', { after: (s) => s.rel.censor === undefined && G.fx(s, { rel: { censor: 0 } }) });
 })();
