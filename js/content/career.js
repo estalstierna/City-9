@@ -128,7 +128,7 @@
       }
     });
     if (div === 'UNION' && !list.some((x) => x.rank === 'DvL')) list.push({ name: '"Bulwark"', rank: 'DvL', note: 'Division Leader, D5' });
-    list.push({ name: s.name, rank: s.rank, you: true, note: 'You' });
+    list.push({ name: s.name, rank: s.rank, you: true, note: G.desig(s) });
     const order = (x) => -G.rankIdx(x.rank);
     list.sort((a, b) => order(a) - order(b) || (a.you ? -1 : b.you ? 1 : 0));
     return list;
@@ -160,7 +160,7 @@
         rows += `<div class="ro-rank">${G.RANK_NAMES[x.rank] || x.rank}</div>`;
         last = x.rank;
       }
-      rows += `<div class="ro-row${x.you ? ' you' : ''}${x.gone ? ' gone' : ''}"><span>${x.name}${x.you ? ' <em>(you)</em>' : ''}</span><small>${x.note || 'CCA.C9.D5-' + div + '-' + x.rank + '-' + (x.uid || '')}</small></div>`;
+      rows += `<div class="ro-row${x.you ? ' you' : ''}${x.gone ? ' gone' : ''}"><span>${x.name}${x.you ? ' <em>(you)</em>' : ''}</span><small>${x.note || `CCA.C9.D${s.district || 5}-${div}-${x.rank}-${x.uid || ''}`}</small></div>`;
     });
     const n = nextRank(s);
     const p = G.PROMO[s.rank];
