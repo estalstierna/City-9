@@ -174,3 +174,53 @@
     },
   });
 })();
+
+/* ===================================================== PLACES ON SCREEN
+   Each division's places get their own image: the first image in a scene is replaced, or one is
+   added at the top if the scene had none. */
+(function () {
+  const IMG = {
+    dd_hward: ['e26-helix-ward', 'The HELIX ward'],
+    dd_hward_r0: ['e26-helix-ward', 'The HELIX ward'],
+    dd_hmorgue: ['e26-helix-ward', 'Beneath the ward'],
+    x2_helix_0: ['e26-helix-ward', 'The HELIX ward, bed 12'],
+    x2_helix_2: ['e26-helix-ward', 'The third day'],
+    dd_vlab: ['e27-vector-lab', 'The floor without a number'],
+    dd_varch: ['e27-vector-lab', 'The floor without a number'],
+    x2_vector_0: ['e27-vector-lab', 'Specimen Nine'],
+    x2_vector_2: ['e27-vector-lab', 'Sectioning day'],
+    dd_sprobe: ['e28-404-wall', 'The 404 wall'],
+    dd_swall: ['e28-404-wall', 'Tower 6'],
+    dd_sscav: ['e28-404-wall', 'The 404 wall at dawn'],
+    x2_spear_0: ['e28-404-wall', 'Beyond the canal'],
+    dd_rgate: ['e29-hardpoint', 'Hardpoint D1-3'],
+    dd_rgate_r0: ['e29-hardpoint', 'Hardpoint D1-3'],
+    dd_rlobby: ['e29-hardpoint', 'The road to the Nexus'],
+    dd_hcert: ['e30-works', 'The Works — screening'],
+    dd_hblood: ['e30-works', 'The Works'],
+    dd_rstrike: ['e30-works', 'The Works at 05:40'],
+    dd_sdepot: ['e31-tram-depot', 'The tram depot'],
+    dd_stags: ['e31-tram-depot', 'The tram depot'],
+    dd_gspire: ['e32-spire-base', 'The foot of the Spire'],
+    x2_spear_2: ['e33-block11', 'Block 11'],
+  };
+  Object.keys(IMG).forEach((id) =>
+    G.extend(id, {
+      text: (lines) => {
+        const tag = `@img assets/img/env/${IMG[id][0]}.webp|${IMG[id][1]}`;
+        const i = lines.findIndex((l) => typeof l === 'string' && l.startsWith('@img '));
+        if (i === 0 || i === 1) lines[i] = tag;
+        else lines.unshift(tag);
+        return lines;
+      },
+    })
+  );
+  const C = G.codexEntries;
+  const addImg = (id, file, alt) => C[id] && !C[id].body.includes(file) && (C[id].body = `<img src="assets/img/env/${file}.webp" alt="${alt}" loading="lazy">` + C[id].body);
+  addImg('oldtown', 'e28-404-wall', 'The 404 wall and Old Town');
+  addImg('works', 'e30-works', 'The Works');
+  addImg('helix', 'e26-helix-ward', 'The HELIX ward');
+  addImg('vector', 'e27-vector-lab', 'The floor without a number');
+  if (C.nexus) C.nexus.body = C.nexus.body.replace('</table>', '</table><img src="assets/img/env/e27-vector-lab.webp" alt="Below Level 4" loading="lazy">');
+  if (C.spire) C.spire.body += '<img src="assets/img/env/e32-spire-base.webp" alt="The foot of the Spire" loading="lazy"><p>At its foot the conduits from the dam go into the alloy like roots into rock. GRID engineers who work there say the wall is warm.</p>';
+})();

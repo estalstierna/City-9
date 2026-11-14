@@ -1892,6 +1892,8 @@ Full prompt-text finns i chatthistoriken (2026-11-13).
 | K9 Administratören | `portraits/administrator.jpg` | portraits/granite · flag-city09 |
 | K10 VEIL-officer | `portraits/veil-ofc.jpg` | portraits/mira · uniform-veil · ref/ofc-helmet |
 
+**Klara (2026-11-14):** E26–E33 inlagda i divisionernas scener och codex. Kvar: K6–K10, E24, E25.
+
 Full prompt-text finns i chatthistoriken (2026-11-14). Enheter följer regeln för designationspatch; VEIL har patchen täckt av svart tejp.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
