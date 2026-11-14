@@ -53,6 +53,9 @@
     if (s.div === 'JURY' && s.rel.vesna !== undefined && s.rel.vesna > -30) out.push({ key: 'vesna', name: 'Vesna', rank: '02', trait: 'book', bio: 'Your partner from the Leak. She files everything — including you.', loyal: 40 + Math.round((s.rel.vesna || 0) / 3) });
     if ((s.div === 'UNION' || !s.div) && s.rel.rook !== undefined && !s.flags.rook_amputated && above('02')) out.push({ key: 'rook', name: '"Rook"', rank: '02', trait: 'steady', bio: 'Your old field trainer, now in your team. He finds this funnier than you do.', loyal: 45 + Math.round((s.rel.rook || 0) / 3) });
     if (s.div === 'UNION' && s.rel.wick !== undefined && !s.flags.wick_dead && !s.flags.wick_alive) out.push({ key: 'wick', name: '"Wick"', rank: '05', trait: 'eyes', bio: 'Your trainee from the Quota. He walks a half-step behind you, still.', loyal: 45 + Math.round((s.rel.wick || 0) / 3) });
+    const dc = G.DIV_CAST && G.DIV_CAST[s.div];
+    if (dc && dc.partner && s.rel[dc.partner.key] !== undefined && s.rel[dc.partner.key] > -30 && !s.flags[dc.partner.key + '_lost'])
+      out.push({ key: dc.partner.key, name: dc.partner.squadName, rank: dc.partner.rank, trait: dc.partner.trait, bio: dc.partner.bio, loyal: 45 + Math.round((s.rel[dc.partner.key] || 0) / 3) });
     if (s.rel.tomas !== undefined && !s.flags.tomas_gone && s.rel.tomas > -20) out.push({ key: 'tomas', name: 'Tomas Vey', rank: '04', trait: 'soft', bio: 'Your friend from training. Still owes you, or you owe him; neither of you is sure any more.', loyal: 50 + Math.round((s.rel.tomas || 0) / 3) });
     return out;
   }

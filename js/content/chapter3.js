@@ -31,7 +31,8 @@
       const d = c2Done(s);
       return d !== null && s.day >= d + 2;
     }
-    return !!s.c2 && s.day >= s.c2.next + 3;
+    if (s.flags.c2_end_day !== undefined) return s.day >= s.flags.c2_end_day + 2;
+    return !!s.c2 && !(G.DIV_ARCS && G.DIV_ARCS[s.div]) && s.day >= s.c2.next + 3;
   };
   /* who from the canals still has a face you know */
   const contact = (s) => {

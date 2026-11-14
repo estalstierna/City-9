@@ -24,6 +24,8 @@
     if (s.div === 'JURY' && s.rel.vesna !== undefined) return { key: 'vesna', name: 'Vesna' };
     if (s.div === 'UNION' && s.rel.wick !== undefined && s.c2 && s.c2.stage >= 1) return { key: 'wick', name: 'Wick' };
     if ((!s.div || s.div === 'UNION') && s.rel.rook !== undefined) return { key: 'rook', name: 'Rook' };
+    const dc = G.DIV_CAST && G.DIV_CAST[s.div];
+    if (dc && dc.partner && s.rel[dc.partner.key] !== undefined && !s.flags[dc.partner.key + '_lost']) return { key: dc.partner.key, name: dc.partner.short };
     return { key: null, name: 'your partner' };
   };
   const partnerRel = (s) => {
@@ -34,6 +36,8 @@
   const superior = (s) => {
     if (s.div === 'JURY') return { name: 'Magistrate', key: 'magistrate', img: 'magistrate', cap: 'JURY-DvL-02842 — the Magistrate' };
     if (!s.div || s.div === 'UNION') return { name: 'Granite', key: 'granite', img: 'granite', cap: 'CCA.C9.D5-UNION-SqL-11902 — "Granite"' };
+    const dc = G.DIV_CAST && G.DIV_CAST[s.div];
+    if (dc) return { name: dc.chief.short, key: dc.chief.key, img: dc.chief.img, cap: dc.chief.cap };
     return { name: `${s.div} SqL`, key: null, img: null, cap: '' };
   };
   G.partnerOf = partner;

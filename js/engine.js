@@ -112,9 +112,24 @@
       },
     },
   ];
-  const SAVE_KEY = 'c9rp_auto_v1';
-  const CP_KEY = 'c9rp_checkpoint_v1';
-  const MANUAL_KEY = 'c9rp_manual_v1';
+  /* Save slots: each slot has its own autosave, checkpoint and manual save. Slot 1 uses the
+     original keys, so saves from before slots existed live there. */
+  G.SLOTS = 4;
+  let slot = 1;
+  try {
+    slot = Math.min(G.SLOTS, Math.max(1, parseInt(localStorage.getItem('c9rp_slot'), 10) || 1));
+  } catch (e) {}
+  const sk = (base, n) => base + ((n || slot) === 1 ? '' : '_s' + (n || slot));
+  const SAVE = (n) => sk('c9rp_auto_v1', n);
+  const CP = (n) => sk('c9rp_checkpoint_v1', n);
+  const MANUAL = (n) => sk('c9rp_manual_v1', n);
+  G.slot = () => slot;
+  G.setSlot = (n) => {
+    slot = n;
+    try {
+      localStorage.setItem('c9rp_slot', String(n));
+    } catch (e) {}
+  };
 
   let S = null;
   let notes = [];
@@ -540,8 +555,8 @@
     }
     render(sc, id);
     if (sc.nosave) return;
-    if (sc.checkpoint) store(CP_KEY);
-    store(SAVE_KEY);
+    if (sc.checkpoint) store(CP());
+    store(SAVE());
   };
 
   /* ---------------------------------------------------------------- save */
@@ -573,8 +588,8 @@
       return null;
     }
   }
-  G.hasSave = (key) => !!readSave(key || SAVE_KEY);
-  G.hasCheckpoint = () => !!readSave(CP_KEY);
+  G.hasSave = (key) => !!readSave(key || SAVE());
+  G.hasCheckpoint = () => !!readSave(CP());
 
   function loadFrom(key, label) {
     const data = readSave(key);
@@ -588,21 +603,48 @@
     note(label || 'RECORD RESTORED', 'codex');
     const sc = G.scenes[S.scene] || G.scenes.title;
     render(sc, G.scenes[S.scene] ? S.scene : 'title');
-    store(SAVE_KEY);
+    store(SAVE());
     return true;
   }
-  G.continueGame = () => loadFrom(SAVE_KEY, 'RECORD RESTORED');
-  G.loadCheckpoint = () => loadFrom(CP_KEY, 'CHECKPOINT RESTORED');
+  G.continueGame = () => loadFrom(SAVE(), 'RECORD RESTORED');
+  /* a short summary of what is in a slot, or null */
+  G.slotInfo = (n) => {
+    const d = readSave(SAVE(n));
+    if (!d) return null;
+    const pre = d.phase === 'prologue' || d.phase === 'creation';
+    return {
+      name: d.name,
+      rank: pre ? 'Citizen' : G.RANK_NAMES[d.rank] || d.rank,
+      div: d.div || (pre ? '' : d.phase === 'training' ? 'Training' : 'UNION'),
+      day: d.day || 0,
+      chapter: d.chapter || 1,
+      ended: d.phase === 'ended',
+    };
+  };
+  G.continueSlot = (n) => {
+    G.setSlot(n);
+    return G.continueGame();
+  };
+  G.newGameInSlot = (n) => {
+    G.setSlot(n);
+    G.newGame();
+  };
+  G.clearSlot = (n) => {
+    try {
+      [SAVE(n), CP(n), MANUAL(n)].forEach((k) => localStorage.removeItem(k));
+    } catch (e) {}
+  };
+  G.loadCheckpoint = () => loadFrom(CP(), 'CHECKPOINT RESTORED');
   G.newGame = () => {
     S = G.fresh();
     $('#story').innerHTML = '';
     G.goto('cc_name');
   };
   G.manualSave = () => {
-    store(MANUAL_KEY);
+    store(MANUAL());
     toast('Record saved to manual slot.');
   };
-  G.manualLoad = () => loadFrom(MANUAL_KEY, 'MANUAL RECORD RESTORED');
+  G.manualLoad = () => loadFrom(MANUAL(), 'MANUAL RECORD RESTORED');
   G.exportSave = () => {
     try {
       return btoa(unescape(encodeURIComponent(JSON.stringify(S))));
@@ -613,7 +655,7 @@
   G.importSave = (code) => {
     try {
       const obj = JSON.parse(decodeURIComponent(escape(atob(code.trim()))));
-      localStorage.setItem(MANUAL_KEY, JSON.stringify(obj));
+      localStorage.setItem(MANUAL(), JSON.stringify(obj));
       return G.manualLoad();
     } catch (e) {
       toast('That code is corrupted.');
@@ -838,7 +880,7 @@
         .join('');
     openModal('Codex // Union Records', html, 'codex');
     S.codexSeen = S.codex.slice();
-    store(SAVE_KEY);
+    store(SAVE());
     renderNav();
     const body = $('#modal-body');
     body.onclick = (e) => {
@@ -863,13 +905,13 @@
   function showMenu() {
     openModal(
       'Terminal',
-      `<div class="menu">
+      `<p class="sub">You are playing record ${slot} of ${G.SLOTS}. Every record keeps its own autosave, checkpoint and manual save.</p><div class="menu">
         <button data-a="save">Save to manual slot</button>
-        <button data-a="load" ${G.hasSave(MANUAL_KEY) ? '' : 'disabled'}>Load manual slot</button>
+        <button data-a="load" ${G.hasSave(MANUAL()) ? '' : 'disabled'}>Load manual slot</button>
         <button data-a="cp" ${G.hasCheckpoint() ? '' : 'disabled'}>Load last checkpoint</button>
         <button data-a="export">Export save code</button>
         <button data-a="import">Import save code</button>
-        <button data-a="new" class="danger">New game</button>
+        <button data-a="new">Records &amp; new game</button>
       </div>
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
       <p class="sub">The game autosaves after every scene in this browser. Checkpoints are written at the start of each day and at key story moments.</p>`,
@@ -887,9 +929,10 @@
         toast('Copy the code to keep your record.');
       }
       if (a === 'import' && G.importSave($('#save-code').value)) closeModal();
-      if (a === 'new' && confirm('Abandon this life and start over?')) {
+      if (a === 'new') {
         closeModal();
-        G.newGame();
+        $('#story').innerHTML = '';
+        G.goto('title');
       }
     };
   }

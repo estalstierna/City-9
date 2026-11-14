@@ -15,10 +15,51 @@
         'Recruitment is open. The ration bonus is generous. Your sister has been hungry for a long time.',
         '@sys A text roleplay in the Half-Life universe. Some choices are tested against your skills, and the percentage is shown on the choice. Some consequences are not shown at all.',
       ],
-      choices: () => [
-        { t: 'Continue your record', if: () => G.hasSave(), act: () => G.continueGame() },
-        { t: 'Begin a new life', act: () => G.newGame() },
-      ],
+      choices: () => {
+        const list = [];
+        const empty = [];
+        for (let n = 1; n <= G.SLOTS; n++) {
+          const i = G.slotInfo(n);
+          if (!i) {
+            empty.push(n);
+            continue;
+          }
+          list.push({
+            t: `**Record ${n}** — ${i.name}, ${i.rank}${i.div ? ' · ' + i.div : ''}${i.day ? ' · day ' + i.day : ''}${i.chapter > 1 ? ' · chapter ' + i.chapter : ''}${i.ended ? ' · ended' : ''}`,
+            tag: n === G.slot() ? 'LAST PLAYED' : 'CONTINUE',
+            tagCls: n === G.slot() ? 'loyal' : 'duty',
+            act: () => G.continueSlot(n),
+          });
+        }
+        if (empty.length) list.push({ t: `Begin a new life in record ${empty[0]}`, tag: 'NEW', tagCls: 'mercy', act: () => G.newGameInSlot(empty[0]) });
+        if (list.length > (empty.length ? 1 : 0)) list.push({ t: 'Begin a new life over an existing record…', go: 'title_overwrite' });
+        return list;
+      },
+    },
+    title_overwrite: {
+      safe: true,
+      nosave: true,
+      title: 'Overwrite a record',
+      text: ['@sys The record you choose is erased: its autosave, its checkpoint and its manual save. The others are kept.'],
+      choices: () => {
+        const list = [];
+        for (let n = 1; n <= G.SLOTS; n++) {
+          const i = G.slotInfo(n);
+          if (!i) continue;
+          list.push({
+            t: `Erase record ${n} (${i.name}, ${i.rank}${i.div ? ' · ' + i.div : ''}) and begin a new life there`,
+            tag: 'ERASE',
+            tagCls: 'risk',
+            act: () => {
+              if (typeof confirm === 'function' && !confirm(`Erase record ${n} — ${i.name}? This cannot be undone.`)) return G.goto('title');
+              G.clearSlot(n);
+              G.newGameInSlot(n);
+            },
+          });
+        }
+        list.push({ t: 'Back.', go: 'title' });
+        return list;
+      },
     },
 
     /* ---------------------------------------------------------- creation */

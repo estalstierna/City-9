@@ -40,6 +40,8 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 | District stability | Stack 9, Stack 14, Stack 22, Bazaar Row and Plaza 5 each have hidden order and resentment. Choices tagged BY THE BOOK raise both, MERCY lowers both, AMPUTATE/BRUTAL raise both a lot. High resentment boils over into attacks; low order lets the canal cells in. Both become morning events. The Dossier shows a colour map (green, amber, red), never numbers. Plaza 5's state sets how hot a crowd starts. |
 | Crowd control | A real-time minigame on ration and broadcast duties, and the climax of chapter 4: three sectors with rising tension, a few units to post, a voice that works below 75, agitators to pull out, and a baton that works instantly and is remembered. Any sector at 100 is a riot. |
 | Variety | Routine duties become one of 25+ vignettes three times in four (rotating, never the same twice in a row). Each morning has a line of the city that follows the world state, and sometimes an encounter on the way to muster. Evenings offer two rotating places (cards, the roof, the canal, a letter, the night broadcast, Halloran, a case-file follow-up) and sometimes a knock at the door first. People from your case files come back. |
+| Division duties | Every division has its own duty board. UNION keeps the street duties; HELIX (infirmary night shift, field medic, fitness certification), RAZOR (hardpoint watch, VIP escort, armoury audit), SPEAR (404 perimeter, building clearance, tag recovery), VECTOR (decontamination, containment labs, canal sampling), GRID (forcefield repair, scanner masts, lock calibration) and JURY (interrogation, unit audit, surveillance, tribunal clerk, the archive) each have their own, with rotating routine variants. All divisions can also be sent on apartment raids. Duties are built from data with `G.divDuty` in `js/content/divisions.js`. |
+| Save records | Four records side by side. The title screen lists each record (name, rank, division, day, chapter) to continue, starts a new life in an empty record, or erases one you choose. Each record has its own autosave, checkpoint and manual save; saves from before records existed are record 1. The in-game menu leads back to the records. |
 | Contacts | Mira (your sister), Tomas, Ilse, Rook, Granite, Halloran, the Tinker. Relationships change their scenes. |
 
 ## Structure (Chapter 1)
@@ -59,6 +61,8 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 7. **Airwatch** (the airborne branch of Overwatch) runs through the whole game: a gunship over the first sociostatus, a searchlight over the rail-yard sweeps, a Shrike holding station over relocation day, transports and gunships on the Nexus roof in chapter 3 and the Shrike over the spillway on the long night. Codex entry *Airwatch*; radio code 10-78 AIR. Hooks live in `js/content/airwatch.js`.
 
 8. **Chapter 4, "Sixty Grams"** (all divisions, one grade up): City 17 drains the Union's cities, and City 9's ration is cut by sixty grams. Vigil orders every team lead to name one of their own for transfer to City 17. Your canal contact plans to empty the D2 packing-plant warehouse on ration day while every unit holds Plaza 5. You get one day to prepare the district (release emergency stores, raid the agitators, walk the blocks, or work your sources), then ration day itself is played as a crowd-control set piece. If the plaza holds, you decide what happens at the warehouse; if it riots, Overwatch on the roof decides, unless you stand in front of it. A letter from City 17 closes the chapter.
+
+   - **HELIX, RAZOR, SPEAR, VECTOR and GRID** each have their own chapter-two arc (grade 03 → 02), with their own officer and partner: HELIX *The Ward* (Matron, Lark: a canal courier kept alive for JURY), RAZOR *The Guest* (Bastion, Brace: an auditor from City 1 and a leak in the squad), SPEAR *Beyond the Canal* (Kiln, Rasp: a lost squad and a settlement inside the quarantine zone), VECTOR *Specimen Nine* (the Archivist, Gauze: a woman the infection does not take), GRID *The Blackout List* (Foreman, Solder: whose block goes dark this winter). `js/content/arcs.js`.
 
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
@@ -111,6 +115,8 @@ js/content/world.js   district stability, mornings, evenings, echoes
 js/content/routines.js routine duty variants
 js/content/crowd.js   crowd-control minigame
 js/content/chapter3.js, chapter4.js
+js/content/divisions.js division cast, duty builder, division duties
+js/content/arcs.js    chapter-two arcs for HELIX, RAZOR, SPEAR, VECTOR, GRID
 ```
 
 Tests (Playwright with Chromium):

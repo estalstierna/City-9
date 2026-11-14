@@ -236,6 +236,65 @@ suite('chapter 2 arcs (UNION and JURY)', async (browser) => {
   return out.concat(errors);
 });
 
+suite('chapter 2 arcs for HELIX, RAZOR, SPEAR, VECTOR and GRID', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  const divs = ['HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  for (const div of QUICK ? divs : divs.concat(divs)) {
+    await page.evaluate((div) => {
+      try {
+        localStorage.clear();
+      } catch (e) {}
+      G.newGame();
+      const s = G.state();
+      Object.assign(s, { name: 'Tester', phase: 'union', rank: '03', div, day: 20, merit: 80, lp: 12, res: 25 });
+      Object.keys(s.skills).forEach((k) => (s.skills[k] = 3));
+      Object.assign(s.rel, { rook: 20, granite: 10 });
+      s.mem.grade = 'Graded';
+      s.flags.passed_04 = s.flags.passed_03 = s.flags.pb_03 = true;
+      G.goto('ch1_end');
+    }, div);
+    const w = await randomWalk(page, QUICK ? 300 : 450, { stopAt: ['x2_' + div.toLowerCase() + '_end'] });
+    out.push(...w.problems.map((p) => div + ': ' + p));
+    if (!w.seen['x2_' + div.toLowerCase() + '_intro']) out.push(div + ': arc never started');
+    if (w.ended !== 'x2_' + div.toLowerCase() + '_end' && w.ended !== 'end_deserviced' && w.ended !== 'end_amputated') out.push(div + ': arc did not finish (' + (w.ended || 'none') + ')');
+    const own = Object.keys(w.seen).filter((k) => /^dd_/.test(k)).length;
+    if (!own) out.push(div + ': no own division duty was played');
+    const street = Object.keys(w.seen).filter((k) => /^d_(ration|check|market|insp|cast|escort|rail)/.test(k)).length;
+    if (street) out.push(div + ': played UNION street duties');
+  }
+  return out.concat(errors);
+});
+
+suite('save slots: two records side by side', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const r = await page.evaluate(() => {
+    localStorage.clear();
+    G.newGameInSlot(1);
+    G.state().name = 'Alpha';
+    G.goto('cc_bg');
+    G.newGameInSlot(2);
+    G.state().name = 'Bravo';
+    G.goto('cc_bg');
+    const a = G.slotInfo(1), b = G.slotInfo(2);
+    G.continueSlot(1);
+    const n1 = G.state().name;
+    G.continueSlot(2);
+    const n2 = G.state().name;
+    G.goto('title');
+    const titleChoices = document.querySelectorAll('#story .block.current .choice').length;
+    G.clearSlot(2);
+    return { a: a && a.name, b: b && b.name, n1, n2, titleChoices, gone: !G.slotInfo(2), kept: !!G.slotInfo(1) };
+  });
+  const out = [];
+  if (r.a !== 'Alpha' || r.b !== 'Bravo') out.push('slots did not keep separate records: ' + JSON.stringify(r));
+  if (r.n1 !== 'Alpha' || r.n2 !== 'Bravo') out.push('continuing a slot loaded the wrong record');
+  if (r.titleChoices < 3) out.push('title screen does not list both records');
+  if (!r.gone || !r.kept) out.push('clearing a slot touched the wrong record');
+  await page.evaluate(() => localStorage.clear());
+  return out.concat(errors);
+});
+
 suite('chapter 3 for every division', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];
