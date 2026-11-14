@@ -35,8 +35,25 @@
       { m: false, age: 'woman in her thirties', look: 'fair braids and freckles' },
     ].map((f, i) => ({ ...f, cwu: true, img: `assets/img/docs/faces-cwu/c${String(i + 1).padStart(2, '0')}.webp` }))
   );
-  const facePool = (cwu) => FACES.map((f, i) => i).filter((i) => !!FACES[i].cwu === !!cwu);
-  G.pickFace = (cwu) => pick(facePool(cwu));
+  /* twelve commended citizens (faces-commended/mNN, indices 24–35) and twelve canal-cell members
+     (faces-rebel/rNN, indices 36–47) */
+  const extra = (dir, p, kind, list) => FACES.push(...list.map((x, i) => ({ m: x[0], age: x[1], look: x[2], kind, img: `assets/img/docs/${dir}/${p}${String(i + 1).padStart(2, '0')}.webp` })));
+  extra('faces-commended', 'm', 'commended', [
+    [true, 'man in his forties', 'neat side-parted hair and round spectacles'], [false, 'woman in her fifties', 'silver hair in a precise bun'], [true, 'man in his thirties', 'clean-cut blond hair'], [false, 'woman in her thirties', 'a dark bob'],
+    [true, 'man in his sixties', 'a white moustache'], [false, 'young woman', 'auburn hair pinned up and pearl earrings'], [true, 'heavy man in his fifties', 'a bald head and a satisfied smile'], [false, 'woman in her forties', 'rimless glasses and a warden’s whistle'],
+    [true, 'young man', 'slicked-back dark hair and a foreman’s chevron pin'], [false, 'old woman', 'white curls and a brooch'], [true, 'man in his thirties', 'neatly combed red hair'], [false, 'woman in her forties', 'a long black braid'],
+  ]);
+  extra('faces-rebel', 'r', 'rebel', [
+    [false, 'woman in her thirties', 'a faded red headscarf and a scar through one eyebrow'], [true, 'man in his fifties', 'a grey beard, a knitted cap and a key on a string'], [true, 'man in his thirties', 'a police crew cut and a scar on his neck'], [false, 'old woman', 'cracked glasses and a teal-striped scarf'],
+    [true, 'young man', 'a shaved head and a bruised cheek'], [false, 'young woman', 'black hair in a knot and goggles round her neck'], [true, 'man in his forties', 'long dark hair and a gold tooth'], [false, 'woman in her forties', 'a burn scar on her jaw'],
+    [true, 'old man', 'a bald head and a mark behind one ear'], [false, 'woman in her thirties', 'cropped fair hair and a black eye'], [true, 'teenage boy', 'curly hair and a missing tooth'], [false, 'woman in her fifties', 'a grey braid and wader straps'],
+  ]);
+  /* kind: true or 'cwu' → CWU; 'commended'; 'rebel'; anything else → ordinary citizens */
+  const facePool = (kind) => {
+    const k = kind === true ? 'cwu' : kind || 'citizen';
+    return FACES.map((f, i) => i).filter((i) => (FACES[i].cwu ? 'cwu' : FACES[i].kind || 'citizen') === k);
+  };
+  G.pickFace = (kind) => pick(facePool(kind));
   G.DOC_FACES = FACES;
   G.faceDesc = (i) => `${/^[aeiou]/.test(FACES[i].age) ? 'an' : 'a'} ${FACES[i].age} with ${FACES[i].look}${FACES[i].cwu ? ' in the ochre CWU jacket' : ''}`;
 

@@ -256,3 +256,37 @@
   ['c4_wh_stop', 'c4_wh_let'].forEach((id) => G.extend(id, { text: (lines) => [dock].concat(lines) }));
   if (G.codexEntries.works) G.codexEntries.works.body += '<img src="assets/img/env/e25-warehouse.webp" alt="The loading dock" loading="lazy">';
 })();
+
+/* ===================================================== the canal cells and the necrotic */
+(function () {
+  const C = G.codexEntries;
+  if (C.resistance)
+    C.resistance.body =
+      '<img src="assets/img/resistance-sheet.webp" alt="The canal cells" loading="lazy">' +
+      C.resistance.body +
+      '<p>JURY sorts them by what they do: <b>couriers</b> who carry messages, food and forged cards through the stairwells; <b>lockmen</b> who know the canals and the pump houses; and <b>deserters</b> — former units who cut the tracking implant out of the back of their own skull. Their mark is stitched inside the collar, or chalked at knee height. Never worn.</p>';
+  G.addCodex({
+    necrotic: {
+      title: 'The necrotic',
+      body: `<img src="assets/img/necrotic-sheet.webp" alt="Necrotic progression" loading="lazy"><p>VECTOR's file on the infection of the quarantined districts. It enters through a bite and grows along the spine: grey, fibrous, like wet ash and lichen. It never glows.</p>
+      <table>
+        <tr><td>Early</td><td>Grey threads spread from the bite. The host still talks, still walks home. Bite screening exists for this stage.</td></tr>
+        <tr><td>Mimic</td><td>The growth splits the back. The host repeats the last voice it heard, in that voice. SPEAR has a radio code for voices on the 404 wall.</td></tr>
+        <tr><td>Bloom</td><td>Head and shoulders fuse into a hood of grey plates. It stands still, listening. VECTOR burns what it can reach.</td></tr>
+      </table>
+      <p>Specimen V-301 is the first sample in the Archivist's catalogue. Its label gives a source the Archivist will not discuss.</p>`,
+    },
+  });
+  G.CODEX_GROUPS.find((g) => g.title === 'City 9').ids.push('necrotic');
+  ['dd_sclear', 'dd_vtest', 'dd_vburn', 'x2_vector_0', 'x2_spear_2', 'mg_breach', 'mg_sample', 'dd_sprobe'].forEach((id) => G.extend(id, { after: (s) => G.unlock(s, 'necrotic') }));
+  const top = (img, cap) => (lines) => {
+    const tag = `@img ${img}|${cap}`;
+    const i = lines.findIndex((l) => typeof l === 'string' && l.startsWith('@img '));
+    if (i === 0) lines[0] = tag;
+    else lines.unshift(tag);
+    return lines;
+  };
+  G.extend('dd_sclear', { text: top('assets/img/necrotic-sheet.webp', 'VECTOR specimen file: what lives in Old Town') });
+  G.extend('dd_vtest', { text: top('assets/img/necrotic-sheet.webp', 'What a bite becomes') });
+  G.extend('c3_1', { text: (lines, s) => (s.c3 && s.c3.approach ? lines.concat('@img assets/img/resistance-sheet.webp|The canal cells') : lines) });
+})();

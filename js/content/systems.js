@@ -324,6 +324,12 @@
       if (Math.random() < 0.08 && !person) person = { kind: 'deserter', spot: 'wardrobe', found: false, fate: null };
       if (Math.random() < 0.4) put(pick(spots), pick(['food', 'vodka', 'tobacco']));
     } else if (Math.random() < 0.5) put(pick(spots.concat(['occupant'])), pick(['food', 'vodka', 'tobacco']));
+    /* half the guilty occupants are canal-cell members, not ordinary citizens */
+    let occ = src.occ || makeOcc(s);
+    if (!src.occ && guilty && !claim.person && Math.random() < 0.5) {
+      const face = G.pickFace('rebel');
+      occ = Object.assign({}, occ, { face, desc: G.faceDesc(face), type: 'watch', points: Math.max(occ.points, 9), known: false });
+    }
     return {
       src: src.inf ? 'tip' : 'warrant',
       inf: src.inf || null,
@@ -331,7 +337,7 @@
       claimText: claim.claim,
       guilty,
       trap: !!src.trap,
-      occ: src.occ || makeOcc(s),
+      occ,
       addr: src.addr || `Stack ${pick(STACKS)}, flat ${rint(1, 12)}${pick(['A', 'B', 'C', 'D'])}`,
       comp,
       spots,

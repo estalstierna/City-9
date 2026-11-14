@@ -1929,6 +1929,8 @@ Full prompt-text finns i chatthistoriken (2026-11-14).
 | R3 Tolv anticitizen-ansikten (Rev 2) | `docs/faces-rebel/r01–r12.jpg` | docs/faces/f01 · R1-arket — kläder från kanalcellerna, jackor ut-och-in, inga OBS-etiketter |
 | R4 Tolv commended-ansikten | `docs/faces-commended/m01–m12.jpg` | docs/faces/f01 · citizen-commended |
 
+**Klara (2026-11-14):** R1–R4 inlagda. R1 i codex (motståndet), R2 ny codex-post (necrotic) och i SPEAR/VECTOR-scener, R3 används för skyldiga i razzior, R4 för commended citizens i visitationer.
+
 Full prompt-text finns i chatthistoriken (2026-11-14).
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
