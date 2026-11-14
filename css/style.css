@@ -600,3 +600,18 @@ button, .choice, .nav-btn, .hz, .rep-row { touch-action: manipulation; -webkit-t
 .hint-b button { font-family: var(--mono); font-size: 12px; padding: 6px 10px; background: none; border: 1px solid var(--line); color: var(--dim); border-radius: 3px; cursor: pointer; }
 .hint-b button:first-child { color: var(--amber); border-color: #5a4a22; }
 .block.past .hint { display: none; }
+
+/* ---------------------------------------------------------- quality of life */
+.roll .odds { display: block; font-size: 11px; opacity: .7; margin-top: 2px; }
+.menu button small { display: block; font-size: 11px; color: var(--dim); font-family: var(--mono); margin-top: 2px; }
+.menu.textsize button.on { border-color: var(--accent); color: var(--accent); }
+.sub.keys b { font-family: var(--mono); color: var(--accent); font-weight: normal; }
+.trend { font-style: normal; font-size: 10px; margin-left: 4px; }
+.trend.up { color: var(--green); }
+.trend.down { color: var(--red); }
+.orders .warn { color: var(--amber); }
+.jump-current { position: fixed; right: 16px; bottom: 20px; z-index: 55; background: var(--panel); border: 1px solid var(--accent2); color: var(--accent); font-family: var(--mono); font-size: 12px; padding: 8px 12px; border-radius: 3px; cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s; }
+.jump-current.show { opacity: 1; pointer-events: auto; transform: none; }
+body.anim-fast .block > * { animation-duration: .15s; }
+body.anim-off .block > * { animation: none; }
+@media (max-width: 860px) { .jump-current { bottom: calc(var(--nav-h) + var(--safe-b) + 12px); } }

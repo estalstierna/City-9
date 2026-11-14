@@ -175,7 +175,7 @@
     const root = shell('breach', opts.title || 'Room clearance', 'Each door opens on someone for a heartbeat. FIRE at a threat. HOLD on anyone else. Too slow on a threat costs you.');
     const body = root.querySelector('.m3-body');
     body.innerHTML = '<div class="br-door">Door 1</div><div class="br-fig"></div><div class="tl-btns br-btns"><button class="cr-btn danger" data-a="fire">FIRE</button><button class="cr-btn" data-a="hold">HOLD</button></div>';
-    let i = 0, over = false, cur = null, until = 0, hits = 0, wounds = 0, shotCivil = 0, waiting = true, nextAt = Date.now() + 900;
+    let i = 0, over = false, cur = null, until = 0, hits = 0, wounds = 0, shotCivil = 0, waiting = true, nextAt = Date.now() + 900, threats = 0;
     const fig = body.querySelector('.br-fig');
     const resolve = (act) => {
       if (over || !cur) return;
@@ -206,7 +206,9 @@
       const now = Date.now();
       if (waiting && now > nextAt) {
         waiting = false;
-        const hostile = Math.random() < 0.55;
+        /* at least two threats per clearance, so standing still is never a win */
+        const hostile = doors - i <= 2 - threats || Math.random() < 0.55;
+        if (hostile) threats++;
         cur = { hostile, what: hostile ? pick(HOSTILE) : pick(CIVIL) };
         until = now + win;
         fig.className = 'br-fig show';

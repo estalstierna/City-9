@@ -81,6 +81,18 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 
 12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
 
+13. **Quality of life**:
+   - **Undo:** undo the last choice (U, or in the menu). It is not offered across skill checks or minigames, so dice cannot be re-rolled.
+   - **Keys:** 1–9 choose, Space continues when there is one choice, D opens the dossier, C the codex and M the menu.
+   - **Odds:** hover a check's % to see what the chance is made of. The roll line shows the same breakdown.
+   - **Current orders** at the top of the dossier: where the open chapter stands, the next grade and what blocks it, board retries, strikes and when they expire, and transfer refusals.
+   - **Evening summary:** a one-line summary of the day (merit, loyalty, tokens, health, and which contacts changed). The dossier shows ▲▼ next to contacts.
+   - **Menu:**
+     - text animation (Normal / Fast / Instant);
+     - when each save was made;
+     - a confirmation before loading an older save.
+   - **Jump button:** "↓ Current scene" when you have scrolled away from it.
+
 Endings in this chapter: *Amputated*, *The River Remembers* (defect to the resistance), or reaching 03 and choosing a division, after which you can keep serving.
 
 ## Art
@@ -143,6 +155,7 @@ js/content/chapter5.js The Academy, VEIL
 js/content/chapter6.js Collection, the railway
 js/content/transfer.js division transfer exam (grade 01)
 js/content/chapter7.js Anticitizen One, the night the screens go dark
+js/content/qol.js     current orders, day summary, contact trends
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```

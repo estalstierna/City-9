@@ -141,6 +141,56 @@ suite('engine: an enter hook returning a non-scene string is reported, not follo
   return out.concat(errors.filter((e) => !/Ignored non-scene return "held"/.test(e)));
 });
 
+suite('quality of life: undo, keys, odds, orders, day summary', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(() => {
+    G.addScenes({
+      t_a: { text: ['A'], choices: [{ t: 'Plain', fx: { merit: 7 }, go: 't_b' }, { t: 'Roll', check: { skill: 'authority', diff: 0, pass: 't_b', fail: 't_b' } }] },
+      t_b: { text: ['B'], choices: [{ t: 'Only way on', go: 't_c' }] },
+      t_c: { text: ['C'], choices: [{ t: 'Back', go: 't_a' }] },
+    });
+  });
+  await page.evaluate(SERVICE, {});
+  await page.evaluate(() => G.goto('t_a'));
+  const odds = await page.evaluate(() => document.querySelector('#story .block.current .tag.chk').title);
+  if (!/^Base 40/.test(odds)) out.push('check tag has no odds breakdown: ' + odds);
+  const m0 = await page.evaluate(() => G.state().merit);
+  await page.keyboard.press('1');
+  await page.waitForTimeout(50);
+  let r = await page.evaluate(() => ({ scene: G.state().scene, can: G.canUndo() }));
+  if (r.scene !== 't_b' || !r.can) out.push('plain choice should be undoable: ' + JSON.stringify(r));
+  await page.keyboard.press('u');
+  await page.waitForTimeout(50);
+  r = await page.evaluate(() => ({ scene: G.state().scene, merit: G.state().merit, blocks: document.querySelectorAll('#story .block.current').length }));
+  if (r.scene !== 't_a' || r.merit !== m0 || r.blocks !== 1) out.push('undo did not restore the scene and state: ' + JSON.stringify(r) + ' merit before ' + m0);
+  await page.keyboard.press('2');
+  await page.waitForTimeout(1500);
+  r = await page.evaluate(() => ({ scene: G.state().scene, can: G.canUndo() }));
+  if (r.scene !== 't_b' || r.can) out.push('a skill check must not be undoable: ' + JSON.stringify(r));
+  await page.keyboard.press('Space');
+  await page.waitForTimeout(50);
+  r = await page.evaluate(() => G.state().scene);
+  if (r !== 't_c') out.push('Space should take the only choice, scene is ' + r);
+  const side = await page.evaluate(() => {
+    const s = G.state();
+    s.pb = { retry: s.day + 2 };
+    G.goto('t_a');
+    return document.querySelector('#side-content').innerText;
+  });
+  if (!/Current orders/i.test(side) || !/Board retry from day/.test(side)) out.push('dossier has no current orders: ' + side.slice(0, 200));
+  const sum = await page.evaluate(() => {
+    const s = G.state();
+    s.mem.baseDay = s.day;
+    s.mem.dayBase = { merit: s.merit - 5, lp: s.lp, tokens: s.tokens, hp: s.hp + 3, rel: Object.assign({}, s.rel, { rook: s.rel.rook - 10 }) };
+    let lines = [];
+    G.ext.u_evening.forEach((e) => e.text && (lines = e.text(lines, s, G) || lines));
+    return lines.join('|');
+  });
+  if (!/DAY \d+: Merit \+5 · Health −3 · .*▲/.test(sum)) out.push('evening summary wrong: ' + sum);
+  return out.concat(errors);
+});
+
 suite('static: every image the code names exists on disk', async () => {
   const files = ['index.html', 'manifest.json', 'css/style.css', 'sw.js', ...fs.readdirSync(path.join(ROOT, 'js')).filter((f) => f.endsWith('.js')).map((f) => 'js/' + f), ...fs.readdirSync(path.join(ROOT, 'js/content')).map((f) => 'js/content/' + f)];
   const out = [];

@@ -212,13 +212,18 @@
   /* G.chanceMods: functions (s, skill) => number added to every check of that skill
      (e.g. a squad member with the right trait). Kept small; the dice still decide. */
   G.chanceMods = [];
-  G.chance = (s, skill, diff) => {
+  /* The parts a check's chance is made of, for the odds tooltip and the roll line. */
+  G.chanceParts = (s, skill, diff) => {
     const lvl = s.skills[skill] || 0;
-    let c = 40 + lvl * 12 - (diff || 0);
-    if (s.hp < 40) c -= 10;
-    G.chanceMods.forEach((m) => (c += m(s, skill) || 0));
-    return clamp(c, 5, 95);
+    const parts = [['Base', 40], [`${G.SKILLS[skill] || skill} ${lvl}`, lvl * 12]];
+    if (diff) parts.push(['Difficulty', -diff]);
+    if (s.hp < 40) parts.push(['Injured', -10]);
+    const mods = G.chanceMods.reduce((a, m) => a + (m(s, skill) || 0), 0);
+    if (mods) parts.push(['Team & rank', mods]);
+    return parts;
   };
+  G.chance = (s, skill, diff) => clamp(G.chanceParts(s, skill, diff).reduce((a, p) => a + p[1], 0), 5, 95);
+  G.oddsText = (s, skill, diff) => G.chanceParts(s, skill, diff).map(([k, v], i) => (i ? `${k} ${v > 0 ? '+' : '−'}${Math.abs(v)}` : `${k} ${v}`)).join(' · ') + ' (5–95)';
 
   G.xpNeed = (lvl) => 2 + lvl * 2;
   G.gainXP = (s, skill, n) => {
@@ -386,7 +391,7 @@
     text.forEach((p) => {
       const node = para(p);
       if (!node) return;
-      node.style.animationDelay = i++ * 90 + 'ms';
+      node.style.animationDelay = i++ * G.ANIM_STEP[prefs().anim || 'normal'] + 'ms';
       block.append(node);
     });
 
@@ -456,7 +461,7 @@
       let tags = '';
       if (c.check) {
         const pct = G.chance(S, c.check.skill, c.check.diff);
-        tags += `<span class="tag chk">${G.SKILLS[c.check.skill].toUpperCase()} ${pct}%</span>`;
+        tags += `<span class="tag chk" title="${G.oddsText(S, c.check.skill, c.check.diff)}">${G.SKILLS[c.check.skill].toUpperCase()} ${pct}%</span>`;
       }
       if (c.tag) tags += `<span class="tag ${c.tagCls || ''}">${c.tag}</span>`;
       n++;
@@ -481,22 +486,45 @@
         console.error(e);
       }
     });
-    requestAnimationFrame(() => block.scrollIntoView({ behavior: G.reducedMotion() ? 'auto' : 'smooth', block: 'start' }));
+    requestAnimationFrame(() => block.scrollIntoView({ behavior: G.reducedMotion() || prefs().anim === 'off' ? 'auto' : 'smooth', block: 'start' }));
+    undo.cur = { json: JSON.stringify(S), id, ok: !sc.mini && !sc.input && !sc.ending && !sc.nosave && id !== 'title' };
     updateSidebar();
   }
+
+  /* ---------------------------------------------------------------- undo
+     One step back: the state as it was when the previous scene was shown. Not offered across a
+     skill check, a minigame or a scene that opens a dialog, so dice cannot be re-rolled. */
+  const undo = { cur: null, prev: null };
+  G.canUndo = () => !!undo.prev && !busy;
+  G.undo = () => {
+    if (!G.canUndo()) return false;
+    const u = undo.prev;
+    undo.prev = null;
+    S = JSON.parse(u.json);
+    const cur = $('#story .block.current');
+    if (cur) cur.remove();
+    const past = document.querySelectorAll('#story .block.past');
+    if (past.length) past[past.length - 1].remove();
+    notes = [];
+    note('CHOICE UNDONE', 'codex');
+    render(G.scenes[u.id], u.id);
+    undo.prev = null;
+    store(SAVE());
+    return true;
+  };
 
   function appendChosen(label) {
     const cur = $('#story .block.current');
     if (cur) cur.append(el('div', 'chosen', '› ' + inline(label)));
   }
-  function appendRoll(skill, pct, roll, ok) {
+  function appendRoll(skill, pct, roll, ok, diff) {
     const cur = $('#story .block.current');
     if (cur)
       cur.append(
         el(
           'div',
           'roll ' + (ok ? 'ok' : 'fail'),
-          `${G.SKILLS[skill].toUpperCase()} CHECK · need ≤${pct} · rolled ${roll} — <b>${ok ? 'SUCCESS' : 'FAILURE'}</b>`
+          `${G.SKILLS[skill].toUpperCase()} CHECK · need ≤${pct} · rolled ${roll} — <b>${ok ? 'SUCCESS' : 'FAILURE'}</b>${diff !== undefined ? `<small class="odds">${G.oddsText(S, skill, diff)}</small>` : ''}`
         )
       );
   }
@@ -507,6 +535,7 @@
   G.onChoose = [];
   function choose(c, label) {
     if (busy) return;
+    undo.prev = undo.cur && undo.cur.ok && !c.check && !c.act ? undo.cur : null;
     busy = true;
     appendChosen(label);
     G.onChoose.forEach((h) => {
@@ -531,7 +560,7 @@
       const ok = roll <= pct;
       S.lastCheck = ok;
       G.gainXP(S, c.check.skill, ok ? 1 : 0.5);
-      appendRoll(c.check.skill, pct, roll, ok);
+      appendRoll(c.check.skill, pct, roll, ok, c.check.diff || 0);
       if (ok && c.check.okFx) G.fx(S, resolve(c.check.okFx));
       if (!ok && c.check.failFx) G.fx(S, resolve(c.check.failFx));
       const mine = S;
@@ -596,7 +625,8 @@
 
   function store(key) {
     try {
-      localStorage.setItem(key, JSON.stringify(S));
+      /* the timestamp lives only in the stored copy, never in the live state */
+      localStorage.setItem(key, JSON.stringify(Object.assign({}, S, { savedAt: Date.now() })));
     } catch (e) {
       /* storage unavailable: play continues without saves */
     }
@@ -631,6 +661,8 @@
       return false;
     }
     S = data;
+    delete S.savedAt;
+    undo.prev = null;
     $('#story').innerHTML = '';
     notes = [];
     note(label || 'RECORD RESTORED', 'codex');
@@ -668,7 +700,19 @@
     } catch (e) {}
   };
   G.loadCheckpoint = () => loadFrom(CP(), 'CHECKPOINT RESTORED');
+  /* "Day 42 · Morning · 3 min ago" for a save key, or null */
+  const ago = (t) => {
+    if (!t) return '';
+    const m = Math.round((Date.now() - t) / 60000);
+    return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago`;
+  };
+  G.saveLabel = (which) => {
+    const d = readSave({ auto: SAVE, cp: CP, manual: MANUAL }[which]());
+    if (!d) return null;
+    return [d.phase === 'union' ? `Day ${d.day} · ${d.time}` : d.phase === 'training' ? 'Training' : 'Prologue', G.scenes[d.scene] && typeof G.scenes[d.scene].title === 'string' ? G.scenes[d.scene].title : null, ago(d.savedAt)].filter(Boolean).join(' · ');
+  };
   G.newGame = () => {
+    undo.prev = null;
     S = G.fresh();
     $('#story').innerHTML = '';
     G.goto('cc_name');
@@ -734,6 +778,7 @@
         <div class="kv"><span>Rank</span><b>${S.phase === 'prologue' || S.phase === 'creation' ? 'Citizen' : G.RANK_NAMES[S.rank]}</b></div>
         <div class="kv"><span>Division</span><b>${S.div || '—'}</b></div>
       </section>
+      ${(G.sideTop || []).map((f) => f(S) || '').join('')}
       <section>
         <h3>Status</h3>
         <div class="kv"><span>Health</span><b>${S.hp} / ${S.maxhp}</b></div>
@@ -758,7 +803,10 @@
           .map((k) => {
             const pp = G.PEOPLE[k];
             const face = pp.img ? `<img class="face" src="assets/img/portraits/${pp.img}-thumb.webp" alt="">` : '<i class="face none"></i>';
-            return `<div class="kv contact">${face}<span>${pp.name}<small>${pp.role}</small></span><b>${relWord(S.rel[k])}</b></div>`;
+            const base = S.mem && S.mem.baseDay === S.day && S.mem.dayBase && S.mem.dayBase.rel[k];
+            const d = base !== undefined && base !== null ? S.rel[k] - base : 0;
+            const tr = d >= 3 ? '<i class="trend up" title="Better since this morning">▲</i>' : d <= -3 ? '<i class="trend down" title="Worse since this morning">▼</i>' : '';
+            return `<div class="kv contact">${face}<span>${pp.name}<small>${pp.role}</small></span><b>${relWord(S.rel[k])}${tr}</b></div>`;
           })
           .join('')}
       </section>
@@ -958,27 +1006,41 @@
     openModal(
       'Terminal',
       `<p class="sub">You are playing record ${slot} of ${G.SLOTS}. Every record keeps its own autosave, checkpoint and manual save.</p><div class="menu">
-        <button data-a="save">Save to manual slot</button>
+        <button data-a="undo" ${G.canUndo() ? '' : 'disabled'}>Undo last choice <small>U</small></button>
+        <button data-a="save">Save to manual slot${G.saveLabel('manual') ? `<small>${G.saveLabel('manual')}</small>` : ''}</button>
         <button data-a="load" ${G.hasSave(MANUAL()) ? '' : 'disabled'}>Load manual slot</button>
-        <button data-a="cp" ${G.hasCheckpoint() ? '' : 'disabled'}>Load last checkpoint</button>
+        <button data-a="cp" ${G.hasCheckpoint() ? '' : 'disabled'}>Load last checkpoint${G.saveLabel('cp') ? `<small>${G.saveLabel('cp')}</small>` : ''}</button>
         <button data-a="export">Export save code</button>
         <button data-a="import">Import save code</button>
         <button data-a="new">Records &amp; new game</button>
       </div>
       <div class="menu textsize"><span>Text size</span><button data-a="fs-">A−</button><button data-a="fs+">A+</button></div>
+      <div class="menu textsize"><span>Text animation</span>${['normal', 'fast', 'off'].map((a) => `<button data-a="anim" data-v="${a}" class="${(prefs().anim || 'normal') === a ? 'on' : ''}">${a === 'off' ? 'Instant' : a[0].toUpperCase() + a.slice(1)}</button>`).join('')}</div>
       <div class="menu textsize"><span>Tips</span><button data-a="tips">${prefs().tips === false ? 'Off' : 'On'}</button></div>
       <div class="menu textsize"><span>Sound</span><button data-a="snd">${G.audio && G.audio.on() ? 'On' : 'Off'}</button>
       </div>
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
-      <p class="sub">The game autosaves after every scene in this browser. Checkpoints are written at the start of each day and at key story moments.</p>`,
+      <p class="sub">The game autosaves after every scene in this browser${G.saveLabel('auto') ? ` (last: ${G.saveLabel('auto')})` : ''}. Checkpoints are written at the start of each day and at key story moments.</p>
+      <p class="sub keys">Keys: <b>1–9</b> choose · <b>Space</b> continue · <b>U</b> undo · <b>D</b> dossier · <b>C</b> codex · <b>M</b> menu · <b>Esc</b> close</p>`,
       'menu'
     );
     $('#modal-body').onclick = (e) => {
-      const a = e.target.dataset && e.target.dataset.a;
+      const t = e.target.closest('[data-a]');
+      const a = t && t.dataset.a;
       if (!a) return;
+      const sure = (which, what) => typeof confirm !== 'function' || confirm(`Go back to the ${what}${G.saveLabel(which) ? ` (${G.saveLabel(which)})` : ''}? Everything since then is lost.`);
+      if (a === 'undo' && G.undo()) closeModal();
       if (a === 'save') G.manualSave();
-      if (a === 'load' && G.manualLoad()) closeModal();
-      if (a === 'cp' && G.loadCheckpoint()) closeModal();
+      if (a === 'load' && sure('manual', 'manual save') && G.manualLoad()) closeModal();
+      if (a === 'cp' && sure('cp', 'last checkpoint') && G.loadCheckpoint()) closeModal();
+      if (a === 'anim') {
+        const p = prefs();
+        p.anim = t.dataset.v;
+        savePrefs(p);
+        G.applyAnim();
+        t.parentElement.querySelectorAll('button').forEach((b) => b.classList.toggle('on', b === t));
+        return;
+      }
       if (a === 'export') {
         $('#save-code').value = G.exportSave();
         $('#save-code').select();
@@ -989,11 +1051,11 @@
         const p = prefs();
         p.tips = p.tips === false;
         savePrefs(p);
-        e.target.textContent = p.tips ? 'On' : 'Off';
+        t.textContent = p.tips ? 'On' : 'Off';
         return;
       }
       if (a === 'snd' && G.audio) {
-        e.target.textContent = G.audio.toggle() ? 'On' : 'Off';
+        t.textContent = G.audio.toggle() ? 'On' : 'Off';
         return;
       }
       if (a === 'fs-' || a === 'fs+') {
@@ -1038,12 +1100,19 @@
     G.applyTextSize();
     return p.text;
   };
+  G.ANIM_STEP = { normal: 90, fast: 25, off: 0 };
+  G.applyAnim = () => {
+    const a = prefs().anim || 'normal';
+    document.body.classList.toggle('anim-fast', a === 'fast');
+    document.body.classList.toggle('anim-off', a === 'off');
+  };
   G.reducedMotion = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   /* ---------------------------------------------------------------- boot */
 
   G.boot = () => {
     G.applyTextSize();
+    G.applyAnim();
     S = G.fresh();
     $('#btn-codex').onclick = showCodex;
     $('#btn-menu').onclick = showMenu;
@@ -1056,12 +1125,48 @@
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       if (e.key === 'Escape') return closeModal();
       if ($('#modal').classList.contains('open')) return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
       const k = parseInt(e.key, 10);
       if (k >= 1 && k <= 9) {
         const b = document.querySelector(`#story .block.current .choice[data-n="${k}"]`);
         if (b && !b.disabled) b.click();
+        return;
       }
+      const key = e.key.toLowerCase();
+      if (e.key === ' ' || e.key === 'Enter') {
+        if (e.target.tagName === 'BUTTON' && e.key === 'Enter') return;
+        const open = [...document.querySelectorAll('#story .block.current .choices .choice')].filter((b) => !b.disabled);
+        if (open.length === 1) {
+          e.preventDefault();
+          open[0].click();
+        }
+        return;
+      }
+      if (S && S.scene === 'title') return;
+      if (key === 'u') G.undo() || toast('Nothing to undo here.');
+      if (key === 'd') setView(view === 'dossier' ? 'story' : 'dossier');
+      if (key === 'c') showCodex();
+      if (key === 'm') showMenu();
     });
+    /* a "back to the story" button when the current scene has scrolled out of view */
+    const jump = el('button', 'jump-current', '↓ Current scene');
+    jump.id = 'jump-current';
+    jump.onclick = () => {
+      const c = $('#story .block.current');
+      if (c) c.scrollIntoView({ behavior: G.reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+    };
+    document.body.append(jump);
+    let jt = 0;
+    const checkJump = () => {
+      cancelAnimationFrame(jt);
+      jt = requestAnimationFrame(() => {
+        const c = $('#story .block.current');
+        const r = c && c.getBoundingClientRect();
+        jump.classList.toggle('show', !!r && view === 'story' && (r.top > innerHeight - 40 || r.bottom < 80));
+      });
+    };
+    document.addEventListener('scroll', checkJump, true);
+    addEventListener('resize', checkJump);
     G.goto('title');
   };
 })();
