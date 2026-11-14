@@ -1920,6 +1920,17 @@ Full prompt-text finns i chatthistoriken (2026-11-14).
 
 Full prompt-text finns i chatthistoriken (2026-11-14).
 
+## 5r. MOTSTÅNDET, NEKROTISKA, ANSIKTSARK
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| R1 Kanalcellerna (konceptark) | `resistance-sheet.jpg` | citizen-base · citizen-watch · env/e13-pumphouse — Courier, Lockman, Deserter; inga lambda-armband (lambdan sydd innanför kragen) |
+| R2 Nekrotiska (egen parasit) | `necrotic-sheet.jpg` | env/e28-404-wall · env/e27-vector-lab · uniform-vector — EARLY, MIMIC, BLOOM; inga krabbor/huvudparasiter |
+| R3 Tolv anticitizen-ansikten | `docs/faces-rebel/r01–r12.jpg` | docs/faces/f01 · citizen-watch |
+| R4 Tolv commended-ansikten | `docs/faces-commended/m01–m12.jpg` | docs/faces/f01 · citizen-commended |
+
+Full prompt-text finns i chatthistoriken (2026-11-14).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
