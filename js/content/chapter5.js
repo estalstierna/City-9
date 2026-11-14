@@ -11,7 +11,7 @@
   const { adv, set } = G.chapter({ n: 5, stages: [[1, 'evening', 'c5_1'], [2, 'morning', 'c5_2'], [3, 'evening', 'c5_3'], [4, 'morning', 'c5_4']] });
 
   G.PEOPLE.censor = { name: '"Censor"', role: 'OA SqL · Academy instructor', img: 'censor' };
-  G.PEOPLE.veilc = { name: 'The man with no patch', role: 'VEIL · no designation', img: 'veil-ofc' };
+  G.PEOPLE.veilc = { name: 'The unit with no patch', role: 'VEIL · no designation', img: 'veil-ofc' };
 
   /* Academy days replace the duty board's first line while you are a candidate */
   G.extend('u_board', {
