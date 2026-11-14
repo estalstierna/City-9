@@ -224,3 +224,28 @@
   if (C.nexus) C.nexus.body = C.nexus.body.replace('</table>', '</table><img src="assets/img/env/e27-vector-lab.webp" alt="Below Level 4" loading="lazy">');
   if (C.spire) C.spire.body += '<img src="assets/img/env/e32-spire-base.webp" alt="The foot of the Spire" loading="lazy"><p>At its foot the conduits from the dam go into the alloy like roots into rock. GRID engineers who work there say the wall is warm.</p>';
 })();
+
+/* ===================================================== FACES
+   Side characters: portraits, and contact cards where the player gets to know them. */
+(function () {
+  const P = (key, name, role) => (G.PEOPLE[key] = { name, role, img: key });
+  P('nine', 'Specimen Nine', 'VECTOR · tank 1, the floor without a number');
+  P('dana', 'Dana', 'Stack 9, 2B · red headscarf');
+  P('strand', 'Overseer Strand', 'City 1 Productivity Office');
+  P('administrator', 'The Administrator', 'City 9 · the residence above the Nexus');
+  const pic = (key, cap) => `@portrait assets/img/portraits/${key}.webp|${cap}`;
+  const after = (re, line) => (lines) => {
+    const i = lines.findIndex((l) => typeof l === 'string' && re.test(l));
+    lines.splice(i >= 0 ? i + 1 : lines.length, 0, line);
+    return lines;
+  };
+  G.extend('x2_vector_0', { text: after(/Behind the glass/, pic('nine', 'Specimen Nine')), after: (s) => s.rel.nine === undefined && G.fx(s, { rel: { nine: 0 } }) });
+  G.extend('x2_vector_2_argue', { after: (s) => G.fx(s, { rel: { nine: 25 } }) });
+  G.extend('x2_vector_0', { choices: (list) => list.map((c) => (c.tag === 'MERCY' ? Object.assign({}, c, { fx: (s, g) => (G.fx(s, { rel: { nine: 15 } }), typeof c.fx === 'function' ? c.fx(s, g) : c.fx) }) : c)) });
+  G.extend('x2_helix_2_out_ok', { text: after(/red headscarf/, pic('dana', 'Dana — CID 61094')), after: (s) => G.fx(s, { rel: { dana: 30 } }) });
+  G.extend('c3_0', { text: (lines, s) => (s.div === 'HELIX' && s.c2 && s.c2.end === 'smuggled' ? after(/Dana\./, pic('dana', 'Dana'))(lines) : lines) });
+  G.extend('x2_razor_2', { text: after(/Overseer Strand is small/, pic('strand', 'Overseer Strand, City 1')), after: (s) => s.rel.strand === undefined && G.fx(s, { rel: { strand: 0 } }) });
+  G.extend('x2_razor_2_shield', { after: (s) => G.fx(s, { rel: { strand: 15 } }) });
+  G.extend('dd_rresidence', { text: after(/dressing gown/, pic('administrator', 'The Administrator of City 9, 03:00')), after: (s) => s.rel.administrator === undefined && G.fx(s, { rel: { administrator: 0 } }) });
+  if (G.codexEntries.war) G.codexEntries.war.body = G.codexEntries.war.body.replace('</p>', '</p><img src="assets/img/portraits/administrator.webp" alt="The Administrator" loading="lazy">');
+})();
