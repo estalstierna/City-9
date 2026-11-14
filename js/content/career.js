@@ -93,22 +93,25 @@
   };
   const NICK = ['Anvil', 'Birch', 'Cobble', 'Dray', 'Ember', 'Flint', 'Gauge', 'Harrow', 'Ingot', 'Jolt', 'Keel', 'Lantern', 'Mallet', 'Nettle', 'Oxide', 'Patch', 'Quarry', 'Rivet', 'Slate', 'Tallow', 'Umber', 'Vane', 'Wicket', 'Yarrow', 'Zinc', 'Brine', 'Cinder', 'Dusk', 'Furrow', 'Grit', 'Hasp', 'Ledger', 'Moth', 'Pike', 'Quill', 'Salt', 'Sorrel', 'Thatch', 'Weir'];
   const SHAPE = { DvL: 1, SqL: 2, OfC: 4, EpU: 3, '01': 4, '02': 5, '03': 6, '04': 7, '05': 8 };
+  /* known people carry their canon designation; the note is their relation to you */
   const named = (s) => {
     const div = s.div || 'UNION';
     const out = [];
-    if (div === 'UNION') out.push({ name: '"Granite"', rank: 'SqL', note: 'Your squadron leader', key: 'granite' });
-    if (div === 'JURY') out.push({ name: 'The Magistrate', rank: 'DvL', note: 'Division Leader', key: 'magistrate' });
-    if (div === 'UNION' && s.rel.rook !== undefined) out.push({ name: '"Rook"', rank: '02', note: s.flags.rook_amputated ? 'Amputated' : 'Your old field trainer', key: 'rook', gone: s.flags.rook_amputated });
-    if (div === 'UNION' && s.rel.wick !== undefined) out.push({ name: '"Wick"', rank: '05', note: s.flags.wick_dead ? 'Deserviced, D4 yard' : s.flags.wick_alive ? 'Transferred to D2' : 'Your trainee', key: 'wick', gone: s.flags.wick_dead || s.flags.wick_alive });
-    if (div === 'JURY' && s.rel.vesna !== undefined) out.push({ name: 'Vesna', rank: '02', note: 'Your partner on Level 4', key: 'vesna' });
+    const D = (d, r, id) => `CCA.C9.D${d}-${div}-${r}-${id}`;
+    if (div === 'UNION') out.push({ name: '"Granite"', rank: 'SqL', desig: 'CCA.C9.D5-UNION-SqL-11902', key: 'granite' });
+    if (div === 'JURY') out.push({ name: 'The Magistrate', rank: 'DvL', desig: 'CCA.C9.D5-JURY-DvL-02842', key: 'magistrate' });
+    if (div === 'UNION' && s.rel.rook !== undefined) out.push({ name: '"Rook"', rank: '02', note: s.flags.rook_amputated ? 'amputated' : 'your old field trainer', desig: 'CCA.C9.D5-UNION-02-48151', key: 'rook', gone: s.flags.rook_amputated });
+    if (div === 'UNION' && s.rel.wick !== undefined) out.push({ name: '"Wick"', rank: '05', note: s.flags.wick_dead ? 'deserviced, D4 yard' : s.flags.wick_alive ? 'transferred to D2' : 'your trainee', desig: 'CCA.C9.D5-UNION-05-61207', key: 'wick', gone: s.flags.wick_dead || s.flags.wick_alive });
+    if (div === 'JURY' && s.rel.vesna !== undefined) out.push({ name: 'Vesna', rank: '02', note: 'your partner', desig: 'CCA.C9.D5-JURY-02-30961', key: 'vesna' });
     const dc = G.DIV_CAST && G.DIV_CAST[div];
     if (dc) {
-      out.push({ name: G.PEOPLE[dc.chief.key].name, rank: 'OfC', note: 'Your officer', key: dc.chief.key });
-      out.push({ name: G.PEOPLE[dc.partner.key].name, rank: dc.partner.rank, note: 'Your partner', key: dc.partner.key });
+      out.push({ name: G.PEOPLE[dc.chief.key].name, rank: 'OfC', note: 'your officer', desig: dc.chief.cap.split(' — ')[0], key: dc.chief.key });
+      const PD = { HELIX: ['5', '36812'], RAZOR: ['5', '62158'], SPEAR: ['5', '74430'], VECTOR: ['1', '55841'], GRID: ['1', '70519'] }[div] || ['5', '10000'];
+      out.push({ name: G.PEOPLE[dc.partner.key].name, rank: dc.partner.rank, note: 'your partner', desig: D(PD[0], dc.partner.rank, PD[1]), key: dc.partner.key });
     }
     (s.squad && s.squad.members ? s.squad.members : []).forEach((m) => {
       if (out.some((o) => o.key && o.key === m.key)) return;
-      out.push({ name: m.name, rank: m.rank, note: m.status === 'dead' ? `Killed in service${m.lost ? ', ' + m.lost : ''}` : m.status === 'transferred' ? `Transferred${m.lost ? ': ' + m.lost : ''}` : 'Your protection team', team: true, gone: m.status === 'dead' || m.status === 'transferred' });
+      out.push({ name: m.name, rank: m.rank, note: m.status === 'dead' ? `killed in service${m.lost ? ', ' + m.lost : ''}` : m.status === 'transferred' ? `transferred${m.lost ? ': ' + m.lost : ''}` : 'your team', desig: D(s.district || 5, m.rank, m.uid || '00000'), team: true, gone: m.status === 'dead' || m.status === 'transferred' });
     });
     return out;
   };
@@ -127,8 +130,8 @@
         list.push({ name: `"${n}"`, rank: r, uid: String(10000 + Math.floor(rnd() * 89999)) });
       }
     });
-    if (div === 'UNION' && !list.some((x) => x.rank === 'DvL')) list.push({ name: '"Bulwark"', rank: 'DvL', note: 'Division Leader, D5' });
-    list.push({ name: s.name, rank: s.rank, you: true, note: G.desig(s) });
+    if (div === 'UNION' && !list.some((x) => x.rank === 'DvL')) list.push({ name: '"Bulwark"', rank: 'DvL', desig: 'CCA.C9.D5-UNION-DvL-00290' });
+    list.push({ name: s.name, rank: s.rank, you: true, note: 'you', desig: G.desig(s) });
     const order = (x) => -G.rankIdx(x.rank);
     list.sort((a, b) => order(a) - order(b) || (a.you ? -1 : b.you ? 1 : 0));
     return list;
@@ -160,7 +163,7 @@
         rows += `<div class="ro-rank">${G.RANK_NAMES[x.rank] || x.rank}</div>`;
         last = x.rank;
       }
-      rows += `<div class="ro-row${x.you ? ' you' : ''}${x.gone ? ' gone' : ''}"><span>${x.name}${x.you ? ' <em>(you)</em>' : ''}</span><small>${x.note || `CCA.C9.D${s.district || 5}-${div}-${x.rank}-${x.uid || ''}`}</small></div>`;
+      rows += `<div class="ro-row${x.you ? ' you' : ''}${x.gone ? ' gone' : ''}"><span>${x.name}${x.note ? `<em>${x.note}</em>` : ''}</span><small>${x.desig || `CCA.C9.D${s.district || 5}-${div}-${x.rank}-${x.uid || ''}`}</small></div>`;
     });
     const n = nextRank(s);
     const p = G.PROMO[s.rank];
