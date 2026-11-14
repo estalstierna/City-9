@@ -1019,11 +1019,19 @@
       <div class="menu textsize"><span>Tips</span><button data-a="tips">${prefs().tips === false ? 'Off' : 'On'}</button></div>
       <div class="menu textsize"><span>Sound</span><button data-a="snd">${G.audio && G.audio.on() ? 'On' : 'Off'}</button>
       </div>
+      ${G.audio && G.audio.menuHtml ? `<div class="vols ${G.audio.on() ? '' : 'muted'}">${G.audio.menuHtml()}</div>` : ''}
       <textarea id="save-code" placeholder="Save code appears / goes here" rows="4"></textarea>
       <p class="sub">The game autosaves after every scene in this browser${G.saveLabel('auto') ? ` (last: ${G.saveLabel('auto')})` : ''}. Checkpoints are written at the start of each day and at key story moments.</p>
       <p class="sub keys">Keys: <b>1–9</b> choose · <b>Space</b> continue · <b>U</b> undo · <b>D</b> dossier · <b>C</b> codex · <b>M</b> menu · <b>Esc</b> close</p>`,
       'menu'
     );
+    $('#modal-body').oninput = (e) => {
+      const r = e.target;
+      if (!r.dataset || !r.dataset.vol || !G.audio) return;
+      G.audio.setVol(r.dataset.vol, r.value / 100);
+      const v = r.parentElement.querySelector('.vol-v');
+      if (v) v.textContent = +r.value ? r.value + '%' : 'Off';
+    };
     $('#modal-body').onclick = (e) => {
       const t = e.target.closest('[data-a]');
       const a = t && t.dataset.a;
@@ -1055,7 +1063,14 @@
         return;
       }
       if (a === 'snd' && G.audio) {
-        t.textContent = G.audio.toggle() ? 'On' : 'Off';
+        const on = G.audio.toggle();
+        t.textContent = on ? 'On' : 'Off';
+        const v = $('#modal-body .vols');
+        if (v) v.classList.toggle('muted', !on);
+        return;
+      }
+      if (a === 'sndtest' && G.audio) {
+        G.audio.test(t.dataset.ch);
         return;
       }
       if (a === 'fs-' || a === 'fs+') {

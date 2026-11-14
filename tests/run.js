@@ -191,6 +191,28 @@ suite('quality of life: undo, keys, odds, orders, day summary', async (browser) 
   return out.concat(errors);
 });
 
+suite('sound: separate ambience, effects and radio volumes; radio transmission plays', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  await page.mouse.click(5, 5);
+  await page.keyboard.press('m');
+  await page.waitForTimeout(200);
+  const n = await page.$$eval('#modal-body input[data-vol]', (els) => els.map((e) => e.dataset.vol).join(','));
+  if (n !== 'amb,fx,radio') out.push('menu sliders: ' + n);
+  await page.$eval('#modal-body input[data-vol="amb"]', (el) => {
+    el.value = '0';
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  const r = await page.evaluate(() => ({ amb: G.audio.vol('amb'), fx: G.audio.vol('fx'), radio: G.audio.vol('radio'), saved: G.prefs().vol, label: document.querySelector('#modal-body input[data-vol="amb"]').parentElement.querySelector('.vol-v').textContent, on: G.audio.on() }));
+  if (r.amb !== 0 || !(r.fx > 0) || !(r.radio > 0) || !r.saved || r.saved.amb !== 0 || r.label !== 'Off' || !r.on) out.push('ambience off should leave the rest on: ' + JSON.stringify(r));
+  await page.click('#modal-body [data-a="sndtest"][data-ch="radio"]');
+  await page.evaluate(() => { G.setView('story'); G.goto('u_board'); });
+  await page.evaluate(() => G.addScenes({ t_radio: { text: ['@radio Unit 4, report your twenty.', '@dispatch All units: curfew in effect.'], choices: [{ t: 'Ok', go: 'u_board' }] } }) || G.goto('t_radio'));
+  await page.waitForTimeout(3500);
+  return out.concat(errors);
+});
+
 suite('static: every image the code names exists on disk', async () => {
   const files = ['index.html', 'manifest.json', 'css/style.css', 'sw.js', ...fs.readdirSync(path.join(ROOT, 'js')).filter((f) => f.endsWith('.js')).map((f) => 'js/' + f), ...fs.readdirSync(path.join(ROOT, 'js/content')).map((f) => 'js/content/' + f)];
   const out = [];

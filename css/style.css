@@ -615,3 +615,9 @@ button, .choice, .nav-btn, .hz, .rep-row { touch-action: manipulation; -webkit-t
 body.anim-fast .block > * { animation-duration: .15s; }
 body.anim-off .block > * { animation: none; }
 @media (max-width: 860px) { .jump-current { bottom: calc(var(--nav-h) + var(--safe-b) + 12px); } }
+.vols .vol { gap: 10px; }
+.vols .vol input[type=range] { flex: 1; max-width: 220px; accent-color: var(--accent); }
+.vols .vol .vol-v { font-family: var(--mono); font-size: 12px; color: var(--dim); width: 38px; text-align: right; font-weight: normal; }
+.vols .vol i { width: 40px; }
+.vols.muted { opacity: .4; }
+.vols .vol button { flex: 0 0 40px; }
