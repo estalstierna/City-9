@@ -1,7 +1,7 @@
 /* Service worker: makes the game installable and playable offline.
    VERSION is a hash of the cached files: run python3 tools/bump-sw.py after changing code (the tests check it). */
 const VERSION = 'c9-89e39ea619';
-const MEDIA = 'c9-media-2'; /* images and fonts: kept across code updates (bumped once: v1 never refreshed replaced art) */
+const MEDIA = 'c9-media-3'; /* images and fonts, for offline play only (bumped: older caches held replaced art) */
 const SHELL = [
   './',
   './index.html',
@@ -62,26 +62,42 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-/* Network first for the game's own code (so updates arrive), falling back to cache offline.
-   Images and fonts: stale-while-revalidate. The cached copy is shown at once, and the file is
-   re-checked with the server in the background (a cheap 304 when unchanged), so replaced art
-   shows up on the next visit instead of never. */
+/* Network first for everything of our own — code AND images — so a replaced picture shows on the
+   very next load. Images are revalidated with the server (a cheap 304 when unchanged) and the copy
+   in the cache is only used offline. Fonts from other hosts: cache first. */
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   const isMedia = /\.(png|jpe?g|webp|woff2?)$/.test(url.pathname) || url.hostname.includes('fonts.');
+  if (isMedia && url.origin !== location.origin) {
+    e.respondWith(
+      caches.match(req).then(
+        (hit) =>
+          hit ||
+          fetch(req).then((res) => {
+            if (res.ok || res.type === 'opaque') {
+              const copy = res.clone();
+              caches.open(MEDIA).then((c) => c.put(req, copy));
+            }
+            return res;
+          })
+      )
+    );
+    return;
+  }
   if (isMedia) {
-    const fresh = fetch(req, url.origin === location.origin ? { cache: 'no-cache' } : undefined)
-      .then((res) => {
-        if (res.ok || res.type === 'opaque') {
-          const copy = res.clone();
-          caches.open(MEDIA).then((c) => c.put(req, copy));
-        }
-        return res;
-      });
-    e.waitUntil(fresh.catch(() => null));
-    e.respondWith(caches.match(req).then((hit) => hit || fresh));
+    e.respondWith(
+      fetch(req, { cache: 'no-cache' })
+        .then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(MEDIA).then((c) => c.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
     return;
   }
   if (url.origin !== location.origin) return;
