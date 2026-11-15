@@ -2041,7 +2041,7 @@ Mellansteget mellan manskap och officerare. EpU har en egen pansarhjälm, ett sk
 |---|---|---|
 | W1 CP-vapen och armoury | `weapons-cp.jpg` | 1 master-a · 2 uniform-union · 3 uniform-epu |
 
-Batong (med lägen och låst MAX), USP-Match 9mm, MP7A1 (passutlämning och EpU:s personliga), fällkniv, handbojor och buntband, folkmassesköld, ammunition och armoury-märkning. Inga tillverkarmärken. Inte Overwatch.
+Batong (med lägen och låst MAX), USP-Match 9mm, MP7A1 (passutlämning och EpU:s personliga), fällkniv, handbojor och buntband, folkmassesköld, chockgranat, ammunition och armoury-märkning. Sköld och chockgranat finns i spelet: sköldmur och chockgranat i folkmassespelet, och båda i Issued kit. Inga tillverkarmärken. Inte Overwatch.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 

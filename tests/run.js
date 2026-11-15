@@ -633,6 +633,31 @@ suite('crowd control minigame: winnable by play, losable by neglect', async (bro
   return out;
 });
 
+suite('crowd control: shield wall and flashbang', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  for (const rank of ['04', '03']) {
+    await page.evaluate(SERVICE, { rank });
+    const res = await page.evaluate(async () => {
+      G.addScenes({ t_crowd: { text: ['x'], mini: { type: 'crowd', opts: { seconds: 30, start: [60, 70, 60], rate: 1 }, pass: 'u_board', fail: 'u_board' } } });
+      G.goto('t_crowd');
+      const q = (c) => document.querySelector('#story .block.current ' + c);
+      const flashOff = q('.cr-flash').disabled;
+      const bar = () => [...document.querySelectorAll('#story .block.current .cr-bar span')].map((x) => parseFloat(x.style.width));
+      q('.cr-shield').click();
+      const walled = document.querySelectorAll('#story .block.current .cr-sec.walled').length;
+      const before = bar();
+      if (!flashOff) q('.cr-flash').click();
+      const after = bar();
+      return { flashOff, walled, before, after, shieldCd: q('.cr-shield').disabled };
+    });
+    if (res.walled !== 1 || !res.shieldCd) out.push(`${rank}: shield wall did not hold a sector: ${JSON.stringify(res)}`);
+    if (rank === '04' && !res.flashOff) out.push('04 should not have a flashbang');
+    if (rank === '03' && (res.flashOff || !(res.after[1] < res.before[1] - 20))) out.push(`03 flashbang did not knock the crowd back: ${JSON.stringify(res)}`);
+  }
+  return out.concat(errors);
+});
+
 suite('circuit and tail minigames', async (browser) => {
   const out = [];
   const { page, errors } = await openGame(browser, devices['iPhone 13']);
@@ -853,7 +878,10 @@ suite('echoes, JURY file, district map and night desk', async (browser) => {
     G.fx(s, { susp: 5 });
     G.goto('u_board');
     const side = document.querySelector('#side-content').innerText;
-    const burn = [...document.querySelectorAll('#story .block.current .choice')].some((b) => /JURY file/.test(b.innerText));
+    /* ask the board's extensions directly: u_board can redirect to a morning event first */
+    let list = [];
+    G.ext.u_board.forEach((e) => e.choices && (list = e.choices(list, s, G) || list));
+    const burn = list.some((c) => /JURY file/.test(c.t));
     return { page1, after, side, burn };
   });
   if (!jf.page1 || jf.page1.w !== 6 || !/Take the tokens/.test(jf.page1.what || '') || jf.page1.where !== 'Bazaar Row — test') out.push('JURY file page wrong: ' + JSON.stringify(jf.page1));

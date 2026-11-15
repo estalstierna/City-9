@@ -692,3 +692,4 @@ figure.dvl { display: flex; gap: 12px; align-items: flex-start; margin: 10px 0; 
 figure.dvl img { width: 84px; height: 84px; object-fit: cover; border-radius: 3px; border: 1px solid var(--line); flex: none; margin: 0; }
 figure.dvl figcaption small { display: block; font-family: var(--mono); font-size: 11px; color: var(--dim); }
 figure.dvl figcaption span { display: block; font-size: 13.5px; color: var(--dim); margin-top: 4px; }
+.cr-sec.walled { border-color: #8fb4d9; box-shadow: inset 0 0 0 1px #8fb4d9; }

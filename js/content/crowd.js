@@ -27,7 +27,7 @@
     const names = opts.sectors || ['Left', 'The hatches', 'Right'];
     const start = [].concat(opts.start || [25, 35, 25]);
     const sec = names.map((n, i) => ({ name: n, t: start[i] !== undefined ? start[i] : 30, held: 0, pullCd: 0 }));
-    const st = { left: secs, speakCd: 0, batonCd: 0, force: 0, pulled: 0, spoke: 0, peak: 0, over: false, flare: rint(3, 5), log: 'The crowd is waiting.' };
+    const st = { left: secs, speakCd: 0, batonCd: 0, shieldCd: 0, force: 0, pulled: 0, spoke: 0, shield: 0, flash: 0, flashes: G.atLeast && G.atLeast(S, '03') ? 1 : 0, peak: 0, over: false, flare: rint(3, 5), log: 'The crowd is waiting.' };
 
     const root = document.createElement('div');
     root.className = 'mini crowd';
@@ -37,9 +37,11 @@
       <div class="cr-sectors"></div>
       <div class="cr-global">
         <button class="cr-btn cr-speak">Address the crowd</button>
+        <button class="cr-btn cr-shield">Shield wall</button>
         <button class="cr-btn cr-baton danger">Baton charge</button>
+        <button class="cr-btn cr-flash danger">Flashbang</button>
       </div>
-      <div class="cr-help">Post units to slow a sector. Speak while it is under 75. Pull out an agitator for a big drop. The baton works instantly, and the block remembers it.</div>`;
+      <div class="cr-help">Post units to slow a sector. Speak while it is under 75. Pull out an agitator for a big drop. A shield wall holds the worst sector still for a few seconds and hurts nobody. The baton works instantly, and the block remembers it. A flashbang (grade 03 and up, one per shift) knocks the whole crowd back, and the block remembers it longer.</div>`;
     const $ = (q) => root.querySelector(q);
     const secBox = $('.cr-sectors');
     sec.forEach((x, i) => {
@@ -75,6 +77,23 @@
       st.log = worst.t >= 75 ? 'Your amplified voice goes out over the crowd, and the crowd shouts it down.' : 'Your amplified voice goes out over the crowd: flat, slow, certain. It works, a little.';
       draw();
     };
+    $('.cr-shield').onclick = () => {
+      if (st.shieldCd > 0 || st.over) return;
+      st.shieldCd = 18;
+      st.shield++;
+      const worst = sec.reduce((m, y) => (y.t > m.t ? y : m), sec[0]);
+      worst.wall = 8;
+      st.log = `${worst.name}: the shields lock edge to edge. The front row pushes, finds a wall, and stops pushing.`;
+      draw();
+    };
+    $('.cr-flash').onclick = () => {
+      if (st.flashes < 1 || st.over) return;
+      st.flashes--;
+      st.flash++;
+      sec.forEach((y) => (y.t = Math.max(0, y.t - 35)));
+      st.log = 'A white crack over the heads, louder than anything. Three hundred people on their knees with their hands over their ears. When they stand up again, they are quieter, and they are looking at you.';
+      draw();
+    };
     $('.cr-baton').onclick = () => {
       if (st.batonCd > 0 || st.over) return;
       st.batonCd = 15;
@@ -104,6 +123,13 @@
       const sp = $('.cr-speak');
       sp.disabled = st.speakCd > 0;
       sp.textContent = st.speakCd > 0 ? `Address the crowd (${Math.ceil(st.speakCd)})` : 'Address the crowd';
+      const sh = $('.cr-shield');
+      sh.disabled = st.shieldCd > 0;
+      sh.textContent = st.shieldCd > 0 ? `Shield wall (${Math.ceil(st.shieldCd)})` : 'Shield wall';
+      const fl = $('.cr-flash');
+      fl.disabled = st.flashes < 1;
+      fl.textContent = st.flashes < 1 ? (st.flash ? 'Flashbang (used)' : 'Flashbang (03+)') : 'Flashbang (1)';
+      sec.forEach((x) => x.el.classList.toggle('walled', x.wall > 0));
       const bt = $('.cr-baton');
       bt.disabled = st.batonCd > 0;
       bt.textContent = st.batonCd > 0 ? `Baton charge (${Math.ceil(st.batonCd)})` : 'Baton charge';
@@ -117,7 +143,7 @@
       st.log = ok ? 'The hatches close. The crowd goes home, slowly, in pieces. Nobody runs.' : 'One sector boils over. Then all of them.';
       $('.cr-log').textContent = st.log;
       root.classList.add(ok ? 'won' : 'lost');
-      done(ok, { force: st.force, pulled: st.pulled, spoke: st.spoke, peak: Math.round(st.peak) });
+      done(ok, { force: st.force, pulled: st.pulled, spoke: st.spoke, shield: st.shield, flash: st.flash, peak: Math.round(st.peak) });
     };
 
     const TICK = 0.25;
@@ -127,11 +153,13 @@
       st.left -= TICK;
       st.speakCd = Math.max(0, st.speakCd - TICK);
       st.batonCd = Math.max(0, st.batonCd - TICK);
+      st.shieldCd = Math.max(0, st.shieldCd - TICK);
       st.flare -= TICK;
       sec.forEach((x) => {
         x.pullCd = Math.max(0, x.pullCd - TICK);
         const rise = (2.4 * rate + Math.random() * 1.2 - x.held * 2.2) * TICK;
-        x.t = Math.max(0, x.t + rise);
+        if (x.wall > 0) x.wall -= TICK;
+        else x.t = Math.max(0, x.t + rise);
         st.peak = Math.max(st.peak, x.t);
       });
       if (st.flare <= 0) {
@@ -170,7 +198,7 @@
   /* how a crowd shift ends, in stability and record */
   const crowdAfter = (k) => (s, ok) => {
     const d = s.lastMini || { force: 0, pulled: 0, spoke: 0 };
-    G.distFx(s, k, ok ? 3 : -8, d.force * 6 + d.pulled * 3 - (ok && !d.force ? 4 : 0) + (ok ? 0 : 10));
+    G.distFx(s, k, ok ? 3 + (d.flash ? 2 : 0) : -8, d.force * 6 + (d.flash || 0) * 9 + d.pulled * 3 - (ok && !d.force && !d.flash ? 4 : 0) + (ok ? 0 : 10));
     if (!ok && s.squad && s.squad.formed && Math.random() < 0.5) G.squadHit(s, false, 'the riot on ' + G.BLOCKS[k].name);
   };
 
@@ -184,7 +212,7 @@
       enter: (s) => crowdAfter(k)(s, true),
       text: (s) => {
         const d = s.lastMini || { force: 0, pulled: 0 };
-        return [okText, d.force ? `You used the batons ${d.force} time${d.force > 1 ? 's' : ''}. ${G.BLOCKS[k].name} will remember the order, and the batons.` : d.pulled ? `You pulled ${d.pulled} out of the crowd. Their neighbours watched where they went.` : 'Nobody was hurt and nobody was taken. In this city, that is a kind of miracle.'];
+        return [okText, d.flash ? `You threw a flashbang into a ration queue. ${G.BLOCKS[k].name} will talk about it for a month.` : d.force ? `You used the batons ${d.force} time${d.force > 1 ? 's' : ''}. ${G.BLOCKS[k].name} will remember the order, and the batons.` : d.pulled ? `You pulled ${d.pulled} out of the crowd. Their neighbours watched where they went.` : 'Nobody was hurt and nobody was taken. In this city, that is a kind of miracle.'];
       },
       choices: [{ t: 'End of shift.', fx: (s) => ({ merit: 3 + ((s.lastMini && s.lastMini.force) ? 1 : 0), xp: { authority: 1 } }), go: 'u_duty_end' }],
     },
