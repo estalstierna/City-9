@@ -24,7 +24,7 @@ GLOBAL STYLE
 - Text in images: condensed military stencil capitals, off-white #E8E6DF, spelled exactly as written in quotes. Only the text that is asked for.
 
 CIVIL PROTECTION (CCA) — THE UNIT
-- HELMET: off-white to pale bone-grey ceramic full-head gas-mask helmet, a smooth featureless skull dome with a subtle raised seam brow to crown; two large perfectly round eye openings rimmed in thick black rubber with dark smoked lenses that have a faint cyan sheen; one short cylindrical gunmetal respirator canister with concentric ridged rings at the mouth; ONE rounded earmuff headset cup over the LEFT ear with ONE short stub antenna; dark knit balaclava at the neck seal. Nobody ever sees a unit's face unless the mask is off.
+- HELMET: off-white to pale bone-grey ceramic full-head gas-mask helmet, a smooth featureless skull dome with a subtle raised seam brow to crown; two large perfectly round eye openings rimmed in thick black rubber with dark smoked lenses that have a faint cyan sheen; a TWO-PART respirator: a round bolted gunmetal respirator plate on the mask at the mouth, and directly beneath it a short round filter canister hanging towards the throat — two stacked discs, as on the approved helmet sheet; ONE rounded earmuff headset cup over the LEFT ear with ONE short stub antenna; dark knit balaclava at the neck seal. Nobody ever sees a unit's face unless the mask is off.
 - BODY: dark charcoal-navy padded tactical jacket with a tall zipped stand-up collar; a fitted quilted ballistic vest with three thick horizontal padded ribs and a centre zip; a white vertical rectangular double-bar patch on the left chest; light grey shoulder panels with a thin division-colour edge stripe; two stacked black duty belts with flat brushed-silver buckles, a radio and a pouch with tiny cyan status lights; black gloves with pale grey wrist straps; dark grey-green trousers with a thin side stripe bloused into tall black side-zip boots.
 - ARMBAND (left upper arm): a WRAPAROUND cloth band, never a square patch; heavy woven fabric about 10 cm tall, double-stitched edges, black velcro tabs. Layout: small circular embroidered division glyph on the LEFT, "C9:D<district>" in bold stencil in the CENTRE, rank insignia on the RIGHT. Rank bars are always VERTICAL, never horizontal.
 - DESIGNATION PATCH: on the left upper arm, directly ABOVE the armband, a small sewn rectangular cloth patch in dark charcoal with a thin overlocked edge, slightly rounded corners, about twice as wide as the armband is tall. Exactly two left-aligned lines of condensed off-white stencil capitals, both the same height, each about half the height of the armband's "C9:D5": line one "CCA.C<city>.D<district>", line two "<DIVISION>-<RANK>-<5 digits>". Nothing else on the patch. Never on the chest, never on the back, never printed on the jacket, never on one line. The district on the armband matches the patch ("C9:D5" with "CCA.C9.D5").
@@ -80,6 +80,7 @@ THE MAN FROM CITY 17
 NEVER
 - The words "Half-Life", "Combine", "Metrocop" or any existing game's names, logos, characters, exact designs or insignia.
 - Logos of real brands. Neon cyberpunk. Cartoon or anime style. Gore.
+- A single respirator canister on a civil police helmet: it is always two stacked discs (plate + filter beneath).
 - A lambda on anything a unit wears. A face on a masked unit. A designation on the chest, the back or on one line. Horizontal rank bars.
 ```
 
@@ -101,7 +102,7 @@ Head-and-shoulders personnel file portrait of a masked civil police unit of the 
 
 POSE: body turned about 25 degrees so the LEFT shoulder and upper arm face the camera, head [straight / slightly tilted], helmet centred in the frame with a little space above it. [One gesture or held object.]
 
-HELMET — from the [RANK] column of the SECOND attached image: [standard, no stripe | EpU: polished dark steel lens rings and a thin silver line over the crown | officer: a [colour] crest stripe brow to crown edged with fine silver lines | command: graphite shell, gold stripe, gold lens rings]. Round black-rimmed lenses with a faint cyan sheen; one round respirator canister; ONE earmuff headset cup over the LEFT ear with ONE short stub antenna. [Division helmet detail.] [One wear mark that makes this unit unique.]
+HELMET — from the [RANK] column of the SECOND attached image: [standard, no stripe | EpU: polished dark steel lens rings and a thin silver line over the crown | officer: a [colour] crest stripe brow to crown edged with fine silver lines | command: graphite shell, gold stripe, gold lens rings]. Round black-rimmed lenses with a faint cyan sheen; the TWO-PART respirator (a round bolted plate on the mask and a short filter canister hanging directly beneath it — two stacked discs); ONE earmuff headset cup over the LEFT ear with ONE short stub antenna. [Division helmet detail.] [One wear mark that makes this unit unique.]
 
 UNIFORM — from the THIRD attached image: [division uniform in one sentence].
 
