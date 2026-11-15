@@ -2025,6 +2025,14 @@ Bifoga: 1 portraits/mira (ljus och utsnitt) · 2 ref/dvl-helmet · 3 ref/dvl-arm
 
 **Klara (2026-11-15):** UNION, HELIX, RAZOR, SPEAR, VECTOR och VEIL inlagda (`portraits/dvl-<div>.jpg`), i roster och i codex-posten Division Leaders. GRID (Dynamo) inlagd i efterhand. VECTOR fick också ett tredje filter i mitten. E35 Rev 2 är inlagd.
 
+## 5y. EpU (Elite Protection Unit), konceptark
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| H2 EpU, konceptark | `uniform-epu.jpg` | 1 master-a · 2 uniform-union · 3 ref/02-helmet · 4 ranks-enlisted |
+
+Mellansteget mellan manskap och officerare. EpU har en egen pansarhjälm, ett skal av gunmetal plasteel ovanpå den keramiska masken. Skalet har pannskydd, kindskydd, en nitad krage runt den tvådelade andningsdelen, stålringar runt linserna och en tunn silverlinje över hjässan. Till det kommer plattbärare med ledade axelskydd och en egen ljuddämpad MP7A1 med holografiskt sikte. Officerare lämnar tillbaka pansarhjälmen. I spelet: hjälm, plattbärare och personlig MP7 i Issued kit; skador minskas med en fjärdedel från EpU; Firearms +12.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

@@ -71,7 +71,7 @@ G.addCodex({
       <tr><td>05</td><td>05 Protection Unit</td></tr>
       <tr><td>RcT</td><td>Recruit</td></tr>
     </table>
-    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward stand above the divisions. They are <b>High Command</b>, and their designations say so: <i>CCA.C9.D1-HC-CmD-00417</i>. They wear black armbands trimmed in gold, with gold bars and stars, a long black greatcoat, and a helmet of their own: an elongated graphite shell, eyes glowing gold in deep sockets, a gold-slatted grille instead of a filter, and one, two or three gold lines over the crown for AdC, CmD and SeC. The Earth Administrator wears no armband at all.</p>
+    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar, and is the only grade fitted with the armoured plasteel helmet, and the first issued a plate carrier and a personal MP7: the elite who go through the door first. Officers send them, and give the armoured helmet back for a crest stripe. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward stand above the divisions. They are <b>High Command</b>, and their designations say so: <i>CCA.C9.D1-HC-CmD-00417</i>. They wear black armbands trimmed in gold, with gold bars and stars, a long black greatcoat, and a helmet of their own: an elongated graphite shell, eyes glowing gold in deep sockets, a gold-slatted grille instead of a filter, and one, two or three gold lines over the crown for AdC, CmD and SeC. The Earth Administrator wears no armband at all.</p>
     <p>Promotion through the 05–01 grades is earned by merit and field evaluation. Above 01, by selection — and by surviving the people who also want the post.</p>`,
   },
   divisions: {
@@ -295,21 +295,24 @@ G.addCodex({
     { id: 'jacket', name: 'Polycarbonate fabric jacket', from: '05', desc: 'Slash-resistant, polycarbonate-infused fabric. Keeps out rain and cold. Not spike-resistant.' },
     { id: 'slacks', name: 'Dark grey polycarbonate slacks', from: '05', desc: 'Cut for mobility. Moisture- and temperature-resistant.' },
     { id: 'mask', name: 'Ceramic-polymer gas mask', from: '05', until: 'EpU', desc: 'Hardened ceramic-polymer shell, acrylic lenses, smoke and gas filtration. A voice encoder hides the wearer’s gender and identity.' },
-    { id: 'mask_ins', name: 'Gas mask with plasteel inserts', from: 'EpU', until: 'DvL', desc: 'The standard mask reinforced with rare plasteel inserts. Issued to EpU and above.' },
+    { id: 'helm_e', name: 'EpU armoured helmet', from: 'EpU', until: 'OfC', desc: 'A gunmetal plasteel shell clamped over the ceramic mask: brow guard, cheek guards, a riveted collar round the respirator, polished steel rings round the lenses, a thin silver line over the crown. Stops a pistol round at the forehead. Officers give it back.' },
+    { id: 'mask_ins', name: 'Gas mask with plasteel inserts', from: 'OfC', until: 'DvL', desc: 'The standard mask reinforced with rare plasteel inserts. Officers wear it under the crest stripe.' },
     { id: 'mask_full', name: 'Full plasteel gas mask', from: 'DvL', desc: 'Solid plasteel construction. Issued to Division Leaders and above, and to Overwatch.' },
     { id: 'baton', name: 'Standard-issue stun baton', from: '05', desc: 'Black steel rod, rubberised grip, static emulator. LOW: pain. MEDIUM: puts a citizen on the ground. HIGH: unconsciousness. MAXIMUM is locked — it drains the battery and has killed citizens with one strike.' },
     { id: 'cuffs', name: 'Hinged steel restraint cuffs', from: '05', desc: 'Rigid-hinge steel cuffs with a double lock and a serial number logged against your designation. Heavy enough to hurt when applied fast. The key ring stays on your belt; lose it and you sign for a new set in front of the duty officer.' },
     { id: 'zipties', name: 'Polymer zip-ties (bundle of 10)', from: '05', desc: 'Single-use flex restraints for crowds, raids and multiple detainees. Issued by the bundle and counted back at the armoury. In a citizen\u2019s pocket they are YELLOW contraband; on your belt they are procedure. Cut them off with your service knife, never with your teeth.' },
     { id: 'knife', name: 'Folding service knife', from: '05', desc: 'Pocket or belt clip. Mostly for cutting zip-ties. Capable of personal defence.' },
     { id: 'vest_a', name: 'Alpha-grade kevlar vest', from: '05', until: '03', desc: 'Level II-A. Stops most handgun rounds. Stab- and slash-proof against conventional blades.' },
-    { id: 'vest_b', name: 'Beta-grade kevlar vest', from: '03', desc: 'Level III-A. Reliable up to .44 Magnum, more layers against blades. EpU and above may add ballistic inserts.' },
+    { id: 'vest_b', name: 'Beta-grade kevlar vest', from: '03', until: 'EpU', desc: 'Level III-A. Reliable up to .44 Magnum, more layers against blades.' },
+    { id: 'armour_e', name: 'EpU plate carrier', from: 'EpU', desc: 'Beta-grade vest under plasteel plates front, back and sides, with articulated shoulder guards and a groin flap. Stops rifle rounds the vest alone would not. Every injury a quarter lighter.' },
     { id: 'boots', name: 'Jet-black jackboots', from: '05', desc: 'Heavy, steel-toed, water-resistant, brief protection against hot surfaces.' },
     { id: 'radio', name: 'Handheld radio', from: '05', desc: 'Belt-clipped, linked to the microphone in your mask. Lose the radio and the mask goes silent.' },
     { id: 'gloves', name: 'Vulcanised rubber gloves', from: '05', desc: 'High-traction black gloves. Nothing slips.' },
     { id: 'belts', name: 'Nylon utility belts and slings (3)', from: '05', desc: 'Magazine holsters, pouches, weapon slings.' },
     { id: 'hygiene', name: 'Hygiene kit', from: 'RcT', desc: 'Comb, straight razor, toothbrush, toothpaste, shaving cream.' },
     { id: 'usp', name: 'USP-Match 9mm handgun', from: '04', desc: '18-round magazine, 9mm hollow-point, under-mounted flashlight. Issued at grade 04. Before that, sidearms are signed out from the armoury for a single shift.' },
-    { id: 'mp7', name: 'MP7A1 submachine gun', from: '01', desc: '45-round magazine, 4.6mm armour-piercing, folding foregrip, holographic sight, under-barrel grenade launcher. Issued at grade 01; may later be exchanged for another primary for sterilised credits.' },
+    { id: 'mp7_shift', name: 'MP7A1 (shift issue)', from: '01', until: 'EpU', desc: '45-round magazine, 4.6mm armour-piercing, folding foregrip. Signed out from the armoury for raids and night patrols, counted back in at the end of the shift, every round.' },
+    { id: 'mp7', name: 'MP7A1 submachine gun (personal)', from: 'EpU', desc: 'Your own, with your designation engraved on the receiver: 45-round magazine, 4.6mm armour-piercing, folding foregrip, suppressor, holographic sight. Elite Protection Units carry it at all times.' },
   ];
 
   G.kitFor = (s) => {
@@ -338,8 +341,11 @@ G.addCodex({
       <p><b>Special issue</b></p>${table([
         ['USP-Match (04+)', G.EQUIPMENT.find((e) => e.id === 'usp').desc],
         ['Beta-grade vest (03–01)', G.EQUIPMENT.find((e) => e.id === 'vest_b').desc],
-        ['MP7A1 (01+)', G.EQUIPMENT.find((e) => e.id === 'mp7').desc],
-        ['Plasteel masks', 'Inserts for EpU and above. Full plasteel for DvL and above, and for Overwatch.'],
+        ['MP7A1 (01: shift issue)', G.EQUIPMENT.find((e) => e.id === 'mp7_shift').desc],
+        ['MP7A1 (EpU+: personal)', G.EQUIPMENT.find((e) => e.id === 'mp7').desc],
+        ['EpU armoured helmet', G.EQUIPMENT.find((e) => e.id === 'helm_e').desc],
+        ['EpU plate carrier (EpU+)', G.EQUIPMENT.find((e) => e.id === 'armour_e').desc],
+        ['Plasteel masks', 'Inserts for officers. Full plasteel for DvL and above, and for Overwatch.'],
       ])}
       <p><b>Priority command equipment</b></p>${table([
         ['OSIAR (Overwatch)', 'Overwatch Standard Issue Assault Rifle. A very large pulse rifle built by the Union after the Seven Hour War. Fires dense pulse rounds from a detachable 30-round energy cell, accurate and fully automatic. Its recoil is too violent for an un-augmented human to control.'],

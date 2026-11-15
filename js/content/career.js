@@ -14,8 +14,8 @@
     '04': ['USP-Match issued to you personally: Firearms checks +5', 'Pay +1 token per shift'],
     '03': ['Transfer to a division of your choice', 'Pay +2 tokens per shift'],
     '02': ['Dependants exempt from relocation', 'Private quarters: rest heals 20 instead of 10', 'Authority checks +3'],
-    '01': ['MP7A1 issued: Firearms checks +10', 'Protection team grows to four', 'Authority checks +5', 'Pay +3 tokens per shift'],
-    EpU: ['Plasteel mask inserts: maximum health 120', 'Command of the team in crisis: Authority checks +7', 'Pay +4 tokens per shift'],
+    '01': ['MP7A1 signed out for raids and night patrols: Firearms checks +10', 'Protection team grows to four', 'Authority checks +5', 'Pay +3 tokens per shift'],
+    EpU: ['Armoured plasteel helmet: maximum health 120', 'Plate carrier: every injury a quarter lighter', 'Your own MP7A1, suppressed, with a holographic sight: Firearms checks +12', 'Command of the team in crisis: Authority checks +7', 'Pay +4 tokens per shift'],
     OfC: ['Officer crest stripe and a star', 'Protection team grows to five', 'Authority checks +10', 'Pay +6 tokens per shift', 'Your reports are no longer audited by your partner'],
     SqL: ['Command of a squadron', 'Authority checks +12', 'Pay +8 tokens per shift'],
     DvL: ['Command of the division', 'Authority checks +15', 'Pay +10 tokens per shift'],
@@ -28,10 +28,16 @@
 
   G.chanceMods.push((s, skill) => {
     if (s.phase !== 'union') return 0;
-    if (skill === 'firearms') return at(s, '01') ? 10 : at(s, '04') ? 5 : 0;
+    if (skill === 'firearms') return at(s, 'EpU') ? 12 : at(s, '01') ? 10 : at(s, '04') ? 5 : 0;
     if (skill === 'authority') return best(s, AUTH);
     return 0;
   });
+  /* the EpU plate carrier: every injury a quarter lighter (EpU and above keep the armour) */
+  const oldFx = G.fx;
+  G.fx = (s, e) => {
+    if (s && e && e.hp < 0 && s.phase === 'union' && at(s, 'EpU')) e = Object.assign({}, e, { hp: Math.min(-1, Math.round(e.hp * 0.75)) });
+    return oldFx(s, e);
+  };
   G.squadSize = (s) => (at(s, 'OfC') ? 5 : at(s, '01') ? 4 : 3);
   G.extend('u_duty_end', {
     before: (s) => {
@@ -223,11 +229,11 @@
         const list = G.roster(s).filter((x) => !x.gone);
         const pos = list.findIndex((x) => x.you) + 1;
         const sup = G.superiorOf ? G.superiorOf(s) : { name: 'Your officer' };
-        const insignia = ['05', '04', '03', '02', '01'].includes(r) ? `${{ '05': 'one', '04': 'two', '03': 'three', '02': 'four', '01': 'five' }[r]} thin silver bar${r === '05' ? '' : 's'}` : r === 'EpU' ? 'one wide silver bar, and polished steel rings around your lenses' : r === 'OfC' ? 'one wide bar and a silver star, and a crest stripe painted down your helmet in your division’s colour' : r === 'SqL' ? 'one wide bar and two stars' : 'one wide bar and three stars';
+        const insignia = ['05', '04', '03', '02', '01'].includes(r) ? `${{ '05': 'one', '04': 'two', '03': 'three', '02': 'four', '01': 'five' }[r]} thin silver bar${r === '05' ? '' : 's'}` : r === 'EpU' ? 'one wide silver bar' : r === 'OfC' ? 'one wide bar and a silver star, and a crest stripe painted down your helmet in your division’s colour' : r === 'SqL' ? 'one wide bar and two stars' : 'one wide bar and three stars';
         return [
           '@big ' + (G.RANK_NAMES[r] || r).toUpperCase(),
           `${sup.name} hands you a new armband in front of the muster: ${insignia}. Somebody at the back starts to clap and thinks better of it.`,
-          r === 'OfC' ? 'The crest stripe goes on that night, in the paint shop, under a lamp. You watch the brush the whole time. Officers are not units. Units watch you differently by morning.' : r === 'EpU' ? 'The armoury fits plasteel inserts into your mask. It is heavier, and quieter. The world sounds further away.' : r === '01' ? 'The armoury clerk signs an MP7 out to your designation permanently and counts the rounds in front of you, twice.' : r === '02' ? 'You get a room of your own: a bunk, a locker, a window that looks at the Stacks. The first night you cannot sleep for the quiet.' : null,
+          r === 'OfC' ? 'The crest stripe goes on that night, in the paint shop, under a lamp. You watch the brush the whole time. Officers are not units. Units watch you differently by morning.' : r === 'EpU' ? 'The armoury fits you that night. A gunmetal plasteel shell clamps over your mask: a brow guard, cheek guards, a riveted collar round the filter, steel rings round the lenses, a thin silver line over the crown. Then the plate carrier, and an MP7 with your designation engraved on the receiver, suppressed. It is heavier, all of it, and quieter. The world sounds further away. You are the one they send through the door now.' : r === '01' ? 'The armoury clerk shows you the MP7 rack and the sign-out book. Raids and night patrols, signed out at the start of the shift, counted back in at the end. Every round.' : r === '02' ? 'You get a room of your own: a bunk, a locker, a window that looks at the Stacks. The first night you cannot sleep for the quiet.' : null,
           `@doc ${G.desig(s)}\nROSTER POSITION: #${pos} OF ${list.length} (${s.div || 'UNION'})`,
           '@sys Unlocked: ' + (PERKS[r] || []).join(' · ') + '.',
         ];
