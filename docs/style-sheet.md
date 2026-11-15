@@ -2056,6 +2056,23 @@ Batong (med lägen och låst MAX), USP-Match 9mm, MP7A1 (passutlämning och EpU:
 
 **Klar (2026-11-15):** Rev 3 inlagd i codex (Civil Authority equipment). Rev 1 och 2 stoppades av bildverktygets filter (riktiga modellnamn, ammunition, genomskärningar); Rev 3 är en uppdukad rekvisitalayout. Vapnen heter nu **CP-9** (pistol) och **CP-7** (karbin) i hela spelet.
 
+## 5aa. EARTH ADMINISTRATION (den civila hierarkin)
+
+| Nivå | Titel | Styr | CP-motsvarighet | Ämbetstecken |
+|---|---|---|---|---|
+| 1 | Earth Administrator | jorden (en person) | EA-sigillet | guldkedja, full lagerkrans |
+| 2 | Regional Administrator | en region | | guldkedja, halv lagerkrans |
+| 3 | Sector Administrator | en sektor (städer längs en godslinje) | SeC | silverkedja med lagerkrans |
+| 4 | City Administrator | en stad | CmD / AdC | silverkedja, enkelt sigill |
+| 5 | District Prefect | ett distrikt | DvL / SqL | bronsmedaljong på band |
+| 6 | Block Warden | ett kvarter (utsedd medborgare) | | grått emaljmärke, grått skärp |
+
+Ansikten, inga masker, inga armband. Lång skräddarsydd rock i skiffergrå ull med samma korta ståkrage som medborgarjackan, elfenbensvit skjorta utan slips, ämbetskedja. Ingen kostym med slips.
+
+| Bild | Fil | Bifoga |
+|---|---|---|
+| EA1 Earth Administration, konceptark | `admin-sheet.jpg` | 1 master-a · 2 portraits/administrator · 3 ranks-command · 4 citizen-base |
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
