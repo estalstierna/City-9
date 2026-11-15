@@ -494,17 +494,8 @@
     },
   });
 
-  /* ========================================================== DOSSIER MAP */
-  const COL = { green: '#6fbf73', amber: '#e2a83f', red: '#d9534a' };
-  G.sideExtras = G.sideExtras || [];
-  G.sideExtras.push((S) => {
-    if (S.phase !== 'union' || !S.dist) return '';
-    const cell = (k, cls) => {
-      const c = colour(S.dist[k]);
-      return `<div class="dmap-cell ${cls}" style="border-color:${COL[c]};color:${COL[c]}" title="${BLOCKS[k].name}"><b>${BLOCKS[k].short}</b><small>${BLOCKS[k].name}</small></div>`;
-    };
-    return `<section><h3>District 5</h3><div class="dmap">${cell('s9', 'a')}${cell('s14', 'b')}${cell('s22', 'c')}${cell('bazaar', 'd')}${cell('plaza', 'e')}</div><div class="sub">Green: calm. Amber: tense. Red: trouble. Hard choices bring order and resentment; mercy brings neither.</div></section>`;
-  });
+  /* DOSSIER MAP: drawn in dmap.js */
+  G.distColour = (s, k) => colour(ensure(s).dist[k]);
 
   G.addCodex({
     district5: {

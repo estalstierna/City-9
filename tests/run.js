@@ -793,6 +793,130 @@ suite('GRID Lantern dock: drone search minigame and the first shift', async (bro
   return out.concat(errors);
 });
 
+suite('echoes, JURY file, district map and night desk', async (browser) => {
+  const out = [];
+  const { page, errors } = await openGame(browser);
+  await page.evaluate(SERVICE, { div: 'GRID', rank: '03', skill: 3 });
+  const bad = (txt) => (txt.match(/\bundefined\b|\bNaN\b|\[object \w+\]/) || [])[0];
+  /* 1. echoes: every variant renders with the face and the memory line */
+  const variants = { mercy: ['cells', 'shield', 'drawing'], hard: ['train', 'level4', 'turned'], amp: ['shrine', 'asks'], bribe: ['more', 'traded'] };
+  const verdict = { mercy: 'WARNING', hard: '+4 PTS', amp: 'AMPUTATED', bribe: 'NO RECORD' };
+  for (const kind of Object.keys(variants))
+    for (const v of variants[kind]) {
+      const r = await page.evaluate(({ kind, v, verdict }) => {
+        const s = G.state();
+        s.day = 20;
+        s.files = { 41522: { cid: '41522', type: 'standard', desc: 'a man', face: 3, points: 6, stops: 1, last: 12, lastVerdict: verdict, amputated: verdict === 'AMPUTATED' } };
+        s.mem.echo2 = { last: 20, cid: '41522', v };
+        if (G.echoKind(s.files['41522']) !== kind) return { err: 'kind ' + G.echoKind(s.files['41522']) };
+        G.goto('echo_' + v);
+        const cur = document.querySelector('#story .block.current');
+        return { scene: s.scene, txt: cur.innerText, img: !!cur.querySelector('img[src*="docs/faces"]'), n: cur.querySelectorAll('.choice:not(:disabled)').length };
+      }, { kind, v, verdict: verdict[kind] });
+      if (r.err) out.push(v + ': ' + r.err);
+      else {
+        if (r.scene !== 'echo_' + v || !r.img || !/MEMORY · CID 41522/.test(r.txt) || !r.n) out.push(`echo ${v} did not render properly: ${JSON.stringify({ scene: r.scene, img: r.img, n: r.n })}`);
+        if (bad(r.txt)) out.push(`echo ${v} has "${bad(r.txt)}"`);
+        const w = await randomWalk(page, 6, { stopAt: ['u_night', 'u_board', 'u_duty_end'] });
+        out.push(...w.problems.map((p) => 'echo ' + v + ': ' + p));
+      }
+    }
+  /* the evening trigger picks an echo when one is due */
+  const trig = await page.evaluate(() => {
+    const s = G.state();
+    s.day = 30;
+    s.files = { 30117: { cid: '30117', type: 'standard', desc: 'a woman', face: 7, points: 2, stops: 1, last: 25, lastVerdict: 'RELEASED' } };
+    s.mem.echo2 = { last: -99 };
+    const r = Math.random;
+    Math.random = () => 0.01;
+    try { G.goto('u_evening'); } finally { Math.random = r; }
+    return s.scene;
+  });
+  if (!/^echo_|^w_knock/.test(trig)) out.push('evening did not trigger an echo: ' + trig);
+
+  /* 2. JURY file: pages from suspicion, quoting the choice; cold when suspicion falls; visible with access */
+  const jf = await page.evaluate(() => {
+    const s = G.state();
+    s.jf = null;
+    s.susp = 0;
+    G.addScenes({ t_sus: { title: 'Bazaar Row — test', text: ['x'], choices: [{ t: 'Take the tokens and forget it.', fx: { susp: 6 }, go: 't_sus2' }] }, t_sus2: { text: ['y'], choices: [{ t: 'Ok', go: 'u_board' }] } });
+    G.goto('t_sus');
+    document.querySelector('#story .block.current .choice').click();
+    const j = G.jfile(s);
+    const page1 = j.ev[0] ? { w: j.ev[0].w, what: j.ev[0].what, where: j.ev[0].where, st: j.ev[0].st } : null;
+    G.fx(s, { susp: 4 });
+    G.fx(s, { susp: -8 });
+    const after = j.ev.map((e) => e.st);
+    j.met = true;
+    j.open = true;
+    s.res = 25;
+    G.fx(s, { susp: 5 });
+    G.goto('u_board');
+    const side = document.querySelector('#side-content').innerText;
+    const burn = [...document.querySelectorAll('#story .block.current .choice')].some((b) => /JURY file/.test(b.innerText));
+    return { page1, after, side, burn };
+  });
+  if (!jf.page1 || jf.page1.w !== 6 || !/Take the tokens/.test(jf.page1.what || '') || jf.page1.where !== 'Bazaar Row — test') out.push('JURY file page wrong: ' + JSON.stringify(jf.page1));
+  if (!jf.after.includes('cold')) out.push('JURY file pages should go cold when suspicion falls: ' + JSON.stringify(jf.after));
+  if (!/JURY file/i.test(jf.side) || !/Take the tokens/.test(jf.side)) out.push('JURY file not in dossier: ' + jf.side.slice(0, 300));
+  if (!jf.burn) out.push('no "Your JURY file" choice on the board');
+  for (const sc of ['jf_corridor', 'jf_leak', 'jf_interview', 'jf_burn']) {
+    const t = await page.evaluate((sc) => {
+      const s = G.state();
+      s.susp = 40;
+      G.fx(s, { susp: 5 });
+      G.jfile(s).burnDay = -99;
+      G.goto(sc);
+      return document.querySelector('#story .block.current').innerText;
+    }, sc);
+    if (bad(t)) out.push(`${sc} has "${bad(t)}"`);
+    const w = await randomWalk(page, 6, { stopAt: ['u_night', 'u_board'] });
+    out.push(...w.problems.map((p) => sc + ': ' + p));
+  }
+
+  /* 3. district map: five tappable blocks; a block opens with your files in it */
+  const map = await page.evaluate(() => {
+    const s = G.state();
+    s.files = { 30111: { cid: '30111', face: 2, last: 3, lastVerdict: 'WARNING', points: 2 } };
+    G.goto('u_board');
+    const blocks = document.querySelectorAll('#side-content .dmap-svg [data-dblock]').length;
+    const k = G.homeBlock('30111');
+    document.querySelector(`#side-content [data-dblock="${k}"]`).dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    const m = document.querySelector('#modal');
+    const r = { blocks, open: m.classList.contains('open'), txt: document.querySelector('#modal-body').innerText, face: !!document.querySelector('#modal-body .dm-faces img') };
+    document.querySelector('#modal-close').click();
+    return r;
+  });
+  if (map.blocks !== 5 || !map.open || !/Order/.test(map.txt) || !map.face || !/CID 30111/.test(map.txt)) out.push('district map: ' + JSON.stringify({ ...map, txt: map.txt.slice(0, 120) }));
+
+  /* 4. night desk: flagging the right people files them; the shift ends */
+  await page.evaluate(() => {
+    G.scenes.desk_run.mini.opts.seconds = 10;
+    G.state().files = {};
+    G.goto('desk_run');
+  });
+  const t0 = Date.now();
+  let sc = 'desk_run';
+  while (Date.now() - t0 < 25000 && sc === 'desk_run') {
+    sc = await page.evaluate(() => {
+      const f = (G._deskFeeds || []).findIndex((x) => x.kind === 'genuine' && !x.flagged);
+      if (f >= 0) {
+        const b = document.querySelectorAll('#story .block.current .dk-feed [data-a="flag"]')[f];
+        if (b && !b.disabled) b.click();
+      }
+      return G.state().scene;
+    });
+    await page.waitForTimeout(250);
+  }
+  const desk = await page.evaluate(() => ({ scene: G.state().scene, files: Object.values(G.state().files).filter((f) => /FLAGGED/.test(f.lastVerdict)).length, txt: document.querySelector('#story .block.current').innerText }));
+  if (desk.scene !== 'desk_res') out.push('night desk ended at ' + desk.scene);
+  if (!desk.files) out.push('night desk flagged nobody into the files');
+  if (bad(desk.txt)) out.push(`desk_res has "${bad(desk.txt)}"`);
+  const owned = await page.evaluate(() => ['gdesk', 'jdesk'].map((k) => G.duties[k] && G.duties[k].if(Object.assign({}, G.state(), { div: k === 'gdesk' ? 'GRID' : 'JURY' }))));
+  if (!owned.every(Boolean)) out.push('night desk is not a GRID and JURY duty');
+  return out.concat(errors);
+});
+
 suite('document inspection minigame on phone and desktop', async (browser) => {
   const out = [];
   for (const opts of [{ viewport: { width: 1300, height: 950 } }, devices['iPhone 13']]) {

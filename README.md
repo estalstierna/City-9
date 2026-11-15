@@ -90,7 +90,27 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **Lantern minigame:** a block facade of windows. Each scan reads HOT, WARM or COLD, and you find the window before the scans or the battery run out. Radio & Protocol gives more scans.
    - **Routine shifts:** search flights, dock maintenance, the footage backlog.
 
-14. **Quality of life**:
+14. **The faces come back.** Everyone you stop, search, raid or flag keeps a file with their ID photo. Some evenings one of them comes back, shaped by what you did. Each echo opens with their photo and a memory line: CID, day and verdict.
+   - **Let go:** they are at the canal culvert with the cells, they calm a crowd that turns on you, or a child slides a drawing under your door.
+   - **Given points:** they are on the relocation train, back from Level 4, or their CID is chalked on your locker.
+   - **Amputated:** a stairwell shrine, or a child asking at the gate if you knew them.
+   - **Bribed:** they come back for more, or they trade your designation to JURY.
+
+15. **Your JURY file.** Every act that raises suspicion by 3 or more writes a page: the day, the place, the exact words of your choice, and the evidence (Lantern footage, witness statement, informant report, access log).
+   - **Strength:** the file's strength is your suspicion. When suspicion falls, the oldest pages go cold.
+   - **Ledger:** JURY's internal-files officer quotes a page back to you in a corridor, and interviews you at 60 suspicion. You can deny it, admit a smaller version, or give her your partner.
+   - **Access:** you see the file through resistance 20+, VEIL's shadow, or JURY at Elite rank. With access you can make pages disappear every few days, each kind its own way. Getting caught writes a new page.
+
+16. **The living map.** District 5 is drawn in the Dossier.
+   - **What shows:** lit windows follow order, and go dark when GRID cuts a block's power. Chalk lambdas spread with resentment, smoke rises where there is trouble, and Lantern drones drift over the roofs (red on alert). The Plaza 5 screen shows Anticitizen One, and the canal-cell flag flies on Stack 14 after chapter 7.
+   - **Tap a block:** see its state in words and the faces from your files who live there.
+
+17. **The night desk** (GRID and JURY duties): four Lantern feeds at once, each playing a scene in three beats.
+   - **Who you see:** some people are doing something, some only look as if they are, and most are living their evening.
+   - **Controls:** ZOOM shows the face and jumps a beat ahead, at the cost of seconds. You have three FLAGS.
+   - **Consequences:** everyone you flag gets a file with their face, so they can come back as echoes. You can pull wrong slips before 06:00.
+
+18. **Quality of life**:
    - **Undo:** undo the last choice (U, or in the menu). It is not offered across skill checks or minigames, so dice cannot be re-rolled.
    - **Keys:** 1–9 choose, Space continues when there is one choice, D opens the dossier, C the codex and M the menu.
    - **Odds:** hover a check's % to see what the chance is made of. The roll line shows the same breakdown.
@@ -166,6 +186,10 @@ js/content/transfer.js division transfer exam (grade 01)
 js/content/chapter7.js Anticitizen One, the night the screens go dark
 js/content/qol.js     current orders, day summary, contact trends
 js/content/lantern.js GRID duty: Lantern dock, drone search minigame
+js/content/echoes.js  the faces come back (case-file echoes)
+js/content/jfile.js   your JURY file: pages, Ledger, burning pages
+js/content/dmap.js    the living District 5 map in the Dossier
+js/content/desk.js    night desk: four Lantern feeds (GRID, JURY)
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
