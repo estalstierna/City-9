@@ -359,6 +359,17 @@ Midjourney-tillägg: `--ar 3:2 --style raw --stylize 150 --sref <url> --cref <hj
 
 Identiteten är delad på två masterark som hör ihop: **A** visar myndigheten (symbol, sigill, flaggor, uniform, hjälm, armband och emblem), **B** visar samhället och rangordningen (medborgare, CID och insignier). Kör dem med samma inställningar och gärna samma seed.
 
+### MASTERARK Rev 3 (2026-11-15): fyra ark, ett ämne per ark
+
+| Ark | Fil | Ämne | Bifoga |
+|---|---|---|---|
+| A Rev 3 | `master-a.jpg` | Enheten: symbol, sigill, flaggor, UNION 05, hjälm, armband och beteckningslapp, emblemets anatomi | master-a (gamla) · uniform-union · helmet · armbands · emblems · flag-cca · flag-city09 |
+| B | `master-b.jpg` | Rang och divisioner: 14 rangerna, 9 emblem, specialhjälmar (EpU, HC, VEIL) | A Rev 3 · ranks-enlisted · ranks-command · emblems · emblems-new · uniform-epu · uniform-veil |
+| C | `master-c.jpg` | Människorna och maskinerna: medborgare (5), Overwatch, Airwatch, Lantern, PT-V | A Rev 3 · citizen-base · citizen-cwu · resistance-sheet · ota-insignia · airwatch-shrike · drone-scanner |
+| D | `master-d.jpg` | Platsen: karta över distrikten, Spire, dammen, Stacks, civila byggnader, Unionens infrastruktur, kanterna (kanaler, bangård, 404) | A Rev 3 · env/e01-city · ref/spire-elevation · env/e04-nexus · env/e10-ration · env/e21-damcrest · env/e28-404-wall |
+
+Varje ark har korta RULE-rader i bilden, så att en annan AI kan läsa reglerna direkt. Full prompt-text finns i chatthistoriken (2026-11-15). Rev 2-prompterna nedan är historik.
+
 ### MASTER A: Myndigheten
 
 **Format:** 16:9 liggande. **Bifoga:** `uniform-union.jpg`, `helmet.jpg`, `armbands.jpg`, `emblems.jpg`, `flag-cca.jpg`, `flag-city09.jpg`, `ranks-command.jpg` (för EA-sigillet).
