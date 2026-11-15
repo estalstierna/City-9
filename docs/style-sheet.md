@@ -2033,7 +2033,15 @@ Bifoga: 1 portraits/mira (ljus och utsnitt) · 2 ref/dvl-helmet · 3 ref/dvl-arm
 
 Mellansteget mellan manskap och officerare. EpU har en egen pansarhjälm, ett skal av gunmetal plasteel ovanpå den keramiska masken. Skalet har pannskydd, kindskydd, en nitad krage runt den tvådelade andningsdelen, stålringar runt linserna och en tunn silverlinje över hjässan. Till det kommer plattbärare med ledade axelskydd och en egen ljuddämpad MP7A1 med holografiskt sikte. Officerare lämnar tillbaka pansarhjälmen. I spelet: hjälm, plattbärare och personlig MP7 i Issued kit; skador minskas med en fjärdedel från EpU; Firearms +12.
 
-**Klar (2026-11-15):** H2 inlagd (codex CCA Hierarchy och Civil Authority equipment). Nästa: R2 Rev 2 (`ranks-enlisted.jpg`), bifoga 1 ranks-enlisted (gamla) · 2 uniform-epu · 3 ref/02-helmet.
+**Klar (2026-11-15):** H2 inlagd (codex CCA Hierarchy och Civil Authority equipment). R2 Rev 2 (`ranks-enlisted.jpg`) inlagd: EpU med pansarhjälm, manskap utan rand.
+
+## 5z. VAPENARK (Civil Protection, basutrustning)
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| W1 CP-vapen och armoury | `weapons-cp.jpg` | 1 master-a · 2 uniform-union · 3 uniform-epu |
+
+Batong (med lägen och låst MAX), USP-Match 9mm, MP7A1 (passutlämning och EpU:s personliga), fällkniv, handbojor och buntband, folkmassesköld, ammunition och armoury-märkning. Inga tillverkarmärken. Inte Overwatch.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
