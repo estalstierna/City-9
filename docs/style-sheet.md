@@ -18,7 +18,7 @@ De genererade och godkända referensbilderna ligger i `assets/img/` och används
 | `emblems.jpg` + `emblems/*.png` | Divisionsemblem, helt ark och utklippta ikoner (256 px, transparent) |
 | `flag-cca.jpg`, `flag-city09.jpg` | Flaggorna |
 | `citizen-base.jpg`, `citizen-commended.jpg`, `citizen-watch.jpg` | Medborgarklädsel: bas, lojalist med utmärkelse, under bevakning |
-| `master-a.jpg` | Master A, myndigheten (Rev 2). Emblem inklistrade och hjälmränder borttagna i efterhand |
+| `master-a.jpg` … `master-d.jpg` | Masterark Rev 3: A enheten, B rang och divisioner, C människor och maskiner, D staden (se avsnitt 3b) |
 | `spire-ref.jpg` + `ref/spire-elevation.jpg`, `ref/spire-context.jpg` | Citadellet (Rev 1), helt ark plus utklippt höjdritning och stadsvy |
 | `env/e01-city.jpg`, `env/e02-apartment.jpg`, `env/e03-bazaar.jpg`, `env/e04-nexus.jpg`, `env/e05-barracks.jpg`, `env/e01-city.jpg` … `env/e16-tinker.jpg` | Alla miljöer E01 till E16 (godkända) (godkända). E01 är stilreferens för alla miljöer |
 | `citizen-cwu.jpg` | CWU, Civil Workers' Union: worker och supervisor (godkänd) |
@@ -368,7 +368,7 @@ Identiteten är delad på två masterark som hör ihop: **A** visar myndigheten 
 | C | `master-c.jpg` | Människorna och maskinerna: medborgare (5), Overwatch, Airwatch, Lantern, PT-V | A Rev 3 · citizen-base · citizen-cwu · resistance-sheet · ota-insignia · airwatch-shrike · drone-scanner |
 | D | `master-d.jpg` | Platsen: karta över distrikten, Spire, dammen, Stacks, civila byggnader, Unionens infrastruktur, kanterna (kanaler, bangård, 404) | A Rev 3 · env/e01-city · ref/spire-elevation · env/e04-nexus · env/e10-ration · env/e21-damcrest · env/e28-404-wall |
 
-Varje ark har korta RULE-rader i bilden, så att en annan AI kan läsa reglerna direkt. Full prompt-text finns i chatthistoriken (2026-11-15). Rev 2-prompterna nedan är historik.
+Varje ark har korta RULE-rader i bilden, så att en annan AI kan läsa reglerna direkt. **Klara (2026-11-15):** A Rev 3, B, C och D inlagda i `assets/img/`. Full prompt-text finns i chatthistoriken (2026-11-15). Rev 2-prompterna nedan är historik.
 
 ### MASTER A: Myndigheten
 

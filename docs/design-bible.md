@@ -6,6 +6,17 @@ Detaljerade prompter för enskilda bilder finns kvar i `docs/style-sheet.md`, oc
 
 ---
 
+## Masterarken: bifoga först
+
+Fyra referensark sammanfattar allt i bild, med reglerna skrivna direkt på arket. Bifoga det ark som hör till bilden du gör, före de andra referenserna:
+
+| Ark | Fil | Använd när bilden visar |
+|---|---|---|
+| A: The Unit | `assets/img/master-a.jpg` | en vanlig CP-enhet, hjälmen, armbandet, beteckningslappen, emblem, flaggor |
+| B: Ranks & Divisions | `assets/img/master-b.jpg` | rang, divisioner, EpU, High Command, VEIL |
+| C: People & Machines | `assets/img/master-c.jpg` | medborgare, CWU, kanalceller, Overwatch, Airwatch, Lantern, PT-V |
+| D: The City | `assets/img/master-d.jpg` | platser, Spire, dammen, Stacks, Nexus, infrastruktur, 404 |
+
 ## Del A: Kanon (klistra in)
 
 ```
