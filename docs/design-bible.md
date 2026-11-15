@@ -102,7 +102,7 @@ Head-and-shoulders personnel file portrait of a masked civil police unit of the 
 
 POSE: body turned about 25 degrees so the LEFT shoulder and upper arm face the camera, head [straight / slightly tilted], helmet centred in the frame with a little space above it. [One gesture or held object.]
 
-HELMET — from the [RANK] column of the SECOND attached image: [standard, no stripe | EpU: polished dark steel lens rings and a thin silver line over the crown | officer: a [colour] crest stripe brow to crown edged with fine silver lines | command: graphite shell, gold stripe, gold lens rings]. Round black-rimmed lenses with a faint cyan sheen; the TWO-PART respirator (a round bolted plate on the mask and a short filter canister hanging directly beneath it — two stacked discs); ONE earmuff headset cup over the LEFT ear with ONE short stub antenna. [Division helmet detail.] [One wear mark that makes this unit unique.]
+HELMET — from the [RANK] column of the SECOND attached image: [standard, no stripe | EpU: polished dark steel lens rings and a thin silver line over the crown | officer: a [colour] crest stripe brow to crown edged with fine silver lines | command: NOT this helmet — use the High Command helmet from command-sheet.jpg, see canon]. Round black-rimmed lenses with a faint cyan sheen; the TWO-PART respirator (a round bolted plate on the mask and a short filter canister hanging directly beneath it — two stacked discs); ONE earmuff headset cup over the LEFT ear with ONE short stub antenna. [Division helmet detail.] [One wear mark that makes this unit unique.]
 
 UNIFORM — from the THIRD attached image: [division uniform in one sentence].
 
