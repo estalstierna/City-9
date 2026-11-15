@@ -100,7 +100,7 @@
     RAZOR: { key: 'rampart', name: '"Rampart"', id: '81006', img: 'dvl-razor', line: 'Kept the bullet gouge across the brow. Says it reminds the Spire who stood in the way.' },
     SPEAR: { key: 'pyre', name: '"Pyre"', id: '67701', img: 'dvl-spear', line: 'First through every door in the 404 zones, last out. The soot never washes off.' },
     VECTOR: { key: 'formalin', name: '"Formalin"', id: '33145', img: 'dvl-vector', line: 'Keeps a catalogue of everything that came out of the quarantine. Keeps all of it.' },
-    GRID: { key: 'dynamo', name: '"Dynamo"', id: '26019', img: null, line: 'Decides which lights go out first in winter, and signs the list.' },
+    GRID: { key: 'dynamo', name: '"Dynamo"', id: '26019', img: 'dvl-grid', line: 'Decides which lights go out first in winter, and signs the list.' },
   };
   G.DVL = DVL;
   Object.keys(DVL).forEach((d) => (G.PEOPLE[DVL[d].key] = { name: DVL[d].name, role: `${d} DvL · division leader`, img: DVL[d].img }));
