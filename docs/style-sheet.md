@@ -1978,6 +1978,14 @@ Egen design: en smal sexkantig "lykta" med två kanalfläktar, en roterande sens
 
 Ersätter det generiska `unit-jury-ofc` i jfile.js. Prompten följer mall B1 i designbibeln.
 
+## 5v. HIGH COMMAND (AdC, CmD, SeC), ny hjälm
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| H1 High Command, konceptark | `command-sheet.jpg` | 1 master-a · 2 ranks-command · 3 uniform-oa · 4 ref/02-helmet (bara kontrast) |
+
+Ledningen står över divisionerna: svart och guld, aldrig divisionsfärg. Den har en egen hjälm. Inspirationen är en tidig betadesign, men den kopieras inte och bifogas inte, utan beskrivs i ord. Grafitskal, försänkta runda ögon med guldsken, ett lodrätt galler med guldlameller i stället för filterburken, platta filterskivor i kinderna och en hög krage. Rang visas också på hjälmen: 1, 2 eller 3 guldlinjer över hjässan. Designationsfält: `HC` (High Command), t.ex. `CCA.C9.D1` / `HC-CmD-00417`.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
