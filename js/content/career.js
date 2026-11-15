@@ -93,6 +93,19 @@
   };
   const NICK = ['Anvil', 'Birch', 'Cobble', 'Dray', 'Ember', 'Flint', 'Gauge', 'Harrow', 'Ingot', 'Jolt', 'Keel', 'Lantern', 'Mallet', 'Nettle', 'Oxide', 'Patch', 'Quarry', 'Rivet', 'Slate', 'Tallow', 'Umber', 'Vane', 'Wicket', 'Yarrow', 'Zinc', 'Brine', 'Cinder', 'Dusk', 'Furrow', 'Grit', 'Hasp', 'Ledger', 'Moth', 'Pike', 'Quill', 'Salt', 'Sorrel', 'Thatch', 'Weir'];
   const SHAPE = { DvL: 1, SqL: 2, OfC: 4, EpU: 3, '01': 4, '02': 5, '03': 6, '04': 7, '05': 8 };
+  /* division leaders (DvL), one per division; JURY's is the Magistrate. img null = no portrait yet */
+  const DVL = {
+    UNION: { key: 'anvil', name: '"Anvil"', id: '10233', img: 'dvl-union', line: 'Twenty-six years on the street. The street learned to stop hitting first.' },
+    HELIX: { key: 'lancet', name: '"Lancet"', id: '40912', img: 'dvl-helix', line: 'Runs every ward in City 9. Has never once been seen without gloves.' },
+    RAZOR: { key: 'rampart', name: '"Rampart"', id: '81006', img: 'dvl-razor', line: 'Kept the bullet gouge across the brow. Says it reminds the Spire who stood in the way.' },
+    SPEAR: { key: 'pyre', name: '"Pyre"', id: '67701', img: 'dvl-spear', line: 'First through every door in the 404 zones, last out. The soot never washes off.' },
+    VECTOR: { key: 'formalin', name: '"Formalin"', id: '33145', img: 'dvl-vector', line: 'Keeps a catalogue of everything that came out of the quarantine. Keeps all of it.' },
+    GRID: { key: 'dynamo', name: '"Dynamo"', id: '26019', img: null, line: 'Decides which lights go out first in winter, and signs the list.' },
+  };
+  G.DVL = DVL;
+  Object.keys(DVL).forEach((d) => (G.PEOPLE[DVL[d].key] = { name: DVL[d].name, role: `${d} DvL · division leader`, img: DVL[d].img }));
+  G.PEOPLE.nobody = { name: '"Nobody"', role: 'VEIL · no designation', img: 'dvl-veil' };
+
   /* known people carry their canon designation; the note is their relation to you */
   const named = (s) => {
     const div = s.div || 'UNION';
@@ -100,6 +113,7 @@
     const D = (d, r, id) => `CCA.C9.D${d}-${div}-${r}-${id}`;
     if (div === 'UNION') out.push({ name: '"Granite"', rank: 'SqL', desig: 'CCA.C9.D5-UNION-SqL-11902', key: 'granite' });
     if (div === 'JURY') out.push({ name: 'The Magistrate', rank: 'DvL', desig: 'CCA.C9.D5-JURY-DvL-02842', key: 'magistrate' });
+    if (DVL[div]) out.push({ name: DVL[div].name, rank: 'DvL', note: 'division leader', desig: `CCA.C9.D1-${div}-DvL-${DVL[div].id}`, key: DVL[div].key });
     if (div === 'UNION' && s.rel.rook !== undefined) out.push({ name: '"Rook"', rank: '02', note: s.flags.rook_amputated ? 'amputated' : 'your old field trainer', desig: 'CCA.C9.D5-UNION-02-48151', key: 'rook', gone: s.flags.rook_amputated });
     if (div === 'UNION' && s.rel.wick !== undefined) out.push({ name: '"Wick"', rank: '05', note: s.flags.wick_dead ? 'deserviced, D4 yard' : s.flags.wick_alive ? 'transferred to D2' : 'your trainee', desig: 'CCA.C9.D5-UNION-05-61207', key: 'wick', gone: s.flags.wick_dead || s.flags.wick_alive });
     if (div === 'JURY' && s.rel.vesna !== undefined) out.push({ name: 'Vesna', rank: '02', note: 'your partner', desig: 'CCA.C9.D5-JURY-02-30961', key: 'vesna' });
@@ -130,7 +144,6 @@
         list.push({ name: `"${n}"`, rank: r, uid: String(10000 + Math.floor(rnd() * 89999)) });
       }
     });
-    if (div === 'UNION' && !list.some((x) => x.rank === 'DvL')) list.push({ name: '"Bulwark"', rank: 'DvL', desig: 'CCA.C9.D5-UNION-DvL-00290' });
     list.push({ name: s.name, rank: s.rank, you: true, note: 'you', desig: G.desig(s) });
     const order = (x) => -G.rankIdx(x.rank);
     list.sort((a, b) => order(a) - order(b) || (a.you ? -1 : b.you ? 1 : 0));
@@ -233,4 +246,31 @@
   });
   G.CODEX_GROUPS.find((g) => g.title === 'Service record').ids.unshift('career');
   G.extend('u_board', { after: (s) => G.unlock(s, 'career') });
+})();
+
+/* the division leaders in the Codex: every portrait that exists */
+(function () {
+  const rows = () =>
+    Object.keys(G.DVL)
+      .filter((d) => G.DVL[d].img)
+      .map((d) => {
+        const x = G.DVL[d];
+        return `<figure class="dvl"><img src="assets/img/portraits/${x.img}.webp" alt="${x.name}" loading="lazy"><figcaption><b>${x.name}</b> — ${d}<small>CCA.C9.D1-${d}-DvL-${x.id}</small><span>${x.line}</span></figcaption></figure>`;
+      })
+      .join('');
+  G.addCodex({
+    dvls: {
+      title: 'Division Leaders',
+      get body() {
+        return `<p>Each division of City 9 answers to one Division Leader: three silver stars, an office on the Nexus upper floors, and a crest stripe in the division's colour. Units below Squadron Leader rarely meet them. Units who do, remember it.</p>
+        <figure class="dvl"><img src="assets/img/portraits/magistrate.webp" alt="The Magistrate" loading="lazy"><figcaption><b>The Magistrate</b> — JURY<small>CCA.C9.D5-JURY-DvL-02842</small><span>Level 4 is the Magistrate's. So, in the end, is everyone else.</span></figcaption></figure>
+        ${rows()}
+        <figure class="dvl"><img src="assets/img/portraits/dvl-veil.webp" alt="[NO RECORD]" loading="lazy"><figcaption><b>[NO RECORD]</b> — VEIL<small>no designation</small><span>VEIL has no Division Leader. If it had, the file would say only <i>Nobody</i>.</span></figcaption></figure>`;
+      },
+    },
+  });
+  G.afterRender.push(() => {
+    const s = G.state();
+    if (s && s.phase === 'union' && G.rankIdx(s.rank) >= G.rankIdx('OfC')) G.unlock(s, 'dvls');
+  });
 })();

@@ -688,3 +688,7 @@ body.anim-off .block > * { animation: none; }
 .dk-btns { display: flex; gap: 6px; padding: 6px; }
 .dk-btns .cr-btn { flex: 1; padding: 6px 4px; font-size: 12px; }
 @media (max-width: 600px) { .desk .dk-grid { gap: 5px; } .dk-feed { min-height: 150px; } .dk-head { font-size: 8.5px; padding: 3px 4px; } .dk-view { font-size: 11.5px; padding: 4px 5px; flex-direction: column; gap: 4px; } .dk-view img { width: 40px; height: 40px; } .dk-btns { padding: 4px; gap: 4px; } .dk-btns .cr-btn { font-size: 10.5px; padding: 6px 2px; } }
+figure.dvl { display: flex; gap: 12px; align-items: flex-start; margin: 10px 0; }
+figure.dvl img { width: 84px; height: 84px; object-fit: cover; border-radius: 3px; border: 1px solid var(--line); flex: none; margin: 0; }
+figure.dvl figcaption small { display: block; font-family: var(--mono); font-size: 11px; color: var(--dim); }
+figure.dvl figcaption span { display: block; font-size: 13.5px; color: var(--dim); margin-top: 4px; }

@@ -2023,6 +2023,8 @@ Bara JURY har en DvL (Magistraten). Resten får en, i samma porträttformat som 
 
 Bifoga: 1 portraits/mira (ljus och utsnitt) · 2 ref/dvl-helmet · 3 ref/dvl-armband · 4 uniform-<division>. VEIL: 1 portraits/veil-ofc · 2 uniform-veil.
 
+**Klara (2026-11-15):** UNION, HELIX, RAZOR, SPEAR, VECTOR och VEIL inlagda (`portraits/dvl-<div>.jpg`), i roster och i codex-posten Division Leaders. **GRID (Dynamo) saknas.** VECTOR fick också ett tredje filter i mitten. E35 Rev 2 är inlagd.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
