@@ -1970,6 +1970,14 @@ Egen design: en smal sexkantig "lykta" med två kanalfläktar, en roterande sens
 
 **Klar (2026-11-14):** D1 inlagd: codex-posten *SC-9 "Lantern" scanner drones* (Civil Protection), en Lantern i trapphuset före varje razzia, och posten låses upp i GRID-uppdrag.
 
+## 5u. LEDGER (JURY internal files)
+
+| Bild | Fil i spelet | Bifoga i ordning | Designation |
+|---|---|---|---|
+| K12 Ledger | `portraits/ledger.jpg` (+ thumb) | 1 portraits/mira · 2 ref/sql-helmet · 3 ref/sql-armband · 4 uniform-jury | CCA.C9.D1-JURY-SqL-20488, brett silverstreck + 2 silverstjärnor, crimson kamrand med silverkant |
+
+Ersätter det generiska `unit-jury-ofc` i jfile.js. Prompten följer mall B1 i designbibeln.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
