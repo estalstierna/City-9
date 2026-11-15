@@ -55,7 +55,7 @@ G.addCodex({
   },
   hierarchy: {
     title: 'CCA Hierarchy',
-    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><img src="assets/img/command-sheet.webp" alt="High Command: helmet, uniform and insignia" loading="lazy"><table>
+    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/uniform-epu.webp" alt="Elite Protection Unit: armoured helmet, plate carrier, MP7A1" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><img src="assets/img/command-sheet.webp" alt="High Command: helmet, uniform and insignia" loading="lazy"><table>
       <tr><td>EA</td><td>Earth Administrator</td></tr>
       <tr><td>SeC</td><td>Sectorial Commander</td></tr>
       <tr><td>CmD</td><td>Field Commander</td></tr>
@@ -338,6 +338,7 @@ G.addCodex({
     equipment: {
       title: 'Civil Authority equipment',
       body: `<p><b>Standard issue (05 and above)</b></p>${table(G.EQUIPMENT.filter((e) => e.from === '05' && !['vest_b'].includes(e.id)).map((e) => [e.name, e.desc]))}
+      <img src="assets/img/uniform-epu.webp" alt="EpU kit" loading="lazy">
       <p><b>Special issue</b></p>${table([
         ['USP-Match (04+)', G.EQUIPMENT.find((e) => e.id === 'usp').desc],
         ['Beta-grade vest (03–01)', G.EQUIPMENT.find((e) => e.id === 'vest_b').desc],
