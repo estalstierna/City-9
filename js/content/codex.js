@@ -2,7 +2,7 @@
 G.addCodex({
   city9: {
     title: 'City 09',
-    body: `<img src="assets/img/env/e01-city.webp" alt="City 09 at dawn" loading="lazy"><img src="assets/img/flag-city09.webp" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
+    body: `<img src="assets/img/env/e01-city.webp" alt="City 09 at dawn" loading="lazy"><img src="assets/img/master-d.webp" alt="City 09: map, Spire, dam and districts" loading="lazy"><img src="assets/img/flag-city09.webp" alt="City 09 flag" loading="lazy"><p>The civic flag: the river, the dam, the spire. Hung from every public building in the city.</p><p>A river city of the old east, rebuilt around the hydroelectric dam that now feeds the Citadel spire. The Union keeps it divided into numbered districts, each with its own Civil Protection precinct.</p>
     <table>
       <tr><td>D1</td><td>The Nexus — administration, Civil Protection headquarters, training wing, detention levels.</td></tr>
       <tr><td>D2</td><td>The Works — textile mills and the ration-packing plant. Shift sirens at 05:40 and 17:40.</td></tr>
@@ -76,7 +76,7 @@ G.addCodex({
   },
   divisions: {
     title: 'Field Divisions',
-    body: `<img src="assets/img/emblems.webp" alt="Division emblems" loading="lazy"><img src="assets/img/emblems-new.webp" alt="VECTOR, GRID and VEIL emblems" loading="lazy"><table>
+    body: `<img src="assets/img/master-b.webp" alt="Ranks and divisions" loading="lazy"><img src="assets/img/emblems.webp" alt="Division emblems" loading="lazy"><img src="assets/img/emblems-new.webp" alt="VECTOR, GRID and VEIL emblems" loading="lazy"><table>
       <tr><td>UNION</td><td>The basic policing division, performing general patrol duties. Every graduate begins here.</td></tr>
       <tr><td>HELIX</td><td>Medical division. Treats injuries sustained by protection forces and VIPs. Requires field medicine aptitude.</td></tr>
       <tr><td>JURY</td><td>Military police. Detention of citizens, interrogation, forced confessions, internal discipline.</td></tr>
