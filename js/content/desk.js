@@ -37,9 +37,10 @@
   G.MINIGAMES = G.MINIGAMES || {};
   G.MINIGAMES.desk = (block, opts, done) => {
     const S = G.state();
-    const secs = (opts.seconds || 60) + lvl('perception') * 2;
+    const secs = (opts.seconds || 80) + lvl('perception') * 2;
     const flagsMax = opts.flags || 3;
-    const BEAT = 2600;
+    /* one beat of a scene; Perception gives a little more time to read */
+    const BEAT = 4500 + lvl('perception') * 200;
     let left = secs, flags = 0, over = false, zoomed = -1;
     const flagged = [];
     let missed = 0;
@@ -54,12 +55,14 @@
     };
     const feeds = [];
     for (let i = 0; i < 4; i++) feeds.push(newSubject());
+    /* the feeds are staggered so they never all change at once */
+    feeds.forEach((f, i) => (f.next = Date.now() + BEAT + i * 1300));
     G._deskFeeds = feeds;
     const root = document.createElement('div');
     root.className = 'mini m3 desk';
     root.innerHTML = `<div class="cr-head"><span class="cr-title">${opts.title || 'Night desk'}</span><span class="cr-clock"></span></div>
       <div class="m3-log">Four Lantern feeds. ${flagsMax} flags. JURY collects at 06:00.</div><div class="dk-grid"></div>
-      <div class="cr-help"><b>ZOOM</b> shows the face and moves the feed a beat ahead (costs 3 seconds). <b>FLAG</b> sends the person to JURY: they get a file. Some people only look guilty.</div>`;
+      <div class="cr-help"><b>ZOOM</b> shows the face, moves the feed a beat ahead and holds it still while you read (costs 3 seconds). <b>FLAG</b> sends the person to JURY: they get a file. Some people only look guilty.</div>`;
     const grid = root.querySelector('.dk-grid');
     const log = root.querySelector('.m3-log');
     const clock = () => (root.querySelector('.cr-clock').textContent = `${flagsMax - flags} flags · ${Math.max(0, Math.ceil(left))}s`);
@@ -111,6 +114,8 @@
       const now = Date.now();
       let changed = false;
       feeds.forEach((f, i) => {
+        /* the zoomed feed holds still while you read it */
+        if (zoomed === i && !f.flagged) return void (f.next += 250);
         if (now < f.next) return;
         if (f.beat < 2) f.beat++;
         else {
@@ -146,7 +151,7 @@
     desk_run: {
       title: 'Night desk',
       text: ['@sys Four feeds. Watch, zoom, flag.'],
-      mini: { type: 'desk', opts: { title: 'Lantern feeds — District 5', seconds: 60, flags: 3 }, pass: 'desk_res', fail: 'desk_res', skill: 'perception', diff: 10 },
+      mini: { type: 'desk', opts: { title: 'Lantern feeds — District 5', seconds: 80, flags: 3 }, pass: 'desk_res', fail: 'desk_res', skill: 'perception', diff: 10 },
     },
     desk_res: {
       title: '06:00 — collection',

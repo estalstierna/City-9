@@ -975,13 +975,13 @@ suite('echoes, JURY file, district map and night desk', async (browser) => {
 
   /* 4. night desk: flagging the right people files them; the shift ends */
   await page.evaluate(() => {
-    G.scenes.desk_run.mini.opts.seconds = 10;
+    G.scenes.desk_run.mini.opts.seconds = 25;
     G.state().files = {};
     G.goto('desk_run');
   });
   const t0 = Date.now();
   let sc = 'desk_run';
-  while (Date.now() - t0 < 25000 && sc === 'desk_run') {
+  while (Date.now() - t0 < 45000 && sc === 'desk_run') {
     sc = await page.evaluate(() => {
       const f = (G._deskFeeds || []).findIndex((x) => x.kind === 'genuine' && !x.flagged);
       if (f >= 0) {
