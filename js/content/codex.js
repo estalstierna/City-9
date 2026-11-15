@@ -24,7 +24,9 @@ G.addCodex({
     <p><b>Citizens under observation</b> have a red diagonal stripe and the mark <b>OBS</b> printed across their label, a red barred circle on the back and a monitoring band locked to the wrist. Report irregularities.</p>
     <img src="assets/img/citizen-watch.webp" alt="Citizen under watch" loading="lazy">
     <img src="assets/img/citizen-cwu.webp" alt="Civil Workers' Union" loading="lazy">
-    <p><b>Civil Workers' Union (CWU)</b> members run the ration terminals, the licensed shops and the maintenance crews. Over the citizen jacket they wear an ochre work jacket with a reflective band and a union badge; their ID label carries an ochre stripe marked <b>CWU</b>. They eat better, are exempt from food and medical contraband rules, and are trusted by nobody — not by the Union, and not by their neighbours.</p>`,
+    <p><b>Civil Workers' Union (CWU)</b> members run the ration terminals, the licensed shops and the maintenance crews. Over the citizen jacket they wear an ochre work jacket with a reflective band and a union badge; their ID label carries an ochre stripe marked <b>CWU</b>. They eat better, are exempt from food and medical contraband rules, and are trusted by nobody — not by the Union, and not by their neighbours.</p>
+    <img src="assets/img/cwu-sheet.webp" alt="CWU hierarchy and branches" loading="lazy">
+    <p><b>CWU grades</b> are worn as chevrons on the union badge: a <b>Worker</b> has none; a <b>Crew Lead</b> one bronze chevron; a <b>Supervisor</b> one gold chevron and a peaked cap; a <b>District Overseer</b> two gold chevrons and a long ochre coat; the city's <b>CWU Director</b> a gold badge in a laurel wreath and the Administration's slate coat, answering to the City Administrator. A small pictogram on the badge shows the branch: <b>Ration</b>, <b>Repair</b>, <b>Care</b>, <b>Trade</b> or <b>Sanitation</b>.</p>`,
   },
   spire: {
     title: 'The Spire',

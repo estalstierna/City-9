@@ -2101,6 +2101,8 @@ Förbund som piktogram på brickan: RATION (ransonpaket), REPAIR (skiftnyckel), 
 |---|---|---|
 | CWU1 CWU-hierarkin, konceptark | `cwu-sheet.jpg` | 1 master-c · 2 citizen-cwu · 3 portraits/brask · 4 citizen-base |
 
+**Klar (2026-11-15):** CWU1 inlagd i codex-posten om medborgare (CWU-avsnittet), med graderna och förbunden. Brask är Supervisor (SV) på färgeriet.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
