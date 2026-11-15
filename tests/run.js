@@ -691,6 +691,26 @@ suite('city map: zones, status and the District 5 drill-down', async (browser) =
   if (r.d5red !== '#d9534a') out.push('D5 should be red when a block is in trouble: ' + r.d5red);
   if (r.blocks !== 5) out.push('D5 panel should hold the five-block map: ' + r.blocks);
   if (!r.nav) out.push('no Map in the mobile nav');
+  /* closing a block returns where it was opened from: the dossier, or the map */
+  const back = await page.evaluate(() => {
+    document.querySelector('#modal-close').click();
+    G.goto('u_board');
+    G.setView('dossier');
+    document.querySelector('#side-content [data-dblock="s9"]').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    const opened = document.querySelector('#modal').classList.contains('open');
+    document.querySelector('#modal-close').click();
+    const toDossier = document.getElementById('app').classList.contains('side-open');
+    G.setView('story');
+    G.showMap('d5');
+    document.querySelector('#modal-body [data-dblock="s14"]').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    const blockOpen = /Stack 14/.test(document.querySelector('#modal-title').textContent);
+    document.querySelector('#modal-close').click();
+    const toMap = !!document.querySelector('#modal.open #modal-body .citymap');
+    document.querySelector('#modal-close').click();
+    return { opened, toDossier, blockOpen, toMap };
+  });
+  if (!back.opened || !back.toDossier) out.push('closing a block opened from the dossier should return to the dossier: ' + JSON.stringify(back));
+  if (!back.blockOpen || !back.toMap) out.push('closing a block opened from the map should return to the map: ' + JSON.stringify(back));
   return out.concat(errors);
 });
 

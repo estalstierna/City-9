@@ -149,7 +149,10 @@
       ${residential ? `<h4>Your files in ${G.BLOCKS[k].name}</h4>${files.length ? `<div class="dm-faces">${files.map((f) => `<figure class="${f.amputated ? 'dead' : ''}"><img src="${G.DOC_FACES[f.face].img}" alt="" loading="lazy"><figcaption>CID ${f.cid}<small>${f.amputated ? 'AMPUTATED' : f.lastVerdict || ''}</small></figcaption></figure>`).join('')}</div>` : '<p class="sub">Nobody you have stopped lives here. Yet.</p>'}` : ''}
     </div>`;
   }
-  const open = (k) => G.openModal(G.BLOCKS[k].name, blockInfo(k), 'modal');
+  const open = (k) => {
+    const fromMap = document.querySelector('#modal.open #modal-body .citymap');
+    G.openModal(G.BLOCKS[k].name, blockInfo(k), 'modal', fromMap && G.showMap ? () => G.showMap('d5') : undefined);
+  };
   document.addEventListener('click', (e) => {
     const b = e.target.closest && e.target.closest('[data-dblock]');
     if (b) open(b.dataset.dblock);

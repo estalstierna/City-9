@@ -907,6 +907,7 @@
   ];
 
   function setView(v) {
+    if (v === 'story') modalBack = null;
     view = v;
     $('#app').classList.toggle('side-open', v === 'dossier');
     if (v === 'story' || v === 'dossier') $('#modal').classList.remove('open');
@@ -934,8 +935,12 @@
   }
   G.renderNav = renderNav;
 
-  G.openModal = (t, h, k) => openModal(t, h, k);
-  function openModal(title, html, kind) {
+  G.openModal = (t, h, k, back) => openModal(t, h, k, back);
+  /* where closing a modal returns to: the dossier it was opened from, or a caller's own view
+     (a block opened from the city map goes back to the map) */
+  let modalBack = null;
+  function openModal(title, html, kind, back) {
+    modalBack = back || (view === 'dossier' ? () => setView('dossier') : modalBack && $('#modal').classList.contains('open') ? modalBack : null);
     $('#modal-title').textContent = title;
     $('#modal-body').innerHTML = html;
     $('#modal-body').onclick = null;
@@ -945,11 +950,14 @@
     renderNav();
   }
   function closeModal() {
+    const back = modalBack;
+    modalBack = null;
     $('#modal').classList.remove('open');
     if (view !== 'story' && view !== 'dossier') {
       view = 'story';
       renderNav();
     }
+    if (back) back();
   }
 
   /* Codex: entries grouped by G.CODEX_GROUPS (content decides the order), unread marked NEW,
