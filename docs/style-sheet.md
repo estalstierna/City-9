@@ -1,5 +1,7 @@
 # City 09 // Visual Style Sheet & Prompt Library
 
+> Alla regler samlade på ett ställe: se **`docs/design-bible.md`** (kanon att klistra in, mallar per bildtyp och en kontrollista).
+
 Promptbibliotek för att generera ett enhetligt referensark (och senare karaktärer och scener) till spelet. Själva prompterna är på engelska, eftersom bildmodeller följer engelska bäst. Förklaringarna är på svenska.
 
 ---
@@ -1897,6 +1899,8 @@ Full prompt-text finns i chatthistoriken (2026-11-13).
 Full prompt-text finns i chatthistoriken (2026-11-14). Enheter följer regeln för designationspatch; VEIL har patchen täckt av svart tejp.
 
 ## 5o. PROMPTMALL (använd för alla nya bilder)
+
+**Alla designregler och mallar per bildtyp finns samlade i `docs/design-bible.md`.**
 
 1. **Rubrik:** `## <ID> <namn> (16:9 för miljö, 4:5 för porträtt)`.
 2. **Bifoga:** en numrerad lista med filerna. Prompten hänvisar till dem som FIRST, SECOND, THIRD … attached image.
