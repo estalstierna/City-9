@@ -109,7 +109,7 @@
       title: 'Stack 22 — the stairwell, 23:00',
       text: (s) => [
         '@img assets/img/env/e35-veil-stairwell.webp|Stack 22, the fourth landing',
-        'The stairwell light is out on every floor. On the fourth landing someone is standing very still against the wall in a black jacket with a black armband: a dull grey bar, a dull grey star, an empty circle. Where the designation patch should be there is a strip of black tape.',
+        'The stairwell light is out on every floor. On the fourth landing someone is standing very still against the wall in black tactical kit with a black armband: a dull grey bar, a dull grey star, an empty circle. Where the designation patch should be there is a strip of black tape. The helmet has no eyes. Where the lenses should be there is only a band of fine black mesh, and above it a small empty circle pressed into the brow. You cannot tell where it is looking.',
         '@portrait assets/img/portraits/veil-ofc.webp|No designation',
         '@say VEIL|You are going to be an officer. That makes you interesting. Before it makes you useful, we would like to know what you are.',
         s.res >= 40 ? '@say VEIL|We know about the canals. All of it. Do not insult me by asking how. The question is not what you did. The question is whether you can do it for us instead.' : s.susp >= 50 ? '@say VEIL|JURY thinks you are dirty. JURY thinks everyone is dirty. We think you are careful. Careful is rarer.' : '@say VEIL|Your file is clean. Clean files are either very good or very well kept. We would like to know which.',

@@ -2005,6 +2005,8 @@ Rangnamn (kanon i spelet): **AdC Adjutant Commander · CmD Field Commander · Se
 
 Ingen rock. En åtsittande, tyst, matt svart taktisk uniform. Egen hjälm, "the blank": ett slätt, matt svart skal utan synliga ögon. Linserna sitter bakom ett tätt perforerat visirband som inte reflekterar något. Ingen burk vid munnen, utan två platta filter längs käken, ett försänkt hörselskydd och en blank svart lackrand över hjässan. Den tomma cirkeln är svagt präglad i pannan. Det gamla arket hade fel emblem i titeln; Rev 3 bifogar rätt emblem.
 
+**Klara (2026-11-15):** V5 Rev 3 och K10 Rev 3 är inlagda (codex VEIL, kapitel 5–7, kontakter). E35 (VEIL-mötet i trapphuset) visar fortfarande den gamla figuren.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
