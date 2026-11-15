@@ -7,7 +7,7 @@
    Zones live in a 1600 × 900 coordinate space, so they can be laid over the painted map and nudged. */
 (function () {
   const W = 1600, H = 900;
-  G.CITY_MAP_IMG = null; /* set to the painted map's path once it exists */
+  G.CITY_MAP_IMG = 'assets/img/city-map.webp'; /* the painted map; null draws the schematic */
   const COL = { green: '#6fbf73', amber: '#e2a83f', red: '#d9534a', grey: '#7a8b92' };
   const WORD = { green: 'Calm', amber: 'Tense', red: 'Trouble', grey: 'No access' };
   const st = () => G.state();
@@ -18,7 +18,7 @@
   /* zones: rect [x, y, w, h] in map space, label anchor, and a status function */
   const ZONES = [
     {
-      id: 'd4', code: 'D4', name: 'Rail Yards', rect: [0, 500, 320, 400],
+      id: 'd4', code: 'D4', name: 'Rail Yards', rect: [0, 470, 250, 430],
       status: (s) => {
         const ran = s.c6 && s.c6.train;
         const lvl = s.c6 && !s.c6.done ? 'amber' : ran === 'stopped' || ran === 'air' ? 'red' : 'green';
@@ -30,7 +30,7 @@
       },
     },
     {
-      id: 'd3', code: 'D3', name: 'Canal Quarter', rect: [320, 500, 288, 400],
+      id: 'd3', code: 'D3', name: 'Canal Quarter', rect: [250, 470, 267, 430],
       status: (s) => {
         const lvl = s.res >= 40 ? 'red' : s.res >= 20 ? 'amber' : 'green';
         const inf = s.inf && s.inf.list ? s.inf.list.filter((x) => x.status === 'active').length : 0;
@@ -42,7 +42,7 @@
       },
     },
     {
-      id: 'd2', code: 'D2', name: 'The Works', rect: [608, 500, 224, 400],
+      id: 'd2', code: 'D2', name: 'The Works', rect: [517, 470, 248, 430],
       status: (s) => {
         const cut = s.c4 && !s.c4.done;
         return [cut ? 'amber' : 'green', [
@@ -53,7 +53,7 @@
       },
     },
     {
-      id: 'd1', code: 'D1', name: 'The Nexus', rect: [832, 500, 192, 400],
+      id: 'd1', code: 'D1', name: 'The Nexus', rect: [765, 470, 268, 430],
       status: (s) => {
         const jf = s.jf && s.jf.met;
         const lvl = s.susp >= 60 ? 'red' : s.susp >= 30 ? 'amber' : 'green';
@@ -65,7 +65,7 @@
       },
     },
     {
-      id: 'd5', code: 'D5', name: 'The Stacks', rect: [1024, 500, 304, 400],
+      id: 'd5', code: 'D5', name: 'The Stacks', rect: [1033, 470, 317, 430],
       status: (s) => {
         const cols = G.BLOCKS ? Object.keys(G.BLOCKS).map((k) => (G.distColour ? G.distColour(s, k) : 'green')) : ['green'];
         const mine = files(s).length;
@@ -77,7 +77,7 @@
       },
     },
     {
-      id: 'q404', code: '404', name: 'Old Town', rect: [1360, 470, 240, 430],
+      id: 'q404', code: '404', name: 'Old Town', rect: [1385, 450, 215, 450],
       status: (s) => [
         'red',
         [
@@ -87,18 +87,39 @@
       ],
     },
     {
-      id: 'dam', code: 'DAM', name: 'The Dam', rect: [40, 300, 160, 190],
+      id: 'd8', code: 'D8', name: 'Hydro', rect: [0, 150, 300, 190],
       status: (s) => {
         const dark = s.mem && s.mem.dark && s.mem.dark.day >= s.day - 1 ? s.mem.dark.block : null;
         return [dark ? 'amber' : 'green', [
-          'Five arches across the river. It has not stopped humming since the war. Its output goes to the Spire first.',
+          'The dam and GRID’s power works. Five arches across the river, humming since the war. Its output goes to the Spire first, the Upper Town second, the Stacks last.',
           dark ? `Tonight GRID cut the power to ${G.BLOCKS[dark].name}.` : 'Every light in the Stacks is on, for now.',
           s.c3 && s.c3.done ? `The long night at the spillway: ${s.c3.result === 'held' ? 'the dam held' : 'you remember it'}.` : null,
         ]];
       },
     },
     {
-      id: 'spire', code: '', name: 'The Spire', rect: [820, 40, 200, 300],
+      id: 'd6', code: 'D6', name: 'Cathedral Ward', rect: [785, 0, 420, 365], lab: [850, 300],
+      status: (s) => [
+        'grey',
+        [
+          'The old cathedral square and the streets around the foot of the Spire. Overwatch holds it. High Command has offices here. Citizens do not enter, and units only with clearance.',
+          G.rankIdx(s.rank) >= G.rankIdx('OfC') ? 'Your officer’s clearance gets you as far as the outer checkpoint. Nobody you know has been further.' : 'Your grade does not open the outer checkpoint.',
+        ],
+      ],
+    },
+    {
+      id: 'd7', code: 'D7', name: 'Upper Town', rect: [1205, 0, 395, 320],
+      status: (s) => {
+        const rose = s.c7 && s.c7.night && ['aside', 'broken', 'armed'].includes(s.c7.night);
+        return [rose ? 'amber' : 'green', [
+          'The north bank east of the Spire: commended citizens, CWU supervisors, the Administration’s clerks. Lit windows, full rations, heating in winter. Across the river from the Stacks, and every night the Stacks can see it.',
+          s.c4 ? 'The sixty-gram ration cut did not reach the Upper Town.' : null,
+          rose ? 'The night D5 rose, the Upper Town locked its gates and asked for Overwatch by name.' : null,
+        ]];
+      },
+    },
+    {
+      id: 'spire', code: '', name: 'The Spire', rect: [915, 10, 170, 300],
       status: () => ['grey', ['Twenty-four hundred metres of dark alloy through the old cathedral square. No citizen has been inside. Very few units.']],
     },
   ];
@@ -129,9 +150,10 @@
       const c = COL[lvl];
       g += `<g class="cm-zone${sel === z.id ? ' sel' : ''}" data-zone="${z.id}" tabindex="0" role="button" aria-label="${z.name}">`;
       g += `<rect x="${x + 4}" y="${y + 4}" width="${w - 8}" height="${h - 8}" rx="6" fill="${c}" fill-opacity="${sel === z.id ? 0.28 : 0.12}" stroke="${c}" stroke-width="${sel === z.id ? 5 : 3}"/>`;
-      g += `<text x="${x + w / 2}" y="${y + h / 2 - 6}" class="cm-code" fill="${c}">${z.code || '◆'}</text>`;
-      g += `<text x="${x + w / 2}" y="${y + h / 2 + 26}" class="cm-name">${z.name.toUpperCase()}</text>`;
-      if (lvl === 'red' && z.id !== 'q404') g += `<circle cx="${x + w - 26}" cy="${y + 26}" r="10" fill="${c}" class="cm-alert"/>`;
+      const [lx, ly] = z.lab || [x + w / 2, y + h / 2];
+      g += `<text x="${lx}" y="${ly - 6}" class="cm-code" fill="${c}">${z.code || '◆'}</text>`;
+      g += `<text x="${lx}" y="${ly + 26}" class="cm-name">${z.name.toUpperCase()}</text>`;
+      if (lvl === 'red' && z.id !== 'q404' && z.id !== 'spire') g += `<circle cx="${x + w - 26}" cy="${y + 26}" r="10" fill="${c}" class="cm-alert"/>`;
       g += '</g>';
     });
     return g + '</svg>';

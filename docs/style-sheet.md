@@ -2081,6 +2081,8 @@ Ansikten, inga masker, inga armband. Lång skräddarsydd rock i skiffergrå ull 
 
 Bara grunden. Kartan får **ingen text, inga etiketter och inga markeringar**; spelet lägger zoner, färger och namn ovanpå. Zonerna ligger i ett 1600 × 900-rutnät (`js/content/citymap.js`), och prompten placerar distrikten exakt där. Ställ in `G.CITY_MAP_IMG` när bilden finns och justera rektanglarna om något hamnat fel.
 
+**Klar (2026-11-15):** `city-map.jpg` inlagd och zonerna kalibrerade. Nya distrikt på norra stranden: **D6 Cathedral Ward** (kring Spire, Overwatch och High Command, stängt), **D7 Upper Town** (de privilegierade), **D8 Hydro** (dammen och GRID:s kraftverk).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

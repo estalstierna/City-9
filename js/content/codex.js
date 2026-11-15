@@ -9,6 +9,9 @@ G.addCodex({
       <tr><td>D3</td><td>Canal Quarter — locks, pump houses and drowned basements. Smugglers' country.</td></tr>
       <tr><td>D4</td><td>Rail Yards — the transit line to other cities. Freight, relocation trains, scrap. Unlit after curfew.</td></tr>
       <tr><td>D5</td><td>The Stacks — residential blocks, Bazaar Row, Plaza 5. Where most citizens live, and where you grew up.</td></tr>
+      <tr><td>D6</td><td>Cathedral Ward — the old cathedral square at the foot of the Spire. Overwatch and High Command. Closed to citizens.</td></tr>
+      <tr><td>D7</td><td>Upper Town — the north bank east of the Spire. Commended citizens, CWU supervisors, Administration clerks. Full rations, lit windows.</td></tr>
+      <tr><td>D8</td><td>Hydro — the dam and GRID's power works, on both banks. Its output goes to the Spire first.</td></tr>
       <tr><td>404</td><td>Old Town beyond the eastern canal. Officially quarantined. Unofficially, no one comes back to argue.</td></tr>
     </table>`,
   },

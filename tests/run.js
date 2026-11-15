@@ -684,7 +684,7 @@ suite('city map: zones, status and the District 5 drill-down', async (browser) =
     const nav = G.NAV.some((n) => n.id === 'map');
     return { zones, res, d5red, blocks, nav };
   });
-  if (r.zones.length !== 8) out.push('map zones: ' + r.zones.join(','));
+  if (r.zones.length !== 10) out.push('map zones: ' + r.zones.join(','));
   Object.entries(r.res).forEach(([k, t]) => {
     if (!t || /undefined|NaN/.test(t)) out.push(`zone ${k} panel: ${t}`);
   });

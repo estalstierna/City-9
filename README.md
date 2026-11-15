@@ -111,7 +111,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **Consequences:** everyone you flag gets a file with their face, so they can come back as echoes. You can pull wrong slips before 06:00.
 
 18. **The city map** (a *Map* button in the top bar and the mobile nav): City 09 from above.
-   - **Zones:** D1–D5, the 404 quarantine, the dam and the Spire, each with a live status colour (calm, tense, trouble, no access).
+   - **Zones:** D1–D5 on the south bank, D6 Cathedral Ward, D7 Upper Town and D8 Hydro on the north bank, the 404 quarantine and the Spire, each with a live status colour (calm, tense, trouble, no access).
    - **Status from the game:**
      - D1: your standing and your JURY file;
      - D2: the ration cut;
@@ -119,7 +119,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - D4: the railway and the trains;
      - D5: the five blocks, with the District 5 block map to tap into;
      - the dam: GRID's power cuts.
-   - **Base:** drawn as a schematic until the painted map (`G.CITY_MAP_IMG`) exists. Zones are rectangles in a 1600 × 900 space, laid over it.
+   - **Base:** the painted map `assets/img/city-map.jpg` (a schematic if `G.CITY_MAP_IMG` is null). Zones are rectangles in a 1600 × 900 space, laid over it.
 
 19. **Quality of life**:
    - **Undo:** undo the last choice (U, or in the menu). It is not offered across skill checks or minigames, so dice cannot be re-rolled.
