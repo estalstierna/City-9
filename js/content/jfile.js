@@ -16,8 +16,8 @@
     informant: { name: 'INFORMANT REPORT', how: 'Discredit the informant', skill: 'deception', diff: 10 },
     log: { name: 'ACCESS LOG', how: 'Edit the log', skill: 'comms', diff: 5 },
   };
-  G.PEOPLE.ledger = { name: '"Ledger"', role: 'JURY SqL · internal files', img: 'unit-jury-ofc' };
-  const LEDGER = '@portrait assets/img/portraits/unit-jury-ofc.webp|CCA.C9.D1-JURY-SqL-20488 — "Ledger"';
+  G.PEOPLE.ledger = { name: '"Ledger"', role: 'JURY SqL · internal files', img: 'ledger' };
+  const LEDGER = '@portrait assets/img/portraits/ledger.webp|CCA.C9.D1-JURY-SqL-20488 — "Ledger"';
 
   const J = (s) => {
     s.jf = s.jf || { ev: [], n: 0, met: false, open: false, burnDay: -99 };

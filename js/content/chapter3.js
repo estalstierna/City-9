@@ -8,7 +8,7 @@
   const pick = G.pick;
   const DIVS = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
 
-  G.PEOPLE.vigil = { name: '"Vigil"', role: 'OA CmD · Task Force LOCK', img: 'vigil' };
+  G.PEOPLE.vigil = { name: '"Vigil"', role: 'HC CmD · Task Force LOCK', img: 'vigil' };
   G.PEOPLE.katya = G.PEOPLE.katya || { name: 'Katya', role: 'Canal Quarter', img: 'katya' };
   G.PEOPLE.tinker = G.PEOPLE.tinker || { name: 'The Tinker', role: 'Repairman · Bazaar Row', img: 'tinker' };
   G.PEOPLE.ilse = G.PEOPLE.ilse || { name: 'Ilse Marek', role: 'Fellow recruit', img: 'ilse' };
@@ -122,8 +122,8 @@
         '@img assets/img/env/e04-nexus.webp|The Nexus',
         'Every division in City 9 is in the hall at once, which you have never seen: the white bands of HELIX, the gold of RAZOR, crimson, orange, chemical green, copper. And along the back wall, not in rows, not at ease, a squad of Overwatch soldiers in grey armour with a single cyan slit for a face.',
         '@img assets/img/ota-soldier.webp|Overwatch infantry, C9 deployment',
-        'On the platform stands a unit you have only seen in photographs. Graphite mask with a gold crest. A black armband trimmed in gold: one wide gold bar, two gold stars. **CCA.C9.D1-OA-CmD-00417.** The Academy calls the Field Commander *Vigil*, because nobody has ever seen the Commander sleep.',
-        '@portrait assets/img/portraits/vigil.webp|CCA.C9.D1-OA-CmD-00417 — "Vigil"',
+        'On the platform stands a unit you have only seen in photographs. Not the bone-white mask the rest of you wear: a long graphite shell, two eyes glowing gold deep in their sockets, a grille of gold slats where a filter should be, two thin gold lines over the crown and a crack across it mended in gold. A black armband trimmed in gold: one wide gold bar, two gold stars. **CCA.C9.D1-HC-CmD-00417.** High Command. The Academy calls the Field Commander *Vigil*, because nobody has ever seen the Commander sleep.',
+        '@portrait assets/img/portraits/vigil.webp|CCA.C9.D1-HC-CmD-00417 — "Vigil"',
         '@say Vigil|You will have heard rumours about City 17. Forget them. City 17 is not your concern. *This* city is. When one city coughs, the Union checks the others for fever.',
         '@say Vigil|The canal cells have a phrase on their frequencies this week: *the long night*. They intend one night without power. We intend that they do not get it. You are Task Force LOCK. Every division. One chain of command, and at the top of it, until sociostatus is lifted, Overwatch.',
         `@sys Your division’s post on the night: **${post(s)}**.`,
@@ -136,7 +136,7 @@
       ],
     },
     c3_0_ask: {
-      text: ['The hall goes still. Vigil’s graphite mask turns toward you, slowly.', '@say Vigil|Reprisal. Proportional, documented, and administered by Civil Protection, under Overwatch observation. That is why you will make sure it does not come.', 'It is the most honest answer anyone in a gold crest has ever given you. That is what frightens you about it.'],
+      text: ['The hall goes still. Vigil’s graphite mask turns toward you, slowly.', '@say Vigil|Reprisal. Proportional, documented, and administered by Civil Protection, under Overwatch observation. That is why you will make sure it does not come.', 'It is the most honest answer anyone behind a gold grille has ever given you. That is what frightens you about it.'],
       choices: [{ t: 'Muster.', fx: adv(0, { merit: 1, cons: 1 }), go: 'c3_0_end' }],
     },
     c3_0_ask_bad: {

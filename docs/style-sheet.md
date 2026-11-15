@@ -1819,7 +1819,7 @@ Prompterna K1 Wick, K2 Vesna, K3 Halvorsen, K4 Lida Koval, E17 Magistratens kont
 
 | Bild | Fil i spelet | Bifoga i ordning | Designation |
 |---|---|---|---|
-| K5 Vigil | `portraits/vigil.jpg` | 1 portraits/mira · 2 ranks-command · 3 uniform-oa | CCA.C9.D1-OA-CmD-00417, brett guldstreck + 2 guldstjärnor |
+| K5 Vigil | `portraits/vigil.jpg` | (Rev 2, se 5v) | CCA.C9.D1-HC-CmD-00417, brett guldstreck + 2 guldstjärnor |
 | E20 Kopplingsrum 7 | `env/e20-junction.jpg` | 1 uniform-grid · 2 spire-ref · 3 env/e01-city | |
 | E21 Dammkrönet i gryningen | `env/e21-damcrest.jpg` | 1 env/e01-city · 2 uniform-razor · 3 ota-soldier · 4 flag-city09 | |
 
@@ -1994,7 +1994,7 @@ Rangnamn (kanon i spelet): **AdC Adjutant Commander · CmD Field Commander · Se
 | R3 Rev 2 Officerare och ledning | `ranks-command.jpg` | 1 ranks-command (gamla, layout) · 2 H1 · 3 ref/sql-helmet |
 | K5 Vigil Rev 2 | `portraits/vigil.jpg` | 1 portraits/vigil (gamla, utsnitt och kappa) · 2 H1 |
 
-När Vigil Rev 2 är inlagd byts hennes beteckning i spelet till `CCA.C9.D1-HC-CmD-00417`, och beskrivningen av hjälmen i kapitel 3 uppdateras.
+**Klara (2026-11-15):** H1 (`command-sheet.jpg`, i codex-posten CCA Hierarchy), R3 Rev 2 (`ranks-command.jpg` ersatt) och Vigil Rev 2 är inlagda. Vigils beteckning är nu `CCA.C9.D1-HC-CmD-00417` i spelet, och kapitel 3 beskriver den nya hjälmen. K12 Ledger är också inlagd (`portraits/ledger.jpg`).
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 

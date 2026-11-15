@@ -55,7 +55,7 @@ G.addCodex({
   },
   hierarchy: {
     title: 'CCA Hierarchy',
-    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><table>
+    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><img src="assets/img/command-sheet.webp" alt="High Command: helmet, uniform and insignia" loading="lazy"><table>
       <tr><td>EA</td><td>Earth Administrator</td></tr>
       <tr><td>SeC</td><td>Sectorial Commander</td></tr>
       <tr><td>CmD</td><td>Field Commander</td></tr>
@@ -71,7 +71,7 @@ G.addCodex({
       <tr><td>05</td><td>05 Protection Unit</td></tr>
       <tr><td>RcT</td><td>Recruit</td></tr>
     </table>
-    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward wear black armbands trimmed in gold, with gold bars and stars, and graphite helmets with gold crests. The Earth Administrator wears no armband at all.</p>
+    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward stand above the divisions. They are <b>High Command</b>, and their designations say so: <i>CCA.C9.D1-HC-CmD-00417</i>. They wear black armbands trimmed in gold, with gold bars and stars, a long black greatcoat, and a helmet of their own: an elongated graphite shell, eyes glowing gold in deep sockets, a gold-slatted grille instead of a filter, and one, two or three gold lines over the crown for AdC, CmD and SeC. The Earth Administrator wears no armband at all.</p>
     <p>Promotion through the 05–01 grades is earned by merit and field evaluation. Above 01, by selection — and by surviving the people who also want the post.</p>`,
   },
   divisions: {
