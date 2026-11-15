@@ -707,3 +707,19 @@ figure.dvl figcaption span { display: block; font-size: 13.5px; color: var(--dim
 .cm-panel p { margin: 6px 0; font-size: 14.5px; }
 .cm-sub .dmap-svg { max-width: 420px; }
 @media (max-width: 600px) { .cm-code { font-size: 46px; } .cm-name { font-size: 24px; } }
+
+/* ---------------------------------------------------------- command map (command.js) */
+.cmd-sheet { border: 1px solid var(--line); border-radius: 4px; padding: 10px; margin: 8px 0; background: rgba(255,255,255,.015); }
+.cmd-map .cm-svg { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 3px; margin-bottom: 6px; pointer-events: none; }
+.cmd-key { font-family: var(--mono); font-size: 11px; margin: 4px 0 10px; line-height: 1.6; }
+.cmd-team { border-top: 1px solid var(--line); padding: 8px 0; }
+.cmd-tname { font-family: var(--mono); font-size: 12.5px; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 6px; }
+.cmd-tname b { color: var(--accent); letter-spacing: .08em; }
+.cmd-fat { color: var(--amber); letter-spacing: 1px; font-size: 11px; margin-left: auto; }
+.cmd-tname em { color: var(--red); font-style: normal; font-size: 11px; }
+.cmd-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; margin-bottom: 4px; }
+.cmd-row:last-child { grid-template-columns: repeat(4, 1fr); }
+.cmd-b { background: #0d1418; border: 1px solid #2a363d; border-left: 3px solid var(--dc, #2a363d); color: var(--dim); font-family: var(--mono); font-size: 11.5px; padding: 6px 2px; border-radius: 2px; cursor: pointer; }
+.cmd-b.ord { border-left-color: #2a363d; }
+.cmd-b.on { border-color: var(--accent); color: var(--accent); background: rgba(95,200,221,.08); }
+.cmd-b:disabled { opacity: .35; cursor: default; }

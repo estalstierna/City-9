@@ -79,6 +79,17 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 
 11. **Chapter 7, "Anticitizen One"** (all divisions): the Union gives the man from City 17 a designation and puts a blurred figure on every screen. Still no name, still no face. Overwatch pulls two thirds of the City 9 garrison north, and Civil Protection holds the city alone. You place your teams (Nexus, Stacks or armoury). The canal cells, or VEIL, tell you when D5 will rise. Plaza 5 starts to chant under the screens (crowd control, or cut the screens). On the night the screens go dark you hold, open the armoury, order a stand-down, negotiate a truce on a landing, or walk among them for VEIL. The chapter ends with Nova Prospekt on the radio.
 
+11b. **Chapter 8, "The Inspection"** (all divisions, the road to Division Leader): after the night D5 rose, Sector Administrator Morow arrives by train to grade City 9 over ten days. A city that cannot keep itself is *consolidated*: its worst block goes north.
+   - **The command map:** you hold the district board. Every morning, three teams get a district and an order on the city map (patrol, raid, protect, rest). Every evening a report and the inspection assessment follow. Uncovered districts drift into incidents, teams tire, and the Upper Town counts double.
+   - **Story scenes between the command days:**
+     - the reception in the Upper Town, where Morow wants the names of the night;
+     - the consolidation list: accept it, argue it down, or warn the block;
+     - the winter allocation with GRID's Division Leader: which district goes dark;
+     - City 17 on the radio, Overwatch gone, and one of your teams cut off;
+     - your own Division Leader;
+     - the verdict: pass, probation or partial consolidation.
+   - **Promotion:** a pass promotes you up to Squadron Leader and opens the Division Leader board.
+
 12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
 
 13. **GRID: Lantern dock** (a GRID duty): the SC-9 Lantern scanner drones.
@@ -202,6 +213,8 @@ js/content/jfile.js   your JURY file: pages, Ledger, burning pages
 js/content/dmap.js    the living District 5 map in the Dossier
 js/content/desk.js    night desk: four Lantern feeds (GRID, JURY)
 js/content/citymap.js the City 09 map: districts, status, drill-down
+js/content/command.js the command map: teams, orders, evening reports
+js/content/chapter8.js The Inspection
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```

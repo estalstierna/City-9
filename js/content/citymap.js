@@ -159,6 +159,8 @@
     return g + '</svg>';
   }
 
+  G.cityMapSvg = (s, sel) => mapSvg(s, sel);
+
   function panel(s, id) {
     const z = ZONES.find((x) => x.id === id);
     if (!z) return '<p class="sub">Tap a district for its status.</p>';
