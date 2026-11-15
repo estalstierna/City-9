@@ -134,7 +134,7 @@
       text: (s) => [
         G.pick([
           'The shift siren goes at 18:00. You stand in the locker room with your mask in your hands and look at it for a while before you put it in the locker.',
-          (s.rank === '05' ? 'You hand your stun baton in at the armoury cage. The clerk checks the battery, logs the voltage setting and hangs it on a numbered hook, the same way every night.' : 'You hand in your USP-Match at the armoury cage. The clerk counts the rounds back in one at a time, the same way every night.'),
+          (s.rank === '05' ? 'You hand your stun baton in at the armoury cage. The clerk checks the battery, logs the voltage setting and hangs it on a numbered hook, the same way every night.' : 'You hand in your CP-9 at the armoury cage. The clerk counts the rounds back in one at a time, the same way every night.'),
           'The precinct mess smells of boiled protein and wet wool. Somebody has scratched a tally of days on the wall above the urn. It goes to four hundred and stops.',
           'Outside the precinct windows the Stacks light up one by one, grey squares in grey walls. Somewhere out there is the window with the plastic over it.',
         ]),

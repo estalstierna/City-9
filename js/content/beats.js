@@ -359,7 +359,7 @@
       text: (s) => [
         '@say Granite|You want your 04. Fine. Thursday\'s ration truck through the Canal Quarter. Intelligence says a cell is going to hit it at the lock bridge.',
         s.flags.truck_intel ? 'Intelligence, you realise, is *you* — the detainee on the bridge, the crowbar, the map. Your report made it all the way up.' : 'He doesn\'t say where the intelligence came from. He never does.',
-        '@say Granite|The armoury will sign out a USP-Match to you for the escort. Get used to the weight. If this goes well, you keep it.',
+        '@say Granite|The armoury will sign out a CP-9 to you for the escort. Get used to the weight. If this goes well, you keep it.',
         '@say Granite|You\'re on the truck. Four units, one driver, three hundred ration packs. You command the escort. If the truck arrives, you get your stripe. If it doesn\'t — then we\'ll talk about whether you get another chance.',
       ],
       choices: [

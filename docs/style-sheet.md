@@ -2039,9 +2039,11 @@ Mellansteget mellan manskap och officerare. EpU har en egen pansarhjälm, ett sk
 
 | Bild | Fil i spelet | Bifoga i ordning |
 |---|---|---|
-| W1 CP-vapen och armoury | `weapons-cp.jpg` | 1 master-a · 2 uniform-union · 3 uniform-epu |
+| W1 Rev 3 CP-rekvisita (uppdukad layout) | `weapons-cp.jpg` | 1 master-a · 2 uniform-union |
 
 Batong (med lägen och låst MAX), USP-Match 9mm, MP7A1 (passutlämning och EpU:s personliga), fällkniv, handbojor och buntband, folkmassesköld, chockgranat, ammunition och armoury-märkning. Sköld och chockgranat finns i spelet: sköldmur och chockgranat i folkmassespelet, och båda i Issued kit. Inga tillverkarmärken. Inte Overwatch.
+
+**Klar (2026-11-15):** Rev 3 inlagd i codex (Civil Authority equipment). Rev 1 och 2 stoppades av bildverktygets filter (riktiga modellnamn, ammunition, genomskärningar); Rev 3 är en uppdukad rekvisitalayout. Vapnen heter nu **CP-9** (pistol) och **CP-7** (karbin) i hela spelet.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 

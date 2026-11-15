@@ -55,7 +55,7 @@ G.addCodex({
   },
   hierarchy: {
     title: 'CCA Hierarchy',
-    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/uniform-epu.webp" alt="Elite Protection Unit: armoured helmet, plate carrier, MP7A1" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><img src="assets/img/command-sheet.webp" alt="High Command: helmet, uniform and insignia" loading="lazy"><table>
+    body: `<img src="assets/img/ranks-enlisted.webp" alt="Ranks: recruit to elite" loading="lazy"><img src="assets/img/uniform-epu.webp" alt="Elite Protection Unit: armoured helmet, plate carrier, CP-7" loading="lazy"><img src="assets/img/ranks-command.webp" alt="Ranks: officers and command" loading="lazy"><img src="assets/img/command-sheet.webp" alt="High Command: helmet, uniform and insignia" loading="lazy"><table>
       <tr><td>EA</td><td>Earth Administrator</td></tr>
       <tr><td>SeC</td><td>Sectorial Commander</td></tr>
       <tr><td>CmD</td><td>Field Commander</td></tr>
@@ -71,7 +71,7 @@ G.addCodex({
       <tr><td>05</td><td>05 Protection Unit</td></tr>
       <tr><td>RcT</td><td>Recruit</td></tr>
     </table>
-    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar, and is the only grade fitted with the armoured plasteel helmet, and the first issued a plate carrier and a personal MP7: the elite who go through the door first. Officers send them, and give the armoured helmet back for a crest stripe. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward stand above the divisions. They are <b>High Command</b>, and their designations say so: <i>CCA.C9.D1-HC-CmD-00417</i>. They wear black armbands trimmed in gold, with gold bars and stars, a long black greatcoat, and a helmet of their own: an elongated graphite shell, eyes glowing gold in deep sockets, a gold-slatted grille instead of a filter, and one, two or three gold lines over the crown for AdC, CmD and SeC. The Earth Administrator wears no armband at all.</p>
+    <p><b>Insignia</b> are worn on the armband. Protection grades carry thin silver bars — one for an 05, five for an 01. An EpU carries a single thick bar, and is the only grade fitted with the armoured plasteel helmet, and the first issued a plate carrier and a personal CP-7: the elite who go through the door first. Officers send them, and give the armoured helmet back for a crest stripe. Officers add silver stars: one for OfC, two for SqL, three for DvL. Command ranks from AdC upward stand above the divisions. They are <b>High Command</b>, and their designations say so: <i>CCA.C9.D1-HC-CmD-00417</i>. They wear black armbands trimmed in gold, with gold bars and stars, a long black greatcoat, and a helmet of their own: an elongated graphite shell, eyes glowing gold in deep sockets, a gold-slatted grille instead of a filter, and one, two or three gold lines over the crown for AdC, CmD and SeC. The Earth Administrator wears no armband at all.</p>
     <p>Promotion through the 05–01 grades is earned by merit and field evaluation. Above 01, by selection — and by surviving the people who also want the post.</p>`,
   },
   divisions: {
@@ -311,10 +311,10 @@ G.addCodex({
     { id: 'gloves', name: 'Vulcanised rubber gloves', from: '05', desc: 'High-traction black gloves. Nothing slips.' },
     { id: 'belts', name: 'Nylon utility belts and slings (3)', from: '05', desc: 'Magazine holsters, pouches, weapon slings.' },
     { id: 'hygiene', name: 'Hygiene kit', from: 'RcT', desc: 'Comb, straight razor, toothbrush, toothpaste, shaving cream.' },
-    { id: 'flash', name: 'Flashbang (one per crowd shift)', from: '03', desc: 'A stun grenade: a white crack and a pressure wave that puts a crowd on its knees. Issued one per crowd shift from grade 03, signed for, and logged when used. Ears ring for an hour. Blocks remember it longer than batons.' },
-    { id: 'usp', name: 'USP-Match 9mm handgun', from: '04', desc: '18-round magazine, 9mm hollow-point, under-mounted flashlight. Issued at grade 04. Before that, sidearms are signed out from the armoury for a single shift.' },
-    { id: 'mp7_shift', name: 'MP7A1 (shift issue)', from: '01', until: 'EpU', desc: '45-round magazine, 4.6mm armour-piercing, folding foregrip. Signed out from the armoury for raids and night patrols, counted back in at the end of the shift, every round.' },
-    { id: 'mp7', name: 'MP7A1 submachine gun (personal)', from: 'EpU', desc: 'Your own, with your designation engraved on the receiver: 45-round magazine, 4.6mm armour-piercing, folding foregrip, suppressor, holographic sight. Elite Protection Units carry it at all times.' },
+    { id: 'flash', name: 'Stun canister (one per crowd shift)', from: '03', desc: 'A stun grenade: a white crack and a pressure wave that puts a crowd on its knees. Issued one per crowd shift from grade 03, signed for, and logged when used. Ears ring for an hour. Blocks remember it longer than batons.' },
+    { id: 'usp', name: 'CP-9 service pistol', from: '04', desc: '18-round magazine, 9mm hollow-point, under-mounted flashlight. Issued at grade 04. Before that, sidearms are signed out from the armoury for a single shift.' },
+    { id: 'mp7_shift', name: 'CP-7 carbine (shift issue)', from: '01', until: 'EpU', desc: '45-round magazine, 4.6mm armour-piercing, folding foregrip. Signed out from the armoury for raids and night patrols, counted back in at the end of the shift, every round.' },
+    { id: 'mp7', name: 'CP-7 carbine (personal)', from: 'EpU', desc: 'Your own, with your designation engraved on the receiver: 45-round magazine, 4.6mm armour-piercing, folding foregrip, suppressor, holographic sight. Elite Protection Units carry it at all times.' },
   ];
 
   G.kitFor = (s) => {
@@ -339,14 +339,14 @@ G.addCodex({
     },
     equipment: {
       title: 'Civil Authority equipment',
-      body: `<p><b>Standard issue (05 and above)</b></p>${table(G.EQUIPMENT.filter((e) => e.from === '05' && !['vest_b'].includes(e.id)).map((e) => [e.name, e.desc]))}
+      body: `<img src="assets/img/weapons-cp.webp" alt="Armoury C9: Civil Protection equipment" loading="lazy"><p>Civil Protection carries Union-pattern equipment from Armoury C9: the <b>CP-9</b> service pistol and the <b>CP-7</b> carbine, the stun baton, restraints, crowd shields and stun canisters. Every item carries an armoury number and is signed out against a designation.</p><p><b>Standard issue (05 and above)</b></p>${table(G.EQUIPMENT.filter((e) => e.from === '05' && !['vest_b'].includes(e.id)).map((e) => [e.name, e.desc]))}
       <img src="assets/img/uniform-epu.webp" alt="EpU kit" loading="lazy">
       <p><b>Special issue</b></p>${table([
-        ['USP-Match (04+)', G.EQUIPMENT.find((e) => e.id === 'usp').desc],
+        ['CP-9 (04+)', G.EQUIPMENT.find((e) => e.id === 'usp').desc],
         ['Beta-grade vest (03–01)', G.EQUIPMENT.find((e) => e.id === 'vest_b').desc],
-        ['Flashbang (03+)', G.EQUIPMENT.find((e) => e.id === 'flash').desc],
-        ['MP7A1 (01: shift issue)', G.EQUIPMENT.find((e) => e.id === 'mp7_shift').desc],
-        ['MP7A1 (EpU+: personal)', G.EQUIPMENT.find((e) => e.id === 'mp7').desc],
+        ['Stun canister (03+)', G.EQUIPMENT.find((e) => e.id === 'flash').desc],
+        ['CP-7 (01: shift issue)', G.EQUIPMENT.find((e) => e.id === 'mp7_shift').desc],
+        ['CP-7 (EpU+: personal)', G.EQUIPMENT.find((e) => e.id === 'mp7').desc],
         ['EpU armoured helmet', G.EQUIPMENT.find((e) => e.id === 'helm_e').desc],
         ['EpU plate carrier (EpU+)', G.EQUIPMENT.find((e) => e.id === 'armour_e').desc],
         ['Plasteel masks', 'Inserts for officers. Full plasteel for DvL and above, and for Overwatch.'],

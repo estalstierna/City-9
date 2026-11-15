@@ -285,10 +285,10 @@
     desc: 'Count every weapon in the Nexus armoury against the register.',
     first: {
       title: 'The Nexus armoury',
-      text: ['Four hundred USP-Matches, sixty MP7s, crates of rounds. Your count comes out at three hundred and ninety-eight pistols. The quartermaster has a pencil behind his ear and a twitch under his eye.'],
+      text: ['Four hundred CP-9s, sixty CP-7s, crates of rounds. Your count comes out at three hundred and ninety-eight pistols. The quartermaster has a pencil behind his ear and a twitch under his eye.'],
       choices: [
         { t: 'Report two missing sidearms.', tag: 'BY THE BOOK', tagCls: 'loyal', out: ['JURY seals the armoury for a day. Two pistols turn up in a D3 basement a week later, and the quartermaster does not turn up anywhere.'], fx: { merit: 5, lp: 3, cons: -4 } },
-        { t: 'Count again, slowly, in front of him.', check: { skill: 'perception', diff: 10, ok: ['On the second count you find them: two pistols misfiled in the MP7 racks. The quartermaster nearly weeps.'], okFx: { merit: 3, cons: 2 }, bad: ['Three hundred and ninety-eight, again.'], badFx: { merit: 1 } } },
+        { t: 'Count again, slowly, in front of him.', check: { skill: 'perception', diff: 10, ok: ['On the second count you find them: two pistols misfiled in the CP-7 racks. The quartermaster nearly weeps.'], okFx: { merit: 3, cons: 2 }, bad: ['Three hundred and ninety-eight, again.'], badFx: { merit: 1 } } },
         { t: '“Four hundred.” Sign it.', tag: 'RISK', tagCls: 'risk', out: ['You sign. The quartermaster shakes your hand for too long. Somewhere in the canals, two pistols are loaded.'], fx: { res: 6, susp: 4, tokens: 5 } },
       ],
     },

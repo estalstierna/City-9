@@ -580,7 +580,7 @@
       text: [
         '@img assets/img/env/e12-railyard.webp|D4 Rail Yards, 23:40',
         'The rail yards after curfew are a forest of dead freight cars and rusting cranes, lit only by the green standby lamps of the transit line and the occasional sweep of a scanner. Rook takes point. Two 04s from the night squad flank you. Your torch beam makes everything look like it\'s moving.',
-        'Night sweeps draw sidearms from the armoury whatever your grade: a USP-Match signed out against your designation, eighteen rounds counted out and counted back in at dawn.',
+        'Night sweeps draw sidearms from the armoury whatever your grade: a CP-9 signed out against your designation, eighteen rounds counted out and counted back in at dawn.',
         '@radio D5 PT, Dispatch. Biosignal anomaly in the yard. Coagulate and examine. Sword is NOT authorised. 10-4.',
         'You pass a relocation car with its doors chained shut. Something inside it has been written on the walls with a fingernail.',
         'Then a sound, very small: a pebble skittering off steel, somewhere above you.',

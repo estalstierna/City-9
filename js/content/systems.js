@@ -133,7 +133,7 @@
     { q: 'To **inject** is to:', a: 'Breach into a room', w: ['Administer biogel', 'Interrogate a subject', 'Enter a 404 zone'] },
     { q: '**Viscon** means:', a: 'Visual confirmation', w: ['Audio confirmation', 'A vice-commander', 'Visitor control'] },
     { q: 'When may Overwatch give orders to CCA units?', a: 'When a sociostatus is active', w: ['Always', 'Never', 'Only inside the Nexus'] },
-    { q: 'At which grade is the USP-Match issued as personal kit?', a: '04', w: ['05', '03', '01'] },
+    { q: 'At which grade is the CP-9 issued as personal kit?', a: '04', w: ['05', '03', '01'] },
     { q: 'Fleeing from an officer is a violation of level:', a: 'Level 3', w: ['Level 1', 'Level 2', 'Level 5'] },
     { q: '**UPA** stands for:', a: 'Unauthorised procreative activity', w: ['Unidentified person of interest', 'Union patrol area', 'Unable to locate'] },
     { q: 'A **Midnight** order means:', a: 'Enter quietly, then ambush', w: ['Curfew begins', 'Withdraw all units', 'Cut district power'] },

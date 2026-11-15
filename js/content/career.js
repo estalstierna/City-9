@@ -11,11 +11,11 @@
   /* ================================================================ PERKS */
   const PERKS = {
     '05': ['Stun baton and standard kit', 'Unit rations: three meals a day'],
-    '04': ['USP-Match issued to you personally: Firearms checks +5', 'Pay +1 token per shift'],
+    '04': ['CP-9 issued to you personally: Firearms checks +5', 'Pay +1 token per shift'],
     '03': ['Transfer to a division of your choice', 'Pay +2 tokens per shift'],
     '02': ['Dependants exempt from relocation', 'Private quarters: rest heals 20 instead of 10', 'Authority checks +3'],
-    '01': ['MP7A1 signed out for raids and night patrols: Firearms checks +10', 'Protection team grows to four', 'Authority checks +5', 'Pay +3 tokens per shift'],
-    EpU: ['Armoured plasteel helmet: maximum health 120', 'Plate carrier: every injury a quarter lighter', 'Your own MP7A1, suppressed, with a holographic sight: Firearms checks +12', 'Command of the team in crisis: Authority checks +7', 'Pay +4 tokens per shift'],
+    '01': ['CP-7 signed out for raids and night patrols: Firearms checks +10', 'Protection team grows to four', 'Authority checks +5', 'Pay +3 tokens per shift'],
+    EpU: ['Armoured plasteel helmet: maximum health 120', 'Plate carrier: every injury a quarter lighter', 'Your own CP-7, suppressed, with a holographic sight: Firearms checks +12', 'Command of the team in crisis: Authority checks +7', 'Pay +4 tokens per shift'],
     OfC: ['Officer crest stripe and a star', 'Protection team grows to five', 'Authority checks +10', 'Pay +6 tokens per shift', 'Your reports are no longer audited by your partner'],
     SqL: ['Command of a squadron', 'Authority checks +12', 'Pay +8 tokens per shift'],
     DvL: ['Command of the division', 'Authority checks +15', 'Pay +10 tokens per shift'],
@@ -233,7 +233,7 @@
         return [
           '@big ' + (G.RANK_NAMES[r] || r).toUpperCase(),
           `${sup.name} hands you a new armband in front of the muster: ${insignia}. Somebody at the back starts to clap and thinks better of it.`,
-          r === 'OfC' ? 'The crest stripe goes on that night, in the paint shop, under a lamp. You watch the brush the whole time. Officers are not units. Units watch you differently by morning.' : r === 'EpU' ? 'The armoury fits you that night. A gunmetal plasteel shell clamps over your mask: a brow guard, cheek guards, a riveted collar round the filter, steel rings round the lenses, a thin silver line over the crown. Then the plate carrier, and an MP7 with your designation engraved on the receiver, suppressed. It is heavier, all of it, and quieter. The world sounds further away. You are the one they send through the door now.' : r === '01' ? 'The armoury clerk shows you the MP7 rack and the sign-out book. Raids and night patrols, signed out at the start of the shift, counted back in at the end. Every round.' : r === '02' ? 'You get a room of your own: a bunk, a locker, a window that looks at the Stacks. The first night you cannot sleep for the quiet.' : null,
+          r === 'OfC' ? 'The crest stripe goes on that night, in the paint shop, under a lamp. You watch the brush the whole time. Officers are not units. Units watch you differently by morning.' : r === 'EpU' ? 'The armoury fits you that night. A gunmetal plasteel shell clamps over your mask: a brow guard, cheek guards, a riveted collar round the filter, steel rings round the lenses, a thin silver line over the crown. Then the plate carrier, and a CP-7 with your designation engraved on the receiver, suppressed. It is heavier, all of it, and quieter. The world sounds further away. You are the one they send through the door now.' : r === '01' ? 'The armoury clerk shows you the CP-7 rack and the sign-out book. Raids and night patrols, signed out at the start of the shift, counted back in at the end. Every round.' : r === '02' ? 'You get a room of your own: a bunk, a locker, a window that looks at the Stacks. The first night you cannot sleep for the quiet.' : null,
           `@doc ${G.desig(s)}\nROSTER POSITION: #${pos} OF ${list.length} (${s.div || 'UNION'})`,
           '@sys Unlocked: ' + (PERKS[r] || []).join(' · ') + '.',
         ];

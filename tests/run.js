@@ -633,7 +633,7 @@ suite('crowd control minigame: winnable by play, losable by neglect', async (bro
   return out;
 });
 
-suite('crowd control: shield wall and flashbang', async (browser) => {
+suite('crowd control: shield wall and stun canister', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];
   for (const rank of ['04', '03']) {
@@ -652,8 +652,8 @@ suite('crowd control: shield wall and flashbang', async (browser) => {
       return { flashOff, walled, before, after, shieldCd: q('.cr-shield').disabled };
     });
     if (res.walled !== 1 || !res.shieldCd) out.push(`${rank}: shield wall did not hold a sector: ${JSON.stringify(res)}`);
-    if (rank === '04' && !res.flashOff) out.push('04 should not have a flashbang');
-    if (rank === '03' && (res.flashOff || !(res.after[1] < res.before[1] - 20))) out.push(`03 flashbang did not knock the crowd back: ${JSON.stringify(res)}`);
+    if (rank === '04' && !res.flashOff) out.push('04 should not have a stun canister');
+    if (rank === '03' && (res.flashOff || !(res.after[1] < res.before[1] - 20))) out.push(`03 stun canister did not knock the crowd back: ${JSON.stringify(res)}`);
   }
   return out.concat(errors);
 });

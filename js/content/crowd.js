@@ -39,9 +39,9 @@
         <button class="cr-btn cr-speak">Address the crowd</button>
         <button class="cr-btn cr-shield">Shield wall</button>
         <button class="cr-btn cr-baton danger">Baton charge</button>
-        <button class="cr-btn cr-flash danger">Flashbang</button>
+        <button class="cr-btn cr-flash danger">Stun canister</button>
       </div>
-      <div class="cr-help">Post units to slow a sector. Speak while it is under 75. Pull out an agitator for a big drop. A shield wall holds the worst sector still for a few seconds and hurts nobody. The baton works instantly, and the block remembers it. A flashbang (grade 03 and up, one per shift) knocks the whole crowd back, and the block remembers it longer.</div>`;
+      <div class="cr-help">Post units to slow a sector. Speak while it is under 75. Pull out an agitator for a big drop. A shield wall holds the worst sector still for a few seconds and hurts nobody. The baton works instantly, and the block remembers it. A stun canister (grade 03 and up, one per shift) knocks the whole crowd back, and the block remembers it longer.</div>`;
     const $ = (q) => root.querySelector(q);
     const secBox = $('.cr-sectors');
     sec.forEach((x, i) => {
@@ -128,7 +128,7 @@
       sh.textContent = st.shieldCd > 0 ? `Shield wall (${Math.ceil(st.shieldCd)})` : 'Shield wall';
       const fl = $('.cr-flash');
       fl.disabled = st.flashes < 1;
-      fl.textContent = st.flashes < 1 ? (st.flash ? 'Flashbang (used)' : 'Flashbang (03+)') : 'Flashbang (1)';
+      fl.textContent = st.flashes < 1 ? (st.flash ? 'Stun canister (used)' : 'Stun canister (03+)') : 'Stun canister (1)';
       sec.forEach((x) => x.el.classList.toggle('walled', x.wall > 0));
       const bt = $('.cr-baton');
       bt.disabled = st.batonCd > 0;
@@ -212,7 +212,7 @@
       enter: (s) => crowdAfter(k)(s, true),
       text: (s) => {
         const d = s.lastMini || { force: 0, pulled: 0 };
-        return [okText, d.flash ? `You threw a flashbang into a ration queue. ${G.BLOCKS[k].name} will talk about it for a month.` : d.force ? `You used the batons ${d.force} time${d.force > 1 ? 's' : ''}. ${G.BLOCKS[k].name} will remember the order, and the batons.` : d.pulled ? `You pulled ${d.pulled} out of the crowd. Their neighbours watched where they went.` : 'Nobody was hurt and nobody was taken. In this city, that is a kind of miracle.'];
+        return [okText, d.flash ? `You threw a stun canister into a ration queue. ${G.BLOCKS[k].name} will talk about it for a month.` : d.force ? `You used the batons ${d.force} time${d.force > 1 ? 's' : ''}. ${G.BLOCKS[k].name} will remember the order, and the batons.` : d.pulled ? `You pulled ${d.pulled} out of the crowd. Their neighbours watched where they went.` : 'Nobody was hurt and nobody was taken. In this city, that is a kind of miracle.'];
       },
       choices: [{ t: 'End of shift.', fx: (s) => ({ merit: 3 + ((s.lastMini && s.lastMini.force) ? 1 : 0), xp: { authority: 1 } }), go: 'u_duty_end' }],
     },

@@ -724,7 +724,7 @@
             ? '@say Vigil|A flare. Nobody dead, nothing gained, everyone embarrassed. I have read the reports of everyone on that spillway, Protection Unit. Yours is the most interesting.'
             : '@say Vigil|You left your post during sociostatus. I know why. I do not care why. Your file will carry it.',
           s.c3.pass ? `@doc PROMOTION: ${G.desig(s)}` : '@sys Promotion withheld.',
-          s.c3.pass && s.rank === '01' ? 'Your 01 stripe comes with a line in the armoury sign-out book: an MP7 for raids and night patrols, out at the start of the shift, back at the end. The clerk counts the rounds in twice, the way he does for everyone now.' : null,
+          s.c3.pass && s.rank === '01' ? 'Your 01 stripe comes with a line in the armoury sign-out book: a CP-7 for raids and night patrols, out at the start of the shift, back at the end. The clerk counts the rounds in twice, the way he does for everyone now.' : null,
         ];
       },
       choices: [{ t: 'Continue.', go: 'c3_end' }],
