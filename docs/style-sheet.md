@@ -1986,6 +1986,16 @@ Ersätter det generiska `unit-jury-ofc` i jfile.js. Prompten följer mall B1 i d
 
 Ledningen står över divisionerna: svart och guld, aldrig divisionsfärg. Den har en egen hjälm. Inspirationen är en tidig betadesign, men den kopieras inte och bifogas inte, utan beskrivs i ord. Grafitskal, försänkta runda ögon med guldsken, ett lodrätt galler med guldlameller i stället för filterburken, platta filterskivor i kinderna och en hög krage. Rang visas också på hjälmen: 1, 2 eller 3 guldlinjer över hjässan. Designationsfält: `HC` (High Command), t.ex. `CCA.C9.D1` / `HC-CmD-00417`.
 
+Rangnamn (kanon i spelet): **AdC Adjutant Commander · CmD Field Commander · SeC Sectorial Commander.**
+
+**Kör efter H1 (bifoga H1 som referens):**
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| R3 Rev 2 Officerare och ledning | `ranks-command.jpg` | 1 ranks-command (gamla, layout) · 2 H1 · 3 ref/sql-helmet |
+| K5 Vigil Rev 2 | `portraits/vigil.jpg` | 1 portraits/vigil (gamla, utsnitt och kappa) · 2 H1 |
+
+När Vigil Rev 2 är inlagd byts hennes beteckning i spelet till `CCA.C9.D1-HC-CmD-00417`, och beskrivningen av hjälmen i kapitel 3 uppdateras.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

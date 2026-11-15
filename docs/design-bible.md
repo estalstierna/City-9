@@ -46,7 +46,7 @@ RANKS (armband right side; helmet)
 - Enlisted 05 / 04 / 03 / 02 / 01: division-colour armband with 1 / 2 / 3 / 4 / 5 thin VERTICAL silver bars. Standard helmet, NO crest stripe.
 - EpU (elite): 1 wide vertical silver bar. Helmet: lens rings of polished dark steel, a thin silver line over the crown.
 - OfC / SqL / DvL (officers): 1 wide vertical silver bar + 1 / 2 / 3 silver five-point stars. Helmet: a crest stripe brow to crown in the division colour, edged both sides with a fine silver line.
-- AdC / CmD / SeC (command, above divisions): BLACK armband with gold edge, 1 wide gold bar + 1 / 2 / 3 gold stars. Helmet: graphite-grey shell, gold crest stripe, gold rings round the lenses. Patch text gold on black. Never a division colour.
+- AdC Adjutant Commander / CmD Field Commander / SeC Sectorial Commander (High Command, above divisions): BLACK armband with a gold edge, a gold V-chevron glyph, "C9:D1" in gold, 1 wide gold bar + 1 / 2 / 3 gold stars. Their OWN HELMET (not the bone-white one): a smooth, elongated full-head shell of polished dark graphite with a faceted brow ridge; deep-set round lenses glowing soft warm gold inside thin gold bezels; a narrow VERTICAL mouth grille with five gold slats instead of a canister; a flat round filter disc flush in each cheek; one earmuff cup with a stub antenna on the left; a high rolled black cowl collar. Rank also on the helmet: 1 / 2 / 3 thin gold lines brow to crown. Long black greatcoat with gold piping. Designation patch black with gold text and edge, division field "HC": "CCA.C9.D1" / "HC-CmD-00417". Never a division colour.
 - EA (Earth Administrator): no armband, no helmet; shown only as a seal — a gold laurel wreath round the CCA chevron.
 - Count bars and stars exactly.
 
