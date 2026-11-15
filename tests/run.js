@@ -543,6 +543,11 @@ suite('division transfer exam at grade 01', async (browser) => {
       s.world.mDay = s.day;
       G.goto('xfer_pick');
     }, from);
+    /* pick a division first (never "Not today."), then play the exam at random */
+    await page.evaluate(() => {
+      const b = [...document.querySelectorAll('#story .block.current .choice')].filter((x) => !x.disabled && !/Not today/.test(x.innerText));
+      if (b.length) b[Math.floor(Math.random() * b.length)].click();
+    });
     const w = await randomWalk(page, 120, { stopAt: ['xfer_res'] });
     out.push(...w.problems.map((p) => from + ': ' + p));
     const r = await page.evaluate(() => ({ div: G.state().div, x: G.state().xfer, flags: G.state().flags }));
@@ -655,6 +660,37 @@ suite('crowd control: shield wall and stun canister', async (browser) => {
     if (rank === '04' && !res.flashOff) out.push('04 should not have a stun canister');
     if (rank === '03' && (res.flashOff || !(res.after[1] < res.before[1] - 20))) out.push(`03 stun canister did not knock the crowd back: ${JSON.stringify(res)}`);
   }
+  return out.concat(errors);
+});
+
+suite('city map: zones, status and the District 5 drill-down', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  const r = await page.evaluate(() => {
+    const s = G.state();
+    G.worldEnsure(s);
+    s.dist.s14 = { o: 20, r: 85 };
+    document.getElementById('btn-map').click();
+    const zones = [...document.querySelectorAll('#modal-body [data-zone]')].map((z) => z.dataset.zone);
+    const res = {};
+    zones.forEach((id) => {
+      document.querySelector(`#modal-body [data-zone="${id}"]`).dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      res[id] = document.querySelector('#modal-body .cm-panel').innerText;
+    });
+    G.showMap('d5');
+    const d5red = document.querySelector('#modal-body [data-zone="d5"] rect').getAttribute('stroke');
+    const blocks = document.querySelectorAll('#modal-body .cm-panel [data-dblock]').length;
+    const nav = G.NAV.some((n) => n.id === 'map');
+    return { zones, res, d5red, blocks, nav };
+  });
+  if (r.zones.length !== 8) out.push('map zones: ' + r.zones.join(','));
+  Object.entries(r.res).forEach(([k, t]) => {
+    if (!t || /undefined|NaN/.test(t)) out.push(`zone ${k} panel: ${t}`);
+  });
+  if (r.d5red !== '#d9534a') out.push('D5 should be red when a block is in trouble: ' + r.d5red);
+  if (r.blocks !== 5) out.push('D5 panel should hold the five-block map: ' + r.blocks);
+  if (!r.nav) out.push('no Map in the mobile nav');
   return out.concat(errors);
 });
 

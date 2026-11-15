@@ -2073,6 +2073,14 @@ Ansikten, inga masker, inga armband. Lång skräddarsydd rock i skiffergrå ull 
 |---|---|---|
 | EA1 Earth Administration, konceptark | `admin-sheet.jpg` | 1 master-a · 2 portraits/administrator · 3 ranks-command · 4 citizen-base |
 
+## 5ab. STADSKARTAN (för kartknappen i spelet)
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| MAP1 City 09 ovanifrån, utan text | `city-map.jpg` | 1 master-d · 2 env/e01-city · 3 spire-ref |
+
+Bara grunden. Kartan får **ingen text, inga etiketter och inga markeringar**; spelet lägger zoner, färger och namn ovanpå. Zonerna ligger i ett 1600 × 900-rutnät (`js/content/citymap.js`), och prompten placerar distrikten exakt där. Ställ in `G.CITY_MAP_IMG` när bilden finns och justera rektanglarna om något hamnat fel.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

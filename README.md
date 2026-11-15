@@ -110,7 +110,18 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **Controls:** ZOOM shows the face and jumps a beat ahead, at the cost of seconds. You have three FLAGS.
    - **Consequences:** everyone you flag gets a file with their face, so they can come back as echoes. You can pull wrong slips before 06:00.
 
-18. **Quality of life**:
+18. **The city map** (a *Map* button in the top bar and the mobile nav): City 09 from above.
+   - **Zones:** D1–D5, the 404 quarantine, the dam and the Spire, each with a live status colour (calm, tense, trouble, no access).
+   - **Status from the game:**
+     - D1: your standing and your JURY file;
+     - D2: the ration cut;
+     - D3: the strength of the canal cells, and your informants;
+     - D4: the railway and the trains;
+     - D5: the five blocks, with the District 5 block map to tap into;
+     - the dam: GRID's power cuts.
+   - **Base:** drawn as a schematic until the painted map (`G.CITY_MAP_IMG`) exists. Zones are rectangles in a 1600 × 900 space, laid over it.
+
+19. **Quality of life**:
    - **Undo:** undo the last choice (U, or in the menu). It is not offered across skill checks or minigames, so dice cannot be re-rolled.
    - **Keys:** 1–9 choose, Space continues when there is one choice, D opens the dossier, C the codex and M the menu.
    - **Odds:** hover a check's % to see what the chance is made of. The roll line shows the same breakdown.
@@ -190,6 +201,7 @@ js/content/echoes.js  the faces come back (case-file echoes)
 js/content/jfile.js   your JURY file: pages, Ledger, burning pages
 js/content/dmap.js    the living District 5 map in the Dossier
 js/content/desk.js    night desk: four Lantern feeds (GRID, JURY)
+js/content/citymap.js the City 09 map: districts, status, drill-down
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
