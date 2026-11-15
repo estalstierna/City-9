@@ -1996,6 +1996,15 @@ Rangnamn (kanon i spelet): **AdC Adjutant Commander · CmD Field Commander · Se
 
 **Klara (2026-11-15):** H1 (`command-sheet.jpg`, i codex-posten CCA Hierarchy), R3 Rev 2 (`ranks-command.jpg` ersatt) och Vigil Rev 2 är inlagda. Vigils beteckning är nu `CCA.C9.D1-HC-CmD-00417` i spelet, och kapitel 3 beskriver den nya hjälmen. K12 Ledger är också inlagd (`portraits/ledger.jpg`).
 
+## 5w. VEIL Rev 3 (taktisk uniform och egen hjälm)
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| V5 Rev 3 VEIL, uniformsark | `uniform-veil.jpg` (ersätter) | 1 master-a · 2 emblems/veil.png · 3 uniform-veil (gamla: bara armband, tejp och utrustning) · 4 ref/02-helmet (bara kontrast) |
+| K10 Rev 3 "The unit with no patch" | `portraits/veil-ofc.jpg` (ersätter) | 1 portraits/veil-ofc (utsnitt och ljus) · 2 V5 Rev 3 |
+
+Ingen rock. En åtsittande, tyst, matt svart taktisk uniform. Egen hjälm, "the blank": ett slätt, matt svart skal utan synliga ögon. Linserna sitter bakom ett tätt perforerat visirband som inte reflekterar något. Ingen burk vid munnen, utan två platta filter längs käken, ett försänkt hörselskydd och en blank svart lackrand över hjässan. Den tomma cirkeln är svagt präglad i pannan. Det gamla arket hade fel emblem i titeln; Rev 3 bifogar rätt emblem.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
