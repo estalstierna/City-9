@@ -2007,6 +2007,22 @@ Ingen rock. En åtsittande, tyst, matt svart taktisk uniform. Egen hjälm, "the 
 
 **Klara (2026-11-15):** V5 Rev 3 och K10 Rev 3 är inlagda (codex VEIL, kapitel 5–7, kontakter). E35 (VEIL-mötet i trapphuset) visar fortfarande den gamla figuren.
 
+## 5x. DIVISIONSCHEFER (DvL)
+
+Bara JURY har en DvL (Magistraten). Resten får en, i samma porträttformat som Vigil och Ledger. Basprompten är densamma för alla; bara divisionsblocket byts.
+
+| Division | Namn | Designation | Kännetecken |
+|---|---|---|---|
+| UNION | "Anvil" | CCA.C9.D1 / UNION-DvL-10233 | buckla i hjässan, ommålad "C9" |
+| HELIX | "Lancet" | CCA.C9.D1 / HELIX-DvL-40912 | blekskurad fläck på andningsplattan |
+| RAZOR | "Rampart" | CCA.C9.D1 / RAZOR-DvL-81006 | polerat kulspår över pannan |
+| SPEAR | "Pyre" | CCA.C9.D1 / SPEAR-DvL-67701 | brännmärke över kinden, randen nött |
+| VECTOR | "Formalin" | CCA.C9.D1 / VECTOR-DvL-33145 | blekmedelsränder, förseglad krage |
+| GRID | "Dynamo" | CCA.C9.D1 / GRID-DvL-26019 | svetsvisir uppfällt, sot vid hörselskyddet |
+| VEIL | "Nobody" | (tejpad) | inget; bara tre matta stjärnor |
+
+Bifoga: 1 portraits/mira (ljus och utsnitt) · 2 ref/dvl-helmet · 3 ref/dvl-armband · 4 uniform-<division>. VEIL: 1 portraits/veil-ofc · 2 uniform-veil.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

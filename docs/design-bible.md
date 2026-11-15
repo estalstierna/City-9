@@ -80,7 +80,7 @@ THE MAN FROM CITY 17
 NEVER
 - The words "Half-Life", "Combine", "Metrocop" or any existing game's names, logos, characters, exact designs or insignia.
 - Logos of real brands. Neon cyberpunk. Cartoon or anime style. Gore.
-- A single respirator canister on a civil police helmet: it is always two stacked discs (plate + filter beneath).
+- A single respirator canister on a civil police helmet: it is always two stacked discs (plate + filter beneath). Exceptions: SPEAR and VECTOR wear twin filters at the sides of the jaw; High Command has the gold grille; VEIL has jaw cartridges.
 - A lambda on anything a unit wears. A face on a masked unit. A designation on the chest, the back or on one line. Horizontal rank bars.
 ```
 
