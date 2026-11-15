@@ -2083,6 +2083,22 @@ Bara grunden. Kartan får **ingen text, inga etiketter och inga markeringar**; s
 
 **Klar (2026-11-15):** `city-map.jpg` inlagd och zonerna kalibrerade. Nya distrikt på norra stranden: **D6 Cathedral Ward** (kring Spire, Overwatch och High Command, stängt), **D7 Upper Town** (de privilegierade), **D8 Hydro** (dammen och GRID:s kraftverk).
 
+## 5ac. CWU-HIERARKIN
+
+| Grad | Titel | Ansvar | Märke | Kläder |
+|---|---|---|---|---|
+| W | Worker | ett pass, en lucka | bricka utan chevron | ockragul jacka, grått reflexband |
+| CL | Crew Lead | ett arbetslag | en bronschevron | + visselpipa i snöre |
+| SV | Supervisor | en anläggning | en guldchevron (kanon) | skärmmössa (kanon), klippbräde |
+| DO | District Overseer | ett distrikt | två guldchevroner | lång ockragul rock, slaggrå krage, mössa med ockraband |
+| DR | CWU Director | stadens CWU, svarar till City Administrator | guldbricka med lagerkrans | Administrationens slaggrå rock, ockrakrage |
+
+Förbund som piktogram på brickan: RATION (ransonpaket), REPAIR (skiftnyckel), CARE (bandagerulle, aldrig rött kors), TRADE (balansvåg), SANITATION (kvast). Inga armband, ingen rustning, inga CP-färger.
+
+| Bild | Fil | Bifoga |
+|---|---|---|
+| CWU1 CWU-hierarkin, konceptark | `cwu-sheet.jpg` | 1 master-c · 2 citizen-cwu · 3 portraits/brask · 4 citizen-base |
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
