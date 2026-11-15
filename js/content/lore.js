@@ -232,7 +232,7 @@
   P('nine', 'Specimen Nine', 'VECTOR · tank 1, the floor without a number');
   P('dana', 'Dana', 'Stack 9, 2B · red headscarf');
   P('strand', 'Overseer Strand', 'City 1 Productivity Office');
-  P('administrator', 'The Administrator', 'City 9 · the residence above the Nexus');
+  P('administrator', 'The Administrator', 'City Administrator of City 9 · above the Nexus');
   const pic = (key, cap) => `@portrait assets/img/portraits/${key}.webp|${cap}`;
   const after = (re, line) => (lines) => {
     const i = lines.findIndex((l) => typeof l === 'string' && re.test(l));
@@ -315,5 +315,30 @@
   });
   G.afterRender.push((sc, id) => {
     if (/^dd_g/.test(id)) G.unlock(G.state(), 'scanners');
+  });
+})();
+
+/* EARTH ADMINISTRATION — the civil hierarchy, in the Codex */
+(function () {
+  G.addCodex({
+    administration: {
+      title: 'Earth Administration',
+      body: `<img src="assets/img/admin-sheet.webp" alt="Earth Administration: the civil hierarchy" loading="lazy">
+      <p>The Union does not govern people through masks. It governs them through faces. <b>Earth Administration</b> is the civil government that rules humanity on the Union's behalf: men and women in long slate coats with the citizen's own stand collar, cut from better cloth. Rank is worn as a chain of office.</p>
+      <table>
+        <tr><td>EA</td><td><b>Earth Administrator</b> — one for all of Earth. A full gold laurel wreath.</td></tr>
+        <tr><td>RA</td><td><b>Regional Administrator</b> — a region of cities. Gold, half a wreath.</td></tr>
+        <tr><td>SA</td><td><b>Sector Administrator</b> — the cities along one freight line. Silver, a full wreath.</td></tr>
+        <tr><td>CA</td><td><b>City Administrator</b> — one city. Silver, a plain seal.</td></tr>
+        <tr><td>DP</td><td><b>District Prefect</b> — one district. A bronze medallion on a ribbon.</td></tr>
+        <tr><td>BW</td><td><b>Block Warden</b> — one block. A citizen who was chosen: a grey sash and a grey badge.</td></tr>
+      </table>
+      <p>The Administration governs; Civil Protection enforces. A Sector Administrator stands where a Sectorial Commander stands; a City Administrator where the Field Commanders do. The Administrator of City 9 signed the surrender in the fourth hour of the war and governs from the residence above the Nexus. Citizens born after that morning have never seen another.</p>`,
+    },
+  });
+  G.CODEX_GROUPS.find((g) => g.title === 'The Universal Union').ids.push('administration');
+  G.afterRender.push(() => {
+    const s = G.state();
+    if (s && s.phase === 'union' && s.day >= 2) G.unlock(s, 'administration');
   });
 })();

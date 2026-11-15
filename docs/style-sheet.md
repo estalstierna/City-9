@@ -2073,6 +2073,8 @@ Ansikten, inga masker, inga armband. Lång skräddarsydd rock i skiffergrå ull 
 |---|---|---|
 | EA1 Earth Administration, konceptark | `admin-sheet.jpg` | 1 master-a · 2 portraits/administrator · 3 ranks-command · 4 citizen-base |
 
+**Klar (2026-11-15):** EA1 inlagd i codex-posten Earth Administration (The Universal Union). Administratören heter "City Administrator of City 9" bland kontakterna.
+
 ## 5ab. STADSKARTAN (för kartknappen i spelet)
 
 | Bild | Fil i spelet | Bifoga i ordning |
