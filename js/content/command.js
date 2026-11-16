@@ -25,9 +25,17 @@
     raid: { name: 'Raid', o: 10, r: 8, fat: 2 },
     protect: { name: 'Protect', o: 3, r: -6, fat: 1 },
     rest: { name: 'Rest', o: 0, r: 0, fat: -3 },
+    contain: { name: 'Contain', o: 2, r: 4, fat: 2, inf: true },
   };
   G.CMD_DISTS = DISTS;
   G.CMD_ORDERS = ORDERS;
+  /* OUTBREAK MODE (chapter 9): s.cmd.inf holds infection 0–100 per district. Orders push it down
+     (contain most, at a cost); uncovered districts grow; districts at 40+ seed their neighbours;
+     at 60+ there are blooms. The verdict counts infection as well as order. */
+  const NEXT = { d4: ['d3'], d3: ['d4', 'd2', 'd5'], d2: ['d3', 'd1'], d1: ['d2', 'd5'], d5: ['d1', 'd3', 'd7'], d7: ['d5'] };
+  const CUT = { patrol: 3, raid: 5, protect: 2, contain: 11 };
+  const orderList = (s) => Object.keys(ORDERS).filter((o) => !ORDERS[o].inf || (s.cmd && s.cmd.inf));
+  G.cmdInf = (s, k) => (s.cmd && s.cmd.inf ? Math.round(s.cmd.inf[k] || 0) : 0);
   const clamp = (v) => Math.max(0, Math.min(100, v));
   const nameOf = (k) => (DISTS.find((d) => d.k === k) || {}).name || k;
   const colour = (b) => (b.o < 35 || b.r >= 75 ? 'red' : b.o < 50 || b.r >= 55 ? 'amber' : 'green');
@@ -120,12 +128,29 @@
         lines.push(`@sys INCIDENT — ${name}: ${pick({ d1: ['a broadcast screen smashed on the Nexus steps', 'chalk on the Administrator’s door'], d2: ['a ration crate tipped into the canal', 'a fire in a mill storeroom'], d3: ['a lock gate jammed open overnight', 'a unit’s radio found in the canal'], d4: ['a signal box burned', 'a freight wagon emptied on a siding'], d5: ['a stairwell barricaded in the Stacks', 'stones from a roof onto a patrol'], d7: ['a window broken in the Upper Town', 'a commended citizen beaten on his own doorstep'] }[k])}.`);
       }
     });
-    c.incidents += incidents;
-    c.lastIncidents = incidents;
     c.report = lines;
     c.reportDay = s.day;
+    /* the outbreak */
+    if (c.inf) {
+      c.teams.forEach((t) => t.o !== 'rest' && (c.inf[t.d] = clamp(c.inf[t.d] - CUT[t.o])));
+      DISTS.forEach(({ k }) => !covered[k] && c.inf[k] > 0 && (c.inf[k] = clamp(c.inf[k] + 4)));
+      const seed = {};
+      DISTS.forEach(({ k }) => c.inf[k] >= 40 && NEXT[k].forEach((n) => (seed[n] = (seed[n] || 0) + 4)));
+      Object.keys(seed).forEach((n) => (c.inf[n] = clamp(c.inf[n] + seed[n])));
+      DISTS.forEach(({ k, name }) => {
+        if (c.inf[k] >= 60 && Math.random() < 0.55) {
+          incidents++;
+          bump(s, k, -5, 6);
+          lines.push(`@sys BLOOM — ${name}: ${pick(['a stairwell sealed with someone still knocking on the other side', 'grey threads in a cellar, and a family missing from upstairs', 'a voice repeating a ration call in an empty flat', 'a dog that came home wrong'])}.`);
+        }
+      });
+      lines.push(`@sys INFECTION: ${DISTS.map((d) => `${d.code} ${Math.round(c.inf[d.k])}`).join(' · ')}`);
+    }
+    c.incidents += incidents;
+    c.lastIncidents = incidents;
     c.teams.forEach((t) => (t.spent = t.fat >= 6));
-    if (s.c8 && s.c8.score !== undefined) s.c8.score = clamp(s.c8.score + G.cmdScore(s));
+    const chap = c.chap || 'c8';
+    if (s[chap] && s[chap].score !== undefined) s[chap].score = clamp(s[chap].score + G.cmdScore(s));
     G.note(`COMMAND: ${incidents ? incidents + ' incident' + (incidents > 1 ? 's' : '') : 'no incidents'}`, incidents ? 'observed' : 'codex');
   }
   G.cmdResolve = resolve;
@@ -133,11 +158,14 @@
   G.cmdScore = (s) => {
     const W = { d1: 1, d2: 1, d3: 1, d4: 1, d5: 1.5, d7: 2 };
     const sum = Object.keys(W).reduce((a, k) => a + W[k] * (D(s, k).o - D(s, k).r), 0) / Object.values(W).reduce((a, b) => a + b, 0);
-    return Math.max(-5, Math.min(4, Math.round((sum - 22) / 6))) - 3 * (s.cmd.lastIncidents || 0);
+    const base = Math.max(-5, Math.min(4, Math.round((sum - 22) / 6))) - 3 * (s.cmd.lastIncidents || 0);
+    if (!s.cmd.inf) return base;
+    const avg = DISTS.reduce((a, d) => a + (s.cmd.inf[d.k] || 0), 0) / DISTS.length;
+    return base + Math.max(-3, Math.min(3, Math.round((20 - avg) / 6)));
   };
   G.extend('u_duty_end', { before: (s) => (active(s) ? void resolve(s) : undefined) });
   G.extend('u_evening', {
-    text: (lines, s) => (active(s) && s.cmd.reportDay === s.day ? lines.concat(['@sys COMMAND REPORT', ...s.cmd.report, s.c8 && s.c8.score !== undefined ? `@sys INSPECTION ASSESSMENT: ${s.c8.score} / 100` : null]) : lines),
+    text: (lines, s) => (active(s) && s.cmd.reportDay === s.day ? lines.concat(['@sys COMMAND REPORT', ...s.cmd.report, s[s.cmd.chap || 'c8'] && s[s.cmd.chap || 'c8'].score !== undefined ? `@sys ${s.cmd.chap === 'c9' ? 'CONTAINMENT' : 'INSPECTION'} ASSESSMENT: ${s[s.cmd.chap || 'c8'].score} / 100` : null]) : lines),
   });
 
   /* the city map shows your teams and colours the districts from the command state */
@@ -152,7 +180,7 @@
         if (!active(s) || !key) return [lvl, lines];
         const here = s.cmd.teams.filter((t) => t.d === key && t.o !== 'rest');
         const x = D(s, key);
-        return [key === 'd5' ? lvl : colour(x), lines.concat([here.length ? `<b>Your teams here:</b> ${here.map((t) => `${t.id} (${ORDERS[t.o].name.toLowerCase()})`).join(', ')}.` : 'None of your teams is posted here.'])];
+        return [key === 'd5' ? lvl : colour(x), lines.concat([s.cmd.inf ? `<b>Infection:</b> ${G.cmdInf(s, key)} / 100.` : null, here.length ? `<b>Your teams here:</b> ${here.map((t) => `${t.id} (${ORDERS[t.o].name.toLowerCase()})`).join(', ')}.` : 'None of your teams is posted here.'])];
       };
     });
   };
@@ -175,15 +203,15 @@
         return `<div class="cmd-team" data-i="${i}">
           <div class="cmd-tname"><b>${t.id}</b> ${t.lead}<span class="cmd-fat" title="Fatigue">${'■'.repeat(t.fat)}${'□'.repeat(6 - t.fat)}</span>${t.spent ? '<em>SPENT — must rest</em>' : ''}</div>
           <div class="cmd-row">${DISTS.map((d) => `<button class="cmd-b${x.d === d.k ? ' on' : ''}" data-set="d" data-v="${d.k}" ${x.o === 'rest' ? 'disabled' : ''} style="--dc:${({ green: '#6fbf73', amber: '#e2a83f', red: '#d9534a' })[colour(D(s, d.k))]}">${d.code}</button>`).join('')}</div>
-          <div class="cmd-row">${Object.keys(ORDERS).map((o) => `<button class="cmd-b ord${x.o === o ? ' on' : ''}" data-set="o" data-v="${o}" ${t.spent && o !== 'rest' ? 'disabled' : ''}>${ORDERS[o].name}</button>`).join('')}</div>
+          <div class="cmd-row">${orderList(s).map((o) => `<button class="cmd-b ord${x.o === o ? ' on' : ''}" data-set="o" data-v="${o}" ${t.spent && o !== 'rest' ? 'disabled' : ''}>${ORDERS[o].name}</button>`).join('')}</div>
         </div>`;
       })
       .join('');
     return `<div class="cmd-sheet">
       ${G.cityMapSvg ? `<div class="cmd-map">${G.cityMapSvg(s, null)}</div>` : ''}
-      <div class="cmd-key">${DISTS.map((d) => { const x = D(s, d.k); return `<span style="color:${({ green: '#6fbf73', amber: '#e2a83f', red: '#d9534a' })[colour(x)]}">${d.code} ${d.name}</span>`; }).join(' · ')}</div>
+      <div class="cmd-key">${DISTS.map((d) => { const x = D(s, d.k); return `<span style="color:${({ green: '#6fbf73', amber: '#e2a83f', red: '#d9534a' })[colour(x)]}">${d.code} ${d.name}${s.cmd.inf ? ` <i class="cmd-inf">☣${G.cmdInf(s, d.k)}</i>` : ''}</span>`; }).join(' · ')}</div>
       ${rows}
-      <div class="sub">Patrol: order up. Raid: order up a lot, resentment up a lot, arrests, tiring. Protect: resentment down. Rest: recover. Districts nobody covers drift, and where they boil over there are incidents. The Upper Town counts double for the inspection.</div>
+      ${s.cmd.inf ? '<div class="sub"><b>Contain</b> (VECTOR procedure): infection down sharply, resentment up, tiring. Infection grows where nobody stands, and spreads from any district at 40 or more.</div>' : ''}<div class="sub">Patrol: order up. Raid: order up a lot, resentment up a lot, arrests, tiring. Protect: resentment down. Rest: recover. Districts nobody covers drift, and where they boil over there are incidents. The Upper Town counts double for the inspection.</div>
     </div>`;
   }
   G.afterRender.push((sc, id, block) => {

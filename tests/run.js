@@ -431,7 +431,7 @@ suite('chapter 3 for every division', async (browser) => {
 /* Chapters 4 onward share one setup: a Union unit with every earlier chapter done, two days
    after the last one ended. `tweak(s, div, i)` runs in the page (it is sent as source, so it
    can use G but not variables from this file) to set rank, resistance, relations and flags. */
-const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126 };
+const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146 };
 async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -455,6 +455,7 @@ async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) 
         if (n > 5) s.c5 = { stage: 9, done: true, endDay: CH_END[5], veil: 'accepted' };
         if (n > 6) s.c6 = { stage: 9, done: true, endDay: CH_END[6], train: 'stopped', kinPart: 'promise', kin: { key: 'mira', name: 'Mira', img: 'mira' } };
         if (n > 7) s.c7 = { stage: 9, done: true, endDay: CH_END[7], night: 'truce', side: 'aside', who: { key: 'mira', name: 'Mira', img: 'mira' } };
+        if (n > 8) s.c8 = { stage: 9, done: true, endDay: CH_END[8], verdict: 'pass', score: 65 };
         new Function('return ' + src)()(s, div, i);
         G.goto('u_board');
       },
@@ -541,6 +542,25 @@ suite('chapter 8 for every division (The Inspection, command map)', async (brows
   });
   const r = await page.evaluate(() => ({ cmd: !!G.state().cmd, score: G.state().c8 && G.state().c8.score, verdict: G.state().c8 && G.state().c8.verdict, seen: Object.keys(G.state().visits || {}).filter((k) => /^cmd_|^c8_/.test(k)) }));
   if (!r.seen.includes('cmd_assign')) out.push('the command map never came up: ' + JSON.stringify(r));
+  return out;
+});
+
+suite('chapter 9 for every division (Drowned Basements, outbreak command)', async (browser) => {
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  const { out, page } = await chapterSuite(browser, {
+    n: 9,
+    steps: QUICK ? 800 : 1100,
+    runs: QUICK ? divs : divs.concat(divs),
+    stopAt: ['c9_end', 'disc_tribunal'],
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: i % 2 ? 'SqL' : 'OfC', merit: 420, lp: 34, res: i % 3 ? 25 : 5 });
+      s.rel.mira = 40;
+      G.formSquad(s);
+    },
+  });
+  const r = await page.evaluate(() => ({ inf: G.state().cmd && G.state().cmd.inf, seen: Object.keys(G.state().visits || {}).filter((k) => /^cmd_assign|^c9_/.test(k)) }));
+  if (!r.inf) out.push('outbreak mode never started');
+  if (!r.seen.includes('cmd_assign')) out.push('the command map never came up in chapter 9');
   return out;
 });
 

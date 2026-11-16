@@ -90,6 +90,19 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - the verdict: pass, probation or partial consolidation.
    - **Promotion:** a pass promotes you up to Squadron Leader and opens the Division Leader board.
 
+11c. **Chapter 9, "Drowned Basements"** (all divisions): eight days of rain flood the basements of the Canal Quarter, and the necrotic comes through the tunnels under the 404 wall.
+   - **Outbreak mode on the command map:** every district has an infection figure. A new order, CONTAIN, is VECTOR procedure: it brings infection down quickly, at the cost of resentment and fatigue. Uncovered districts grow, districts at 40 spread to their neighbours, and at 60 there are blooms.
+   - **Story scenes:**
+     - Block Warden Ostrova hides a bitten family;
+     - bite screening at Plaza 5 (the watch minigame);
+     - District Prefect Sallow wants Stack 9 welded shut;
+     - a voice you know calling from the drowned basement (the breach minigame);
+     - Formalin wants a live specimen;
+     - the source under Pump House 4: flood the quarter from the dam, burn it, empty it first with the cells' boats, or seal the tunnels.
+   - **Ending:** City 9's story stays open; the radio from City 17 goes silent.
+
+11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.
+
 12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
 
 13. **GRID: Lantern dock** (a GRID duty): the SC-9 Lantern scanner drones.
@@ -215,6 +228,8 @@ js/content/desk.js    night desk: four Lantern feeds (GRID, JURY)
 js/content/citymap.js the City 09 map: districts, status, drill-down
 js/content/command.js the command map: teams, orders, evening reports
 js/content/chapter8.js The Inspection
+js/content/chapter9.js Drowned Basements (necrotic outbreak)
+js/content/districts.js duties in D6-D8 and the Upper Town; the Prefect and the wardens
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
