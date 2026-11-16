@@ -2152,6 +2152,14 @@ Egen design: civila kläder, vadderade västar, stulen CP-utrustning, handmålad
 
 **Klara (2026-11-16):** E48–E51 inlagda (även i sektorvyerna för S1, S6 och S8).
 
+## 5ah. DISTRICT 5, NÄRKARTA (patrullen)
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| MAP3 District 5 ovanifrån, gatunivå, utan text | `d5-map.jpg` | 1 city-map (stil) · 2 env/e10-ration · 3 env/e03-bazaar · 4 env/e01-city |
+
+Patrullens åtta platser ligger på fasta procentpositioner i prompten. När bilden finns sätts `G.PT_MAP = { img, vb: [0, 0, 1600, 900] }` och nodernas koordinater räknas om.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

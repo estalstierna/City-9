@@ -425,7 +425,7 @@
         lines.push(`@doc CASE FILE CID ${c.cid} — ${c.status}\nPENALTY POINTS: ${Math.min(f.points, 20)} / 20 · STOPS: ${f.stops}`);
         return lines;
       },
-      choices: () => [{ t: 'End of shift.', go: END }],
+      choices: (s) => [s.mem.ssRet ? { t: 'Back on the street.', fx: (st) => ((st.mem.ssRet = null), null), go: s.mem.ssRet } : { t: 'End of shift.', go: END }],
     },
   });
 

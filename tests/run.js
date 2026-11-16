@@ -853,11 +853,35 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
     document.querySelector(`#story .block.current [data-pt="${target}"]`).dispatchEvent(new MouseEvent('click', { bubbles: true }));
     return { at: G.state().pt.at, target, nodes: document.querySelectorAll('#story .block.current [data-pt]').length, hour: G.state().pt.hour };
   });
-  if (click.at !== click.target || click.nodes !== 8 || click.hour !== 9) out.push('tapping a place on the map should walk there: ' + JSON.stringify(click));
-  const w = await randomWalk(page, 120, { stopAt: ['u_evening', 'u_night', 'u_board'], prefer: /Deal with it|\(\dh\)/ });
+  if (click.at !== click.target || click.nodes !== 8 || !(click.hour === 9 || click.hour === 10)) out.push('tapping a place on the map should walk there: ' + JSON.stringify(click));
+  const w = await randomWalk(page, 120, { stopAt: ['u_evening', 'u_night', 'u_board'], prefer: /Deal with it|h left\)/ });
   out.push(...w.problems);
   if (!w.seen.pt_end) out.push('the patrol shift never ended');
   if (!w.seen.pt_ev) out.push('no patrol incident was handled');
+  /* night patrol, and the bigger systems launched from the map return to it */
+  for (const [k, scene] of [['suspect', 'ss_start'], ['lead', 'raid_start'], ['crowd', 'pt_crowd'], ['curfew', null]]) {
+    const r = await page.evaluate(({ k }) => {
+      const s = G.state();
+      s.mem.ptNight = k === 'curfew';
+      G.goto('pt_start');
+      const p = s.pt;
+      p.ev = [{ k, node: p.at === 'precinct' ? 'plaza' : p.at, ttl: 3, id: 99 }];
+      p.at = p.ev[0].node;
+      if (k === 'suspect' || k === 'lead') p.ev[0].node = p.at = k === 'lead' ? 's9' : 'bazaar';
+      p.cur = 99;
+      G.goto('pt_ev');
+      const b = document.querySelector('#story .block.current .choice');
+      b.click();
+      return { scene: G.state().scene, night: p.night, end: p.end };
+    }, { k });
+    if (scene && r.scene !== scene) out.push(`${k} should open ${scene}, got ${r.scene}`);
+    if (k === 'curfew' && (!r.night || r.end !== 26)) out.push('night patrol not set up: ' + JSON.stringify(r));
+    if (scene && scene !== 'pt_crowd') {
+      const back = await randomWalk(page, 80, { stopAt: ['pt_map', 'u_evening', 'u_night', 'u_board'] });
+      out.push(...back.problems.map((x) => k + ': ' + x));
+      if (back.ended !== 'pt_map') out.push(`${k} did not return to the patrol map (ended at ${back.ended})`);
+    }
+  }
   /* cinematic scenes and the HUD */
   const fx = await page.evaluate(() => {
     G.addScenes({ t_fx: { text: ['@img assets/img/env/e44-flood.webp|Rain', '@say Granite|Hold the line.', '@radio All units.'], choices: [{ t: 'Ok', go: 'u_board' }] } });

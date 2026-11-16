@@ -80,13 +80,18 @@
       return b || 'cr_evening';
     },
   });
+  /* in the field the muster-hall board offers nothing but the road */
+  G.extend('u_board', {
+    field: true,
+    choices: (list, s) => (G.inField(s) ? [{ t: '**The coast road.** The sector map.', tag: 'FIELD', tagCls: 'duty', fx: (st) => ((C(st).fieldDay = -1), null), go: 'cr_pick' }] : list),
+  });
   G.extend('u_board', {
     field: true,
     before: (s) => {
       const c = C(s);
       if (!c || !c.on || c.done || c.fieldDay === s.day) return;
       /* a story beat due this morning plays first; the field day follows from its own u_board */
-      if (G.beats.some((b) => b.time === 'morning' && !s.flags['beat_' + b.id] && b.when(s))) return;
+      if (G.beats.some((b) => b.time === 'morning' && /^c10/.test(b.id) && !s.flags['beat_' + b.id] && b.when(s))) return;
       return 'cr_pick';
     },
   });

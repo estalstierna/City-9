@@ -825,3 +825,6 @@ figure.pic.portrait.scan { position: relative; overflow: hidden; }
 .pt-ico { font: bold 13px var(--mono, monospace); fill: #e2a83f; text-anchor: middle; pointer-events: none; }
 .pt-ttl { font: 8px var(--mono, monospace); fill: #e2a83f; paint-order: stroke; stroke: rgba(4,8,10,.9); stroke-width: 3px; }
 .pt-you circle { fill: #5fc8dd; stroke: #fff; stroke-width: 1.5; filter: drop-shadow(0 0 5px #5fc8dd); pointer-events: none; }
+.pt-svg.night .pt-node circle { fill: rgba(4,8,14,.9); }
+.pt-svg.night .pt-node.hot circle { fill: rgba(70,50,10,.95); filter: drop-shadow(0 0 6px #e2a83f); }
+.pt-svg.night .pt-you circle { filter: drop-shadow(0 0 9px #5fc8dd) drop-shadow(0 0 3px #fff); }
