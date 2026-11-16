@@ -2132,6 +2132,15 @@ Fyra nya ark, ett per pool, inlagda 2026-11-16 som `docs/faces/f13–f24`, `face
 
 **Klara (2026-11-16):** alla sex inlagda. E45 fick runda drönare i stället för Lanterns (liten avvikelse).
 
+## 5ag. KAPITEL 10: THE COAST ROAD
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| L1 Lambda Resistance, konceptark | `lambda-sheet.jpg` | 1 master-c · 2 resistance-sheet · 3 citizen-base |
+| MAP2 Kustvägen ovanifrån, utan text | `coast-map.jpg` | 1 city-map (stil) · 2 env/e01-city · 3 env/e12-railyard |
+
+Egen design: civila kläder, vadderade västar, stulen CP-utrustning, handmålad vit lambda på tyglapp över hjärtat, vit tygbindel för sjukvårdare (aldrig rött kors). Bifoga aldrig spelets konstbok. Kartans sektorer ligger exakt där zonerna i `js/content/chapter10.js` ligger (1600 × 900).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

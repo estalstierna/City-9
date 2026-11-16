@@ -101,6 +101,18 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - the source under Pump House 4: flood the quarter from the dam, burn it, empty it first with the cells' boats, or seal the tunnels.
    - **Ending:** City 9's story stays open; the radio from City 17 goes silent.
 
+11e. **Chapter 10, "The Coast Road"** (all divisions): for the first time you leave the city, leading a task force up the old coast road north of City 9.
+   - **The road:** eight sectors of ruins where refugees, deserters from Civil Protection and armed fighters of the Lambda Resistance live.
+   - **The sector map, with fog of war:** each field day you choose one sector and one action: scout (reveal who is there), negotiate (everyone moves on; fighters withdraw down the road), raid (cleared, but people get hurt), or burn. Fighters left standing raid the camp at night.
+   - **Story scenes:**
+     - a deserter you know (Rook or Wick);
+     - the refugee column at the toll plaza (papers minigame);
+     - a captured Lambda medic who, for the first time in the game, says the name *Gordon Freeman*;
+     - an ambush in the rail cutting (breach minigame);
+     - the church where refugees and fighters shelter together.
+   - **The report:** counts the cleared sectors, the people moved on, detained and harmed, and the sectors burned.
+   - **The name:** the Union still says Anticitizen One. You stay Civil Protection.
+
 11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.
 
 12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
@@ -230,6 +242,7 @@ js/content/command.js the command map: teams, orders, evening reports
 js/content/chapter8.js The Inspection
 js/content/chapter9.js Drowned Basements (necrotic outbreak)
 js/content/districts.js duties in D6-D8 and the Upper Town; the Prefect and the wardens
+js/content/chapter10.js The Coast Road: the sector map (fog of war)
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```

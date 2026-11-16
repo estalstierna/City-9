@@ -328,6 +328,7 @@
   function para(p) {
     if (p == null || p === false || p === '') return null;
     p = String(p);
+    if (p.startsWith('@html ')) return el('div', 'html-block', p.slice(6));
     if (p.startsWith('@dispatch ')) {
       return el('div', 'dispatch', `<span class="lbl">DISPATCH</span><div>${inline(p.slice(10))}</div>`);
     }
