@@ -25,7 +25,8 @@
     return d ? { name: d.name, img: d.img, desig: `CCA.C9.D1-${s.div || 'UNION'}-DvL-${d.id}` } : { name: 'Your Division Leader', img: null, desig: '' };
   };
 
-  G.PEOPLE.morow = { name: 'Sector Administrator Morow', role: 'Earth Administration · Sector 4', img: null };
+  G.PEOPLE.morow = { name: 'Sector Administrator Morow', role: 'Earth Administration · Sector 4', img: 'morow' };
+  const MOROW_P = '@portrait assets/img/portraits/morow.webp|Sector Administrator Morow — Sector 4';
 
   G.extend('u_board', {
     text: (lines, s) => {
@@ -43,13 +44,15 @@
         s.chapter = 8;
         s.c8 = { stage: 0, next: s.day, startDay: s.day, score: 50, named: null, consol: null, consolBlock: null, dark: null, ambush: null, dvl: null, done: false };
         G.unlock(s, 'administration');
+        if (s.rel.morow === undefined) s.rel.morow = 0;
       },
       text: (s) => [
         '@big CHAPTER EIGHT',
         '@sys ALL DIVISIONS · THE INSPECTION',
-        '@img assets/img/env/e18-relocation.webp|D4 — the Sector train',
+        '@img assets/img/env/e42-sector-train.webp|D4 — the Sector train, 07:00',
         'The train from the Sector comes into the D4 yards at 07:00 with its blinds down. Three passenger cars, an Overwatch car front and back, and a flatbed with a black car lashed to it. The yard has been swept. The relocation platform has been swept twice.',
         `${MOROW} steps down first: a woman in her sixties in a long slate coat with the citizen’s own stand collar, cut from better cloth, and a silver chain of office with a laurel wreath on the medallion. Behind her, clerks with ledgers, two Overwatch soldiers, and the City Administrator, who has come down from the Nexus to meet her and looks, in daylight, very old.`,
+        MOROW_P,
         `@say ${MOROW}|City 9 had a night. The Sector has read about it. I am here for ten days. At the end of them I will tell the Sector whether City 9 can keep itself, or whether parts of it should be consolidated with cities that can.`,
         '@sys Consolidated: relocated north, by train, a block at a time.',
       ],
@@ -77,6 +80,7 @@
         return [
           'A reception in the Upper Town for the Sector: real candles, a string trio of commended citizens, wine in glasses nobody in the Stacks has seen since the war. You stand by the wall in uniform with the other officers, and are looked at like furniture.',
           `${MOROW} finds you anyway. She knows your designation without asking.`,
+          MOROW_P,
           `@say ${MOROW}|${n === 'aside' ? 'Your teams sat on the steps the night D5 rose. I have the photographs. I do not want you. I want the people who made the night.' : n === 'truce' ? 'A truce, on a landing. With anticitizens. Clever. Somebody on the other side of that landing organised the night. I want their names.' : n === 'veil' ? 'Forty arrests at dawn, all the right people. I want the ones who were not on the list.' : 'District 5 rose. Somebody organised it. I want their names, and I want them from someone who was there.'}`,
           `@say ${MOROW}|Names, by the end of the reception. The Sector will remember who helped.`,
         ];
@@ -208,7 +212,7 @@
       text: (s) => {
         const c = s.c8;
         return [
-          '@img assets/img/env/e18-relocation.webp|D4 — the Sector train',
+          '@img assets/img/env/e42-sector-train.webp|D4 — the Sector train',
           `@doc SECTOR 4 — INSPECTION OF CITY 9\nASSESSMENT: ${c.score} / 100\nINCIDENTS: ${s.cmd ? s.cmd.incidents : 0}\nVERDICT: ${c.verdict === 'pass' ? 'CITY RETAINED' : c.verdict === 'probation' ? 'CITY RETAINED ON PROBATION' : 'PARTIAL CONSOLIDATION'}`,
           `@say ${MOROW}|${c.verdict === 'pass' ? 'City 9 keeps itself. For now. I will tell the Sector it was an officer who kept it, and the Sector will remember your designation. That is not always a kindness.' : c.verdict === 'probation' ? 'City 9 keeps itself, on paper, until I come back. I will come back.' : 'City 9 cannot keep itself. The Sector will send someone who can.'}`,
           c.consolDone ? `${G.BLOCKS[c.consolBlock].name} goes north on the same train. ${c.consol === 'warned' ? 'Half its flats are empty when the units knock: the canals took them in the night.' : c.consol === 'accepted' ? 'You organised it. Nobody died on the platform. You will hear that sentence in your head for a long time.' : 'Your arithmetic did not save it in the end.'}` : c.consol ? `The consolidation list goes back into Morow’s case, unsigned.` : null,
