@@ -186,7 +186,7 @@
     const n = nextRank(s);
     const p = G.PROMO[s.rank];
     const meritBar = p ? `<div class="bar"><span style="width:${Math.min(100, (s.merit / p.merit) * 100)}%"></span></div><div class="sub">${s.merit} / ${p.merit} merit</div>` : '';
-    return `<div class="ro-head"><div><b>${div}</b> · ${active.length} units</div><div>You are <b>#${pos}</b> of ${active.length}</div></div>
+    return `<div class="ro-head"><div><b>${div}</b> · ${active.length} units</div><div>You are <b>#${pos}</b> of ${active.length} · <a href="#" class="ro-rec" data-record="1" onclick="return false">Service record</a></div></div>
       <div class="rank-ladder">${ladder}</div>
       ${
         n

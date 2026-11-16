@@ -454,7 +454,7 @@ suite('chapter 3 for every division', async (browser) => {
 /* Chapters 4 onward share one setup: a Union unit with every earlier chapter done, two days
    after the last one ended. `tweak(s, div, i)` runs in the page (it is sent as source, so it
    can use G but not variables from this file) to set rank, resistance, relations and flags. */
-const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166 };
+const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186 };
 async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -480,6 +480,7 @@ async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) 
         if (n > 7) s.c7 = { stage: 9, done: true, endDay: CH_END[7], night: 'truce', side: 'aside', who: { key: 'mira', name: 'Mira', img: 'mira' } };
         if (n > 8) s.c8 = { stage: 9, done: true, endDay: CH_END[8], verdict: 'pass', score: 65 };
         if (n > 9) s.c9 = { stage: 9, done: true, endDay: CH_END[9], verdict: 'held', score: 55 };
+        if (n > 10) s.c10 = { stage: 9, done: true, endDay: CH_END[10], deserter: 'Rook', desFate: 'freed', cleared: 6, moved: 40, harmed: 8, detained: 30 };
         new Function('return ' + src)()(s, div, i);
         G.goto('u_board');
       },
@@ -611,6 +612,29 @@ suite('chapter 10 for every division (The Coast Road, sector map)', async (brows
   const r = await page.evaluate(() => ({ c: G.state().c10, seen: Object.keys(G.state().visits || {}).filter((k) => /^cr_|^c10_3/.test(k)) }));
   if (!r.seen.includes('cr_pick')) out.push('the sector map never came up');
   if (!r.c || !(r.c.cleared >= 1)) out.push('no sector was cleared: ' + JSON.stringify(r.c && r.c.cleared));
+  return out;
+});
+
+suite('chapter 11 for every division (The Siege, service record)', async (browser) => {
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  const { out, page } = await chapterSuite(browser, {
+    n: 11,
+    steps: QUICK ? 900 : 1300,
+    runs: QUICK ? divs : divs.concat(divs),
+    stopAt: ['c11_end', 'disc_tribunal'],
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: 'SqL', merit: 500, lp: 36, res: i % 3 ? 25 : 5 });
+      Object.assign(s.rel, { mira: 40, ostrova: 10, rook: 30 });
+      G.formSquad(s);
+    },
+  });
+  const r = await page.evaluate(() => {
+    const s = G.state();
+    const rec = G.careerRecord(s);
+    return { sg: !!(s.c11 && s.c11.siege), out: s.c11 && s.c11.outcome, rec: rec.length, bad: (rec.match(/undefined|NaN/) || [])[0] };
+  });
+  if (!r.sg) out.push('the siege never started');
+  if (r.bad) out.push('service record has ' + r.bad);
   return out;
 });
 

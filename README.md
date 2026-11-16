@@ -114,6 +114,20 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **The name:** the Union still says Anticitizen One. You stay Civil Protection.
    - **In the field:** the city's duty board, evenings and events step aside. Camp duties replace them: the sentry line (watch minigame, fewer night raids), the water detail, the detainee pen, the radio truck (reveals a sector), and convoy escort. Evenings are in the camp.
 
+11f. **Chapter 11, "The Siege"** (all divisions, two acts).
+   - **Act I:** City 17 has fallen. A driverless train comes south full of empty Overwatch armour, the Spire flickers, and FREEMAN is chalked on every Stack.
+     - **Preparation:** you prepare the Nexus (ammunition, fortifications, medical stores, flooding the canal tunnel, shelter for Stack 9, the gas). Each preparation becomes a resource on the night.
+     - **Old acquaintances come back:** Mira (or Halloran), Brask and Warden Ostrova, the deserter from the coast road (or your canal contact), Sector Administrator Morow and Ledger.
+   - **Act II, the siege of the Nexus:** twelve hours, 21:00 to 09:00.
+     - **Positions:** four (main gate, forecourt, canal tunnel, roof and mast), each with an integrity bar.
+     - **Each hour:** you post four teams and choose one action: hold, resupply, treat the wounded, sally, radio the Sector, or release the gas if you allowed it.
+     - **Losing:** wounded teams and empty magazines hold half as well. The forecourt falling, or any two positions, and the Nexus is lost.
+     - **Between hours:** Mira at the gate, Ostrova's families at the side door, the Administrator who wants to flee by the roof, the deserter in the tunnel offering a way out, and Morow ordering the gas.
+     - **Balance:** by simulation, planned play holds about 93%; leaving the teams where they stand with random actions holds about 10%.
+   - **Epilogue:** dawn; the Union's own radio says the name for the first time; your service record.
+
+11g. **Service record**: your whole career on one sheet. It shows citizens stopped, files kept, let go and amputated, merit, loyalty and your JURY file; a line for every chapter's night; the people who trust or hate you; and an assessment. You can open it from the Roster.
+
 11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.
 
 12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
@@ -244,6 +258,7 @@ js/content/chapter8.js The Inspection
 js/content/chapter9.js Drowned Basements (necrotic outbreak)
 js/content/districts.js duties in D6-D8 and the Upper Town; the Prefect and the wardens
 js/content/chapter10.js The Coast Road: the sector map (fog of war)
+js/content/chapter11.js The Siege of the Nexus; the service record
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
