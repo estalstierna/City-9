@@ -95,7 +95,9 @@
   /* Bump SAVE_VERSION when the shape of the state changes, and push a migration that
      upgrades older saves: G.MIGRATIONS.push({ to: 3, fn: (s) => { ... } }). Fields that simply
      appear in G.fresh() need no migration: loading merges every saved object over its default. */
-  G.SAVE_VERSION = 4;
+  G.SAVE_VERSION = 5;
+  /* the highest rank a player can hold: every division already has its named Division Leader */
+  G.RANK_CAP = 'SqL';
   G.MIGRATIONS = [
     {
       to: 2,
@@ -116,6 +118,13 @@
       fn: (s) => {
         /* v3 → v4: field notes; a unit already in service has learnt the basics the hard way */
         if (s.phase === 'union' && (s.day || 0) > 3 && G.HINTS) s.hintsSeen = G.HINTS.map((h) => h.id);
+      },
+    },
+    {
+      to: 5,
+      fn: (s) => {
+        /* v4 → v5: ranks are capped at Squadron Leader; a unit already above it steps back to SqL */
+        if (s.rank && G.rankIdx(s.rank) > G.rankIdx(G.RANK_CAP)) s.rank = G.RANK_CAP;
       },
     },
   ];
@@ -304,6 +313,8 @@
     /* never jump more than one grade (a demoted unit climbs back one step at a time) */
     const cur = G.rankIdx(s.rank);
     if (G.rankIdx(rank) > cur + 1 && cur >= 1) rank = G.RANKS[cur + 1];
+    if (G.RANK_CAP && G.rankIdx(rank) > G.rankIdx(G.RANK_CAP)) rank = G.RANK_CAP;
+    if (rank === s.rank) return;
     s.rank = rank;
     s.flags['exam_' + rank] = false;
     note(`PROMOTED → ${G.RANK_NAMES[rank].toUpperCase()}`, 'promo');

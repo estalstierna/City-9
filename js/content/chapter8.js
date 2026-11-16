@@ -1,4 +1,4 @@
-/* CHAPTER EIGHT — "The Inspection". All divisions. The road to Division Leader.
+/* CHAPTER EIGHT — "The Inspection". All divisions. The road to Squadron Leader.
    After the night D5 rose, the Sector sends its Administrator to decide whether City 9 can keep
    itself. Sector Administrator Morow arrives by train with a retinue and an Overwatch escort and
    will grade the city in ten days. A city that cannot keep order is "consolidated": a block of it
@@ -231,7 +231,7 @@
       text: (s) => [
         'The district board in the operations room is wiped clean. Your three magnetic markers go back in the drawer. For ten days you held a city, or part of one, and the city held you back.',
         '@radio …City 17: fighting in the streets. All units north of the river are to consider every freight train a threat. Anticitizen One has not been located…',
-        G.rankIdx(s.rank) >= G.rankIdx('SqL') ? '@sys The Division Leader board is open to you: the last step before High Command looks at you.' : null,
+        G.rankIdx(s.rank) >= G.rankIdx('SqL') ? '@sys Squadron Leader: the highest rank open to you. Your division already has its Division Leader.' : null,
         `@doc ${G.desig(s)}\nDIVISION: ${s.div}\nRANK: ${G.RANK_NAMES[s.rank].toUpperCase()}\nDAYS IN SERVICE: ${s.day}`,
         '@sys CHAPTER EIGHT COMPLETE. You can keep serving on the duty board. Chapter Nine is coming.',
       ],

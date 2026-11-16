@@ -62,7 +62,6 @@
   Object.assign(G.PROMO, {
     EpU: { next: 'OfC', merit: 260, board: true, gate: 'The Officer Academy (chapter five) — or, after chapter four, an officer board with Loyalty +20 and no active strikes', if: (s) => !!(s.c4 && s.c4.done) && s.lp >= 20 && discClean(s) },
     OfC: { next: 'SqL', merit: 360, board: true, gate: 'Chapter six complete · Loyalty +30 · clean record', if: (s) => !!(s.c6 && s.c6.done) && s.lp >= 30 && discClean(s) },
-    SqL: { next: 'DvL', merit: 480, board: true, gate: 'Chapter eight complete · Loyalty +35 · never demoted · suspicion low', if: (s) => !!(s.c8 && s.c8.done) && s.lp >= 35 && discClean(s) && !(s.disc && s.disc.demotions) && s.susp < 30 },
   });
   const GATES = {
     '05': 'Field evaluation (25 merit)',
@@ -156,11 +155,11 @@
     return list;
   };
 
-  const RANK_ORDER = ['05', '04', '03', '02', '01', 'EpU', 'OfC', 'SqL', 'DvL'];
+  const RANK_ORDER = ['05', '04', '03', '02', '01', 'EpU', 'OfC', 'SqL'];
   const nextRank = (s) => RANK_ORDER[RANK_ORDER.indexOf(s.rank) + 1];
   const reqLine = (s) => {
     const n = nextRank(s);
-    if (!n) return 'There is no higher rank in a division.';
+    if (!n) return 'Squadron Leader is the highest rank open to you. Your division already has its Division Leader, and above that is High Command.';
     const p = G.PROMO[s.rank];
     if (p && p.gate) return `${p.gate} · ${p.merit} merit · officer board (pass at ${n === 'DvL' ? 7 : 6})`;
     return GATES[s.rank] || '—';
@@ -280,3 +279,6 @@
     if (s && s.phase === 'union' && G.rankIdx(s.rank) >= G.rankIdx('OfC')) G.unlock(s, 'dvls');
   });
 })();
+
+/* no promotion beyond the cap, whatever an older rule says */
+if (G.PROMO && G.PROMO.SqL) delete G.PROMO.SqL;

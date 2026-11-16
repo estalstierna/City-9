@@ -213,6 +213,29 @@ suite('sound: separate ambience, effects and radio volumes; radio transmission p
   return out.concat(errors);
 });
 
+suite('ranks are capped at Squadron Leader', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const r = await page.evaluate(() => {
+    G.newGame();
+    const s = G.state();
+    Object.assign(s, { phase: 'union', rank: 'SqL', div: 'UNION', merit: 999, lp: 50 });
+    G.promote(s, 'DvL');
+    const afterPromote = s.rank;
+    const promo = !!G.PROMO.SqL;
+    s.rank = 'DvL';
+    const old = JSON.parse(JSON.stringify(s));
+    old.v = 4;
+    localStorage.setItem('c9rp_manual_v1', JSON.stringify(old));
+    G.manualLoad();
+    return { afterPromote, promo, migrated: G.state().rank };
+  });
+  const out = [];
+  if (r.afterPromote !== 'SqL') out.push('promotion went past SqL: ' + r.afterPromote);
+  if (r.promo) out.push('there is still a promotion rule above SqL');
+  if (r.migrated !== 'SqL') out.push('an old save above SqL was not stepped back: ' + r.migrated);
+  return out.concat(errors);
+});
+
 suite('static: every image the code names exists on disk', async () => {
   const files = ['index.html', 'manifest.json', 'css/style.css', 'sw.js', ...fs.readdirSync(path.join(ROOT, 'js')).filter((f) => f.endsWith('.js')).map((f) => 'js/' + f), ...fs.readdirSync(path.join(ROOT, 'js/content')).map((f) => 'js/content/' + f)];
   const out = [];

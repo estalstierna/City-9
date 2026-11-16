@@ -79,7 +79,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 
 11. **Chapter 7, "Anticitizen One"** (all divisions): the Union gives the man from City 17 a designation and puts a blurred figure on every screen. Still no name, still no face. Overwatch pulls two thirds of the City 9 garrison north, and Civil Protection holds the city alone. You place your teams (Nexus, Stacks or armoury). The canal cells, or VEIL, tell you when D5 will rise. Plaza 5 starts to chant under the screens (crowd control, or cut the screens). On the night the screens go dark you hold, open the armoury, order a stand-down, negotiate a truce on a landing, or walk among them for VEIL. The chapter ends with Nova Prospekt on the radio.
 
-11b. **Chapter 8, "The Inspection"** (all divisions, the road to Division Leader): after the night D5 rose, Sector Administrator Morow arrives by train to grade City 9 over ten days. A city that cannot keep itself is *consolidated*: its worst block goes north.
+11b. **Chapter 8, "The Inspection"** (all divisions, the road to Squadron Leader): after the night D5 rose, Sector Administrator Morow arrives by train to grade City 9 over ten days. A city that cannot keep itself is *consolidated*: its worst block goes north.
    - **The command map:** you hold the district board. Every morning, three teams get a district and an order on the city map (patrol, raid, protect, rest). Every evening a report and the inspection assessment follow. Uncovered districts drift into incidents, teams tire, and the Upper Town counts double.
    - **Story scenes between the command days:**
      - the reception in the Upper Town, where Morow wants the names of the night;
@@ -88,7 +88,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - City 17 on the radio, Overwatch gone, and one of your teams cut off;
      - your own Division Leader;
      - the verdict: pass, probation or partial consolidation.
-   - **Promotion:** a pass promotes you up to Squadron Leader and opens the Division Leader board.
+   - **Promotion:** a pass promotes you up to Squadron Leader, the highest rank open to a player: every division already has its named Division Leader.
 
 11c. **Chapter 9, "Drowned Basements"** (all divisions): eight days of rain flood the basements of the Canal Quarter, and the necrotic comes through the tunnels under the 404 wall.
    - **Outbreak mode on the command map:** every district has an infection figure. A new order, CONTAIN, is VECTOR procedure: it brings infection down quickly, at the cost of resentment and fatigue. Uncovered districts grow, districts at 40 spread to their neighbours, and at 60 there are blooms.
