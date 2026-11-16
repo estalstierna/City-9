@@ -2113,7 +2113,7 @@ Förbund som piktogram på brickan: RATION (ransonpaket), REPAIR (skiftnyckel), 
 
 Morow: kvinna i sextioårsåldern, slaggrå rock med ståkrage, silverkedja med full lagerkrans (SA). E42 öppnar kapitlet och domen; E43 öppnar mottagningen.
 
-**Klara (2026-11-16):** K13 Morow och E42 inlagda. E43 väntar.
+**Klara (2026-11-16):** K13 Morow, E42 och E43 (Rev 2: bara fyra kedjor, inget guld; officerarna med blått armband, stjärna och patch) inlagda.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 

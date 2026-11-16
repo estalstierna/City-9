@@ -78,6 +78,7 @@
       text: (s) => {
         const n = s.c7 && s.c7.night;
         return [
+          '@img assets/img/env/e43-reception.webp|The Upper Town — the reception',
           'A reception in the Upper Town for the Sector: real candles, a string trio of commended citizens, wine in glasses nobody in the Stacks has seen since the war. You stand by the wall in uniform with the other officers, and are looked at like furniture.',
           `${MOROW} finds you anyway. She knows your designation without asking.`,
           MOROW_P,
