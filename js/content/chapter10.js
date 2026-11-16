@@ -15,19 +15,19 @@
   const { adv, set } = G.chapter({ n: 10, stages: [[1, 'evening', 'c10_1'], [2, 'morning', 'c10_2'], [3, 'evening', 'c10_3'], [4, 'morning', 'c10_4'], [5, 'evening', 'c10_5']] });
   const pick = G.pick;
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  G.COAST_MAP_IMG = null; /* the painted coast-road map, once it exists */
+  G.COAST_MAP_IMG = 'assets/img/coast-map.webp'; /* the painted coast-road map; null draws a schematic */
   const W = 1600, H = 900;
 
   /* the eight sectors: [x, y, w, h] in map space, and who tends to live there */
   const SECTORS = [
-    { k: 's1', code: 'S1', name: 'Toll Plaza', rect: [40, 640, 300, 220], mix: [10, 18, 0, 2, 0, 2] },
-    { k: 's2', code: 'S2', name: 'Fuel Station', rect: [360, 560, 260, 200], mix: [4, 10, 0, 2, 1, 4] },
-    { k: 's3', code: 'S3', name: 'Roadside Motel', rect: [640, 600, 280, 220], mix: [8, 16, 1, 3, 0, 2] },
-    { k: 's4', code: 'S4', name: 'Fishing Village', rect: [940, 620, 320, 240], mix: [12, 24, 0, 1, 1, 3] },
-    { k: 's5', code: 'S5', name: 'The Lighthouse', rect: [1290, 560, 270, 260], mix: [0, 3, 0, 1, 4, 7] },
-    { k: 's6', code: 'S6', name: 'Rail Cutting', rect: [420, 260, 300, 240], mix: [0, 4, 1, 3, 3, 6] },
-    { k: 's7', code: 'S7', name: 'The Quarry', rect: [80, 220, 300, 260], mix: [2, 8, 3, 6, 0, 2] },
-    { k: 's8', code: 'S8', name: 'The Church', rect: [880, 220, 330, 300], mix: [14, 28, 0, 2, 2, 5] },
+    { k: 's1', code: 'S1', name: 'Toll Plaza', rect: [150, 612, 330, 288], mix: [10, 18, 0, 2, 0, 2] },
+    { k: 's2', code: 'S2', name: 'Fuel Station', rect: [316, 478, 200, 140], mix: [4, 10, 0, 2, 1, 4] },
+    { k: 's3', code: 'S3', name: 'Roadside Motel', rect: [650, 545, 280, 135], mix: [8, 16, 1, 3, 0, 2] },
+    { k: 's4', code: 'S4', name: 'Fishing Village', rect: [975, 530, 320, 195], mix: [12, 24, 0, 1, 1, 3] },
+    { k: 's5', code: 'S5', name: 'The Lighthouse', rect: [1320, 320, 260, 220], mix: [0, 3, 0, 1, 4, 7] },
+    { k: 's6', code: 'S6', name: 'Rail Cutting', rect: [440, 60, 190, 400], mix: [0, 4, 1, 3, 3, 6] },
+    { k: 's7', code: 'S7', name: 'The Quarry', rect: [38, 90, 370, 400], mix: [2, 8, 3, 6, 0, 2] },
+    { k: 's8', code: 'S8', name: 'The Church', rect: [810, 175, 380, 225], mix: [14, 28, 0, 2, 2, 5] },
   ];
   G.COAST_SECTORS = SECTORS;
   const C = (s) => s.c10;
@@ -64,7 +64,7 @@
       if (st === 'unknown') g += `<text x="${rx + rw / 2}" y="${ry + rh / 2 + 58}" class="cm-name" opacity=".7">?</text>`;
       g += '</g>';
     });
-    g += `<g><circle cx="190" cy="790" r="16" fill="#5fc8dd"/><text x="190" y="836" class="cm-name">CAMP</text></g>`;
+    g += `<g><circle cx="95" cy="700" r="16" fill="#5fc8dd"/><text x="95" y="746" class="cm-name">CAMP</text></g>`;
     return g + '</svg>';
   }
   G.coastMapSvg = mapSvg;
@@ -381,7 +381,7 @@
   G.addCodex({
     lambda: {
       title: 'The Lambda Resistance',
-      body: `<p>Outside the cities the resistance is not a scatter of cells. It is an army of the dispossessed: refugees, deserters, mill workers, medics, people who walked out of a city one night and did not stop. They wear civilian clothes under padded vests and scavenged webbing, and over the heart a lambda painted by hand, white on whatever cloth they had.</p>
+      body: `<img src="assets/img/lambda-sheet.webp" alt="The Lambda Resistance" loading="lazy"><p>Outside the cities the resistance is not a scatter of cells. It is an army of the dispossessed: refugees, deserters, mill workers, medics, people who walked out of a city one night and did not stop. They wear civilian clothes under padded vests and scavenged webbing, and over the heart a lambda painted by hand, white on whatever cloth they had.</p>
       <p>Inside City 9 the canal cells sew the lambda inside the collar. On the coast road nobody hides it.</p>
       <p>Union broadcasts refer to the individual sought since City 17 as Anticitizen One. Lambda fighters use a name. Units are reminded that the Union has issued a designation, and that designations are what the Union uses.</p>`,
     },

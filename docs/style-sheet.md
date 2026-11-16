@@ -2141,6 +2141,15 @@ Fyra nya ark, ett per pool, inlagda 2026-11-16 som `docs/faces/f13–f24`, `face
 
 Egen design: civila kläder, vadderade västar, stulen CP-utrustning, handmålad vit lambda på tyglapp över hjärtat, vit tygbindel för sjukvårdare (aldrig rött kors). Bifoga aldrig spelets konstbok. Kartans sektorer ligger exakt där zonerna i `js/content/chapter10.js` ligger (1600 × 900).
 
+**Klara (2026-11-16):** L1 (codex The Lambda Resistance) och MAP2 (sektorerna kalibrerade) inlagda.
+
+| Scen | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| E48 Lägret i bilarna vid tullstationen | `env/e48-toll-camp.jpg` | 1 lambda-sheet · 2 citizen-base · 3 env/e01-city |
+| E49 Fången (Lambda-sjukvårdaren) | `env/e49-prisoner.jpg` | 1 lambda-sheet · 2 uniform-union · 3 env/e01-city |
+| E50 Bakhållet i järnvägsskärningen | `env/e50-cutting.jpg` | 1 lambda-sheet · 2 vehicle-ptv · 3 uniform-union |
+| E51 Kyrkan på kullen | `env/e51-church.jpg` | 1 lambda-sheet · 2 citizen-base · 3 env/e01-city |
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
