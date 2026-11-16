@@ -2119,6 +2119,17 @@ Morow: kvinna i sextioårsåldern, slaggrå rock med ståkrage, silverkedja med 
 
 Fyra nya ark, ett per pool, inlagda 2026-11-16 som `docs/faces/f13–f24`, `faces-cwu/c13–c24`, `faces-rebel/r13–r24` och `faces-commended/m13–m24` (FACES 48–95). Varje pool har nu 24 ansikten. Basprompten: ett 4 × 3-rutnät, samma ljusgrå bakgrund och samma utsnitt; tolv personer med olika ålder (tonåringar till 80+), kroppsform, ursprung (relokeringstågen tar folk överallt ifrån) och ett ovanligt kännetecken var. Bifoga bara ett befintligt ark i samma grupp, för layout och kläder. Kanalcellerna: bifoga ett CWU-ark för utsnittet och det gamla kanalcellsarket för kläderna. r01–r12 är omgjorda (Rev 2) med samma personer i det nya formatet.
 
+## 5af. KAPITEL 9: DROWNED BASEMENTS
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| K14 Prefect Sallow (D5) | `portraits/sallow.jpg` (+ thumb) | 1 portraits/granite (bara stil) · 2 admin-sheet (bronsmedaljong DP) |
+| K15 Warden Ostrova (Stack 9) | `portraits/ostrova.jpg` (+ thumb) | 1 portraits/granite (bara stil) · 2 admin-sheet (grått skärp BW) · 3 citizen-base |
+| E44 Regnet över Canal Quarter | `env/e44-flood.jpg` | 1 env/e13-pumphouse · 2 env/e14-lockbridge · 3 env/e01-city |
+| E45 Bettkontrollen på Plaza 5 | `env/e45-screening.jpg` | 1 env/e10-ration · 2 uniform-vector · 3 citizen-base · 4 env/e01-city |
+| E46 Den dränkta källaren | `env/e46-basement.jpg` | 1 uniform-spear · 2 necrotic-sheet · 3 env/e01-city |
+| E47 Kammaren under Pump House 4 | `env/e47-chamber.jpg` | 1 necrotic-sheet · 2 uniform-vector · 3 env/e13-pumphouse |
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
