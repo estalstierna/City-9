@@ -716,10 +716,15 @@ suite('city map: zones, status and the District 5 drill-down', async (browser) =
     document.querySelector('#modal-close').click();
     G.goto('u_board');
     G.setView('dossier');
-    document.querySelector('#side-content [data-dblock="s9"]').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    const sb = document.getElementById('sidebar');
+    const cell = document.querySelector('#side-content [data-dblock="s9"]');
+    cell.scrollIntoView();
+    const y0 = sb.scrollTop;
+    cell.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     const opened = document.querySelector('#modal').classList.contains('open');
+    const behind = document.getElementById('app').classList.contains('side-open');
     document.querySelector('#modal-close').click();
-    const toDossier = document.getElementById('app').classList.contains('side-open');
+    const toDossier = document.getElementById('app').classList.contains('side-open') && sb.scrollTop === y0 && behind;
     G.setView('story');
     G.showMap('d5');
     document.querySelector('#modal-body [data-dblock="s14"]').dispatchEvent(new MouseEvent('click', { bubbles: true }));

@@ -940,14 +940,23 @@
      (a block opened from the city map goes back to the map) */
   let modalBack = null;
   function openModal(title, html, kind, back) {
-    modalBack = back || (view === 'dossier' ? () => setView('dossier') : modalBack && $('#modal').classList.contains('open') ? modalBack : null);
+    /* opened from the dossier: the dossier stays open behind the modal, and closing returns to it
+       at the same scroll position */
+    const fromDossier = view === 'dossier' || (!!modalBack && modalBack.dossier && $('#modal').classList.contains('open'));
+    const keep = fromDossier ? () => {
+      view = 'dossier';
+      $('#app').classList.add('side-open');
+      renderNav();
+    } : null;
+    if (keep) keep.dossier = true;
+    modalBack = back || keep || (modalBack && $('#modal').classList.contains('open') ? modalBack : null);
     $('#modal-title').textContent = title;
     $('#modal-body').innerHTML = html;
     $('#modal-body').onclick = null;
     $('#modal').classList.add('open');
     $('#modal').dataset.kind = kind || 'modal';
     view = kind || 'modal';
-    $('#app').classList.remove('side-open');
+    if (!fromDossier) $('#app').classList.remove('side-open');
     renderNav();
   }
   function closeModal() {
