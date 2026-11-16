@@ -833,6 +833,57 @@ suite('city map: zones, status and the District 5 drill-down', async (browser) =
   return out.concat(errors);
 });
 
+suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  /* patrol: starts from the board, the map is clickable, the shift ends */
+  const start = await page.evaluate(() => {
+    G.goto('u_board');
+    const b = [...document.querySelectorAll('#story .block.current .choice')].find((x) => /Walk District 5/.test(x.innerText));
+    if (!b) return 'no patrol on the board';
+    b.click();
+    return G.state().scene;
+  });
+  if (start !== 'pt_start') out.push('patrol did not start: ' + start);
+  await page.evaluate(() => document.querySelector('#story .block.current .choice').click());
+  const click = await page.evaluate(() => {
+    const p = G.state().pt;
+    const target = (p.ev[0] && p.ev[0].node) || 'plaza';
+    document.querySelector(`#story .block.current [data-pt="${target}"]`).dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    return { at: G.state().pt.at, target, nodes: document.querySelectorAll('#story .block.current [data-pt]').length, hour: G.state().pt.hour };
+  });
+  if (click.at !== click.target || click.nodes !== 8 || click.hour !== 9) out.push('tapping a place on the map should walk there: ' + JSON.stringify(click));
+  const w = await randomWalk(page, 120, { stopAt: ['u_evening', 'u_night', 'u_board'], prefer: /Deal with it|\(\dh\)/ });
+  out.push(...w.problems);
+  if (!w.seen.pt_end) out.push('the patrol shift never ended');
+  if (!w.seen.pt_ev) out.push('no patrol incident was handled');
+  /* cinematic scenes and the HUD */
+  const fx = await page.evaluate(() => {
+    G.addScenes({ t_fx: { text: ['@img assets/img/env/e44-flood.webp|Rain', '@say Granite|Hold the line.', '@radio All units.'], choices: [{ t: 'Ok', go: 'u_board' }] } });
+    G.goto('t_fx');
+    const b = document.querySelector('#story .block.current');
+    const r = { hero: !!b.querySelector('figure.hero.fx-rain .fx'), face: !!b.querySelector('.say.faced img'), hud: document.body.classList.contains('hud-on'), rx: document.getElementById('hud').classList.contains('rx'), toggles: (G.PREF_TOGGLES || []).map((t) => t.key).join(',') };
+    const p = G.prefs();
+    p.cine = false;
+    p.hud = false;
+    G.savePrefs(p);
+    G.onPref.forEach((f) => f());
+    G.goto('t_fx');
+    const b2 = document.querySelector('#story .block.current');
+    r.offHero = !!b2.querySelector('figure.hero');
+    r.offHud = document.body.classList.contains('hud-on');
+    p.cine = true;
+    p.hud = true;
+    G.savePrefs(p);
+    return r;
+  });
+  if (!fx.hero || !fx.face || !fx.hud || !fx.rx) out.push('cinematic/HUD not applied: ' + JSON.stringify(fx));
+  if (fx.offHero || fx.offHud) out.push('cinematic/HUD did not switch off: ' + JSON.stringify(fx));
+  if (fx.toggles !== 'cine,hud') out.push('menu toggles: ' + fx.toggles);
+  return out.concat(errors);
+});
+
 suite('circuit and tail minigames', async (browser) => {
   const out = [];
   const { page, errors } = await openGame(browser, devices['iPhone 13']);

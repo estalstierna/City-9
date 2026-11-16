@@ -1053,6 +1053,7 @@
       </div>
       <div class="menu textsize"><span>Text size</span><button data-a="fs-">A−</button><button data-a="fs+">A+</button></div>
       <div class="menu textsize"><span>Text animation</span>${['normal', 'fast', 'off'].map((a) => `<button data-a="anim" data-v="${a}" class="${(prefs().anim || 'normal') === a ? 'on' : ''}">${a === 'off' ? 'Instant' : a[0].toUpperCase() + a.slice(1)}</button>`).join('')}</div>
+      ${(G.PREF_TOGGLES || []).map((t) => `<div class="menu textsize"><span>${t.label}</span><button data-a="pref" data-k="${t.key}">${prefs()[t.key] === false ? 'Off' : 'On'}</button></div>`).join('')}
       <div class="menu textsize"><span>Tips</span><button data-a="tips">${prefs().tips === false ? 'Off' : 'On'}</button></div>
       <div class="menu textsize"><span>Sound</span><button data-a="snd">${G.audio && G.audio.on() ? 'On' : 'Off'}</button>
       </div>
@@ -1092,6 +1093,14 @@
         toast('Copy the code to keep your record.');
       }
       if (a === 'import' && G.importSave($('#save-code').value)) closeModal();
+      if (a === 'pref') {
+        const p = prefs();
+        p[t.dataset.k] = p[t.dataset.k] === false;
+        savePrefs(p);
+        t.textContent = p[t.dataset.k] ? 'On' : 'Off';
+        (G.onPref || []).forEach((f) => f(t.dataset.k, p[t.dataset.k]));
+        return;
+      }
       if (a === 'tips') {
         const p = prefs();
         p.tips = p.tips === false;

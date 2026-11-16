@@ -128,6 +128,18 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
 
 11g. **Service record**: your whole career on one sheet. It shows citizens stopped, files kept, let go and amputated, merit, loyalty and your JURY file; a line for every chapter's night; the people who trust or hate you; and an assessment. You can open it from the Roster.
 
+11h. **More than text.** Two presentation layers, each with a switch in the Menu, and a way to play a shift on the map.
+   - **Cinematic scenes:** a scene's picture becomes a wide frame that slowly pans and zooms, with weather over it chosen from the scene (rain, smoke, screen flicker, dust). The same picture, blurred, fills the page behind the story. Dialogue shows the speaker's face when the game knows it.
+   - **Mask HUD** (once you wear the mask):
+     - a lens vignette and corner brackets;
+     - a biosignal trace that beats faster and turns red when you are hurt or watched;
+     - a radio waveform that moves on RADIO and DISPATCH lines;
+     - a scan sweep with the CID over the face of a citizen you stop.
+   - **Patrol on the map** (*Walk District 5* on the duty board): a shift from 08:00 to 18:00 on the painted map of District 5.
+     - Eight places, an hour a move. Tap a place to walk there.
+     - Incidents appear with timers: a queue turning, a runner, a Lantern alert, chalk, a collapse, a cart at the gate, a whisper, a quarrel.
+     - Each is a small choice or check. What you do not reach lapses, and the block remembers.
+
 11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.
 
 12. **Division transfer** (grade 01): once a day the duty board offers *Apply for a transfer*. The target division sets the exam: a written doctrine question (1 point), a practical in that division's own minigame (2 points) and an interview (1 point). Three of four points pass, and you keep your grade and file but get a new officer, partner and team. Fail, and that division will not read your name for 14 days. `js/content/transfer.js`.
@@ -259,6 +271,8 @@ js/content/chapter9.js Drowned Basements (necrotic outbreak)
 js/content/districts.js duties in D6-D8 and the Upper Town; the Prefect and the wardens
 js/content/chapter10.js The Coast Road: the sector map (fog of war)
 js/content/chapter11.js The Siege of the Nexus; the service record
+js/content/patrol.js   patrol shift on the District 5 map
+js/fx.js              cinematic scenes and the mask HUD
 js/content/onboarding.js field notes
 js/audio.js           procedural sound
 ```
