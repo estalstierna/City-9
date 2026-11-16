@@ -19,8 +19,8 @@
   const voice = (s) => (s.c7 && s.c7.who ? s.c7.who.name : s.rel.mira !== undefined ? 'Mira' : 'Halloran');
   const inf = (s, k, v) => s.cmd && s.cmd.inf && (s.cmd.inf[k] = Math.max(0, Math.min(100, s.cmd.inf[k] + v)));
 
-  G.PEOPLE.ostrova = { name: 'Warden Ostrova', role: 'Block Warden · Stack 9 · grey sash', img: null };
-  G.PEOPLE.sallow = { name: 'Prefect Sallow', role: 'District Prefect · D5 · bronze medallion', img: null };
+  G.PEOPLE.ostrova = { name: 'Warden Ostrova', role: 'Block Warden · Stack 9 · grey sash', img: 'ostrova' };
+  G.PEOPLE.sallow = { name: 'Prefect Sallow', role: 'District Prefect · D5 · bronze medallion', img: 'sallow' };
 
   G.extend('u_board', {
     text: (lines, s) => {
@@ -43,7 +43,7 @@
       text: [
         '@big CHAPTER NINE',
         '@sys ALL DIVISIONS · DROWNED BASEMENTS',
-        '@img assets/img/env/e13-pumphouse.webp|Canal Quarter — the rain',
+        '@img assets/img/env/e44-flood.webp|Canal Quarter — the eighth day of rain',
         'It rains for eight days. The canals come up over the towpaths and into the cellars of the Canal Quarter, the old drowned basements that run under half of D3 and, nobody likes to say, under the 404 wall.',
         'On the ninth morning a HELIX unit brings a boy of eleven to the Nexus with a bite on his forearm the shape of a mouth. The skin around it has gone the grey of wet ash. He keeps asking the unit what her name is, in her own voice.',
       ],
@@ -68,6 +68,7 @@
     c9_1: {
       title: 'Stack 9 — the warden’s flat, 21:00',
       text: [
+        '@portrait assets/img/portraits/ostrova.webp|Block Warden Ostrova — Stack 9 · CID 20917',
         'Block Warden Ostrova of Stack 9 is a citizen like any other, except for the grey sash across her jacket and the grey enamel badge on it. She has kept the block’s register for nine years. Tonight she opens her door before you knock.',
         '@say Ostrova|Fourth floor, flat 12. The Ilić family. The father was bitten in the cellar on Tuesday, carrying up coal. He is in the back room. His wife and two girls are sitting with him. I did not report it. You may write that down.',
         '@say Ostrova|He is still himself. Mostly. He asked me to take the girls if it gets worse. I said yes. Now I am asking you what yes means, officer.',
@@ -85,7 +86,7 @@
       checkpoint: true,
       title: 'Plaza 5 — bite screening',
       text: [
-        '@img assets/img/env/e10-ration.webp|Plaza 5',
+        '@img assets/img/env/e45-screening.webp|Plaza 5 — bite screening',
         'The ration queue goes through a screening line before the hatches: sleeves up, collars down, a VECTOR unit with a lamp. Early-stage infection looks like a bruise that has forgotten to heal: grey threads under the skin, a fever the lamp can read. The queue is a thousand people long and it knows why it is standing there.',
       ],
       choices: [
@@ -107,6 +108,7 @@
     c9_3: {
       title: 'The Nexus — the Prefect’s office',
       text: (s) => [
+        '@portrait assets/img/portraits/sallow.webp|District Prefect Sallow — D5',
         'The District Prefect of D5 has an office on the second floor of the Nexus and a bronze medallion on a ribbon that he touches when he is thinking. Prefect Sallow has governed the Stacks for six years from three kilometres away.',
         `@say Sallow|Stack 9 is ${G.cmdInf(s, 'd5') >= 35 ? 'lost' : 'at risk'}. The Upper Town is asking why the Stacks are allowed to breathe on it. I want the Stack 9 stairwells welded shut at every landing and the block held for fourteen days. Food through the windows. VECTOR at the doors.`,
         '@say Sallow|Four thousand people. Most of them will be fine. The ones who are not will not be in the Upper Town. That is the arithmetic. Will you carry it out, or shall I ask Overwatch when it comes back?',
@@ -125,7 +127,7 @@
       checkpoint: true,
       title: 'Canal Quarter — the drowned basement',
       text: (s) => [
-        '@img assets/img/env/e28-404-wall.webp|Under the wall',
+        '@img assets/img/env/e46-basement.webp|Under Pump House 4',
         'SPEAR maps the drowned basements with ropes and lamps. At 06:10 their radio picks something up from under Pump House 4: a voice, very calm, repeating the same few words over and over in the dark water.',
         `It is ${voice(s)}’s voice. Saying your name.`,
         '@say SPEAR point|Mimic stage. It has heard that voice somewhere. Or it has heard the person. We can go down and find out which.',
@@ -165,7 +167,7 @@
       checkpoint: true,
       title: 'Pump House 4 — the source',
       text: (s) => [
-        '@img assets/img/env/e13-pumphouse.webp|Pump House 4',
+        '@img assets/img/env/e47-chamber.webp|The chamber under Pump House 4',
         'VECTOR has found it: a chamber under Pump House 4 where the drowned basements meet the tunnels from the old town. The walls are grown over, floor to ceiling, grey and fibrous, like wet ash and lichen. It never glows. It breathes.',
         `@sys Infection now: ${G.CMD_DISTS.map((d) => d.code + ' ' + G.cmdInf(s, d.k)).join(' · ')}. Containment assessment: ${s.c9.score} / 100.`,
         '@say Vigil|Your decision, and your name on it.',

@@ -5,8 +5,8 @@
   const sup = (s) => G.superiorOf(s).name;
   const img = (n) => `assets/img/env/${n}.webp`;
   const ensure = (s, k) => s.rel[k] === undefined && (s.rel[k] = 0);
-  G.PEOPLE.sallow = G.PEOPLE.sallow || { name: 'Prefect Sallow', role: 'District Prefect · D5 · bronze medallion', img: null };
-  G.PEOPLE.ostrova = G.PEOPLE.ostrova || { name: 'Warden Ostrova', role: 'Block Warden · Stack 9 · grey sash', img: null };
+  G.PEOPLE.sallow = G.PEOPLE.sallow || { name: 'Prefect Sallow', role: 'District Prefect · D5 · bronze medallion', img: 'sallow' };
+  G.PEOPLE.ostrova = G.PEOPLE.ostrova || { name: 'Warden Ostrova', role: 'Block Warden · Stack 9 · grey sash', img: 'ostrova' };
 
   /* UNION — the Upper Town beat */
   G.divDuty({
@@ -91,6 +91,7 @@
     name: 'The Prefect’s ledger', desc: 'An audit of D5’s ration ledger for the District Prefect.',
     first: {
       title: 'The Nexus — the Prefect’s office',
+      img: 'assets/img/portraits/sallow.webp',
       text: [
         'Prefect Sallow wants D5’s ration ledger audited before the month closes. He touches the bronze medallion on his ribbon while he explains that he expects to find a block warden stealing.',
         'You find one. Warden Ostrova of Stack 9 has been drawing rations for four people who died in the winter. She has been giving them to two orphans in flat 12 who are not on any list.',
@@ -110,7 +111,7 @@
     name: 'Culvert sweep', desc: 'D3, the drowned basements and the tunnels that run under the 404 wall.',
     first: {
       title: 'D3 — the culverts',
-      img: img('e13-pumphouse'),
+      img: img('e46-basement'),
       text: ['Waist-deep water, a rope, a lamp. The culvert under Lock 3 runs east, towards the wall. Somebody has stacked sandbags across it, and somebody else has cut a gap through the sandbags just big enough for a person.'],
       choices: [
         { t: 'Rebuild the wall of sandbags and report the gap.', tag: 'BY THE BOOK', tagCls: 'loyal', out: ['Two hours of sandbags. VECTOR comes to look at the gap and says nothing at all.'], fx: { merit: 3 } },

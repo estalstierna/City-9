@@ -2130,6 +2130,8 @@ Fyra nya ark, ett per pool, inlagda 2026-11-16 som `docs/faces/f13–f24`, `face
 | E46 Den dränkta källaren | `env/e46-basement.jpg` | 1 uniform-spear · 2 necrotic-sheet · 3 env/e01-city |
 | E47 Kammaren under Pump House 4 | `env/e47-chamber.jpg` | 1 necrotic-sheet · 2 uniform-vector · 3 env/e13-pumphouse |
 
+**Klara (2026-11-16):** alla sex inlagda. E45 fick runda drönare i stället för Lanterns (liten avvikelse).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
