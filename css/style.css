@@ -723,3 +723,15 @@ figure.dvl figcaption span { display: block; font-size: 13.5px; color: var(--dim
 .cmd-b.ord { border-left-color: #2a363d; }
 .cmd-b.on { border-color: var(--accent); color: var(--accent); background: rgba(95,200,221,.08); }
 .cmd-b:disabled { opacity: .35; cursor: default; }
+
+/* the picture viewer: centred, dark, the picture as large as fits, tap anywhere to close */
+#modal[data-kind="image"] { align-items: center; background: rgba(2,4,6,.97); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+#modal[data-kind="image"] .modal-box { width: auto; max-width: min(1200px, 100%); max-height: 92vh; background: transparent; border: 0; }
+#modal[data-kind="image"] #modal-body { padding: 0; overflow: hidden; display: flex; justify-content: center; }
+#modal[data-kind="image"] #modal-body img.full { max-width: 100%; max-height: calc(92vh - 60px); width: auto; height: auto; object-fit: contain; border-radius: 3px; margin: 0; }
+#modal[data-kind="image"] .modal-head { border-bottom: 0; padding: 6px 4px 10px; }
+#modal[data-kind="image"] #modal-title { font-size: 12px; }
+@media (max-width: 860px) {
+  #modal[data-kind="image"] { bottom: 0; padding: 12px; align-items: center; z-index: 60; }
+  #modal[data-kind="image"] #modal-body img.full { max-height: calc(100vh - 140px); }
+}

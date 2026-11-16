@@ -354,7 +354,7 @@
       const shown = () => f.classList.add('loaded');
       if (im.complete && im.naturalWidth) shown();
       else (im.onload = shown), (im.onerror = shown);
-      f.onclick = () => openModal(cap || 'Reference', `<img class="full" src="${src}" alt="">`);
+      f.onclick = () => openModal(cap || 'Reference', `<img class="full" src="${src}" alt="">`, 'image');
       return f;
     }
     if (p === '@hr') return el('hr', 'sep');
@@ -945,12 +945,14 @@
     $('#modal-body').innerHTML = html;
     $('#modal-body').onclick = null;
     $('#modal').classList.add('open');
+    $('#modal').dataset.kind = kind || 'modal';
     view = kind || 'modal';
     $('#app').classList.remove('side-open');
     renderNav();
   }
   function closeModal() {
     const back = modalBack;
+    $('#modal').dataset.kind = '';
     modalBack = null;
     $('#modal').classList.remove('open');
     if (view !== 'story' && view !== 'dossier') {
@@ -1142,7 +1144,7 @@
     $('#btn-side').onclick = () => setView(view === 'dossier' ? 'story' : 'dossier');
     $('#modal-close').onclick = closeModal;
     $('#modal').onclick = (e) => {
-      if (e.target.id === 'modal') closeModal();
+      if (e.target.id === 'modal' || ($('#modal').dataset.kind === 'image' && e.target.tagName === 'IMG')) closeModal();
     };
     document.addEventListener('keydown', (e) => {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
