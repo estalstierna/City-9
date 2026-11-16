@@ -48,6 +48,30 @@
     [true, 'young man', 'a shaved head and a bruised cheek'], [false, 'young woman', 'black hair in a knot and goggles round her neck'], [true, 'man in his forties', 'long dark hair and a gold tooth'], [false, 'woman in her forties', 'a burn scar on her jaw'],
     [true, 'old man', 'a bald head and a mark behind one ear'], [false, 'woman in her thirties', 'cropped fair hair and a black eye'], [true, 'teenage boy', 'curly hair and a missing tooth'], [false, 'woman in her fifties', 'a grey braid and wader straps'],
   ]);
+  /* sheet B (2026-11-16): twelve more of each, numbered 13–24, from every part of the world the
+     relocation trains reach. Indices 48 onward. */
+  const more = (dir, p, kind, list) => FACES.push(...list.map((x, i) => ({ m: x[0], age: x[1], look: x[2], ...(kind === 'cwu' ? { cwu: true } : kind ? { kind } : {}), img: `assets/img/docs/${dir}/${p}${String(i + 13).padStart(2, '0')}.webp` })));
+  more('faces', 'f', null, [
+    [true, 'boy of about sixteen', 'a fresh bruise on his cheek and hair cut badly by hand'], [true, 'very heavy man in his fifties', 'heavy jowls and thin, sweating hair'], [false, 'woman in her seventies', 'short grey curls and one eye clouded white'], [true, 'gaunt young man', 'prominent ears and a thin moustache'],
+    [false, 'woman in her forties', 'heavy eyebrows and a scar through her upper lip'], [true, 'man in his sixties', 'a nose broken crooked and white stubble'], [false, 'girl of about seventeen', 'red hair shaved on one side and a gap in her front teeth'], [true, 'man in his thirties', 'thick black eyebrows and a gold tooth'],
+    [false, 'stout woman in her fifties', 'a port-wine birthmark on her cheek'], [true, 'man in his eighties', 'a bald, liver-spotted head and a large nose'], [false, 'young woman', 'long straight black hair and a nose-piercing hole'], [true, 'broad man in his forties', 'a shaved head and a long scar across his forehead'],
+  ]);
+  more('faces-cwu', 'c', 'cwu', [
+    [false, 'plump woman in her sixties', 'white hair under a hairnet'], [true, 'young man', 'a wispy beard and large dark eyes'], [true, 'very heavy man in his fifties', 'a bulbous red nose'], [false, 'woman in her thirties', 'short twists of hair and a gold stud earring'],
+    [true, 'old man', 'enormous white eyebrows and a hearing aid'], [false, 'woman in her forties', 'a short practical haircut and reading glasses on a cord'], [true, 'young man of about nineteen', 'acne scars and sticking-out ears'], [false, 'woman in her fifties', 'a patterned headscarf and a strong nose'],
+    [true, 'big man in his thirties', 'a boxer’s flat face and a split eyebrow'], [false, 'very thin young woman', 'blonde hair scraped back and a cold sore'], [true, 'man in his sixties', 'a neat grey beard'], [false, 'woman in her forties', 'auburn hair in a messy knot and a crooked tooth'],
+  ]);
+  more('faces-rebel', 'r', 'rebel', [
+    [false, 'woman in her fifties', 'a shaved head and a burn scar down her neck'], [true, 'boy of about fifteen', 'a too-big knitted cap and a split lip'], [true, 'man in his seventies', 'a long white beard and watery eyes'], [false, 'young woman', 'wet black hair and a bruise on her temple'],
+    [true, 'heavy man in his forties', 'a ginger beard and a cigarette behind his ear'], [false, 'woman in her thirties', 'a scarred eyebrow and a nose stud'], [true, 'young man', 'a healing gash on his shaved scalp and a gold chain'], [false, 'tiny old woman', 'white hair in two thin plaits'],
+    [true, 'man in his thirties', 'a black ponytail and three dots tattooed under one eye'], [false, 'woman in her forties', 'a grey crew cut and welding goggles round her neck'], [true, 'man in his fifties', 'a thick moustache and one lazy eye'], [false, 'girl of about eighteen', 'curly red hair under a cap and a black eye'],
+  ]);
+  more('faces-commended', 'm', 'commended', [
+    [true, 'plump man in his fifties', 'a neat side parting and a satisfied smile'], [false, 'woman in her sixties', 'short grey hair and pearl earrings'], [true, 'man in his thirties', 'slicked blond hair and a cleft chin'], [false, 'woman in her forties', 'a perfect bun and a thin gold chain'],
+    [true, 'man in his seventies', 'a waxed white moustache and wire spectacles'], [false, 'young woman', 'round cheeks and braces on her teeth'], [true, 'man in his forties', 'a trimmed beard and a heavy gold ring'], [false, 'heavy woman in her fifties', 'dyed jet-black hair piled high'],
+    [true, 'young man', 'slicked black hair and a thin moustache'], [false, 'woman in her seventies', 'silver hair in a crown braid and a cameo brooch'], [true, 'bald man in his sixties', 'round spectacles and a beaming smile'], [false, 'woman in her thirties', 'a black bob and a warden’s whistle'],
+  ]);
+
   /* kind: true or 'cwu' → CWU; 'commended'; 'rebel'; anything else → ordinary citizens */
   const facePool = (kind) => {
     const k = kind === true ? 'cwu' : kind || 'citizen';
