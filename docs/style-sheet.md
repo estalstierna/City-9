@@ -2103,6 +2103,16 @@ Förbund som piktogram på brickan: RATION (ransonpaket), REPAIR (skiftnyckel), 
 
 **Klar (2026-11-15):** CWU1 inlagd i codex-posten om medborgare (CWU-avsnittet), med graderna och förbunden. Brask är Supervisor (SV) på färgeriet.
 
+## 5ad. KAPITEL 8: THE INSPECTION
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| K13 Sector Administrator Morow | `portraits/morow.jpg` (+ thumb) | 1 portraits/granite (bara stil) · 2 admin-sheet (dräkt och silverkedja SA) |
+| E42 Sektortåget i D4 | `env/e42-sector-train.jpg` | 1 env/e12-railyard · 2 admin-sheet · 3 ota-soldier · 4 uniform-union · 5 env/e01-city |
+| E43 Mottagningen i Upper Town | `env/e43-reception.jpg` | 1 admin-sheet · 2 citizen-commended · 3 uniform-oa · 4 env/e01-city |
+
+Morow: kvinna i sextioårsåldern, slaggrå rock med ståkrage, silverkedja med full lagerkrans (SA). E42 öppnar kapitlet och domen; E43 öppnar mottagningen.
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
