@@ -599,8 +599,15 @@ suite('chapter 10 for every division (The Coast Road, sector map)', async (brows
       Object.assign(s, { rank: i % 2 ? 'SqL' : 'OfC', merit: 460, lp: 36, res: i % 3 ? 25 : 5 });
       Object.assign(s.rel, { rook: 30 });
       G.formSquad(s);
+      if (!window.__fh) {
+        window.__fh = true;
+        window.__field = {};
+        G.afterRender.push((sc, id) => G.inField(G.state()) && (window.__field[id] = 1));
+      }
     },
   });
+  const city = await page.evaluate(() => Object.keys(window.__field || {}).filter((id) => !/^(cr_|c10_|u_duty_end|u_night|pb_|promo|disc_|infirmary|end_|cmd_)/.test(id)));
+  if (city.length) out.push('city scenes played in the field: ' + city.join(', '));
   const r = await page.evaluate(() => ({ c: G.state().c10, seen: Object.keys(G.state().visits || {}).filter((k) => /^cr_|^c10_3/.test(k)) }));
   if (!r.seen.includes('cr_pick')) out.push('the sector map never came up');
   if (!r.c || !(r.c.cleared >= 1)) out.push('no sector was cleared: ' + JSON.stringify(r.c && r.c.cleared));

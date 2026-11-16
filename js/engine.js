@@ -24,7 +24,13 @@
      Extensions run in the order they were registered. G.ext lists them per scene. */
   G.ext = {};
   G.extend = (id, e) => (G.ext[id] = G.ext[id] || []).push(e);
-  const exts = (id) => G.ext[id] || [];
+  /* in the field (outside the city) the city's own systems step aside: only extensions marked
+     { field: true } run on the daily-loop scenes */
+  const FIELD_GATED = { u_board: 1, u_evening: 1, u_night: 1 };
+  const exts = (id) => {
+    const l = G.ext[id] || [];
+    return FIELD_GATED[id] && G.inField && S && G.inField(S) ? l.filter((e) => e.field) : l;
+  };
   G.addCodex = (obj) => Object.assign(G.codexEntries, obj);
 
   /* ---------------------------------------------------------------- data */

@@ -112,6 +112,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - the church where refugees and fighters shelter together.
    - **The report:** counts the cleared sectors, the people moved on, detained and harmed, and the sectors burned.
    - **The name:** the Union still says Anticitizen One. You stay Civil Protection.
+   - **In the field:** the city's duty board, evenings and events step aside. Camp duties replace them: the sentry line (watch minigame, fewer night raids), the water detail, the detainee pen, the radio truck (reveals a sector), and convoy escort. Evenings are in the camp.
 
 11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.
 

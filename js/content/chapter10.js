@@ -70,7 +70,18 @@
   G.coastMapSvg = mapSvg;
 
   /* the field day: a sector, then an action */
+  /* in the field: the city's duty board, evenings and events step aside (engine field gate) */
+  G.inField = (s) => !!(s && s.phase === 'union' && s.c10 && s.c10.on && !s.c10.done);
+  G.extend('u_evening', {
+    field: true,
+    before: (s) => {
+      if (!G.inField(s)) return;
+      const b = G.dueBeat && G.dueBeat(s, 'evening');
+      return b || 'cr_evening';
+    },
+  });
   G.extend('u_board', {
+    field: true,
     before: (s) => {
       const c = C(s);
       if (!c || !c.on || c.done || c.fieldDay === s.day) return;
@@ -82,7 +93,7 @@
 
   const camp = (s, lines) => {
     const reb = left(s).reduce((a, x) => a + sec(s, x.k).reb, 0);
-    if (reb >= 8 && Math.random() < 0.35) {
+    if (reb >= 8 && Math.random() < (C(s).guard >= s.day ? 0.1 : 0.35)) {
       lines.push('@sys NIGHT RAID — Lambda fighters hit the camp after dark. Tracer over the tents, a truck burning, someone shouting your designation from the trees.');
       G.fx(s, { hp: -10 });
       if (s.squad && s.squad.formed && G.squadHit) G.squadHit(s, true, 'the camp on the coast road');
@@ -113,7 +124,10 @@
             const x = sec(s, z.k);
             return { t: `**${z.code} ${z.name}** — ${x.known ? who(x) : 'unknown'}`, fx: (st) => ((C(st).target = z.k), null), go: 'cr_act' };
           })
-          .concat([{ t: 'Stay in camp. Rest the teams.', fx: { hp: 10 }, go: 'u_duty_end' }]),
+          .concat([
+            { t: '**Camp duty instead** — sentries, water, the detainee pen, the radio.', tag: 'CAMP', tagCls: 'duty', go: 'cr_jobs' },
+            { t: 'Stay in camp. Rest the teams.', fx: { hp: 10 }, go: 'cr_day_end' },
+          ]),
     },
     cr_act: {
       title: (s) => `${sec(s, C(s).target).known ? '' : '? '}${nameOf(C(s).target)}`,
@@ -136,6 +150,65 @@
         return out;
       },
     },
+    /* ---------------------------------------------------- camp duties */
+    cr_jobs: {
+      title: 'The camp — duties',
+      text: ['Six PT-Vs in a ring at the toll plaza, tents inside it, a wire pen for detainees, a radio mast on a truck. There is always something that needs doing.'],
+      choices: (s) => [
+        { t: 'Take the sentry line tonight and this morning. Fewer raids on the camp.', tag: 'WATCH', tagCls: 'duty', go: 'cr_job_watch' },
+        { t: 'Lead the water and fuel detail to the river ford.', check: { skill: 'fitness', diff: 5, pass: 'cr_job_water_ok', fail: 'cr_job_water_bad' } },
+        { t: 'Run the detainee pen: names, wounds, food.', tag: 'MERCY', tagCls: 'mercy', if: (st) => st.c10.detained + st.c10.harmed > 0, check: { skill: 'medical', diff: 5, pass: 'cr_job_pen_ok', fail: 'cr_job_pen_bad' } },
+        { t: 'Sit at the radio truck and listen to Lambda traffic.', tag: 'RADIO', tagCls: 'duty', check: { skill: 'comms', diff: 10, pass: 'cr_job_radio_ok', fail: 'cr_job_radio_bad' } },
+        { t: 'Escort a convoy of detainees back to the city gate.', if: (st) => st.c10.detained >= 10, go: 'cr_job_convoy' },
+        { t: 'Back to the map.', go: 'cr_pick_again' },
+      ],
+    },
+    cr_job_watch: {
+      title: 'The sentry line',
+      text: ['@sys Watch the treeline. Someone moving like a scout, a rifle where a branch should be. Catch them before they reach the wire. Leave the refugees fetching wood alone.'],
+      mini: { type: 'watch', opts: { title: 'The sentry line', need: 4, seconds: 40 }, pass: 'cr_job_watch_ok', fail: 'cr_job_watch_bad', skill: 'perception', diff: 10 },
+    },
+    cr_job_watch_ok: { enter: (s) => { C(s).guard = s.day + 2; }, text: ['Two Lambda scouts stopped at the wire, one turned back. The camp sleeps better for two nights.'], choices: [{ t: 'Evening.', fx: { merit: 3, xp: { perception: 1 } }, go: 'cr_day_end' }] },
+    cr_job_watch_bad: { text: ['You stop a boy carrying firewood and miss the woman behind him with a rifle under her coat. Nobody is hurt. Everybody knows.'], choices: [{ t: 'Evening.', fx: { merit: -1 }, go: 'cr_day_end' }] },
+    cr_job_water_ok: { text: ['Forty jerrycans of water and two drums of fuel from the abandoned depot at the ford, and nobody shot at you once.'], choices: [{ t: 'Evening.', fx: (st) => (st.squad && st.squad.formed && G.squadActive(st).forEach((m) => (m.loyal = Math.min(100, m.loyal + 2))), { merit: 2, hp: 5, xp: { fitness: 1 } }), go: 'cr_day_end' }] },
+    cr_job_water_bad: { text: ['A truck in the ford, a broken axle, five hours in cold water to pull it out.'], choices: [{ t: 'Evening.', fx: { hp: -8 }, go: 'cr_day_end' }] },
+    cr_job_pen_ok: { text: (s) => [`You go down the line in the pen with a clipboard and a medical kit. Names that are not on any list. A burn dressed. A child given your ration bar. ${s.c10.harmed ? 'Some of the hurt were hurt by your teams. They know it, and so do you.' : ''}`], choices: [{ t: 'Evening.', fx: { cons: 5, xp: { medical: 1 } }, go: 'cr_day_end' }] },
+    cr_job_pen_bad: { text: ['A fight breaks out at the food line. You stop it. Nobody thanks you, on either side of the wire.'], choices: [{ t: 'Evening.', fx: { cons: -1 }, go: 'cr_day_end' }] },
+    cr_job_radio_ok: {
+      enter: (s) => {
+        const hidden = left(s).filter((z) => !sec(s, z.k).known);
+        const z = hidden.length ? pick(hidden) : null;
+        if (z) sec(s, z.k).known = true;
+        C(s).heard = z ? z.k : null;
+      },
+      text: (s) => [C(s).heard ? `Four hours of static, then a voice on a frequency nobody is supposed to use, reading out a list of supplies for “the ${nameOf(C(s).heard).toLowerCase()}”. Now you know who is there.` : 'Four hours of static and a voice reading numbers. Every sector on the road is already on your map.', 'Near the end of the shift the voice says something else, quickly, before it cuts out: a name. The same name.'],
+      choices: [{ t: 'Evening.', fx: { xp: { comms: 1 } }, go: 'cr_day_end' }],
+    },
+    cr_job_radio_bad: { text: ['Static, all shift. Once, very faintly, somebody laughing.'], choices: [{ t: 'Evening.', go: 'cr_day_end' }] },
+    cr_job_convoy: { text: (s) => [`A day down the coast road and back with ${Math.min(40, s.c10.detained)} detainees in the trucks. At the city gate a Sector clerk counts them off with a pencil and does not look up.`], choices: [{ t: 'Evening.', fx: { merit: 4, lp: 2, cons: -2 }, go: 'cr_day_end' }] },
+
+    /* ---------------------------------------------------- camp evenings */
+    cr_evening: {
+      title: (s) => `The camp — evening, day ${s.day - C(s).startDay + 1}`,
+      enter: (s) => {
+        s.time = 'Evening';
+      },
+      text: (s) => [
+        pick(['The PT-V engines tick as they cool. Somebody is cooking ration cubes on a petrol stove. Out past the wire, the Lambda people have lit a fire on the hill so that you can see it.', 'The sea sounds louder at night. The units on sentry talk to each other on an open channel to stay awake.', 'Rain on canvas. A detainee in the pen is singing something in a language nobody in the camp speaks.']),
+        `@sys Cleared ${C(s).cleared} of ${SECTORS.length}. Detained ${C(s).detained}. Harmed ${C(s).harmed}.`,
+      ],
+      choices: (s) => [
+        { t: 'Sit with your team at the stove.', if: (st) => st.squad && st.squad.formed, fx: (st) => (G.squadActive(st).forEach((m) => (m.loyal = Math.min(100, m.loyal + 3))), { cons: 1 }), go: 'cr_eve_team' },
+        { t: 'Clean your weapon and check the ammunition count.', fx: { xp: { firearms: 1 } }, go: 'u_night' },
+        { t: 'Walk the wire of the detainee pen.', if: (st) => st.c10.detained + st.c10.harmed > 0, go: 'cr_eve_pen' },
+        { t: 'Write a letter home you will not be allowed to send.', go: 'cr_eve_letter' },
+        { t: 'Sleep while you can.', fx: (st) => ({ hp: Math.min(20, st.maxhp - st.hp) }), go: 'u_night' },
+      ],
+    },
+    cr_eve_team: { text: (s) => [`${s.squad && s.squad.formed && G.squadActive(s)[0] ? G.squadActive(s)[0].name : 'Your partner'} asks, quietly, whether any of you have heard the name the prisoners keep saying. Nobody answers. Nobody needs to.`], choices: [{ t: 'Sleep.', go: 'u_night' }] },
+    cr_eve_pen: { text: ['On the other side of the wire an old man holds up a photograph of a family and asks if you have seen them in the city. You have not. You might have.'], choices: [{ t: 'Sleep.', fx: { cons: 1 }, go: 'u_night' }] },
+    cr_eve_letter: { text: (s) => [`You write to ${s.rel.mira !== undefined ? 'Mira' : 'nobody in particular'} about the sea, which you had not seen since you were a child. You do not write about the church, or the pen, or the name. The letter goes in your locker with the others.`], choices: [{ t: 'Sleep.', fx: { cons: 1 }, go: 'u_night' }] },
+
     cr_pick_again: { enter: (s) => { C(s).fieldDay = -1; return 'cr_pick'; }, text: [] },
     cr_scout: {
       enter: (s) => {

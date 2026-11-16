@@ -28,8 +28,10 @@
   }
 
   function dueBeat(s, when) {
+    const field = G.inField && G.inField(s);
     for (const b of G.beats) {
       if (b.time !== when) continue;
+      if (field && !(b.field || /^c10/.test(b.id))) continue;
       if (s.flags['beat_' + b.id]) continue;
       if (b.when(s)) {
         s.flags['beat_' + b.id] = true;
@@ -38,6 +40,7 @@
     }
     return null;
   }
+  G.dueBeat = dueBeat;
 
   G.addScenes({
     u_start: {
