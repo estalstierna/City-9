@@ -2117,7 +2117,7 @@ Morow: kvinna i sextioårsåldern, slaggrå rock med ståkrage, silverkedja med 
 
 ## 5ae. ANSIKTSARK B (24 per pool)
 
-Fyra nya ark, ett per pool, inlagda 2026-11-16 som `docs/faces/f13–f24`, `faces-cwu/c13–c24`, `faces-rebel/r13–r24` och `faces-commended/m13–m24` (FACES 48–95). Varje pool har nu 24 ansikten. Basprompten: ett 4 × 3-rutnät, samma ljusgrå bakgrund och samma utsnitt; tolv personer med olika ålder (tonåringar till 80+), kroppsform, ursprung (relokeringstågen tar folk överallt ifrån) och ett ovanligt kännetecken var. Bifoga bara ett befintligt ark i samma grupp, för layout och kläder. Kanalcellerna: bifoga ett CWU-ark för utsnittet och det gamla kanalcellsarket för kläderna.
+Fyra nya ark, ett per pool, inlagda 2026-11-16 som `docs/faces/f13–f24`, `faces-cwu/c13–c24`, `faces-rebel/r13–r24` och `faces-commended/m13–m24` (FACES 48–95). Varje pool har nu 24 ansikten. Basprompten: ett 4 × 3-rutnät, samma ljusgrå bakgrund och samma utsnitt; tolv personer med olika ålder (tonåringar till 80+), kroppsform, ursprung (relokeringstågen tar folk överallt ifrån) och ett ovanligt kännetecken var. Bifoga bara ett befintligt ark i samma grupp, för layout och kläder. Kanalcellerna: bifoga ett CWU-ark för utsnittet och det gamla kanalcellsarket för kläderna. r01–r12 är omgjorda (Rev 2) med samma personer i det nya formatet.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
