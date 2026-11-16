@@ -2150,6 +2150,8 @@ Egen design: civila kläder, vadderade västar, stulen CP-utrustning, handmålad
 | E50 Bakhållet i järnvägsskärningen | `env/e50-cutting.jpg` | 1 lambda-sheet · 2 vehicle-ptv · 3 uniform-union |
 | E51 Kyrkan på kullen | `env/e51-church.jpg` | 1 lambda-sheet · 2 citizen-base · 3 env/e01-city |
 
+**Klara (2026-11-16):** E48–E51 inlagda (även i sektorvyerna för S1, S6 och S8).
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |

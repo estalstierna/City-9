@@ -120,6 +120,7 @@
       text: (s) => {
         const x = sec(s, C(s).target);
         return [
+          C(s).target === 's1' ? '@img assets/img/env/e48-toll-camp.webp|The toll plaza' : C(s).target === 's6' ? '@img assets/img/env/e50-cutting.webp|The rail cutting' : C(s).target === 's8' ? '@img assets/img/env/e51-church.webp|The church' : null,
           x.known ? `@sys ${who(x)}.` : '@sys You do not know who is here. Smoke from one chimney. Washing on a line. Or a trap.',
           { s1: 'A toll plaza of the old motorway, cars rusted nose to tail in every lane, a sheet-metal village grown between them.', s2: 'A fuel station with the canopy collapsed over the pumps. Somebody has painted the pumps white, very carefully.', s3: 'A two-storey roadside motel, every door numbered, half of them boarded. A child’s bicycle outside room 12.', s4: 'A fishing village where the road meets the sea: upturned boats, nets drying on the old bus shelter, smoke from three chimneys.', s5: 'The lighthouse on the point, its lamp long dead. An antenna wire runs from the gallery down into the rocks.', s6: 'A deep cutting where the freight line runs through the hill. Good ground for an ambush, and everybody knows it.', s7: 'The old quarry, terraced into the hill, its machinery sheds patched with Union tarpaulins somebody stole.', s8: 'A stone church on the hill above the road. The bell has been taken down and is sitting in the grass by the door.' }[C(s).target],
         ];
@@ -240,6 +241,7 @@
       text: [
         '@big CHAPTER TEN',
         '@sys ALL DIVISIONS · THE COAST ROAD',
+        '@img assets/img/env/e48-toll-camp.webp|The coast road — the toll plaza',
         'For the first time since the Academy you leave the city. A column of six PT-Vs and two trucks goes out through the north gate at dawn, past the last checkpoint, onto the old coast road: four lanes of broken motorway running north along the sea towards City 17, full of rust and grass and people who are not supposed to exist.',
         '@say Vigil|The Sector will run convoys up this road within the month. Morow wants it clear. Refugees, deserters, the Lambda people. Clear means nobody between City 9 and the bridge at the county line. Six sectors at least. I do not care how. Yes, I do. Do it in a way you can write down.',
       ],
@@ -289,6 +291,7 @@
       checkpoint: true,
       title: 'The camp — the prisoner',
       text: [
+        '@img assets/img/env/e49-prisoner.webp|The command tent',
         'They bring in a Lambda fighter taken in the rail cutting: a woman of about thirty in a padded vest over a citizen jacket, a medic’s white cloth tied round her arm, and over her heart a lambda painted by hand on a square of canvas. Her hands are tied. She is not frightened of you, which is new.',
         '@say The prisoner|You keep saying Anticitizen One, like a number. He has a name. Everybody north of the river knows it. They have known it since the train.',
         '@say The prisoner|Gordon Freeman.',
@@ -309,7 +312,7 @@
     c10_4: {
       checkpoint: true,
       title: 'The rail cutting — ambush',
-      text: ['The convoy taking your detainees back to City 9 goes through the rail cutting at 07:30. At 07:31 the hillside opens up on both sides. The lead PT-V stops dead with a burning tyre, and the cutting fills with smoke and shouting and the hard flat sound of rifles.'],
+      text: ['@img assets/img/env/e50-cutting.webp|The rail cutting, 07:31', 'The convoy taking your detainees back to City 9 goes through the rail cutting at 07:30. At 07:31 the hillside opens up on both sides. The lead PT-V stops dead with a burning tyre, and the cutting fills with smoke and shouting and the hard flat sound of rifles.'],
       choices: [
         { t: 'Take the point. Clear the cutting door by door.', tag: 'BREACH', tagCls: 'duty', go: 'c10_4_breach' },
         { t: 'Hold the convoy and wait them out.', check: { skill: 'authority', diff: 15, pass: 'c10_4_hold', fail: 'c10_4_lost' } },
@@ -327,6 +330,7 @@
       text: (s) => {
         const x = s.c10.sec.s8;
         return [
+          '@img assets/img/env/e51-church.webp|The church on the hill',
           x.cleared ? 'The church is already empty. But the refugees you moved from the rest of the road have gone somewhere, and the scouts say: up the hill, behind the old seminary, a second camp, with fighters among them.' : `The last place on the road with people in it: the stone church, ${x.known ? who(x) : 'more people than any other sector'}. Refugees in the pews. Lambda fighters in the bell tower. A deserter on the door. They all know you are coming.`,
           '@say Vigil|(on the radio) Morow wants it finished tonight. Your choice how. Write it down.',
         ];
