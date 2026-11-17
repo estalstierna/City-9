@@ -51,7 +51,7 @@
       { t: 'Leave the log. You are not here to audit a gatehouse.', out: ['Kell nods, almost grateful.', { merit: 1 }, {}] },
     ] },
     yard: { name: 'Intake', icon: '?', text: [
-      '@img assets/img/npg-prisoners.webp|Detainee clothing, Nova Prospekt',
+      '@img assets/img/env/e53-np-intake.webp|The processing yard, 08:00',
       'The processing yard. A shaved boy in grey canvas, NP-04117, is being cuffed to a rail by a Warden who is not looking at him. When you stop, the boy looks at your armband and then very hard at his own feet.',
     ], opts: [
       { t: 'Take him aside, gently. Ask what he saw at the intake desk.', tag: 'MERCY', cls: 'mercy', out: ['*“A man came through on his own, sir. Nobody cuffed him. The Wardens walked beside him like he was somebody else’s.”* He stops. *“He had a crowbar in his hand. Nobody took it off him.”*', { cons: 2 }, { clue: 1 }] },
@@ -67,6 +67,7 @@
       { t: 'Nod and move on.', out: ['He goes back to his sleeve.', {}, {}] },
     ] },
     cellb: { name: 'Cell 7-C', icon: '?', text: [
+      '@img assets/img/env/e54-np-cell7c.webp|Cell 7-C',
       'Cellblock B, third gallery. Cell 7-C is empty and has been scrubbed. Scrubbed recently: the floor is still damp at the edges. On the inside of the door someone has scratched a tally, and next to it a bar-shaped dent in the steel.',
     ], opts: [
       { t: 'Search it properly.', check: ['perception', 5], ok: ['The lock was never forced. It was opened from the outside with a Warden’s key, from the gallery side, and shut again behind a man who walked out of here. The tally has twelve marks and then stops.', {}, { clue: 1 }], bad: ['You find the damp, the dent and nothing else.', {}, {}] },
@@ -74,6 +75,7 @@
       { t: 'Leave it. It is a cell.', out: ['A cell. A dent. You close the door.', {}, {}] },
     ] },
     tower: { name: 'The records room', icon: '?', text: [
+      '@img assets/img/env/e55-np-records.webp|The records room',
       'The control tower records room is a tidy, airless room with a clerk in it. He has the look of a man who has been waiting all day for someone to ask him the one question.',
     ], opts: [
       { t: 'Ask for the transfer log for the night of the train.', check: ['perception', 5], ok: ['Pages 40 to 44 are missing from the ledger, cut with a razor, and the clerk’s eyes go to the stove. In the stove: ash, and half a page. “By order of the Commandant.”', {}, { clue: 1 }], bad: ['The ledger is whole. Too whole. It has been rewritten in one hand.', {}, {}] },
@@ -95,6 +97,7 @@
       { t: 'Say nothing, and take a carbine yourself.', tag: 'RISK', cls: 'risk', out: ['A spare weapon is a spare weapon. Nobody comments.', { susp: 1 }, {}] },
     ] },
     rail: { name: 'The transport train', icon: '?', text: [
+      '@img assets/img/env/e56-np-raildock.webp|The transport dock',
       'A transport train waits at the dock with its doors open and a hundred and eighty names on the manifest, due north at 15:00 to “reprocessing”. The Wardens loading it will not say where north is.',
     ], opts: [
       { t: 'Walk the wagons. Check who is on the manifest.', check: ['medical', 5], ok: ['Half of them are sick. Four are very sick. You mark them for HELIX and hold the train until they are off it.', { cons: 4, xp: { medical: 1 } }, { order: -3 }], bad: ['You see a lot of grey faces and cannot tell the sick from the afraid.', {}, {}] },
@@ -116,12 +119,12 @@
       { t: 'Open the gate and let them in. Take command.', tag: 'BY THE BOOK', cls: 'loyal', out: ['Forty Wardens in amber and olive go through the gate at the run.', { merit: 3 }, { order: 8, blood: 1 }] },
       { t: 'Hold the gate shut and talk to the column.', check: ['authority', 10], ok: ['They stop at the gate. They put their weapons down. It will be remembered.', { cons: 3, merit: 2 }, { order: 5 }], bad: ['They think you are a mutineer. The first shots are on the gate.', { hp: -4 }, { order: -4, blood: 1 }] },
     ] },
-    yard: { name: 'The yard is turning', icon: '‼', text: 'The processing yard is full of prisoners and the queue has broken. A few hundred people in grey canvas are walking, not running, towards the main gate. The Wardens on the wall are not shooting yet.', opts: [
+    yard: { name: 'The yard is turning', icon: '‼', img: 'e58-np-yard-turns', text: 'The processing yard is full of prisoners and the queue has broken. A few hundred people in grey canvas are walking, not running, towards the main gate. The Wardens on the wall are not shooting yet.', opts: [
       { t: 'Close the yard gates and fire over their heads.', tag: 'BY THE BOOK', cls: 'loyal', out: ['The crowd stops. A few people on the ground, not many. The rest go back to the sheds.', { merit: 3, cons: -4 }, { order: 9, blood: 1 }] },
       { t: 'Walk out in front of them with your hands open.', tag: 'RISK', cls: 'risk', check: ['authority', 10], ok: ['Nobody has done that here in six years. The crowd stops at your feet, and an old woman says: “Where do you want us?”', { cons: 5, merit: 2 }, { order: 6 }], bad: ['A thrown boot, then the sound a crowd makes when it has chosen.', { hp: -5 }, { order: -6, blood: 1 }] },
       { t: 'Open the yard gate and let them through to the road.', tag: 'MERCY', cls: 'mercy', out: ['They go through the gate in a long grey line, walking, not running, and the Wardens on the wall do not fire.', { cons: 5, susp: 6, res: 3 }, { freed: 2, order: -6 }] },
     ] },
-    cella: { name: 'The cells are open', icon: '‼', text: 'On Cellblock A every door has sprung at once, and the galleries are filling. The old man is standing in the middle of the ground floor, perfectly still, and the Wardens have backed against the far wall.', opts: [
+    cella: { name: 'The cells are open', icon: '‼', img: 'e57-np-blackout', text: 'On Cellblock A every door has sprung at once, and the galleries are filling. The old man is standing in the middle of the ground floor, perfectly still, and the Wardens have backed against the far wall.', opts: [
       { t: 'Push the Wardens in and clear the galleries.', tag: 'BY THE BOOK', cls: 'loyal', out: ['It takes forty minutes and every Warden on the floor. Cells close one at a time.', { merit: 4, cons: -5 }, { order: 10, blood: 2 }] },
       { t: 'Go and stand beside the old man. Ask what he wants.', tag: 'MERCY', cls: 'mercy', out: ['*“The same as you. To go home. Give us the stairs, unit, and we will give you the floor.”* It is a better offer than most.', { cons: 4, susp: 3, res: 2 }, { order: 3, freed: 1 }] },
     ] },
@@ -142,7 +145,7 @@
       { t: 'Seal the motor pool and hold the vehicles.', tag: 'BY THE BOOK', cls: 'loyal', out: ['The trucks stay where they are. So does everyone who needs them.', { merit: 3 }, { order: 6, blood: 1 }] },
       { t: 'Let them go. You cannot stop trained people with what you have.', tag: 'RISK', cls: 'risk', out: ['They go. Not towards you.', { cons: 1, susp: 2 }, { freed: 1 }] },
     ] },
-    rail: { name: 'The transport dock', icon: '‼', text: 'Prisoners are pouring across the dock to the train. Some want to leave on it. Some are pulling others off. A Warden at the lift is being shouted down by a woman holding a child.', opts: [
+    rail: { name: 'The transport dock', icon: '‼', img: 'e56-np-raildock', text: 'Prisoners are pouring across the dock to the train. Some want to leave on it. Some are pulling others off. A Warden at the lift is being shouted down by a woman holding a child.', opts: [
       { t: 'Clear the dock and send the train out empty.', tag: 'BY THE BOOK', cls: 'loyal', out: ['The train goes north with no one in it. The dock empties at gunpoint.', { merit: 3, cons: -4 }, { order: 7, blood: 1 }] },
       { t: 'Get the sick and the children onto it, and let it go.', tag: 'MERCY', cls: 'mercy', out: ['It leaves with a hundred and twenty people. You do not ask where north is. You write “reprocessed” in the book.', { cons: 6, susp: 5, res: 3 }, { freed: 2, order: -2 }] },
       { t: 'Hold the dock until Wardens arrive.', out: ['Eight minutes. Eight long minutes. Then the Wardens.', { hp: -3, merit: 2 }, { order: 4 }] },
@@ -343,7 +346,7 @@
     np_ev: {
       title: (s) => `${NODES[C(s).at].name} — ${RIOT[C(s).at].name.toLowerCase()}`,
       enter: (s) => (C(s).ev.some((e) => e.node === C(s).at) ? undefined : 'np_map'),
-      text: (s) => [RIOT[C(s).at].text],
+      text: (s) => [RIOT[C(s).at].img ? `@img assets/img/env/${RIOT[C(s).at].img}.webp|${NODES[C(s).at].name}` : null, RIOT[C(s).at].text],
       choices: (s) => {
         const c = C(s);
         const k = c.at;
@@ -369,6 +372,7 @@
       title: 'Nova Prospekt — 14:00',
       enter: (s) => G.unlock(s, 'detainees'),
       text: (s) => [
+        '@img assets/img/env/e57-np-blackout.webp|Cellblock A, 14:00',
         '@sys 14:00. THE BELL.',
         C(s).flags.power ? 'The third bell goes. The lights do not. You cut the second feed that morning, and the compound stays lit, and somewhere inside Cellblock A a door that was meant to open in the dark opens in the light instead.' : 'The third bell goes. And then, all at once, the lights go out in every building in Nova Prospekt. In the dark you can hear every cell door in the fortress spring open at the same moment, like a single sound.',
         'Wardens are shouting on the walls. Somewhere a siren starts, and stops, as if someone has pulled the wire. Whatever was waiting for you to be inside the fortress has begun.',
