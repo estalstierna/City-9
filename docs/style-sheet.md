@@ -2359,3 +2359,91 @@ Förslag på första motiv, kopplade till spelets scener:
 | Canal Gate 3 | `d_check_1` | stålbur över stenbro, skanningsbåge, Overwatch-trupp närmar sig |
 
 Bilder som läggs i `assets/img/` kan kopplas till scener med ett `image:`-fält. Det fältet är inte byggt i motorn än, säg till när du vill ha det.
+
+## 5aj. KAPITEL 12: NOVA PROSPEKT (promptar)
+
+Nova Prospekt ligger utanför City 09 och har egna vakter, **Prospekt Wardens** (NPG, Nova Prospekt Garrison). De ska inte läsas som Civil Protection: en blandning av CP:s mask och uniformsgrund, EpU:s pansarskal och Overwatchs kyla, men med egen färg, egen form och egen sigill. Bifoga aldrig spelets konstbok eller skärmdumpar.
+
+Canon för Wardens: olivgrå armband **ash olive #55583F** med benvit kant (ingen annan division använder olivgrönt), **åttkantig** emblem (CCA är rund, Overwatch sexkantig), glyf = en fallgrind (portcullis): en nedåtriktad V-chevron över en tjock horisontell stång, med tre korta vertikala stänger under. Hjälm: mattolivsvart plasteel-skal, **en enda bred böjd glödande bärnstensfärgad visirremsa** (#E0A030, cellampa) i stället för två runda linser, ett horisontellt andningsgaller med tre lameller och två cylindriska kindfilter. Kropp: tung mörk olivgrå rock under en plattbärare, ett pansarat **förkläde** med sigillet framtill, ett ledat axelskydd på VÄNSTER axel, höga stövlar, tjocka handskar. Armband: glyf till vänster, "NP:G3" i mitten, grad till höger (vertikala streck). Märke: "CCA.NP.G3" / "NPG-02-41872" (två rader, över armbandet).
+
+| Bild | Fil i spelet | Bifoga i ordning |
+|---|---|---|
+| NPG1 Emblem (åttkantigt) | `emblem-npg.jpg` | 1 emblems · 2 master-b |
+| NPG2 Armband | `armband-npg.jpg` | 1 armbands · 2 ref/02-armband · 3 emblem-npg |
+| NPG3 Vaktkonceptark (tre grader) | `uniform-npg.jpg` | 1 master-a · 2 uniform-epu · 3 emblem-npg · 4 armband-npg |
+| NP1 Nova Prospekt, konceptbild | `env/e52-nova-prospekt.jpg` | 1 master-d · 2 env/e01-city · 3 uniform-npg |
+| MAP10 Nova Prospekt ovanifrån, utan text | `np-map.jpg` | 1 d5-map (stil) · 2 np-concept · 3 env/e01-city |
+
+### NPG1. Emblem
+
+```
+A single octagonal military emblem for the "Prospekt Wardens" of a dystopian prison fortress, centred on a plain neutral background, flat front view, high detail. A brushed-steel regular OCTAGON frame with bevelled edges and eight small rivets, one at each corner; the upper third of the frame is a separate arc in ash olive #55583F; inside, a dark gunmetal field; in the centre a bone-white relief of a falling PORTCULLIS: one thick horizontal bar at the top, a sharp downward V-chevron over it, and exactly three short vertical bars hanging below. Narrow riveted struts either side. Match the metal finish and bevel language of the attached emblem sheet, but it must read clearly as a DIFFERENT institution: octagon, not circle, no globe, no ring.
+DO NOT include: text, a circle or a hexagon, a skull, a lambda, logos, the words "Combine" or "Half-Life".
+STYLE: gritty semi-realistic, machined metal and enamel, cold light from upper left, subtle film grain.
+```
+
+### NPG2. Armband
+
+```
+Product-style flat lay reference image of ONE military cloth armband on a neutral warm-grey background: shown large and flat from directly above, and beneath it a smaller view of the same band wrapped around an upper arm in a dark olive padded sleeve. MATCH THE SECOND ATTACHED IMAGE in band width, heavy woven fabric, double-stitched edges, black velcro tabs and layout: glyph on the LEFT, text in the CENTRE, rank on the RIGHT.
+Fabric: ash olive #55583F with a thin bone-white edge stitch. Glyph on the LEFT: a small embroidered copy of the octagonal portcullis emblem from the THIRD attached image, copied exactly. Centre text "NP:G3" in bold condensed off-white stencil. Rank on the right: EXACTLY two thin silver VERTICAL bars.
+ABOVE the band, a small sewn rectangular designation patch in dark charcoal with exactly two left-aligned lines of off-white stencil capitals: line one "CCA.NP.G3", line two "NPG-02-41872".
+LABEL beneath, in bold condensed off-white stencil: "PROSPEKT WARDEN".
+DO NOT include: horizontal bars; a round emblem; extra or misspelled text; logos.
+STYLE: realistic fabric texture and stitching, clean product lighting from upper left, desaturated palette, all text sharp and correctly spelled.
+```
+
+### NPG3. Vaktkonceptark (tre grader)
+
+```
+A single wide costume concept sheet of the "Prospekt Wardens", the garrison guards of a remote prison fortress in City 09. Presented like a production art-bible page: clean modular grid, thin ruled borders, weathered warm-grey paper, numbered panel headers and short callouts in condensed off-white stencil type — match the layout, typography and rendering of the FIRST attached image. Three full-body figures in a neutral stance, front view, with a back view of the first: they are a MIX of three things and must not look like any one of them: the bone-white gas-mask civil police, the armoured gunmetal elite helmet of the SECOND attached image, and a cold faceless occupation soldier. Each figure has a different build and posture; they are three different men and women in the same uniform.
+
+HELMET (all three): a matte olive-black plasteel full-head shell with an armoured brow ridge and cheek guards; ONE wide curved glowing amber visor strip #E0A030 across the eye line instead of two round lenses; below it a horizontal respirator grille with exactly three slats and two cylindrical cheek filters; one earmuff cup with a short stub antenna on the LEFT. No ceramic, no bone-white.
+BODY: a heavy dark olive-grey coat to the knee under a plasteel plate carrier; an armoured apron panel over the front of the coat with the octagonal emblem from the THIRD attached image copied EXACTLY; ONE articulated pauldron on the LEFT shoulder only; two stacked belts, a baton ring, a ring of keys on a steel chain; thick gloves; tall black boots.
+ARMBAND (left upper arm): copied EXACTLY from the FOURTH attached image. DESIGNATION PATCH directly above it, two lines: "CCA.NP.G3" / "NPG-02-41872". Nothing else on the patch.
+
+01 "WARDEN — LINE GRADE" — rifle-ready: the compact CP-7 with a strap, a prod pole. Armband with two thin vertical silver bars.
+02 "CELLBLOCK ASSAULT" — heavier: a riveted full-length riot shield with an amber viewslit, a short pump shotgun, extra plates on thighs and chest. Armband with three thin vertical silver bars.
+03 "BLOCK WARDEN — OFFICER" — a crest stripe in ash olive edged with fine silver brow to crown, a long dark greatcoat open over the plate carrier, a data slate and a sidearm (CP-9). Armband with one wide vertical silver bar and one silver five-point star.
+
+EQUIPMENT ROW: the items stand in one straight row, evenly spaced, at the same scale, each with clear space around it. Directly beneath EACH item, on the same baseline, a short label in small condensed off-white stencil capitals, spelled exactly as listed: compact SMG — "CP-7", pistol — "CP-9", prod pole — "PROD", riot shield — "SHIELD", pump shotgun — "SHOTGUN", key ring — "KEYS", data slate — "SLATE". Every item has exactly one label.
+DETAIL INSETS: the helmet from the front and side, the armband and patch, the apron emblem, the key ring.
+SCALE: beside a civil police unit and a citizen.
+
+TITLE BANNER on a charcoal strip: "PROSPEKT WARDENS — GARRISON UNIFORM", thin ash-olive rule beneath.
+FOOTER: palette swatches labelled — "#55583F ASH OLIVE, #E0A030 CELL AMBER, #2A2D2B PLASTEEL, #E8E6DF BONE" — and the note "NPG — REV 1".
+
+ACCURACY: the helmet and armband design must be identical on all three figures; only grade, kit and posture change. Keep every label and code exactly as written.
+STYLE: gritty semi-realistic dystopian concept art, production design sheet quality, Eastern-European brutalist occupation aesthetic, cold overcast lighting from upper left, desaturated steel-grey and olive palette with amber accents, worn textures, crisp linework under painted rendering, subtle film grain, all text sharp and correctly spelled.
+DO NOT include: a lambda; a round emblem; unlabelled equipment; the designation printed on the jacket; horizontal rank bars; two round lenses; the words "Combine" or "Half-Life"; logos of real brands; designs or characters from existing games.
+```
+
+### NP1. Nova Prospekt, konceptbild till codex
+
+```
+Cinematic wide concept art of NOVA PROSPEKT, a remote prison fortress of the Universal Union, seen from a low approach road at dusk under heavy overcast, in the palette and atmosphere of the SECOND attached image. A colossal brutalist concrete-and-steel complex on a bare, wind-scoured coastal plateau: a massive outer wall with a single armoured gate tower, four round watchtowers with amber-lit slit windows, behind them tiered cellblock slabs stepping up like a quarry, a central tower with a rotating searchlight, rail sidings that run straight into the wall, a long causeway of floodlit fences and dead grass in front, and a grey sea behind. Thin cold-blue lines of a forcefield shimmer across the gate. Small figures for scale: a column of prisoners in grey drawn up in the road, and guards in the uniform of the THIRD attached image standing in a line at the gate, amber visors visible. A few distant gunships on the horizon, small. Smoke, rain, mud, rust-streaked concrete.
+
+Mood: a place where people are sent to be forgotten; nothing about it is dramatic, everything about it is patient.
+STYLE: gritty semi-realistic dystopian concept art, cinematic matte painting, Eastern-European brutalist occupation aesthetic, desaturated steel-grey and slate-blue palette with sharp cyan accents and small amber lights, atmospheric haze, subtle film grain, high detail.
+DO NOT include: readable text, neon cyberpunk signs, modern cars, a lambda on any uniform, logos of real brands, designs or characters from existing games, a copy of any existing game's version of the place.
+```
+
+### MAP10. Nova Prospekt, närkarta (patrullen)
+
+```
+A top-down painted map of NOVA PROSPEKT, a remote prison fortress, drawn as a detailed bird's-eye aerial view with a slight 3/4 tilt, in the style, detail level and light of the FIRST attached image, 16:9. Absolutely NO text, no labels, no markers, no UI. Cold overcast light from upper left, desaturated palette with small amber lights, wet concrete, rust, mud. The fortress fills the image, the sea at the right edge, bare plateau at the left edge.
+
+Landmarks, at these fixed positions (percent from left, percent from top):
+1. MAIN GATE (6%, 52%): an armoured gate tower in a heavy outer wall, a causeway of fences leading to it from the left, a forcefield shimmer.
+2. PROCESSING YARD (22%, 30%): a walled yard with long intake sheds and queues of grey figures.
+3. CELLBLOCK A (45%, 22%): a long four-storey slab with barred slit windows and gantry walkways.
+4. CELLBLOCK B (45%, 48%): a second slab beside it, a collapsed section with an open roof.
+5. CONTROL TOWER (62%, 38%): a tall central tower with a searchlight and antenna array.
+6. INTERROGATION WING (30%, 72%): a low windowless concrete building with ventilation stacks.
+7. ARMOURY AND MOTOR POOL (70%, 78%): a vehicle hall with open bay doors, parked trucks and a gunship pad.
+8. RAIL SIDING AND TRANSPORT DOCK (88%, 52%): tracks running into the wall, a loading dock and a cargo lift.
+9. POWER PLANT AND WALL (82%, 20%): a generator hall with cooling stacks and a section of the outer wall.
+Roads, catwalks and fences connect the places; the fortress should read as one machine, with space for small figures to walk between the buildings. A few small amber lamps on towers and walls; small guards and prisoners barely visible.
+
+DO NOT include: text of any kind, a lambda, modern cars, logos of real brands, a copy of any existing game's version of the place.
+```
