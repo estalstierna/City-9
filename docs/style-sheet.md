@@ -2456,3 +2456,5 @@ Bifoga: 1 master-a · 2 citizen-base · 3 uniform-npg. Fil i spelet: `npg-prison
 
 **Klara (2026-11-17):** NPG1–NPG4, NP1 och MAP10 inlagda: `emblem-npg`, `armband-npg`, `uniform-npg`, `env/e52-nova-prospekt`, `np-map`, `npg-prisoners`. Kapitel 12 (`js/content/chapter12.js`) använder dem; kartans nio platser ligger på procentpositionerna i MAP10.
 
+
+**NPG4 Rev 2 (2026-11-17):** fångarna ändrade till institutionsjacka i kolsvart med grå axelpartier och grå fickkanter, knäppt front, ID-plåt på vänster bröst och stort nummer på ryggen, ingen mössa (palett #2B2E2F kol, #8F9296 grå). Bifoga aldrig fotoreferensen av verklig person; beskriv plagget i texten. Hela prompten finns i chatten.
