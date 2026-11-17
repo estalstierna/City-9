@@ -2449,3 +2449,8 @@ Roads, catwalks and fences connect the places; the fortress should read as one m
 
 DO NOT include: text of any kind, a lambda, modern cars, logos of real brands, a copy of any existing game's version of the place.
 ```
+
+### NPG4. Fångar, konceptark
+
+Bifoga: 1 master-a · 2 citizen-base · 3 uniform-npg. Fil i spelet: `npg-prisoners.jpg`. Fyra fångar i samma institutionskläder (ofärgad grå-brun kanvas, nummerremsa på bröst och rygg, slip-on-skor), numren knutna till figurerna: 01 INTAKE "NP-04117", 02 LONG-TERM "NP-02386", 03 TRANSPORT "NP-07702", 04 INFIRMARY "NP-05549". Utrustningsrad: CUFFS, CHAIN, TAG, TRAY, BLANKET, SHOES, BAG. Inga orangea overaller, inga ränder, ingen lambda. Hela prompten finns i chatten (2026-11-17); klistra in från den.
+
