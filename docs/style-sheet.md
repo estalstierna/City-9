@@ -2162,6 +2162,19 @@ Patrullens åtta platser ligger på fasta procentpositioner i prompten.
 
 **Klar (2026-11-17):** MAP3 inlagd som `d5-map.jpg`; patrullens noder ligger på de åtta platserna i bilden.
 
+## 5ai. DISTRIKTSKARTOR (som D5-kartan)
+
+Alla bifogar `d5-map.jpg` (stilen, detaljnivån och ljuset) och `city-map.jpg` (var distriktet ligger). Inga texter. Platserna ligger på fasta procentpositioner.
+
+| Karta | Fil i spelet | Används till |
+|---|---|---|
+| MAP4 Nexus (D1) | `d1-map.jpg` | belägringen i kapitel 11, detaljerad vy |
+| MAP5 Canal Quarter (D3) | `d3-map.jpg` | kapitel 9, kanalcellerna, patrull i D3 |
+| MAP6 The Works (D2) | `d2-map.jpg` | ransonsfabriken, färgeriet, patrull i D2 |
+| MAP7 Rail Yards (D4) | `d4-map.jpg` | relokeringståget, kolsidospåret, patrull i D4 |
+| MAP8 Upper Town (D7) | `d7-map.jpg` | mottagningen, prefekten, patrull i D7 |
+| MAP9 Hydro (D8) | `d8-map.jpg` | dammen, GRID, turbinhallen |
+
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 
 | Division | Roll | Färg | Ikon | Krav |
