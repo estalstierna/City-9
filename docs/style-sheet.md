@@ -2162,7 +2162,7 @@ Patrullens åtta platser ligger på fasta procentpositioner i prompten.
 
 **Klar (2026-11-17):** MAP3 inlagd som `d5-map.jpg`; patrullens noder ligger på de åtta platserna i bilden.
 
-## 5ai. DISTRIKTSKARTOR (som D5-kartan)
+## 5ai. DISTRIKTSKARTOR (som D5-kartan) — KLARA och inlagda (patrull i alla sju distrikt, D1 under belägringstavlan)
 
 Alla bifogar `d5-map.jpg` (stilen, detaljnivån och ljuset) och `city-map.jpg` (var distriktet ligger). Inga texter. Platserna ligger på fasta procentpositioner.
 

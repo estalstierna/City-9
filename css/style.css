@@ -738,7 +738,7 @@ figure.dvl figcaption span { display: block; font-size: 13.5px; color: var(--dim
 }
 
 /* ---------------------------------------------------------- the siege (chapter11.js) */
-.sg-board { border: 1px solid var(--line); border-radius: 4px; padding: 10px; margin: 8px 0; background: rgba(255,255,255,.015); }
+.sg-board { border: 1px solid var(--line); border-radius: 4px; padding: 10px; margin: 8px 0; background: linear-gradient(rgba(6,10,13,.78), rgba(6,10,13,.86)), url(../assets/img/d1-map.webp) center/cover; }
 .sg-top { font-family: var(--mono); font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; margin-bottom: 8px; }
 .sg-top b { color: var(--accent); font-size: 18px; letter-spacing: .1em; }
 .sg-top span { color: var(--dim); }

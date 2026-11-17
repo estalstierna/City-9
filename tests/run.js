@@ -840,9 +840,12 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
   /* patrol: starts from the board, the map is clickable, the shift ends */
   const start = await page.evaluate(() => {
     G.goto('u_board');
-    const b = [...document.querySelectorAll('#story .block.current .choice')].find((x) => /Walk District 5/.test(x.innerText));
+    const b = [...document.querySelectorAll('#story .block.current .choice')].find((x) => /Walk the city/.test(x.innerText));
     if (!b) return 'no patrol on the board';
     b.click();
+    if (G.state().scene !== 'pt_pick') return 'no district picker: ' + G.state().scene;
+    const h = [...document.querySelectorAll('#story .block.current .choice')].find((x) => /District 5/.test(x.innerText));
+    h.click();
     return G.state().scene;
   });
   if (start !== 'pt_start') out.push('patrol did not start: ' + start);
@@ -864,9 +867,10 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
     s.div = 'UNION';
     G.goto('u_board');
     const labels = [...document.querySelectorAll('#story .block.current .choice')].map((b) => b.innerText);
-    const iMap = labels.findIndex((t) => /Walk District 5/.test(t));
+    const iMap = labels.findIndex((t) => /Walk the city/.test(t));
     const iOld = labels.findIndex((t) => /Board duty:/.test(t));
     document.querySelector('#story .block.current .choice[data-n="' + (iMap + 1) + '"]').click();
+    [...document.querySelectorAll('#story .block.current .choice')].find((x) => /District 5/.test(x.innerText)).click();
     const p = G.state().pt;
     const ev = p.ev.find((e) => e.k === 'assign');
     return { iMap, iOld, hasEvent: !!ev, key: ev && ev.key };
@@ -935,6 +939,28 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
   if (!fx.hero || !fx.face || !fx.hud || !fx.rx) out.push('cinematic/HUD not applied: ' + JSON.stringify(fx));
   if (fx.offHero || fx.offHud) out.push('cinematic/HUD did not switch off: ' + JSON.stringify(fx));
   if (fx.toggles !== 'cine,hud') out.push('menu toggles: ' + fx.toggles);
+  return out.concat(errors);
+});
+
+suite('patrol in every district', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  for (const d of ['d1', 'd2', 'd3', 'd4', 'd7', 'd8']) {
+    const r = await page.evaluate((d) => {
+      const s = G.state();
+      s.mem.ptDist = d;
+      G.goto('pt_start');
+      const p = s.pt;
+      return { d: p.d, at: p.at, ev: p.ev.length, nodes: 0 };
+    }, d);
+    await page.evaluate(() => document.querySelector('#story .block.current .choice').click());
+    const n = await page.evaluate(() => document.querySelectorAll('#story .block.current [data-pt]').length);
+    if (r.d !== d || n < 6) out.push(d + ': patrol did not start properly ' + JSON.stringify({ r, n }));
+    const w = await randomWalk(page, 80, { stopAt: ['u_evening', 'u_night', 'u_board'], prefer: /Deal with it|h left\)/ });
+    out.push(...w.problems.map((x) => d + ': ' + x));
+    if (!w.seen.pt_end) out.push(d + ': the shift never ended');
+  }
   return out.concat(errors);
 });
 

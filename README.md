@@ -135,13 +135,13 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - a biosignal trace that beats faster and turns red when you are hurt or watched;
      - a radio waveform that moves on RADIO and DISPATCH lines;
      - a scan sweep with the CID over the face of a citizen you stop.
-   - **Patrol on the map** (*Walk District 5* on the duty board): a shift from 08:00 to 18:00 on the painted map of District 5.
+   - **Patrol on the map** (*Walk the city* on the duty board): a shift from 08:00 to 18:00 on the painted map of a district you choose: District 5 (home), the Nexus, the Works, Canal Quarter, Rail Yards, Hydro, and Upper Town from rank 02. Each has its own map, local incidents and start point; only District 5 has blocks that remember what you missed. The siege board of chapter 11 sits on the Nexus map.
      - Eight places, an hour a move. Tap a place to walk there.
      - Incidents appear with timers: a queue turning, a runner, a Lantern alert, chalk, a collapse, a cart at the gate, a whisper, a quarrel.
      - Each is a small choice or check. What you do not reach lapses, and the block remembers.
      - Far places take two hours to reach. Your partner walks with you and comments.
      - Some incidents open the game's bigger systems and return to the map afterwards: a stop and search, a raid on a cellar with a new padlock, crowd control under a frozen screen. A face from your case files can turn up on a corner.
-     - **The map is the day.** The duty board lists *Walk District 5* first. Your division's assignments from the board appear on the map as incidents (an assignment, at a place that fits your division: UNION on Plaza 5, SPEAR at Canal Gate 3, GRID in the Bazaar and so on). Take one and the duty plays, then you are back on the map. The old board duties stay below it as the other way to spend a day.
+     - **The map is the day.** The duty board lists *Walk the city* first. Your division's assignments from the board appear on the map as incidents (an assignment, at a place that fits your division: UNION on Plaza 5, SPEAR at Canal Gate 3, GRID in the Bazaar and so on). Take one and the duty plays, then you are back on the map. The old board duties stay below it as the other way to spend a day.
      - **Night patrol** (grade 04 and up): the curfew shift from 20:00 to 02:00 on a darkened map, with its own incidents: curfew breakers, a Shrike searchlight, lights in an empty flat, something in the canal.
 
 11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.
