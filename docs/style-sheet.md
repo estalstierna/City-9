@@ -2376,9 +2376,11 @@ Canon för Wardens: olivgrå armband **ash olive #55583F** med benvit kant (inge
 
 ### NPG1. Emblem
 
+Bygger på exakt samma ram som CCA:s divisionsemblem (ring med färgad övre båge, nedåtriktad V-chevron som bryter igenom, glob-tråd, medaljong, nitade stöttor). Skillnaden är en åttkantig ring med åtta nitar och glyfen fallgrind.
+
 ```
-A single octagonal military emblem for the "Prospekt Wardens" of a dystopian prison fortress, centred on a plain neutral background, flat front view, high detail. A brushed-steel regular OCTAGON frame with bevelled edges and eight small rivets, one at each corner; the upper third of the frame is a separate arc in ash olive #55583F; inside, a dark gunmetal field; in the centre a bone-white relief of a falling PORTCULLIS: one thick horizontal bar at the top, a sharp downward V-chevron over it, and exactly three short vertical bars hanging below. Narrow riveted struts either side. Match the metal finish and bevel language of the attached emblem sheet, but it must read clearly as a DIFFERENT institution: octagon, not circle, no globe, no ring.
-DO NOT include: text, a circle or a hexagon, a skull, a lambda, logos, the words "Combine" or "Half-Life".
+A single military emblem for the "Prospekt Wardens", the prison garrison of the dystopian Civil Protection force, centred on a plain neutral background, flat front view, high detail. Build it on EXACTLY the same frame as the Civil Protection division emblems in the FIRST attached image: a brushed-steel ring with bevelled edges; the UPPER third of the ring is a separate arc in ash olive #55583F; a sharp steel V-chevron points DOWNWARD and breaks through the top of the ring; behind it a faint wireframe globe of latitude and longitude lines in dark steel; in the centre a round inset medallion; narrow riveted vertical struts either side of the chevron. THE ONLY DIFFERENCES from the division emblems: the outer ring is a regular OCTAGON instead of a circle, with eight prominent rivets, one at each corner, and a thin bone-white inner edge line; and the medallion glyph is a falling PORTCULLIS in bone-white relief: one thick horizontal bar at the top and exactly three short vertical bars hanging below it. The octagonal ring has a heavier, more fortified feel than the division emblems: the same family, the prison-garrison branch.
+DO NOT include: text, a hexagon, a skull, a lambda, logos, the words "Combine" or "Half-Life".
 STYLE: gritty semi-realistic, machined metal and enamel, cold light from upper left, subtle film grain.
 ```
 
