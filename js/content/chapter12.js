@@ -17,6 +17,9 @@
   const C = (s) => s.c12;
   const VIGIL = '@portrait assets/img/portraits/vigil.webp|Field Commander Vigil';
   const MAP = 'assets/img/np-map.webp';
+  const DORN = '@portrait assets/img/portraits/dorn.webp|Commandant Isak Dorn';
+  const KELL = '@portrait assets/img/portraits/kell.webp|Sergeant Kell, NPG';
+  const OLDMAN = '@portrait assets/img/portraits/np02386.webp|Prisoner NP-02386';
   const mk = (n, px, py, kind) => ({ name: n, x: Math.round(px * 16), y: Math.round(py * 9), kind });
   const NODES = {
     gate: mk('Main Gate', 11, 50),
@@ -40,6 +43,7 @@
      eff changes the prison: clue, order, blood, freed, flag */
   const INS = {
     gate: { name: 'The gate log', icon: '?', text: [
+      KELL,
       'Sergeant Kell keeps the gate book himself. NPG: Nova Prospekt Garrison, olive and amber, and not one of the Wardens at the gate has looked you in the face since you arrived. The book is on a shelf behind his head.',
     ], opts: [
       { t: 'Demand the book. You are here on Vigil’s authority.', check: ['authority', 5], ok: ['A transport from City 17 on the night of the train, no manifest, one prisoner, signed in at 03:10 and signed out at 03:40. Cell 7-C. Thirty minutes.', {}, { clue: 1 }], bad: ['Kell hands it over, politely, with the pages for that week glued together. You are not meant to notice the glue.', {}, {}] },
@@ -55,6 +59,7 @@
       { t: 'Leave him. Prisoners say things.', out: ['The Warden finishes the cuffs. The boy does not look up again.', {}, {}] },
     ] },
     cella: { name: 'The old man', icon: '?', text: [
+      OLDMAN,
       'Cellblock A, long-term. The galleries are quiet in a way that costs effort. In a cell near the stair an old man, NP-02386, is mending his sleeve with a thread he has pulled out of his own blanket. He does not stand when you come.',
     ], opts: [
       { t: 'Talk to him. He has been here longer than the Wardens.', out: ['*“Six years. Do you know what I have learned? That they are afraid of the night shift. Come back before the third bell, unit, and stand somewhere with a wall behind you.”* He does not say what happens at the third bell.', { cons: 1 }, { flag: 'warned', clue: 1 }] },
@@ -269,6 +274,7 @@
       },
       text: (s) => [
         '@img assets/img/uniform-npg.webp|Prospekt Wardens, garrison uniform',
+        DORN,
         'Commandant Isak Dorn is a tall, grey, careful man with a Warden’s olive collar and a CP officer’s hands. He receives you in an office whose window looks onto the yard. He does not stand.',
         '@say Dorn|The City 9 detachment. Vigil sent you. How kind. We have a prison to run, unit, and a night coming that I do not think you will enjoy. You have my permission to walk the compound until the bell. Sergeant Kell will not follow you.',
         '@say Dorn|If you find anything, I would like to hear it first. That is not a request.',
