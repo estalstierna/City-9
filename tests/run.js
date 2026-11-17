@@ -858,6 +858,36 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
   out.push(...w.problems);
   if (!w.seen.pt_end) out.push('the patrol shift never ended');
   if (!w.seen.pt_ev) out.push('no patrol incident was handled');
+  /* the board lists the map first; the division's assignment is an event on it and returns to it */
+  const asg = await page.evaluate(() => {
+    const s = G.state();
+    s.div = 'UNION';
+    G.goto('u_board');
+    const labels = [...document.querySelectorAll('#story .block.current .choice')].map((b) => b.innerText);
+    const iMap = labels.findIndex((t) => /Walk District 5/.test(t));
+    const iOld = labels.findIndex((t) => /Board duty:/.test(t));
+    document.querySelector('#story .block.current .choice[data-n="' + (iMap + 1) + '"]').click();
+    const p = G.state().pt;
+    const ev = p.ev.find((e) => e.k === 'assign');
+    return { iMap, iOld, hasEvent: !!ev, key: ev && ev.key };
+  });
+  if (asg.iMap < 0 || asg.iOld < 0 || asg.iMap > asg.iOld) out.push('the map should come before the board duties: ' + JSON.stringify(asg));
+  if (!asg.hasEvent) out.push('no division assignment appeared on the map');
+  else {
+    const r = await page.evaluate(() => {
+      const p = G.state().pt;
+      const ev = p.ev.find((e) => e.k === 'assign');
+      p.at = ev.node;
+      p.cur = ev.id;
+      G.goto('pt_ev');
+      document.querySelector('#story .block.current .choice').click();
+      return G.state().scene;
+    });
+    if (!/^dd_|^d_/.test(r)) out.push('the assignment did not open the duty: ' + r);
+    const back = await randomWalk(page, 120, { stopAt: ['pt_map', 'u_evening', 'u_night', 'u_board'] });
+    out.push(...back.problems.map((x) => 'assignment: ' + x));
+    if (back.ended !== 'pt_map') out.push('the assignment did not return to the map (ended at ' + back.ended + ')');
+  }
   /* night patrol, and the bigger systems launched from the map return to it */
   for (const [k, scene] of [['suspect', 'ss_start'], ['lead', 'raid_start'], ['crowd', 'pt_crowd'], ['curfew', null]]) {
     const r = await page.evaluate(({ k }) => {

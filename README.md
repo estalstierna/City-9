@@ -141,6 +141,7 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
      - Each is a small choice or check. What you do not reach lapses, and the block remembers.
      - Far places take two hours to reach. Your partner walks with you and comments.
      - Some incidents open the game's bigger systems and return to the map afterwards: a stop and search, a raid on a cellar with a new padlock, crowd control under a frozen screen. A face from your case files can turn up on a corner.
+     - **The map is the day.** The duty board lists *Walk District 5* first. Your division's assignments from the board appear on the map as incidents (an assignment, at a place that fits your division: UNION on Plaza 5, SPEAR at Canal Gate 3, GRID in the Bazaar and so on). Take one and the duty plays, then you are back on the map. The old board duties stay below it as the other way to spend a day.
      - **Night patrol** (grade 04 and up): the curfew shift from 20:00 to 02:00 on a darkened map, with its own incidents: curfew breakers, a Shrike searchlight, lights in an empty flat, something in the canal.
 
 11d. **New district duties** (one per division): the Upper Town beat (UNION), the Cathedral Ward checkpoint (RAZOR), the Hydro turbine hall (GRID), the Upper Town clinic (HELIX), the Prefect's ledger (JURY), the culvert sweep under the wall (SPEAR) and the Upper Town screening (VECTOR). District Prefect Sallow and Block Warden Ostrova become people with relations.

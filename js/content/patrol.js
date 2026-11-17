@@ -98,15 +98,41 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
       { t: 'Push it on with your boot. Not your district.', out: ['It goes under the gate and away towards the Works.', { cons: -3 }, [0, 0]] },
     ] },
   });
+  /* the division's work comes to you: an assignment from today's board, at a place that fits it */
+  const DIV_NODE = { UNION: 'plaza', HELIX: 'precinct', JURY: 'precinct', RAZOR: 'bridge', SPEAR: 'gate', VECTOR: 's9', GRID: 'bazaar' };
+  const offered = (s) => (s.duty.offers || []).filter((k) => G.duties[k] && k !== 'patrol');
+  EVENTS.assign = {
+    at: ['plaza', 'precinct', 'bridge', 'gate', 's9', 'bazaar'], ttl: 5, icon: '✎', name: 'An assignment', manual: true,
+    when: (s) => !!offered(s).length,
+    text: (s) => {
+      const k = P(s).assignKey;
+      const d = G.duties[k];
+      return `${d ? d.name : 'An assignment'}\n${d ? d.desc : ''}`;
+    },
+    opts: [{ t: 'Take it.', tag: 'DUTY', cls: 'duty', go: 'assign', out: ['', {}, [0, 0]] }, { t: 'Let someone else have it.', out: ['It goes to the next unit on the roster.', { merit: -1 }, [0, 0]] }],
+  };
   const EK = Object.keys(EVENTS);
 
   const spawn = (s) => {
     const p = P(s);
-    const pool = EK.filter((k) => !!EVENTS[k].night === !!p.night && (!EVENTS[k].when || EVENTS[k].when(s)));
+    const pool = EK.filter((k) => !EVENTS[k].manual && !!EVENTS[k].night === !!p.night && (!EVENTS[k].when || EVENTS[k].when(s)));
     const k = pick(pool);
     const free = EVENTS[k].at.filter((n) => !p.ev.some((e) => e.node === n));
     if (!free.length) return;
     p.ev.push({ k, node: pick(free), ttl: EVENTS[k].ttl, id: ++p.n });
+  };
+  /* one assignment per hour-block while the board has any left, never at night */
+  const assign = (s) => {
+    const p = P(s);
+    if (p.night || p.ev.some((e) => e.k === 'assign') || p.assigned >= 3) return;
+    const left = offered(s).filter((k) => !(p.takenKeys || []).includes(k));
+    if (!left.length) return;
+    const key = pick(left);
+    const home = DIV_NODE[s.div || 'UNION'];
+    const node = EVENTS.assign.at.includes(home) && !p.ev.some((e) => e.node === home) ? home : pick(EVENTS.assign.at.filter((n) => !p.ev.some((e) => e.node === n)));
+    if (!node) return;
+    p.ev.push({ k: 'assign', node, ttl: 5, id: ++p.n, key });
+    p.assigned = (p.assigned || 0) + 1;
   };
   const dist = (a, b) => Math.hypot(NODES[a].x - NODES[b].x, NODES[a].y - NODES[b].y);
   const cost = (a, b) => (dist(a, b) > 700 ? 2 : 1);
@@ -126,6 +152,7 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
     });
     p.ev = p.ev.filter((e) => e.ttl > 0);
     if (Math.random() < 0.6 && p.ev.length < 4) spawn(s);
+    if (!p.night && (p.hour - 8) % 3 === 0 && p.ev.length < 5) assign(s);
   };
 
   function mapSvg(s) {
@@ -165,8 +192,12 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
   G.extend('u_board', {
     choices: (list, s) => {
       if (s.phase !== 'union' || G.rankIdx(s.rank) < G.rankIdx('05')) return list;
-      list.push({ t: '**Walk District 5.** A patrol shift on the map: you choose where to be.', tag: 'PATROL', tagCls: 'duty', fx: (st) => ((st.duty.current = 'patrol'), (st.time = 'Day'), null), go: 'pt_start' });
-      if (G.rankIdx(s.rank) >= G.rankIdx('04')) list.push({ t: '**Night patrol.** The curfew shift, 20:00 to 02:00, on the map.', tag: 'PATROL', tagCls: 'duty', fx: (st) => ((st.duty.current = 'patrol'), (st.mem.ptNight = true), (st.time = 'Day'), null), go: 'pt_start' });
+      const mine = [{ t: '**Walk District 5.** Your day is on the map: where you are decides what you handle, and your division’s work finds you there.', tag: 'PATROL', tagCls: 'duty', fx: (st) => ((st.duty.current = 'patrol'), (st.time = 'Day'), null), go: 'pt_start' }];
+      if (G.rankIdx(s.rank) >= G.rankIdx('04')) mine.push({ t: '**Night patrol.** The curfew shift, 20:00 to 02:00, on the map.', tag: 'PATROL', tagCls: 'duty', fx: (st) => ((st.duty.current = 'patrol'), (st.mem.ptNight = true), (st.time = 'Day'), null), go: 'pt_start' });
+      /* the map comes first; the old board duties stay below it as the other way to spend a day */
+      const first = list.findIndex((c) => c.tag === 'NEW' || c.tag === 'ROUTINE');
+      list.forEach((c) => (c.tag === 'NEW' || c.tag === 'ROUTINE') && !/^Board duty/.test(c.t) && (c.t = 'Board duty: ' + c.t));
+      list.splice(first < 0 ? list.length : first, 0, ...mine);
       return list;
     },
   });
@@ -186,6 +217,7 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
         if (night) s.time = 'Night';
         spawn(s);
         spawn(s);
+        assign(s);
         G.unlock(s, 'patrol');
       },
       text: (s) => [P(s).night ? `@say ${sup(s)}|Curfew shift. Anyone on the street is either breaking the law or about to. Lamps, not batons, until you know which. Back at 02:00.` : `@say ${sup(s)}|District 5 is yours until 18:00. Be where things happen. You cannot be everywhere, so choose.`, G.partnerOf && G.partnerOf(s).key ? `${G.partnerOf(s).name} walks with you.` : null],
@@ -228,6 +260,7 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
         const p = P(s);
         const e = p.ev.find((x) => x.id === p.cur);
         if (!e) return 'pt_map';
+        if (e.k === 'assign') p.assignKey = e.key;
         if (e.k === 'face' && !p.faceFile) p.faceFile = pick(Object.values(s.files || {}).filter((f) => f.face !== undefined && !f.amputated));
       },
       text: (s) => {
@@ -254,6 +287,13 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
           fin(o.out)(st);
           const q = P(st);
           if (o.go === 'ss') st.mem.ssRet = 'pt_back';
+          if (o.go === 'assign') {
+            const k = q.assignKey;
+            (q.takenKeys = q.takenKeys || []).push(k);
+            st.duty.current = k;
+            q.launch = (st.duty.done[k] ? G.duties[k].routine : G.duties[k].first);
+            st.duty.done[k] = (st.duty.done[k] || 0) + 1;
+          }
           if (o.go === 'raid') {
             st.raid = G.makeRaid(st, { addr: `${NODES[q.at].name}, ${pick(['cellar', 'flat 4C', 'flat 9A', 'the boiler room'])}` });
             st.raid.ret = 'pt_back';
@@ -262,7 +302,7 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
         };
         return EVENTS[e.k].opts.map((o) =>
           o.go
-            ? { t: o.t, tag: o.tag, tagCls: o.cls, fx: launch(o), go: { ss: 'ss_start', raid: 'raid_start', crowd: 'pt_crowd' }[o.go] }
+            ? { t: o.t, tag: o.tag, tagCls: o.cls, fx: launch(o), go: o.go === 'assign' ? (st) => P(st).launch : { ss: 'ss_start', raid: 'raid_start', crowd: 'pt_crowd' }[o.go] }
             : o.check
             ? { t: o.t, check: { skill: o.check[0], diff: o.check[1], pass: 'pt_res', fail: 'pt_res', okFx: fin(o.ok), failFx: fin(o.bad) } }
             : { t: o.t, tag: o.tag, tagCls: o.cls, fx: fin(o.out), go: 'pt_res' }
