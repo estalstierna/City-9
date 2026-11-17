@@ -114,6 +114,12 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **The name:** the Union still says Anticitizen One. You stay Civil Protection.
    - **In the field:** the city's duty board, evenings and events step aside. Camp duties replace them: the sentry line (watch minigame, fewer night raids), the water detail, the detainee pen, the radio truck (reveals a sector), and convoy escort. Evenings are in the camp.
 
+11i. **Chapter 12, "Nova Prospekt"** (all divisions, one long day on one painted map).
+   - **Premise:** the Sector radio says a prisoner walked out of Nova Prospekt who was never entered in its books. Vigil sends a detachment. The garrison (the Prospekt Wardens, NPG: olive and amber, octagonal portcullis emblem) is not City 9's.
+   - **Inspection (08:00 to 14:00):** nine places on the map, each with one thing to look into: the gate log, an intake boy, an old prisoner, cell 7-C, torn records, an interrogation, the armoury count, a transport train and a tampered breaker. Each gives clues, allies or a price; you cannot do everything before the bell.
+   - **The uprising (14:00 to 22:00):** the cells open and the same nine places flare, each with a clock. Force it, parley or look away: order, casualties and the number released decide whether it is *held*, *held at a cost*, *the cells open* or *lost*.
+   - **Epilogue:** what you found (three clues: a man let out by a Warden's key, pages cut from the ledger, five: whose key) and who you tell: Vigil, nobody, or the resistance.
+   - Codex: Nova Prospekt, Prospekt Wardens, Detainees. Appears in the service record.
 11f. **Chapter 11, "The Siege"** (all divisions, two acts).
    - **Act I:** City 17 has fallen. A driverless train comes south full of empty Overwatch armour, the Spire flickers, and FREEMAN is chalked on every Stack.
      - **Preparation:** you prepare the Nexus (ammunition, fortifications, medical stores, flooding the canal tunnel, shelter for Stack 9, the gas). Each preparation becomes a resource on the night.

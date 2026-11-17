@@ -1,6 +1,6 @@
 /* Service worker: makes the game installable and playable offline.
    VERSION is a hash of the cached files: run python3 tools/bump-sw.py after changing code (the tests check it). */
-const VERSION = 'c9-b7ba75c32c';
+const VERSION = 'c9-7624cf3fab';
 const MEDIA = 'c9-media-3'; /* images and fonts, for offline play only (bumped: older caches held replaced art) */
 const SHELL = [
   './',
@@ -48,6 +48,7 @@ const SHELL = [
   './js/content/districts.js',
   './js/content/chapter10.js',
   './js/content/chapter11.js',
+  './js/content/chapter12.js',
   './js/content/patrol.js',
   './js/content/onboarding.js',
   './js/content/arcs.js',

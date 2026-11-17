@@ -2454,3 +2454,5 @@ DO NOT include: text of any kind, a lambda, modern cars, logos of real brands, a
 
 Bifoga: 1 master-a · 2 citizen-base · 3 uniform-npg. Fil i spelet: `npg-prisoners.jpg`. Fyra fångar i samma institutionskläder (ofärgad grå-brun kanvas, nummerremsa på bröst och rygg, slip-on-skor), numren knutna till figurerna: 01 INTAKE "NP-04117", 02 LONG-TERM "NP-02386", 03 TRANSPORT "NP-07702", 04 INFIRMARY "NP-05549". Utrustningsrad: CUFFS, CHAIN, TAG, TRAY, BLANKET, SHOES, BAG. Inga orangea overaller, inga ränder, ingen lambda. Hela prompten finns i chatten (2026-11-17); klistra in från den.
 
+**Klara (2026-11-17):** NPG1–NPG4, NP1 och MAP10 inlagda: `emblem-npg`, `armband-npg`, `uniform-npg`, `env/e52-nova-prospekt`, `np-map`, `npg-prisoners`. Kapitel 12 (`js/content/chapter12.js`) använder dem; kartans nio platser ligger på procentpositionerna i MAP10.
+

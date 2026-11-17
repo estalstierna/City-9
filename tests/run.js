@@ -454,7 +454,7 @@ suite('chapter 3 for every division', async (browser) => {
 /* Chapters 4 onward share one setup: a Union unit with every earlier chapter done, two days
    after the last one ended. `tweak(s, div, i)` runs in the page (it is sent as source, so it
    can use G but not variables from this file) to set rank, resistance, relations and flags. */
-const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186 };
+const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186, 11: 206 };
 async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -481,6 +481,7 @@ async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) 
         if (n > 8) s.c8 = { stage: 9, done: true, endDay: CH_END[8], verdict: 'pass', score: 65 };
         if (n > 9) s.c9 = { stage: 9, done: true, endDay: CH_END[9], verdict: 'held', score: 55 };
         if (n > 10) s.c10 = { stage: 9, done: true, endDay: CH_END[10], deserter: 'Rook', desFate: 'freed', cleared: 6, moved: 40, harmed: 8, detained: 30 };
+        if (n > 11) s.c11 = { stage: 9, done: true, endDay: CH_END[11], outcome: 'held', prep: {} };
         new Function('return ' + src)()(s, div, i);
         G.goto('u_board');
       },
@@ -635,6 +636,28 @@ suite('chapter 11 for every division (The Siege, service record)', async (browse
   });
   if (!r.sg) out.push('the siege never started');
   if (r.bad) out.push('service record has ' + r.bad);
+  return out;
+});
+
+suite('chapter 12 for every division (Nova Prospekt, inspection and uprising)', async (browser) => {
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  const { out, page } = await chapterSuite(browser, {
+    n: 12,
+    steps: QUICK ? 500 : 700,
+    runs: QUICK ? divs : divs.concat(divs),
+    prefer: /Look into it|Deal with it|h left\)/,
+    stopAt: ['c12_end', 'disc_tribunal'],
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: 'SqL', merit: 500, lp: 36, res: i % 3 ? 25 : 5 });
+      G.formSquad(s);
+    },
+  });
+  const r = await page.evaluate(() => {
+    const c = G.state().c12;
+    return { ok: !!c, out: c && c.out, phase: c && c.phase, handled: c && c.handled, rec: G.careerRecord(G.state()).match(/undefined|NaN/) };
+  });
+  if (!r.ok || r.phase !== 'riot' || !r.out) out.push('the uprising never played: ' + JSON.stringify(r));
+  if (r.rec) out.push('service record has ' + r.rec[0]);
   return out;
 });
 
