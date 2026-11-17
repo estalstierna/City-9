@@ -814,17 +814,24 @@ figure.pic.portrait.scan { position: relative; overflow: hidden; }
 
 /* ---------------------------------------------------------- patrol map (patrol.js) */
 .pt-svg { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 4px; max-height: 62vh; background: #0f171c; }
-.pt-path { stroke: rgba(95,200,221,.18); stroke-width: 1; stroke-dasharray: 4 5; }
+.pt-path { stroke: rgba(95,200,221,.22); stroke-width: 2; stroke-dasharray: 10 12; }
 .pt-node { cursor: pointer; outline: none; }
-.pt-node circle { fill: rgba(8,14,18,.85); stroke: #5fc8dd; stroke-width: 1.6; }
+.pt-node circle { fill: rgba(8,14,18,.85); stroke: #5fc8dd; stroke-width: 3; }
 .pt-node.hot circle { stroke: #e2a83f; fill: rgba(60,40,8,.9); animation: ptpulse 1.2s ease-in-out infinite alternate; }
 .pt-node.here circle { stroke: #fff; }
 .pt-node:hover circle { stroke-width: 3; }
-@keyframes ptpulse { from { stroke-width: 1.6; } to { stroke-width: 4; } }
-.pt-name { font: 8px var(--mono, monospace); letter-spacing: .1em; fill: #e8e6df; text-anchor: middle; paint-order: stroke; stroke: rgba(4,8,10,.9); stroke-width: 3px; }
-.pt-ico { font: bold 13px var(--mono, monospace); fill: #e2a83f; text-anchor: middle; pointer-events: none; }
-.pt-ttl { font: 8px var(--mono, monospace); fill: #e2a83f; paint-order: stroke; stroke: rgba(4,8,10,.9); stroke-width: 3px; }
-.pt-you circle { fill: #5fc8dd; stroke: #fff; stroke-width: 1.5; filter: drop-shadow(0 0 5px #5fc8dd); pointer-events: none; }
+@keyframes ptpulse { from { stroke-width: 3; } to { stroke-width: 8; } }
+.pt-name { font: 17px var(--mono, monospace); letter-spacing: .1em; fill: #e8e6df; text-anchor: middle; paint-order: stroke; stroke: rgba(4,8,10,.9); stroke-width: 3px; }
+.pt-ico { font: bold 24px var(--mono, monospace); fill: #e2a83f; text-anchor: middle; pointer-events: none; }
+.pt-ttl { font: 17px var(--mono, monospace); fill: #e2a83f; paint-order: stroke; stroke: rgba(4,8,10,.9); stroke-width: 3px; }
+.pt-you circle { fill: #5fc8dd; stroke: #fff; stroke-width: 3; filter: drop-shadow(0 0 5px #5fc8dd); pointer-events: none; }
 .pt-svg.night .pt-node circle { fill: rgba(4,8,14,.9); }
 .pt-svg.night .pt-node.hot circle { fill: rgba(70,50,10,.95); filter: drop-shadow(0 0 6px #e2a83f); }
 .pt-svg.night .pt-you circle { filter: drop-shadow(0 0 9px #5fc8dd) drop-shadow(0 0 3px #fff); }
+
+@media (max-width: 600px) {
+  .pt-svg { max-height: none; }
+  .pt-name { font-size: 26px; stroke-width: 5px; }
+  .pt-ico { font-size: 34px; }
+  .pt-ttl { font-size: 26px; stroke-width: 5px; }
+}

@@ -2158,7 +2158,9 @@ Egen design: civila kläder, vadderade västar, stulen CP-utrustning, handmålad
 |---|---|---|
 | MAP3 District 5 ovanifrån, gatunivå, utan text | `d5-map.jpg` | 1 city-map (stil) · 2 env/e10-ration · 3 env/e03-bazaar · 4 env/e01-city |
 
-Patrullens åtta platser ligger på fasta procentpositioner i prompten. När bilden finns sätts `G.PT_MAP = { img, vb: [0, 0, 1600, 900] }` och nodernas koordinater räknas om.
+Patrullens åtta platser ligger på fasta procentpositioner i prompten.
+
+**Klar (2026-11-17):** MAP3 inlagd som `d5-map.jpg`; patrullens noder ligger på de åtta platserna i bilden.
 
 ## 5j. NYA DIVISIONER: VECTOR, GRID, VEIL
 

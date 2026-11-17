@@ -6,17 +6,17 @@
 (function () {
   const pick = G.pick;
   /* the map: a crop of the city map until a close-up District 5 map exists (G.PT_MAP.img) */
-  G.PT_MAP = G.PT_MAP || { img: null, vb: [1033, 470, 317, 430] };
+  G.PT_MAP = G.PT_MAP || { img: 'assets/img/d5-map.webp', vb: [0, 0, 1600, 900] };
   const VB = G.PT_MAP.vb;
   const NODES = {
-    precinct: { name: 'Precinct D5', x: 1062, y: 690, block: null },
-    plaza: { name: 'Plaza 5', x: 1120, y: 525, block: 'plaza' },
-    s9: { name: 'Stack 9', x: 1105, y: 620, block: 's9' },
-    s14: { name: 'Stack 14', x: 1195, y: 600, block: 's14' },
-    s22: { name: 'Stack 22', x: 1290, y: 625, block: 's22' },
-    bazaar: { name: 'Bazaar Row', x: 1190, y: 855, block: 'bazaar' },
-    gate: { name: 'Canal Gate 3', x: 1325, y: 760, block: 'bazaar' },
-    bridge: { name: 'Lock Bridge', x: 1255, y: 500, block: 'plaza' },
+    precinct: { name: 'Precinct D5', x: 165, y: 560, block: null },
+    plaza: { name: 'Plaza 5', x: 390, y: 160, block: 'plaza' },
+    s9: { name: 'Stack 9', x: 480, y: 360, block: 's9' },
+    s14: { name: 'Stack 14', x: 840, y: 330, block: 's14' },
+    s22: { name: 'Stack 22', x: 1250, y: 370, block: 's22' },
+    bazaar: { name: 'Bazaar Row', x: 790, y: 790, block: 'bazaar' },
+    gate: { name: 'Canal Gate 3', x: 1470, y: 610, block: 'bazaar' },
+    bridge: { name: 'Lock Bridge', x: 1120, y: 70, block: 'plaza' },
   };
   const NK = Object.keys(NODES);
   const sup = (s) => (G.superiorOf ? G.superiorOf(s).name : 'Granite');
@@ -109,7 +109,7 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
     p.ev.push({ k, node: pick(free), ttl: EVENTS[k].ttl, id: ++p.n });
   };
   const dist = (a, b) => Math.hypot(NODES[a].x - NODES[b].x, NODES[a].y - NODES[b].y);
-  const cost = (a, b) => (dist(a, b) > 170 ? 2 : 1);
+  const cost = (a, b) => (dist(a, b) > 700 ? 2 : 1);
   const tick = (s, n) => {
     for (let i = 1; i < (n || 1); i++) tickOne(s);
     tickOne(s);
@@ -139,11 +139,11 @@ On the corner, someone from your files: CID ${f.cid}, ${f.desc}. Day ${f.last}: 
       const n = NODES[k];
       const e = p.ev.find((x) => x.node === k);
       g += `<g class="pt-node${k === p.at ? ' here' : ''}${e ? ' hot' : ''}" data-pt="${k}" tabindex="0" role="button" aria-label="${n.name}">`;
-      g += `<circle cx="${n.x}" cy="${n.y}" r="${e ? 13 : 9}"/>`;
-      if (e) g += `<text x="${n.x}" y="${n.y + 5}" class="pt-ico">${EVENTS[e.k].icon}</text><text x="${n.x + 16}" y="${n.y - 10}" class="pt-ttl">${e.ttl}h</text>`;
-      g += `<text x="${n.x}" y="${n.y + 26}" class="pt-name">${n.name.toUpperCase()}</text></g>`;
+      g += `<circle cx="${n.x}" cy="${n.y}" r="${e ? 26 : 18}"/>`;
+      if (e) g += `<text x="${n.x}" y="${n.y + 9}" class="pt-ico">${EVENTS[e.k].icon}</text><text x="${n.x + 30}" y="${n.y - 18}" class="pt-ttl">${e.ttl}h</text>`;
+      g += `<text x="${n.x}" y="${n.y + 48}" class="pt-name">${n.name.toUpperCase()}</text></g>`;
     });
-    g += `<g class="pt-you"><circle cx="${here.x}" cy="${here.y}" r="5"/></g>`;
+    g += `<g class="pt-you"><circle cx="${here.x}" cy="${here.y}" r="9"/></g>`;
     return g + '</svg>';
   }
   document.addEventListener('click', (e) => {
