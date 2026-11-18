@@ -1010,7 +1010,7 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
   });
   if (!fx.hero || !fx.face || !fx.hud || !fx.rx) out.push('cinematic/HUD not applied: ' + JSON.stringify(fx));
   if (fx.offHero || fx.offHud) out.push('cinematic/HUD did not switch off: ' + JSON.stringify(fx));
-  if (fx.toggles !== 'cine,hud') out.push('menu toggles: ' + fx.toggles);
+  if (fx.toggles !== 'cine,hud,live') out.push('menu toggles: ' + fx.toggles);
   return out.concat(errors);
 });
 
