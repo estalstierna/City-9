@@ -710,6 +710,52 @@ suite('living paintings, lens scan, CCA terminal and hack', async (browser) => {
   return out.concat(errors);
 });
 
+suite('checkpoint duty (always on the board, cards, lookups, questions, frisks)', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  const b = await page.evaluate(() => {
+    const s = G.state();
+    s.div = 'UNION';
+    G.goto('u_board');
+    const labels = [...document.querySelectorAll('#story .block.current .choice')].map((x) => x.innerText);
+    const iCp = labels.findIndex((l) => /Checkpoint duty/.test(l));
+    const iPt = labels.findIndex((l) => /Walk the city/.test(l));
+    return { iCp, iPt };
+  });
+  if (b.iCp < 0) out.push('checkpoint duty is not on the board');
+  else if (b.iPt >= 0 && b.iCp < b.iPt) out.push('checkpoint should come after the patrol entry: ' + JSON.stringify(b));
+  const r = await page.evaluate(async () => {
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const labels = [...document.querySelectorAll('#story .block.current .choice')];
+    labels.find((x) => /Checkpoint duty/.test(x.innerText)).click();
+    document.querySelector('#story .block.current .choice').click();
+    await wait(300);
+    const res = { cards: 0, lookups: 0, asks: 0, frisks: 0, termOk: false, decided: 0 };
+    for (let i = 0; i < 60; i++) {
+      const mini = document.querySelector('#story .block.current .mini.cp');
+      if (!mini || /won|lost/.test(mini.className)) break;
+      if (mini.querySelector('.cp-idc')) res.cards++;
+      if (!res.termOk && G.cp && G.cp.cur) res.termOk = G.termRun('query ' + G.cp.cur.cid).join(' ').includes('CID ' + G.cp.cur.cid);
+      const acts = [...mini.querySelectorAll('[data-a]:not(:disabled)')];
+      acts.slice(0, 2 + (i % 3)).forEach((a) => { a.click(); res[({ lookup: 'lookups', purpose: 'asks', home: 'asks', work: 'asks', frisk: 'frisks' })[a.dataset.a] || 'cards']++; });
+      const v = [...mini.querySelectorAll('[data-v]')];
+      if (v.length) { v[Math.floor(Math.random() * v.length)].click(); res.decided++; }
+      await wait(760);
+    }
+    return res;
+  });
+  if (!r.cards || !r.lookups || !r.asks || !r.decided) out.push('checkpoint did not run: ' + JSON.stringify(r));
+  if (!r.termOk) out.push('terminal query should answer for the citizen at the window: ' + JSON.stringify(r));
+  await page.waitForTimeout(800);
+  const end = await page.evaluate(() => ({ scene: G.state().scene, txt: document.querySelector('#story .block.current') ? document.querySelector('#story .block.current').innerText : '' }));
+  if (end.scene !== 'cp_end') out.push('the shift did not end in the report: ' + end.scene);
+  if (/undefined|NaN/.test(end.txt)) out.push('report has undefined: ' + end.txt.slice(0, 200));
+  const w = await randomWalk(page, 12, { stopAt: ['u_evening', 'u_night', 'u_board'] });
+  out.push(...w.problems);
+  return out.concat(errors);
+});
+
 suite('division transfer exam at grade 01', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -959,7 +1005,7 @@ suite('patrol on the map, cinematic scenes and the mask HUD', async (browser) =>
       document.querySelector('#story .block.current .choice').click();
       return G.state().scene;
     });
-    if (!/^dd_|^d_/.test(r)) out.push('the assignment did not open the duty: ' + r);
+    if (/^pt_/.test(r) || r === 'u_board') out.push('the assignment did not open the duty: ' + r);
     const back = await randomWalk(page, 120, { stopAt: ['pt_map', 'u_evening', 'u_night', 'u_board'] });
     out.push(...back.problems.map((x) => 'assignment: ' + x));
     if (back.ended !== 'pt_map') out.push('the assignment did not return to the map (ended at ' + back.ended + ')');

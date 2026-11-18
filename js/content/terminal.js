@@ -29,6 +29,7 @@
     query: (s, a) => {
       const cid = (a[0] || '').replace(/\D/g, '');
       if (!cid) return ['USAGE: query <cid>'];
+      if (G.cp && G.cp.cur && String(G.cp.cur.cid) === cid) return G.cp.lookup();
       const f = files(s).find((x) => String(x.cid) === cid);
       return f ? [`CID ${f.cid}`, `DESC   ${f.desc || '—'}`, `LAST   day ${f.last} — ${f.lastVerdict || 'stopped'}`, f.amputated ? 'STATUS AMPUTATED' : 'STATUS ACTIVE'] : [`CID ${cid}: NO RECORD HELD BY THIS UNIT.`];
     },

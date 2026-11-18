@@ -130,6 +130,8 @@
     s.stats.stops++;
   }
   G.fileCitizen = fileCitizen;
+  G.makeCitizen = makeCitizen;
+  G.ssItems = ITEMS;
 
   function summary(c) {
     const lines = [];
