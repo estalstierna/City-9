@@ -454,7 +454,7 @@ suite('chapter 3 for every division', async (browser) => {
 /* Chapters 4 onward share one setup: a Union unit with every earlier chapter done, two days
    after the last one ended. `tweak(s, div, i)` runs in the page (it is sent as source, so it
    can use G but not variables from this file) to set rank, resistance, relations and flags. */
-const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186, 11: 206 };
+const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186, 11: 206, 12: 226 };
 async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -482,6 +482,7 @@ async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) 
         if (n > 9) s.c9 = { stage: 9, done: true, endDay: CH_END[9], verdict: 'held', score: 55 };
         if (n > 10) s.c10 = { stage: 9, done: true, endDay: CH_END[10], deserter: 'Rook', desFate: 'freed', cleared: 6, moved: 40, harmed: 8, detained: 30 };
         if (n > 11) s.c11 = { stage: 9, done: true, endDay: CH_END[11], outcome: 'held', prep: {} };
+        if (n > 12) s.c12 = { stage: 0, done: true, endDay: CH_END[12], phase: 'riot', seen: {}, flags: {}, clues: 3, order: 62, blood: 1, freed: i % 2, missed: 1, handled: 6, log: [], ev: [], out: 'held', report: ['truth', 'buried', 'lambda'][i % 3] };
         new Function('return ' + src)()(s, div, i);
         G.goto('u_board');
       },
@@ -753,6 +754,83 @@ suite('checkpoint duty (always on the board, cards, lookups, questions, frisks)'
   if (/undefined|NaN/.test(end.txt)) out.push('report has undefined: ' + end.txt.slice(0, 200));
   const w = await randomWalk(page, 12, { stopAt: ['u_evening', 'u_night', 'u_board'] });
   out.push(...w.problems);
+  return out.concat(errors);
+});
+
+suite('chapter 13 for every division (The Hearing: direction finding, raid, trial)', async (browser) => {
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  const { out, page } = await chapterSuite(browser, {
+    n: 13,
+    steps: QUICK ? 400 : 600,
+    runs: QUICK ? divs : divs.concat(divs),
+    stopAt: ['c13_end', 'disc_tribunal'],
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: 'SqL', merit: 500, lp: 36, res: i % 3 ? 25 : 5 });
+      G.formSquad(s);
+    },
+  });
+  const r = await page.evaluate(() => {
+    const s = G.state();
+    const c = s.c13;
+    return { ok: !!c, v: c && c.outcome, charges: c && c.charges.length, rec: G.careerRecord(s).match(/undefined|NaN/) };
+  });
+  if (!r.ok || !r.v || r.charges < 2) out.push('the hearing never reached a verdict: ' + JSON.stringify(r));
+  if (r.rec) out.push('service record has ' + r.rec[0]);
+  return out;
+});
+
+suite('direction finding and the hearing, played properly', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  /* direction finding: lock the true bearings, tap the true site */
+  const df = await page.evaluate(() => new Promise((res) => {
+    G.goto('u_board');
+    const blk = document.querySelector('#story .block.current');
+    G.MINIGAMES.dfind(blk, { site: 'd3' }, (ok, d) => res({ ok, d }));
+    const POSTS = [[300, 200], [1400, 230], [899, 720]];
+    const site = G.DF_SITES.find((x) => x.id === 'd3');
+    for (let i = 0; i < 3; i++) {
+      const b = (Math.atan2(site.x - POSTS[i][0], -(site.y - POSTS[i][1])) * 180) / Math.PI;
+      const rng = blk.querySelector('.dfind input');
+      rng.value = Math.round((b + 360) % 360);
+      rng.dispatchEvent(new Event('input'));
+      blk.querySelector('.df-lock').click();
+    }
+    blk.querySelector('[data-site="d3"]').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    setTimeout(() => res({ timeout: true }), 3000);
+  }));
+  if (!df.ok) out.push('direction finding with the true bearings should find the site: ' + JSON.stringify(df));
+  /* the hearing: present the right evidence on the false statements */
+  const tr = await page.evaluate(() => new Promise((res) => {
+    const s = G.state();
+    s.c12 = { handled: 5, missed: 1, order: 60, freed: 0, clues: 3, report: 'buried', out: 'held' };
+    s.c13 = { op: 'arrested', tape: true, charges: ['a', 'b'] };
+    G.goto('u_board');
+    const blk = document.querySelector('#story .block.current');
+    const W = [{ name: 'A', role: 'x', img: 'dorn', stm: [{ t: 'one', press: 'p' }, { t: 'two', press: 'p', contra: 'np', hit: 'h' }] }, { name: 'B', role: 'y', img: 'kell', stm: [{ t: 'three', press: 'p', contra: 'service', hit: 'h' }] }];
+    G.MINIGAMES.trial(blk, { witnesses: W, record: [{ id: 'service', label: 'S', desc: 'd' }, { id: 'np', label: 'N', desc: 'd' }] }, (ok, d) => res({ ok, d }));
+    const click = (q) => blk.querySelector(q).click();
+    click('[data-b="present"]'); click('[data-ev="service"]');          /* wrong on statement one: costs a heart */
+    click('[data-b="next"]'); click('[data-b="present"]'); click('[data-ev="np"]');   /* right on statement two */
+    click('[data-b="next"]'); click('[data-b="present"]'); click('[data-ev="service"]'); /* right on witness B */
+    click('[data-b="next"]');
+    setTimeout(() => res({ timeout: true }), 3000);
+  }));
+  if (!tr.ok || !tr.d || tr.d.found !== 2 || tr.d.hearts !== 4) out.push('the hearing: ' + JSON.stringify(tr));
+  /* the real witnesses are solvable whatever your record */
+  const sv = await page.evaluate(() => {
+    const out = [];
+    const s = G.state();
+    s.c12 = { handled: 0, missed: 0, order: 20, freed: 0, clues: 0, report: 'truth', out: 'lost' };
+    s.files = {};
+    s.c13 = { op: null, tape: false, charges: [] };
+    G.goto('c13_summons');
+    G.goto('c13_trial');
+    const mini = document.querySelector('#story .block.current .mini.trial');
+    return { has: !!mini };
+  });
+  if (!sv.has) out.push('the hearing did not start from a bare record');
   return out.concat(errors);
 });
 

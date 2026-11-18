@@ -365,6 +365,7 @@
     ch(10, s.c10 && `The coast road: ${s.c10.cleared} sectors cleared, ${s.c10.moved} moved on, ${s.c10.harmed} harmed.`);
     ch(11, s.c11 && `The siege of the Nexus: ${s.c11.outcome || '—'}${s.c11.siege && s.c11.siege.gasUsed ? ', and the gas' : ''}.`);
     ch(12, s.c12 && `Nova Prospekt: ${({ held: 'the uprising was held', bloody: 'the uprising was held at a cost', open: 'the cells were opened', lost: 'the compound was lost' })[s.c12.out] || '—'}${s.c12.report === 'truth' ? ', and the key was named' : s.c12.report === 'lambda' ? ', and the report went to the wall' : ''}.`);
+    ch(13, s.c13 && `The hearing: ${({ acquitted: 'acquitted', reprimand: 'reprimanded', convicted: 'convicted' })[s.c13.outcome] || '—'}${s.c13.op === 'arrested' ? ', the operator arrested' : s.c13.op === 'freed' ? ', the operator let go' : ''}${s.c13.deal === 'betrayed' ? ', and a name was given' : ''}.`);
     const verdict = s.cons >= 65 ? 'Kept a conscience inside the uniform. It cost something, every time.' : s.cons <= 30 ? 'Did what the Union asked. Did it well. Did not look back.' : 'Did what had to be done, and sometimes what did not.';
     return `<div class="rec">
       <div class="rec-head"><b>${G.desig(s)}</b><span>${G.RANK_NAMES[s.rank]} · ${s.div || 'UNION'} · ${s.day} days in service</span></div>
