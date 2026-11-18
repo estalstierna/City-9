@@ -884,3 +884,32 @@ figure.pic.portrait.scan { position: relative; overflow: hidden; }
 .hk-dump button:disabled { color: #4f6168; border-color: #31454c; cursor: default; text-decoration: line-through; }
 .hk-log { font-size: 12px; color: #9ae8f5; } .hk-log .ok { color: #7ddf8a; } .hk-log .bad { color: #ff8a7a; }
 @media (max-width: 600px) { .hk-body { grid-template-columns: 1fr; } }
+
+/* ---- terminal on the painted console (wide) and its close-up (narrow) */
+#term.pic { overflow: auto; align-items: flex-start; justify-content: center; }
+#term.pic .tm-fig { width: min(1672px, 100%); margin: auto; }
+#term.pic .tm-fig.close { width: min(100%, 640px, calc((100vh - 120px) / 1.87)); }
+.tm-stage { position: relative; container-type: inline-size; width: 100%; aspect-ratio: 1672 / 941; background-size: 100% 100%; font-family: ui-monospace, Menlo, Consolas, monospace; color: #9ae8f5; }
+.tm-sc { position: absolute; overflow: hidden; box-sizing: border-box; }
+.tm-sc::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(transparent 0 2px, rgba(0,0,0,.15) 2px 3px); pointer-events: none; }
+.tm-stage .tm-out { height: 100%; max-height: none; padding: 5% 6%; font-size: max(10px, .8cqw); line-height: 1.45; }
+.tm-stage .tm-p { height: 100%; padding: 7% 11% 7% 15%; border: 0; background: none; box-shadow: none; font-size: max(9px, .66cqw); }
+.tm-stage .tm-p b { font-size: max(8px, .6cqw); }
+.tm-stage .tm-in { height: 100%; border: 0; padding: 0 5%; align-items: center; font-size: max(11px, .8cqw); }
+.tm-main { left:41.45%;top:9.35%;width:17.46%;height:41.45%; clip-path: polygon(0 8%, 8% 0, 92% 0, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0 92%); }
+.tm-ul { left:27.03%;top:11.69%;width:7.54%;height:39.11%; clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 96%); }
+.tm-ur { left:65.79%;top:11.69%;width:7.54%;height:39.11%; clip-path: polygon(0 0, 100% 4%, 100% 96%, 0 100%); }
+.tm-l1 { left:15.55%;top:17.00%;width:7.42%;height:16.79%; clip-path: polygon(0 12%, 12% 0, 100% 0, 100% 88%, 88% 100%, 0 100%); }
+.tm-l2 { left:15.91%;top:38.89%;width:7.42%;height:14.03%; }
+.tm-r1 { left:77.15%;top:17.00%;width:7.42%;height:16.79%; clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 12% 100%, 0 88%); }
+.tm-r2 { left:76.91%;top:38.89%;width:7.42%;height:14.03%; }
+.tm-strip { left:40.37%;top:60.15%;width:19.86%;height:6.38%; }
+.tm-stage .tm-main .tm-out { padding: 6% 7%; }
+/* the close-up: cropped to the centre screen and the command strip */
+.tm-crop { position: relative; width: 100%; aspect-ratio: 1 / 1.87; overflow: hidden; container-type: inline-size; }
+.tm-crop .tm-stage { position: absolute; width: 178%; left: -39%; top: -13.3cqw; aspect-ratio: 1122 / 1402; container-type: normal; }
+.tm-cmain { left: 24.2%; top: 10.1%; width: 51.5%; height: 53.3%; clip-path: polygon(0 5%, 5% 0, 95% 0, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0 95%); }
+.tm-cstrip { left: 22.5%; top: 74.6%; width: 55%; height: 10%; }
+.tm-crop .tm-out { height: 100%; padding: 6% 7%; font-size: clamp(11px, 3.2cqw, 15px); line-height: 1.4; }
+.tm-crop .tm-in { height: 100%; border: 0; padding: 0 4%; align-items: center; font-size: clamp(11px, 3.2cqw, 15px); }
+.tm-fig .tm-keys { padding: 8px 0 4px; } .tm-fig .tm-desk { padding: 4px 0 8px; }

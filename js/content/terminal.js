@@ -8,14 +8,15 @@
    try tells you how many letters it shares, in place. Scene usage: mini: { type: 'hack', opts: { title,
    words, answer, tries, hint }, pass, fail }. */
 (function () {
-  G.TERMINAL_IMG = G.TERMINAL_IMG || '';
+  G.TERMINAL_IMG = G.TERMINAL_IMG || 'assets/img/terminal.webp';
+  G.TERMINAL_CLOSE = G.TERMINAL_CLOSE || 'assets/img/terminal-close.webp';
   const esc = (x) => String(x).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
   const word = (v) => (v >= 45 ? 'TRUSTS' : v >= 15 ? 'FRIENDLY' : v > -15 ? 'NEUTRAL' : v > -45 ? 'WARY' : 'HOSTILE');
   const files = (s) => Object.values(s.files || {});
   const bar = (v, n = 20) => '█'.repeat(Math.round((Math.max(0, Math.min(100, v)) / 100) * n)).padEnd(n, '░');
 
   const CMD = {
-    help: () => ['COMMANDS', '  whoami          your designation and grade', '  units           your squad', '  files           your case files, newest first', '  query <cid>     look up a citizen by CID', '  roster          people on record and how they stand', '  orders          what the board offers', '  city            city status', '  jury            what JURY holds on you', '  np              Nova Prospekt incident report (after Chapter 12)', '  log             this terminal’s session log', '  clear · exit'],
+    help: () => ['COMMANDS', '  whoami   designation', '  units    your squad', '  files    case files', '  query N  look up a CID', '  roster   people on record', '  orders   board offers', '  city     city status', '  jury     JURY file', '  np       Nova Prospekt', '  log      session log', '  clear · exit'],
     whoami: (s) => [`${G.desig(s)}`, `GRADE   ${G.RANK_NAMES[s.rank]}`, `DIV     ${s.div || 'UNION'}`, `DAY     ${s.day}`, `HEALTH  ${bar(s.hp)} ${s.hp}`, `MERIT   ${s.merit}`, `LOYALTY ${s.lp > 0 ? '+' : ''}${s.lp}`],
     units: (s) => {
       const m = s.squad && s.squad.formed && G.squadActive ? G.squadActive(s) : [];
@@ -71,31 +72,49 @@
     const S = G.state();
     el = document.createElement('div');
     el.id = 'term';
-    el.innerHTML = `<div class="tm-frame">
+    const keys = `<div class="tm-keys">${['help', 'whoami', 'files', 'roster', 'city', 'exit'].map((c) => `<button type="button" data-c="${c}">${c}</button>`).join('')}</div>`;
+    const wide = window.innerWidth >= 1300 && G.TERMINAL_IMG;
+    const closeUp = !wide && G.TERMINAL_CLOSE;
+    const form = '<form class="tm-in"><span>CCA&gt;</span><input autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command"></form>';
+    const out = '<div class="tm-out" role="log" aria-live="polite"></div>';
+    const pn = (k) => `<div class="tm-p" data-p="${k}"></div>`;
+    if (wide) {
+      el.classList.add('pic');
+      el.innerHTML = `<div class="tm-fig"><div class="tm-stage" style="background-image:url('${G.TERMINAL_IMG}')">
+        <div class="tm-sc tm-main">${out}</div>
+        <div class="tm-sc tm-ul">${pn('unit')}</div><div class="tm-sc tm-ur">${pn('city')}</div>
+        <div class="tm-sc tm-l1">${pn('files')}</div><div class="tm-sc tm-l2">${pn('time')}</div>
+        <div class="tm-sc tm-r1">${pn('sig')}</div><div class="tm-sc tm-r2">${pn('log')}</div>
+        <div class="tm-sc tm-strip">${form}</div></div>${keys}<div class="tm-desk"><span>CCA · CITY 09 · OPERATOR CONSOLE</span><button type="button" class="tm-x">Close</button></div></div>`;
+    } else if (closeUp) {
+      el.classList.add('pic');
+      el.innerHTML = `<div class="tm-fig close"><div class="tm-crop"><div class="tm-stage" style="background-image:url('${G.TERMINAL_CLOSE}')">
+        <div class="tm-sc tm-cmain">${out}</div><div class="tm-sc tm-cstrip">${form}</div></div></div>${keys}<div class="tm-desk"><span>CCA · OPERATOR CONSOLE</span><button type="button" class="tm-x">Close</button></div></div>`;
+    } else {
+      el.innerHTML = `<div class="tm-frame">
       <div class="tm-wall">
-        <div class="tm-side l"><div class="tm-p" data-p="unit"></div><div class="tm-p" data-p="files"></div><div class="tm-p" data-p="time"></div></div>
-        <div class="tm-main"><div class="tm-out" role="log" aria-live="polite"></div><form class="tm-in"><span>CCA&gt;</span><input autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command"></form>
-          <div class="tm-keys">${['help', 'whoami', 'files', 'roster', 'city', 'exit'].map((c) => `<button type="button" data-c="${c}">${c}</button>`).join('')}</div></div>
-        <div class="tm-side r"><div class="tm-p" data-p="city"></div><div class="tm-p" data-p="sig"></div><div class="tm-p" data-p="log"></div></div>
+        <div class="tm-side l">${pn('unit')}${pn('files')}${pn('time')}</div>
+        <div class="tm-main">${out}${form}${keys}</div>
+        <div class="tm-side r">${pn('city')}${pn('sig')}${pn('log')}</div>
       </div>
       <div class="tm-desk"><span>CCA · CITY 09 · OPERATOR CONSOLE</span><button type="button" class="tm-x">Close</button></div></div>`;
-    if (G.TERMINAL_IMG) el.style.setProperty('--tm-img', `url('${G.TERMINAL_IMG}')`), el.classList.add('img');
+    }
     document.body.append(el);
-    const out = el.querySelector('.tm-out');
+    const outEl = el.querySelector('.tm-out');
     const inp = el.querySelector('input');
     const refresh = () => {
       const p = panels(G.state());
       el.querySelectorAll('[data-p]').forEach((n) => (n.innerHTML = p[n.dataset.p]));
     };
     const print = (lines) => {
-      lines.forEach((l) => out.insertAdjacentHTML('beforeend', `<div>${esc(l) || '&nbsp;'}</div>`));
-      out.scrollTop = out.scrollHeight;
+      lines.forEach((l) => outEl.insertAdjacentHTML('beforeend', `<div>${esc(l) || '&nbsp;'}</div>`));
+      outEl.scrollTop = outEl.scrollHeight;
     };
     const exec = (line) => {
       print([`CCA> ${line}`]);
       const r = run(G.state(), line);
       if (r === 'exit') return close();
-      if (r === null) out.innerHTML = '';
+      if (r === null) outEl.innerHTML = '';
       else print(r);
       refresh();
     };
