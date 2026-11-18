@@ -13,6 +13,13 @@
   const JACKETS = ['#2b2e2f', '#33373a', '#272a2c', '#3a3d3f'];
   const SKINS = ['#b59a85', '#a38670', '#c3a994', '#8f745f', '#b8a08a'];
 
+  /* the crowd: twelve painted figures (assets/img/crowd), cut out and walked across the yard */
+  const SPRITES = Array.from({ length: 12 }, (_, i) => {
+    const im = new Image();
+    im.src = `assets/img/crowd/c${String(i + 1).padStart(2, '0')}.webp`;
+    return im;
+  });
+  const PH = (p) => 150 * p.sc * p.hv;
   G.MINIGAMES.scan = (block, opts, done) => {
     const S = G.state();
     const secs = opts.seconds || 34;
@@ -53,6 +60,8 @@
         sc: 0.62 + ((y - H * 0.6) / (H * 0.32)) * 0.5,
         v: 22 + Math.random() * 18,
         ph: Math.random() * 6,
+        sprite: rint(0, 11),
+        hv: 0.94 + Math.random() * 0.12,
         jacket: pick(JACKETS),
         skin: pick(SKINS),
         prog: 0,
@@ -74,7 +83,7 @@
       let best = null, bd = 1e9;
       people.forEach((p) => {
         if (p.gone) return;
-        const h = 118 * p.sc;
+        const h = PH(p);
         const d = Math.hypot(x - p.x, y - (p.y - h * 0.5));
         if (d < Math.max(34, h * 0.36) && d < bd) (best = p), (bd = d);
       });
@@ -116,7 +125,25 @@
       log.textContent = ok ? `${caught} of ${targets} organisers marked${wrong ? `, ${wrong} innocent${wrong > 1 ? 's' : ''} marked too` : ''}.` : `${caught} of ${targets} organisers marked, ${wrong} innocents marked. The rest are already at the gate.`;
       done(ok, { caught, wrong, missed });
     };
+    const drawSprite = (p, t) => {
+      const im = SPRITES[p.sprite];
+      if (!im || !im.complete || !im.naturalWidth) return false;
+      const h = PH(p), w = h * (im.naturalWidth / im.naturalHeight);
+      const swing = Math.sin(t * 5.2 + p.ph);
+      const bob = Math.abs(swing) * 2.4 * p.sc;
+      ctx.fillStyle = 'rgba(0,0,0,.34)';
+      ctx.beginPath();
+      ctx.ellipse(p.x, p.y + 2, w * 0.42, 4.5 * p.sc, 0, 0, 6.3);
+      ctx.fill();
+      ctx.save();
+      ctx.translate(p.x, p.y - bob);
+      ctx.rotate(swing * 0.022);
+      ctx.drawImage(im, -w / 2, -h, w, h);
+      ctx.restore();
+      return true;
+    };
     const drawPerson = (p, t) => {
+      if (drawSprite(p, t)) return;
       const h = 118 * p.sc, w = h * 0.4;
       const swing = Math.sin(t * 6 + p.ph);
       const bob = Math.abs(swing) * 2 * p.sc;
@@ -175,7 +202,7 @@
       sorted.forEach((p) => {
         drawPerson(p, t);
         if (p.scanned) {
-          const h = 118 * p.sc;
+          const h = PH(p);
           ctx.strokeStyle = p.marked ? '#ff7a45' : p.org || p.item ? 'rgba(255,190,90,.9)' : 'rgba(95,200,221,.6)';
           ctx.lineWidth = p.marked ? 2.4 : 1;
           ctx.strokeRect(p.x - h * 0.24, p.y - h * 1.02, h * 0.48, h * 1.04);
