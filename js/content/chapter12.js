@@ -80,6 +80,7 @@
     ], opts: [
       { t: 'Ask for the transfer log for the night of the train.', check: ['perception', 5], ok: ['Pages 40 to 44 are missing from the ledger, cut with a razor, and the clerk’s eyes go to the stove. In the stove: ash, and half a page. “By order of the Commandant.”', {}, { clue: 1 }], bad: ['The ledger is whole. Too whole. It has been rewritten in one hand.', {}, {}] },
       { t: 'Put your hand flat on the ledger and say nothing.', tag: 'RISK', cls: 'risk', out: ['Silence works on clerks. *“I did not burn it. I only watched.”* He gives you a name: a Warden, an officer, a key.', {}, { clue: 1 }] },
+      { t: 'Sit at the archive terminal and restore the cut pages from the backup.', tag: 'TERMINAL', cls: 'duty', hack: true },
       { t: 'Thank him and go.', out: ['He looks, for a moment, disappointed.', {}, {}] },
     ] },
     interro: { name: 'The interrogation wing', icon: '?', text: [
@@ -120,6 +121,7 @@
       { t: 'Hold the gate shut and talk to the column.', check: ['authority', 10], ok: ['They stop at the gate. They put their weapons down. It will be remembered.', { cons: 3, merit: 2 }, { order: 5 }], bad: ['They think you are a mutineer. The first shots are on the gate.', { hp: -4 }, { order: -4, blood: 1 }] },
     ] },
     yard: { name: 'The yard is turning', icon: '‼', img: 'e58-np-yard-turns', text: 'The processing yard is full of prisoners and the queue has broken. A few hundred people in grey canvas are walking, not running, towards the main gate. The Wardens on the wall are not shooting yet.', opts: [
+      { t: 'Scan the crowd through your lenses and pick out the organisers.', tag: 'LENSES', cls: 'duty', scan: true },
       { t: 'Close the yard gates and fire over their heads.', tag: 'BY THE BOOK', cls: 'loyal', out: ['The crowd stops. A few people on the ground, not many. The rest go back to the sheds.', { merit: 3, cons: -4 }, { order: 9, blood: 1 }] },
       { t: 'Walk out in front of them with your hands open.', tag: 'RISK', cls: 'risk', check: ['authority', 10], ok: ['Nobody has done that here in six years. The crowd stops at your feet, and an old woman says: “Where do you want us?”', { cons: 5, merit: 2 }, { order: 6 }], bad: ['A thrown boot, then the sound a crowd makes when it has chosen.', { hp: -5 }, { order: -6, blood: 1 }] },
       { t: 'Open the yard gate and let them through to the road.', tag: 'MERCY', cls: 'mercy', out: ['They go through the gate in a long grey line, walking, not running, and the Wardens on the wall do not fire.', { cons: 5, susp: 6, res: 3 }, { freed: 2, order: -6 }] },
@@ -337,7 +339,7 @@
           return res[1];
         };
         return INS[k].opts.map((o) =>
-          o.check
+          o.hack ? { t: o.t, tag: o.tag, tagCls: o.cls, go: 'np_hack' } : o.check
             ? { t: o.t, tag: o.tag, tagCls: o.cls, check: { skill: o.check[0], diff: o.check[1], pass: 'np_res', fail: 'np_res', okFx: fin(o.ok), failFx: fin(o.bad) } }
             : { t: o.t, tag: o.tag, tagCls: o.cls, fx: fin(o.out), go: 'np_res' }
         );
@@ -360,12 +362,26 @@
           return res[1];
         };
         return RIOT[k].opts.map((o) =>
-          o.check
+          o.scan ? { t: o.t, tag: o.tag, tagCls: o.cls, go: 'np_scan' } : o.check
             ? { t: o.t, tag: o.tag, tagCls: o.cls, check: { skill: o.check[0], diff: o.check[1], pass: 'np_res', fail: 'np_res', okFx: fin(o.ok), failFx: fin(o.bad) } }
             : { t: o.t, tag: o.tag, tagCls: o.cls, fx: fin(o.out), go: 'np_res' }
         );
       },
     },
+    np_hack: {
+      title: 'The archive terminal',
+      text: ['@sys The clerk steps aside without a word. The terminal wakes with a faint amber glow and asks for a password.', '@say Clerk|It is the word we use for what we do to people here. Not what we are. What we do.'],
+      mini: { type: 'hack', opts: { title: 'Archive — restore pages 40–44', words: ['GALLERY', 'CUSTODY', 'HALLWAY', 'WARDENS', 'BARRACK', 'TRAINED', 'COMMAND', 'SECTION'], answer: 'CUSTODY', tries: 4, hint: 'The clerk has told you what the word means.' }, pass: 'np_hack_ok', fail: 'np_hack_bad' },
+    },
+    np_hack_ok: { text: ['The terminal opens. Pages 40 to 44 come up one at a time: a transfer order for one prisoner, no number, no name, signed by the Commandant’s own key, and a note beneath: *to be released at 03:40 and followed.*'], choices: [{ t: 'Copy them. Close the file.', fx: (st) => ((C(st).res = 'The pages are in your notebook now. Dorn does not know.'), (C(st).seen[C(st).at] = true), C(st).handled++, apply(st, { clue: 1 }), tick(st, 1), { merit: 3 }), go: 'np_res' }] },
+    np_hack_bad: { text: ['The terminal locks. A small amber light goes on above the door. Somewhere in the tower a bell rings once, quietly.'], choices: [{ t: 'Walk out as if nothing happened.', fx: (st) => ((C(st).res = 'The clerk looks at the floor. Dorn will hear by dinner.'), (C(st).seen[C(st).at] = true), C(st).handled++, tick(st, 1), { susp: 4 }), go: 'np_res' }] },
+    np_scan: {
+      title: 'Lens scan — the yard',
+      text: ['@sys The yard is a tide. You pull the lens down, and the crowd resolves into numbers: a hundred and forty faces, each with a number, each a person walking, and somewhere in it the few who planned this.'],
+      mini: { type: 'scan', opts: { title: 'Processing yard — lens scan', seconds: 34, crowd: 34, targets: 3 }, pass: 'np_scan_ok', fail: 'np_scan_bad', skill: 'perception', diff: 10 },
+    },
+    np_scan_ok: { text: ['Three numbers marked. The Wardens on the wall take them out of the tide, quietly, and the crowd closes over the gap and keeps walking. Without organisers a crowd is only a crowd.'], choices: [{ t: 'Back to the compound.', fx: (st) => ((C(st).res = 'The yard slows to a stop. Nobody has fired.'), (C(st).ev = C(st).ev.filter((e) => e.node !== C(st).at)), C(st).handled++, apply(st, { order: 8, blood: 0 }), tick(st, 1), { merit: 3, cons: -2, xp: { perception: 1 } }), go: 'np_res' }] },
+    np_scan_bad: { text: ['Wrong numbers, or too slow. The organisers are already across the yard and through the gate, and two people you marked are being held against the wall while their families shout.'], choices: [{ t: 'Back to the compound.', fx: (st) => ((C(st).res = 'The yard breaks. The marked are not the guilty.'), (C(st).ev = C(st).ev.filter((e) => e.node !== C(st).at)), C(st).handled++, apply(st, { order: -6, blood: 1 }), tick(st, 1), { cons: -3 }), go: 'np_res' }] },
     np_res: { text: (s) => [C(s).res], choices: [{ t: 'Back to the compound.', go: 'np_map' }] },
     np_alarm: {
       checkpoint: true,

@@ -114,6 +114,11 @@ The game is a Progressive Web App. On Android in Chrome: menu ⋮ → **Install 
    - **The name:** the Union still says Anticitizen One. You stay Civil Protection.
    - **In the field:** the city's duty board, evenings and events step aside. Camp duties replace them: the sentry line (watch minigame, fewer night raids), the water detail, the detainee pen, the radio truck (reveals a sector), and convoy escort. Evenings are in the camp.
 
+11j. **Beyond text** (living paintings, lens scan, CCA terminal).
+   - **Living paintings** (Menu: *Living paintings*): the hero pictures animate on a canvas laid over the painting, with real rain and ripples, a sweeping searchlight, breathing and failing lamps, dust in a light shaft, drifting fog and lightning. Each picture has a recipe in `G.LIVE` (`js/live.js`); it pauses off screen and stands still under reduced motion.
+   - **Lens scan** (minigame, `js/content/scan.js`): a crowd walks to the gate while your reticle follows finger or mouse. Hold it on a figure to scan: a card with their number, face and what they carry. Mark the organisers before they cross; marking innocents costs. Used in Chapter 12's yard uprising.
+   - **CCA terminal** (*Terminal* in the top bar once you wear the mask, `js/content/terminal.js`): a real command line (`help`, `whoami`, `units`, `files`, `query <cid>`, `roster`, `orders`, `city`, `jury`, `np`) with a wall of live screens. `G.TERMINAL_IMG` can lay a painted blank console behind the screens.
+   - **Hack** (minigame): pick the password from a memory dump; wrong words show how many letters sit in the right place. Used at the archive terminal in Chapter 12.
 11i. **Chapter 12, "Nova Prospekt"** (all divisions, one long day on one painted map).
    - **Premise:** the Sector radio says a prisoner walked out of Nova Prospekt who was never entered in its books. Vigil sends a detachment. The garrison (the Prospekt Wardens, NPG: olive and amber, octagonal portcullis emblem) is not City 9's.
    - **Inspection (08:00 to 14:00):** nine places on the map, each with one thing to look into: the gate log, an intake boy, an old prisoner, cell 7-C, torn records, an interrogation, the armoury count, a transport train and a tampered breaker. Each gives clues, allies or a price; you cannot do everything before the bell.

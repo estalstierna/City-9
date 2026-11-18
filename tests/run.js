@@ -661,6 +661,55 @@ suite('chapter 12 for every division (Nova Prospekt, inspection and uprising)', 
   return out;
 });
 
+suite('living paintings, lens scan, CCA terminal and hack', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  /* the picture lives */
+  await page.evaluate(() => { const s = G.state(); s.c12 = { phase: 'brief', seen: {}, flags: {}, clues: 0, order: 60, blood: 0, freed: 0, missed: 0, handled: 0, log: [], ev: [], at: 'gate', hour: 8, end: 22 }; G.goto('c12_travel'); });
+  await page.waitForTimeout(600);
+  const live = await page.evaluate(() => ({ c: document.querySelectorAll('#story .block.current canvas.live').length, fx: !!document.querySelector('#story .block.current .pic.hero.live-on .fx') && getComputedStyle(document.querySelector('#story .block.current .pic.hero.live-on .fx')).display }));
+  if (live.c !== 1) out.push('the hero picture should have one live canvas: ' + JSON.stringify(live));
+  /* lens scan runs to its end and reports */
+  const sc = await page.evaluate(() => new Promise((res) => {
+    G.goto('np_res');
+    const blk = document.querySelector('#story .block.current');
+    const r = { rendered: false };
+    G.MINIGAMES.scan(blk, { seconds: 2, crowd: 6, targets: 1 }, (ok, d) => res({ ok, d, canvas: !!blk.querySelector('.scan canvas') }));
+    setTimeout(() => res({ timeout: true }), 6000);
+  }));
+  if (sc.timeout || !sc.canvas || !sc.d) out.push('lens scan did not finish: ' + JSON.stringify(sc));
+  /* hack: the right word wins, wrong words cost a try and show a likeness */
+  const hk = await page.evaluate(() => new Promise((res) => {
+    G.goto('np_res');
+    const blk = document.querySelector('#story .block.current');
+    G.MINIGAMES.hack(blk, { words: ['GALLERY', 'CUSTODY', 'HALLWAY'], answer: 'CUSTODY', tries: 3 }, (ok) => res({ ok, log: blk.querySelector('.hk-log').textContent }));
+    const bs = [...blk.querySelectorAll('.hk-dump button')];
+    bs.find((b) => b.textContent === 'GALLERY').click();
+    bs.find((b) => b.textContent === 'CUSTODY').click();
+  }));
+  if (!hk.ok || !/LIKENESS \d\/7/.test(hk.log)) out.push('hack: ' + JSON.stringify(hk));
+  /* terminal: opens from the top bar, runs commands, closes */
+  const tm = await page.evaluate(() => {
+    const s = G.state();
+    const btn = document.getElementById('btn-term');
+    btn && btn.click();
+    const open = !!document.getElementById('term');
+    const who = G.termRun('whoami').join(' ');
+    const q = G.termRun('query 99999').join(' ');
+    const bad = G.termRun('nonsense').join(' ');
+    const input = document.querySelector('#term input');
+    input.value = 'help';
+    input.form.dispatchEvent(new Event('submit', { cancelable: true }));
+    const outTxt = document.querySelector('#term .tm-out').innerText;
+    document.querySelector('#term .tm-x').click();
+    return { hasBtn: !!btn, open, closed: !document.getElementById('term'), who, q, bad, help: /COMMANDS/.test(outTxt) };
+  });
+  if (!tm.hasBtn || !tm.open || !tm.closed) out.push('terminal did not open and close: ' + JSON.stringify(tm));
+  if (!/CCA\.C9/.test(tm.who) || !/NO RECORD/.test(tm.q) || !/NOT RECOGNISED/.test(tm.bad) || !tm.help) out.push('terminal commands: ' + JSON.stringify(tm));
+  return out.concat(errors);
+});
+
 suite('division transfer exam at grade 01', async (browser) => {
   const { page, errors } = await openGame(browser);
   const out = [];
