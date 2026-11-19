@@ -17,6 +17,8 @@
     'e55-np-records': { lamps: [[0.14, 0.37, 'green', 0.11]], pulse: [[0.88, 0.55, 'fire', 0.12]], search: { x: 0.73, y: 0.1, a: 0.35, sweep: 0.45, len: 0.3 }, motes: { x: 0.1, y: 0.1, w: 0.5, h: 0.6, n: 40 } },
     'e56-np-raildock': { rain: 1.2, wind: 0.35, lamps: [[0.71, 0.15, 'amber', 0.08], [0.58, 0.28, 'amber', 0.04], [0.93, 0.25, 'amber', 0.04]], fog: 1 },
     'e57-np-blackout': { lamps: [[0.15, 0.13, 'amber', 0.05], [0.28, 0.1, 'amber', 0.05], [0.4, 0.17, 'amber', 0.05], [0.9, 0.18, 'amber', 0.05], [0.6, 0.55, 'amber', 0.04]], motes: { x: 0.5, y: 0.0, w: 0.35, h: 0.8, n: 90 }, flicker: 1 },
+    'e59-checkpoint-booth': { rain: 1.3, wind: 0.15, lamps: [[0.14, 0.24, 'amber', 0.1], [0.71, 0.14, 'amber', 0.05]], pulse: [[0.12, 0.37, 'cyan', 0.1], [0.65, 0.76, 'cyan', 0.03]], fog: 0.5 },
+    'e60-checkpoint-gate': { rain: 1.3, wind: 0.2, lamps: [[0.55, 0.08, 'white', 0.1], [0.4, 0.36, 'amber', 0.06], [0.04, 0.06, 'amber', 0.04]], pulse: [[0.23, 0.12, 'cyan', 0.05]], fog: 0.8 },
     'e58-np-yard-turns': { rain: 1.2, wind: 0.3, search: { x: 0.66, y: 0.07, a: 0.2, sweep: 0.5, len: 0.55 }, pulse: [[0.7, 0.45, 'cyan', 0.14]], lamps: [[0.4, 0.3, 'amber', 0.05], [0.1, 0.3, 'amber', 0.04]], fog: 0.8, flash: 1 },
   };
 

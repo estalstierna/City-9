@@ -233,7 +233,7 @@
         s.duty.current = 'checkpoint';
       },
       text: (s) => [
-        '@img assets/img/env/e03-bazaar.webp|The Canal Gate 3 booth',
+        '@img assets/img/env/e59-checkpoint-booth.webp|Window two, Canal Gate 3',
         `@say ${G.superiorOf ? G.superiorOf(s).name : 'Granite'}|Window two. A card, a look, a lookup if you have the minutes, a decision. The queue does not stop for you to be sure. Neither does the Union.`,
         '@sys CHECKPOINT: you have a budget of minutes for the shift. Each question, lookup and search costs some. Citizens lose patience.',
       ],
@@ -269,7 +269,7 @@
   G.addCodex({
     checkpoint: {
       title: 'Manning a checkpoint',
-      body: '<p>A checkpoint is a booth, a counter, a terminal and a queue. A card is only a claim: the lookup says whether the city agrees. A citizen who answers too fast, or looks at their bag, is telling you something. Time is the real shortage: every question and every search is a minute taken from the person behind them.</p><p>Wanted persons are detained and passed to JURY. Bad papers are turned back or detained. Contraband is confiscated. Innocents are passed. A unit who cannot tell the difference will learn it from the file.</p>',
+      body: '<img src="assets/img/env/e60-checkpoint-gate.webp" alt="Canal Gate 3" loading="lazy"><p>A checkpoint is a booth, a counter, a terminal and a queue. A card is only a claim: the lookup says whether the city agrees. A citizen who answers too fast, or looks at their bag, is telling you something. Time is the real shortage: every question and every search is a minute taken from the person behind them.</p><p>Wanted persons are detained and passed to JURY. Bad papers are turned back or detained. Contraband is confiscated. Innocents are passed. A unit who cannot tell the difference will learn it from the file.</p>',
     },
   });
   G.CODEX_GROUPS.find((g) => g.title === 'Procedure').ids.push('checkpoint');
