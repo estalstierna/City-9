@@ -11,12 +11,19 @@
   G.MINIGAMES = G.MINIGAMES || {};
   const pick = G.pick;
   const rint = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
-  const WORK = ['the ration plant', 'the weaving halls', 'the rail yards', 'the canal gate crew', 'the dye floor', 'the Nexus kitchens', 'a loading gang at the Bazaar'];
+  const WORK = ['the ration plant', 'the weaving halls', 'the rail yards', 'the canal gate crew', 'the dye floor', 'the Nexus kitchens', 'a Bazaar loading gang'];
   const PURPOSE = ['To my sister’s, past the canal.', 'The ration queue at Plaza 5.', 'Shift change. I am late.', 'Fetching medicine for a neighbour.', 'Home. I live just there.', 'The clinic, for my knee.'];
   const EVASIVE = ['Just walking. Is that against something?', 'Visiting. A friend. You would not know him.', 'Nothing. Nowhere. The usual.'];
   const blocks = () => Object.keys(G.BLOCKS || {}).filter((k) => G.BLOCKS[k].name);
   const bname = (k) => (G.BLOCKS[k] ? G.BLOCKS[k].name : k);
 
+  /* the four painted cards (assets/img/idcard-*.jpg), with the boxes measured on each: coordinates on the 1536 × 1024 picture */
+  const CARDS = {
+    standard: { src: 'assets/img/idcard-standard.webp', photo: [62, 178, 463, 716], f: [[962, 173, 1483, 293], [962, 319, 1483, 441], [962, 466, 1483, 586], [962, 611, 1483, 730]], strip: [291, 763, 1484, 892] },
+    cwu: { src: 'assets/img/idcard-cwu.webp', photo: [69, 179, 466, 714], f: [[961, 174, 1480, 295], [961, 320, 1480, 441], [961, 467, 1480, 584], [961, 609, 1481, 727]], strip: [298, 759, 1481, 889] },
+    commended: { src: 'assets/img/idcard-commended.webp', photo: [60, 178, 461, 711], f: [[952, 174, 1478, 295], [953, 321, 1478, 442], [952, 466, 1478, 585], [952, 610, 1478, 728]], strip: [290, 761, 1478, 890] },
+    watch: { src: 'assets/img/idcard-watch.webp', photo: [76, 188, 470, 710], f: [[955, 186, 1468, 306], [954, 330, 1468, 447], [955, 471, 1468, 586], [955, 611, 1468, 725]], strip: [305, 757, 1468, 882] },
+  };
   const make = (s) => {
     const c = G.makeCitizen(s);
     const r = Math.random();
@@ -81,7 +88,13 @@
       clock();
     };
     const face = (i) => (G.DOC_FACES && G.DOC_FACES[i] ? `<img src="${G.DOC_FACES[i].img}" alt="">` : '');
-    const cardHtml = (c) => `<div class="cp-idc"><div class="cp-ph">${face(c.card.face)}</div><div><b>ID CARD</b><br>CID ${c.card.cid}<br>HOME ${bname(c.card.home)}<br>WORK ${c.card.work}<br>ISSUED day ${c.card.issued}<br>VALID TO day ${c.card.expires}</div></div>`;
+    const pc = (x, y, x2, y2) => `left:${(x / 15.36).toFixed(2)}%;top:${(y / 10.24).toFixed(2)}%;width:${((x2 - x) / 15.36).toFixed(2)}%;height:${((y2 - y) / 10.24).toFixed(2)}%`;
+    const cardHtml = (c) => {
+      const k = CARDS[c.type === 'cwu' ? 'cwu' : c.type === 'commended' ? 'commended' : c.type === 'watch' ? 'watch' : 'standard'];
+      const vals = [['CID', c.card.cid], ['HOME', bname(c.card.home)], ['WORK', c.card.work], ['ISSUED', `day ${c.card.issued}`]];
+      const fld = vals.map(([l, v], i) => `<div class="cid-f" style="${pc(...k.f[i])}"><b>${l}</b><span class="${String(v).length > 14 ? 'long' : ''}">${v}</span></div>`).join('');
+      return `<div class="cp-idc" style="background-image:url('${k.src}')"><div class="cid-ph" style="${pc(...k.photo)}">${c.card.face !== undefined && G.DOC_FACES[c.card.face] ? `<img src="${G.DOC_FACES[c.card.face].img}" alt="">` : ''}</div>${fld}<div class="cid-s" style="${pc(...k.strip)}"><b>VALID TO</b><span>day ${c.card.expires}</span><i>C9&lt;&lt;${c.card.cid}&lt;&lt;${String(c.card.home).toUpperCase().slice(0, 6)}&lt;${String(c.card.issued).padStart(4, '0')}&lt;${String(c.card.expires).padStart(4, '0')}</i></div></div>`;
+    };
     const sayLine = (who, t) => {
       const d = document.createElement('div');
       d.innerHTML = who ? `<b>${who}</b> ${t}` : t;

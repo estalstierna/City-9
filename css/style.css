@@ -922,8 +922,15 @@ figure.pic.portrait.scan { position: relative; overflow: hidden; }
 .cp-face { display: flex; gap: 8px; align-items: flex-end; } .cp-face img { width: 96px; height: 96px; object-fit: cover; border: 1px solid var(--line); } .cp-face small { color: #8a979c; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
 .cp-say { flex: 1; overflow-y: auto; max-height: 200px; font-size: 13.5px; line-height: 1.45; } .cp-say div { margin-bottom: 5px; } .cp-say b { color: #5fc8dd; font-weight: 600; } .cp-say em { color: #e0c070; font-style: normal; }
 .cp-desk { display: flex; flex-direction: column; gap: 10px; }
-.cp-idc { display: flex; gap: 10px; padding: 8px 10px; background: #cfcabb; color: #1d1f21; border-radius: 3px; font-size: 12.5px; line-height: 1.45; box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
-.cp-ph img { width: 62px; height: 78px; object-fit: cover; filter: grayscale(.6); border: 1px solid #555; }
+.cp-idc { position: relative; container-type: inline-size; width: 100%; max-width: 560px; aspect-ratio: 3 / 2; background-size: 100% 100%; background-repeat: no-repeat; filter: drop-shadow(0 4px 10px rgba(0,0,0,.5)); }
+.cid-ph, .cid-f, .cid-s { position: absolute; box-sizing: border-box; overflow: hidden; }
+.cid-ph img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.8) contrast(1.05); opacity: .95; display: block; }
+.cid-f b, .cid-s b { position: absolute; left: 1%; top: 3%; font: 600 max(7px, 1.75cqw)/1 ui-monospace, Menlo, monospace; letter-spacing: .1em; color: #d7dee2; }
+.cid-f span, .cid-s span { position: absolute; left: 3%; right: 2%; bottom: 8%; font: 700 max(10px, 3cqw)/1.05 'Courier New', ui-monospace, Menlo, monospace; text-transform: uppercase; color: #1c2530; mix-blend-mode: multiply; white-space: nowrap; overflow: hidden; }
+.cid-f span.long { font-size: max(8px, 2.25cqw); }
+.cid-s b { left: 1%; top: 6%; color: #1c2530; opacity: .6; }
+.cid-s span { left: 14%; bottom: 36%; }
+.cid-s i { position: absolute; left: 3%; right: 3%; bottom: 8%; font: 500 max(7px, 1.7cqw)/1 ui-monospace, Menlo, monospace; letter-spacing: .12em; color: #1c2530; opacity: .55; white-space: nowrap; overflow: hidden; font-style: normal; }
 .cp-screen { margin: 0; min-height: 112px; padding: 8px 10px; background: rgba(2,10,14,.9); border: 1px solid #25505e; color: #9ae8f5; font: 12px/1.45 ui-monospace, Menlo, Consolas, monospace; white-space: pre-wrap; }
 .cp-actions, .cp-verdict { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .cp-actions button, .cp-verdict button { background: rgba(95,200,221,.08); border: 1px solid #25505e; color: #cfd8dc; padding: 6px 10px; cursor: pointer; font: inherit; font-size: 12.5px; }
