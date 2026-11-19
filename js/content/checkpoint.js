@@ -24,11 +24,18 @@
     commended: { src: 'assets/img/idcard-commended.webp', photo: [60, 178, 461, 711], f: [[952, 174, 1478, 295], [953, 321, 1478, 442], [952, 466, 1478, 585], [952, 610, 1478, 728]], strip: [290, 761, 1478, 890] },
     watch: { src: 'assets/img/idcard-watch.webp', photo: [76, 188, 470, 710], f: [[955, 186, 1468, 306], [954, 330, 1468, 447], [955, 471, 1468, 586], [955, 611, 1468, 725]], strip: [305, 757, 1468, 882] },
   };
-  const make = (s) => {
+  const make = (s, mod) => {
+    mod = mod || {};
     const c = G.makeCitizen(s);
+    if (mod.sick) {
+      const wf = G.DOC_FACES.map((x, i) => i).filter((i) => G.DOC_FACES[i].m === false && !G.DOC_FACES[i].cwu && !/old woman/.test(G.DOC_FACES[i].age));
+      if (wf.length) c.face = pick(wf);
+      c.type = 'standard';
+      c.desc = G.faceDesc ? G.faceDesc(c.face) : c.desc;
+    }
     const r = Math.random();
     const harder = Math.min(0.1, (s.day || 0) / 2500);
-    const kind = r < 0.06 + harder ? 'wanted' : r < 0.22 + harder ? 'papers' : r < 0.42 + harder ? 'contra' : 'clear';
+    const kind = mod.sick ? 'contra' : r < 0.06 + harder ? 'wanted' : r < 0.22 + harder ? 'papers' : r < 0.42 + harder ? 'contra' : 'clear';
     const home = pick(blocks());
     const work = c.type === 'cwu' ? 'the CWU depot' : pick(WORK);
     c.kind = kind;
@@ -36,8 +43,8 @@
     c.work = work;
     c.rec = { status: kind === 'wanted' ? 'WANTED' : c.type === 'watch' ? 'WATCH' : 'ACTIVE', home, work, ration: pick(['Tier 1', 'Tier 2', 'Tier 3']), photo: c.face };
     c.card = { cid: c.cid, face: c.face, home, work, issued: Math.max(1, s.day - rint(40, 400)), expires: s.day + rint(20, 300) };
-    c.items = kind === 'contra' ? (c.items.length ? c.items : [{ ...pick(G.ssItems.filter((x) => x.grade !== 'black')), hidden: false, found: false }]) : [];
-    c.items.forEach((it) => (it.hidden = Math.random() < 0.55));
+    c.items = mod.sick ? [{ ...pick(G.ssItems.filter((x) => x.cat === 'med')), hidden: false, found: false }] : kind === 'contra' ? (c.items.length ? c.items : [{ ...pick(G.ssItems.filter((x) => x.grade !== 'black')), hidden: false, found: false }]) : [];
+    c.items.forEach((it) => (it.hidden = mod.sick ? false : Math.random() < 0.55));
     if (kind === 'papers') {
       c.paper = pick(['expired', 'forged', 'photo']);
       if (c.paper === 'expired') c.card.expires = s.day - rint(1, 30);
@@ -46,8 +53,11 @@
     }
     c.liar = kind === 'wanted' || c.paper === 'forged' || (kind === 'contra' && c.items.some((x) => x.hidden));
     c.did = {};
-    c.patience = 9;
+    c.patience = mod.pat || 9;
     c.said = {};
+    c.sick = !!mod.sick;
+    if (c.sick) c.liar = false;
+    c.echo = !c.sick && s.files && s.files[c.cid] ? s.files[c.cid] : null;
     return c;
   };
   const answer = (c, q) => {
@@ -69,14 +79,14 @@
     const S = G.state();
     const total = opts.count || 10;
     let ticks = opts.ticks || 34;
-    const st = { processed: 0, correct: 0, missed: 0, harsh: 0, mercy: 0, left: 0, merit: 0, cons: 0, susp: 0, tokens: 0 };
+    const st = { processed: 0, correct: 0, missed: 0, harsh: 0, mercy: 0, left: 0, merit: 0, cons: 0, susp: 0, tokens: 0, res: 0, policy: null, pat0: 9, sick: false, events: 0 };
     let queue = total, cur = null, over = false;
     const root = document.createElement('div');
     root.className = 'mini cp';
     root.innerHTML = `<div class="cr-head"><span class="cr-title">${opts.title || 'Checkpoint'}</span><span class="cr-clock"></span></div>
       <div class="cp-grid"><div class="cp-person"><div class="cp-face"></div><div class="cp-say"></div></div>
       <div class="cp-desk"><div class="cp-card"></div><pre class="cp-screen"></pre></div></div>
-      <div class="cp-actions"></div><div class="cp-verdict"></div><div class="m3-log"></div>
+      <div class="cp-event" hidden></div><div class="cp-actions"></div><div class="cp-verdict"></div><div class="m3-log"></div>
       <div class="cr-help">Read the card, look the number up, ask, frisk: whatever you can afford in minutes. Then decide. Compare the answers with the card and the record.</div>`;
     block.append(root);
     const $ = (q) => root.querySelector(q);
@@ -115,17 +125,76 @@
         ['bag', 'SEARCH BAG', 1],
       ];
       $('.cp-actions').innerHTML = acts.map(([k, t, n, h]) => `<button type="button" data-a="${k}" ${cur.did[k] || over ? 'disabled' : ''} title="${h || ''}">${t} <i>${n}m</i></button>`).join('');
-      $('.cp-verdict').innerHTML = `<button type="button" data-v="pass" class="ok">PASS</button><button type="button" data-v="warn" class="mid">TURN BACK · WARN</button><button type="button" data-v="detain" class="bad">DETAIN</button>`;
+      $('.cp-verdict').innerHTML = `<button type="button" data-v="pass" class="ok">PASS</button><button type="button" data-v="warn" class="mid">TURN BACK · WARN</button><button type="button" data-v="detain" class="bad">DETAIN</button>` + (cur.gift && !cur.giftDone ? `<span class="cp-gift"><button type="button" data-g="take">Take the little paper bag</button><button type="button" data-g="refuse">Push it back</button></span>` : '');
+    };
+    const sup = () => (G.superiorOf ? G.superiorOf(S).name : 'Granite');
+    const EV = {
+      hard: {
+        text: () => `${sup()} leans in at the hatch of the next booth and says it flat: <b>“Numbers today, unit. No warnings. Anything yellow or worse is detained. Bad papers are detained. Do you understand?”</b>`,
+        opts: [
+          { t: 'Comply. No warnings today.', cls: 'ok', fx: () => ((st.policy = 'hard'), (st.merit += 1)), line: 'It is a harder shift now. Everyone at the window can feel it.' },
+          { t: 'Say you will do it by the book, as written.', cls: 'mid', fx: () => ((st.merit -= 1), (st.susp += 1)), line: 'He gives you a long look and goes back to his window.' },
+          { t: 'Nod, and ignore it.', fx: () => 0, line: 'He does not check.' },
+        ],
+      },
+      rush: {
+        text: () => 'The line has reached the bridge. A Dispatch voice crackles from the booth speaker: <b>“Speed up window two.”</b> Behind the glass, a hundred faces look at their feet.',
+        opts: [
+          { t: 'Work faster. Cut the small talk.', cls: 'ok', fx: () => ((ticks += 5), (st.pat0 = 5)), line: 'Five minutes to the budget, and a queue that will not wait for anything.' },
+          { t: 'Hold your pace.', fx: () => 0, line: 'The speaker clicks, and says nothing more.' },
+          { t: 'Wave the next four through without looking.', cls: 'bad', fx: () => { const n = Math.min(4, queue); let bad = 0; for (let i = 0; i < n; i++) if (Math.random() < 0.3) bad++; queue -= n; st.processed += n; st.missed += bad; st.merit += 1 - bad * 3; st.susp += bad; return bad; }, line: 'Four people walk through without a card being looked at.' },
+        ],
+      },
+      blockade: {
+        text: () => 'A Warden convoy has stopped dead on the lock bridge and Dispatch closes the gate. <b>“Hold the queue. Nobody through for ten minutes.”</b> The crowd pushes at the barrier. A woman at the front is holding a child that is burning with fever.',
+        opts: [
+          { t: 'Hold the line. Nobody through.', cls: 'ok', fx: () => ((ticks -= 8), (st.pat0 = 5), (st.merit += 2)), line: 'Ten minutes of hands on the barrier and a crowd that remembers.' },
+          { t: 'Let the woman and the child through first. Hold the rest.', cls: 'mid', fx: () => ((ticks -= 4), (st.cons += 3), (st.merit -= 2), (st.susp += 2), (st.sick = true)), line: 'You lift the hatch.' },
+          { t: 'Raise the barrier. Let everyone go.', cls: 'bad', fx: () => { const n = Math.min(5, queue); let bad = 0; for (let i = 0; i < n; i++) if (Math.random() < 0.3) bad++; queue -= n; st.processed += n; st.missed += bad; st.cons += 5; st.susp += 6; st.merit -= 4; st.res += 2; return bad; }, line: 'The barrier goes up and the queue goes through like water.' },
+        ],
+      },
+    };
+    const plan = opts.events || ['hard', 'rush', 'blockade'].sort(() => Math.random() - 0.5).slice(0, 2);
+    const trig = opts.trig || [rint(3, 4), rint(7, 8)];
+    const fired = [false, false];
+    let evIdx = null;
+    const showEvent = (id) => {
+      const e = EV[id];
+      evIdx = id;
+      st.events++;
+      $('.cp-grid').hidden = true;
+      $('.cp-actions').innerHTML = '';
+      $('.cp-verdict').innerHTML = '';
+      const box = $('.cp-event');
+      box.hidden = false;
+      box.innerHTML = `<div class="cp-ev-t">${e.text()}</div><div class="cp-ev-b">${e.opts.map((o, i) => `<button type="button" data-e="${i}" class="${o.cls || ''}">${o.t}</button>`).join('')}</div>`;
+      log('');
+      clock();
     };
     const next = () => {
       if (over) return;
       if (queue <= 0 || ticks <= 0) return finish();
+      const due = trig.findIndex((x, i) => !fired[i] && st.processed >= x);
+      if (due >= 0 && queue > 1 && ticks > 6) {
+        fired[due] = true;
+        return showEvent(plan[due]);
+      }
       queue--;
-      cur = make(S);
+      cur = make(S, { sick: st.sick, pat: st.pat0 });
+      st.sick = false;
       G.cp.cur = cur;
       $('.cp-say').innerHTML = '';
       $('.cp-screen').textContent = '';
-      sayLine('', `<i>${cur.desc[0].toUpperCase()}${cur.desc.slice(1)} steps up to the window and puts a card on the counter.</i>`);
+      sayLine('', cur.sick ? '<i>A woman with a feverish child in her arms comes to the window. The child is breathing in short, quick breaths.</i>' : `<i>${cur.desc[0].toUpperCase()}${cur.desc.slice(1)} steps up to the window and puts a card on the counter.</i>`);
+      if (cur.echo) {
+        const v0 = cur.echo.lastVerdict || 'stopped';
+        sayLine('', `<em>You know this face. CID ${cur.cid}, day ${cur.echo.last}: ${v0}.</em>`);
+        if (/WARN|RELEASED|NO FINDINGS|reduced/.test(v0)) {
+          sayLine('Them:', '“You let me go, last time. I have not forgotten.”');
+          if (Math.random() < 0.6) cur.gift = true;
+        } else if (/DETAINED/.test(v0)) sayLine('Them:', '“Three days in the cells. I did what you said. Please.”');
+        else sayLine('Them:', '“Again. Of course.”');
+      }
       spend(1);
       draw();
     };
@@ -189,6 +258,14 @@
         else if (minor) ((st.harsh++), (st.cons -= 3), (st.merit += 1), (text = 'Detained for a vial of biogel. The paperwork has a heading for that.'));
         else ((ok = true), (st.merit += 3), (text = 'Detained and logged.'));
       }
+      if (st.policy === 'hard' && c.kind !== 'clear' && v === 'warn') ((ok = false), (st.merit -= 3), (text += ' ' + sup() + ': “No warnings today, unit.”'));
+      if (st.policy === 'hard' && c.kind !== 'clear' && v === 'detain' && !minor) st.merit += 2;
+      if (c.echo) {
+        const v0 = c.echo.lastVerdict || '';
+        if (v === 'pass' && c.kind === 'clear' && /WARN|RELEASED|NO FINDINGS|reduced/.test(v0)) ((st.cons += 1), (text += ' They nod, once, as if something has been repaid.'));
+        if (v === 'pass' && c.kind === 'clear' && /DETAINED/.test(v0)) ((st.cons += 1), (text += ' They breathe out, long and slow.'));
+        if (v === 'detain' && c.kind === 'clear') ((st.cons -= 2), (text += ' The second time. They do not say anything at all.'));
+      }
       if (ok) st.correct++;
       st.processed++;
       if (v !== 'pass' && G.fileCitizen) G.fileCitizen(S, c, c.kind === 'clear' ? 0 : 2, v === 'detain' ? 'DETAINED' : 'WARNED');
@@ -205,6 +282,24 @@
       if (over || G.state() !== S) return;
       const a = e.target.closest('[data-a]');
       const v = e.target.closest('[data-v]');
+      const g = e.target.closest('[data-g]');
+      const ev = e.target.closest('[data-e]');
+      if (ev && evIdx) {
+        const o = EV[evIdx].opts[+ev.dataset.e];
+        o.fx();
+        evIdx = null;
+        $('.cp-event').hidden = true;
+        $('.cp-grid').hidden = false;
+        log(o.line);
+        clock();
+        return setTimeout(next, 500);
+      }
+      if (g && cur && cur.gift && !cur.giftDone) {
+        cur.giftDone = true;
+        if (g.dataset.g === 'take') ((st.tokens += 4), (st.susp += 1), sayLine('', '<em>A ration bar in a paper bag, and a nod. You put it in your pocket.</em>'));
+        else ((st.cons += 1), sayLine('', '<em>You push it back across the counter. They look at it, and then at you, and take it.</em>'));
+        return draw();
+      }
       if (a) act(a.dataset.a);
       else if (v && cur) decide(v.dataset.v);
     });
@@ -250,7 +345,7 @@
         const d = s.lastMini || {};
         return [`@doc CHECKPOINT REPORT\nPROCESSED: ${d.processed === undefined ? '—' : d.processed}\nCORRECT: ${d.correct === undefined ? '—' : d.correct}\nMISSED: ${d.missed === undefined ? '—' : d.missed}\nWRONGLY STOPPED: ${d.harsh === undefined ? '—' : d.harsh}`, d.missed ? '@sys A supervisor reads the sheet, and then reads it again.' : d.harsh > 2 ? '@sys Three people went to the cells today who did nothing. The supervisor says “good numbers”.' : 'The queue is gone. So is the light.'];
       },
-      choices: [{ t: 'End of shift.', fx: (st) => { const d = st.lastMini || { merit: 3, correct: 4 }; return { merit: Math.max(-12, d.merit || 0) + 1, cons: d.cons || 0, susp: d.susp || 0 }; }, go: 'u_duty_end' }],
+      choices: [{ t: 'End of shift.', fx: (st) => { const d = st.lastMini || { merit: 3, correct: 4 }; return { merit: Math.max(-12, d.merit || 0) + 1, cons: d.cons || 0, susp: d.susp || 0, tokens: d.tokens || 0, res: d.res || 0 }; }, go: 'u_duty_end' }],
     },
   });
 

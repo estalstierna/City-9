@@ -970,3 +970,10 @@ figure.pic.portrait.scan { position: relative; overflow: hidden; }
 .tr-btns button, .tr-ev button { background: rgba(95,200,221,.08); border: 1px solid #25505e; color: #cfd8dc; padding: 7px 12px; cursor: pointer; font: inherit; font-size: 13.5px; }
 .tr-btns button:disabled { opacity: .35; cursor: default; }
 .tr-ev { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; margin-top: 10px; } .tr-ev button { text-align: left; } .tr-ev b { display: block; color: #9ae8f5; font-size: 12px; letter-spacing: .08em; } .tr-ev small { color: #8a979c; font-size: 12px; }
+
+/* ---- checkpoint events */
+.cp-event { padding: 14px; margin: 8px 0; border: 1px solid #d9a441; background: rgba(217,164,65,.07); }
+.cp-ev-t { font-size: 15px; line-height: 1.55; margin-bottom: 12px; } .cp-ev-t b { color: #ffd68a; font-weight: 600; }
+.cp-ev-b { display: flex; flex-direction: column; gap: 6px; } .cp-ev-b button { text-align: left; background: rgba(95,200,221,.08); border: 1px solid #25505e; color: #cfd8dc; padding: 8px 12px; cursor: pointer; font: inherit; font-size: 14px; }
+.cp-ev-b .ok { border-color: #6fbf73; } .cp-ev-b .mid { border-color: #d9a441; } .cp-ev-b .bad { border-color: #d9534a; }
+.cp-gift { display: inline-flex; gap: 6px; margin-left: 10px; } .cp-gift button { background: rgba(217,164,65,.1); border: 1px dashed #d9a441; color: #ffd68a; padding: 6px 10px; cursor: pointer; font: inherit; font-size: 12.5px; }

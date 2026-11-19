@@ -736,6 +736,10 @@ suite('checkpoint duty (always on the board, cards, lookups, questions, frisks)'
     for (let i = 0; i < 60; i++) {
       const mini = document.querySelector('#story .block.current .mini.cp');
       if (!mini || /won|lost/.test(mini.className)) break;
+      const evb = mini.querySelector('.cp-event:not([hidden]) [data-e]');
+      if (evb) { evb.click(); res.events = (res.events || 0) + 1; await wait(900); continue; }
+      const gb = mini.querySelector('[data-g="refuse"]');
+      if (gb) gb.click();
       if (mini.querySelector('.cp-idc')) res.cards++;
       if (!res.termOk && G.cp && G.cp.cur) res.termOk = G.termRun('query ' + G.cp.cur.cid).join(' ').includes('CID ' + G.cp.cur.cid);
       const acts = [...mini.querySelectorAll('[data-a]:not(:disabled)')];
@@ -831,6 +835,50 @@ suite('direction finding and the hearing, played properly', async (browser) => {
     return { has: !!mini };
   });
   if (!sv.has) out.push('the hearing did not start from a bare record');
+  return out.concat(errors);
+});
+
+suite('checkpoint events: orders, rush, blockade, known faces', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  const r = await page.evaluate(() => new Promise((res) => {
+    const s = G.state();
+    s.files = { 55555: { cid: '55555', type: 'standard', desc: 'a man with a scar', face: 2, points: 3, stops: 1, last: 4, lastVerdict: 'WARNED' } };
+    G.goto('u_board');
+    const blk = document.querySelector('#story .block.current');
+    const seen = { hard: false, blockade: false, feverish: false, echo: false };
+    G.MINIGAMES.checkpoint(blk, { count: 8, ticks: 90, events: ['blockade', 'hard'], trig: [1, 2] }, (ok, d) => res({ ok, d, seen }));
+    const tick = () => {
+      const mini = blk.querySelector('.mini.cp');
+      if (!mini || /won|lost/.test(mini.className)) return;
+      const ev = mini.querySelector('.cp-event:not([hidden])');
+      if (ev) {
+        const txt = ev.innerText;
+        if (/Hold the queue/.test(txt)) { seen.blockade = true; ev.querySelector('[data-e="1"]').click(); }
+        else if (/No warnings/.test(txt)) { seen.hard = true; ev.querySelector('[data-e="0"]').click(); }
+      }
+      if (/feverish/.test(mini.querySelector('.cp-say').innerText)) seen.feverish = true;
+      const v = mini.querySelector('[data-v="pass"]');
+      if (v && !ev) v.click();
+    };
+    const t = setInterval(tick, 150);
+    setTimeout(() => { clearInterval(t); res({ timeout: true, seen }); }, 15000);
+  }));
+  if (r.timeout) out.push('the shift with events did not finish: ' + JSON.stringify(r.seen));
+  else {
+    if (!r.seen.blockade || !r.seen.hard) out.push('events did not show: ' + JSON.stringify(r.seen));
+    if (!r.seen.feverish) out.push('the blockade mercy should send a sick citizen to the window: ' + JSON.stringify(r.seen));
+    if (!r.d || r.d.policy !== 'hard' || r.d.events < 2) out.push('events not recorded: ' + JSON.stringify(r.d));
+  }
+  /* a known face: an echo of a file you kept */
+  const e = await page.evaluate(() => {
+    const s = G.state();
+    s.files = { 55555: { cid: '55555', type: 'standard', desc: 'a man with a scar', face: 2, points: 3, stops: 1, last: 4, lastVerdict: 'WARNED' } };
+    const c = G.makeCitizen(s);
+    return typeof c === 'object';
+  });
+  if (!e) out.push('makeCitizen broken');
   return out.concat(errors);
 });
 
