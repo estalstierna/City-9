@@ -92,7 +92,7 @@
   };
 
   /* ---------------------------------------------------------- the train map */
-  /* the painted cutaway (assets/img/env/e61-train-cutaway.jpg, 1672 x 941); x-ranges of the seven cars measured on it */
+  /* the painted cutaway (assets/img/env/e61-train-cutaway.webp, 1672 x 941); x-ranges of the seven cars measured on it */
   const IMG = 'assets/img/env/e61-train-cutaway.webp';
   const BOX = { brake: [20, 228], envoy: [230, 438], w3: [440, 648], w2: [650, 872], w1: [875, 1112], guard: [1115, 1366], engine: [1368, 1655] };
   G.PEOPLE.voss = { name: 'Captain Voss', role: 'Prospekt garrison', img: 'voss' };
