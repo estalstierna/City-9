@@ -454,7 +454,7 @@ suite('chapter 3 for every division', async (browser) => {
 /* Chapters 4 onward share one setup: a Union unit with every earlier chapter done, two days
    after the last one ended. `tweak(s, div, i)` runs in the page (it is sent as source, so it
    can use G but not variables from this file) to set rank, resistance, relations and flags. */
-const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186, 11: 206, 12: 226 };
+const CH_END = { 3: 46, 4: 66, 5: 86, 6: 106, 7: 126, 8: 146, 9: 166, 10: 186, 11: 206, 12: 226, 13: 246 };
 async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) {
   const { page, errors } = await openGame(browser);
   const out = [];
@@ -483,6 +483,7 @@ async function chapterSuite(browser, { n, steps, prefer, stopAt, runs, tweak }) 
         if (n > 10) s.c10 = { stage: 9, done: true, endDay: CH_END[10], deserter: 'Rook', desFate: 'freed', cleared: 6, moved: 40, harmed: 8, detained: 30 };
         if (n > 11) s.c11 = { stage: 9, done: true, endDay: CH_END[11], outcome: 'held', prep: {} };
         if (n > 12) s.c12 = { stage: 0, done: true, endDay: CH_END[12], phase: 'riot', seen: {}, flags: {}, clues: 3, order: 62, blood: 1, freed: i % 2, missed: 1, handled: 6, log: [], ev: [], out: 'held', report: ['truth', 'buried', 'lambda'][i % 3] };
+        if (n > 13) s.c13 = { stage: 0, done: true, endDay: CH_END[13], site: 'd3', op: i % 2 ? 'freed' : 'arrested', tape: true, listened: false, escaped: false, charges: ['a', 'b'], deal: 'silent', verdict: 'reprimand', outcome: 'reprimand' };
         new Function('return ' + src)()(s, div, i);
         G.goto('u_board');
       },
@@ -879,6 +880,63 @@ suite('checkpoint events: orders, rush, blockade, known faces', async (browser) 
     return typeof c === 'object';
   });
   if (!e) out.push('makeCitizen broken');
+  return out.concat(errors);
+});
+
+suite('chapter 14 for every division (The Northbound, the train in cross-section, the tunnel)', async (browser) => {
+  const divs = ['UNION', 'JURY', 'HELIX', 'RAZOR', 'SPEAR', 'VECTOR', 'GRID'];
+  const { out, page } = await chapterSuite(browser, {
+    n: 14,
+    steps: QUICK ? 400 : 600,
+    runs: QUICK ? divs : divs.concat(divs),
+    stopAt: ['c14_end', 'disc_tribunal'],
+    tweak: (s, div, i) => {
+      Object.assign(s, { rank: 'SqL', merit: 500, lp: 36, res: i % 3 ? 25 : 5 });
+      G.formSquad(s);
+    },
+  });
+  const r = await page.evaluate(() => {
+    const s = G.state();
+    const c = s.c14;
+    return { ok: !!c, o: c && c.outcome, rec: G.careerRecord(s).match(/undefined|NaN/) };
+  });
+  if (!r.ok || !r.o) out.push('the tunnel was never reached: ' + JSON.stringify(r));
+  if (r.rec) out.push('service record has ' + r.rec[0]);
+  return out;
+});
+
+suite('the train map and the uncoupling minigame', async (browser) => {
+  const { page, errors } = await openGame(browser);
+  const out = [];
+  await page.evaluate(SERVICE, {});
+  const m = await page.evaluate(() => {
+    const s = G.state();
+    s.c13 = { done: true, endDay: 5 };
+    G.goto('c14_start');
+    G.goto('tr_map');
+    const nodes = document.querySelectorAll('#story .block.current [data-pt]').length;
+    const hasMap = !!document.querySelector('#story .block.current .tr-svg');
+    const choices = [...document.querySelectorAll('#story .block.current .choice')].map((b) => b.innerText);
+    return { nodes, hasMap, n: choices.length, look: choices.some((c) => /Look into it/.test(c)) };
+  });
+  if (m.nodes !== 7 || !m.hasMap || !m.look) out.push('the train map: ' + JSON.stringify(m));
+  const u = await page.evaluate(() => new Promise((res) => {
+    G.goto('u_board');
+    const blk = document.querySelector('#story .block.current');
+    G.MINIGAMES.uncouple(blk, {}, (ok, d) => res({ ok, d }));
+    const click = () => blk.querySelector('.uc-go').click();
+    /* hit each stage when the marker sits in the zone */
+    let stage = 0;
+    const t = setInterval(() => {
+      const mark = parseFloat(blk.querySelector('.uc-mark').style.left || '0');
+      const z = blk.querySelector('.uc-zone').style;
+      const zl = parseFloat(z.left), zw = parseFloat(z.width);
+      if (mark >= zl + 1 && mark <= zl + zw - 1) { click(); stage++; }
+      if (stage >= 3) clearInterval(t);
+    }, 8);
+    setTimeout(() => res({ timeout: true }), 12000);
+  }));
+  if (u.timeout || !u.d || u.d.hits < 2) out.push('uncoupling: ' + JSON.stringify(u));
   return out.concat(errors);
 });
 
