@@ -36,6 +36,7 @@
   /* ---------------------------------------------------------- what is in each car */
   const INS = {
     engine: { icon: '?', text: [
+      '@portrait assets/img/portraits/halvorsen.webp|Halvorsen, the driver',
       'The driver is an old man named Halvorsen with a hand on the regulator that has not moved in an hour. He has driven this line for thirty years, and tells you so before you ask.',
     ], opts: [
       { t: 'Ask about Tunnel 9. Ask what he knows about the signal there.', check: ['comms', 5], ok: ['*“The lamp at Tunnel 9 has been green for six nights running. It is never green. Somebody is keeping it green.”* He does not say who. He does not need to.', {}, { clue: 1, flag: 'tunnel' }], bad: ['He talks about the weather, the grade and his knee. Nothing about the lamp.', {}, {}] },
@@ -43,6 +44,7 @@
       { t: 'Remind him whose train it is.', tag: 'BY THE BOOK', cls: 'loyal', out: ['He nods and says nothing for the next ten miles.', { merit: 2, cons: -1 }, { ready: 1 }] },
     ] },
     guard: { icon: '?', text: [
+      '@portrait assets/img/portraits/voss.webp|Captain Voss, Prospekt garrison',
       '@say Captain Voss|Do not look at the door at the end of the car, unit. It is not on your manifest. It is not on mine.',
       'Captain Voss of the Prospekt garrison has a thin face and a fine tremor in his hand that he is trying to hide by holding the strap of his rifle. There are twelve Wardens in the car and none of them are talking.',
     ], opts: [
@@ -72,6 +74,7 @@
       { t: 'Leave the seal alone. It is an order.', tag: 'BY THE BOOK', cls: 'loyal', out: ['The paper strip stays. So does the breathing.', { merit: 2, cons: -3 }, {}] },
     ] },
     envoy: { icon: '?', text: [
+      '@portrait assets/img/portraits/maren.webp|Delegate Maren — the Sector',
       'The envoy car has a carpet, a samovar and a delegate of the Sector named Maren, in a travelling coat the colour of ash. She has not looked up from her papers in ten minutes. A small steel case sits on the seat beside her.',
     ], opts: [
       { t: 'Listen to what she is offering.', out: ['*“I need an escort who reads the reports,”* she says. *“Hand me the clerk and your Nova Prospekt file, and I will see your hearing record closed. And your next grade. A person who can be useful is a person who can be promoted.”*', {}, { flag: 'deal' }] },
@@ -79,6 +82,7 @@
       { t: 'Decline politely. You are an escort, not a courier.', out: ['*“Of course,”* Maren says, in a voice that has decided something.', { susp: 1 }, {}] },
     ] },
     brake: { icon: '?', text: [
+      '@portrait assets/img/portraits/pell.webp|Brakeman Pell',
       'The brake van is a cold wooden box with a stove and a window at the back. Brakeman Pell, a man in his forties with a flask and a small lantern, is watching the track slide away behind the train. He does not turn round.',
     ], opts: [
       { t: 'Tap the bench three times, pause, once.', out: ['He turns round. He does not smile. *“At the lamp,”* he says. *“Do not shoot. We will not shoot the Wardens who do not shoot us. Be at the couplings by the third bell.”*', { cons: 1, res: 3 }, { flag: 'brakeman', clue: 1 }], needs: 'code' },
@@ -88,28 +92,26 @@
   };
 
   /* ---------------------------------------------------------- the train map */
+  /* the painted cutaway (assets/img/env/e61-train-cutaway.jpg, 1672 x 941); x-ranges of the seven cars measured on it */
+  const IMG = 'assets/img/env/e61-train-cutaway.webp';
+  const BOX = { brake: [20, 228], envoy: [230, 438], w3: [440, 648], w2: [650, 872], w1: [875, 1112], guard: [1115, 1366], engine: [1368, 1655] };
+  G.PEOPLE.voss = { name: 'Captain Voss', role: 'Prospekt garrison', img: 'voss' };
+  G.PEOPLE.halvorsen = { name: 'Halvorsen', role: 'Locomotive driver', img: 'halvorsen' };
+  G.PEOPLE.maren = { name: 'Delegate Maren', role: 'Sector envoy', img: 'maren' };
+  G.PEOPLE.pell = { name: 'Brakeman Pell', role: 'The Northbound', img: 'pell' };
+  G.PEOPLE.clerk = { name: 'The clerk', role: 'Nova Prospekt records', img: 'clerk' };
   function trainSvg(s) {
     const c = C(s);
-    let g = '<svg viewBox="0 110 1600 340" class="tr-svg" role="img" aria-label="The train in cross-section">';
-    g += '<defs><linearGradient id="trsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1418"/><stop offset="1" stop-color="#1a252b"/></linearGradient></defs>';
-    g += '<rect width="1600" height="440" fill="url(#trsky)"/>';
-    g += '<g class="tr-far"><path d="M0 330 L120 290 L260 330 L400 270 L560 330 L720 300 L900 330 L1060 280 L1240 330 L1400 290 L1600 330 V440 H0z" fill="#10191d"/></g>';
-    g += '<line x1="0" y1="372" x2="1600" y2="372" stroke="#2c3b42" stroke-width="3"/>';
-    g += '<g class="tr-ties">' + Array.from({ length: 40 }, (_, i) => `<rect x="${i * 44}" y="372" width="18" height="10" fill="#202c31"/>`).join('') + '</g>';
-    CK.forEach((k, i) => {
-      const x = 70 + i * 215, y = 190, w = 196, h = 170;
+    let g = '<svg viewBox="0 330 1672 440" class="tr-svg" role="img" aria-label="The train in cross-section">';
+    g += `<image href="${IMG}" x="0" y="0" width="1672" height="941" preserveAspectRatio="xMidYMid slice"/>`;
+    CK.forEach((k) => {
+      const [x0, x1] = BOX[k];
+      const w = x1 - x0, y = 362, h = 350;
       const here = c.at === k, seen = c.seen[k];
-      const open = !seen;
-      const body = k === 'engine' ? '#2b3a42' : k === 'guard' ? '#2d3430' : k === 'envoy' ? '#37302c' : k === 'brake' ? '#33302a' : '#262d31';
-      g += `<g class="tr-car${here ? ' here' : ''}${open ? ' hot' : ''}" data-pt="${k}" tabindex="0" role="button" aria-label="${CARS[k].name}">`;
-      g += `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${body}" stroke="${here ? '#ffbe5a' : '#44565e'}" stroke-width="${here ? 4 : 2}"/>`;
-      if (k === 'engine') g += `<rect x="${x + 120}" y="${y - 40}" width="50" height="45" fill="#202b30"/><circle cx="${x + 145}" cy="${y - 52}" r="14" fill="#33414a"/>`;
-      for (let wn = 0; wn < 3; wn++) g += `<rect x="${x + 16 + wn * 56}" y="${y + 22}" width="42" height="40" rx="3" fill="${seen ? '#1b2429' : '#d9a441'}" opacity="${seen ? 0.7 : 0.85}"/>`;
-      g += `<rect x="${x + 70}" y="${y + 104}" width="56" height="60" rx="3" fill="#161e22"/>`;
-      g += `<circle cx="${x + 34}" cy="${y + h + 8}" r="14" fill="#1a2226" stroke="#44565e" stroke-width="2"/><circle cx="${x + w - 34}" cy="${y + h + 8}" r="14" fill="#1a2226" stroke="#44565e" stroke-width="2"/>`;
-      if (open) g += `<circle cx="${x + w - 24}" cy="${y + 24}" r="16" fill="rgba(6,12,15,.9)" stroke="#ffbe5a" stroke-width="3"/><text x="${x + w - 24}" y="${y + 31}" class="tr-q">?</text>`;
-      g += `<text x="${x + w / 2}" y="${y + h + 52}" class="tr-name">${CARS[k].name.toUpperCase()}</text></g>`;
-      if (i < CK.length - 1) g += `<rect x="${x + w}" y="${y + 120}" width="19" height="8" fill="#44565e"/>`;
+      g += `<g class="tr-car${here ? ' here' : ''}${seen ? ' seen' : ' hot'}" data-pt="${k}" tabindex="0" role="button" aria-label="${CARS[k].name}">`;
+      g += `<rect class="tr-hit" x="${x0}" y="${y}" width="${w}" height="${h}" rx="8"/>`;
+      if (!seen) g += `<circle cx="${x0 + w / 2}" cy="${y - 14}" r="19" class="tr-mark"/><text x="${x0 + w / 2}" y="${y - 7}" class="tr-q">?</text>`;
+      g += `<text x="${x0 + w / 2}" y="${y + h + 38}" class="tr-name">${CARS[k].name.toUpperCase()}</text></g>`;
     });
     return g + '</svg>';
   }
@@ -211,6 +213,7 @@
         VIGIL,
         '@say Vigil|The train leaves D4 at six. Twelve Wardens, a driver, a brakeman, a Sector envoy and a hundred and eighty prisoners. You will be in command of nothing and responsible for everything. That is what an escort is.',
         '@say Vigil|It passes Tunnel 9 at noon. I cannot tell you what is in the tunnel. I can tell you that the Sector does not tell me either, and that when the Sector does not tell me, it is because it would like me to find out.',
+        '@img assets/img/env/e61-train-cutaway.webp|The Northbound: seven cars, one tunnel',
         '@sys You have a little time before the train leaves. What do you bring?',
       ],
       choices: [
@@ -373,7 +376,7 @@
   G.addCodex({
     northbound: {
       title: 'The Northbound',
-      body: '<p>The Union’s transport trains run to a schedule the Union keeps. A prisoner train is escorted by the garrison that loads it, with a driver, a brakeman and a Sector envoy aboard. An escort is responsible for everything on it and in command of nothing. Tunnel 9 is a mile of unlit track with a signal at each end, and a cutting on the north side where a train can be stopped from the hillside.</p>',
+      body: '<img src="assets/img/env/e61-train-cutaway.webp" alt="The Northbound" loading="lazy"><p>The Union’s transport trains run to a schedule the Union keeps. A prisoner train is escorted by the garrison that loads it, with a driver, a brakeman and a Sector envoy aboard. An escort is responsible for everything on it and in command of nothing. Tunnel 9 is a mile of unlit track with a signal at each end, and a cutting on the north side where a train can be stopped from the hillside.</p>',
     },
   });
   G.CODEX_GROUPS.find((g) => g.title === 'City 9').ids.push('northbound');
